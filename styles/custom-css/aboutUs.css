@@ -1,0 +1,56 @@
+.first {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("/img/AboutUs/AboutUs1.svg");
+    background-repeat: no-repeat;
+    background-position: cover;
+    position: relative;
+}
+
+.first h4 {
+    padding-top: 13%;
+    padding-bottom: 13%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+main {
+    background-color: #FFFFFF;
+}
+
+.second {
+    padding: 100px;
+    padding-bottom: 200px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #343434;
+}
+.card{
+    box-shadow: 0px 30px 60px rgba(111, 111, 111, 0.08);
+}
+.icons{
+    display: flex;
+    margin: auto;
+    padding: 15%;
+    padding-bottom:2%;
+}
+.icons2{
+    width:24px;
+    height:24px ;
+}
+.thick{
+    font-weight: 500;
+}
+.fourth{
+    background: #E7EAEC;
+    border-radius: 5px;
+}
