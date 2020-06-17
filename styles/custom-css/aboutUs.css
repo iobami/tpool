@@ -20,19 +20,23 @@
 main {
     background-color: #FFFFFF;
 }
-
-.second {
-    padding: 100px;
-    padding-bottom: 200px;
+p, h1,h2,h3,h4,h5,h6 {
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
+}
+.second {
+    padding: 120px;
+    padding-bottom: 180px;
     font-size: 16px;
     line-height: 24px;
     display: flex;
     align-items: center;
     text-align: center;
     color: #343434;
+}
+.card-body{
+    padding-bottom:2rem !important;
 }
 .card{
     box-shadow: 0px 30px 60px rgba(111, 111, 111, 0.08);
