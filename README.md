@@ -10,6 +10,8 @@ This process here should be able to guide you on how to contribute effectively t
 
 ### Develop is the default branch.
 
+* All occurences of tominsinlalude will be your own github username
+
 * Fork the repository to generate a copy of your own.
 
 * Clone the repository.
@@ -18,9 +20,9 @@ This process here should be able to guide you on how to contribute effectively t
     git clone https://github.com/tomisinlalude/TalentPool.git
    ```
     
-* Make this repository the remote upstream(at origin)
+* Make your forked repo the remote upstream (at origin)
 ```
-    git remote add origin https://github.com/hngi/TalentPool.git
+    git remote add origin https://github.com/tomisinlalude/TalentPool.git
 ```
 * Create a branch FROM develop, ALWAYS CREATE YOUR BRANCH FROM DEVELOP,
 the branch name should at least be meaningful,  **make sure you have one story per branch (one(1) story ===  one(1) branch)** 
@@ -42,12 +44,12 @@ This way you can resolve conflicts from your local computer even before pushing 
    ```
 Write good commit messages, this is very important, so people reviewing can know what your fix, feature e.t.c. is doing
 
-* Push your codes to the remote upstream repository
+* Push your codes to the new branch on your forked remote upstream repository
 ```
-    git push origin develop
+    git push origin (name-of-branch)
    ```
-Or you can also push your code to the current branch which you are in.
-Make your Pull request and wait for it to be merged.
+
+Make your Pull request from that branch of your repo to the develop branch of this (the HNG) repo and wait for it to be merged.
 
 
 Write good commit messages, this is very important, so people reviewing can know what your fix, feature e.t.c. is doing
