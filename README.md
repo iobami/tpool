@@ -40,7 +40,8 @@ This way you can resolve conflicts from your local computer even before pushing 
  
 * Make your changes, add them and make your commits
 
-   ``` git commit -m "your message"
+   ``` 
+   git commit -m "your message"
    ```
 Write good commit messages, this is very important, so people reviewing can know what your fix, feature e.t.c. is doing
 
