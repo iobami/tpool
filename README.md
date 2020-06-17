@@ -15,14 +15,15 @@ This process here should be able to guide you on how to contribute effectively t
 * Clone the repository.
 
    ```
-    git clone https://github.com/hngi/HNGi7.0.git
+    git clone https://github.com/tomisinlalude/TalentPool.git
    ```
     
-* Make the repository (the forked repo) the remote upstream
+* Make this repository the remote upstream(at origin)
 ```
-    git add remote upstream https://github.com/pidoxy/TalentPool.git
+    git remote add origin https://github.com/hngi/TalentPool.git
 ```
-* Create a branch, the branch name should at least be meaningful,  **make sure you have one story per branch (one(1) story ===  one(1) branch)** 
+* Create a branch FROM develop, ALWAYS CREATE YOUR BRANCH FROM DEVELOP,
+the branch name should at least be meaningful,  **make sure you have one story per branch (one(1) story ===  one(1) branch)** 
 
 ```
  git checkout -b (name-of-branch)
