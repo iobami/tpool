@@ -1,0 +1,75 @@
+
+:root{
+box-sizing: border-box;
+}
+*, 
+::before,
+::after{
+box-sizing: inherit;
+}
+
+body{
+	/**background-image: url(img/coming-soon.bg.jpg);**/
+	background-repeat: no-repeat;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.logo{
+	margin-top: 1em;
+	text-align: center;
+}
+
+.header{
+	margin: 10em;
+}
+
+h1{
+	text-align: center;
+	margin-top: 0;	
+}
+
+p{
+	text-align: center;
+	margin-bottom: 0;
+}
+.countdown {
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.countdown div {
+  padding: 20px;
+  border: 1px #fff solid;
+  border-radius: 10px;
+  background: #000;
+  opacity: 0.7;
+  margin: 5px;
+}
+
+
+.form{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.btn{
+	display: inline;
+	text-transform: uppercase;
+	background-color:#00AEFF;
+	color:white;
+	border: none;
+	padding:.5em;
+	border-radius: .5em;
+	font-size: 1em;
+}
+
+footer {
+	
+	position: absolute;
+  	right: 90px;
+}
