@@ -103,6 +103,11 @@ input, textarea {
     border: 1px solid #337AB7 !important;
 }
 
+#body__click {
+  width: calc(100% - 234px);
+  float: right;
+}
+
 input[type="file"] {
   width: 100%;
 }
@@ -115,4 +120,10 @@ input[type="file"] {
     margin-top: 30px;
   }
 
+}
+
+@media only screen and (max-width: 991px) {
+  #body__click {
+   width: 100%;
+  }
 }
