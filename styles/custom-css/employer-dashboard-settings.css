@@ -2,6 +2,15 @@
 body {
   overflow-y: scroll;
 }
+.inner-content-settings {
+  padding-top: 27px;
+  padding-left: 59px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+  line-height: 24px;
+  margin-bottom: 47px;
+}
 .bg-light {
   background-color: #E5E5E5 !important;
 }
@@ -15,12 +24,15 @@ body {
   border: 0;
   border-bottom: 1px solid #007bff;
   background-color: #E5E5E5;
+  color: #333333;
+  font-weight: 600;
 }
-.setting-tab {
-  font-weight: 500;
+.tab-content {
+  color: #333333;
+  font-size: 16px;
 }
 .setting-tab.active {
-  color: #000000;
+  color: #084482;
   background-color: white;
 }
 .setting-tab.active:not(:first-child) {
