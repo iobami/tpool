@@ -44,7 +44,11 @@ body {
 }
 
 .intern-other {
-  margin: auto 13%;
+  margin: auto 10%;
+}
+
+.intern-other p {
+  font-size: 14px;
 }
 
 .section-title {
