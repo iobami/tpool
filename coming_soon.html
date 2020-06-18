@@ -4,12 +4,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Comaptible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap-css/bootstrap.css">
 
 	<!-- custom css-->
 	<link rel="stylesheet" type="text/css" href="comingsoon.css">
 
 </head>
 <body class="container ">
+
 	<header class="header">
 		<!--logo-->
 		<div class="logo">
@@ -23,34 +25,52 @@
 	</header>
 
 	<main>
-		<div class="countdown">
-			
-		</div>
-		
-
-	 <div class="">
-	 	<form class="form">
-	 		<div>
-	 		<p>Subscribe and find out when we launch</p>
+		<div class="clockdiv-wrapper">
+			<div id="clockdiv">
+				<div>
+					<div class="smalltext">Weeks</div>
+					<span class="weeks"></span>
+					   
+				</div>
+				<div>
+						<div class="smalltext">Days</div>
+					    <span class="days"></span>
+				</div>
+				<div>
+						<div class="smalltext">Hours</div>
+					    <span class="hours"></span>
+					</div>
+					<div>
+						<div class="smalltext">Minutes</div>
+					    <span class="minutes"></span>
+					</div>
+					<div>
+						<div class="smalltext">Seconds</div>
+					    <span class="seconds"></span>
+					</div>	
 			</div>
-	 		<div class="subscribe-box "><label for="email"></label>
-	 			<input  type="email" name="email" placeholder="Enter Your Email">
-	 			<button type="submit" class="btn btn-primary btn-group  ">Notify me</button>
-	 		</div>
-	 	</form>
-	 </div>
-	<div class="social-links text-center">
-        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-        <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
-    </div>
-
-</main>
-</body>
-<footer>
-	<p><span>&copy</span>copyright <a href="#">TalentPool</a> 2020 </p>
+		</div>
+		<div id="form-wrapper">
+		 	<form class="form">
+		 		<div>
+		 		<p id="subscribe-text">Subscribe and find out when we launch</p>
+				</div>
+		 		<div class="subscribe-box">
+		 			<input  type="email" name="email" placeholder="Enter Your Email">
+		 			<button type="submit" class="btn btn-primary btn-group  ">Notify me</button>
+		 		</div>
+		 	</form>
+		 </div>
+		<div class="social-links text-center">
+	        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+	        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+	        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+	        <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+	    </div>
+	</main>
+	<footer>
+	<p id="footer"><span class="footer-text" >&copy</span>copyright <a href="#">TalentPool</a> <span class="footer-text"> 2020 </span></p>
 </footer>
-
-<script type="javascript" src="js/custom-js/comingsoon.js"></script>
+</body>
+<script src="js/custom-js/comingsoon.js"></script>
 </html>

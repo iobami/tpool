@@ -1,28 +1,48 @@
 
-// Set the date countdown to
-var countDownDate = new Date("Dec 10, 2021 00:00:00").getTime();
+  function getTimeRemaining(endtime) {
+  const total = Date.parse(endtime) - Date.parse(new Date());
+  const seconds = Math.floor((total / 1000) % 60);
+  const minutes = Math.floor((total / 1000 / 60) % 60);
+  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(total / (1000 * 60 * 60 * 24));
+  const weeks = Math.floor(total / (1000 * 60 * 60 * 24));
+  
+  return {
+    total,
+    weeks,
+    days,
+    hours,
+    minutes,
+    seconds
+  };
+}
 
-// Update the count down every 1 second
-var x = setInterval(function() {
+function initializeClock(id, endtime) {
+  const clock = document.getElementById(id);
+  const weeksSpan= clock.querySelector('.weeks')
+  const daysSpan = clock.querySelector('.days');
+  const hoursSpan = clock.querySelector('.hours');
+  const minutesSpan = clock.querySelector('.minutes');
+  const secondsSpan = clock.querySelector('.seconds');
 
-  // Get today's date and time
-  var now = new Date().getTime();
+  function updateClock() {
+    const t = getTimeRemaining(endtime);
 
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
+    weeksSpan.innerHTML =t.weeks
+    daysSpan.innerHTML = ('0' + t.days).slice(-2);
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 
-  // Time calculations for weeks,days, hours, minutes and seconds
-  var weeks = Math.floor(distance /(1000 * 60 * 60 *24 * 7))
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
 
-  // Display the result 
-  countdown.innerHTML = `
-  <div>${weeks}<span>Weeks</span><div>
-  <div>${days}<span>Days</span></div> 
-  <div>${hours}<span>Hours</span></div>
-  <div>${mins}<span>Minutes</span></div>
-  <div>${seconds}<span>Seconds</span></div>
-  `;
+  updateClock();
+  const timeinterval = setInterval(updateClock, 1000);
+}
+
+const deadline = new Date(Date.parse(new Date()) + 16 * 24 * 60 * 60 * 1000);
+initializeClock('clockdiv', deadline);
+
