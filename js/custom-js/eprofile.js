@@ -45,16 +45,28 @@ function onsubmit(e) {
 
 Filevalidation = () => {
     const fi = document.getElementById("file");
+    const size = document.querySelector('#size');
+    const fileMessage = document.querySelector('#file-message');
     // Check if any file is selected.
     if (fi.files.length > 0) {
         for (let i = 0; i <= fi.files.length - 1; i++) {
             const fsize = fi.files.item(i).size;
             const file = Math.round(fsize / 1024);
             // The size of the file.
-            if (file >= 4096) {
-                alert("File too Big, please select a file less than 4mb");
-            } else if (file < 2048) {
-                alert("File too small, please select a file greater than 2mb");
+            if (file >= 2048) {
+                fileMessage.innerHTML = 'File too Big, please select a file less than 600kb '
+                setTimeout(function () {
+                  
+                    fileMessage.style.display = "none";
+                }, 4000);
+                // alert("File too Big, please select a file less than 4mb");
+            } else if (file < 550) {
+                fileMessage.innerHTML = 'File too small, please select a file greater than 2mb'
+                // alert("File too small, please select a file greater than 2mb");
+                setTimeout(function () {
+
+                    fileMessage.style.display = "none";
+                }, 4000);
             } else {
                 document.getElementById("size").innerHTML = "<b>" + file + "</b> KB";
             }
