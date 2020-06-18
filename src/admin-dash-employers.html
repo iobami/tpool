@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Admin Dashboard | Employers</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="../styles/custom-css/main.css" rel="stylesheet" />
+    <link
+      href="../styles/custom-css/admin-dash-employers.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header id="header" class="p-4">
+      <div class="d-flex justify-content-end">
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item mx-1 bg-secondary">A</li>
+          <li class="list-group-item mx-1 bg-secondary">B</li>
+        </ul>
+        <div class="dropdown create">
+          <img src="../img/user.png" alt="" />
+          <button
+            class="btn btn-default dropdown-toggle"
+            type="button"
+            id="dropdownMenu1"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            Adelanke Adelanke
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        >
+          <div class="sidebar-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file"></span>
+                  Verification
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="shopping-cart"></span>
+                  Employers <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="users"></span>
+                  Employees
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  Messages
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="layers"></span>
+                  Support
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="layers"></span>
+                  FAQs
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="layers"></span>
+                  Settings
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div
+          role="main"
+          class="col-md-9 ml-sm-auto col-lg-10 px-md=4 pt-5 main"
+        >
+          <h1 class="h2 pt-3 pb-2 mb-3 employers-heading">Employers</h1>
+
+          <div class="row px-3 d-flex justify-content-start">
+            <div class="card text-center col-md-4 mr-md-5 employers-stats">
+              <div class="card-body">
+                <h3 class="card-title">
+                  10,000
+                </h3>
+                <p class="card-text text-uppercase">Individuals</p>
+              </div>
+            </div>
+
+            <div class="card text-center col-md-4 employers-stats">
+              <div class="card-body">
+                <h3 class="card-title">
+                  400
+                </h3>
+                <p class="card-text text-uppercase">Companies</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex mt-5 mb-4 justify-content-between">
+            <h2 class="employer-list my-auto">Employer's List</h2>
+            <div class="dropdown bg-white employer-list-btn">
+              <button
+                class="btn dropdown-toggle pl-3"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <small>All</small>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Action</a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="table-responsive table-wrapper-scroll-y my-custom-scrollbar"
+          >
+            <form class="form-inline my-auto my-lg-0 px-4 py-auto search">
+              <input
+                class="form-control mr-sm-2 p-2 search-input"
+                type="text"
+                placeholder="Search Employer"
+                aria-label="Search"
+              />
+            </form>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="align-middle">User ID</th>
+                  <th class="align-middle">Employer's Name</th>
+                  <th class="align-middle">Employer type</th>
+                  <th class="align-middle">Date joined</th>
+                  <th class="align-middle">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="align-middle">HNG02E</td>
+                  <td class="align-middle res-img">
+                    <img src="../img/user.png" alt="" />
+                    Dealgo inc
+                  </td>
+                  <td class="align-middle">Individual</td>
+                  <td class="align-middle">Feb 12, 2018</td>
+                  <td class="align-middle flex justify-content-between">
+                    <span class="verified-btn p-2 mr-md-3 text-white rounded"
+                      >Verified</span
+                    >
+                    <img src="../img/options.png" alt="" class="options" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle">HNG02E</td>
+                  <td class="align-middle res-img">
+                    <img src="../img/user.png" alt="" />
+                    Dealgo inc
+                  </td>
+                  <td class="align-middle">Company</td>
+                  <td class="align-middle">Feb 12, 2018</td>
+                  <td class="align-middle">
+                    <span class="verified-btn p-2 mr-md-3 text-white rounded"
+                      >Verified</span
+                    >
+                    <img src="../img/options.png" alt="" class="options" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle">HNG02E</td>
+                  <td class="align-middle res-img">
+                    <img src="../img/user.png" alt="" />
+                    Dealgo inc
+                  </td>
+                  <td class="align-middle">Company</td>
+                  <td class="align-middle">Feb 12, 2018</td>
+                  <td class="align-middle">
+                    <span class="verified-btn p-2 mr-md-3 text-white rounded"
+                      >Verified</span
+                    >
+                    <img src="../img/options.png" alt="" class="options" />
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="align-middle">HNG02E</td>
+                  <td class="align-middle res-img">
+                    <img src="../img/user.png" alt="" class="table-img" />
+                    Dealgo inc
+                  </td>
+                  <td class="align-middle">Company</td>
+                  <td class="align-middle">Feb 12, 2018</td>
+                  <td class="align-middle">
+                    <span class="verified-btn p-2 mr-md-3 text-white rounded"
+                      >Verified</span
+                    >
+                    <img src="../img/options.png" alt="" class="options" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/bootstrap-js/jquery.js"></script>
+    <script src="../js/bootstrap-js/popper.js"></script>
+    <script src="../js/bootstrap-js/bootstrap.js"></script>
+    <script src="../js/custom-js/main.js"></script>
+  </body>
+</html>
