@@ -1,0 +1,29 @@
+
+.header .navbar-light .navbar-nav .nav-link-black {
+   color: #25282B !important;
+}
+
+.header .navbar {
+   padding: 0.5rem 0;
+}
+
+.btn-hire-talent {
+   background: #00AEFF;
+   color: #fff !important;
+}
+
+.btn-sign-up {
+   border: 1px solid#00AEFF;
+   color: #00AEFF !important;
+}
+
+
+
+   .custom-container {
+     max-width: 1440px;
+     margin: 0 auto;
+     padding: 1rem;
+   }
+
+
+   

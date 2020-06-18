@@ -1,0 +1,45 @@
+.footer {
+   background: #084482;
+   color: #fff;
+}
+
+.footer h5 {
+   font-size: 24px;
+   font-weight: 500;
+}
+
+.footer ul {
+   list-style: none;
+}
+
+.footer ul li a {
+   color: #fff;
+   text-decoration: none;
+}
+
+.footer ul li a:hover {
+   color: #fff;
+   text-decoration: underline;
+}
+
+.footer hr {
+   border-color: #fff;
+}
+
+
+@media(max-width: 410px) {
+
+   .footer {
+      text-align: center;
+   }
+
+}
+
+
+@media (min-width: 1000px) {
+
+   .footer .top p {
+      max-width: 200px;
+   }
+
+}
