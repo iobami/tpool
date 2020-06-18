@@ -58,7 +58,7 @@ body {
   border-left: 5px solid #007bff;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 770px) {
   .setting-nav {
     border-right: 1px solid #007bff !important;
     border-bottom: 0 !important;
