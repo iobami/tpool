@@ -38,7 +38,7 @@
 
 @media (min-width: 1000px) {
 
-   .footer p {
+   .footer .top p {
       max-width: 200px;
    }
 
