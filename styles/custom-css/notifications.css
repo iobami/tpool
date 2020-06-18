@@ -75,7 +75,14 @@ span.report {
     font-family: 'Open Sans', sans-serif;
     border: none;
     border-bottom: 1px solid #5c95c5;
+    padding: 0;
     background-color: transparent;
+}
+
+.settings-container .settings-menu .list-group-item a {
+    display: block;
+    width: 100%;
+    padding: 24px 18px;
 }
 
 .settings-container a {
@@ -86,9 +93,14 @@ span.report {
     color: #084482;
 }
 
+.settings-container .settings-menu .list-group-item:hover {
+    background-color: #f0f0f0;
+}
+
 .settings-container .settings-menu .list-group-item.active {
     background-color: #ffffff;
     border-bottom: none;
+    border-right: 1px solid #ffffff;
 }
 
 .settings-container .settings {
@@ -160,4 +172,14 @@ ul.notifications li.notification>div.custom-switch {
     width: 3.5rem;
     height: 2rem;
     border-radius: 2rem;
+}
+
+.settings-container {
+    margin-left: 248px;
+}
+
+@media only screen and (max-width: 991px) {
+    .settings-container {
+        margin-left: 0;
+    }
 }
