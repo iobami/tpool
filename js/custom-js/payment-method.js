@@ -246,7 +246,7 @@ form.addEventListener('submit', (e) => {
   checkRequired([companyName, email, country, cardNumber, expirationDate, cvv]);
 
   if (!Object.values(validated).includes(false)) {
-    console.log('Form Can Be Submitted');
+    Alert('Form Can Be Submitted');
   }
 
   /*   if (!Object.values(validated).includes(false)) {
