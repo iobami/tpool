@@ -20,9 +20,9 @@ This process here should be able to guide you on how to contribute effectively t
     git clone https://github.com/tomisinlalude/TalentPool.git
    ```
     
-* Make your forked repo the remote upstream (at origin)
+* Make the original HNGi/TalentPool repo the remote upstream (at upstream)
 ```
-    git remote add origin https://github.com/tomisinlalude/TalentPool.git
+git remote add upstream https://github.com/hngi/TalentPool.git
 ```
 * Create a branch FROM develop, ALWAYS CREATE YOUR BRANCH FROM DEVELOP,
 the branch name should at least be meaningful,  **make sure you have one story per branch (one(1) story ===  one(1) branch)** 
@@ -33,7 +33,7 @@ the branch name should at least be meaningful,  **make sure you have one story p
 
 After changes have been made do:
 ```
- git pull origin develop
+ git pull upstream develop
 ```
 Consistently pull from the develop branch to avoid not getting your pull request merged and to avoid conflicts.
 This way you can resolve conflicts from your local computer even before pushing always check what branch you are on when making changes
