@@ -1,0 +1,135 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #495057;
+}
+
+.custom-container {
+    max-width: 1440px;
+}
+
+.container-fluid {
+    padding-bottom: 0 !important;
+}
+
+.signup-img {
+    display: block;
+    background-size: 100% auto cover;
+    background-image: url(../../img/admin\ login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inspo-text {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 42px;
+    color: #084482;
+}
+
+.signup-info {
+    font-size: 16px;
+    color: #b5b5b5;
+    line-height: 24px;
+    font-weight: normal;
+}
+
+.form-label {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: normal;
+    color: #1f2430;
+}
+
+.form-control {
+    border: 1px solid #b5b5b5;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+/* input::placeholder {
+    font-size: 16px;
+    color: rgba(178, 178, 178, 0.58); */
+}
+
+::-webkit-input-placeholder { 
+    font-size: 16px;
+    color: rgba(178, 178, 178, 0.58);
+}
+
+::-moz-placeholder { 
+    font-size: 16px;
+    color: rgba(178, 178, 178, 0.58);
+}
+
+#policyAgree-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 50px;
+
+}
+
+#policyAgree-text{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 50px;
+}   
+
+.btn-color, .btn-color:visited {
+    background-color: #00AEFF !important;
+}
+
+.btn-color:hover{
+    background-color: #337ab7 !important;
+} 
+
+.btn-color:active{
+    background-color: #084482 !important;
+} 
+
+hr {
+    color: #084482;
+    border: .5px solid #084482;
+}
+
+.btn-facebook {
+    color:white;
+    background-color: #3b5998;
+}
+
+.btn-facebook:hover {
+    color:white;
+    background-color: #3a65c4;
+}
+
+.btn-google {
+    color: white;
+    background: #DB4a39;
+}
+
+.btn-google:hover {
+    color: white;
+    background: #f7220b;
+}
+
+.fab {
+    font-size: 16px;
+}
+
+.haveAccount {
+    font-size: 16px;
+}
+
+.login-link {
+    color: #00aeff;
+    text-decoration: none;
+}
+.login-link:hover {
+    color: #337ab7;
+    text-decoration: none;
+}
+.login-link:active {
+    color: #084482;
+    text-decoration: none;
+}
