@@ -61,3 +61,12 @@ a {
   margin: 0;
   padding: 0;
 }
+
+@media screen and (max-width: 380px) {
+  .top__nav__contents {
+    padding: 1.5rem 15px;
+  }
+  .top__nav__user__name h3 {
+    font-size: 16px;
+  }
+}
