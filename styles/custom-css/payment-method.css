@@ -6,7 +6,7 @@
 body {
   color: #1f2430 !important;
   font-size: 18px;
-  min-width: 100vw;
+  /* min-width: 100vw; */
   max-width: 100%;
   overflow-x: hidden;
   min-height: 100vh;
