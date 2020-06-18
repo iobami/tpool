@@ -41,10 +41,19 @@ span.report {
     border-radius: 5px;
     background-color: #084482;
     padding: 18px 32px;
+    border-color: #084482;
 }
 
 .btn:hover {
     transform: scale(0.9);
+    background-color: #084482;
+    border-color: #084482;
+}
+
+.btn.focus, .btn:focus {
+    background-color: #084482;
+    border-color: #084482;
+    box-shadow: 0 0 0 0.2rem rgba(51, 122, 183, 0.19);
 }
 
 .notification-container .btn {
