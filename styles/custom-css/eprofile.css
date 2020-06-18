@@ -112,12 +112,18 @@ input[type="file"] {
   width: 100%;
 }
 
+.upload-section h4 {
+  font-size: 20px;
+}
+
 @media (max-width: 600px) {
-  .upload-section {
-    margin-top: 30px;
-  }
+ 
   .upload-section .curriculum {
-    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .bio {
+    margin-bottom: 30px !important;
   }
 
 }
@@ -125,5 +131,12 @@ input[type="file"] {
 @media only screen and (max-width: 991px) {
   #body__click {
    width: 100%;
+  }
+  .bio {
+    margin-bottom: 30px !important;
+  }
+
+  .upload-section .curriculum {
+    margin-bottom: 30px;
   }
 }
