@@ -8,6 +8,11 @@
    font-weight: 500;
 }
 
+.footer p,
+.footer ul li a {
+   font-weight: 300;
+}
+
 .footer ul {
    list-style: none;
 }
@@ -22,8 +27,12 @@
    text-decoration: underline;
 }
 
+.footer p {
+   font-weight: 300;
+}
+
 .footer hr {
-   border-color: #fff;
+   border: 1.5px solid rgba(229, 229, 229, 0.4);
 }
 
 
