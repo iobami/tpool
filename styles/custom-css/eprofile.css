@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #505962;
+  background: #E5E5E5;
+}
+
+
+
+
+/* profile */
+.btn {
+  outline: none !important;
+}
+.btn-primary {
+  padding: 4px 34px;
+  border-radius: 5px;
+   border: 1px solid #00AEFF;
+  background: #00AEFF !important;
+}
+
+.btn-primary:hover {
+  border: 1px solid #00AEFF; 
+}
+
+.btn-light {
+  padding: 4px 34px;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  background: #00AEFF;
+}
+
+.card {
+  box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+  border-radius: 5px;
+}
+
+.intern-other {
+  margin: auto 13%;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+#skills ul, #socials ul{
+  list-style: none;
+  padding-left: 0;
+}
+
+#skills ul li, #socials ul li {
+ border-top: 1px solid #ccc;
+ padding: 16px 0;
+ display: flex;
+ justify-content: space-between;
+}
+
+.file-box {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.modal-dialog .super-label {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 500;
+}
+#error-message {
+  background: red;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  display: none;
+}
+
+#success-message {
+  background: green;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  display: none;
+}
+
+input, textarea {
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid #337AB7 !important;
+}
+
+input[type="file"] {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .upload-section {
+    margin-top: 30px;
+  }
+  .upload-section .curriculum {
+    margin-top: 30px;
+  }
+
+}

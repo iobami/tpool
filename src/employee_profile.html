@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talent Pool | Employee Profile</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../styles/bootstrap-css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../../styles/custom-css/eprofile.css" rel="stylesheet">
+    <!-- <link href="css/font-awesome.css" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section id="portfolio" class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card p-5">
+                        <img src="../../img/iprofile/prof-pic.svg" alt="" class="img-fluid">
+                        <div class="intern-main text-center mt-4">
+                            <h3>Genesis Anosike</h3>
+                            <p>UI/UX Designer</p>
+                        </div>
+                        <hr>
+                        <div class="intern-other">
+                            <p><span><img src="../../img/iprofile/carbon_location.svg" alt=""></span> Ibadan, Nigeria</p>
+
+                            <p><span><img src="../../img/iprofile/carbon_email.svg" alt=""></span> anosikegenesis@gmail.com
+                            </p>
+
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-lg btn-primary" data-toggle="modal"
+                                data-target="#staticBackdrop">Edit Profile</button>
+                        </div>
+
+                        <!-- Button trigger modal -->
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                            tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content p-4">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Edit profile</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <form action="" id="edit-profile">
+                                                <p id="error-message"></p>
+                                                <p id="success-message"></p>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="first name" class="super-label">First
+                                                                name</label>
+                                                            <input type="text" placeholder="Genesis"
+                                                                class="form-control" id="first-name"
+                                                                aria-describedby="nameHelp">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="lastname" class="super-label">Last name</label>
+                                                            <input type="text" placeholder="Anosike"
+                                                                class="form-control" id="last-name"
+                                                                aria-describedby="nameHelp">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="email" class="super-label">Email</label>
+                                                            <input type="email" placeholder="anosikegenesis@gmail.com"
+                                                                class="form-control" id="email"
+                                                                aria-describedby="emailHelp">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="location" class="super-label">Location</label>
+                                                            <input type="text" placeholder="Ibadan, Nigeria"
+                                                                class="form-control" id="location"
+                                                                aria-describedby="locationHelp">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+
+                                                <div class="skills-choice">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label class="super-label"
+                                                                for="exampleFormControl">Track(s)</label>
+                                                            <div class="form-group form-check">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                    id="Backend" value="Backend Development">
+                                                                <label class="form-check-label"
+                                                                    for="exampleCheck1">Backend Development</label>
+                                                            </div>
+                                                            <div class="form-group form-check">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                    id="design" value="UI/UX Design">
+                                                                <label class="form-check-label"
+                                                                    for="exampleCheck1">UI/UX Design</label>
+                                                            </div>
+                                                            <div class="form-group form-check">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                    id="frontend" value="frontend">
+                                                                <label class="form-check-label"
+                                                                    for="exampleCheck1">Frontend Development</label>
+                                                            </div>
+                                                            <div class="form-group form-check">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                    id="mobile" value="Mobile Development">
+                                                                <label class="form-check-label"
+                                                                    for="exampleCheck1">Mobile Development</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleFormControlFile1"
+                                                                    class="super-label">Profile photo</label>
+                                                                <div class="file-box">
+                                                                    <!-- <label for="file" class="btn btn-primary">Browse</label> -->
+                                                                    <input type="file" class=""
+                                                                        placeholder="profile.png"
+                                                                        style="visibility:hidden;" id="file"
+                                                                        onchange="Filevalidation()">
+                                                                </div>
+                                                            </div>
+                                                            <p>Recommended dimensions: 200 x 200px
+                                                                Maximum file size: 500kb.
+                                                                Please add only a professional looking headshot</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-lg btn-primary">Save
+                                                        profile</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="upload-section mb-4">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="card p-3">
+                                    <div class="section-title py-2">
+                                        <div class="section-name">
+                                            <h4>Curriculum Vitae</h4>
+                                        </div>
+                                        <div class="section-icon">
+                                            <img src="../../img/iprofile/ant-design_minus-outlined.svg" alt="">
+
+                                        </div>
+                                    </div>
+                                    <p>File uploaded</p>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <button type="button" class="btn btn-primary">View file</button>
+                                        </div>
+                                        <div class="col-md-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card p-3 curriculum">
+                                    <div class="section-title py-2">
+                                        <div class="section-name">
+                                            <h4>Portfolio</h4>
+                                        </div>
+                                        <div class="section-icon">
+                                            <img src="../../img/iprofile/carbon_add.svg" alt="">
+                                        </div>
+
+                                    </div>
+                                    <p>Upload file</p>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <button type="button" class="btn btn-light">View file</button>
+                                        </div>
+                                        <div class="col-md-4"></div>
+
+                                        <!-- Modal -->
+                                        <!-- <div class="modal fade" id="portfolio" data-backdrop="static"
+                                            data-keyboard="false" tabindex="-1" role="dialog"
+                                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content p-4">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Edit profile
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container">
+                                                            <form action="">
+
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="first name"
+                                                                                class="super-label">First name</label>
+                                                                            <input type="text" placeholder="Genesis"
+                                                                                class="form-control" id=""
+                                                                                aria-describedby="nameHelp">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="lastname"
+                                                                                class="super-label">Last name</label>
+                                                                            <input type="text" placeholder="Anosike"
+                                                                                class="form-control" id=""
+                                                                                aria-describedby="nameHelp">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="email"
+                                                                                class="super-label">Email</label>
+                                                                            <input type="email"
+                                                                                placeholder="anosikegenesis@gmail.com"
+                                                                                class="form-control" id=""
+                                                                                aria-describedby="emailHelp">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="location"
+                                                                                class="super-label">Location</label>
+                                                                            <input type="text"
+                                                                                placeholder="Ibadan, Nigeria"
+                                                                                class="form-control" id=""
+                                                                                aria-describedby="locationHelp">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+
+                                                                <div class="skills-choice">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <label class="super-label"
+                                                                                for="exampleFormControl">Track(s)</label>
+                                                                            <div class="form-group form-check">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input"
+                                                                                    id="exampleCheck1">
+                                                                                <label class="form-check-label"
+                                                                                    for="exampleCheck1">Backend
+                                                                                    Development</label>
+                                                                            </div>
+                                                                            <div class="form-group form-check">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input"
+                                                                                    id="exampleCheck1">
+                                                                                <label class="form-check-label"
+                                                                                    for="exampleCheck1">UI/UX
+                                                                                    Design</label>
+                                                                            </div>
+                                                                            <div class="form-group form-check">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input"
+                                                                                    id="exampleCheck1">
+                                                                                <label class="form-check-label"
+                                                                                    for="exampleCheck1">Frontend
+                                                                                    Development</label>
+                                                                            </div>
+                                                                            <div class="form-group form-check">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input"
+                                                                                    id="exampleCheck1">
+                                                                                <label class="form-check-label"
+                                                                                    for="exampleCheck1">Mobile
+                                                                                    Development</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="exampleFormControlFile1"
+                                                                                    class="super-label">Profile
+                                                                                    photo</label>
+                                                                                <div class="file-box">
+                                                                                    <input type="file" class=""
+                                                                                        placeholder="profile.png"
+                                                                                        id="exampleFormControlFile1">
+                                                                                </div>
+                                                                            </div>
+                                                                            <p>Recommended dimensions: 200 x 200px
+                                                                                Maximum file size: 500kb
+                                                                                Please add only a professional looking
+                                                                                headshot</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-center">
+                                                                    <button type="button" class="btn btn-lg btn-primary"
+                                                                        data-toggle="modal"
+                                                                        data-target="#staticBackdrop">Save
+                                                                        profile</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="skills" class="mb-5">
+                        <div class="card p-4">
+                            <div class="section-title py-2">
+                                <div class="section-name">
+                                    <h4>Skillsets</h4>
+                                </div>
+                                <div class="section-icon">
+                                    <img src="../../img/iprofile/carbon_add.svg" alt="">
+                                </div>
+
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../../img/iprofile/ic_sharp-verified.svg" alt="">
+                                        </span>UI/UX Design</div>
+                                    <div class="list-trash"><img src="../../img/iprofile/carbon_trash-can.svg" alt=""></div>
+                                </li>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../../img/iprofile/ic_sharp-verified.svg" alt="">
+                                        </span>JavaScript</div>
+                                    <div class="list-trash"><img src="../img/iprofile/carbon_trash-can.svg" alt=""></div>
+                                </li>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../img/iprofile/ic_sharp-verified.svg" alt="">
+                                        </span>UI/UX Design</div>
+                                    <div class="list-trash"><img src="../img/iprofile/carbon_trash-can.svg" alt=""></div>
+                                </li>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../img/iprofile/ic_sharp-verified.svg" alt="">
+                                        </span>UI/UX Design</div>
+                                    <div class="list-trash"><img src="../img/iprofile/carbon_trash-can.svg" alt=""></div>
+                                </li>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../img/iprofile/ic_sharp-verified.svg" alt="">
+                                        </span>UI/UX Design</div>
+                                    <div class="list-trash"><img src="../img/iprofile/carbon_trash-can.svg" alt=""></div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="socials">
+                        <div class="card p-4">
+                            <div class="section-title py-2">
+                                <div class="section-name">
+                                    <h4>Social accounts</h4>
+                                </div>
+                                <div class="section-icon">
+                                    <img src="../img/iprofile/carbon_add.svg" alt="">
+                                </div>
+
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../img/iprofile/ant-design_twitter-outlined.svg" alt="">
+                                        </span>Twitter</div>
+                                    <div class="list-trash"><img src="../img/iprofile/edit.svg" alt=""></div>
+                                </li>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../img/iprofile/topcoat_dribble.svg" alt="">
+                                        </span>Dribble</div>
+                                    <div class="list-trash"><img src="../img/iprofile/edit.svg" alt=""></div>
+                                </li>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../img/iprofile/ant-design_behance-outlined.svg" alt="">
+                                        </span>Behance</div>
+                                    <div class="list-trash"><img src="../img/iprofile/edit.svg" alt=""></div>
+                                </li>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../img/iprofile/ant-design_github-filled.svg" alt="">
+                                        </span>Github</div>
+                                    <div class="list-trash"><img src="../img/iprofile/edit.svg" alt=""></div>
+                                </li>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img
+                                                src="../img/iprofile/ant-design_linkedin-filled.svg" alt="">
+                                        </span>Linkedin</div>
+                                    <div class="list-trash"><img src="../img/iprofile/edit.svg" alt=""></div>
+                                </li>
+                                <li>
+                                    <div class="list-item"><span class="mr-2"><img src="../../img/iprofile/cib_hashnode.svg"
+                                                alt="">
+                                        </span>Hashnode</div>
+                                    <div class="list-trash"><img src="../../img/iprofile/edit.svg" alt=""></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <script src="../../js/bootstrap-js/jquery.js"></script>
+    <script src="../../js/bootstrap-js/popper.js"></script>
+    <script src="../../js/bootstrap-js/bootstrap.js"></script>
+    <script src="../../js/custom-js/eprofile.js"></script>
+</body>
+
+</html>
