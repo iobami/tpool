@@ -6,12 +6,20 @@
 body {
   color: #1f2430 !important;
   font-size: 18px;
-  max-width: 1440px;
+  min-width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+  max-height: 100%;
 }
 body h1 {
   color: #084482;
   font-size: 40px;
   font-weight: 700;
+}
+
+div.container {
+  max-width: 1440px;
 }
 
 input[type='number']::-webkit-inner-spin-button,
