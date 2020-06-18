@@ -25,3 +25,21 @@
 .footer hr {
    border-color: #fff;
 }
+
+
+@media(max-width: 410px) {
+
+   .footer {
+      text-align: center;
+   }
+
+}
+
+
+@media (min-width: 1000px) {
+
+   .footer .top p {
+      max-width: 200px;
+   }
+
+}
