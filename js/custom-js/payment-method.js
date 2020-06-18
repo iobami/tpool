@@ -280,3 +280,21 @@ form.addEventListener('submit', (e) => {
     saveBillingInfo(formData);
   }*/
 });
+
+async function getCountriesList() {
+  const res = await fetch('https://restcountries.eu/rest/v2/all');
+  const data = await res.json();
+  return data;
+}
+
+// populate select country options
+(async function fillCountries() {
+  const countries = await getCountriesList();
+
+  countries.forEach((country) => {
+    // console.log(country);
+    document.querySelector(
+      'select:first-of-type'
+    ).innerHTML += `<option value=${country.alpha3Code}>${country.name}</option>`;
+  });
+})();
