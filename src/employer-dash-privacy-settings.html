@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sidenav Admin</title>
+		<link href="../styles/bootstrap-css/bootstrap.css" rel="stylesheet">
+		<link href="../styles/custom-css/side-nav.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
+    <link href="../styles/custom-css/side-nav.css" rel="stylesheet">
+		<link rel="stylesheet" href="../styles/custom-css/employer-dash-privacy-settings.css">
+	</head>
+	<body>
+​
+		<div class="sidenav">
+			<div class="logo__wrapper">
+				<div class="d-flex justify-content-center align-items-center logo__image">
+					<img src="../img/logo.svg" alt="" />
+				</div>
+			</div>
+​
+			<ul class="sidenav_links">
+				<li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Employees</a></li>
+                <li><a href="#">Add a team</a></li>
+				<li><a href="#">Support</a></li>
+				<li><a href="#">Settings</a></li>
+			</ul>
+		</div>
+​
+		<div id="body__click"></div>
+
+		
+		<section class="container employers-dashboard-privacy-main">
+
+			<div class="employers-dashboard-privacy">
+	
+				<h5>Settings</h5>
+	
+				<div class="settings-container">
+					<div class="col-lg-3 col-sm-12 settings-actions">
+						<div class="action">
+							<span><img src="../img/settings.png" alt="vec"></span>
+							&nbsp;
+							<span class="action-name">General</span>
+						</div>
+						<div class="action">
+							<span><img src="../img/apperance.png" alt="vec"></span>
+							&nbsp;
+							<span class="action-name">Appearance</span>
+						</div>
+						<div class="action">
+							<span><img src="../img/alarm.png" alt="vec"></span>
+							&nbsp;
+							<span class="action-name">Notification</span>
+						</div>
+						<div class="action">
+							<span><img src="../img/landphone.png" alt="vec"></span>
+							&nbsp;
+							<span class="action-name">Contact Us</span>
+						</div>
+						<div class="action  active">
+							<span><img src="../img/privacy.png" alt="vec"></span>
+							&nbsp;
+							<span class="action-name privacy-text">My Privacy</span>
+						</div>
+						<div class="action">
+							<span><img src="../img/report.png" alt="vec"></span>
+							&nbsp;
+							<span class="action-name">Report Abuse</span>
+						</div>
+					</div>
+	
+					<div class="col-lg-9 col-sm-12 contact-us-container card rounded-top">
+							<div class="card-body">
+							  <h5 class="card-title">Privacy</h5 >
+							  <hr class="privacy-border">
+							<div class="list-group">
+							  <a href="#" class="list-group-item list-group-item-action  border-top-0 border-left-0  border-right-0">
+								<div class="d-flex w-100 justify-content-between">
+								  <p class="mb-1 font-weight-bold h5">Receive messages from everyone:
+									 <span class="mb-1 font-weight-normal h6">
+									I want to receive direct messages from anyone (admins & employees).
+								  </span></p>
+								  <div class="custom-control custom-switch">
+									<input type="checkbox" class="custom-control-input" id="customSwitch1">
+									<label class="custom-control-label" for="customSwitch1"></label>
+								  </div>
+							  </div>
+							   
+							  </a>
+							  <a href="#" class="list-group-item list-group-item-action border-left-0  border-right-0">
+								<div class="d-flex w-100 justify-content-between">
+								  <p class="mb-1 font-weight-bold h5">
+									Share my location with everyone:<span class="mb-1 font-weight-normal h6">
+									  Allow admins, individuals & employees to see my location.
+									</span>
+								  </p>
+								  <div class="custom-control custom-switch">
+									<input type="checkbox" class="custom-control-input" id="customSwitch2">
+									<label class="custom-control-label" for="customSwitch2"></label>
+								  </div>
+								</div>
+								
+							  </a>
+							  <a href="#" class="list-group-item list-group-item-action border-left-0  border-right-0">
+								<div class="d-flex w-100 justify-content-between">
+								  <p class="mb-1 font-weight-bold h5">
+									Show read receipts: <span class="mb-1 font-weight-normal h6">
+									  Allow people in conversations with me know when I have seen their messages.
+									</span>
+								  </p>
+								  <div class="custom-control custom-switch">
+									<input type="checkbox" class="custom-control-input" id="customSwitch3">
+									<label class="custom-control-label" for="customSwitch3"></label>
+								  </div>
+								</div>
+							   
+							  </a>
+							  <a href="#" class="list-group-item list-group-item-action border-left-0  border-right-0">
+								<div class="d-flex w-100 justify-content-between">
+								  <p class="mb-1 font-weight-bold h5">
+									Protect my account:
+									<span class="mb-1 font-weight-normal h6">
+									  Allow admin and every employee access my profile and details.
+									</span>
+								  </p>
+								  <div class="custom-control custom-switch">
+									<input type="checkbox" class="custom-control-input" id="customSwitch4">
+									<label class="custom-control-label" for="customSwitch4"></label>
+								  </div>
+								</div>
+							   
+							  </a>
+							  <a href="#" class="list-group-item list-group-item-action border-left-0  border-right-0  border-bottom-0">
+								<div class="d-flex w-100 justify-content-between">
+								  <p class="mb-1 font-weight-bold h5">
+									Search engine notification:
+									<span class="mb-1 font-weight-normal h6">
+									  Let me know whenever my profile is searched for.
+									</span>
+								  </p>
+								  <div class="custom-control custom-switch">
+									<input type="checkbox" class="custom-control-input" id="customSwitch5">
+									<label class="custom-control-label" for="customSwitch5"></label>
+								  </div>
+								</div>
+							</div>
+							<a href="#" class="btn float-right mt-5">Save Changes</a>
+							</div>
+						  </div>
+					</div>
+				</div>
+	
+			</div>
+	
+		</section>
+	
+	
+		<script src="../js/bootstrap-js/bootstrap.js"></script>
+		<script src="../js/bootstrap-js/jquery.js"></script>
+		<script src="../js/bootstrap-js/popper.js"></script>
+	</body>
+</html>
