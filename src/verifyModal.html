@@ -18,6 +18,11 @@
     <title>Admin Employer Modal</title>
 
     <style>
+      @media (min-width: 320px) {
+        .btn-info{
+          margin-left: 0;
+        }
+      }
       *{
         /* border: 1px solid red; */
       }
@@ -26,7 +31,7 @@
   <body>
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-info"
       data-toggle="modal"
       data-target="#verifyEmployer"
     >
@@ -76,7 +81,7 @@
               </div>
 
               <div class="row">
-                <button class="btn btn-info col-sm-3 text-center mt-3 mb-5" style="left: 37%; margin-top: 20px; background: #00AEFF;">
+                <button class="btn btn-info col-xs-3 col-md-4 text-center mt-3 mb-5" style="margin-left: 34%; margin-top: 20px; background: #00AEFF;">
                   <h5 class="mt-2">Verify</h5>
                 </button>
             </div>
