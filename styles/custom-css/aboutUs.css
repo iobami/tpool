@@ -62,3 +62,19 @@ p, h1,h2,h3,h4,h5,h6 {
     background: #E7EAEC;
     border-radius: 5px;
 }
+@media (max-width: 900px){
+   .first h4{
+    font-size:30px;
+    }
+    .second {
+        font-size: 16px;
+    }
+}
+@media (max-width: 576px){
+   .first h4{
+    font-size:20px;
+    }
+    .second {
+        font-size: 12px;
+    }
+}
