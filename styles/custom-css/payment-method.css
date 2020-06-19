@@ -32,6 +32,21 @@ form .form__input,
 form .form__select {
   height: 3.5rem;
   border-radius: 5px;
+  border: 2px;
+}
+
+form .form__input.is-valid,
+form .form__select.is-valid {
+  border: 2px solid #28a74580;
+}
+
+form .form__input.is-invalid,
+form .form__select.is-invalid {
+  border: 2px solid #dc354580;
+}
+
+form div.invalid-feedback {
+  color: #dc3545;
 }
 
 form .form__select {
@@ -54,11 +69,21 @@ form .form__button {
   text-align: center;
   border-radius: 5px;
   color: #fff;
-  width: 14.875rem;
-  height: 4.313rem;
+  width: 18.6875rem;
+  height: 3.9375rem;
   margin-top: 2rem;
   /* margin-bottom: 96px; */
 }
+
+form .form__button:hover {
+  background-color: #337ab7;
+  color: #fff;
+}
+
+form .form__button:active {
+  background-color: #084482;
+}
+
 form .form__label {
   margin-bottom: 0.5rem;
 }
