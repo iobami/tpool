@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Talent Pool</title>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+   <title>Employer profile creation</title>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="../../styles/bootstrap-css/bootstrap.css">
-   <link rel="stylesheet" href="../../styles/custom-css/main.css">
+   <link rel="stylesheet" href="../../styles/custom-css/employer profile.css">
    <link rel="stylesheet" href="../../styles/custom-css/header.css">
    <link rel="stylesheet" href="../../styles/custom-css/footer.css">
    <link rel="shortcut icon" href="./img/favicon.svg" type="image/x-icon">
 </head>
-
 <body>
    <header class="header">
       <div class="container-fluid custom-container">
@@ -53,6 +51,94 @@
       </div>
    </header>
 
+   <main>
+       <div class="mt-5">
+           <div class="container text-center">
+              <h5 class="heading-color">Let’s get started with a few details about your company</h5>
+              <div class="mt-5 d-flex justify-content-center">
+               <div class="form-check radio-select">
+                   <input class="form-check-input vector" type="radio" onclick="window.location='../employer profile creation (company)/employer-company1.html';" name="nav1" id="nav1" value="option1">
+                </div>
+                <img src="/img/Connector.png" alt="">
+
+                <div class="form-check radio-select">
+                   <input class="form-check-input size vector" type="radio" name="nav2" id="nav2" value="option1">
+                </div>
+             </div>
+           </div>
+       </div> 
+
+       <div id="plan" class="mt-5">
+           <div class="container">
+               <h5 class="heading-color">Plan</h5>
+               <div class="row mt-4 ">
+                <div class="col-sm-6 col-lg-6 mb-5">
+                    <div class="card boxs p-1">
+                        <div class="card-body">
+                           <div class="form-check">
+                              <input class="form-check-input size" type="radio" name="plan" id="paidplan" value="option1">
+                           </div>
+                           <div class="row mt-5 p-1">
+                              <div class="col-sm-10 col-lg-10">
+                                 <h5 class="card-title heading-color">Paid Plan</h5>
+                                 <p class="card-text mb-3">Subscribe to our paid plan to get access to all our graduates and their various portfolio</p>
+                              </div>
+                              <div class="col-sm-2 col-lg-2">
+                                 <img src="/img/paid.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-6">
+                    <div class="card boxs p-1">
+                        <div class="card-body">
+                           <div class="form-check">
+                              <input class="form-check-input" type="radio" name="plan" id="trial" value="option2"><br> 
+                           </div>
+                            <div class="row mt-4 p-1">
+                                <div class="col-sm-10 col-lg-10">
+                                    <h5 class="card-title heading-color">Trial Plan</h5>
+                                    <p class="card-text mb-3">The Trial plan is a free plan of three (3) days to access our grdaute and their various portfolio</p>
+                                </div>
+                                <div class="col-sm-2 col-lg-2">
+                                    <img src="/img/trial.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               </div>
+               <br>
+               <hr class="mt-5">
+           </div>
+       </div>
+
+       <div id="notifications" class="mt-5">
+           <div class="container">
+            <h5 class="heading-color pt-3">Notifications</h5>
+            <div class="mt-4 form-check">
+                <input class="form-check-input" type="checkbox" name="news" id="news">
+                <label class="form-check-label noti-label" for="news">I want to get newsletter</label>
+            </div>
+            <div class="mt-2 form-check">
+                <input class="form-check-input" type="checkbox" name="info" id="info">
+                <label class="form-check-label noti-label" for="info">I want to receive information about the talentpool latest plan</label>
+            </div>
+            <hr>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="verify" id="verify">
+                <label class="form-check-label noti-label" for="verify">I verify that I am an authorized representative of this orgnaization and have the right to act on behalf in the cretion and management of this page.. The organiation and I agree to your <a href="#">terms</a> of pages</label>
+            </div>
+           </div>
+       </div>
+
+    <div class="mt-5 mb-5 pb-5">
+        <div class="container text-right">
+            <button class="btn new-btn mb-5">Create Profile</button>
+        </div>
+    </div>
+   </main>
 
    <footer class="footer">
       <div class="container-fluid custom-container">
@@ -118,5 +204,4 @@
    <script src="../../js/bootstrap-js/jquery.js"></script>
    <script src="../../js/bootstrap-js/bootstrap.js"></script>
 </body>
-
 </html>

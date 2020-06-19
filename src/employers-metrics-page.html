@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Talent Pool</title>
+   <link rel="shortcut icon" href="../../img/favicon.svg" type="image/x-icon">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+   <link rel="stylesheet" href="../styles/custom-css/main.css">
+   <link rel="stylesheet" href="../styles/custom-css/header.css">
+   <link rel="stylesheet" href="../styles/custom-css/employers-metrics-page.css">
+   <link rel="stylesheet" href="../styles/custom-css/footer.css">
+</head>
+<body>
+   <header class="header">
+      <div class="container-fluid custom-container">
+         <nav class="navbar navbar-expand-lg navbar-light py-4">
+            <a class="navbar-brand" href="index.html">
+               <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item px-3 active">
+                  <a class="nav-link nav-link-black" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link nav-link-black" href="#">About Us</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link nav-link-black" href="#">Directories</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link nav-link-black" href="#">FAQ</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link nav-link-black" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item px-3 my-2 my-lg-0">
+                  <a class="nav-link btn btn-hire-talent px-3 py-1" href="#">Hire Talent</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link btn btn-sign-up px-3 py-1" href="#">Sign Up</a>
+                </li>
+              </ul>
+            </div>
+         </nav>
+      </div>
+   </header>
+       
+   <main>
+    <div class="jumbotron jumbotron-fluid text-white text-center">
+      <div class="container">
+      <p class="text-wrap"> Thanks for choosing HNG. Before we proceed, we’ll like to ask a few questions to <br> better understand your business needs</p>
+      </div>
+    </div>
+
+      <div class="container mt-5">
+       <form action="">
+          <div class="form-group">
+             <label class="form_label" for="category">Category of interns of interns of interest</label>
+             <select class="form-control form_select" id="category">
+                <option selected value="Front end developers">Front end developers</option>
+                <option value="Back end developers">Back end developers</option>
+                <option value="Mobile developers">Mobile developers</option>
+                <option value="UI/UX designers">UI/UX designers</option>
+             </select>
+             <div></div>
+          </div>
+          <div class="row">
+             <div class="col-md-6 form-group">
+                <label>How many interns are you hiring?</label>
+                <select class="form-control form_select" id="numofinterns">
+                   <option value="one">One</option>
+                </select>
+                <div></div>
+             </div>
+             <div class="col-md-6 form-group">
+                <label>What type of commitment are you on the lookout for?</label>
+                <select class="form-control form_select" id="commit">
+                   <option value="full-time">Full-time</option>
+                </select>
+                <div></div>
+             </div>
+          </div>
+          <div class="row">
+             <div class="col-md-6 form-group">
+                <label>When do you need the hire to start?</label>
+                <input class="form-control form_input" type="text">
+             </div>
+             <div></div>
+             <div class="col-md-6 form-group">
+               <p>Are you open to working with remote hires?</p>
+              <div class="justify-space-around">
+               <input class="check-input" type="radio" name="radiobutton">
+               <label class="" for="yes">Yes</label>
+               <input class="check-input ml-2" type="radio" name="radiobutton">
+               <label class="" for="yes">No</label>
+              </div>
+              <div></div>
+             </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6 form-group">
+           <label>What type of subscription are you going for?</label>
+           <select class="form-control form_select" id="commit">
+              <option value="full-time">Premium</option>
+           </select>
+           <div></div>
+          </div>
+          <div class="col-md-6 form-group">
+             <p>HNG has a pool of global top talents in the tech industries and our subscription goes for $80 per intern. Does your budget align with our subscription rate?</p>
+             <div class="justify-space-around">
+              <input class="check-input" type="radio" name="radiobutton1">
+              <label class="" for="yes">Yes</label>
+              <input class="check-input ml-2" type="radio" name="radiobutton1">
+              <label class="" for="yes">No</label>
+             </div>
+             <div></div>
+          </div>
+         </div>
+       </form>
+      </div>
+
+    <div class="d-flex justify-content-center">
+       <button class="btn mx-auto sub-btn" type="submit">Submit</button>
+    </div>
+
+  </main>
+
+
+
+   <footer class="footer">
+      <div class="container-fluid custom-container">
+         <div class="row top justify-content-between">
+            <div class="col-md-3">
+               <div class="py-3">
+                  <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
+               </div>
+               <p class="py-2">
+                  We are known for
+                  connecting top talents with top companies. We
+                  make great possibilities
+                  happen.
+               </p>
+            </div>
+            <div class="col-6 col-md-2">
+               <h5 class="py-3">Explore</h5>
+               <ul class="pl-0">
+                  <li><a href="">Home</a></li>
+                  <li class="py-1"><a href="">About Us</a></li>
+                  <li class="py-1"><a href="">Directories</a></li>
+                  <li class="py-1"><a href="">FAQ</a></li>
+                  <li class="py-1"><a href="">Contact Us</a></li>
+                  <li class="py-1"><a href="">Top Talent</a></li>
+               </ul>
+            </div>
+            <div class="col-6 col-md-3">
+               <h5 class="py-3">Visit</h5>
+               <p>
+                  3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
+               </p>
+               <h5 class="py-3">Get in touch</h5>
+               <p>hello@hng.tech</p>
+               <p>+234 (0) 812 345 6789</p>
+            </div>
+            <div class="col-6 col-md-2">
+               <h5 class="py-3">Follow</h5>
+               <ul class="pl-0">
+                  <li><a href="">Facebook</a></li>
+                  <li class="py-1"><a href="">LinkedIn</a></li>
+                  <li class="py-1"><a href="">Twitter</a></li>
+               </ul>
+            </div>
+            <div class="col-6 col-md-2">
+               <h5 class="py-3">Legal</h5>
+               <ul class="pl-0">
+                  <li><a href="">Terms</a></li>
+                  <li class="py-1"><a href="">Privacy</a></li>
+               </ul>
+            </div>
+         </div>
+         <hr>
+         <div class="row">
+            <div class="col py-2">
+               <p>
+                  TalentPool. All Rights Reserved.
+               </p>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <script src="../../js/bootstrap-js/popper.js"></script>
+   <script src="../../js/bootstrap-js/jquery.js"></script>
+   <script src="../../js/bootstrap-js/bootstrap.js"></script>
+</body>
+</html>
