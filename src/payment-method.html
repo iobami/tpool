@@ -17,7 +17,7 @@
   </head>
   <body style="background-color: #fafafa;">
     <header class="header">
-      <div class="container">
+      <div class="container-fluid custom-container">
         <nav class="navbar navbar-expand-lg navbar-light py-4">
           <a class="navbar-brand" href="index.html">
             <img
@@ -38,30 +38,30 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item px-sm-3 active">
+              <li class="nav-item px-3 active">
                 <a class="nav-link nav-link-black" href="#"
                   >Home <span class="sr-only">(current)</span></a
                 >
               </li>
-              <li class="nav-item px-sm-3">
+              <li class="nav-item px-3">
                 <a class="nav-link nav-link-black" href="#">About Us</a>
               </li>
-              <li class="nav-item px-sm-3">
+              <li class="nav-item px-3">
                 <a class="nav-link nav-link-black" href="#">Directories</a>
               </li>
-              <li class="nav-item px-sm-3">
+              <li class="nav-item px-3">
                 <a class="nav-link nav-link-black" href="#">FAQ</a>
               </li>
-              <li class="nav-item px-sm-3">
+              <li class="nav-item px-3">
                 <a class="nav-link nav-link-black" href="#">Contact Us</a>
               </li>
-              <li class="nav-item px-sm-3 pr-md-0 px-lg-3 my-2 my-lg-0">
-                <a class="nav-link btn btn-hire-talent px-sm-3 py-1" href="#"
+              <li class="nav-item px-3 my-2 my-lg-0">
+                <a class="nav-link btn btn-hire-talent px-3 py-1" href="#"
                   >Hire Talent</a
                 >
               </li>
-              <li class="nav-item px-sm-3 pr-md-0">
-                <a class="nav-link btn btn-sign-up px-sm-3 py-1" href="#"
+              <li class="nav-item px-3">
+                <a class="nav-link btn btn-sign-up px-3 py-1" href="#"
                   >Sign Up</a
                 >
               </li>
@@ -71,7 +71,7 @@
       </div>
     </header>
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid">
       <div class="container">
         <h1 class="text-center text-uppercase">
           Payment Method
@@ -112,7 +112,7 @@
             <div class="col-md-6 form-group">
               <label class="form__label" for="state">State</label>
               <select class="form-control form__select" id="state" required>
-                <option selected disabled value="">Select State</option>
+                <option selected disabled value="">Select Country First</option>
               </select>
               <div></div>
             </div>
@@ -165,11 +165,7 @@
             </div>
           </div>
           <div class="row">
-            <button
-              class="btn btn-primary btn-lg mx-auto form__button px-"
-              style="margin-top: 2rem;"
-              type="submit"
-            >
+            <button class="btn mx-auto form__button" type="submit">
               Subscribe!
             </button>
           </div>
@@ -177,24 +173,21 @@
       </div>
     </div>
     <footer class="footer">
-      <div class="container">
-        <div class="row justify-content-between">
+      <div class="container-fluid custom-container">
+        <div class="row top justify-content-between">
           <div class="col-md-3">
-            <div class="py-3">
+            <div class="py-3 d-none d-md-block">
               <img
                 src="../../img/talentpool footer logo.svg"
                 alt="talent pool logo"
               />
             </div>
             <p class="py-2">
-              We are known for <br />
-              connecting top talents <br />
-              with top companies. We <br />
-              make great possibilities <br />
-              happen.
+              We are known for connecting top talents with top companies. We
+              make great possibilities happen.
             </p>
           </div>
-          <div class="col-md-2">
+          <div class="col-6 col-md-2">
             <h5 class="py-3">Explore</h5>
             <ul class="pl-0">
               <li><a href="">Home</a></li>
@@ -205,18 +198,23 @@
               <li class="py-1"><a href="">Top Talent</a></li>
             </ul>
           </div>
-          <div class="col-md-3">
+          <div class="col-6 col-md-3">
             <h5 class="py-3">Visit</h5>
             <p>
-              3 Birrel Avenue,<br />
-              Sabo. Yaba, Lagos State, <br />
-              Nigeria
+              3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
             </p>
+            <div class="d-none d-md-block">
+              <h5 class="py-3">Get in touch</h5>
+              <p>hello@hng.tech</p>
+              <p>+234 (0) 812 345 6789</p>
+            </div>
+          </div>
+          <div class="col-6 d-md-none">
             <h5 class="py-3">Get in touch</h5>
             <p>hello@hng.tech</p>
             <p>+234 (0) 812 345 6789</p>
           </div>
-          <div class="col-md-2">
+          <div class="col-6 col-md-2">
             <h5 class="py-3">Follow</h5>
             <ul class="pl-0">
               <li><a href="">Facebook</a></li>
@@ -224,7 +222,7 @@
               <li class="py-1"><a href="">Twitter</a></li>
             </ul>
           </div>
-          <div class="col-md-2">
+          <div class="col-6 col-md-2">
             <h5 class="py-3">Legal</h5>
             <ul class="pl-0">
               <li><a href="">Terms</a></li>
@@ -235,7 +233,7 @@
         <hr />
         <div class="row">
           <div class="col py-2">
-            <p>
+            <p class="copyright">
               TalentPool. All Rights Reserved.
             </p>
           </div>
