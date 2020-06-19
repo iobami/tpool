@@ -32,12 +32,14 @@ form .form__input,
 form .form__select {
   height: 3.5rem;
   border-radius: 5px;
-  border: 2px;
+  border: none;
+  outline: none;
 }
 
 form .form__input.is-valid,
 form .form__select.is-valid {
   border: 2px solid #28a74580;
+  outline: none;
 }
 
 form .form__input.is-invalid,
@@ -54,7 +56,7 @@ form .form__select {
   -webkit-appearance: none;
   background-position: right 0.5em bottom 50%;
   background-repeat: no-repeat;
-  background-image: url('../img/select-arrow.svg');
+  background-image: url('../../img/select-arrow.svg');
   padding-right: 30px;
 }
 
