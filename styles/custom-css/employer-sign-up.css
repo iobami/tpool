@@ -1,0 +1,188 @@
+.leftside {
+background: url(/TalentPool/img/employersignup.jpg);
+position: absolute;
+width: 630px;
+height: 964px;
+left: 0px;
+top: 0px; 
+} 
+
+.rightside {
+width: 85%;
+display: flex;
+position: absolute;
+left: 0px;
+top: 0px;
+}
+ .header h4{
+margin-top: 90px!important;
+font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 36px;
+color: #084482;
+}
+
+.form-box {
+    padding-left: 15px;
+}
+
+label {
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 27px;
+color: #1F2430;
+
+}
+
+input::placeholder {
+    font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 24px;
+color: rgba(178, 178, 178, 0.58);
+
+}
+
+.default1 {
+font-family: Poppins!important;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 27px;
+color: #D5D5D5;
+
+}
+.form-check-label{
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+color: #495057;
+padding-left: 20px;
+}
+.btn-block {
+ color: white;
+font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 36px;
+}
+span {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #084482;
+
+}
+
+span:before,
+span:after {
+    content: '';
+    border-top:1px solid #084482;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+span:after {
+    margin: 0 0 0 20px;
+}
+
+.btn-facebook {
+background: #3B5998;
+box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
+border-radius: 5px;
+width: 264px;
+height: 63px;
+left: 726px;
+/* top: 795px; */
+font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+/* line-height: 24px; */
+color: white;
+text-align: center!important;
+border-radius: 5px;
+}
+
+.btn-google {
+width: 264px;
+height: 63px;
+left: 1027px;
+top: 795px;
+background: #DB4A39;
+box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
+border-radius: 5px;
+font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+text-align: center;
+color: #FFFFFF;
+
+}
+
+.acct {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #495057;
+}
+
+@media only screen and (max-width: 600px) {
+    .header h4 {
+        color: black!important;
+        font-weight: 600;
+    }
+    .header p {
+        color: black!important;
+        font-weight: 500;
+    }
+    .form-group label {
+        color: black!important;
+    }
+    .leftside {
+        display: none!important;
+    }
+    .rightside {
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+        background: url(/TalentPool/img/employersignup.jpg);
+        background-size: cover;
+        background-position: center;
+        width: 100%!important;
+    }
+   
+    .form-row label {
+        font-weight: 500;
+        color: black!important;
+    }
+    
+    .terms {
+        text-align: left!important;
+        font-size: 18px!important;
+        color: white;
+    }
+    .acct {
+        color: white!important;
+        padding-bottom: 30px!important;
+    }
+}
