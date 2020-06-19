@@ -17,16 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <title>Admin Employer Modal</title>
 
-    <style>
-      @media (min-width: 320px) {
-        .btn-info{
-          margin-left: 0;
-        }
-      }
-      *{
-        /* border: 1px solid red; */
-      }
-    </style>
   </head>
   <body>
     <button
@@ -50,9 +40,12 @@
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content flex" style="border-radius: 10px; padding: 20px;">
 
-          <div class="modal-header" style="">
+          <div class="modal-header row">
+            <div class="col"></div>
             <img src="https://res.cloudinary.com/dlq9o1289/image/upload/v1579466633/icons8-color-96_agr7sy.png"
-            alt="logo" style="margin-left: 44%;"/>
+            alt="logo" class="col-4 ml-5">
+            <div class="col"></div>
+
             <button
               type="button"
               class="close"
@@ -81,9 +74,11 @@
               </div>
 
               <div class="row">
-                <button class="btn btn-info col-xs-3 col-md-4 text-center mt-3 mb-5" style="margin-left: 34%; margin-top: 20px; background: #00AEFF;">
+                <div class="col"></div>
+                <button class="btn btn-info col-3 col-md-4 text-center mt-5 mb-5 veri" style="background: #00AEFF;">
                   <h5 class="mt-2">Verify</h5>
                 </button>
+                <div class="col"></div>
             </div>
           </div>
     <script
