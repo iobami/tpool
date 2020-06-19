@@ -72,17 +72,27 @@ body{
 	margin-top: 30px;
 }
 
-.clockdiv-wrapper {
+#clockdiv{
+	font-family: sans-serif;
+	color: #fff;
+	font-weight: 100;
+	text-align: center;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+}
+
+/*.clockdiv-wrapper {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 #clockdiv {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+	display: inline-block;
+	/*align-items: center;
+	justify-content: center;}*/
+
 
 .time-wrap{
 	padding: 0 40px;
@@ -272,21 +282,24 @@ input[type="email"]::placeholder {
 	}
 	#clockdiv {
 		flex-direction: row;
-		width: auto;	
+		flex-direction: wrap-reverse;
+		width: auto;
+		padding:10px;
+		
 	}
 	.time--unit {
-		width: 150px;
-		height:150px;
+		width: 60px;
+		height:60px;
 		border-radius: 50%;
-		border:7px white solid;
-		padding: 25px;
-		margin-bottom: 30px;
+		border:4px white solid;
+		padding: 5px;
+		margin-bottom: 10px;
 	}
 	.smalltext {
-		font-size: 2em;
+		font-size: 0.8em;
 	}
 	.time-wrap__unit {
-		font-size: 3em;
+		font-size: 1.2em;
 	}
 	#subscribe-text {
 		text-align: center;
@@ -299,43 +312,50 @@ input[type="email"]::placeholder {
 		width: 40%;
 	}
 }
-@media only screen and (max-width: 420px) {
-	body{
-		background-image:100vw ;
-		background-size: cover;
 
+	@media only screen and (min-device-width : 320px) 
+	and (max-device-width: 480px) {
+	.header{
+		text-align:center;
+		width: 100%;
 	}
-	.subscribe__button {
-		font-size: 1em;
-		text-align: center;
-		padding: 15px 50px;
+	body{
+	background:linear-gradient(269.64deg, #1F2430 0.74%,
+	rgba(31, 36, 48, 0.933067) 27.43%, 
+	rgba(31, 36, 48, 0.729479) 51.5%,
+	rgba(31, 36, 48, 0.871859) 70.87%, #1F2430 101.22%), url(../../img/comingsoonbg.jpg);
+	background-size: cover;
+		
 	}
-.body-wrap {
-		margin-top: 50px;
+	.header__text--light {
+	font-size: 0.75em;
 	}
-	.header__text--bold {
-		margin-top: 30px;
+
+.header__text--bold {
+	font-size: 2em;
 	}
+
 	#clockdiv {
 		flex-direction: row;
-		width:50px;
+		flex-direction: wrap;
+		justify-content: center;
+		width: 320px;
 	}
-	
+	.time--unit {
+		width: 36px;
+		height:36px;
+		border-radius: 50%;
+		border:3px white solid;
+		padding: 5px;
+		margin-bottom: 8px;
+	}
 	.smalltext {
-		font-size: 2em;
+		font-size: 0.5em;
 	}
 	.time-wrap__unit {
-		font-size: 3em;
+		font-size: 0.6em;
 	}
-	#subscribe-text {
-		text-align: center;
+	.subscribe__button {
+		font-size: 0.9em;
 	}
-	.footer {
-		flex-direction: column;
-	}
-	.footer__social {
-		margin-bottom: 40px;
-		width: 40%;
-	}
-
 }
