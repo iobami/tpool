@@ -4,6 +4,11 @@
     margin: 0;
     box-sizing: border-box;
   }
+
+  body,
+  html {
+    background-color: #F4F4F4;
+  }
   
   .employers-dashboard-privacy-main {
     width: 100%;
@@ -14,6 +19,7 @@
   .employers-dashboard-privacy {
     padding: 24px;
     margin-left: 150px;
+    width: 94%;
   }
   
   .employers-dashboard-privacy h5 {
