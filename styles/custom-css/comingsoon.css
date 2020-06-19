@@ -271,14 +271,15 @@ input[type="email"]::placeholder {
 		margin-top: 50px;
 	}
 	#clockdiv {
-		flex-direction: column;
+		flex-direction: row;
+		width: auto;	
 	}
 	.time--unit {
 		width: 150px;
 		height:150px;
 		border-radius: 50%;
 		border:7px white solid;
-		padding: 45px;
+		padding: 25px;
 		margin-bottom: 30px;
 	}
 	.smalltext {
@@ -299,9 +300,42 @@ input[type="email"]::placeholder {
 	}
 }
 @media only screen and (max-width: 420px) {
+	body{
+		background-image:100vw ;
+		background-size: cover;
+
+	}
 	.subscribe__button {
 		font-size: 1em;
 		text-align: center;
 		padding: 15px 50px;
 	}
+.body-wrap {
+		margin-top: 50px;
+	}
+	.header__text--bold {
+		margin-top: 30px;
+	}
+	#clockdiv {
+		flex-direction: row;
+		width:50px;
+	}
+	
+	.smalltext {
+		font-size: 2em;
+	}
+	.time-wrap__unit {
+		font-size: 3em;
+	}
+	#subscribe-text {
+		text-align: center;
+	}
+	.footer {
+		flex-direction: column;
+	}
+	.footer__social {
+		margin-bottom: 40px;
+		width: 40%;
+	}
+
 }
