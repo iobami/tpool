@@ -19,8 +19,10 @@ body {
   outline: none !important;
 }
 .btn-primary {
-  padding: 4px 34px;
+  padding: 3px;
   border-radius: 5px;
+  width: 120px;
+  height: 31px;
    border: 1px solid #00AEFF;
   background: #00AEFF !important;
 }
@@ -30,8 +32,13 @@ body {
 }
 
 .btn-light {
-  padding: 4px 34px;
+   border: 1px solid #D6D9DF;
+   background: #D6D9DF;
+   color: #fff;
   border-radius: 5px;
+  width: 120px;
+  height: 31px;
+   padding: 3px;
 }
 
 .btn-primary:hover {
@@ -122,6 +129,15 @@ input[type="file"] {
 
   .dropdown-menu.show {
   transform: translate3d(0px, 33px, 0px) !important;
+}
+
+.form-control {
+  height: 56px;
+}
+
+.btn-lg {
+  height: 59px;
+  width: 238px
 }
 
 
