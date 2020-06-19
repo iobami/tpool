@@ -1,0 +1,155 @@
+body {
+    background-color: #F4F4F4;
+}
+
+.dash-board {
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.job-card {
+    background-color: #084482;
+    margin: 3rem 1.8rem 1rem 1.8rem;
+    border-radius: 10px;
+}
+
+.job-card__top-text {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.job-card__next-text {
+    font-size: 0.75rem;
+}
+
+.job-card--second {
+    background-color: #5C95C5;
+}
+
+.job-card--third {
+    background-color: #33BEFF;
+}
+
+.profile-wrap {
+    display: grid;
+    grid-template-columns: 71% 29%;
+    padding-top: 40px;
+    padding-bottom: 70px;
+}
+
+.profile-info {
+    margin-right: 10%;
+}
+
+.profile-info__title {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.profile-info--details {
+    display: flex;
+    border-radius: 15px;
+    box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+}
+
+.profile-info__img-cont {
+    padding: 40px 7%;
+}
+
+.profile-info__name {
+    color: #084482;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 36px;
+}
+
+.profile-info__contact {
+    border-left: 2px solid #C4C4C4;
+    padding: 40px 7% 40px 7%;
+    width: 80%;
+}
+
+.profile-info--norm-text {
+    color: #4C5059;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.profile-info--link {
+    color: #337AB7;
+}
+
+.skill__wrap {
+    width: 90%;
+    background-color: gray;
+    height: 4px;
+    border-radius: 0 40px 40px 0;
+}
+
+.skill {
+    width: 90%;
+    background-color:#084482;
+    height: 4px;
+    display: flex;
+    align-items: right;
+}
+
+.skill-stop {
+    content: url(../../img/blue_ellipse.svg);
+    margin-left: auto;  
+}
+
+.skill__flex {
+    display: flex;
+    flex-direction: column;
+    height: 426px;
+    border-radius: 15px;
+    box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+}
+
+@media (max-width: 1224px) {
+    .profile-info--details {
+        flex-direction: column;
+    }
+    .profile-info__contact {
+        border-left: none;
+        border-top: 2px solid #C4C4C4;
+    }
+}
+
+@media (max-width: 920px) and (min-width: 768px) {
+    .profile-wrap {
+        grid-template-columns: 65% 35%;
+    }
+}
+
+@media (max-width: 767px) {
+    .profile-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+    .profile-info {
+        margin: 0;
+    }
+    .profile-info__contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .profile-info--norm-text {
+        font-size: 0.75rem;
+    }
+    .profile-main--wrap {
+        min-width: 250px;
+    }
+    .dash-board {
+        text-align: center;
+        font-size: 1.8rem;
+        margin: 0;
+        margin-left: 0 !important;
+    }
+}
