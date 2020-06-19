@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Talent Pool</title>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+   <link rel="stylesheet" href="../styles/custom-css/main.css">
+   <link rel="stylesheet" href="../styles/custom-css/header.css">
+   <link rel="stylesheet" href="../styles/custom-css/footer.css">
+   <link rel="stylesheet" href="../styles/custom-css/employer-indiv.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+</head>
+<body>
+   <header class="header">
+      <div class="container">
+         <nav class="navbar navbar-expand-lg navbar-light py-4">
+            <a class="navbar-brand" href="index.html">
+               <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item px-3 active">
+                  <a class="nav-link nav-link-black" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link nav-link-black" href="#">About Us</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link nav-link-black" href="#">Directories</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link nav-link-black" href="#">FAQ</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link nav-link-black" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item px-3 my-2 my-lg-0">
+                  <a class="nav-link btn btn-hire-talent px-3 py-1" href="#">Hire Talent</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link btn btn-sign-up px-3 py-1" href="#">Sign Up</a>
+                </li>
+              </ul>
+            </div>
+         </nav>
+      </div>
+   </header>
+   <main class="main">
+       <!-- the form start here -->
+       <form action="">
+            <div class="fluid-container form-container " >
+
+                     <div class="container personal-info py-5">
+                           <div class="row">
+                           <h3 class="form-title">Personal Information</h3>
+                           </div>
+                           <div class="img-container">
+                            <img class="img" src="../../img/Rectangle 76@2x.png" alt="face">
+                           </div>
+                           <!-- Card premium or free row -->
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <label style="width: 100%;">
+                                    <input type="radio" name="product" class="card-input-element" value="trial" checked/>
+                          
+                                      <div class="card card-input  mb-3" style="height:158px;">
+                                        <div class="card-header " ></div>
+                                        <div class="card-body">
+                                          <h5 class="card-title">3Days Trial </h5>
+                                          
+                                         </div>
+                                      </div>
+                                  </label>
+                          
+                              </div>
+                              <div class="col-md-6">
+                                 <label style="width: 100%;">
+                                    <input type="radio" name="product" class="card-input-element" value="premium" />
+                          
+                                      <div class="card card-input" style="height:158px;">
+                                        <div class="card-header" ></div>
+                                        <div class="card-body">
+                                          <h5 class="card-title">Premium</h5>
+                                          
+                                         </div>
+                                      </div>
+                                  </label>
+                          
+                              </div>
+                                 
+                                
+                           </div>
+                           <!-- Name and last name  for -->
+                           <div class="row ">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label for="firstname">First Name</label>
+                                    <input type="text" class="form-control" id="firstname" placeholder="Jhon" >
+                                 </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label for="lasttname">Last Name</label>
+                                    <input type="text" class="form-control" id="lastname" placeholder="Doe">
+                                 </div>
+                                 </div>
+                           </div>
+                           <!-- email form -->
+                              <div class="form-group">
+                                 <label for="email">Email</label>
+                                 <input type="email" class="form-control" id="email" placeholder="Johndoe@gmail.com">
+                              </div>
+                              <!-- Country and number phone row -->
+                              <div class="row ">
+                                 <!-- country -->
+                                 <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <select type="text" class="form-control" id="country"  >
+                                          <option value="nigeria" selected>Nigeria</option>
+                                          <option value="tunisia">Tunisia</option>
+                                          <option value="russia">Russia</option>
+
+                                    </select>
+                                 </div>
+                                 </div>
+                                 <!-- phone -->
+                                 <div class="col-md-6 mt-3">
+                                    <label for="phone">Phone number</label>
+                                    <div class="row " id="phone">
+                                       
+                                       <div class="col-4">
+                                          <div class="form-group mt-0">
+
+                                             <input type="tel" class="form-control" id="country-code" placeholder="+234" >
+                                          </div>
+                                       </div>
+                                       <div class="col-8">
+                                       <div class="form-group mt-0">
+                                          <input type="tel" class="form-control" id="phone-number" >
+                                       </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!--   Where did you heare about us ? -->
+                              <div class="form-group">
+                                 <label for="hear">Where did you here about us ?</label>
+                                 <select  class="form-control" id="hear" >
+                                    <option value="facebook">Facebook</option>
+                                    <option value="twitter">Twitter</option>
+
+                                 </select>
+                              </div>
+                              <!-- input skilss -->
+                              <label for="skills">Interested Skills</label>
+
+                              <div class="skills" id="skills"> 
+                                 <div class=" mt-2">
+                                    <ul class=" m-0 p-0 skills-list d-flex flex-wrap ">
+                                       <li>flutter<i class="fa fa-times" aria-hidden="true"></i>
+                                       </li>
+                                       <li>Php<i class="fa fa-times" aria-hidden="true"></i>
+                                       </li>
+                                       <li>java<i class="fa fa-times" aria-hidden="true"></i>
+                                       </li>
+                                    </ul>
+                                 </div>
+
+                                    <div class="form-group">
+                                     <input class="form-control" type="text" placeholder="Enter interested skills... " style="border: 0;">
+                                    </div>
+                                    
+                                     
+                                </div>
+                                <div class="d-flex my-5 suggest-skills ">
+                                 <h4 class=" mr-3">Suggested Skills</h4>
+                                 <p><span>Software testing</span>, <span> HTML</span>, <span> CSS</span>, <span> React</span></p>
+                                </div>
+                     </div>
+             
+            </div>
+<!-- Social media information forms -->
+               <div class="fluid-container form-container">
+                        <div class="container social-info   py-5">
+                           <h3  class="form-title">Social informations</h3>
+                                 <div class="row ">
+                                 <div class="col-md-6 px-4">
+                                    <div class="form-group">
+                                       <label for="facebook">Facebook</label>
+                                       <input type="text" class="form-control" id="facebook" placeholder="Enter facebook url">
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6 px-4">
+                                       <div class="form-group">
+                                          <label for="twitter">Twitter</label>
+                                          <input type="text" class="form-control" id="twitter" placeholder="Enter twitter url" >
+                                       </div>
+                                    </div>
+                              </div>
+                              <div class="row ">
+                                 <div class="col-md-6 px-4">
+                                 <div class="form-group">
+                                    <label for="linkedin">Linkedin</label>
+                                    <input type="text" class="form-control" id="linkedin" placeholder="Enter linkedin url">
+                                 </div>
+                                 </div>
+                                 <div class="col-md-6 px-4">
+                                    <div class="form-group">
+                                       <label for="googleplus">Google Plus</label>
+                                       <input type="text" class="form-control" id="googleplus" placeholder="Enter google plus url" >
+                                    </div>
+                                 </div>
+                              </div>
+                        </div>
+               </div>
+               <div class="row justify-content-center my-5 " >
+                  <button type="submit" class="btn " id="btn">Create profile</button>
+
+               </div>
+            </form>
+     
+  </main>
+
+   <footer class="footer">
+      <div class="container">
+         <div class="row justify-content-between">
+            <div class="col-md-3">
+               <div class="py-3">
+                  <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
+               </div>
+               <p class="py-2">
+                  We are known for <br>
+                  connecting top talents <br> with top companies. We <br>
+                  make great possibilities <br>
+                  happen.
+               </p>
+            </div>
+            <div class="col-md-2">
+               <h5 class="py-3">Explore</h5>
+               <ul class="pl-0">
+                  <li><a href="">Home</a></li>
+                  <li class="py-1"><a href="">About Us</a></li>
+                  <li class="py-1"><a href="">Directories</a></li>
+                  <li class="py-1"><a href="">FAQ</a></li>
+                  <li class="py-1"><a href="">Contact Us</a></li>
+                  <li class="py-1"><a href="">Top Talent</a></li>
+               </ul>
+            </div>
+            <div class="col-md-3">
+               <h5 class="py-3">Visit</h5>
+               <p>
+                  3 Birrel Avenue,<br> Sabo. Yaba, Lagos State, <br> Nigeria
+               </p>
+               <h5 class="py-3">Get in touch</h5>
+               <p>hello@hng.tech</p>
+               <p>+234 (0) 812 345 6789</p>
+            </div>
+            <div class="col-md-2">
+               <h5 class="py-3">Follow</h5>
+               <ul class="pl-0">
+                  <li><a href="">Facebook</a></li>
+                  <li class="py-1"><a href="">LinkedIn</a></li>
+                  <li class="py-1"><a href="">Twitter</a></li>
+               </ul>
+            </div>
+            <div class="col-md-2">
+               <h5 class="py-3">Legal</h5>
+               <ul class="pl-0">
+                  <li><a href="">Terms</a></li>
+                  <li class="py-1"><a href="">Privacy</a></li>
+               </ul>
+            </div>
+         </div>
+         <hr>
+         <div class="row">
+            <div class="col py-2">
+               <p>
+                  TalentPool. All Rights Reserved.
+               </p>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <script src="../../js/bootstrap-js/popper.js"></script>
+   <script src="../../js/bootstrap-js/jquery.js"></script>
+   <script src="../../js/bootstrap-js/bootstrap.js"></script>
+</body>
+</html>
