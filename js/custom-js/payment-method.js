@@ -168,12 +168,15 @@ country.addEventListener('change', () => {
 cardNumber.addEventListener('input', () => {
   clearError(cardNumber);
   let value = cardNumber.value;
-
-  if (validateCardNumber(value)) {
-    showSuccess(cardNumber);
-  } else {
-    showError(cardNumber, 'Invalid Card Number');
-  }
+  setTimeout(() => {
+    if (validateCardNumber(value)) {
+      showSuccess(cardNumber);
+    } else if (value) {
+      showError(cardNumber, 'Invalid Card Number');
+    } else {
+      clearError(cardNumber);
+    }
+  }, 2000);
 });
 
 expirationDate.addEventListener('input', () => {
