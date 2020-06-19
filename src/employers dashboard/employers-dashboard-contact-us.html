@@ -17,58 +17,50 @@
         <h5>Settings</h5>
 
         <div class="settings-container">
-            <div class="col-3 settings-actions">
-                <div class="action">
-                    <span><img src="../../img/vectors/settings.png" alt="vec"></span>
-                    &nbsp;
-                    <span class="action-name">General</span>
-                </div>
-                <div class="action">
-                    <span><img src="../../img/vectors/apperance.png" alt="vec"></span>
-                    &nbsp;
-                    <span class="action-name">Appearance</span>
-                </div>
-                <div class="action">
-                    <span><img src="../../img/vectors/alarm.png" alt="vec"></span>
-                    &nbsp;
-                    <span class="action-name">Notification</span>
-                </div>
-                <div class="action active">
-                    <span><img src="../../img/vectors/landphone.png" alt="vec"></span>
-                    &nbsp;
-                    <span class="action-name">Contact Us</span>
-                </div>
-                <div class="action">
-                    <span><img src="../../img/vectors/privacy.png" alt="vec"></span>
-                    &nbsp;
-                    <span class="action-name">My Privacy</span>
-                </div>
-                <div class="action">
-                    <span><img src="../../img/vectors/report.png" alt="vec"></span>
-                    &nbsp;
-                    <span class="action-name">Report Abuse</span>
-                </div>
-            </div>
 
             <div class="col-9 contact-us-container">
                 <span class="title">Contact Us</span>
-                <form action="#">
+                <form action="#" class="needs-validation" novalidate>
                     <div class="input-group input-group-lg contact-us-input">
-                        <input type="text" class="form-control"
+                        <input type="text" class="form-control" required
                                aria-label="Large" placeholder="Your Name*">
+                        <div class="valid-feedback">
+                            good !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please type your name.
+                        </div>
                     </div>
                     <div class="input-group input-group-lg contact-us-input">
-                        <input type="text" class="form-control"
+                        <input type="email" class="form-control" required
                                aria-label="Large" placeholder="Your Email*">
+                        <div class="valid-feedback">
+                            good !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please type your email.
+                        </div>
                     </div>
                     <div class="input-group input-group-lg contact-us-input">
-                        <input type="text" class="form-control"
+                        <input type="text" class="form-control" required
                                aria-label="Large" placeholder="Subject...">
+                        <div class="valid-feedback">
+                            good !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please type the subject.
+                        </div>
                     </div>
                     <div class="input-group contact-us-input">
                         <label for="textarea" style="display: none"></label>
                         <textarea id="textarea" rows="4" class="form-control"
-                                  placeholder="Your Message..."></textarea>
+                                  required placeholder="Your Message..."></textarea>
+                        <div class="valid-feedback">
+                            good !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please type in a message.
+                        </div>
                     </div>
                     <div class="d-flex justify-content-center contact-us-input">
                         <button type="submit" class="btn btn-lg">
@@ -76,6 +68,28 @@
                         </button>
                     </div>
                 </form>
+
+                <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            const forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            const validation = Array.prototype.filter.call(forms, function(form) {
+                                form.addEventListener('submit', function(event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
+
             </div>
         </div>
 
