@@ -309,12 +309,6 @@ async function getCountriesList() {
 
   const data = await res.json();
 
-  // console.log(
-  //   data.sort((a, b) => {
-  //     return a.value > b.value ? 1 : -1;
-  //   })
-  // );
-
   return data.sort((a, b) => {
     return a.value < b.value ? -1 : 1;
   });
@@ -342,6 +336,7 @@ async function getStatesList() {
       );
     });
 
+  // filter states to remove duplicates
   const filteredStates = [];
 
   statesData.forEach((obj) => {
@@ -356,7 +351,8 @@ async function getStatesList() {
 }
 
 // populate select country options
-(async function fillCountries() {
+// note the option values are strings with arrays in this format [shortcode, name] to enable states fo be filtered
+async function fillCountries() {
   const countries = await getCountriesList();
 
   countries.forEach((country) => {
@@ -365,17 +361,19 @@ async function getStatesList() {
       'country'
     ).innerHTML += `<option value='${country.key},${country.value}'>${country.value}</option>`;
   });
-})();
+}
 
 // populate state options on country select
 country.addEventListener('change', async () => {
   const states = await getStatesList();
-
-  // console.log(states);
 
   state.innerHTML = '<option selected disabled value="">Select State</option>';
 
   states.forEach((province) => {
     state.innerHTML += `<option value='${province.value}'>${province.value}</option>`;
   });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  fillCountries();
 });
