@@ -1,6 +1,7 @@
 .footer {
    background: #084482;
    color: #fff;
+   line-height: 1.8;
 }
 
 .footer h5 {
@@ -36,10 +37,18 @@
 }
 
 
-@media(max-width: 410px) {
+@media(max-width: 767px) {
 
-   .footer {
-      text-align: center;
+   .hide {
+      display: none;
+   }
+
+}
+
+@media(min-width: 768px) {
+
+   .hide-lg {
+      display: none;
    }
 
 }
