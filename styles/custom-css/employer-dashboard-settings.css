@@ -90,7 +90,7 @@ body {
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 450px) {
   .setting-nav {
     border-right: 1px solid #007bff !important;
     border-bottom: 0 !important;
