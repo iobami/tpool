@@ -137,6 +137,10 @@ input[type="file"] {
   width: 238px
 }
 
+.sidenav {
+  z-index: 99999;
+}
+
 
 
 @media (max-width: 600px) {
@@ -186,7 +190,5 @@ input[type="file"] {
     justify-content: space-between;
 }
 
-.sidenav {
-  z-index: 99999;
-}
+
 }
