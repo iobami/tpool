@@ -6,8 +6,7 @@
 }
 
 body {
-  font-family: "Lato", sans-serif;
-  background: #E5E5E5;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -19,21 +18,9 @@ li {
   list-style-type: none;
 }
 
-a {
-  text-decoration: none !important;
-}
-
 .top__nav__wrapper {
   background: #FFFFFF;
   box-shadow: 0px 4px 12px rgba(163, 163, 163, 0.25);
-}
-
-.top__nav__contents {
-  padding: 1.5rem 35px;
-}
-
-.top__nav__logo__wrapper {
-  display: none;
 }
 
 .top__nav__icon {
