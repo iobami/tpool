@@ -7,50 +7,21 @@
     right: -2px;
 }
 
-span.cog {
-    color: #084482;
-    padding-right: 10px;
-}
-
-span.code {
-    color: #AD019C;
-    padding-right: 10px;
-}
-
-span.Not {
-    color: #FF3D00;
-    padding-right: 10px;
-}
-
-span.contact-us {
-    color: #F2A126;
-    padding-right: 10px;
-}
-
-span.privacy {
-    color: #000000;
-    padding-right: 10px;
-}
-
-span.report {
-    color: #37007D;
-    padding-right: 10px;
-}
-
 .btn {
     border-radius: 5px;
     background-color: #084482;
-    padding: 18px 32px;
     border-color: #084482;
+    min-width: 299px;
+    padding: 13px;
 }
 
 .btn:hover {
-    transform: scale(0.9);
-    background-color: #084482;
+    background-color: #337AB7;
     border-color: #084482;
 }
 
-.btn.focus, .btn:focus {
+.btn.focus,
+.btn:focus {
     background-color: #084482;
     border-color: #084482;
     box-shadow: 0 0 0 0.2rem rgba(51, 122, 183, 0.19);
@@ -59,63 +30,6 @@ span.report {
 .notification-container .btn {
     font-size: 24px;
     line-break: 24px;
-}
-
-.settings-container h2 {
-    font-size: 24px;
-    line-height: 36px;
-}
-
-.settings-container .settings-nav {
-    padding: 0;
-}
-
-.settings-container {
-    background-color: #e5e5e5;
-}
-
-.settings-container .settings-menu.list-group {
-    padding-inline-start: 0px;
-    border: none;
-}
-
-.settings-container .settings-menu .list-group-item {
-    font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
-    border: none;
-    border-bottom: 1px solid #5c95c5;
-    padding: 0;
-    background-color: transparent;
-}
-
-.settings-container .settings-menu .list-group-item a {
-    display: block;
-    width: 100%;
-    padding: 24px 18px;
-}
-
-.settings-container a {
-    color: #333333;
-}
-
-.settings-container .settings-menu .list-group-item.active a {
-    color: #084482;
-}
-
-.settings-container .settings-menu .list-group-item:hover {
-    background-color: #f0f0f0;
-}
-
-.settings-container .settings-menu .list-group-item.active {
-    background-color: #ffffff;
-    border-bottom: none;
-    border-right: 1px solid #ffffff;
-}
-
-.settings-container .settings {
-    border: 1px solid #5c95c5;
-    border-radius: 8px;
-    box-sizing: border-box;
 }
 
 ul.notifications {
@@ -181,14 +95,4 @@ ul.notifications li.notification>div.custom-switch {
     width: 3.5rem;
     height: 2rem;
     border-radius: 2rem;
-}
-
-.settings-container {
-    margin-left: 248px;
-}
-
-@media only screen and (max-width: 991px) {
-    .settings-container {
-        margin-left: 0;
-    }
 }
