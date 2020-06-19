@@ -14,7 +14,7 @@ body {
 .signup-img {
     display: block;
     background-size: 100% auto cover;
-    background-image: url(../../img/admin\ login.png);
+    background-image: url(../../img/admin\ login.svg);
     background-repeat: no-repeat;
     background-size: cover;
 }

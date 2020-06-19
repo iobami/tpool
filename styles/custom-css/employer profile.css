@@ -1,0 +1,70 @@
+body {
+   font-family: 'Poppins', sans-serif;
+}
+
+.heading-color{
+   color:  #084482;
+}
+.radio-select input[type=radio]{
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   display: inline-block;
+   width: 35px;
+   height: 35px;
+   background-clip: content-box;
+   border: 2px solid #5C95C5;
+   background-color: #e7e6e7;
+   border-radius: 50%;
+}
+.radio-select input[type=radio]:checked{
+   background-color:#5C95C5; 
+
+}
+.vector{
+   color:#5C95C5; 
+   margin: -10px -30px;
+}
+.rectangle29{
+   margin: -5px;
+}
+.new-btn{
+   background-color: #33BEFF;
+   width: 240px;
+   height: 56px;
+   color: #FFFFFF;
+   font-weight: 500;
+   font-size: 22px;
+   line-height: 36px;
+}
+.em-input{
+   border: 2px solid #B5B5B5;
+   height: 56px;
+   border-radius: 5px;
+}
+::placeholder{
+   color: rgba(178, 178, 178, 0.58) !important;
+   letter-spacing: 0.03em;
+   font-weight: 300;
+   line-height: 24px;
+}
+.select{
+   color: rgba(178, 178, 178, 0.58) !important;
+}
+.small{
+   color: rgba(98, 102, 110, 0.9);
+}
+.boxs{
+   border: 1px solid #EEEEEE;
+   box-sizing: border-box;
+   box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
+   border-radius: 5px;
+}
+input[type=radio] {
+   border: 0px;
+   width: 50px;
+   height: 2em;
+}
+.noti-label{
+   color: #62666E;
+}
