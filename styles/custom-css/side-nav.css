@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
   box-sizing: border-box;
@@ -6,8 +6,6 @@
 }
 
 body {
-  font-family: "Lato", sans-serif;
-  background: #E5E5E5;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -41,12 +39,12 @@ a {
 }
 
 .sidenav::-webkit-scrollbar-track {
-  box-shadow: #FFFFFF;
+  box-shadow: #ffffff;
   border-radius: 10px;
 }
 
 .sidenav::-webkit-scrollbar-thumb {
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   border-radius: 5px;
 }
 
@@ -68,7 +66,7 @@ a {
 
 .logo__image {
   padding: 37px 0 42px;
-  border-bottom: 1px solid #DFDFDF;
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .sidenav_links {
@@ -85,12 +83,11 @@ a {
   color: white;
   font-size: 1rem;
   font-weight: 600;
-
 }
 
 .sidenav_links li .active,
 .sidenav_links li:hover {
-  background-color: #00AEFF;
+  background-color: #00aeff;
 }
 
 #body__click {
@@ -104,6 +101,7 @@ a {
   opacity: 0;
   pointer-events: none;
   overflow-x: hidden;
+  height: 100vh;
 }
 
 .body__click__active {
@@ -113,11 +111,21 @@ a {
 
 @media only screen and (max-width: 991px) {
   .sidenav {
-    transform: translate3d(-234px,0,0);
+    transform: translate3d(-234px, 0, 0);
   }
 
   .sidenav__active {
-    transform: translate3d(0,0,0);
-    transition: all .5s ease-in-out;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .sidenav__unactive {
+    transform: translate3d(-234px, 0, 0);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .body__active {
+    margin-left: 234px;
+    transition: all 0.5s ease-in-out;
   }
 }

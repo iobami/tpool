@@ -168,12 +168,15 @@ country.addEventListener('change', () => {
 cardNumber.addEventListener('input', () => {
   clearError(cardNumber);
   let value = cardNumber.value;
-
-  if (validateCardNumber(value)) {
-    showSuccess(cardNumber);
-  } else {
-    showError(cardNumber, 'Invalid Card Number');
-  }
+  setTimeout(() => {
+    if (validateCardNumber(value)) {
+      showSuccess(cardNumber);
+    } else if (value) {
+      showError(cardNumber, 'Invalid Card Number');
+    } else {
+      clearError(cardNumber);
+    }
+  }, 2000);
 });
 
 expirationDate.addEventListener('input', () => {
@@ -282,19 +285,95 @@ form.addEventListener('submit', (e) => {
 });
 
 async function getCountriesList() {
-  const res = await fetch('https://restcountries.eu/rest/v2/all');
+  // const res = await fetch('https://restcountries.eu/rest/v2/all');
+
+  const requestOptions = {
+    headers: {
+      Accept: 'application/json',
+      'api-token':
+        'AuXnFjES43NqbdODZoc1anLtpO9op_9HsA7hqU56HJoxlbbNrMsUAzmsp6cqoZ0HhWQ',
+      'user-email': 'isaacsokari@gmail.com',
+    },
+  };
+
+  const res = await fetch(
+    'https://referential.p.rapidapi.com/v1/country?fields=currency%252Ccurrency_num_code%252Ccurrency_code%252Ccontinent_code%252Ccurrency%252Ciso_a3%252Cdial_code',
+    {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': 'referential.p.rapidapi.com',
+        'x-rapidapi-key': '0cd1577715msh752d6da52766120p198419jsn931788b6530a',
+      },
+    }
+  );
+
   const data = await res.json();
-  return data;
+
+  return data.sort((a, b) => {
+    return a.value < b.value ? -1 : 1;
+  });
+}
+
+// get states data
+async function getStatesList() {
+  const res = await fetch(
+    'https://referential.p.rapidapi.com/v1/state?fields=iso_a2&lang=en',
+    {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': 'referential.p.rapidapi.com',
+        'x-rapidapi-key': '0cd1577715msh752d6da52766120p198419jsn931788b6530a',
+      },
+    }
+  );
+  const data = await res.json();
+
+  const statesData = data
+    .sort((a, b) => (a.value < b.value ? -1 : 1))
+    .filter((c) => {
+      return (
+        c.iso_a2.toLowerCase() === country.value.split(',')[0].toLowerCase()
+      );
+    });
+
+  // filter states to remove duplicates
+  const filteredStates = [];
+
+  statesData.forEach((obj) => {
+    if (filteredStates.some((filtered) => filtered.key === obj.key)) {
+      false;
+    } else {
+      filteredStates.push(obj);
+    }
+  });
+  // console.log(filteredStates);
+  return filteredStates;
 }
 
 // populate select country options
-(async function fillCountries() {
+// note the option values are strings with arrays in this format [shortcode, name] to enable states fo be filtered
+async function fillCountries() {
   const countries = await getCountriesList();
 
   countries.forEach((country) => {
     // console.log(country);
-    document.querySelector(
-      'select:first-of-type'
-    ).innerHTML += `<option value=${country.alpha3Code}>${country.name}</option>`;
+    document.getElementById(
+      'country'
+    ).innerHTML += `<option value='${country.key},${country.value}'>${country.value}</option>`;
   });
-})();
+}
+
+// populate state options on country select
+country.addEventListener('change', async () => {
+  const states = await getStatesList();
+
+  state.innerHTML = '<option selected disabled value="">Select State</option>';
+
+  states.forEach((province) => {
+    state.innerHTML += `<option value='${province.value}'>${province.value}</option>`;
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  fillCountries();
+});
