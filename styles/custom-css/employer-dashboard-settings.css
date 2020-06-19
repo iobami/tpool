@@ -1,15 +1,28 @@
 
 body {
+  background: #E5E5E5;
   overflow-y: scroll;
+}
+.sidenav {
+  width: 234px;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #084482;
+  overflow-x: hidden;
 }
 .inner-content-settings {
   padding-top: 27px;
-  padding-left: 59px;
   font-size: 16px;
   font-weight: 600;
   color: #333333;
   line-height: 24px;
   margin-bottom: 47px;
+}
+.col-12.col-xl-10 {
+  padding-left: 44px;
 }
 .bg-light {
   background-color: #E5E5E5 !important;
@@ -70,7 +83,14 @@ body {
   border-left: 5px solid #007bff;
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 768px) {
+  .col-12.col-xl-10 {
+    padding-left: 10px;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 360px) {
   .setting-nav {
     border-right: 1px solid #007bff !important;
     border-bottom: 0 !important;
