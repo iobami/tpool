@@ -185,4 +185,8 @@ input[type="file"] {
     /* display: flex; */
     justify-content: space-between;
 }
+
+.sidenav {
+  z-index: 99999;
+}
 }
