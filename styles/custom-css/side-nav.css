@@ -120,9 +120,4 @@ a {
     transform: translate3d(0,0,0);
     transition: all .5s ease-in-out;
   }
-
-  .body__active {
-    margin-left: 234px;
-    transition: all .5s ease-in-out;
-  }
 }
