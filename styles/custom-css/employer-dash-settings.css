@@ -5,14 +5,12 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: #fafafa;
   line-height: 1.8;
+  background-color: #E5E5E5;
 }
 
 .main {
-  background-color: #e5e5e5;
   font-size: 1em;
-  max-width: 1048px;
 }
 
 .vertical-nav {
@@ -48,7 +46,11 @@ color: #084482;
 font-weight: bolder;
 }
 
-@media  (max-width: 576px)  {
+
+@media (max-width: 768px) {
+  .vertical-nav {
+    border-right: 1px solid #084482;;
+  }
   .navbar-detail {
     display: flex;
     align-content: center;
@@ -57,10 +59,13 @@ font-weight: bolder;
     text-align: center;
   }
 
+  .navbar-detail .icon {
+    display: flex;
+    justify-content: center;
+  }
+
   .navbar-detail img {
     display: block;
-    align-self: center;
-    margin-right: -1rem !important;
   }
 
   .navbar-detail span  {
@@ -68,13 +73,15 @@ font-weight: bolder;
   }
 }
 
-@media (max-width: 768px) {
-  .vertical-nav {
-    border-right: 1px solid #084482;;
+@media  (max-width: 480px)  {
+  .navbar-detail span  {
+    /* display: none; */
+    font-size: 0.75em;
+    text-align: center;
   }
 }
 
-@media  (max-width: 320px)  {
+@media  (max-width: 400px)  {
   .navbar-detail span  {
     display: none;
   }
