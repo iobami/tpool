@@ -276,6 +276,7 @@ input[type="email"]::placeholder {
 @media only screen and (max-width: 650px) {
 	.body-wrap {
 		margin-top: 80px;
+		margin-bottom: 40px;
 	}
 	.header__text--bold {
 		margin-top: 50px;
@@ -315,6 +316,10 @@ input[type="email"]::placeholder {
 
 	@media only screen and (min-device-width : 320px) 
 	and (max-device-width: 480px) {
+	.body-wrap {
+		margin-top: 40px;
+		margin-bottom: 20px;
+}
 	.header{
 		text-align:center;
 		width: 100%;
@@ -329,6 +334,7 @@ input[type="email"]::placeholder {
 	}
 	.header__text--light {
 	font-size: 0.75em;
+	margin-bottom: -50px;
 	}
 
 .header__text--bold {
@@ -357,5 +363,9 @@ input[type="email"]::placeholder {
 	}
 	.subscribe__button {
 		font-size: 0.9em;
+	}
+	.footer{
+		margin-top: 20px;
+		margin-bottom: 0;
 	}
 }
