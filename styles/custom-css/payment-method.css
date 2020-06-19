@@ -32,7 +32,13 @@ form .form__input,
 form .form__select {
   height: 3.5rem;
   border-radius: 5px;
-  border: none;
+  border: 2px solid #08448240;
+  outline: none;
+}
+
+form .form__input:focus,
+form .form__select:focus {
+  border: 2px solid #084482;
   outline: none;
 }
 
