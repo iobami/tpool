@@ -107,7 +107,7 @@ input, textarea {
     border: 1px solid #337AB7 !important;
 }
 
-#body__click {
+#main-section {
   width: calc(100% - 234px);
   float: right;
 }
@@ -120,20 +120,44 @@ input[type="file"] {
   font-size: 20px;
 }
 
+  .dropdown-menu.show {
+  transform: translate3d(0px, 33px, 0px) !important;
+}
+
+
+
 @media (max-width: 600px) {
  
   .upload-section .curriculum {
     margin-bottom: 30px;
   }
 
+  
+  .top__nav__user {
+    display: none;
+  }
+
   .bio {
     margin-bottom: 30px !important;
   }
 
+  .hide {
+    display: none;
+  }
+
+  .dropdown-menu.show {
+  transform: translate3d(-100px, 24px, 0px) !important;
+}
+
+  .top__nav {
+    /* display: flex; */
+    justify-content: space-between;
+}
+
 }
 
 @media only screen and (max-width: 991px) {
-  #body__click {
+  #main-section {
    width: 100%;
   }
   .bio {
