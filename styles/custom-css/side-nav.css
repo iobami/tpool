@@ -10,6 +10,7 @@ body {
   background: #E5E5E5;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 ul,
@@ -26,7 +27,7 @@ a {
 .sidenav {
   width: 234px;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   left: 0;
   bottom: 0;
@@ -92,8 +93,36 @@ a {
   background-color: #00AEFF;
 }
 
+#body__click {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  overflow-x: hidden;
+}
+
+.body__click__active {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+
 @media only screen and (max-width: 991px) {
   .sidenav {
     transform: translate3d(-234px,0,0);
+  }
+
+  .sidenav__active {
+    transform: translate3d(0,0,0);
+    transition: all .5s ease-in-out;
+  }
+
+  .body__active {
+    margin-left: 234px;
+    transition: all .5s ease-in-out;
   }
 }
