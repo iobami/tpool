@@ -1,0 +1,120 @@
+body {
+    color: #495057;
+}
+
+ .custom-container {
+  max-width: 1440px;
+}
+
+.container-fluid {
+  padding-bottom: 0 !important;
+}
+
+.signUp-img-div{
+  display: block;
+  background: no-repeat url("../../img/employee_signup_image.png");
+  background-size: 100% auto cover;
+  padding-left: 15px;
+  /* width: 614px !important; */
+}
+
+.signIn-img-div{
+  display: block;
+  background: no-repeat url("../../img/employee_signin_image.png");
+  background-size: 100% auto cover;
+  /* width: 614px !important; */
+}
+    
+.smallTitle {
+color: #B5B5B5;
+font-size: 16px;
+line-height: 24px;
+}
+
+.bigTitle {
+color: #084482;
+font-weight: 500;
+font-size: 32px;
+line-height: 42px;
+}
+
+label {
+font-size: 18px;
+line-height: 27px;
+color: #1F2430;
+}
+
+.form-control{
+border-radius: 5px;
+border: 1px solid #b5b5b5;
+padding: 25px;
+}
+
+input::placeholder {
+font-size: 16px;
+line-height: 24px;
+color: rgba(178, 178, 178, 0.58);
+}
+
+#terms-policy {
+line-height: 50px;
+}
+
+#signup-btn{
+    color: #ffffff;
+    /* width: 572px;
+    height: 68px; */
+   border: 1px solid #00AEFF;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+#signup-btn, #signup-btn:visited {
+  background-color: #00AEFF !important;
+}
+
+#signup-btn:hover{
+  background-color: #337ab7 !important;
+} 
+
+#signup-btn:active{
+  background-color: #084482 !important;
+} 
+
+hr {
+  color: #084482;
+  border: .5px solid #084482;
+}
+
+.login-link {
+  color: #00aeff;
+  text-decoration: none;
+}
+.login-link:hover {
+  color: #337ab7;
+  text-decoration: none;
+}
+.login-link:active {
+  color: #084482;
+  text-decoration: none;
+}
+
+  .facebook-btn {
+    color: #ffffff;
+    /* width: 264px;
+    height: 63px; */
+    background: #3B5998;
+    box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.google-btn {
+    color: #ffffff;
+    /* width: 264px;
+    height: 63px; */
+    background: #DB4A39;
+    box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
+    border-radius: 5px;
+    padding: 15px;
+} 

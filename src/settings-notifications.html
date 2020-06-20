@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings-Notifications</title>
+    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+    <link href="../styles/custom-css/side-nav.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/custom-css/main.css">
+    <link rel="stylesheet" href="../styles/custom-css/notifications.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
+    <link href="../styles/custom-css/top-nav-admin.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--"Notification"-->
+    <div class="notification-container px-5 py-4">
+        <div class="title">
+            <h4><span class="topic">Notification</span></h4>
+        </div>
+
+        <!--body-->
+        <ul class="notifications">
+            <li class="notification d-flex justify-content-between">
+                <div>
+                    <div>
+                        <span class="topic">Notify me for Employment Messages:</span> Get notifications when i receive direct messages from employees
+                    </div>
+                </div>
+                <div class="custom-control custom-switch mr-2">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                </div>
+            </li>
+
+            <li class="notification d-flex justify-content-between">
+                <div>
+                    <div>
+                        <span class="topic">Notify me for Acceptance Messages:</span> Get notifications when employees accept my job
+                    </div>
+                </div>
+                <div class="custom-control custom-switch mr-2">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                    <label class="custom-control-label" for="customSwitch2"></label>
+                </div>
+            </li>
+
+
+            <li class="notification d-flex justify-content-between">
+                <div>
+                    <div>
+                        <span class="topic">Notify me for Logins:</span> Get notifications when i newly sign in with a new device
+                    </div>
+                </div>
+                <div class="custom-control custom-switch mr-2">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch3">
+                    <label class="custom-control-label" for="customSwitch3"></label>
+                </div>
+            </li>
+
+            <li class="notification d-flex justify-content-between">
+                <div>
+                    <div>
+                        <span class="topic">Notify me for Profile Update:</span> Get notifications when i successfully update my profile
+                    </div>
+                </div>
+                <div class="custom-control custom-switch mr-2">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch4">
+                    <label class="custom-control-label" for="customSwitch4"></label>
+                </div>
+            </li>
+
+            <li class="notification d-flex justify-content-between">
+                <div>
+                    <div>
+                        <span class="topic">Notify me for Verification  purpose:</span> Get notifications when there is an authentication issue with my account
+                    </div>
+                </div>
+                <div class="custom-control custom-switch mr-2">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                    <label class="custom-control-label" for="customSwitch5"></label>
+                </div>
+            </li>
+            <li class="notification d-flex justify-content-between">
+                <div>
+                    <div>
+                        <span class="topic">Notify me for Regular Updates:</span> Get notifications when HNG releases platform updates and policies
+                    </div>
+                </div>
+                <div class="custom-control custom-switch mr-2">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch6">
+                    <label class="custom-control-label" for="customSwitch6"></label>
+                </div>
+            </li>
+        </ul>
+
+        <div class="d-flex flex-row-reverse bd-highlight mt-5 pt-5">
+            <div>
+                <button type="button" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/bootstrap-js/popper.js">
+    </script>
+    <script src="../js/bootstrap-js/jquery.js"></script>
+    <script src="../js/bootstrap-js/bootstrap.js"></script>
+</body>
+
+</html>
