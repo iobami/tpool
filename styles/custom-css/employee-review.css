@@ -150,7 +150,8 @@ body {
 /* MEDIA QUERIES */
 @media only screen and (max-width: 991px) {
   .body-cont{
-    margin: auto;
+    margin: auto 0;
+    flex-direction: column;
   }
   .search-bar form .input-field{
     width: 90%;
@@ -159,7 +160,8 @@ body {
 
 @media screen and (max-width: 768px) {
   .body-cont{
-    margin: auto;
+    margin: auto 0;
+    flex-direction: column;
   }
   .search-bar {
     flex-direction: column;
