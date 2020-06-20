@@ -283,10 +283,13 @@ input[type="email"]::placeholder {
 	}
 	#clockdiv {
 		flex-direction: row;
-		flex-direction: wrap-reverse;
+		flex-direction: wrap;
 		width: auto;
 		padding:10px;
 		
+	}
+	.time-wrap{
+		max-width: 60px;
 	}
 	.time--unit {
 		width: 60px;
@@ -343,9 +346,13 @@ input[type="email"]::placeholder {
 
 	#clockdiv {
 		flex-direction: row;
+		-webkit-flex-wrap: wrap;
 		flex-direction: wrap;
 		justify-content: center;
-		width: 320px;
+		max-width: 320px;
+	}
+	.time-wrap{
+		max-width: 60px;
 	}
 	.time--unit {
 		width: 36px;
