@@ -75,5 +75,11 @@ select {
 		top: 1px;
 	}
 
+	.center {
+		text-align: center;
+		margin: 1rem auto;
+		font-weight: 600;
+	}
+
 	
 }
