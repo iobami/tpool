@@ -44,6 +44,10 @@ input[type="search"] {
 	font-family: "Poppins", sans-serif;
 }
 
+input[type="search"]:focus {
+	outline: none;
+}
+
 .invite-menu {
 	width: 1.4rem;
 	height: 1.4rem; 
