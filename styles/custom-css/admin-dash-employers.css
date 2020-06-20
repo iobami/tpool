@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.main {
+  background: #e5e5e5;
+  height: 100%;
+}
+
+.employers-heading {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.employers-stats {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 2rem 0;
+}
+
+h3.card-title {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+p.card-text {
+  font-size: 12px;
+  line-height: 24px;
+}
+
+.employer-list {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.employer-list-btn {
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #b3b3b3;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 168px;
+  height: 40px;
+}
+
+.employer-list-btn button {
+  display: flex;
+  width: inherit;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-menu a:hover {
+  background: #337ab7;
+  color: #ffffff;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 50vh;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+.search {
+  background: #042241 !important;
+  height: 78px;
+  width: 100%;
+}
+
+input.search-input {
+  background-image: url('../../img/search-icon.png');
+  background-size: 20px;
+  background-position: left 20px top 50%;
+  background-repeat: no-repeat;
+  text-indent: 50px;
+  width: 317px !important;
+  height: 57px;
+  border-radius: 5px;
+  color: #353a45;
+}
+
+th,
+td {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #353a45;
+}
+
+tr td:nth-child(3),
+tr td:nth-child(4) {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #adadad;
+}
+
+.verified-btn {
+  background: #042241;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .employer-list-btn {
+    width: 120px;
+  }
+
+  .my-custom-scrollbar {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+  }
+
+  .res-img {
+    text-align: center;
+  }
+
+  .options {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .main {
+    padding: 1rem 1.5rem;
+  }
+
+  input.search-input {
+    width: 250px !important;
+  }
+
+  .search {
+    width: 120vw;
+  }
+}
+
+@media (max-width: 375px) {
+  .search {
+    width: 140vw;
+  }
+}
