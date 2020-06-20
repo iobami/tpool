@@ -1,3 +1,167 @@
 body {
    font-family: 'Poppins', sans-serif;
 }
+
+.custom-container {
+   max-width: 1440px;
+   margin: 0 auto;
+   padding: 1rem;
+   overflow: hidden;
+}
+
+.main-section{
+   max-height: 500px;
+}
+
+.main-title{
+  color: #012C3D;
+}
+
+.talent-row{
+   max-width: 800px;
+}
+.main-section {
+   background-color: #D6D9DF;
+}
+
+.img-5{
+   position: absolute;
+   top: -30px;
+   left: 0px;
+   z-index: 10;
+   max-width: 200px;
+   box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
+}
+
+.img-6{
+   position: relative;
+   left: -150px;
+   top: 90px;
+   max-width: 200px;
+   box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
+}
+
+.img-7{
+   position: relative;
+   top: -250px;
+   right: -100px ;
+   max-width: 200px;
+   box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
+}
+.img-1{
+   position: absolute;
+left: 180px;
+top: 20px;
+z-index: 1;
+max-width: 200px;
+
+box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
+}
+
+.img-2{
+   position: absolute;
+left: -1px;
+top: 100px;
+max-width: 200px;
+box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
+}
+
+.img-3{
+   position: absolute;
+   right: 30px;
+   top: 200px;
+   max-width: 200px;  
+box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
+}
+.blog-card{
+   box-shadow: 0px 4px 12px #9B9B9B;
+}
+
+.hire-btn,
+.vetting-section {
+   background-color: #00AEFF;
+
+}
+
+.card-section {
+   background-color: #EBECED;
+}
+
+.card-footer,
+.join-btn {
+   background-color: #084482;
+}
+
+.talent-card {
+   box-shadow: 0px 4px 12px rgba(215, 215, 215, 0.25);
+   max-height: 100%;
+}
+
+.hire-text {
+   color: #676767;
+}
+
+.card-four {
+   background-color: #E7E7E7;
+   box-shadow: 0px 4px 12px rgba(215, 215, 215, 0.25);
+}
+
+.talent-link {
+   text-decoration: none;
+   color: #C2C2C2;
+}
+
+ a:hover {
+   color: black;
+   text-decoration: none;
+   border-bottom: 3px solid #084482;
+}
+
+.bg-image1 {
+   background: linear-gradient(rgba(20, 20, 20, .8),
+         rgba(20, 20, 20, .8)),
+      url("/img/pic1.svg");
+   background-size: cover;
+
+}
+
+
+.bg-image2 {
+   background: linear-gradient(rgba(20, 20, 20, .8),
+         rgba(20, 20, 20, .8)),
+      url("/img/pic2.svg");
+   background-size: cover;
+
+}
+
+.bg-image3 {
+   background: linear-gradient(rgba(20, 20, 20, .8),
+         rgba(20, 20, 20, .8)),
+      url("/img/pic7.svg");
+   background-size: cover;
+
+}
+
+.bg-image4 {
+   background: linear-gradient(rgba(20, 20, 20, .8),
+         rgba(20, 20, 20, .8)),
+      url("/img/pic4.svg");
+   background-size: cover;
+
+}
+
+.bg-image5 {
+   background: linear-gradient(rgba(20, 20, 20, .8),
+         rgba(20, 20, 20, .8)),
+      url("/img/pic6.svg");
+   background-size: cover;
+
+}
+
+.four-cards{
+   background-color: black;
+}
+
+.read-more{
+   color: white;
+}
