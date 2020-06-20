@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Admin Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../../img/favicon.svg" type="image/x-icon">
+        <link href="../styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
+        <link href="../styles/custom-css/top-nav-admin.css" rel="stylesheet" />
+        <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
+        <link href="../styles/custom-css/admin-dash.css" rel="stylesheet" />
+    </head>
+    <body>
+
+        <div class="container-fluid top__nav__wrapper">
+			<div class="top__nav__contents">
+				<div class="d-flex justify-content-md-between justify-content-lg-end align-items-center top__nav">
+
+					<div class="d-lg-none" id="top__nav__toggle">
+						<svg width="35" height="25" viewBox="0 0 35 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M0 15.2571H35V10.4571H0V15.2571ZM0 24.8571H35V20.0571H0V24.8571ZM0 5.65712H35V0.857117H0V5.65712Z" fill="#084482" fill-opacity="0.87"/>
+						</svg>
+					</div>
+					
+					<div class="d-flex align-items-center top__nav__links">
+						<div class="top__nav__icon">
+							<svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M19.6211 4.95313C19.7734 4.83203 20 4.94531 20 5.13672V13.125C20 14.1602 19.1602 15 18.125 15H1.875C0.839844 15 0 14.1602 0 13.125V5.14062C0 4.94531 0.222656 4.83594 0.378906 4.95703C1.25391 5.63672 2.41406 6.5 6.39844 9.39453C7.22266 9.99609 8.61328 11.2617 10 11.2539C11.3945 11.2656 12.8125 9.97266 13.6055 9.39453C17.5898 6.5 18.7461 5.63281 19.6211 4.95313ZM10 10C10.9063 10.0156 12.2109 8.85938 12.8672 8.38281C18.0508 4.62109 18.4453 4.29297 19.6406 3.35547C19.8672 3.17969 20 2.90625 20 2.61719V1.875C20 0.839845 19.1602 0 18.125 0H1.875C0.839844 -5.33333e-07 0 0.839842 0 1.875V2.61719C0 2.90625 0.132813 3.17578 0.359375 3.35547C1.55469 4.28906 1.94922 4.62109 7.13281 8.38281C7.78906 8.85938 9.09375 10.0156 10 10Z" fill="black"/>
+							</svg>
+						</div>
+	
+						<div class="top__nav__icon">
+							<svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M16.9486 14.2992C16.0795 13.43 15 12.3484 15 8.125C15 5.02367 12.741 2.45043 9.77879 1.95977C9.92315 1.75126 10.0003 1.50361 10 1.25C10 0.559648 9.44035 0 8.75 0C8.05964 0 7.5 0.559648 7.5 1.25C7.5 1.51367 7.58183 1.75813 7.72121 1.95977C4.75902 2.45043 2.5 5.02367 2.5 8.125C2.5 12.3484 1.42019 13.43 0.55105 14.2992C-0.626645 15.4769 0.208003 17.5 1.87687 17.5H6.25C6.25 18.8807 7.36929 20 8.75 20C10.1307 20 11.25 18.8807 11.25 17.5H15.6228C17.2883 17.5 18.1287 15.4793 16.9486 14.2992Z" fill="black"/>
+							</svg>
+						</div>
+	
+						<div class="d-flex align-items-center top__nav__user">
+							<div class="top__nav__img"></div>
+							<div class="top__nav__user__name">
+								<h3>Adelanke Adelanke</h3>
+								<p>Admin</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+
+        <div class="sidenav" id="sideNav">
+			<div class="logo__wrapper">
+				<div class="d-flex justify-content-center align-items-center logo__image">
+					<img src="../../img/navLogo.svg" alt="" />
+				</div>
+			</div>
+
+			<ul class="sidenav_links">
+				<li><a href="#" class="active">Dashboard</a></li>
+				<li><a href="#">Verification</a></li>
+				<li><a href="#">Employers</a></li>
+				<li><a href="#">Employees</a></li>
+				<li><a href="#">Messages</a></li>
+				<li><a href="#">Support</a></li>
+				<li><a href="#">FAQs</a></li>
+				<li><a href="#">Settings</a></li>
+			</ul>
+		</div>
+
+        <section class="admin__dashboard">
+            <h2 class="dashboard__heading">Dashoard</h2>
+
+            <div class="container-fluid">
+                <div class="row top__section">
+                    <div class="col-md-4 col-lg-4 card-container mb-4 mb-md-0">
+                        <div class="card top__card employees__card">
+                            <div class="card-body">
+                                <div class="card__text">
+                                    <p>total employees</p>
+                                    <h2>15,000</h2>
+                                    <p><span>21%</span> Increase this month</p>
+                                </div>
+
+                                <div class="card__img">
+                                    <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21.7585 17.0651C19.7951 16.0911 20.5506 16.836 18.1408 15.8402C15.7304 14.8454 15.1598 14.5199 15.1598 14.5199L15.1385 12.2384C15.1385 12.2384 16.041 11.5554 16.3229 9.39754C16.886 9.56004 17.0773 8.73899 17.1077 8.21472C17.1413 7.70802 17.4412 6.12827 16.7512 6.26946C16.8924 5.21505 17.0027 4.26134 16.9526 3.75678C16.7806 1.98521 15.5514 0.134799 12.4489 0C9.81152 0.135331 8.0991 1.98628 7.92647 3.75838C7.87692 4.26294 7.97816 5.21558 8.11881 6.27213C7.4299 6.12934 7.72614 7.71175 7.75651 8.21791C7.78954 8.74219 7.97602 9.5659 8.54132 9.4034C8.82158 11.5612 9.72467 12.2496 9.72467 12.2496L9.7023 14.5428C9.7023 14.5428 9.13113 14.8896 6.72075 15.8849C4.31036 16.8818 5.0664 16.0916 3.10303 17.0651C0 18.6043 0 22.8364 0 22.8364H0.0010656L0.000532801 22.8385C0.000532801 23.4795 0.522144 24 1.16577 24H23.6958C24.0042 24.0003 24.3002 23.8781 24.5187 23.6603C24.7372 23.4426 24.8603 23.147 24.861 22.8385V22.8353H24.8615C24.861 22.8353 24.861 18.6038 21.7585 17.0651ZM34.0465 22.9408C34.0465 22.9408 34.0465 19.0908 31.2242 17.6906C29.4372 16.8045 30.1256 17.4823 27.9321 16.576C25.7391 15.6707 25.2201 15.375 25.2201 15.375L25.2009 13.2992C25.2009 13.2992 26.022 12.678 26.2777 10.7152C26.7908 10.8627 26.9645 10.1163 26.9922 9.63889C27.0226 9.17802 27.2954 7.74106 26.6683 7.86893C26.7967 6.90936 26.8974 6.04196 26.8515 5.58268C26.6954 3.97096 25.5766 2.28785 22.7548 2.16477C20.3551 2.28785 18.7972 3.97203 18.64 5.58375C18.5953 6.04302 18.6874 6.90989 18.8158 7.87106C18.1882 7.74106 18.4589 9.18069 18.486 9.64156C18.5169 10.1189 18.6858 10.8681 19.2005 10.7199C19.4557 12.6833 20.2773 13.3094 20.2773 13.3094L20.2565 15.3878C21.0025 15.5642 21.1026 15.4214 22.6062 16.1678C26.1248 17.9128 26.1248 22.7117 26.1248 22.7117H26.1237V22.7149C26.1234 23.0148 26.0206 23.3056 25.8325 23.5391C25.6443 23.7726 25.382 23.9348 25.089 23.9989H32.9862C33.5718 23.9989 34.0465 23.5258 34.0465 22.9424V22.9408Z" fill="#042241"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4  col-lg-4 card-container mb-4 mb-md-0">
+                        <div class="card top__card employers__card">
+                            <div class="card-body">
+                                <div class="card__text">
+                                    <p>total employers</p>
+                                    <h2>5,060</h2>
+                                    <p><span>21%</span> Increase this month</p>
+                                </div>
+
+                                <div class="card__img">
+                                    <svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.1932 21.2861C21.9009 19.5999 20.3378 18.5046 18.0984 17.8836L15.9999 25.2307C15.9999 25.9076 15.4461 26.4614 14.7692 26.4614C14.0923 26.4614 13.5384 25.9076 13.5384 25.2307V19.3846C13.5384 18.5353 12.8492 17.8461 12 17.8461C11.1507 17.8461 10.4615 18.5353 10.4615 19.3846V25.2307C10.4615 25.9076 9.90765 26.4614 9.23075 26.4614C8.55385 26.4614 8 25.9076 8 25.2307L5.90156 17.8836C3.66155 18.5113 2.0985 19.5999 0.806192 21.2861C0.295384 21.9507 0.0184614 23.2861 0 23.9999V27.0768C0 28.4368 1.10152 29.5384 2.46155 29.5384H21.5384C22.8984 29.5384 24 28.4369 24 27.0768V23.9999C23.9815 23.2861 23.7046 21.9507 23.1932 21.2861ZM12 15.3846C16.1476 15.3846 18.4615 10.1046 18.4615 6.51073C18.4615 2.91685 15.5692 0 12 0C8.43079 0 5.53845 2.91692 5.53845 6.51073C5.53845 10.1046 7.7784 15.3846 12 15.3846Z" fill="#06305B"/>
+                                    </svg> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4  col-lg-4 card-container mb-4 mb-md-0">
+                        <div class="card top__card profit__card">
+                            <div class="card-body">
+                                <div class="card__text">
+                                    <p>total profit</p>
+                                    <h2>15,000,000</h2>
+                                    <p><span>5%</span> Less profit</p>
+                                </div>
+
+                                <div class="card__img">
+                                    <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.1111 16.8889C14.1298 16.8889 13.3333 16.0924 13.3333 15.1111V13.3333C13.3333 12.3511 14.1298 11.5556 15.1111 11.5556H25.7778V16.8889H15.1111ZM16.4444 12.9627C15.7084 12.9627 15.1111 13.56 15.1111 14.296C15.1111 15.0329 15.7084 15.6293 16.4444 15.6293C17.1813 15.6293 17.7778 15.0329 17.7778 14.296C17.7778 13.56 17.1813 12.9627 16.4444 12.9627ZM12.4444 13.3333V15.1111C12.4444 16.5831 13.6391 17.7778 15.1111 17.7778H24V21.3333C24 22.8053 22.8062 24 21.3333 24H2.66667C1.19467 24 0 22.8053 0 21.3333V4.44445C0 2.97156 1.19467 1.77778 2.66667 1.77778H11.2284L9.14044 2.648H2.22311C1.48711 2.648 0.889778 3.24533 0.889778 3.98133C0.889778 4.71822 1.48711 5.31467 2.22311 5.31467H24V10.6667H15.1111C13.6391 10.6667 12.4444 11.8604 12.4444 13.3333ZM3.55644 7.11111H1.77867V8.88889H2.66755V8H3.55644V7.11111ZM3.55644 9.77778H1.77867V11.5556H2.704L2.66755 10.6667L3.55644 10.6853V9.77778ZM3.55644 12.4444H1.77867V14.2222H2.68622L2.66755 13.3333H3.55644V12.4444ZM3.55644 15.1111H1.77867V16.8889H2.68622L2.66755 16L3.55644 16.0187V15.1111ZM3.55644 17.7778H1.77867V19.5556H2.66755V18.6667H3.55644V17.7778ZM3.55644 20.4444H1.77867V22.2222H2.68622L2.66755 21.352H3.55644V20.4444ZM7.112 4.38933L17.5564 0L19.5564 4.38933H7.112ZM19.2409 1.77778H21.3333C22.112 1.77778 22.8053 2.11644 23.2933 2.648H19.6658L19.2409 1.77778Z" fill="#2E6EA5"/>
+                                    </svg>                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid last__section">
+                <div class="row">
+                    <div class="col-lg-6 statistics__wrapper">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h3>Monthly Statistics</h3>
+                            <select class="statistics__date">
+                                <option>This month</option>
+                            </select>
+                        </div>
+
+                        <div class="card-container ">
+                            <div class="card mb-sm-4 mb-lg-0">
+                                <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
+                                    <p class="m-0">New Employee's</p>
+                                    <h4 class="m-0">2300</h4>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
+                                    <p class="m-0">New Employer's</p>
+                                    <h4 class="m-0">72</h4>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
+                                    <p class="m-0">Hired Employee's</p>
+                                    <h4 class="m-0">308</h4>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
+                                    <p class="m-0">Profit</p>
+                                    <h4 class="m-0">N1,234,000</h4>
+                                </div>
+
+                                <div class="text-center">
+                                    <a class="btn export__btn" href="#">Export Data</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                            <h3>Recent Activity</h3>
+                        </div>
+
+                        <div class="card-container">
+                            <div class="card activity__card">
+                                <div class="card-body pb-0">
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                          <tr class="d-flex justify-content-between align-items-center mb-4">
+                                            <th scope="row">
+                                                <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
+                                            </th>
+                                            <td class="name">Adelanke Adelanke</td>
+                                            <td class="join">Joined</td>
+                                            <td class="time">5 mins ago</td>
+                                          </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr class="d-flex justify-content-between align-items-center mb-4">
+                                              <th scope="row">
+                                                  <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
+                                              </th>
+                                              <td class="name">Adelanke Adelanke</td>
+                                              <td class="join">Joined</td>
+                                              <td class="time">5 mins ago</td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                        <tr class="d-flex justify-content-between align-items-center mb-4">
+                                            <th scope="row">
+                                                <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
+                                            </th>
+                                            <td class="name">Adelanke Adelanke</td>
+                                            <td class="join">Joined</td>
+                                            <td class="time">5 mins ago</td>
+                                        </tr>
+                                        </tbody>
+                                        <tbody>
+                                        <tr class="d-flex justify-content-between align-items-center mb-4">
+                                            <th scope="row">
+                                                <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
+                                            </th>
+                                            <td class="name">Adelanke Adelanke</td>
+                                            <td class="join">Joined</td>
+                                            <td class="time">5 mins ago</td>
+                                        </tr>
+                                        </tbody>
+                                        <tbody>
+                                        <tr class="d-flex justify-content-between align-items-center mb-4">
+                                            <th scope="row">
+                                                <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
+                                            </th>
+                                            <td class="name">Adelanke Adelanke</td>
+                                            <td class="join">Joined</td>
+                                            <td class="time">5 mins ago</td>
+                                        </tr>
+                                        </tbody>
+                                        <tbody>
+                                        <tr class="d-flex justify-content-between align-items-center mb-4">
+                                            <th scope="row">
+                                                <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
+                                            </th>
+                                            <td class="name">Adelanke Adelanke</td>
+                                            <td class="join">Joined</td>
+                                            <td class="time">5 mins ago</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="body__click"></div>
+        
+        <script src="./js/bootstrap-js/bootstrap.js"></script>
+        <script src="../js/custom-js/side-nav.js"></script>
+    </body>
+</html>

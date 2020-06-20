@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Employer profile creation</title>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../../styles/bootstrap-css/bootstrap.css">
+   <link rel="stylesheet" href="../../styles/custom-css/employer profile.css">
+   <link rel="stylesheet" href="../../styles/custom-css/header.css">
+   <link rel="stylesheet" href="../../styles/custom-css/footer.css">
+   <link rel="shortcut icon" href="./img/favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="container-fluid custom-container">
+           <nav class="navbar navbar-expand-lg navbar-light py-4">
+              <a class="navbar-brand" href="index.html">
+                 <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item px-3 active">
+                       <a class="nav-link nav-link-black" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item px-3">
+                       <a class="nav-link nav-link-black" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item px-3">
+                       <a class="nav-link nav-link-black" href="#">Directories</a>
+                    </li>
+                    <li class="nav-item px-3">
+                       <a class="nav-link nav-link-black" href="#">FAQ</a>
+                    </li>
+                    <li class="nav-item px-3">
+                       <a class="nav-link nav-link-black" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item px-3 my-2 my-lg-0">
+                       <a class="nav-link btn btn-hire-talent px-3 py-1" href="#">Hire Talent</a>
+                    </li>
+                    <li class="nav-item px-3">
+                       <a class="nav-link btn btn-sign-up px-3 py-1" href="#">Sign Up</a>
+                    </li>
+                 </ul>
+              </div>
+           </nav>
+        </div>
+     </header>
+
+   <main>
+       <div class="mt-5">
+           <div class="container text-center">
+              <h5 class="heading-color">Let’s get started with a few details about your company</h5>
+              <div class="mt-5 d-flex justify-content-center">
+                <div class="form-check radio-select">
+                    <input class="form-check-input vector" type="radio" name="nav" id="nav1" value="option1">
+                 </div>
+                 <img src="/img/Connector.png" alt="">
+
+                 <div class="form-check radio-select">
+                    <input class="form-check-input size vector" onclick="window.location='/src/employer profile creation (company)/employer-company2.html';" type="radio" name="nav" id="nav2" value="option1">
+                 </div>
+              </div>
+           </div>
+       </div>
+
+     <div id="details" class="mt-5">
+         <div class="container">
+             <h5 class="heading-color">Company Details</h5>
+            <div class="row mt-5">
+                <div class="col-sm-4 col-lg-4 form-group">
+                    <label for="companyname">Name of Company</label>
+                    <input type="text" class="form-control em-input" id="companyname" placeholder="Enter name of company">                
+                </div>
+                <div class="col-sm-4 col-lg-4 form-group">
+                    <label for="industry">Industry</label>
+                    <select class="form-control em-input select" name="industry" id="industry">
+                        <option value="blank">Select Industry</option>
+                        <option value="frontend">Frontend</option>
+                        <option value="backend">Backend</option>
+                        <option value="Design">Design</option>
+                        <option value="mobile">Mobile</option>
+                    </select>
+                </div>
+                <div class="col-sm-4 col-lg-4 form-group">
+                    <label for="companytype">Company Type</label>
+                    <select class="form-control em-input select" name="companytype" id="companytype">
+                        <option value="blank">Select company type</option>
+                        <option value="frontend">Private</option>
+                        <option value="backend">Public</option>
+                        <option value="Design">International</option>
+                        <option value="mobile">Local</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-sm-4 col-lg-4 form-group">
+                    <label for="companyaddress">Company's Address</label>
+                    <input type="text" class="form-control em-input" id="companyaddress" placeholder="Enter address">                
+                </div>
+                <div class="col-sm-4 col-lg-4 form-group">
+                    <label for="companyemail">Company's Email</label>
+                    <input type="text" class="form-control em-input" id="companyemail" placeholder="Enter email">                
+                </div>
+                <div class="col-sm-4 col-lg-4 form-group">
+                    <label for="companyphone">Company's Phone No</label>
+                    <input type="text" class="form-control em-input" id="companyphone" placeholder="Enter phone no">                
+                </div>
+            </div>
+            <hr class="mt-5"> 
+         </div>
+     </div> 
+
+     <div id="profile" class="mt-5">
+         <div class="container">
+            <h5 class="heading-color pt-3">Profile Details</h5>
+            <div class="row mt-5">
+                <div class="col-sm-6 col-md-7 col-lg-7">
+                    <label for="logo">Logo</label>
+                    <div class="d-flex">
+                        <input type="text" class="form-control em-input" id="logo" placeholder="Upload file">                
+                        <button class="btn new-btn ml-2">Browse</button>
+                    </div>
+                    <span class="small">300 x 300px recommended. JPGs and PNG supported</span>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-sm-5 col-md-6 col-lg-6">
+                    <label for="tag">Tagline</label>
+                    <input type="text" class="form-control em-input" id="tag" placeholder="Enter your company’s tagline">                
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-sm-5 col-md-6 col-lg-6 mb-4">
+                    <label for="desc">Short Description</label>
+                    <textarea class="form-control em-input" name="desc" id="desc" cols="30" rows="6"></textarea>
+                </div>
+            </div>
+            <hr class="mt-5">
+         </div>
+     </div>
+     
+     <div id="networks" class="mt-5">
+        <div class="container">
+            <h5 class="heading-color pt-3">Social Networks</h5>
+           <div class="row mt-5">
+               <div class="col-sm-4 col-lg-4 form-group">
+                   <label for="website">Website</label>
+                   <input type="text" class="form-control em-input" id="website" placeholder="Enter website url">                
+               </div>
+               <div class="col-sm-4 col-lg-4 form-group">
+                   <label for="linkedin">LinkedIn</label>
+                   <input type="text" class="form-control em-input" id="linkedin" placeholder="Enter linkedin url">                
+               </div>
+               <div class="col-sm-4 col-lg-4 form-group">
+                   <label for="facebook">Facebook</label>
+                   <input type="text" class="form-control em-input" id="facebook" placeholder="Enter facebook url">                
+               </div>
+           </div>
+           <div class="row mt-5">
+               <div class="col-sm-4 col-lg-4 form-group">
+                   <label for="twitter">Twitter</label>
+                   <input type="text" class="form-control em-input" id="twitter" placeholder="Enter twitter url">                
+               </div>
+               <div class="col-sm-4 col-lg-4 form-group">
+                   <label for="google">Google+</label>
+                   <input type="text" class="form-control em-input" id="google" placeholder="Enter google+ url">                
+               </div>
+               <div class="col-sm-4 col-lg-4 form-group">
+                   <label for="github">Github</label>
+                   <input type="text" class="form-control em-input" id="github" placeholder="Enter github url">                
+               </div>
+           </div>
+        </div>
+    </div>
+
+    <div class="mt-5 mb-5 pb-5">
+        <div class="container text-right">
+            <button class="btn new-btn mb-5">Next</button>
+        </div>
+    </div>
+   </main>
+
+   <footer class="footer">
+    <div class="container-fluid custom-container">
+       <div class="row top justify-content-between">
+          <div class="col-md-3">
+             <div class="py-3">
+                <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
+             </div>
+             <p class="py-2">
+                We are known for
+                connecting top talents with top companies. We
+                make great possibilities
+                happen.
+             </p>
+          </div>
+          <div class="col-6 col-md-2">
+             <h5 class="py-3">Explore</h5>
+             <ul class="pl-0">
+                <li><a href="">Home</a></li>
+                <li class="py-1"><a href="">About Us</a></li>
+                <li class="py-1"><a href="">Directories</a></li>
+                <li class="py-1"><a href="">FAQ</a></li>
+                <li class="py-1"><a href="">Contact Us</a></li>
+                <li class="py-1"><a href="">Top Talent</a></li>
+             </ul>
+          </div>
+          <div class="col-6 col-md-3">
+             <h5 class="py-3">Visit</h5>
+             <p>
+                3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
+             </p>
+             <h5 class="py-3">Get in touch</h5>
+             <p>hello@hng.tech</p>
+             <p>+234 (0) 812 345 6789</p>
+          </div>
+          <div class="col-6 col-md-2">
+             <h5 class="py-3">Follow</h5>
+             <ul class="pl-0">
+                <li><a href="">Facebook</a></li>
+                <li class="py-1"><a href="">LinkedIn</a></li>
+                <li class="py-1"><a href="">Twitter</a></li>
+             </ul>
+          </div>
+          <div class="col-6 col-md-2">
+             <h5 class="py-3">Legal</h5>
+             <ul class="pl-0">
+                <li><a href="">Terms</a></li>
+                <li class="py-1"><a href="">Privacy</a></li>
+             </ul>
+          </div>
+       </div>
+       <hr>
+       <div class="row">
+          <div class="col py-2">
+             <p>
+                TalentPool. All Rights Reserved.
+             </p>
+          </div>
+       </div>
+    </div>
+    </footer>
+   <script src="../../js/bootstrap-js/popper.js"></script>
+   <script src="../../js/bootstrap-js/jquery.js"></script>
+   <script src="../../js/bootstrap-js/bootstrap.js"></script>
+</body>
+</html>
