@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;500;600&display=swap');
+.notification-container {
+    min-height: 790px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: -1px;
+    right: -2px;
+}
+
+.btn {
+    border-radius: 5px;
+    background-color: #084482;
+    border-color: #084482;
+    min-width: 238px;
+    padding: 10.7px;
+}
+
+.btn:hover {
+    background-color: #337AB7;
+    border-color: #084482;
+}
+
+.btn.focus,
+.btn:focus {
+    background-color: #084482;
+    border-color: #084482;
+    box-shadow: 0 0 0 0.2rem rgba(51, 122, 183, 0.19);
+}
+
+.notification-container .btn {
+    font-size: 24px;
+    line-break: 24px;
+}
+
+ul.notifications {
+    padding-inline-start: 0px;
+    margin-top: 13px;
+    letter-spacing: 0.15px;
+}
+
+ul.notifications li.notification>div:first-of-type div {
+    max-width: 559px;
+}
+
+ul.notifications li.notification>div:first-of-type {
+    border-bottom: 1px solid rgba(196, 196, 196, 0.5);
+    padding: 16px 0;
+    width: 100%;
+}
+
+ul.notifications li.notification>div.custom-switch {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+
+.notification span.topic {
+    font-weight: 600;
+}
+
+.notification-container .title h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.notification-container .title .topic {
+    color: #084482;
+    border-bottom: 1.5px solid #084482;
+    padding-bottom: 8px;
+}
+
+.notification-container .custom-control-input:checked~.custom-control-label::before {
+    background: rgba(51, 122, 183, 0.19);
+    border: none;
+}
+
+.notification-container .custom-control-input:checked~.custom-control-label::after {
+    -webkit-transform: translateX(1.5rem);
+    transform: translateX(1.5rem);
+    background: #337AB7;
+    border: 0.2px solid #C4C4C4;
+}
+
+.notification-container .custom-control-label::after {
+    background: #ffffff;
+    box-shadow: 1px 1px 4px rgba(31, 36, 48, 0.1);
+    width: calc(2rem - 4px);
+    height: calc(2rem - 4px);
+    border-radius: 2rem;
+}
+
+.notification-container .custom-control-label::before {
+    border: 0.4px solid rgba(51, 122, 183, 0.44);
+    width: 3.5rem;
+    height: 2rem;
+    border-radius: 2rem;
+}
