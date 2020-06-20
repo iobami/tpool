@@ -4,11 +4,9 @@ body{
   margin-left: auto;
   margin-right: auto;
 }
-
-#sideNav{
+/* #sideNav{
   margin-top: 6.5rem !important;
-}
-
+} */
 .main-content{
   max-width: 75rem;
 }
@@ -85,10 +83,11 @@ select.form-control{
   .profile-card{
     min-width: calc(33% - 16px);
   }
-  .main-content{
+  /* .main-content{
+    // for side nav
     width: auto;
     margin-left: 230px;
-  }
+  } */
 }
 @media screen and (min-width: 992px){
   .profile-card{
