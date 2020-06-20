@@ -2,15 +2,36 @@ body {
    font-family: 'Poppins', sans-serif;
 }
 
+.btn:hover{
+   background-color: #337ab7;
+   text-decoration: none;
+}
+
 .custom-container {
    max-width: 1440px;
    margin: 0 auto;
    padding: 1rem;
    overflow: hidden;
+   max-height: 500px;
+}
+.nav-link{
+   border-bottom-width: 3px;
+   border-bottom-style: solid;
+   border-bottom-color: transparent;
+}
+
+.nav-link:hover{
+   border-bottom-color: #084482;
+}
+
+.nav-link:hover, .talent-link:hover {
+   color: black;
+   text-decoration: none;
+   border-bottom: 3px solid #084482;
 }
 
 .main-section{
-   max-height: 500px;
+   max-height: 450px;
 }
 
 .main-title{
@@ -26,7 +47,7 @@ body {
 
 .img-5{
    position: absolute;
-   top: -30px;
+   top: -2px;
    left: 0px;
    z-index: 10;
    max-width: 200px;
@@ -36,14 +57,14 @@ body {
 .img-6{
    position: relative;
    left: -150px;
-   top: 90px;
+   top: 120px;
    max-width: 200px;
    box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
 }
 
 .img-7{
    position: relative;
-   top: -250px;
+   top: -197px;
    right: -100px ;
    max-width: 200px;
    box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
@@ -111,57 +132,42 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
    color: #C2C2C2;
 }
 
- a:hover {
-   color: black;
-   text-decoration: none;
-   border-bottom: 3px solid #084482;
+.read-more:hover{
+   color: white;
+   text-decoration: none; 
 }
 
 .bg-image1 {
    background: linear-gradient(rgba(20, 20, 20, .8),
          rgba(20, 20, 20, .8)),
-      url("/img/pic1.svg");
-   background-size: cover;
-
-}
-
-
-.bg-image2 {
-   background: linear-gradient(rgba(20, 20, 20, .8),
-         rgba(20, 20, 20, .8)),
-      url("/img/pic2.svg");
-   background-size: cover;
-
-}
-
-.bg-image3 {
-   background: linear-gradient(rgba(20, 20, 20, .8),
-         rgba(20, 20, 20, .8)),
-      url("/img/pic7.svg");
-   background-size: cover;
-
-}
-
-.bg-image4 {
-   background: linear-gradient(rgba(20, 20, 20, .8),
-         rgba(20, 20, 20, .8)),
-      url("/img/pic4.svg");
-   background-size: cover;
-
-}
-
-.bg-image5 {
-   background: linear-gradient(rgba(20, 20, 20, .8),
-         rgba(20, 20, 20, .8)),
       url("/img/pic6.svg");
    background-size: cover;
+   transition: all 1s;
 
+}
+
+.bg-image1:hover{
+  transform: scale(1.1);
 }
 
 .four-cards{
    background-color: black;
 }
 
+.blog-card{
+   box-shadow: 0px 4px 12px #9B9B9B;
+}
+
 .read-more{
    color: white;
+}
+
+.card{
+   border-radius: 5px !important;
+}
+
+@media screen and (max-width: 700px){
+   .card{
+      border-radius: 0px !important;
+   }
 }
