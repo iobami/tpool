@@ -79,10 +79,10 @@ a {
 
 .sidenav_links li a {
   display: block;
-  padding: 5px 40px;
+  padding: 12px 40px;
   color: white;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 600;
 }
 
 .sidenav_links li .active,
@@ -126,7 +126,6 @@ a {
 
   .body__active {
     margin-left: 234px;
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 }
-  
