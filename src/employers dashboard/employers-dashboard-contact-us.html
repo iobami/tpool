@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../styles/custom-css/employers-dashboard-contact-us.css">
+    <link rel="stylesheet" href="../../styles/bootstrap-css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+    <title>TalentPool</title>
+</head>
+<body>
+<section class="container employers-dashboard-settings-container">
+
+    <div class="employers-dashboard-settings-inner">
+
+        <h5>Settings</h5>
+
+        <div class="settings-container">
+
+            <div class="col-9 contact-us-container">
+                <span class="title">Contact Us</span>
+                <form action="#" class="needs-validation" novalidate>
+                    <div class="input-group input-group-lg contact-us-input">
+                        <input type="text" class="form-control" required
+                               aria-label="Large" placeholder="Your Name*">
+                        <div class="valid-feedback">
+                            good !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please type your name.
+                        </div>
+                    </div>
+                    <div class="input-group input-group-lg contact-us-input">
+                        <input type="email" class="form-control" required
+                               aria-label="Large" placeholder="Your Email*">
+                        <div class="valid-feedback">
+                            good !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please type your email.
+                        </div>
+                    </div>
+                    <div class="input-group input-group-lg contact-us-input">
+                        <input type="text" class="form-control" required
+                               aria-label="Large" placeholder="Subject...">
+                        <div class="valid-feedback">
+                            good !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please type the subject.
+                        </div>
+                    </div>
+                    <div class="input-group contact-us-input">
+                        <label for="textarea" style="display: none"></label>
+                        <textarea id="textarea" rows="4" class="form-control"
+                                  required placeholder="Your Message..."></textarea>
+                        <div class="valid-feedback">
+                            good !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please type in a message.
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center contact-us-input">
+                        <button type="submit" class="btn btn-lg">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+
+                <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            const forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            const validation = Array.prototype.filter.call(forms, function(form) {
+                                form.addEventListener('submit', function(event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+</body>
+</html>
