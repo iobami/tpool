@@ -30,6 +30,10 @@ body {
 	background: #337ab7;
 }
 
+.invite-btn {
+	max-width: unset;
+}
+
 .btn-invite-accepted {
 	background: #042241;
 }
@@ -49,12 +53,26 @@ input[type="search"]:focus {
 }
 
 .invite-menu {
-	width: 1.4rem;
-	height: 1.4rem; 
+	height: 1.6rem;
+	max-width: unset;
+	cursor: pointer;
 }
 
 select {
 	border: 1px solid #ced4da;
+	background: #fff;
+}
+
+.table-wrapper {
+	max-height: 40vh;
+	margin-top: -1px;
+	background: #fff;
+}
+
+tr th {
+	position: sticky;
+	top: 0;
+	z-index: 10;
 	background: #fff;
 }
 
@@ -66,20 +84,7 @@ select {
 		width: 98%;
 	}
 
-	.invite-header {
-		text-align: center;
+	.mr-3 {
+		margin-right: 0;
 	}
-
-	.invite-menu {
-		position: absolute;
-		top: 1px;
-	}
-
-	.center {
-		text-align: center;
-		margin: 1rem auto;
-		font-weight: 600;
-	}
-
-	
 }

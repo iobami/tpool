@@ -113,7 +113,7 @@
 						</div>
 						​
 						<ul class="sidenav_links d-sm">
-							<li><a href="#" >Dashboard</a></li>
+							<li><a href="#">Dashboard</a></li>
 							<li><a href="#">Messages</a></li>
 							<li><a href="#">Employees</a></li>
 							<li><a href="#" class="active">Add a team</a></li>
@@ -128,9 +128,9 @@
 				<div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5 a-m">
 					<h4 class="invite-header">Invite a team member</h4>
 
-					<form class="bg-white p-3 rounded">
+					<form class="bg-white p-4 rounded">
 						<div class="row d-flex align-items-center justify-content-center">
-							<div class="form-group email mr-3 position-relative">
+							<div class="form-group email mr-lg-3 position-relative">
 								<img
 									src="../img/email.svg"
 									class="email-icon position-absolute"
@@ -142,7 +142,7 @@
 									placeholder="email address"
 								/>
 							</div>
-							<div class="form-group mr-3 full-name position-relative">
+							<div class="form-group mr-lg-3 full-name position-relative">
 								<img
 									src="../img/profile.svg"
 									class="profile-icon position-absolute"
@@ -155,7 +155,7 @@
 								/>
 							</div>
 
-							<div class="form-group mr-3">
+							<div class="form-group mr-lg-3">
 								<label for="Role"></label>
 								<select class="p-2 same-height">
 									<option value="role" selected>Role</option>
@@ -195,61 +195,77 @@
 							placeholder="Search Invites"
 						/>
 					</div>
-					<div class="member-box bg-white">
-						<div class="member-header row p-3 border-bottom member-box-mobile">
-							<p class="col-md-4 font-weight-bold">Email address</p>
-							<p class="col-md-3 name font-weight-bold">Name</p>
-							<p class="col-md-2 font-weight-bold">Role</p>
-							<p class="col-md-2 font-weight-bold">Status</p>
-						</div>
-
-						<div class="member-header row p-3 border-bottom position-relative">
-							<p class="p-2 col-md-4">eteubom.sparky@doodle.com</p>
-							<p class="col-md-3 name">Eteubom Sparky</p>
-							<p class="col-md-2">Member</p>
-							<button
-								class="btn btn-invite-accepted text-white py-2 px-3 invite-btn col-md-2"
-							>
-								Accepted
-							</button>
-							<img
-								src="../img/menu.svg"
-								alt="menu toggle"
-								class="col-md-1 invite-menu"
-							/>
-						</div>
-
-						<div class="member-header row p-3 border-bottom">
-							<p class="col-md-4">ucarter95544@doodle.com</p>
-							<p class="col-md-3 name">Ukpong Carter</p>
-							<p class="col-md-2">HR Personnel</p>
-							<button
-								class="btn btn-invite-accepted text-white py-2 px-3 invite-btn col-md-2"
-							>
-								Accepted
-							</button>
-							<img
-								src="../img/menu.svg"
-								alt="menu toggle"
-								class="col-md-1 invite-menu"
-							/>
-						</div>
-
-						<div class="member-header row p-3 border-bottom">
-							<p class="col-md-4">dubios.george@doodle.com</p>
-							<p class="col-md-3 name">Dubios George</p>
-							<p class="col-md-2">Member</p>
-							<button
-								class="btn btn-invite-sent text-white py-2 px-3 invite-btn col-md-2"
-							>
-								Invite sent
-							</button>
-							<img
-								src="../img/menu.svg"
-								alt="menu toggle"
-								class="col-md-1 invite-menu"
-							/>
-						</div>
+					<div class="table-responsive table-wrapper overflow-auto">
+						<table class="table table-bordered">
+							<thead class="p-5">
+								<tr class="">
+									<th scope="col">Email address</th>
+									<th scope="col">Name</th>
+									<th scope="col">Role</th>
+									<th scope="col">Status</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td scope="row">eteubom.sparky@doodle.com</td>
+									<td>Eteubom Sparky</td>
+									<td>Member</td>
+									<td>
+										<button
+											class="btn btn-invite-accepted text-white py-2 px-3 invite-btn col-md-2"
+										>
+											Accepted
+										</button>
+									</td>
+									<td>
+										<img
+											src="../img/menu.svg"
+											alt="menu toggle"
+											class="invite-menu"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td scope="row">ucarter95544@doodle.com</td>
+									<td>Ukpong Carter</td>
+									<td>HR Personnel</td>
+									<td>
+										<button
+											class="btn btn-invite-accepted text-white py-2 px-3 invite-btn col-md-2"
+										>
+											Accepted
+										</button>
+									</td>
+									<td>
+										<img
+											src="../img/menu.svg"
+											alt="menu toggle"
+											class="invite-menu"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td scope="row">dubios.george@doodle.com</td>
+									<td>Dubios George</td>
+									<td>Member</td>
+									<td>
+										<button
+											class="btn btn-invite-sent text-white py-2 px-3 invite-btn col-md-2"
+										>
+											Invite sent
+										</button>
+									</td>
+									<td>
+										<img
+											src="../img/menu.svg"
+											alt="menu toggle"
+											class="invite-menu"
+										/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</section>
 			</div>
@@ -257,8 +273,6 @@
 
 		<!-- Sidenav js JavaScript -->
 		<script src="../js/custom-js/side-nav.js"></script>
-		<!-- DOM modifications with jquery -->
-		<script src="../js/custom-js/employer-add-a-team.js"></script>
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="../js/bootstrap-js/popper.js"></script>
 		<script src="../js/bootstrap-js/jquery.js"></script>
