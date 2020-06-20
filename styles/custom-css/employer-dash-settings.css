@@ -5,14 +5,28 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: #fafafa;
   line-height: 1.8;
+  background-color: #E5E5E5;
 }
 
+/* Margin for Sidebar */
+.sidebar-margin {
+  margin-left: 234px !important;
+}
+
+@media (max-width: 991px) {
+  .sidebar-margin {
+    margin-left: 0 !important;
+  }
+
+  .remove-block {
+    padding-right: 0 !important;
+  }
+}
+
+
 .main {
-  background-color: #e5e5e5;
   font-size: 1em;
-  max-width: 1048px;
 }
 
 .vertical-nav {
@@ -27,9 +41,16 @@ body {
 .nav-tabs .nav-item.active {
   background-color: #fff;
   color: #084482;
-  border-bottom: 1px solid #fff;
+  border-bottom: 2px solid #fff;
+  font-weight: 600;
+  z-index: -1;
 }
 
+.nav-tabs .nav-item + .nav-item.active{
+  background-color: #fff;
+  border-top: 2px solid #FFF;
+  z-index: 0;
+}
 
 .nav-tabs .nav-item {
   border-top: 0;
@@ -40,15 +61,30 @@ body {
 }
 
 .nav-tabs .nav-link {
-  padding: 0.75rem 1.25rem;
+  padding: 1rem 1.25rem;
 }
 
 .nav-tabs .nav-link:hover {
 color: #084482;
-font-weight: bolder;
+background-color: #FFF;
 }
 
-@media  (max-width: 576px)  {
+.navbar-detail .icon  {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}
+
+.change-width {
+  width: 100%;
+  padding-right: 3em;
+}
+
+@media (max-width: 768px) {
+
+  .vertical-nav {
+    border-right: 1px solid #084482;;
+  }
   .navbar-detail {
     display: flex;
     align-content: center;
@@ -57,10 +93,13 @@ font-weight: bolder;
     text-align: center;
   }
 
+  /* .navbar-detail .icon {
+    display: flex;
+    justify-content: center;
+  } */
+
   .navbar-detail img {
     display: block;
-    align-self: center;
-    margin-right: -1rem !important;
   }
 
   .navbar-detail span  {
@@ -68,13 +107,24 @@ font-weight: bolder;
   }
 }
 
-@media (max-width: 768px) {
-  .vertical-nav {
-    border-right: 1px solid #084482;;
+@media  (max-width: 480px)  {
+  .navbar-detail span  {
+    /* display: none; */
+    font-size: 0.75em;
+    text-align: center;
+  }
+
+  .change-width {
+    padding-right: 1em;
+  }
+
+  .edit-tabcontent-padding  {
+    padding-left: 1em !important;
+    padding-right: 1em !important;
   }
 }
 
-@media  (max-width: 320px)  {
+@media  (max-width: 400px)  {
   .navbar-detail span  {
     display: none;
   }
@@ -83,6 +133,11 @@ font-weight: bolder;
 @media (min-width: 768px) {
   .vertical-nav {
     margin-right: -10px;
+  }
+
+  .change-width  {
+    width: 75%;
+    padding-right: 0;
   }
 }
 
@@ -181,6 +236,10 @@ input:checked + .slider:before {
 
 .font-size-1-5em  {
     font-size: 1.5em;
+}
+
+.font-weight-600  {
+  font-weight: 600;
 }
 
 .extra-rounded  {
