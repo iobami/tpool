@@ -13,7 +13,7 @@ let skills = [
 
 
 $('body #update_skill_btn').attr('disabled','disabled');
-$('body #add_skill_btn').attr('disabled','disabled');
+$('body #add_skill_btn').attr('disabled','disabled');0
 
  //Serialize Form to Object
  $.fn.serializeObject = function(){
