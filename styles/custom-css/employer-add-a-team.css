@@ -1,0 +1,75 @@
+body {
+	background: #f4f4f4;
+	font-family: "Poppins", sans-serif;
+}
+
+.email,
+.full-name {
+	width: 30%;
+}
+.email-icon,
+.profile-icon {
+	top: 17px;
+	left: 17px;
+}
+
+.profile-icon {
+	top: 11px;
+}
+.search-icon {
+	top: 26px;
+	left: 25px;
+}
+
+.a-m {
+	margin-right: -1rem;
+}
+
+.search-member,
+.btn-invite {
+	background: #337ab7;
+}
+
+.btn-invite-accepted {
+	background: #042241;
+}
+.btn-invite-sent {
+	background: #b5b5b5;
+}
+
+.form-group,
+.form-group input[type="submit"],
+select,
+input[type="search"] {
+	font-family: "Poppins", sans-serif;
+}
+
+.invite-menu {
+	width: 1.4rem;
+	height: 1.4rem; 
+}
+
+select {
+	border: 1px solid #ced4da;
+	background: #fff;
+}
+
+@media only screen and (max-width: 700px) {
+	.form-group,
+	.form-group input[type="submit"],
+	select,
+	input[type="search"] {
+		width: 98%;
+	}
+
+	.invite-header {
+		text-align: center;
+	}
+
+	.invite-menu {
+		position: absolute;
+		top: 1px;
+	}
+
+	
+}
