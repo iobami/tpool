@@ -171,6 +171,10 @@ input[type="file"] {
     justify-content: space-between;
 }
 
+  .intern-other {
+    margin: auto 5%;
+  }
+
 }
 
 @media only screen and (max-width: 991px) {
