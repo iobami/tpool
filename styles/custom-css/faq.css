@@ -35,6 +35,7 @@ body {
   position: absolute;
   right: 20px;
   top: 10px;
+  z-index: 10;
 }
 
 
@@ -119,6 +120,7 @@ body {
   margin-top: 20px;
 }
 
+
 .prepend img {
   width: 20px;
 }
@@ -163,6 +165,14 @@ body {
   color: #084482;
 }
 
+.fot-sec .social a:hover{
+  border-bottom: none !important;
+}
+
+.questions-sec .panel-group a:hover {
+  border-bottom: none !important;
+}
+
 .more-less {
   float: right;
   color: #084482;
@@ -195,13 +205,14 @@ body {
 }
 
 .pop-sec .panel:hover a {
-  box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.2) !important;
-  border-bottom: 0.9px solid #b7bbbe;
+  box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.2) !important;
+  border-bottom: 0.1px solid #b7bbbe;
 }
 
 .pop-sec .panel-group {
   margin-top: 30px;
 }
+
 
 
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
