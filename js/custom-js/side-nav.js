@@ -13,3 +13,4 @@ sideNavCloseButton.addEventListener('click', () => {
     sidenav.classList.add('sidenav__unactive');
     sideNavCloseButton.classList.remove('body__click__active');
 });
+
