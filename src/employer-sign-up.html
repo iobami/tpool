@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>employer sign in</title>
+    <title>employer sign up</title>
     <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../styles/custom-css/main.css">
     <link rel="stylesheet" href="../styles/custom-css/header.css">
     <link rel="stylesheet" href="../styles/custom-css/footer.css">
-    <link rel="shortcut icon" href="./img/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
 
 </head>
 
@@ -75,12 +75,15 @@
                                 <p class="text-muted my-2">Let's get your accout setup so you can have access to a great
                                     pool of talent</p>
                             </div>
-                            <form>
+                            <form class="needs-validation" novalidate>
                                 <div class="row  my-3 ">
                                     <div class="col-md-12 form-group">
                                         <label for="organization">Organization Name</label>
                                         <input type="organization" class="form-control form-control-lg"
-                                            id="organization" placeholder="Enter organization">
+                                            id="organization" placeholder="Enter organization" required>
+                                        <div class="invalid-feedback">
+                                            Enter your Organization
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row my-3">
@@ -88,32 +91,47 @@
                                         <label for="email" class="form-label ">Email address</label>
                                         <input type="email" class="form-control form-control-lg" id="email"
                                             placeholder="john@email.com" required>
+                                        <div class="invalid-feedback">
+                                            Enter a valid email
+                                        </div>
                                     </div>
                                     <div class="form-check col-md">
-                                        <label>Sign up as</label>
-                                        <select id="inputState" class="form-control form-control-lg">
-                                            <option class="default1">--select--</option>
-                                            <option>Choose</option>
-                                            <option>Choose</option>
+                                        <label for="inputState">Sign up as</label>
+                                        <select id="inputState" class="form-control form-control-lg" required>
+                                            <option value="">--select--</option>
+                                            <option value="employer">Employer</option>
+                                            <option value="choose">Choose</option>
                                         </select>
+                                        <div class="invalid-feedback">
+                                            Select an option
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-md-6 form-group">
-                                        <label>Password</label>
-                                        <input type="text" placeholder="at least 8 characters"
-                                            class="form-control form-control-lg">
+                                        <label for="password">Password</label>
+                                        <input type="password" placeholder="at least 8 characters"
+                                            class="form-control form-control-lg" inputmode="alpha-numeric" minlength="8"
+                                            maxlength="10" size="12" id="password" required>
+                                        <div class="invalid-feedback">
+                                            Enter your password. It must contain atleast 8 characters.
+                                        </div>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label>Confirm Password</label>
-                                        <input type="text" placeholder="at least 8 characters"
-                                            class="form-control form-control-lg">
+                                        <label for="password">Confirm Password</label>
+                                        <input type="password" placeholder="at least 8 characters"
+                                            class="form-control form-control-lg" inputmode="alpha-numeric" minlength="8"
+                                            maxlength="10" size="10" id="confirm_password" required>
+                                        <div class="invalid-feedback">
+                                            Confirm Password
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="custom-control custom-checkbox col ml-3 mt-3">
                                         <input type="checkbox" class="custom-control-input" id="recieveMail">
-                                        <label class="custom-control-label" for="recieveMail">Yes, I want
+                                        <label class="custom-control-label" for="recieveMail" style="color: black;">Yes,
+                                            I want
                                             to recieve TalentPool
                                             emails</label>
                                     </div>
@@ -121,13 +139,14 @@
                                 <div class="row my-3">
                                     <div class="custom-control custom-checkbox col ml-3 mt-3">
                                         <input type="checkbox" class="custom-control-input" id="termsPolicy">
-                                        <label class="custom-control-label" for="termsPolicy">Yes, I agree
+                                        <label class="custom-control-label" for="termsPolicy" style="color: black;">Yes,
+                                            I agree
                                             to the <a href="#">Terms and Policy</a></label>
                                     </div>
                                 </div>
 
                                 <div class="form-group my-3 pt-2">
-                                    <button class="btn btn-block btn-primary btn-sign py-3" type="submit">Sign
+                                    <button class="btn btn-block  btn-sign py-3" type="submit">Sign
                                         Up</button>
                                 </div>
                                 <div class="form-group my-4 text-center">
@@ -224,6 +243,7 @@
         </div>
     </footer>
     <!-- footer ends -->
+    <script src="../js/custom-js/employer-signup.js"></script>
     <script src="../js/bootstrap-js/jquery.js"></script>
     <script src="../js/bootstrap-js/popper.js"></script>
     <script src="../js/bootstrap-js/bootstrap.js"></script>

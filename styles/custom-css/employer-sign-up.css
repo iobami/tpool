@@ -1,5 +1,5 @@
 .image {
-    background-image: url(/img/employersignup.jpg)!important;
+    background-image: url(../../img/employersignup.jpg)!important;
     background-size: auto cover 100% !important;
     background-repeat: no-repeat;
     display: block;
@@ -61,13 +61,22 @@
 
 .btn-sign .btn-sign:visited {
     background-color: #00AEFF !important;
+    color: white;
 }
 .btn-sign:hover{
     background-color: #337ab7 !important;
+    color: white;
 } 
 .btn-sign:active{
     background-color: #084482 !important;
+    color: white;
 } 
+.btn-sign {
+    background-color: transparent!important;
+    border: 1.5px solid #00AEFF;
+    color: #00AEFF;
+    font-weight: bolder;
+}
 a {
     text-decoration: none!important;
 }
