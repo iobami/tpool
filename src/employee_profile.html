@@ -20,6 +20,11 @@
 
     <style media="screen">
 
+
+        .upload-section, #skills, #socials{
+          margin-bottom: 32px!important;
+        }
+
     #edit_text{
     display: inline-block;
     margin-top: 13px;
@@ -40,16 +45,19 @@
     .form-check-label{
       margin-left: 12px;
     }
-      .list-trash{
-        display: none;
-          /* transform: scale(0.8);
-        transition: all 1s ease-in-out; */
-      }
+    @media (pointer: fine) {
+        /* ... */
+        .list-trash{
+          display: none;
+            /* transform: scale(0.8);
+          transition: all 1s ease-in-out; */
+        }
 
-      .lists li:hover .list-trash{
-        /* color: red; */
-        /* transform: scale(1.09); */
-        display: inline-block;
+        .lists li:hover .list-trash{
+          /* color: red; */
+          /* transform: scale(1.09); */
+          display: inline-block;
+        }
       }
       .file-box{
         position: relative;
