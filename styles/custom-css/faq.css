@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #084482;
+  --secondary-color: #E5E5E5;
+}
+
+.container-fluid {
+  overflow: hidden;
+}
+
+body {
+  font-family: 'poppins';
+  scroll-behavior: smooth !important;
+  margin: 0;
+  padding: 0;
+  /* max-width: 1440px; */
+}
+
+.header-sec {
+  background: var(--secondary-color);
+  height: 420px;
+  /* max-width: 1440px; */
+}
+
+.header-sec .form-group {
+  position: relative;
+}
+
+.form-group .search-icon {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 10;
+}
+
+
+
+.header-sec .form-control::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+
+  color: rgba(178, 178, 178, 0.58);
+}
+
+.header-sec .form-control::-moz-placeholder {
+  /* Firefox 19+ */
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+
+  color: rgba(178, 178, 178, 0.58);
+}
+
+.header-sec .form-control:-ms-input-placeholder {
+  /* IE 10+ */
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+
+  color: rgba(178, 178, 178, 0.58);
+}
+
+.header-sec .form-control:-moz-placeholder {
+  /* Firefox 18- */
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+
+  color: rgba(178, 178, 178, 0.58);
+}
+
+
+
+.pop-sec {
+  background: var(--secondary-color);
+  /* max-width: 1440px; */
+}
+
+.questions-sec {
+  background: var(--primary-color);
+}
+
+
+.fot-sec {
+  background: var(--primary-color);
+  height: 503px;
+  /* max-width: 1440px; */
+}
+
+.fot-sec .social {
+  margin-top: 64px;
+  padding: 0 40px;
+}
+
+.fot-sec-heading {
+  margin-top: 20px;
+}
+
+
+.prepend img {
+  width: 20px;
+}
+
+.panel-body {
+  background: white;
+  color: #084482;
+  padding: 18px;
+  border-radius: 5px;
+}
+
+.panel-group .panel {
+  border-radius: 0;
+  box-shadow: none;
+  border-color: #EEEEEE;
+}
+
+.panel-default>.panel-heading {
+  padding: 0;
+  border-radius: 5px;
+  color: #212121;
+  background-color: #FAFAFA;
+  border-color: #EEEEEE;
+}
+
+.panel-title {
+  font-size: 14px;
+}
+
+.panel-title>a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #B2B2B2;
+}
+
+.panel-title>a:hover {
+  color: #084482;
+}
+
+.panel-title>a:active {
+  color: #084482;
+}
+
+.fot-sec .social a:hover{
+  border-bottom: none !important;
+}
+
+.questions-sec .panel-group a:hover {
+  border-bottom: none !important;
+}
+
+.more-less {
+  float: right;
+  color: #084482;
+}
+
+.rotate {
+  -moz-transition: all 2s linear;
+  -webkit-transition: all 2s linear;
+  transition: all 2s linear;
+}
+
+.rotate.down {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+  border-top-color: #EEEEEE;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+
+.pop-sec .panel {
+  background: #FFFFFF;
+  box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.pop-sec .panel:hover a {
+  box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.2) !important;
+  border-bottom: 0.1px solid #b7bbbe;
+}
+
+.pop-sec .panel-group {
+  margin-top: 30px;
+}
+
+
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+
+  .pop-sec .row {
+    margin-left: 38px;
+  }
+}
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+
+  .pop-sec .row {
+    margin-left: 38px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .questions-sec .row .panel{
+    margin-left: -15%;
+    width: 150%;
+  }
+}
