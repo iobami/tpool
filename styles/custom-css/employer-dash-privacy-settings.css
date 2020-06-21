@@ -1,0 +1,202 @@
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background-color: #F4F4F4;
+}
+
+.employers-dashboard-privacy-main {
+  width: 100%;
+  background-color: #F4F4F4;
+  font-family: 'Poppins', sans-serif;
+}
+
+.employers-dashboard-privacy {
+  padding: 24px;
+  width: 94%;
+  margin-left: 170px;
+}
+
+.employers-dashboard-privacy h5 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.card-title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  color: #063463;
+
+}
+
+.privacy-text {
+  color: #063463;
+  
+
+}
+
+.privacy-border {
+  border-bottom: 2px solid #084482;
+  width: 130px;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+  width: 20px;
+  height: 20px
+}
+
+.btn,
+.btn:focus,
+.btn:visited,
+.btn:active  {
+  background-color: #063463;
+  color: #fff;
+  
+}
+
+.btn:hover
+ {
+  background-color: #084482;
+  color: #fff;
+
+}
+
+
+.custom-switch.custom-switch .custom-control-label {
+  padding-left: 4rem;
+  padding-bottom: 2.5rem;
+}
+
+.custom-switch.custom-switch .custom-control-label::before {
+  height: 2.5rem;
+  width: calc(4rem + 0.75rem);
+  border-radius: 5rem;
+}
+
+.custom-switch.custom-switch .custom-control-label::after {
+  width: calc(2.5rem - 4px);
+  height: calc(2.5rem - 4px);
+  border-radius: calc(4rem - (2.5rem / 2));
+}
+
+.custom-switch.custom-switch .custom-control-input:checked~.custom-control-label::after {
+  transform: translateX(calc(2.5rem - 0.25rem));
+}
+
+
+
+
+
+/*For Large Tablets */
+@media (min-width: 768px) and (max-width: 1010px) {
+.employers-dashboard-privacy {
+  padding: 24px;
+   margin-left: 30px;
+}
+
+.btn,
+.btn:focus,
+.btn:visited,
+.btn:active  {
+background-color: #063463;
+color: #fff;
+font-size: 1.5em;
+}
+
+
+
+}
+
+/*Small phones to small tablets: from 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+.employers-dashboard-privacy {
+  padding: 24px;
+  margin-left: 20px;
+}
+
+.custom-switch.custom-switch .custom-control-label::before { 
+  height: 1.5rem;
+  width: calc(3rem + 0.75rem);
+  border-radius: 5rem;
+  margin-left: 30px;
+ }
+
+.custom-switch.custom-switch .custom-control-label::after { 
+  height: calc(1.5rem - 4px); 
+  width: calc(1.5rem - 4px);
+  margin-left: 30px;
+}
+
+
+
+}
+
+
+/*Small phones: from 371px to 480px */
+@media only screen and (max-width: 480px) {
+.employers-dashboard-privacy {
+  padding: 24px;
+  margin-left: 10px;
+}
+
+.custom-switch { width: 0; }
+
+.custom-switch.custom-switch .custom-control-label::before { 
+height: 1.5rem;
+width: calc(3rem + 0.75rem);
+border-radius: 5rem;
+margin-left: 25px;
+}
+
+.custom-switch.custom-switch .custom-control-label::after { 
+height: calc(1.5rem - 4px); 
+width: calc(1.5rem - 4px);
+margin-left: 25px;
+}
+
+
+
+}
+
+
+
+/*Small phones:  */
+@media only screen and (max-width: 370px) {
+.employers-dashboard-privacy {
+  padding: 24px;
+}
+
+.custom-switch { width: 0; }
+
+.custom-switch.custom-switch .custom-control-label::before { 
+height: 1.5rem;
+width: calc(3rem + 0.75rem);
+border-radius: 5rem;
+margin-left: 25px;
+}
+
+.custom-switch.custom-switch .custom-control-label::after { 
+height: calc(1.5rem - 4px); 
+width: calc(1.5rem - 4px);
+margin-left: 25px;
+}
+
+
+
+}
+
+
+
+
+
+
+
+

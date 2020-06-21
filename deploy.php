@@ -10,11 +10,8 @@
     $commands = array(
         'echo $PWD',
         'whoami',
-<<<<<<< HEAD
-       	'git pull origin develop',
-=======
-	'git pull origin develop',
->>>>>>> 942515b89e65ec98789d44e729936e3b3f8568c0
+       	'git pull',
+	#'git pull origin develop',
         'git status',
         'git submodule sync',
         'git submodule update',
