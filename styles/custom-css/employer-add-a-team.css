@@ -76,15 +76,15 @@ tr th {
 	background: #fff;
 }
 
-@media only screen and (max-width: 700px) {
+/* 700px / 16px (Browser default) === 43.75em */
+@media only screen and (max-width: 43.75em) {
 	.form-group,
 	.form-group input[type="submit"],
 	select,
 	input[type="search"] {
 		width: 98%;
 	}
-
-	.mr-3 {
-		margin-right: 0;
+	.invite-header {
+		text-align: center;
 	}
 }
