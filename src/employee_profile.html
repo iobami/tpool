@@ -21,6 +21,10 @@
     <style media="screen">
 
 
+    .header{
+      background-color: #fff;
+    }
+
         .upload-section, #skills, #socials{
           margin-bottom: 32px!important;
         }
@@ -134,25 +138,25 @@ height: 24px;
 
 
 
-<div class="sidenav sticky-top" id="sideNav">
-    <div class="logo__wrapper">
-        <div class="d-flex justify-content-center align-items-center logo__image">
-            <img src="../img/navLogo.svg" alt="" />
+        <div class="sidenav" id="sideNav">
+            <div class="logo__wrapper">
+                <div class="d-flex justify-content-center align-items-center logo__image">
+                    <img src="../img/navLogo.svg" alt="" />
+                </div>
+            </div>
+
+            <ul class="sidenav_links">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="/src/employee_profile.html" class="active">Profile</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Employers</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
         </div>
-    </div>
 
-    <ul class="sidenav_links">
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="/src/employee_profile.html" class="active">Profile</a></li>
-        <li><a href="#">Messages</a></li>
-        <li><a href="#">Employers</a></li>
-        <li><a href="#">Support</a></li>
-        <li><a href="#">FAQs</a></li>
-        <li><a href="#">Settings</a></li>
-    </ul>
-</div>
-
-<div id="body__click"></div>
+        <div id="body__click"></div>
 
             <div class="modal fade modal-static" tabindex="-1" role="dialog" id="global_modal">
               <div class="modal-dialog modal-dialog-centered">
@@ -173,6 +177,7 @@ height: 24px;
     ​
 
     <div id="main-section">
+
         <div class="container-fluid w-100 top__nav__wrapper sticky-top">
             <div class="top__nav__contents py-4">
                 <div class="d-flex justify-content-between justify-content-lg-end align-items-center top__nav">
