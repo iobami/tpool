@@ -1,0 +1,81 @@
+.first {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("/img/AboutUs/AboutUs1.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.first h4 {
+    padding-top: 12%;
+    padding-bottom: 12%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+main {
+    background-color: #FFFFFF;
+}
+p, h1,h2,h3,h4,h5,h6 {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+}
+.second {
+    padding: 120px;
+    padding-bottom: 180px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #343434;
+}
+.second h5{
+    line-height: 2rem;
+}
+.card-body{
+    padding-bottom:2rem !important;
+}
+.card{
+    border-radius: 5px;
+}
+.card:hover{
+    box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.05);
+}
+.icons{
+    display: flex;
+    margin: auto;
+    padding: 15%;
+    padding-bottom:2%;
+}
+.icons2{
+    width:24px;
+    height:24px ;
+}
+.thick{
+    font-weight: 500;
+}
+.fourth{
+    background: #E7EAEC;
+    border-radius: 5px;
+}
+@media (max-width: 900px){
+   .first h4{
+    font-size:30px;
+    }
+    .second {
+        font-size: 16px;
+    }
+}
+@media (max-width: 576px){
+   .first h4{
+    font-size:20px;
+    }
+    .second {
+        font-size: 12px;
+    }
+}
