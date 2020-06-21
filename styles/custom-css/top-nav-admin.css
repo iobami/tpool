@@ -21,6 +21,7 @@ li {
 .top__nav__wrapper {
   background: #FFFFFF;
   box-shadow: 0px 4px 12px rgba(163, 163, 163, 0.25);
+  z-index: 1;
 }
 
 .top__nav__icon {
