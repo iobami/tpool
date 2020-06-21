@@ -24,9 +24,6 @@ body {
   border-radius: 5px;
   margin-bottom: 30px;
   padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .search-bar a {
@@ -52,8 +49,6 @@ body {
 }
 
 .search-bar form .input-field {
-  display: -ms-flexbox;
-  display: flex;
   width: 420px;
   height: 59px;
   box-sizing: border-box;
@@ -151,7 +146,6 @@ body {
 @media only screen and (max-width: 991px) {
   .body-cont{
     margin: auto 0;
-    flex-direction: column;
   }
   .search-bar form .input-field{
     width: 90%;
@@ -161,7 +155,6 @@ body {
 @media screen and (max-width: 768px) {
   .body-cont{
     margin: auto 0;
-    flex-direction: column;
   }
   .search-bar {
     flex-direction: column;
@@ -171,4 +164,10 @@ body {
     margin-top: 30px;
     width: 100%;
   }
+}
+@media only screen and (max-width: 1200px) {
+  .body-cont{
+    margin: auto 0;
+  }
+
 }
