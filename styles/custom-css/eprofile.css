@@ -28,10 +28,11 @@ body {
 }
 
 .btn-primary:hover {
-  border: 1px solid #00AEFF; 
+  /* border: 1px solid #00AEFF; */
+  background-color: #084482!important;
 }
 
-.btn-light {
+.btn-light, .btn-light:hover {
    border: 1px solid #D6D9DF;
    background: #D6D9DF;
    color: #fff;
@@ -39,6 +40,7 @@ body {
   width: 120px;
   height: 31px;
    padding: 3px;
+   cursor: not-allowed!important;
 }
 
 .btn-primary:hover {
@@ -56,6 +58,10 @@ body {
 
 .intern-other p {
   font-size: 14px;
+}
+
+img, svg{
+  cursor: pointer;
 }
 
 .section-title {
@@ -141,15 +147,32 @@ input[type="file"] {
   z-index: 99999;
 }
 
+.skills-choice{
+  margin-top: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.tracks{
+  padding-top: 10px;
+}
+.save_profile{
+  margin-top: 76px;
+  margin-bottom: 72px;
+}
+
+.noHover{
+  /* pointer-events:stroke; */
+}
 
 
 @media (max-width: 600px) {
- 
+
   .upload-section .curriculum {
     margin-bottom: 30px;
   }
 
-  
+
   .top__nav__user {
     display: none;
   }
