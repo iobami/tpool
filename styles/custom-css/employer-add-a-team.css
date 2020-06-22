@@ -1,0 +1,90 @@
+body {
+	background: #f4f4f4;
+	font-family: "Poppins", sans-serif;
+}
+
+.email,
+.full-name {
+	width: 30%;
+}
+.email-icon,
+.profile-icon {
+	top: 17px;
+	left: 17px;
+}
+
+.profile-icon {
+	top: 11px;
+}
+.search-icon {
+	top: 26px;
+	left: 25px;
+}
+
+.a-m {
+	margin-right: -1rem;
+}
+
+.search-member,
+.btn-invite {
+	background: #337ab7;
+}
+
+.invite-btn {
+	max-width: unset;
+}
+
+.btn-invite-accepted {
+	background: #042241;
+}
+.btn-invite-sent {
+	background: #b5b5b5;
+}
+
+.form-group,
+.form-group input[type="submit"],
+select,
+input[type="search"] {
+	font-family: "Poppins", sans-serif;
+}
+
+input[type="search"]:focus {
+	outline: none;
+}
+
+.invite-menu {
+	height: 1.6rem;
+	max-width: unset;
+	cursor: pointer;
+}
+
+select {
+	border: 1px solid #ced4da;
+	background: #fff;
+}
+
+.table-wrapper {
+	max-height: 40vh;
+	margin-top: -1px;
+	background: #fff;
+}
+
+tr th {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background: #fff;
+}
+
+/* 700px / 16px (Browser default) === 43.75em */
+@media only screen and (max-width: 43.75em) {
+	.form-group,
+	.form-group input[type="submit"],
+	select,
+	input[type="search"] {
+		width: 98%;
+	}
+	.invite-header {
+		text-align: center;
+	}
+}
