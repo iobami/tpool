@@ -1,0 +1,171 @@
+
+body {
+    background-color: #f4f4f4;
+}
+
+
+
+.chat-list__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.chat-list__new-msg {
+    font-size: 0.875rem;
+    color: #337ab7;
+    margin: 0;
+}
+
+.chat-search--icon {
+    position: relative;
+    top: 38px;
+    left: 10px;
+}
+
+.chat-search--input {
+    border-radius: 5px;
+}
+
+.breakline {
+    border-top: 1px solid #b5b5b5;
+    width: 100%;
+}
+
+.chat-item {
+    border-radius: 5px;
+}
+
+.chat-item--name {
+    font-weight: 600;
+}
+
+.chat-item--time {
+    font-size: 0.625rem;
+}
+
+.chat-item--msg {
+    font-size: 0.875rem;
+}
+
+.msg-check {
+    content: url(../../img/msg-check.svg);
+    margin-right: 5px;
+}
+
+.msg--wrap {
+    border-left: 1px solid #b5b5b5;
+    margin-bottom: 40px;
+
+}
+
+.chat--list-back {
+    background-color: #337ab7;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 70px;
+    text-align: center;
+    display: none;
+}
+
+.msg--body {
+    height: 787px;
+    border-radius: 5px;
+}
+
+.msgs-wrap {
+    height: 700px;
+    padding: 20px 0;
+}
+
+.msg-item {
+    float: left;
+    width: 70%;
+}
+
+.msg-item--right {
+    float: right;
+}
+
+.msg-item--text {
+    background-color: #ecf0f3;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 0;
+}
+
+
+.msg-item--time {
+    font-size: 0.75rem;
+}
+
+.msg-item--text-right {
+    text-align: right;
+    background-color: #337ab7;
+    margin-left: auto;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 0;
+    color: #fff;
+}
+
+.msg-item--text-right::after {
+    content: ' ';
+    position: relative;
+    width: 0;
+    height: 0;
+    right: -20px;
+    left: auto;
+    top: 2px;
+    border: 12px solid;
+    border-color: #337ab7 transparent transparent transparent;
+}
+
+.msg-item--text::before {
+    content: ' ';
+    position: relative;
+    width: 0;
+    height: 0;
+    right: auto;
+    left: -20px;
+    top: 2px;
+    border: 12px solid;
+    border-color: #ecf0f3 transparent transparent transparent;
+}
+
+.msg-item--time-right {
+    text-align: right;
+    font-size: 0.75rem;
+}
+
+.msg--input {
+    border: 1px solid #b5b5b5;
+    border-radius: 40px;
+    padding: 5px 10px;
+}
+
+.msg--input-text {
+    width: 100%;
+    border: none;
+    margin: 0 5px;
+}
+
+.msg--input-send {
+    width: 36px;
+}
+
+#chat--list {
+    display: block;
+}
+
+@media screen and (max-width: 991px) {
+    .msg--wrap {
+        display: none;
+    }
+    .msg--wrap-enter {
+        display: block;
+    }
+    .chat--list-back {
+        display: block;
+    }
+}
