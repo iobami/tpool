@@ -71,6 +71,9 @@
 
         color: #FFFFFF;
       }
+      .btn-pry:hover{
+          background-color: #084482!important;
+      }
 
       .btn-pry:hover,
       .btn-pry:active,

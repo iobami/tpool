@@ -28,7 +28,8 @@ body {
 }
 
 .btn-primary:hover {
-  border: 1px solid #00AEFF;
+  /* border: 1px solid #00AEFF; */
+  background-color: #084482!important;
 }
 
 .btn-light, .btn-light:hover {
@@ -39,6 +40,7 @@ body {
   width: 120px;
   height: 31px;
    padding: 3px;
+   cursor: not-allowed!important;
 }
 
 .btn-primary:hover {
@@ -58,7 +60,7 @@ body {
   font-size: 14px;
 }
 
-img{
+img, svg{
   cursor: pointer;
 }
 

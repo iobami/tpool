@@ -11,9 +11,9 @@ let skills = [
   'User Experience Research'
 ];
 
-
-$('body #update_skill_btn').attr('disabled','disabled');
-$('body #add_skill_btn').attr('disabled','disabled');0
+//
+// $('body #update_skill_btn').attr('disabled','disabled');
+// $('body #add_skill_btn').attr('disabled','disabled');
 
  //Serialize Form to Object
  $.fn.serializeObject = function(){
@@ -315,7 +315,7 @@ function call_modal({title, content, size}){
 
 	$('.modal-title').html(title);
 	$('.modal-body').html(content+'<br class="clear"/>');
-  $('#add_skill_btn').attr('disabled',true);
+  // $('#add_skill_btn').attr('disabled',true);
 
 // setTimeout(()=>{
 //
