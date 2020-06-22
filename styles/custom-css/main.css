@@ -14,17 +14,17 @@ body {
    overflow: hidden;
    max-height: 500px;
 }
-.nav-link{
+.nav-link, .talent-link{
    border-bottom-width: 3px;
    border-bottom-style: solid;
    border-bottom-color: transparent;
 }
 
-.nav-link:hover{
+.nav-link:hover, .talent-link:hover, .talent-link:active{
    border-bottom-color: #084482;
 }
 
-.nav-link:hover, .talent-link:hover {
+.nav-link:hover, .talent-link:hover, .talent-link:active{
    color: black;
    text-decoration: none;
    border-bottom: 3px solid #084482;
@@ -39,7 +39,7 @@ body {
 }
 
 .talent-row{
-   max-width: 800px;
+   max-width: 1400px;
 }
 .main-section {
    background-color: #D6D9DF;
@@ -161,6 +161,17 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
 .read-more{
    color: white;
 }
+
+.client-testimonial{
+   display: block;
+   background: no-repeat url("/img/Adelanke.svg");
+   background-size: cover;
+   width: 56px;
+   height: 56px;
+   border-radius: 50%;
+   padding-left: 15px;
+   /* width: 614px !important; */
+ }
 
 .card{
    border-radius: 5px !important;
