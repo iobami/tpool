@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e5e5e5;
+  font-family: "Poppins", sans-serif;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.body-cont{
+  max-width: 1440px;
+  margin-left: 240px;
+}
+
+/* SEARCH BAR STYLES */
+.search-bar {
+  background: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.search-bar a {
+  color: #084482;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.search-bar a > i {
+  color: #000000;
+  margin-right: 20px;
+}
+
+.search-bar form .input-field input {
+  border: 1px solid #337ab7;
+  box-sizing: border-box;
+  border-radius: 0 5px 5px 0;
+  padding: 10px 15px 10px 0;
+  width: 100%;
+  outline: none;
+  border-left: none;
+  color: rgba(80, 80, 80, 0.5);
+}
+
+.search-bar form .input-field {
+  width: 420px;
+  height: 59px;
+  box-sizing: border-box;
+}
+
+.search-bar form .input-field .icon {
+  padding: 10px 15px;
+  min-width: 40px;
+  text-align: center;
+  border: 1px solid #337ab7;
+  border-radius: 5px 0px 0px 5px;
+  border-right: none;
+  color: #1f2430;
+  line-height: 30px;
+}
+/* END OF SEARCH BAR */
+
+/* PROFILE CARD */
+.profile-card {
+  background: #ffffff;
+  box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
+  padding: 0 30px 30px 0;
+  margin-bottom: 30px;
+}
+.tag {
+  background-color: #337ab7;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 50px 15px 30px;
+  border-radius: 0px 20px 20px 0;
+}
+
+.profile-card-body {
+  padding: 40px;
+  text-align: center;
+}
+
+.profile-card-body img {
+  height: 128px;
+  width: 128px;
+  margin-bottom: 20px;
+}
+
+.profile-card-body h5 {
+  color: #1f2430;
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.profile-card-body p {
+  margin-bottom: 20px;
+}
+
+.profile-card-body .links a {
+  color: #1f2430;
+  font-size: 14px;
+  text-decoration: none;
+}
+/* END OF PROFILE CARD */
+
+/* REVIEWS SECTION */
+.reviews-header .num-of-review {
+  color: #084482;
+  font-size: 22px;
+}
+.reviews-header .write-review {
+  color: #337ab7;
+  font-size: 22px;
+  text-decoration: none;
+}
+.reviews-body .single-review {
+  padding: 20px 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #b5b5b5;
+}
+.reviews-body .single-review img {
+  margin: 0px 15px 0 0;
+}
+.reviews-body .single-review .media-body .reviewer {
+  margin-bottom: 3px;
+  color: #1f2430;
+  font-size: 20px;
+  font-weight: 600;
+}
+.reviews-body .single-review .media-body .reviewer-post {
+  color: #1f2430;
+}
+.reviews-body .single-review .review-text {
+  color: #353a45;
+}
+/* END OF MAIN REVIEW STYLES */
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 991px) {
+  .body-cont{
+    margin: auto 0;
+  }
+  .search-bar form .input-field{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .body-cont{
+    margin: auto 0;
+  }
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar form .input-field {
+    margin-top: 30px;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .body-cont{
+    margin: auto 0;
+  }
+
+}

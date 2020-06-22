@@ -1,0 +1,157 @@
+.image {
+    background-image: url(../../img/signin.jpg)!important;
+    background-size: auto cover 100% !important;
+    background-repeat: no-repeat;
+    display: block;
+} 
+
+.content-container {
+    max-width: 1440px;
+    padding-bottom: 0!important;
+    padding-top: 0!important;
+}
+
+.form-box {
+    padding-left: 5px;
+}
+
+.form-check-input{
+    width: 20px;
+    height: 24px;
+}
+
+.header h4{
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 32px;
+    line-height:42px;
+    color: #084482;
+}
+    
+    
+    label {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    color: #1F2430;
+    
+    }
+    
+    input::placeholder {
+        font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(178, 178, 178, 0.58);
+    
+    }
+    
+    
+    .form-check-label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #495057;
+    padding-left: 15px;
+    }
+
+    .btn-log .btn-log:visited {
+        background-color: #00AEFF !important;
+        color: white;
+    }
+    .btn-log:hover{
+        background-color: #337ab7 !important;
+        color: white;
+    } 
+    .btn-log:active{
+        background-color: #084482 !important;
+        color: white;
+    } 
+
+    .btn-log {
+        background-color: transparent!important;
+        border: 1.5px solid #00AEFF;
+        color: #00AEFF;
+        font-weight: bolder;
+    }
+    a {
+        text-decoration: none!important;
+    }
+span {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #084482;
+    
+    }
+    
+    span:before,
+    span:after {
+        content: '';
+        border-top:2px solid #084482;
+        margin: 0 20px 0 0;
+        flex: 1 0 20px;
+    }
+    
+    span:after {
+        margin: 0 0 0 20px;
+    }
+    
+    .btn-social {
+    
+    box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
+    border-radius: 5px;
+    color: white;
+    text-align: center!important;
+    font-family: Poppins;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+
+    .btn-facebook {
+        background: #3B5998;
+    }
+
+    .btn-google {
+    background: #DB4A39;
+    }
+    
+    .btn-facebook:hover {
+        color:white;
+        background-color: #3a65c4;
+    }
+    
+    
+    .btn-google:hover {
+        color: white;
+        background: #f7220b;
+    }
+    
+    .fa {
+        font-size: 16px;
+    }
+
+    .acct {
+        font-size: 16px;
+    
+    }
+    input[type=checkbox]:checked + label:before {
+        background-color: #337ab7 !important;
+        border-color: #337ab7 !important;
+        color: #fff!important;
+        box-shadow: none!important;
+        outline: none!important;
+      }

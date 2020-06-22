@@ -1,0 +1,102 @@
+body{
+  background-color: #E5E5E5;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* #sideNav{
+  margin-top: 6.5rem !important;
+} */
+
+.main-content{
+  max-width: 75rem;
+}
+.filter-title{
+  color: #084482;
+}
+
+.subfilter-title{
+  color: #353A45;
+}
+
+.form-control-outline{
+  border: #337ab7 solid 1px;
+}
+
+#search-input-employee{
+  border-color:  #337ab7;
+  font-size: 1rem;
+}
+#search-input-employee:focus, select.form-control:focus{
+  box-shadow: none;
+  border-color:  #337ab7;
+}
+
+select.form-control{
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+   background-image: url("data:image/svg+xml;utf8,<svg fill='royalblue' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 5px;
+}
+
+.profile-card{
+  min-height: 414px;
+}
+.profile-card .skill-pill{
+  text-align: center;
+  line-height: 24px;
+  max-width: 56%;
+  border-radius: 0 20px 20px 0;
+  color: #FFF;
+}
+.profile-card img{
+  max-width: 8rem;
+  height: 8rem;
+}
+.profile-card h4{
+  font-weight: 600;
+}
+
+.frontend{
+  background-color: #337AB7;
+}
+.ui, .mobile{
+  background-color:  #00AEFF;
+}
+.backend{
+  background-color: #084482;
+}
+
+.btn-load-more{
+  background-color:  #00AEFF;
+  font-size: 24px;
+}
+
+
+@media screen and (min-width: 576px){
+  .profile-card{
+    min-width: calc(50% - 12px);
+  }
+}
+@media screen and (min-width: 992px){
+
+  .main-content{
+    width: auto;
+    margin-left: 230px;
+  }
+}
+/* 
+@media screen and (min-width: 1023.8px){
+  .profile-card{
+    min-width: calc(50% - 24px);
+  }
+}  */
+
+@media screen and (min-width: 1200px){
+  .profile-card{
+    min-width: calc(33% - 12px);
+  }
+} 
