@@ -242,125 +242,125 @@ height: 24px;
                             <hr>
                             <div class="text-center">
                                 <a href="#" type="button" class="btn btn-lg btn-primary call-modal"  title="Edit profile" data-modal-size="lg"><span id="edit_text">Edit Profile</span>
-                                      <div class="hidden-content">
+                                  <div class="hidden-content">
 
-                                        <div class="container">
-                                              <form action="" id="edit-profile">
-                                                <p id="error-message"></p>
-                                                <p id="success-message"></p>
+                                    <!-- <div class="container"> -->
+                                          <form action="" id="edit-profile">
+                                            <p id="error-message"></p>
+                                            <p id="success-message"></p>
 
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="first name" class="super-label">First
+                                                            name</label>
+                                                        <input type="text" placeholder="Genesis"
+                                                            class="form-control" id="first-name"
+                                                            aria-describedby="nameHelp">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="lastname" class="super-label">Last
+                                                            name</label>
+                                                        <input type="text" placeholder="Anosike"
+                                                            class="form-control" id="last-name"
+                                                            aria-describedby="nameHelp">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="email" class="super-label">Email</label>
+                                                        <input type="email"
+                                                            placeholder="anosikegenesis@gmail.com"
+                                                            class="form-control" id="email"
+                                                            aria-describedby="emailHelp">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="location"
+                                                            class="super-label">Location</label>
+                                                        <input type="text" placeholder="Ibadan, Nigeria"
+                                                            class="form-control" id="location"
+                                                            aria-describedby="locationHelp">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="skills-choice">
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="first name" class="super-label">First
-                                                                name</label>
-                                                            <input type="text" placeholder="Genesis"
-                                                                class="form-control" id="first-name"
-                                                                aria-describedby="nameHelp">
-
+                                                    <div class="col-md-6 tracks">
+                                                        <label class="super-label"
+                                                            for="exampleFormControl">Track(s)</label>
+                                                        <div class="form-group form-check">
+                                                            <input type="checkbox" class="form-check-input noHover"
+                                                                id="Backend" value="Backend Development">
+                                                            <label class="form-check-label"
+                                                                for="exampleCheck1">Backend
+                                                                Development</label>
+                                                        </div>
+                                                        <div class="form-group form-check">
+                                                            <input type="checkbox" class="form-check-input noHover"
+                                                                id="design" value="UI/UX Design">
+                                                            <label class="form-check-label"
+                                                                for="exampleCheck1">UI/UX
+                                                                Design</label>
+                                                        </div>
+                                                        <div class="form-group form-check">
+                                                            <input type="checkbox" class="form-check-input noHover"
+                                                                id="frontend" value="frontend">
+                                                            <label class="form-check-label"
+                                                                for="exampleCheck1">Frontend
+                                                                Development</label>
+                                                        </div>
+                                                        <div class="form-group form-check">
+                                                            <input type="checkbox" class="form-check-input noHover"
+                                                                id="mobile" value="Mobile Development">
+                                                            <label class="form-check-label"
+                                                                for="exampleCheck1">Mobile
+                                                                Development</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="lastname" class="super-label">Last
-                                                                name</label>
-                                                            <input type="text" placeholder="Anosike"
-                                                                class="form-control" id="last-name"
-                                                                aria-describedby="nameHelp">
+                                                            <label for="exampleFormControlFile1"
+                                                                class="super-label">Profile photo</label>
+                                                            <div class="file-box">
+                                                              <span id="placeholder">profile-pic.png</span>
+                                                                <!-- <label for="file" class="btn btn-primary">Browse</label> -->
+                                                                <input type="file" class=""
+                                                                    placeholder="profile.png" id="file"
+                                                                    onchange="Filevalidation()">
+                                                                    <button type="button" name="button" class="btn" id="file-btn">Browse</button>
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="email" class="super-label">Email</label>
-                                                            <input type="email"
-                                                                placeholder="anosikegenesis@gmail.com"
-                                                                class="form-control" id="email"
-                                                                aria-describedby="emailHelp">
 
+                                                            </div>
+                                                            <p id="size"> </p>
+                                                            <p id="file-message"></p>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="location"
-                                                                class="super-label">Location</label>
-                                                            <input type="text" placeholder="Ibadan, Nigeria"
-                                                                class="form-control" id="location"
-                                                                aria-describedby="locationHelp">
-                                                        </div>
+                                                        <p>Recommended dimensions: 200 x 200px
+                                                            Maximum file size: 500kb.
+                                                            Please add only a professional looking headshot</p>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <hr>
-
-                                                <div class="skills-choice">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label class="super-label"
-                                                                for="exampleFormControl">Track(s)</label>
-                                                            <div class="form-group form-check">
-                                                                <input type="checkbox" class="form-check-input"
-                                                                    id="Backend" value="Backend Development">
-                                                                <label class="form-check-label"
-                                                                    for="exampleCheck1">Backend
-                                                                    Development</label>
-                                                            </div>
-                                                            <div class="form-group form-check">
-                                                                <input type="checkbox" class="form-check-input"
-                                                                    id="design" value="UI/UX Design">
-                                                                <label class="form-check-label"
-                                                                    for="exampleCheck1">UI/UX
-                                                                    Design</label>
-                                                            </div>
-                                                            <div class="form-group form-check">
-                                                                <input type="checkbox" class="form-check-input"
-                                                                    id="frontend" value="frontend">
-                                                                <label class="form-check-label"
-                                                                    for="exampleCheck1">Frontend
-                                                                    Development</label>
-                                                            </div>
-                                                            <div class="form-group form-check">
-                                                                <input type="checkbox" class="form-check-input"
-                                                                    id="mobile" value="Mobile Development">
-                                                                <label class="form-check-label"
-                                                                    for="exampleCheck1">Mobile
-                                                                    Development</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="exampleFormControlFile1"
-                                                                    class="super-label">Profile photo</label>
-                                                                <div class="file-box">
-                                                                  <span id="placeholder">profile-pic.png</span>
-                                                                    <!-- <label for="file" class="btn btn-primary">Browse</label> -->
-                                                                    <input type="file" class=""
-                                                                        placeholder="profile.png" id="file"
-                                                                        onchange="Filevalidation()">
-                                                                        <button type="button" name="button" class="btn" id="file-btn">Browse</button>
+                                            <div class="text-center save_profile">
+                                                <button type="submit" class="btn btn-lg btn-primary">Save
+                                                    profile</button>
+                                            </div>
 
 
-                                                                </div>
-                                                                <p id="size"> </p>
-                                                                <p id="file-message"></p>
-                                                            </div>
-                                                            <p>Recommended dimensions: 200 x 200px
-                                                                Maximum file size: 500kb.
-                                                                Please add only a professional looking headshot</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                          </form>
+                                    <!-- </div> -->
 
-                                                <div class="text-center">
-                                                    <button type="submit" class="btn btn-lg btn-primary">Save
-                                                        profile</button>
-                                                </div>
-
-
-                                              </form>
-                                        </div>
-
-                                      </div>
+                                  </div>
 
                                   </a>
                             </div>

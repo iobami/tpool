@@ -19,6 +19,9 @@
       }
 
       .modal-content{
+        padding-top: 20px;
+        padding-left: 25px;
+        padding-right: 25px;
       }
 
       button[disabled='disabled']{
