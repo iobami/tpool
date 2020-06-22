@@ -17,7 +17,7 @@
 <body class="">
     <div id="body__click"></div>
 
-    <div class="container-fluid w-100 top__nav__wrapper sticky-top pl-4 pr-5">
+    <div class="container-fluid w-100 top__nav__wrapper sticky-top ">
         <div class="top__nav__contents py-4">
             <div class="d-flex justify-content-between justify-content-lg-end align-items-center top__nav">
 
@@ -60,107 +60,110 @@
 
 
     <div class="container-fluid mt-4">
+        <div class="row">
 
-        <div class="col-auto d-md-block sticky-top remove-block">
-            <div class="sidenav" id="sideNav">
-                <div class="logo__wrapper">
-                    <div class="d-flex justify-content-center align-items-center logo__image">
-                        <img src="../img/navLogo.svg" alt="" />
+            <div class="col-auto d-md-block sticky-top remove-block">
+                <div class="sidenav" id="sideNav">
+                    <div class="logo__wrapper">
+                        <div class="d-flex justify-content-center align-items-center logo__image">
+                            <img src="../img/navLogo.svg" alt="" />
+                        </div>
                     </div>
+                    ​
+                    <ul class="sidenav_links d-sm">
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Messages</a></li>
+                        <li><a href="#">Employees</a></li>
+                        <li><a href="#">Add a team</a></li>
+                        <li><a href="#" class="active">Support</a></li>
+                        <li><a href="#">Settings</a></li>
+                    </ul>
                 </div>
-                ​
-                <ul class="sidenav_links d-sm">
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Messages</a></li>
-                    <li><a href="#">Employees</a></li>
-                    <li><a href="#">Add a team</a></li>
-                    <li><a href="#" class="active">Support</a></li>
-                    <li><a href="#">Settings</a></li>
-                </ul>
-            </div>
-        </div>
 
-
-        <!-- main content start -->
-        <div class="pt-5 container-fluid" id="main-content">
-
-            <div class="container-fluid d-inline-block align-items-center justify-content-center" id="main-content_1">
-                <h3 class="pb-3">Support</h3>
-
-                <div class="d-flex align-items-center justify-content-center p-5 container-fluid" id="section-a">
-                    <label for="search-bar" id="ask" class="text-center"> Ask about a topic before trying to contact
-                        support</label>
-
-                    <!-- search icon begins -->
-                    <div id="search-icon">
-                        <img src="../img/search-icon.svg">
-                    </div>
-                    <!-- search icon ends -->
-
-                    <!-- search bar begins -->
-                    <input type="search" name="search-bar" id="search-bar" placeholder="Ask us anything"
-                        class="px-5 form-control">
-                    <!-- search bar ends -->
-
-                    <button id="search-btn" class="ml-2 btn">Search</button>
-                </div>
             </div>
 
-            <div class="container-fluid pb-5 sidebar-margin pt-5 px-md-5 mr-5 " id="main-content_2">
-                <div class="container-fluid  row justify-content-start align-items-start" id="section-b">
+
+            <!-- main content start -->
+            <div class="pt-5 container-fluid" id="main-content">
+
+                <div class="container-fluid d-inline-block align-items-center justify-content-center"
+                    id="main-content_1">
+                    <h3 class="pb-3">Support</h3>
+
+                    <div class="d-flex align-items-center justify-content-center p-5 container-fluid" id="section-a">
+                        <label for="search-bar" id="ask" class="text-center"> Ask about a topic before trying to contact
+                            support</label>
+
+                        <!-- search icon begins -->
+                        <div id="search-icon">
+                            <img src="../img/search-icon.svg">
+                        </div>
+                        <!-- search icon ends -->
+
+                        <!-- search bar begins -->
+                        <input type="search" name="search-bar" id="search-bar" placeholder="Ask us anything"
+                            class="px-5 form-control">
+                        <!-- search bar ends -->
+
+                        <button id="search-btn" class="ml-2 btn">Search</button>
+                    </div>
+                </div>
+
+                <div class="container-fluid pb-5 sidebar-margin pt-5 px-md-5 mr-5 " id="main-content_2">
+                    <div class="container-fluid  row justify-content-start align-items-start" id="section-b">
 
                         <div id="questions" class="mb-5 mb-md-none  col-lg col-md-6 col-12">
-                        <ul>
-                            <h4>Top 5 Questions</h4>
-                            <li><a href="#">How do I get an employee</a></li>
-                            <li><a href="#">What are the ways to get started</a></li>
-                            <li><a href="#">How do I subscribe for Newsletter</a></li>
-                            <li><a href="#">How do I unsubscribe from mailing list</a></li>
-                            <li><a href="#">How do i remove a team member</a></li>
-                        </ul>
-                    </div>
+                            <ul>
+                                <h4>Top 5 Questions</h4>
+                                <li><a href="#">How do I get an employee</a></li>
+                                <li><a href="#">What are the ways to get started</a></li>
+                                <li><a href="#">How do I subscribe for Newsletter</a></li>
+                                <li><a href="#">How do I unsubscribe from mailing list</a></li>
+                                <li><a href="#">How do i remove a team member</a></li>
+                            </ul>
+                        </div>
                         <div id="talentpool-basics" class="mb-5 mb-md-none col-lg col-md-6 col-sm-12">
-                        <ul>
-                            <h4>Talentpool Basics</h4>
-                            <li><a href="#">User Guide</a></li>
-                            <li><a href="#">Talentpool Features</a></li>
-                            <li><a href="#">Account Settings</a></li>
-                            <li><a href="#">Community help forum</a></li>
-                            <li><a href="#">Blog content</a></li>
-                        </ul>
-                    </div>
+                            <ul>
+                                <h4>Talentpool Basics</h4>
+                                <li><a href="#">User Guide</a></li>
+                                <li><a href="#">Talentpool Features</a></li>
+                                <li><a href="#">Account Settings</a></li>
+                                <li><a href="#">Community help forum</a></li>
+                                <li><a href="#">Blog content</a></li>
+                            </ul>
+                        </div>
 
                         <div id="subscription" class="mb-5 mb-md-none mr-5 col-lg col-md-12 col-sm-12">
-                        <ul>
-                            <h4>Subscription &#38 Payment</h4>
-                            <li><a href="#">Business Plan</a></li>
-                            <li><a href="#">Trial Plan</a></li>
-                            <li><a href="#">Payment and difficulties</a></li>
-                            <li><a href="#">Support Plan</a></li>
-                            <li><a href="#">Return Policy</a></li>
-                            <li><a href="#">Terms &#38 Conditions</a></li>
-                        </ul>
+                            <ul>
+                                <h4>Subscription &#38 Payment</h4>
+                                <li><a href="#">Business Plan</a></li>
+                                <li><a href="#">Trial Plan</a></li>
+                                <li><a href="#">Payment and difficulties</a></li>
+                                <li><a href="#">Support Plan</a></li>
+                                <li><a href="#">Return Policy</a></li>
+                                <li><a href="#">Terms &#38 Conditions</a></li>
+                            </ul>
+                        </div>
+
                     </div>
 
-                </div>
+                    <div class="card" id="support-card-main">
 
-                <div class="card" id="support-card-main">
-
-                    <div id="support-card" class="card-body ">
-                        <h4 class="card-title text-center">Need Support&#63</h4>
-                        <p class="card-text text-center d-flex align-items-center justify-content-center h-50">Can't
-                            find the answer you are looking for&#63 Don't worry
-                            </br>we
-                            got you
-                            covered
-                        </p>
-                        <button id="support-btn" class="btn text-center mx-auto ">Contact
-                            Support</button>
+                        <div id="support-card" class="card-body ">
+                            <h4 class="card-title text-center">Need Support&#63</h4>
+                            <p class="card-text text-center d-flex align-items-center justify-content-center h-50">Can't
+                                find the answer you are looking for&#63 Don't worry
+                                </br>we
+                                got you
+                                covered
+                            </p>
+                            <button id="support-btn" class="btn text-center mx-auto ">Contact
+                                Support</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <script src="../js/bootstrap-js/bootstrap.js"></script>
         <script src="../js/bootstrap-js/jquery.js"></script>
         <script src="../js/bootstrap-js/popper.js"></script>
