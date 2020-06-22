@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Gallery | TalentPool</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+  <link rel="stylesheet" href="../styles/custom-css/top-nav-admin.css">
+  <link rel="stylesheet" href="../styles/custom-css/side-nav.css">
+  <link rel="stylesheet"
+    href="../styles/custom-css/employer-employees-gallery.css">
+</head>
+
+<body>
+
+  <!-- Header/Navbar Here -->
+  <div class="container-fluid w-100 top__nav__wrapper sticky-top">
+    <div class="top__nav__contents py-4">
+      <div
+        class="d-flex justify-content-between justify-content-lg-end align-items-center top__nav">
+
+        <div class="d-lg-none mr-3" id="top__nav__toggle">
+          <svg width="35" height="25" viewBox="0 0 35 25" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0 15.2571H35V10.4571H0V15.2571ZM0 24.8571H35V20.0571H0V24.8571ZM0 5.65712H35V0.857117H0V5.65712Z"
+              fill="#084482" fill-opacity="0.87" />
+          </svg>
+        </div>
+
+        <div class="d-flex align-items-center top__nav__links">
+          <div class="top__nav__icon d-none d-md-flex">
+            <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.6211 4.95313C19.7734 4.83203 20 4.94531 20 5.13672V13.125C20 14.1602 19.1602 15 18.125 15H1.875C0.839844 15 0 14.1602 0 13.125V5.14062C0 4.94531 0.222656 4.83594 0.378906 4.95703C1.25391 5.63672 2.41406 6.5 6.39844 9.39453C7.22266 9.99609 8.61328 11.2617 10 11.2539C11.3945 11.2656 12.8125 9.97266 13.6055 9.39453C17.5898 6.5 18.7461 5.63281 19.6211 4.95313ZM10 10C10.9063 10.0156 12.2109 8.85938 12.8672 8.38281C18.0508 4.62109 18.4453 4.29297 19.6406 3.35547C19.8672 3.17969 20 2.90625 20 2.61719V1.875C20 0.839845 19.1602 0 18.125 0H1.875C0.839844 -5.33333e-07 0 0.839842 0 1.875V2.61719C0 2.90625 0.132813 3.17578 0.359375 3.35547C1.55469 4.28906 1.94922 4.62109 7.13281 8.38281C7.78906 8.85938 9.09375 10.0156 10 10Z"
+                fill="black" />
+            </svg>
+          </div>
+
+          <div class="top__nav__icon d-none d-md-flex">
+            <svg width="18" height="20" viewBox="0 0 18 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M16.9486 14.2992C16.0795 13.43 15 12.3484 15 8.125C15 5.02367 12.741 2.45043 9.77879 1.95977C9.92315 1.75126 10.0003 1.50361 10 1.25C10 0.559648 9.44035 0 8.75 0C8.05964 0 7.5 0.559648 7.5 1.25C7.5 1.51367 7.58183 1.75813 7.72121 1.95977C4.75902 2.45043 2.5 5.02367 2.5 8.125C2.5 12.3484 1.42019 13.43 0.55105 14.2992C-0.626645 15.4769 0.208003 17.5 1.87687 17.5H6.25C6.25 18.8807 7.36929 20 8.75 20C10.1307 20 11.25 18.8807 11.25 17.5H15.6228C17.2883 17.5 18.1287 15.4793 16.9486 14.2992Z"
+                fill="black" />
+            </svg>
+          </div>
+
+          <div class="d-flex align-items-center top__nav__user">
+            <div class="img-fluid mr-2"><img
+                src="../img/Employer Dashboard/user2.png" alt=""></div>
+            <div class="top__nav__user__name">
+              <h6 class="text-primary m-0">Adelanke Adelanke</h6>
+              <p class="m-0 mr-0">Admin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+
+
+
+    <!-- SideNav Here -->
+    <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
+      <div class="sidenav" id="sideNav">
+        <div class="logo__wrapper">
+          <div
+            class="d-flex justify-content-center align-items-center logo__image">
+            <img src="../../img/navLogo.svg" alt="" />
+          </div>
+        </div>
+        ​
+        <ul class="sidenav_links">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Messages</a></li>
+          <li><a href="#" class="active">Employees</a></li>
+          <li><a href="#">Add a team</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Settings</a></li>
+        </ul>
+      </div>
+      <div id="body__click">
+      </div>
+    </div>
+    <!-- Main Content Here -->
+    <section class="container-fluid main-content">
+      <div class="row mt-4 mx-1 mx-sm-2 mx-md-4 bg-white rounded">
+        <form class="form-inline col-12 py-3">
+          <div class="col-lg-3 d-none d-lg-block">
+            <h4 class="filter-title m-0 pb-2">Employees:</h4>
+            <p class="subfilter-title m-0">Showing all employees...</p>
+          </div>
+          <label class="sr-only" for="search-input-employee">Search for
+            employees</label>
+          <div
+            class="input-group input-group-lg col-sm-6 col-lg-4 mx-lg-auto py-2">
+            <div class="input-group-prepend">
+              <div
+                class="input-group-text bg-white border-right-0 pl-3 pr-1 form-control-outline">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M19.3187 18.0273L13.232 11.9406C14.1766 10.7195 14.6875 9.22656 14.6875 7.65625C14.6875 5.77656 13.9539 4.01406 12.6273 2.68516C11.3008 1.35625 9.53359 0.625 7.65625 0.625C5.77891 0.625 4.01172 1.35859 2.68516 2.68516C1.35625 4.01172 0.625 5.77656 0.625 7.65625C0.625 9.53359 1.35859 11.3008 2.68516 12.6273C4.01172 13.9562 5.77656 14.6875 7.65625 14.6875C9.22656 14.6875 10.7172 14.1766 11.9383 13.2344L18.025 19.3187C18.0428 19.3366 18.064 19.3508 18.0874 19.3604C18.1107 19.3701 18.1357 19.3751 18.1609 19.3751C18.1862 19.3751 18.2112 19.3701 18.2345 19.3604C18.2578 19.3508 18.279 19.3366 18.2969 19.3187L19.3187 18.2992C19.3366 18.2814 19.3508 18.2602 19.3604 18.2369C19.3701 18.2135 19.3751 18.1885 19.3751 18.1633C19.3751 18.138 19.3701 18.113 19.3604 18.0897C19.3508 18.0664 19.3366 18.0452 19.3187 18.0273ZM11.3688 11.3688C10.375 12.3602 9.05781 12.9062 7.65625 12.9062C6.25469 12.9062 4.9375 12.3602 3.94375 11.3688C2.95234 10.375 2.40625 9.05781 2.40625 7.65625C2.40625 6.25469 2.95234 4.93516 3.94375 3.94375C4.9375 2.95234 6.25469 2.40625 7.65625 2.40625C9.05781 2.40625 10.3773 2.95 11.3688 3.94375C12.3602 4.9375 12.9062 6.25469 12.9062 7.65625C12.9062 9.05781 12.3602 10.3773 11.3688 11.3688Z"
+                    fill="#007bff" />
+                </svg>
+              </div>
+            </div>
+            <input type="search"
+              class="form-control border-left-0 pl-1 form-control-outline"
+              id="search-input-employee" placeholder="Search for employee">
+          </div>
+          <div
+            class="form-group col-sm-6 col-lg-4 ml-auto mx-md-auto d-flex flex-row flex-nowrap align-items-center pr-md-0 py-2">
+            <label for="select-filter-skill"
+              class="pr-4 font-weight-bold my-0">Filter:</label>
+            <select class="form-control w-100 form-control-outline"
+              id="select-filter-skill">
+              <option value="all">All skills</option>
+              <option value="backend">Backend development</option>
+              <option value="frontend">Frontend development</option>
+              <option value="mobile">Mobile development</option>
+              <option value="ui">UI/UX design</option>
+              <option value="devops">DevOps</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div
+        class="mx-1 mx-sm-2 mx-md-4 px-0 d-flex flex-column flex-sm-row flex-wrap justify-content-sm-between align-items-sm-center">
+        <div class="profile-card my-5 mx-lg-0 px-0 bg-white shadow-sm">
+          <p class="skill-pill frontend p-2 mb-5">
+            Frontend Developer
+          </p>
+          <div class="mt-4 d-flex flex-column flex-nowrap align-items-center">
+            <img class="mb-3 rounded-circle img-fluid"
+              src="../img/employee-0.png" alt="">
+            <h4 class="mb-0 mt-3 pb-2">Mark Essien</h4>
+            <p class="mb-6 pt-2">Available to work</p>
+          </div>
+          <div
+            class="mt-6 d-flex flex-row justify-content-around align-items-center">
+            <a href="#">
+              <small class="pl-4">
+                <i class="mr-2">
+                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8 6L15 1M1 11H15V1H1V11Z" stroke="#007bff"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </i>
+                Message
+              </small>
+            </a>
+            <a href="#">
+              <small class="pr-4">
+                View Details
+                <i class="ml-2"><svg width="17" height="8" viewBox="0 0 17 8"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16.3536 4.35355C16.5488 4.15829 16.5488 3.84171 16.3536 3.64645L13.1716 0.464466C12.9763 0.269204 12.6597 0.269204 12.4645 0.464466C12.2692 0.659728 12.2692 0.976311 12.4645 1.17157L15.2929 4L12.4645 6.82843C12.2692 7.02369 12.2692 7.34027 12.4645 7.53553C12.6597 7.7308 12.9763 7.7308 13.1716 7.53553L16.3536 4.35355ZM0 4.5H16V3.5H0V4.5Z"
+                      fill="#007bff" />
+                  </svg>
+                </i>
+              </small>
+            </a>
+          </div>
+        </div>
+        <div class="profile-card my-5 px-0 bg-white shadow-sm">
+          <p class="skill-pill backend p-2 mb-5">
+            Backend Developer
+          </p>
+          <div class="mt-4 d-flex flex-column flex-nowrap align-items-center">
+            <img class="mb-3 rounded-circle img-fluid"
+              src="../img/employee-1.png" alt="">
+            <h4 class="mb-0 mt-3 pb-2">Oluwanifemi Ajayi</h4>
+            <p class="mb-6 pt-2">Available to work</p>
+          </div>
+          <div
+            class="mt-6 d-flex flex-row justify-content-around align-items-center">
+            <a href="#">
+              <small class="pl-4">
+                <i class="mr-2">
+                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8 6L15 1M1 11H15V1H1V11Z" stroke="#007bff"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </i>
+                Message
+              </small>
+            </a>
+            <a href="#">
+              <small class="pr-4">
+                View Details
+                <i class="ml-2"><svg width="17" height="8" viewBox="0 0 17 8"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16.3536 4.35355C16.5488 4.15829 16.5488 3.84171 16.3536 3.64645L13.1716 0.464466C12.9763 0.269204 12.6597 0.269204 12.4645 0.464466C12.2692 0.659728 12.2692 0.976311 12.4645 1.17157L15.2929 4L12.4645 6.82843C12.2692 7.02369 12.2692 7.34027 12.4645 7.53553C12.6597 7.7308 12.9763 7.7308 13.1716 7.53553L16.3536 4.35355ZM0 4.5H16V3.5H0V4.5Z"
+                      fill="#007bff" />
+                  </svg>
+                </i>
+              </small>
+            </a>
+          </div>
+        </div>
+        <div
+          class="profile-card my-5 mx-lg-0 px-0 bg-white shadow-sm align-self-sm-center">
+          <p class="skill-pill mobile p-2 mb-5">
+            Mobile Developer
+          </p>
+          <div class="mt-4 d-flex flex-column flex-nowrap align-items-center">
+            <img class="mb-3 rounded-circle img-fluid"
+              src="../img/employee-4.png" alt="">
+            <h4 class="mb-0 mt-3 pb-2">Ogunleye Samuel</h4>
+            <p class="mb-6 pt-2">Available to work</p>
+          </div>
+          <div
+            class="mt-6 d-flex flex-row justify-content-around align-items-center">
+            <a href="#">
+              <small class="pl-4">
+                <i class="mr-2">
+                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8 6L15 1M1 11H15V1H1V11Z" stroke="#007bff"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </i>
+                Message
+              </small>
+            </a>
+            <a href="#">
+              <small class="pr-4">
+                View Details
+                <i class="ml-2"><svg width="17" height="8" viewBox="0 0 17 8"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16.3536 4.35355C16.5488 4.15829 16.5488 3.84171 16.3536 3.64645L13.1716 0.464466C12.9763 0.269204 12.6597 0.269204 12.4645 0.464466C12.2692 0.659728 12.2692 0.976311 12.4645 1.17157L15.2929 4L12.4645 6.82843C12.2692 7.02369 12.2692 7.34027 12.4645 7.53553C12.6597 7.7308 12.9763 7.7308 13.1716 7.53553L16.3536 4.35355ZM0 4.5H16V3.5H0V4.5Z"
+                      fill="#007bff" />
+                  </svg>
+                </i>
+              </small>
+            </a>
+          </div>
+        </div>
+        <div class="profile-card my-5 mx-lg-0 px-0 bg-white shadow-sm">
+          <p class="skill-pill backend p-2 mb-5">
+            Backend Developer
+          </p>
+          <div class="mt-4 d-flex flex-column flex-nowrap align-items-center">
+            <img class="mb-3 rounded-circle img-fluid"
+              src="../img/employee-2.png" alt="">
+            <h4 class="mb-0 mt-3 pb-2">Ibrahim Adekunle</h4>
+            <p class="mb-6 pt-2">Available to work</p>
+          </div>
+          <div
+            class="mt-6 d-flex flex-row justify-content-around align-items-center">
+            <a href="#">
+              <small class="pl-4">
+                <i class="mr-2">
+                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8 6L15 1M1 11H15V1H1V11Z" stroke="#007bff"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </i>
+                Message
+              </small>
+            </a>
+            <a href="#">
+              <small class="pr-4">
+                View Details
+                <i class="ml-2"><svg width="17" height="8" viewBox="0 0 17 8"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16.3536 4.35355C16.5488 4.15829 16.5488 3.84171 16.3536 3.64645L13.1716 0.464466C12.9763 0.269204 12.6597 0.269204 12.4645 0.464466C12.2692 0.659728 12.2692 0.976311 12.4645 1.17157L15.2929 4L12.4645 6.82843C12.2692 7.02369 12.2692 7.34027 12.4645 7.53553C12.6597 7.7308 12.9763 7.7308 13.1716 7.53553L16.3536 4.35355ZM0 4.5H16V3.5H0V4.5Z"
+                      fill="#007bff" />
+                  </svg>
+                </i>
+              </small>
+            </a>
+          </div>
+        </div>
+        <div class="profile-card my-5 mx-lg-0 px-0 bg-white shadow-sm">
+          <p class="skill-pill frontend p-2 mb-5">
+            Frontend Developer
+          </p>
+          <div class="mt-4 d-flex flex-column flex-nowrap align-items-center">
+            <img class="mb-3 rounded-circle img-fluid"
+              src="../img/employee-5.png" alt="">
+            <h4 class="mb-0 mt-3 pb-2">Seyi Onifade</h4>
+            <p class="mb-6 pt-2">Available to work</p>
+          </div>
+          <div
+            class="mt-6 d-flex flex-row justify-content-around align-items-center">
+            <a href="#">
+              <small class="pl-4">
+                <i class="mr-2">
+                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8 6L15 1M1 11H15V1H1V11Z" stroke="#007bff"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </i>
+                Message
+              </small>
+            </a>
+            <a href="#">
+              <small class="pr-4">
+                View Details
+                <i class="ml-2"><svg width="17" height="8" viewBox="0 0 17 8"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16.3536 4.35355C16.5488 4.15829 16.5488 3.84171 16.3536 3.64645L13.1716 0.464466C12.9763 0.269204 12.6597 0.269204 12.4645 0.464466C12.2692 0.659728 12.2692 0.976311 12.4645 1.17157L15.2929 4L12.4645 6.82843C12.2692 7.02369 12.2692 7.34027 12.4645 7.53553C12.6597 7.7308 12.9763 7.7308 13.1716 7.53553L16.3536 4.35355ZM0 4.5H16V3.5H0V4.5Z"
+                      fill="#007bff" />
+                  </svg>
+                </i>
+              </small>
+            </a>
+          </div>
+        </div>
+        <div class="profile-card my-5 mx-lg-0 px-0 bg-white shadow-sm">
+          <p class="skill-pill ui p-2 mb-5">
+            UI/UX Designer
+          </p>
+          <div class="mt-4 d-flex flex-column flex-nowrap align-items-center">
+            <img class="mb-3 rounded-circle img-fluid"
+              src="../img/employee-1.png" alt="">
+            <h4 class="mb-0 mt-3 pb-2">Tomiwa Ajayi</h4>
+            <p class="mb-6 pt-2">Available to work</p>
+          </div>
+          <div
+            class="mt-6 d-flex flex-row justify-content-around align-items-center">
+            <a href="#">
+              <small class="pl-4">
+                <i class="mr-2">
+                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8 6L15 1M1 11H15V1H1V11Z" stroke="#007bff"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </i>
+                Message
+              </small>
+            </a>
+            <a href="#">
+              <small class="pr-4">
+                View Details
+                <i class="ml-2"><svg width="17" height="8" viewBox="0 0 17 8"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16.3536 4.35355C16.5488 4.15829 16.5488 3.84171 16.3536 3.64645L13.1716 0.464466C12.9763 0.269204 12.6597 0.269204 12.4645 0.464466C12.2692 0.659728 12.2692 0.976311 12.4645 1.17157L15.2929 4L12.4645 6.82843C12.2692 7.02369 12.2692 7.34027 12.4645 7.53553C12.6597 7.7308 12.9763 7.7308 13.1716 7.53553L16.3536 4.35355ZM0 4.5H16V3.5H0V4.5Z"
+                      fill="#007bff" />
+                  </svg>
+                </i>
+              </small>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="row mb-3 d-flex flex-row justify-content-center align-items-center">
+        <button class="btn btn-lg text-white btn-load-more px-5 py-3 my-4">
+          Load More
+        </button>
+      </div>
+    </section>
+  </main>
+  <script src="../../js/bootstrap-js/popper.js"></script>
+  <script src="../../js/bootstrap-js/jquery.js"></script>
+  <script src="../../js/bootstrap-js/bootstrap.js"></script>
+  <script src="../js/custom-js/side-nav.js"></script>
+</body>
+
+</html>

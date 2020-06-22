@@ -1,490 +1,569 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no" />
 
-    <link rel="stylesheet" href="../styles/custom-css/employer-dash-settings.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css" />
 
-    <link href="../styles/custom-css/top-nav-admin.css" rel="stylesheet" />
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-    <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/custom-css/employer-dash-settings.css" />
 
-		<link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
+  <link href="../styles/custom-css/top-nav-admin.css" rel="stylesheet" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
 
-    <title>Employer Dashboard - Settings | TalentPool</title>
-  </head>
-  
-  <body>
-    <div id="body__click"></div>
+  <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon" />
 
-    <div class="container-fluid w-100 top__nav__wrapper sticky-top pl-4 pr-5">
-			<div class="top__nav__contents py-4">
-				<div class="d-flex justify-content-between justify-content-lg-end align-items-center top__nav">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
-					<div class="d-lg-none mr-3" id="top__nav__toggle">
-						<svg width="35" height="25" viewBox="0 0 35 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M0 15.2571H35V10.4571H0V15.2571ZM0 24.8571H35V20.0571H0V24.8571ZM0 5.65712H35V0.857117H0V5.65712Z" fill="#084482" fill-opacity="0.87"/>
-						</svg>
-					</div>
-					
-					<div class="d-flex align-items-center top__nav__links">
-						<div class="top__nav__icon d-none d-md-flex">
-							<svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M19.6211 4.95313C19.7734 4.83203 20 4.94531 20 5.13672V13.125C20 14.1602 19.1602 15 18.125 15H1.875C0.839844 15 0 14.1602 0 13.125V5.14062C0 4.94531 0.222656 4.83594 0.378906 4.95703C1.25391 5.63672 2.41406 6.5 6.39844 9.39453C7.22266 9.99609 8.61328 11.2617 10 11.2539C11.3945 11.2656 12.8125 9.97266 13.6055 9.39453C17.5898 6.5 18.7461 5.63281 19.6211 4.95313ZM10 10C10.9063 10.0156 12.2109 8.85938 12.8672 8.38281C18.0508 4.62109 18.4453 4.29297 19.6406 3.35547C19.8672 3.17969 20 2.90625 20 2.61719V1.875C20 0.839845 19.1602 0 18.125 0H1.875C0.839844 -5.33333e-07 0 0.839842 0 1.875V2.61719C0 2.90625 0.132813 3.17578 0.359375 3.35547C1.55469 4.28906 1.94922 4.62109 7.13281 8.38281C7.78906 8.85938 9.09375 10.0156 10 10Z" fill="black"/>
-							</svg>
-						</div>
-	
-						<div class="top__nav__icon d-none d-md-flex">
-							<svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M16.9486 14.2992C16.0795 13.43 15 12.3484 15 8.125C15 5.02367 12.741 2.45043 9.77879 1.95977C9.92315 1.75126 10.0003 1.50361 10 1.25C10 0.559648 9.44035 0 8.75 0C8.05964 0 7.5 0.559648 7.5 1.25C7.5 1.51367 7.58183 1.75813 7.72121 1.95977C4.75902 2.45043 2.5 5.02367 2.5 8.125C2.5 12.3484 1.42019 13.43 0.55105 14.2992C-0.626645 15.4769 0.208003 17.5 1.87687 17.5H6.25C6.25 18.8807 7.36929 20 8.75 20C10.1307 20 11.25 18.8807 11.25 17.5H15.6228C17.2883 17.5 18.1287 15.4793 16.9486 14.2992Z" fill="black"/>
-							</svg>
-						</div>
-	
-						<div class="d-flex align-items-center top__nav__user">
-							<div class="img-fluid mr-2"><img src="../img/Employer Dashboard/user2.png" alt=""></div>
-							<div class="top__nav__user__name">
-								<h6 class="text-primary m-0">Adelanke Adelanke</h6>
-								<p class="m-0 mr-0">Employer</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-    </div>
+  <title>Employer Dashboard - Settings | TalentPool</title>
+</head>
 
+<body>
+  <div id="body__click"></div>
 
-    <div class="container-fluid mt-4">
-
-      <div class="row">
-
-
-        <div class="col-auto d-md-block sticky-top remove-block">
-          <div class="sidenav" id="sideNav">
-            <div class="logo__wrapper">
-              <div class="d-flex justify-content-center align-items-center logo__image">
-                <img src="../img/navLogo.svg" alt="" />
-              </div>
-            </div>
-                 ​
-            <ul class="sidenav_links d-sm">
-              <li><a href="#">Dashboard</a></li>
-              <li><a href="#">Messages</a></li>
-              <li><a href="#">Employees</a></li>
-              <li><a href="#">Add a team</a></li>
-              <li><a href="#">Support</a></li>
-              <li><a href="#" class = "active">Settings</a></li>
-            </ul>
-          </div>
-              ​
-          
+  <div class="container-fluid w-100 top__nav__wrapper sticky-top pl-4 pr-5">
+    <div class="top__nav__contents py-4">
+      <div class="d-flex justify-content-between justify-content-lg-end align-items-center top__nav">
+        <div class="d-lg-none mr-3" id="top__nav__toggle">
+          <svg width="35" height="25" viewBox="0 0 35 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 15.2571H35V10.4571H0V15.2571ZM0 24.8571H35V20.0571H0V24.8571ZM0 5.65712H35V0.857117H0V5.65712Z"
+              fill="#084482" fill-opacity="0.87" />
+          </svg>
         </div>
 
+        <div class="d-flex align-items-center top__nav__links">
+          <div class="top__nav__icon d-none d-md-flex">
+            <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.6211 4.95313C19.7734 4.83203 20 4.94531 20 5.13672V13.125C20 14.1602 19.1602 15 18.125 15H1.875C0.839844 15 0 14.1602 0 13.125V5.14062C0 4.94531 0.222656 4.83594 0.378906 4.95703C1.25391 5.63672 2.41406 6.5 6.39844 9.39453C7.22266 9.99609 8.61328 11.2617 10 11.2539C11.3945 11.2656 12.8125 9.97266 13.6055 9.39453C17.5898 6.5 18.7461 5.63281 19.6211 4.95313ZM10 10C10.9063 10.0156 12.2109 8.85938 12.8672 8.38281C18.0508 4.62109 18.4453 4.29297 19.6406 3.35547C19.8672 3.17969 20 2.90625 20 2.61719V1.875C20 0.839845 19.1602 0 18.125 0H1.875C0.839844 -5.33333e-07 0 0.839842 0 1.875V2.61719C0 2.90625 0.132813 3.17578 0.359375 3.35547C1.55469 4.28906 1.94922 4.62109 7.13281 8.38281C7.78906 8.85938 9.09375 10.0156 10 10Z"
+                fill="black" />
+            </svg>
+          </div>
 
-        <div class="col ml-sm-auto pl-0 pr-0 pl-lg-0 sidebar-margin">
-<!-- Content Begins Here -->
-          <div class="container-fluid main " id="settings">
-            <h3 class="font-size-1-5em mb-3">Settings</h3>
-            <div class="row no-gutters mb-5">
-              <div class="col-md-4 col-lg-3 extra-rounded vertical-nav">
-                <nav>
-                  <div
-                    class="nav nav-tabs flex-md-column"
-                    id="nav-tab"
-                    role="tablist"
-                  >
-                    <a
-                      class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom"
-                      id="nav-general-tab"
-                      data-toggle="tab"
-                      href="#nav-general"
-                      role="tab"
-                      aria-controls="nav-general"
-                      aria-selected="false"
-                      ><div class="navbar-detail row no-gutters">
-                          <div class="col-auto icon">
-                              <img src="../img/gear 1.png" alt="" class="">
-                          </div>
-                          <div class="col-md pl-md-2">
-                              <span class="">General</span>
-                          </div>                      
-                      </div></a
-                    >
-                    <a
-                      class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom"
-                      id="nav-appearance-tab"
-                      data-toggle="tab"
-                      href="#nav-appearance"
-                      role="tab"
-                      aria-controls="nav-appearance"
-                      aria-selected="false"
-                      ><div class="navbar-detail row no-gutters">
-                          <div class="col-auto icon">
-                              <img src="../img/template 1.svg" alt="" class="">
-                          </div>
-                          <div class="col-md pl-md-2">
-                              <span class="">Appearance</span>
-                          </div>                      
-                      </div></a
-                    >
-                    <a
-                      class="nav-item nav-link active col-md-12 col-sm-4 col-4 bg-transparent-custom"
-                      id="nav-notification-tab"
-                      data-toggle="tab"
-                      href="#nav-notification"
-                      role="tab"
-                      aria-controls="nav-notification"
-                      aria-selected="true"
-                      ><div class="navbar-detail row no-gutters">
-                          <div class="col-auto icon">
-                              <img src="../img/notification 1.svg" alt="" class="">
-                          </div>
-                          <div class="col-md pl-md-2">
-                              <span class="">Notification</span>
-                          </div>                      
-                      </div></a
-                    >
-                    <a
-                      class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom"
-                      id="nav-contact-tab"
-                      data-toggle="tab"
-                      href="#nav-contact"
-                      role="tab"
-                      aria-controls="nav-contact"
-                      aria-selected="false"
-                      ><div class="navbar-detail row no-gutters">
-                          <div class="col-auto icon">
-                              <img src="../img/contact-us 1.svg" alt="" class="">
-                          </div>
-                          <div class="col-md pl-md-2">
-                              <span class="">Contact Us</span>
-                          </div>                      
-                      </div></a
-                    >
-                    <a
-                      class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom"
-                      id="nav-privacy-tab"
-                      data-toggle="tab"
-                      href="#nav-privacy"
-                      role="tab"
-                      aria-controls="nav-privacy"
-                      aria-selected="false"
-                      ><div class="navbar-detail row no-gutters">
-                          <div class="col-auto icon">
-                              <img src="../img/login 1.svg" alt="" class="">
-                          </div>
-                          <div class="col-md pl-md-2">
-                              <span class="">My Privacy</span>
-                          </div>                      
-                      </div></a
-                    >
-                    <a
-                      class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom"
-                      id="nav-abuse-tab"
-                      data-toggle="tab"
-                      href="#nav-abuse"
-                      role="tab"
-                      aria-controls="nav-abuse"
-                      aria-selected="false"
-                      ><div class="navbar-detail row no-gutters">
-                          <div class="col-auto icon">
-                              <img src="../img/technical-support 1.svg" alt="" class="">
-                          </div>
-                          <div class="col-md pl-md-2">
-                              <span class="">Report Abuse</span>
-                          </div>                      
-                      </div></a
-                    >
-                  </div>
-                </nav>
-              </div>
-              <div
-                class="col-md-8 col-lg-9 extra-rounded bg-white pr-5 pl-5 pt-3 pb-3 min-vh-70 edit-tabcontent-padding"
-              >
-                <!-- Tabs content -->
-  
-                <div class="tab-content" id="nav-tabContent">
-                  <div
-                    class="tab-pane fade rounded bg-white p-0 mb-7em"
-                    id="nav-general"
-                    role="tabpanel"
-                    aria-labelledby="nav-general-tab"
-                  >
-                  <h4 class="mb-4 font-size-1em ">
+          <div class="top__nav__icon d-none d-md-flex">
+            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M16.9486 14.2992C16.0795 13.43 15 12.3484 15 8.125C15 5.02367 12.741 2.45043 9.77879 1.95977C9.92315 1.75126 10.0003 1.50361 10 1.25C10 0.559648 9.44035 0 8.75 0C8.05964 0 7.5 0.559648 7.5 1.25C7.5 1.51367 7.58183 1.75813 7.72121 1.95977C4.75902 2.45043 2.5 5.02367 2.5 8.125C2.5 12.3484 1.42019 13.43 0.55105 14.2992C-0.626645 15.4769 0.208003 17.5 1.87687 17.5H6.25C6.25 18.8807 7.36929 20 8.75 20C10.1307 20 11.25 18.8807 11.25 17.5H15.6228C17.2883 17.5 18.1287 15.4793 16.9486 14.2992Z"
+                fill="black" />
+            </svg>
+          </div>
+
+          <div class="d-flex align-items-center top__nav__user">
+            <div class="img-fluid mr-2">
+              <img src="../img/Employer Dashboard/user2.png" alt="" />
+            </div>
+            <div class="top__nav__user__name">
+              <h6 class="text-primary m-0">Adelanke Adelanke</h6>
+              <p class="m-0 mr-0">Employer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-auto d-md-block sticky-top remove-block">
+        <div class="sidenav" id="sideNav">
+          <div class="logo__wrapper">
+            <div class="d-flex justify-content-center align-items-center logo__image">
+              <img src="../img/navLogo.svg" alt="" />
+            </div>
+          </div>
+          ​
+          <ul class="sidenav_links d-sm">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Employees</a></li>
+            <li><a href="#">Add a team</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#" class="active">Settings</a></li>
+          </ul>
+        </div>
+        ​
+      </div>
+
+      <div class="col ml-sm-auto pl-0 pr-0 pl-lg-0 sidebar-margin">
+        <!-- Content Begins Here -->
+        <div class="container-fluid main" id="settings">
+          <h3 class="font-size-1-5em mb-3">Settings</h3>
+          <div class="row no-gutters mb-5">
+            <div class="col-md-4 col-lg-3 extra-rounded vertical-nav">
+              <nav>
+                <div class="nav nav-tabs flex-md-column" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active col-md-12 col-sm-4 col-4 bg-transparent-custom"
+                    id="nav-general-tab" data-toggle="tab" href="#nav-general" role="tab" aria-controls="nav-general"
+                    aria-selected="false">
+                    <div class="navbar-detail row no-gutters">
+                      <div class="col-auto icon">
+                        <img src="../img/gear 1.png" alt="" class="" />
+                      </div>
+                      <div class="col-md pl-md-2">
+                        <span class="">General</span>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom" id="nav-appearance-tab"
+                    data-toggle="tab" href="#nav-appearance" role="tab" aria-controls="nav-appearance"
+                    aria-selected="false">
+                    <div class="navbar-detail row no-gutters">
+                      <div class="col-auto icon">
+                        <img src="../img/template 1.svg" alt="" class="" />
+                      </div>
+                      <div class="col-md pl-md-2">
+                        <span class="">Appearance</span>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom" id="nav-notification-tab"
+                    data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification"
+                    aria-selected="true">
+                    <div class="navbar-detail row no-gutters">
+                      <div class="col-auto icon">
+                        <img src="../img/notification 1.svg" alt="" class="" />
+                      </div>
+                      <div class="col-md pl-md-2">
+                        <span class="">Notification</span>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom" id="nav-contact-tab"
+                    data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">
+                    <div class="navbar-detail row no-gutters">
+                      <div class="col-auto icon">
+                        <img src="../img/contact-us 1.svg" alt="" class="" />
+                      </div>
+                      <div class="col-md pl-md-2">
+                        <span class="">Contact Us</span>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom" id="nav-privacy-tab"
+                    data-toggle="tab" href="#nav-privacy" role="tab" aria-controls="nav-privacy" aria-selected="false">
+                    <div class="navbar-detail row no-gutters">
+                      <div class="col-auto icon">
+                        <img src="../img/login 1.svg" alt="" class="" />
+                      </div>
+                      <div class="col-md pl-md-2">
+                        <span class="">My Privacy</span>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="nav-item nav-link col-md-12 col-sm-4 col-4 bg-transparent-custom" id="nav-abuse-tab"
+                    data-toggle="tab" href="#nav-abuse" role="tab" aria-controls="nav-abuse" aria-selected="false">
+                    <div class="navbar-detail row no-gutters">
+                      <div class="col-auto icon">
+                        <img src="../img/technical-support 1.svg" alt="" class="" />
+                      </div>
+                      <div class="col-md pl-md-2">
+                        <span class="">Report Abuse</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </nav>
+            </div>
+            <div class="col-md-8 col-lg-9 extra-rounded bg-white pr-5 pl-5 pt-3 pb-3 min-vh-70 edit-tabcontent-padding">
+              <!-- Tabs content -->
+
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade rounded show active bg-white p-0 mb-7em" id="nav-general" role="tabpanel"
+                  aria-labelledby="nav-general-tab">
+                  <h4 class="mb-4 font-size-1em">
                     <span class="hr">General</span>
                   </h4>
-                    <p class="mb-2">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                      occaecat cupidatat non proident, sunt in culpa qui officia
-                      deserunt mollit anim id est laborum.
-                    </p>
+
+                  <div class="accordion" id="accordionExample">
+                    <div class="card border-left-0 border-right-0 border-top-0">
+                      <div class="card-header bg-white border-bottom-0 px-0" id="headingOne">
+                        <h2 class="mb-0">
+                          <button id="profile-btn" class="general-btn btn btn-block text-left px-0" type="button"
+                            data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            Profile
+                            <span class="float-right"><i class="fa fa-chevron-down"></i></span>
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body general-btn">
+                          Update your Profile
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card border-left-0 border-right-0">
+                      <div class="card-header bg-white border-bottom-0 px-0" id="headingTwo">
+                        <h2 class="mb-0">
+                          <button id="account-btn" class="general-btn btn btn-block text-left collapsed px-0"
+                            type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            Account Preferences
+                            <span class="float-right"><i class="fa fa-chevron-down"></i></span>
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                        data-parent="#accordionExample">
+                        <div class="card-body general-btn">
+                          Update your Account Preferences
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card border-left-0 border-right-0">
+                      <div class="card-header bg-white border-bottom-0 px-0" id="headingThree">
+                        <h2 class="mb-0">
+                          <button id="login-btn" class="general-btn btn btn-block text-left collapsed px-0"
+                            type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree">
+                            Login & Security
+                            <span class="float-right"><i class="fa fa-chevron-down"></i></span>
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body general-btn">
+                          Update your Login & Security
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card border-left-0 border-right-0 mb-5">
+                      <div class="card-header bg-white border-bottom-0 px-0" id="headingThree">
+                        <h2 class="mb-0">
+                          <button id="accessibility-btn" class="general-btn btn btn-block text-left collapsed px-0"
+                            type="button" data-toggle="collapse" data-target="#accessibility" aria-expanded="false"
+                            aria-controls="accessibility">
+                            Accessibility
+                            <span class="float-right"><i class="fa fa-chevron-down"></i></span>
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="accessibility" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body general-btn">
+                          Update your Accessibility
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div
-                    class="tab-pane fade rounded bg-white p-0 mb-7em"
-                    id="nav-appearance"
-                    role="tabpanel"
-                    aria-labelledby="nav-appearance-tab"
-                  >
-                  <h4 class="mb-4 font-size-1em ">
+                    class="save-changes d-flex justify-content-lg-end align-items-end justify-content-center mt-5 mb-3">
+                    <button style="background: #084482;" class="btn text-white">
+                      Save Changes
+                    </button>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade rounded bg-white p-0 mb-7em" id="nav-appearance" role="tabpanel"
+                  aria-labelledby="nav-appearance-tab">
+                  <h4 class="mb-4 font-size-1em">
                     <span class="hr">Appearance</span>
                   </h4>
-                    <p class=" mb-2">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                      occaecat cupidatat non proident, sunt in culpa qui officia
-                      deserunt mollit anim id est laborum.
-                    </p>
+                  <p class="mb-2">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                    sint occaecat cupidatat non proident, sunt in culpa qui
+                    officia deserunt mollit anim id est laborum.
+                  </p>
+                </div>
+
+                <div class="tab-pane fade rounded bg-white  p-0 mb-7em" id="nav-notification" role="tabpanel"
+                  aria-labelledby="nav-notification-tab">
+                  <div>
+                    <h4 class="mb-4 font-size-1em">
+                      <span class="hr">Notification</span>
+                    </h4>
+
+                    <form action="">
+                      <div class="form-group row no-gutters">
+                        <div class="col-10 border-bottom flex-1 mw-100">
+                          <label for="employment-message-switch" class="change-width"><span
+                              class="font-weight-600">Notify me for Employment Messages: </span>Get notifications when i
+                            receive direct messages
+                            from employees</label>
+                        </div>
+                        <div class="col-auto flex-0 d-flex justify-content-end align-items-center">
+                          <label class="switch">
+                            <input type="checkbox" class="default" id="employment-message-switch" />
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group row no-gutters">
+                        <div class="col-10 flex-1 mw-100 border-bottom">
+                          <label for="acceptance-message-switch" class="change-width"><span
+                              class="font-weight-600">Notify me for Acceptance Messages: </span>Get notifications when
+                            employees accept my
+                            job</label>
+                        </div>
+                        <div class="col-auto d-flex flex-0 justify-content-end align-items-center">
+                          <label class="switch">
+                            <input type="checkbox" class="default" id="acceptance-message-switch" />
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group row no-gutters">
+                        <div class="col-10 flex-1 mw-100 border-bottom">
+                          <label for="logins-switch" class="change-width"><span class="font-weight-600">Notify me for
+                              Logins: </span>Get notifications when i newly sign in with a new
+                            device</label>
+                        </div>
+                        <div class="col-auto d-flex flex-0 justify-content-end align-items-center">
+                          <label class="switch">
+                            <input type="checkbox" class="default" id="logins-switch" />
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group row no-gutters">
+                        <div class="col-10 flex-1 mw-100 border-bottom">
+                          <label for="profile-update-switch" class="change-width"><span class="font-weight-600">Notify
+                              me for Profile Update: </span>Get notifications when i successfully update my
+                            profiles</label>
+                        </div>
+                        <div class="col-auto flex-0 d-flex justify-content-end align-items-center">
+                          <label class="switch">
+                            <input type="checkbox" class="default" id="profile-update-switch" />
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group row no-gutters">
+                        <div class="col-10 flex-1 mw-100 border-bottom">
+                          <label for="verification-switch" class="change-width"><span class="font-weight-600">Notify me
+                              for Verification purpose: </span>Get notifications when there is an
+                            authentications issue with my account</label>
+                        </div>
+                        <div class="col-auto flex-0 d-flex justify-content-end align-items-center">
+                          <label class="switch">
+                            <input type="checkbox" class="default" id="verification-switch" />
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group row no-gutters">
+                        <div class="col-10 flex-1 mw-100 border-bottom">
+                          <label for="regular-update-switch" class="change-width"><span class="font-weight-600">Notify
+                              me for Regular Updates: </span>Get notifications when HNG releases platform
+                            updates and policies</label>
+                        </div>
+                        <div class="col-auto flex-0 d-flex justify-content-end align-items-center">
+                          <label class="switch">
+                            <input type="checkbox" class="default" id="regular-update-switch" />
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group row no-gutters">
+                        <button type="submit" class="btn btn-lg btn-save ml-auto mt-5">
+                          Save Changes
+                        </button>
+                      </div>
+                    </form>
                   </div>
-                  <div
-                    class="tab-pane fade rounded bg-white show active p-0 mb-7em"
-                    id="nav-notification"
-                    role="tabpanel"
-                    aria-labelledby="nav-notification-tab"
-                  >
-                    <div>
-                      <h4 class="mb-4 font-size-1em ">
-                        <span class="hr">Notification</span>
-                      </h4>
-  
-                      <form action="">
-                        <div class="form-group row no-gutters">
-                          <div class="col-10 border-bottom flex-1 mw-100">
-                            <label for="employment-message-switch" class="change-width"
-                              ><span class="font-weight-600"
-                                >Notify me for Employment Messages: </span
-                              >Get notifications when i receive direct messages
-                              from employees</label
-                            >
+                </div>
+
+                <div class="tab-pane fade rounded bg-white p-0 mb-7em" id="nav-contact" role="tabpanel"
+                  aria-labelledby="nav-contact-tab">
+                  <h4 class="mb-4 font-size-1em">
+                    <span class="hr">Contact Us</span>
+                  </h4>
+                  <div class="row">
+                    <div class="col-12 col-md-12 col-lg-9 contact-us-container">
+                      <form action="#" class="needs-validation" novalidate>
+                        <div class="input-group input-group-lg contact-us-input">
+                          <input type="text" class="form-control input" required aria-label="Large"
+                            placeholder="Your Name*" style="font-size: 16px;" />
+                          <div class="valid-feedback">
+                            good !
                           </div>
-                          <div
-                            class="col-auto flex-0 d-flex justify-content-end align-items-center"
-                          >
-                            <label class="switch">
-                              <input
-                                type="checkbox"
-                                class="default"
-                                id="employment-message-switch"
-                              />
-                              <span class="slider round"></span>
-                            </label>
+                          <div class="invalid-feedback">
+                            Please type your name.
                           </div>
                         </div>
-                        <div class="form-group row no-gutters">
-                          <div class="col-10 flex-1 mw-100 border-bottom">
-                            <label for="acceptance-message-switch" class="change-width"
-                              ><span class="font-weight-600"
-                              >Notify me for Acceptance Messages: </span
-                              >Get notifications when employees accept my
-                              job</label
-                            >
+                        <div class="input-group input-group-lg contact-us-input">
+                          <input type="email" class="form-control" required aria-label="Large" placeholder="Your Email*"
+                            style="font-size: 16px;" />
+                          <div class="valid-feedback">
+                            good !
                           </div>
-                          <div
-                            class="col-auto d-flex flex-0 justify-content-end align-items-center"
-                          >
-                            <label class="switch">
-                              <input
-                                type="checkbox"
-                                class="default"
-                                id="acceptance-message-switch"
-                              />
-                              <span class="slider round"></span>
-                            </label>
+                          <div class="invalid-feedback">
+                            Please type your email.
                           </div>
                         </div>
-                        <div class="form-group row no-gutters">
-                          <div class="col-10 flex-1 mw-100 border-bottom">
-                            <label for="logins-switch" class="change-width"
-                              ><span class="font-weight-600"
-                                >Notify me for Logins: </span
-                              >Get notifications when i newly sign in with a new
-                              device</label
-                            >
+                        <div class="input-group input-group-lg contact-us-input">
+                          <input type="text" class="form-control" required aria-label="Large" placeholder="Subject..."
+                            style="font-size: 16px;" />
+                          <div class="valid-feedback">
+                            good !
                           </div>
-                          <div
-                            class="col-auto d-flex flex-0 justify-content-end align-items-center"
-                          >
-                            <label class="switch">
-                              <input
-                                type="checkbox"
-                                class="default"
-                                id="logins-switch"
-                              />
-                              <span class="slider round"></span>
-                            </label>
+                          <div class="invalid-feedback">
+                            Please type the subject.
                           </div>
                         </div>
-                        <div class="form-group row no-gutters">
-                          <div class="col-10 flex-1 mw-100 border-bottom">
-                            <label for="profile-update-switch" class="change-width"
-                              ><span class="font-weight-600"
-                                >Notify me for Profile Update: </span
-                              >Get notifications when i successfully update my
-                              profiles</label
-                            >
+                        <div class="input-group contact-us-input">
+                          <label for="textarea" style="display: none;"></label>
+                          <textarea id="textarea" rows="4" class="form-control" required
+                            placeholder="Your Message..."></textarea>
+                          <div class="valid-feedback">
+                            good !
                           </div>
-                          <div
-                            class="col-auto flex-0 d-flex justify-content-end align-items-center"
-                          >
-                            <label class="switch">
-                              <input
-                                type="checkbox"
-                                class="default"
-                                id="profile-update-switch"
-                              />
-                              <span class="slider round"></span>
-                            </label>
+                          <div class="invalid-feedback">
+                            Please type in a message.
                           </div>
                         </div>
-                        <div class="form-group row no-gutters">
-                          <div class="col-10 flex-1 mw-100 border-bottom">
-                            <label for="verification-switch" class="change-width"
-                              ><span class="font-weight-600"
-                                >Notify me for Verification purpose: </span
-                              >Get notifications when there is an authentications
-                              issue with my account</label
-                            >
-                          </div>
-                          <div
-                            class="col-auto flex-0 d-flex justify-content-end align-items-center"
-                          >
-                            <label class="switch">
-                              <input
-                                type="checkbox"
-                                class="default"
-                                id="verification-switch"
-                              />
-                              <span class="slider round"></span>
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-group row no-gutters">
-                          <div class="col-10 flex-1 mw-100 border-bottom">
-                            <label for="regular-update-switch" class="change-width"
-                              ><span class="font-weight-600"
-                                >Notify me for Regular Updates: </span
-                              >Get notifications when HNG releases platform
-                              updates and policies</label
-                            >
-                          </div>
-                          <div
-                            class="col-auto flex-0 d-flex justify-content-end align-items-center"
-                          >
-                            <label class="switch">
-                              <input
-                                type="checkbox"
-                                class="default"
-                                id="regular-update-switch"
-                              />
-                              <span class="slider round"></span>
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-group row no-gutters">
-                          <button
-                            type="submit"
-                            class="btn btn-lg btn-save ml-auto mt-5"
-                          >
-                            Save Changes
+                        <div class="d-flex justify-content-center contact-us-input">
+                          <button type="submit" class="btn btn-lg">
+                            Send Message
                           </button>
                         </div>
                       </form>
                     </div>
                   </div>
-                  <div
-                    class="tab-pane fade rounded bg-white p-0 mb-7em"
-                    id="nav-contact"
-                    role="tabpanel"
-                    aria-labelledby="nav-contact-tab"
-                  >
-                  <h4 class="mb-4 font-size-1em ">
-                    <span class="hr">Contact Us</span>
-                  </h4>
-                    <p class=" mb-2">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                      occaecat cupidatat non proident, sunt in culpa qui officia
-                      deserunt mollit anim id est laborum.
-                    </p>
-                  </div>
-                  <div
-                    class="tab-pane fade rounded bg-white p-0 mb-7em"
-                    id="nav-privacy"
-                    role="tabpanel"
-                    aria-labelledby="nav-privacy-tab"
-                  >
-                  <h4 class="mb-4 font-size-1em ">
+                  <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function () {
+                      "use strict";
+                      window.addEventListener(
+                        "load",
+                        function () {
+                          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                          const forms = document.getElementsByClassName(
+                            "needs-validation"
+                          );
+                          // Loop over them and prevent submission
+                          const validation = Array.prototype.filter.call(
+                            forms,
+                            function (form) {
+                              form.addEventListener(
+                                "submit",
+                                function (event) {
+                                  if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                  }
+                                  form.classList.add("was-validated");
+                                },
+                                false
+                              );
+                            }
+                          );
+                        },
+                        false
+                      );
+                    })();
+                  </script>
+                </div>
+
+                <div class="tab-pane fade rounded bg-white p-0 mb-7em" id="nav-privacy" role="tabpanel"
+                  aria-labelledby="nav-privacy-tab">
+                  <h4 class="mb-4 font-size-1em">
                     <span class="hr">My Privacy</span>
                   </h4>
-                    <p class=" mb-2">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                      occaecat cupidatat non proident, sunt in culpa qui officia
-                      deserunt mollit anim id est laborum.
-                    </p>
-                  </div>
-                  <div
-                    class="tab-pane fade rounded bg-white p-0 mb-7em"
-                    id="nav-abuse"
-                    role="tabpanel"
-                    aria-labelledby="nav-abuse-tab"
-                  >
-                  <h4 class="mb-4 font-size-1em ">
-                    <span class="hr">Report Abuse</span>
-                  </h4>
-                    <p class=" mb-2">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                      occaecat cupidatat non proident, sunt in culpa qui officia
-                      deserunt mollit anim id est laborum.
-                    </p>
+                  <p class="mb-2">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                    sint occaecat cupidatat non proident, sunt in culpa qui
+                    officia deserunt mollit anim id est laborum.
+                  </p>
+                </div>
+
+                <div class="tab-pane fade rounded bg-white p-0 mb-7em" id="nav-abuse" role="tabpanel"
+                  aria-labelledby="nav-abuse-tab">
+                  <div class="row">
+                    <div class="col-12 col-xl-10 col-lg-9">
+                      <h4 class="mb-4 font-size-1em">
+                        <span class="hr">Report Abuse</span>
+                      </h4>
+                      <form>
+                        <div class="form-group">
+                          <input type="text" class="form-control border-primary" id="employer-name"
+                            placeholder="Your Name*" />
+                        </div>
+                        <div class="form-group">
+                          <input type="email" class="form-control border-primary" id="employer-email"
+                            placeholder="Your Email*" />
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control border-primary" id="report-abuse-msg-subject"
+                            placeholder="Subject..." />
+                        </div>
+                        <div class="form-group">
+                          <textarea class="form-control border-primary" id="report-abuse-msg" rows="3"
+                            placeholder="Your Message..."></textarea>
+                        </div>
+                        <div class="form-group d-flex justify-content-center mt-4">
+                          <button style="background: #084482;" class="btn text-white" type="submit">
+                            Send Message
+                          </button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-
-   
       </div>
-
-
-      
     </div>
+  </div>
 
-    <!-- Optional JavaScript -->
-    <script src="../js/custom-js/side-nav.js"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../js/bootstrap-js/popper.js"></script>
-    <script src="../js/bootstrap-js/jquery.js"></script>
-    <script src="../js/bootstrap-js/bootstrap.js"></script>
-  </body>
+  <!-- Optional JavaScript -->
+  <script>
+    const profileBtn = document.querySelector("#profile-btn");
+    const loginBtn = document.querySelector("#login-btn");
+    const accountBtn = document.querySelector("#account-btn");
+    const accessibilityBtn = document.querySelector("#accessibility-btn");
+
+    profileBtn.addEventListener("click", function (e) {
+      e.target.querySelector(".fa").classList.toggle("open");
+      loginBtn.querySelector(".fa").classList.remove("open");
+      accountBtn.querySelector(".fa").classList.remove("open");
+      accessibilityBtn.querySelector(".fa").classList.remove("open");
+    });
+    loginBtn.addEventListener("click", function (e) {
+      e.target.querySelector(".fa").classList.toggle("open");
+      profileBtn.querySelector(".fa").classList.remove("open");
+      accountBtn.querySelector(".fa").classList.remove("open");
+      accessibilityBtn.querySelector(".fa").classList.remove("open");
+    });
+    accountBtn.addEventListener("click", function (e) {
+      e.target.querySelector(".fa").classList.toggle("open");
+      loginBtn.querySelector(".fa").classList.remove("open");
+      profileBtn.querySelector(".fa").classList.remove("open");
+      accessibilityBtn.querySelector(".fa").classList.remove("open");
+    });
+    accessibilityBtn.addEventListener("click", function (e) {
+      e.target.querySelector(".fa").classList.toggle("open");
+      loginBtn.querySelector(".fa").classList.remove("open");
+      accountBtn.querySelector(".fa").classList.remove("open");
+      profileBtn.querySelector(".fa").classList.remove("open");
+    });
+  </script>
+  <script src="../js/custom-js/side-nav.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="../js/bootstrap-js/popper.js"></script>
+  <script src="../js/bootstrap-js/jquery.js"></script>
+  <script src="../js/bootstrap-js/bootstrap.js"></script>
+</body>
 
 </html>
