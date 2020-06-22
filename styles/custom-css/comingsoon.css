@@ -1,0 +1,379 @@
+
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body{
+	background-image: linear-gradient(269.64deg, #1F2430 0.74%,
+	rgba(31, 36, 48, 0.933067) 27.43%, 
+	rgba(31, 36, 48, 0.729479) 51.5%,
+	rgba(31, 36, 48, 0.871859) 70.87%, #1F2430 101.22%), 
+	url(../../img/comingsoonbg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+	
+}
+
+.body-wrap {
+	max-width: 1440px;
+	margin: 150px 135px 120px 135px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+}
+.logo {
+	margin-bottom: 65px;
+}
+
+.header__text {
+	text-align: center;
+	color: #fff;
+}
+
+.header__text--light {
+	font-size: 1.5em;
+}
+
+.header__text--bold {
+	font-size: 4em;
+	font-weight: 800;
+}
+/
+/*--------------------------------------------------------------
+# Countdown-timer
+--------------------------------------------------------------*/
+.main-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	margin-top: 30px;
+}
+
+#clockdiv{
+	font-family: sans-serif;
+	color: #fff;
+	font-weight: 100;
+	text-align: center;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+}
+
+/*.clockdiv-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#clockdiv {
+	display: inline-block;
+	/*align-items: center;
+	justify-content: center;}*/
+
+
+.time-wrap{
+	padding: 0 40px;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.time--unit {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	height:80px;
+	border-radius: 50%;
+	border:5px white solid;
+	color: #fff;
+	padding: 45px;
+}
+
+.time-wrap__unit {
+	font-size: 2.5em;
+	font-weight: 800;
+}
+
+.smalltext{
+	font-size: 1em;
+	padding-bottom: 10px;
+	font-weight: 800;
+	color:#00AEFF;
+} 
+/*--------------------------------------------------------------
+# Subscribe field
+--------------------------------------------------------------*/
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+#subscribe-text{
+	font-size: 16px;
+	font-weight: medium;
+	color: #fff;
+	margin: auto auto 30px auto;
+}
+
+.subscribe-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+input[type="email"] {
+	width: 486px;
+	height: 66px;
+	padding: 21px 31px;
+	border: 3px solid #b5b5b5;
+	border-radius: 5px;
+	margin-right: 8px;
+	font-size: 1rem;
+	line-height: 24px;
+	background:transparent;
+	color: rgba(178,178,178, 0.58);
+}
+
+input[type="email"]::placeholder {
+	color: rgba(178,178,178, 0.58);
+
+}
+
+.subscribe__button {
+	text-transform: uppercase;
+	background-color:#00AEFF;
+	height: 66px;
+	color:#fff;
+	border: none;
+	padding: 15px 83px;
+	border-radius: 5px;
+	outline: none;
+	font-size: 1.5rem;
+}
+
+.subscribe__button:hover {
+	background-color: #fff;
+	color: #00AEFF;
+}
+
+
+/*--------------------------------------------------------------
+# social-media
+--------------------------------------------------------------*/
+
+.fa {
+  
+  font-size: 15px;
+  width: 20px;
+  text-decoration: none;
+
+}
+.fa-facebook, .fa-twitter,.fa-youtube-play, .fa-instagram{
+	color:white;
+
+}
+/*--------------------------------------------------------------
+# footer
+--------------------------------------------------------------*/
+.footer {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 100px 0 100px;
+	margin-top: 100px;
+}
+.footer__social {
+	display: flex;
+	width: 15%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.footer-text {
+	color: #fff;
+}
+
+.footer__link {
+	color: #00AEFF;
+	text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# media queries
+--------------------------------------------------------------*/
+@media only screen and (max-width: 1150px) {
+	.body-wrap {
+		margin-right: 35px;
+		margin-left: 25px;
+	}
+}
+
+
+@media only screen and (max-width: 948px) {
+	.time-wrap {
+		margin: 0 10px;
+		padding: 0 10px;
+	}
+	.subscribe-box {
+		flex-direction: column;
+		width: 70vw;
+	}
+	input[type="email"] {
+		width: 100%;
+	}
+	.subscribe__button {
+		margin-top: 30px;
+		width: 100%;
+	}
+	.footer {
+		padding: 0 50px;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	.header__text--bold {
+		font-size: 3em;
+	}
+	.time--unit {
+		height: 60px;
+		width: 60px;
+		padding: 35px;
+	}
+	.time-wrap__unit {
+		font-size: 2em;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.body-wrap {
+		margin-top: 80px;
+		margin-bottom: 40px;
+	}
+	.header__text--bold {
+		margin-top: 50px;
+	}
+	#clockdiv {
+		flex-direction: row;
+		flex-direction: wrap;
+		width: auto;
+		padding:10px;
+		
+	}
+	.time-wrap{
+		max-width: 60px;
+	}
+	.time--unit {
+		width: 60px;
+		height:60px;
+		border-radius: 50%;
+		border:4px white solid;
+		padding: 5px;
+		margin-bottom: 10px;
+	}
+	.smalltext {
+		font-size: 0.8em;
+	}
+	.time-wrap__unit {
+		font-size: 1.2em;
+	}
+	#subscribe-text {
+		text-align: center;
+	}
+	.footer {
+		flex-direction: column;
+	}
+	.footer__social {
+		margin-bottom: 40px;
+		width: 40%;
+	}
+}
+
+	@media only screen and (min-device-width : 320px) 
+	and (max-device-width: 480px) {
+	.body-wrap {
+		margin-top: 40px;
+		margin-bottom: 20px;
+}
+	.header{
+		text-align:center;
+		width: 100%;
+	}
+	body{
+	background:linear-gradient(269.64deg, #1F2430 0.74%,
+	rgba(31, 36, 48, 0.933067) 27.43%, 
+	rgba(31, 36, 48, 0.729479) 51.5%,
+	rgba(31, 36, 48, 0.871859) 70.87%, #1F2430 101.22%), url(../../img/comingsoonbg.jpg);
+	background-size: cover;
+		
+	}
+	.header__text--light {
+	font-size: 0.75em;
+	margin-bottom: -50px;
+	}
+
+.header__text--bold {
+	font-size: 2em;
+	}
+
+	#clockdiv {
+		flex-direction: row;
+		-webkit-flex-wrap: wrap;
+		flex-direction: wrap;
+		justify-content: center;
+		max-width: 320px;
+	}
+	.time-wrap{
+		max-width: 60px;
+	}
+	.time--unit {
+		width: 36px;
+		height:36px;
+		border-radius: 50%;
+		border:3px white solid;
+		padding: 5px;
+		margin-bottom: 8px;
+	}
+	.smalltext {
+		font-size: 0.5em;
+	}
+	.time-wrap__unit {
+		font-size: 0.6em;
+	}
+	.subscribe__button {
+		font-size: 0.9em;
+	}
+	.footer{
+		margin-top: 20px;
+		margin-bottom: 0;
+		padding: 0 20px;
+	}
+}
