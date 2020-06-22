@@ -1,0 +1,205 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Salsa&display=swap');
+
+    /* @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); */
+
+      .hidden-content,.no-show,.hide-options{display: none;height: 0;width: 0; transition: all 0.5s ease-in-out;}
+
+      .clear{clear: both;height: 1px;font-size: 1px}
+
+
+      .modal{
+        background: rgba(53, 58, 69, 0.29);
+        padding-left: 0;
+      }
+
+      .modal-dialog{
+        z-index: 1;
+        /* width: 540px; */
+      }
+
+      .modal-content{
+        padding-top: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      button[disabled='disabled']{
+        cursor: not-allowed;
+      }
+
+      .close{
+        outline: none;
+      }
+
+      h5.modal-title{
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 36px;
+        display: flex;
+        align-items: center;
+        color: #353A45;
+      }
+
+      .modal .modal-header{
+
+        /* width: 90%!important; */
+        /* margin: 0 auto; */
+        /* padding: 20px 30px 10px; */
+      }
+
+      .btn-pry{
+        width: 238px;
+        height: 59px;
+
+        background: #00AEFF;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+          margin-top: 48px;
+
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 36px;
+
+        text-align: center;
+
+        color: #FFFFFF;
+      }
+      .btn-pry:hover{
+          background-color: #084482!important;
+      }
+
+      .btn-pry:hover,
+      .btn-pry:active,
+      .btn-pry:visited{
+          color: #FFFFFF;
+          text-decoration: none;
+      }
+
+      .hide_button{
+        display: none;
+      }
+
+
+
+.form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4C5059;
+}
+.form-control::-moz-placeholder { /* Firefox 19+ */
+
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+/* line-height: 24px; */
+color: #4C5059;
+}
+.form-control:-ms-input-placeholder { /* IE 10+ */
+  font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+/* line-height: 24px; */
+color: #4C5059;
+}
+.form-control:-moz-placeholder { /* Firefox 18- */
+  font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+/* line-height: 24px; */
+
+color: #4C5059;
+}
+
+.skill{
+  padding: 25px 56px;
+  border-color: #337AB7;
+}
+
+input[type="text"], textarea {
+outline: none;
+box-shadow:none !important;
+border:1px solid #337AB7 !important;
+}
+
+.btn-pry,button{
+  outline: none!important;
+  box-shadow:none !important;
+}
+
+.loading > span.spinner-grow-sm{
+  margin-right: 10px;
+}
+.skill_options{
+  border: 1px solid #337AB7;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: auto;
+  /* max-height: 178px; */
+  /* overflow-y: auto; */
+}
+
+
+.skill_option{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  color: #1F2430;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  /* padding: 10px 20px; */
+  cursor: pointer;
+}
+
+.skill_option:not(:last-child){
+  border-bottom: 1px solid #337AB7;
+}
+
+.skill_option:hover{
+  color: #fff;
+  background: #337AB7;
+}
+
+.skill_form{
+    /* padding: 0 24px; */
+}
+
+
+.form-group{
+  margin-top: 10px;
+  position: relative;
+}
+
+.skill_form .search-icon{
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.skill_form .angle-down-icon{
+  position: absolute;
+  top: 12px;
+  right: 26px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
