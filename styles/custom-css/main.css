@@ -183,8 +183,19 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
    border-radius: 5px !important;
 }
 
+.height-fix {
+   min-height: 560px;
+}
+
 @media screen and (max-width: 700px){
    .card{
       border-radius: 0px !important;
    }
 }
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+   .height-fix {
+      min-height: 614px;
+   }
+}
+
