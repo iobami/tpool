@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentPool | Sign In</title>
+    <link rel="shortcut icon" href="../../img/favicon.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/custom-css/main.css">
+    <link rel="stylesheet" href="../styles/custom-css/header.css">
+    <link rel="stylesheet" href="../styles/custom-css/footer.css">
+    <link rel="stylesheet" href="../styles/custom-css/employee-signUp-signIn.css">
+    <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container-fluid custom-container">
+           <nav class="navbar navbar-expand-lg navbar-light py-4">
+              <a class="navbar-brand" href="index.html">
+                 <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item px-3 active">
+                    <a class="nav-link nav-link-black" href="#">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item px-3">
+                    <a class="nav-link nav-link-black" href="#">About Us</a>
+                  </li>
+                  <li class="nav-item px-3">
+                    <a class="nav-link nav-link-black" href="#">Directories</a>
+                  </li>
+                  <li class="nav-item px-3">
+                    <a class="nav-link nav-link-black" href="#">FAQ</a>
+                  </li>
+                  <li class="nav-item px-3">
+                    <a class="nav-link nav-link-black" href="#">Contact Us</a>
+                  </li>
+                  <li class="nav-item px-3 my-2 my-lg-0">
+                    <a class="nav-link btn btn-hire-talent px-3 py-1" href="#">Hire Talent</a>
+                  </li>
+                  <li class="nav-item px-3">
+                    <a class="nav-link btn btn-sign-up px-3 py-1" href="employee-sign-up.html">Sign Up</a>
+                  </li>
+                </ul>
+              </div>
+           </nav>
+        </div>
+     </header>
+
+<main class="container-fluid custom-container">
+    <div class="row">
+        <div class="col-lg-5 d-none d-lg-block signIn-img-div" >
+            <!-- <img src="img/employee_signup_image.png" alt="employee sign up image"> -->
+        </div>
+
+        <div class=" col-lg-7">  
+            <div class="container p-md-0 pl-lg-5 pr-lg-3">
+            <div class="py-5">
+                <p class="bigTitle">Welcome Back</p>
+                <p class="smallTitle">Get connected to the right job now.</p>
+            </div>
+
+            <form class="needs-validation" novalidate>
+
+                <div class="col-md mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required>
+                    <div class="invalid-feedback">
+                        Your valid email address is required.
+                    </div>
+                </div>
+
+
+                <div class="col-md mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
+                    <div class="invalid-feedback" style="width: 100%;">
+                        Your have not entered a correct password.
+                    </div>
+                </div>
+               
+
+                <div class="row px-3" >
+                    <div class="col my-1">
+                        <div class="custom-control custom-checkbox mr-sm-2" >
+                            <input type="checkbox" class="custom-control-input" id="remember-me">
+                            <label class="custom-control-label terms-policy" for="remember-me">Remember me</label>
+                        </div>
+                    </div>
+                    <div class="col text-right">
+                        <p> <a href="#" class="login-link">Forgot Password?</a></p>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit">Sign Up</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="row">
+                <div class="col-md-5 d-none d-md-block">
+                    <hr>
+                </div>
+                <div class="col-md-2">
+                    <p class="text-center">OR</p>
+                </div>
+                <div class="col-md-5 d-none d-md-block">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-md">
+                    <button type="button" class="btn  btn-block  facebook-btn py-3 my-1"><i
+                            class="fab fa-facebook-f pr-2"></i>Login with facebook</button>
+                </div class>
+
+                <div class="col-md">
+                    <button type="button" class="btn btn-block  google-btn py-3 my-1"><i
+                            class="fab fa-google pr-2"></i>Login with Google</button>
+                </div>
+            </div>
+
+            <p class="text-center py-2">Don't have an account with us? <a href="employee-sign-up.html" class="login-link">Sign Up.</a></p>
+        </div>
+    </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container-fluid custom-container">
+       <div class="row top justify-content-between">
+          <div class="col-md-3">
+             <div class="py-3">
+                <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
+             </div>
+             <p class="py-2">
+                We are known for
+                connecting top talents with top companies. We
+                make great possibilities
+                happen.
+             </p>
+          </div>
+          <div class="col-6 col-md-2">
+             <h5 class="py-3">Explore</h5>
+             <ul class="pl-0">
+                <li><a href="">Home</a></li>
+                <li class="py-1"><a href="">About Us</a></li>
+                <li class="py-1"><a href="">Directories</a></li>
+                <li class="py-1"><a href="">FAQ</a></li>
+                <li class="py-1"><a href="">Contact Us</a></li>
+                <li class="py-1"><a href="">Top Talent</a></li>
+             </ul>
+          </div>
+          <div class="col-6 col-md-3">
+             <h5 class="py-3">Visit</h5>
+             <p>
+                3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
+             </p>
+             <h5 class="py-3">Get in touch</h5>
+             <p>hello@hng.tech</p>
+             <p>+234 (0) 812 345 6789</p>
+          </div>
+          <div class="col-6 col-md-2">
+             <h5 class="py-3">Follow</h5>
+             <ul class="pl-0">
+                <li><a href="">Facebook</a></li>
+                <li class="py-1"><a href="">LinkedIn</a></li>
+                <li class="py-1"><a href="">Twitter</a></li>
+             </ul>
+          </div>
+          <div class="col-6 col-md-2">
+             <h5 class="py-3">Legal</h5>
+             <ul class="pl-0">
+                <li><a href="">Terms</a></li>
+                <li class="py-1"><a href="">Privacy</a></li>
+             </ul>
+          </div>
+       </div>
+       <hr>
+       <div class="row">
+          <div class="col py-2">
+             <p>
+                TalentPool. All Rights Reserved.
+             </p>
+          </div>
+       </div>
+    </div>
+ </footer>
+    <script src="../../js/bootstrap-js/popper.js"></script>
+    <script src="../../js/bootstrap-js/jquery.js"></script>
+    <script src="../../js/bootstrap-js/bootstrap.js"></script>
+    <script src="../../js/custom-js/employee-signUp-signIn.js"></script>
+</body>
+</html>

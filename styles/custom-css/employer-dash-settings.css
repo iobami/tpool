@@ -1,18 +1,33 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-*, *::after, *::before  {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-  background: #fafafa;
   line-height: 1.8;
+  background-color: #e5e5e5;
+}
+
+/* Margin for Sidebar */
+.sidebar-margin {
+  margin-left: 234px !important;
+}
+
+@media (max-width: 991px) {
+  .sidebar-margin {
+    margin-left: 0 !important;
+  }
+
+  .remove-block {
+    padding-right: 0 !important;
+  }
 }
 
 .main {
-  background-color: #e5e5e5;
   font-size: 1em;
-  max-width: 1048px;
 }
 
 .vertical-nav {
@@ -27,9 +42,16 @@ body {
 .nav-tabs .nav-item.active {
   background-color: #fff;
   color: #084482;
-  border-bottom: 1px solid #fff;
+  border-bottom: 2px solid #fff;
+  font-weight: 600;
+  z-index: -1;
 }
 
+.nav-tabs .nav-item + .nav-item.active {
+  background-color: #fff;
+  border-top: 2px solid #fff;
+  z-index: 0;
+}
 
 .nav-tabs .nav-item {
   border-top: 0;
@@ -40,15 +62,29 @@ body {
 }
 
 .nav-tabs .nav-link {
-  padding: 0.75rem 1.25rem;
+  padding: 1rem 1.25rem;
 }
 
 .nav-tabs .nav-link:hover {
-color: #084482;
-font-weight: bolder;
+  color: #084482;
+  background-color: #fff;
 }
 
-@media  (max-width: 576px)  {
+.navbar-detail .icon {
+  align-content: center;
+  justify-content: center;
+  display: flex;
+}
+
+.change-width {
+  width: 100%;
+  padding-right: 3em;
+}
+
+@media (max-width: 768px) {
+  .vertical-nav {
+    border-right: 1px solid #084482;
+  }
   .navbar-detail {
     display: flex;
     align-content: center;
@@ -57,25 +93,39 @@ font-weight: bolder;
     text-align: center;
   }
 
+  /* .navbar-detail .icon {
+    display: flex;
+    justify-content: center;
+  } */
+
   .navbar-detail img {
     display: block;
-    align-self: center;
-    margin-right: -1rem !important;
   }
 
-  .navbar-detail span  {
+  .navbar-detail span {
     display: block;
   }
 }
 
-@media (max-width: 768px) {
-  .vertical-nav {
-    border-right: 1px solid #084482;;
+@media (max-width: 480px) {
+  .navbar-detail span {
+    /* display: none; */
+    font-size: 0.75em;
+    text-align: center;
+  }
+
+  .change-width {
+    padding-right: 1em;
+  }
+
+  .edit-tabcontent-padding {
+    padding-left: 1em !important;
+    padding-right: 1em !important;
   }
 }
 
-@media  (max-width: 320px)  {
-  .navbar-detail span  {
+@media (max-width: 400px) {
+  .navbar-detail span {
     display: none;
   }
 }
@@ -84,27 +134,30 @@ font-weight: bolder;
   .vertical-nav {
     margin-right: -10px;
   }
+
+  .change-width {
+    width: 75%;
+    padding-right: 0;
+  }
 }
 
-.btn-save   {
+.btn-save {
   background-color: #084482;
   color: #fff;
 }
 
-h4   {
+h4 {
   color: #084482;
 }
 
-
 h4 span:hover::after {
-  width: 100%;}
+  width: 100%;
+}
 
 .hr {
   padding-bottom: 3px;
   border-bottom: 3px solid #084482;
 }
-
-
 
 a {
   color: #000000;
@@ -169,38 +222,86 @@ input:checked + .slider:before {
   transition: 0.4s;
 }
 
-
 /* Custom-Utilities */
 .bg-transparent-custom {
   background-color: transparent;
 }
 
-.font-size-1em  {
-    font-size: 1em;
+.font-size-1em {
+  font-size: 1em;
 }
 
-.font-size-1-5em  {
-    font-size: 1.5em;
+.font-size-1-5em {
+  font-size: 1.5em;
 }
 
-.extra-rounded  {
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.extra-rounded {
   border-radius: 0.5rem;
 }
 
-.flex-1  {
-    flex: 1;
+.flex-1 {
+  flex: 1;
 }
 
 .flex-0 {
-    flex: 0;
+  flex: 0;
 }
-
 
 .mb-7em {
-    margin-bottom: 7em;
+  margin-bottom: 7em;
 }
 
-.min-vh-70  {
+.min-vh-70 {
   min-height: 70vh;
 }
 
+.general-btn {
+  font-weight: 600;
+}
+.general-btn:focus {
+  box-shadow: none;
+}
+.card-body {
+  border-left: 5px solid #007bff;
+}
+.save-changes {
+  height: 100px;
+}
+.contact-us-input input {
+  font-size: 16px;
+  padding: 24px 32px;
+  margin-top: 22px;
+  border: 1px solid #084482;
+  border-radius: 5px;
+}
+.contact-us-input textarea {
+  font-size: 16px;
+  color: #084482;
+  padding: 12px 32px;
+  border: 1px solid #084482;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.contact-us-input button {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 28px;
+  margin-bottom: 26px;
+  background-color: #084482;
+  border: 1px solid #084482;
+  color: white;
+}
+.contact-us-input button:hover {
+  color: white;
+}
+.accordion button i {
+  transition: all 0.4s ease;
+}
+.accordion button i.open {
+  transform: rotate(180deg);
+}
