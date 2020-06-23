@@ -1,0 +1,110 @@
+.nav-link.active {
+  text-decoration: none;
+  border-bottom: 3px solid #084482;
+}
+
+.hero{
+  background: no-repeat url("../../img/contact-us-hero-img.png");
+  background-size: cover;
+}
+.hero-overlay{
+  position: relative;
+  width: 100%;
+  height: 41.5rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 86px;
+  background-color: rgba(10, 10, 11, 0.52); 
+  z-index: 2; 
+}
+.cards{
+  position: relative;
+  top: 2.5rem;
+}
+.card{
+  border-radius: 10px !important;
+  border: none !important;
+}
+.card-text{
+  color: #6c757d;
+}
+
+.talent-text-dark{
+  color: #000;
+}
+
+.flex-even {
+  flex: 1;
+}
+
+.h-200{
+  min-height: 200px;
+}
+
+.spacer{
+  background-color: #E5E5E5;
+  padding: 13rem 0;
+}
+
+#clientName, #clientEmail, #messageSubject, #message{
+  font-size: 1rem;
+}
+
+#clientName::placeholder, #clientEmail::placeholder, #messageSubject::placeholder, #message::placeholder{
+  font-size: 1rem;
+  color: #C5C5C5;
+}
+
+.btn-talent{
+  background-color: #00AEFF;
+  font-size: 24px;
+  color: #FFF;
+}
+
+
+@media screen and (min-width: 321px){
+  .hero-overlay{
+    height: 38rem;
+  }
+}
+
+@media screen and (min-width: 655px){
+.hero-overlay {
+    height: 35rem;
+}
+}
+
+@media screen and (min-width: 768px){
+  .card{
+    max-width: calc(33% - 5px);
+      position: relative;
+      top: 5.5rem;
+  }
+  .hero-overlay {
+    height: 100%;
+    padding-top: 172px;
+}
+  .spacer{
+    padding: 4rem 0;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .cards{
+    max-width: 1024px;
+  }
+  .card{
+    max-width: calc(33% - 10px);
+  }
+}
+
+@media screen and (min-width: 1440px){
+  .cards{
+    max-width: 1116px;
+  }
+  .card{
+    max-width: calc(33% - 20px);
+  }
+}
