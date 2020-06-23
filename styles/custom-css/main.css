@@ -7,12 +7,19 @@ body {
    text-decoration: none;
 }
 
-.custom-container {
+/* .custom-container {
    max-width: 1440px;
    margin: 0 auto;
    padding: 1rem;
    overflow: hidden;
    max-height: 500px;
+} */
+
+
+/* The Above Css Was commented out 'cos it added a max height to the footer and that caused issues in the page flow */
+
+.clients-card{
+   height: 380px;
 }
 .nav-link, .talent-link{
    border-bottom-width: 3px;
@@ -177,8 +184,19 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
    border-radius: 5px !important;
 }
 
+.height-fix {
+   min-height: 560px;
+}
+
 @media screen and (max-width: 700px){
    .card{
       border-radius: 0px !important;
    }
 }
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+   .height-fix {
+      min-height: 614px;
+   }
+}
+

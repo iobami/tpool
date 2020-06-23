@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  line-height: 24px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #E5E5E5;
+  overflow-x: hidden;
+}
+#sideNav{
+    z-index: 2;
+}
+.top__nav__wrapper{
+    z-index: 1;
+}
+
+#heading{
+    width: 361px;
+    height: 58px;
+    margin-left: 291px;
+    margin-top: 24px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    /* or 100% */
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+.faq_section{
+    margin-right: 48px;
+    margin-bottom: 248px;
+    margin-left: 291px;
+    margin-top: 28px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: auto;
+
+    box-shadow: 0px 4px 12px #EAEAEA;
+    background-color: #FFFFFF;
+}
+.faq_sidenav{
+    min-height: 562px;
+    background: #E7EAEC;
+    overflow-x: auto;
+}
+.faq_sidenav_options li a{
+    display: block;
+    min-height: 48px;
+    padding-left: 30px;
+    padding-right: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 16px;
+    align-items: center;
+    color:#000000;
+}
+
+.faq_sidenav_options li .active,
+.faq_sidenav_options li:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+.faq_button_div{
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+}
+.faq_button{
+    display: block;
+    background: #084482;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    height: 59px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #FFFFFF;
+}
+
+.faq_button:hover{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.pricing{
+    margin-top: 20px;
+    margin-left: 40px;
+    max-width: 289px;
+    height: 58px;
+    font-size: 24px;
+    font-weight: 500;
+    float: left;
+    display: flex;
+    align-items: center;
+}
+.edit{
+    position: absolute;
+    right: 0;
+    margin-right: 29px;
+    margin-top: 20px;
+    max-width: 289px;
+    height: 58px;
+    font-weight: 500;
+    font-size: 16px;
+    align-items:center;
+    text-align: right;
+    color: #084482;
+    line-height: 58px;
+}
+
+.card-header{
+    margin-top: 7px;
+    margin-left: 20px;
+    margin-right: 24px;
+    border-radius: 10px 10px 10px;
+    border: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    min-height: 48px;
+    height: auto;
+    background: #E7EAEC;
+}
+.card{
+    border: none;
+}
+.plus{
+    margin-right: 24px;
+}
+.card-body{
+    line-height: 160%;
+    margin-left: 30px;
+    margin-right: 24px;
+    color: #343434;
+}
+#questions{
+    margin-bottom: 69px;
+}
+
+@media screen and (max-width: 991px) {
+
+    .faq_section{
+        margin-left: 40px;
+    }
+    #heading{
+        margin-left: 40px;
+    }
+}
+@media screen and (max-width: 736px){
+    .faq_button{
+        height: 59px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 20px;
+    }
+}
+
+@media screen and (max-width: 575px){
+
+    .faq_sidenav{
+        min-height: 300px;
+        height: auto;
+    }
+    .faq_section{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .card-body{
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .plus{
+        margin-right: 8px;
+    }
+}
