@@ -10,12 +10,12 @@
 .hero-overlay{
   position: relative;
   width: 100%;
-  height: 46rem; 
+  height: 41.5rem;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  padding-top: 172px;
+  padding-top: 86px;
   background-color: rgba(10, 10, 11, 0.52); 
   z-index: 2; 
 }
@@ -66,20 +66,15 @@
 
 @media screen and (min-width: 321px){
   .hero-overlay{
-    height: 44rem;
+    height: 38rem;
   }
 }
 
 @media screen and (min-width: 655px){
 .hero-overlay {
-    height: 41rem;
+    height: 35rem;
 }
 }
-/* @media screen and (min-width: 425px){
-  .hero-overlay{
-    height: 100%;
-  }
-} */
 
 @media screen and (min-width: 768px){
   .card{
@@ -89,6 +84,7 @@
   }
   .hero-overlay {
     height: 100%;
+    padding-top: 172px;
 }
   .spacer{
     padding: 4rem 0;
