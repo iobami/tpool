@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-html{
-  overflow-x:hidden;
-}
+
 body {
   font-family: Poppins;
   font-style: normal;
@@ -10,6 +8,7 @@ body {
 #main-content {
   padding-top: 104px;
   position: relative;
+  overflow-x: hidden;
 }
 #main-content_2 {
   background-color: #fff;
@@ -23,7 +22,7 @@ body {
 h3 {
   font-weight: 500;
   font-size: 32px;
-  margin-left:300px;
+  margin-left: 250px;
 }
 .sidebar-margin {
   margin-left: 190px !important;
@@ -101,7 +100,7 @@ button {
   }
   h3 {
     text-align: center;
-    margin:0;
+    margin: 0;
   }
   #section-a {
     margin-left: 0;
