@@ -145,10 +145,36 @@
                                     </div>
                                 </div>
 
+                                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Launch demo modal
+                                  </button> -->
+
                                 <div class="form-group my-3 pt-2">
-                                    <button class="btn btn-block  btn-sign py-3" type="submit">Sign
+                                    <button class="btn btn-block  btn-sign py-3" type="submit" data-toggle="modal" data-target="#exampleModal">Sign
                                         Up</button>
                                 </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                        <div class="modal-body d-flex flex-column align-items-center">
+                                            <div>
+                                                <img src="../img/logo.svg" alt="logo" />
+                                            </div>
+                                            <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z" fill="#337AB7"/>
+                                            </svg>
+
+                                            <h2>Registration Successful !</h2>
+                                            <p class="text-center"> A verfication link has been sent to your email address, kindly check your mail and click to verify your account.</p>
+                                                
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group my-4 text-center">
                                     <span class="text-muted wor">OR</span>
                                 </div>
