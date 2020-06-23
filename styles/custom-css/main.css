@@ -1,10 +1,27 @@
 body {
    font-family: 'Poppins', sans-serif;
+   overflow-x: hidden;
 }
 
 .btn:hover{
    background-color: #337ab7;
    text-decoration: none;
+}
+
+input {
+   border: 2px solid #B5B5B5 !important;
+   font-size: 1rem;
+   line-height: 24px;
+}
+
+input::placeholder {
+   color: rgba(178, 178, 178, 0.58);
+}
+
+input:focus, input:active {
+   outline: none !important;
+   border: 2px solid #337AB7 !important;
+   box-shadow: none !important;
 }
 
 /* .custom-container {
@@ -17,6 +34,40 @@ body {
 
 
 /* The Above Css Was commented out 'cos it added a max height to the footer and that caused issues in the page flow */
+
+header {
+   box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
+}
+
+.signup__dropdown {
+   padding: 1rem 1rem 0;
+}
+
+.btn-sign-up:hover {
+   background-color: #00AEFF;
+   color: white !important;
+}
+
+.signup__dropdown p {
+   font-weight: 500;
+   font-size: 1rem;
+   line-height: 157.2%;
+   color: #084482;
+}
+
+.signup__dropdown a {
+   padding: 5px 0;
+   text-align: center;
+   background: #00AEFF;
+   border-radius: 5px;
+   margin-bottom: 1rem;
+   color: white;
+}
+
+.signup__dropdown a:hover {
+   background: #00AEFF;
+   color: #333333;
+}
 
 .clients-card{
    height: 380px;

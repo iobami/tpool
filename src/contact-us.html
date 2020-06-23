@@ -18,92 +18,96 @@
 
 <body>
   <header class="header">
-    <div class="container-fluid custom-container">
-      <nav class="navbar navbar-expand-lg navbar-light py-1">
-        <a class="navbar-brand" href="index.html">
-          <img src="../../img/talentpool header logo.svg"
-            alt="talent pool logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarNav" aria-controls="navbarNav"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item px-3">
-              <a class="nav-link nav-link-black" href="#">Home <span
-                  class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link nav-link-black" href="#">About Us</a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link nav-link-black" href="#">Directories</a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link nav-link-black" href="#">FAQ</a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link active nav-link-black" href="#">Contact Us</a>
-            </li>
-            <li class="nav-item px-3 my-2 my-lg-0">
-              <a class="nav-link btn btn-hire-talent px-3 py-1" href="#">Hire
-                Talent</a>
-            </li>
-            <li class="nav-item px-3">
-              <a class="nav-link btn btn-sign-up px-3 py-1" href="#">Sign Up</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <!-- Navbar ends here -->
+    <div class="container-fluid custom-container nav-container">
+        <nav class="navbar navbar-expand-lg navbar-light py-1">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item px-3 active">
+                        <a class="nav-link nav-link-black" href="../index.html">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link nav-link-black" href="./aboutUs.html">About Us</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link nav-link-black" href="#">Directories</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link nav-link-black" href="./faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link nav-link-black" href="./contact-us.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item px-3 my-2 my-lg-0">
+                        <a class="nav-link btn btn-hire-talent px-3 py-1" href="./employer-sign-in.html">Sign in</a>
+                    </li>
+                    <li class="nav-item px-3 dropdown">
+                        <button class="nav-link btn btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sign Up
+                        </button>
 
-    <!-- Hero section starts here -->
-    <div class="hero">
-      <div class="container-fluid hero-overlay">
-        <h1 class="text-white text-center mb-0">
-          Let's talk about your next intern
-        </h1>
-        <div
-          class="cards pb-4 d-flex flex-column flex-nowrap flex-md-row mx-md-auto justify-content-md-between">
-          <section class="card shadow-sm h-200 mt-5 mt-md-0 flex-even">
-            <div
-              class="card-body d-flex flex-column flex-nowrap justify-content-between align-items-center">
-              <h4 class="card-title talent-text-dark">Admin</h4>
-              <p class="card-text text-center">Suscipit libero pretium nullam
-                potenti.
-                Interdum, blandit phasellus </p>
-              <h6 class="talent-text-dark">
-                Admin@talentpool.com
-              </h6>
+                        <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
+                            <p>Sign up as: </p>
+                            <a class="dropdown-item" href="./employer-sign-up.html">Employer</a>
+                            <a class="dropdown-item" href="./employee-sign-up.html">Talent</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-          </section>
-          <section class="card shadow-sm h-200 mt-5 mt-md-0 flex-even">
-            <div
-              class="card-body d-flex flex-column flex-nowrap justify-content-between align-items-center">
-              <h4 class="card-title talent-text-dark">Head of Interns</h4>
-              <p class="card-text text-center">Suscipit libero pretium nullam
-                potenti.
-                Interdum, blandit phasellus </p>
-              <h6 class="talent-text-dark">
-                Admin@talentpool.com
-              </h6>
-            </div>
-          </section>
-          <section class="card shadow-sm h-200 mt-5 mt-md-0 flex-even">
-            <div
-              class="card-body d-flex flex-column flex-nowrap align-items-center">
-              <h4 class="card-title talent-text-dark">Our Office</h4>
-              <h4 class="card-text text-center mt-3">Opening soon</h4>
-            </div>
-          </section>
-        </div>
+        </nav>
+    </div>
+  </header>
+
+  <!-- Hero section starts here -->
+  <div class="hero">
+    <div class="container-fluid hero-overlay">
+      <h1 class="text-white text-center mb-0">
+        Let's talk about your next intern
+      </h1>
+      <div
+        class="cards pb-4 d-flex flex-column flex-nowrap flex-md-row mx-md-auto justify-content-md-between">
+        <section class="card shadow-sm h-200 mt-5 mt-md-0 flex-even">
+          <div
+            class="card-body d-flex flex-column flex-nowrap justify-content-between align-items-center">
+            <h4 class="card-title talent-text-dark">Admin</h4>
+            <p class="card-text text-center">Suscipit libero pretium nullam
+              potenti.
+              Interdum, blandit phasellus </p>
+            <h6 class="talent-text-dark">
+              Admin@talentpool.com
+            </h6>
+          </div>
+        </section>
+        <section class="card shadow-sm h-200 mt-5 mt-md-0 flex-even">
+          <div
+            class="card-body d-flex flex-column flex-nowrap justify-content-between align-items-center">
+            <h4 class="card-title talent-text-dark">Head of Interns</h4>
+            <p class="card-text text-center">Suscipit libero pretium nullam
+              potenti.
+              Interdum, blandit phasellus </p>
+            <h6 class="talent-text-dark">
+              Admin@talentpool.com
+            </h6>
+          </div>
+        </section>
+        <section class="card shadow-sm h-200 mt-5 mt-md-0 flex-even">
+          <div
+            class="card-body d-flex flex-column flex-nowrap align-items-center">
+            <h4 class="card-title talent-text-dark">Our Office</h4>
+            <h4 class="card-text text-center mt-3">Opening soon</h4>
+          </div>
+        </section>
       </div>
     </div>
-    <!-- Hero section ends here -->
-  </header>
+  </div>
+  <!-- Hero section ends here -->
 
   <!-- spacer -->
   <div class="spacer">
@@ -111,9 +115,9 @@
   </div>
   <section class="container-fluid mt-5 contact-form">
 
-    <header class="text-center py-4">
+    <section class="text-center py-4">
       <h5>Feel free to say 'Hello!'</h5>
-    </header>
+    </section>
 
     <div class="row align-items-center justify-content-center">
       <div class="col-10 col-md-6">
@@ -151,72 +155,73 @@
   <!-- Footer starts here -->
   <footer class="footer">
     <div class="container-fluid custom-container">
-      <div class="row top justify-content-between">
-        <div class="col-md-3">
-          <div class="py-3 d-none d-md-block">
-            <img src="../../img/talentpool footer logo.svg"
-              alt="talent pool logo">
-          </div>
-          <p class="py-2">
-            We are known for
-            connecting top talents with top companies. We
-            make great possibilities
-            happen.
-          </p>
+        <div class="row top justify-content-between">
+            <div class="col-md-3">
+                <a href="index.html">
+                    <div class="py-3">
+                        <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
+                    </div>
+                </a>
+                <p class="py-2">
+                    We are known for
+                    connecting top talents with top companies. We
+                    make great possibilities
+                    happen.
+                </p>
+            </div>
+            <div class="col-6 col-md-2">
+                <h5 class="py-3">Explore</h5>
+                <ul class="pl-0">
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="py-1"><a href="aboutUs.html">About Us</a></li>
+                    <li class="py-1"><a href="">Directories</a></li>
+                    <li class="py-1"><a href="faq.html">FAQ</a></li>
+                    <li class="py-1"><a href="contact-us.html">Contact Us</a></li>
+                    <li class="py-1"><a href="">Top Talent</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-3">
+                <h5 class="py-3">Visit</h5>
+                <p>
+                    3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
+                </p>
+                <div class="d-none d-md-block">
+                    <h5 class="py-3">Get in touch</h5>
+                    <p>hello@hng.tech</p>
+                    <p>+234 (0) 812 345 6789</p>
+                </div>
+            </div>
+            <div class="col-6 d-md-none">
+                <h5 class="py-3">Get in touch</h5>
+                <p>hello@hng.tech</p>
+                <p>+234 (0) 812 345 6789</p>
+            </div>
+            <div class="col-6 col-md-2">
+                <h5 class="py-3">Follow</h5>
+                <ul class="pl-0">
+                    <li><a href="">Facebook</a></li>
+                    <li class="py-1"><a href="">LinkedIn</a></li>
+                    <li class="py-1"><a href="">Twitter</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-2">
+                <h5 class="py-3">Legal</h5>
+                <ul class="pl-0">
+                    <li><a href="">Terms</a></li>
+                    <li class="py-1"><a href="">Privacy</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="col-6 col-md-2">
-          <h5 class="py-3">Explore</h5>
-          <ul class="pl-0">
-            <li><a href="">Home</a></li>
-            <li class="py-1"><a href="">About Us</a></li>
-            <li class="py-1"><a href="">Directories</a></li>
-            <li class="py-1"><a href="">FAQ</a></li>
-            <li class="py-1"><a href="">Contact Us</a></li>
-            <li class="py-1"><a href="">Top Talent</a></li>
-          </ul>
+        <hr>
+        <div class="row">
+            <div class="col py-2">
+                <p class="copyright">
+                    TalentPool. All Rights Reserved.
+                </p>
+            </div>
         </div>
-        <div class="col-6 col-md-3">
-          <h5 class="py-3">Visit</h5>
-          <p>
-            3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
-          </p>
-          <div class="d-none d-md-block">
-            <h5 class="py-3">Get in touch</h5>
-            <p>hello@hng.tech</p>
-            <p>+234 (0) 812 345 6789</p>
-          </div>
-        </div>
-        <div class="col-6 d-md-none">
-          <h5 class="py-3">Get in touch</h5>
-          <p>hello@hng.tech</p>
-          <p>+234 (0) 812 345 6789</p>
-        </div>
-        <div class="col-6 col-md-2">
-          <h5 class="py-3">Follow</h5>
-          <ul class="pl-0">
-            <li><a href="">Facebook</a></li>
-            <li class="py-1"><a href="">LinkedIn</a></li>
-            <li class="py-1"><a href="">Twitter</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-2">
-          <h5 class="py-3">Legal</h5>
-          <ul class="pl-0">
-            <li><a href="">Terms</a></li>
-            <li class="py-1"><a href="">Privacy</a></li>
-          </ul>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col mb-0">
-          <p class="copyright">
-            TalentPool. All Rights Reserved.
-          </p>
-        </div>
-      </div>
     </div>
-  </footer>
+</footer>
   <script src="../../js/bootstrap-js/popper.js"></script>
   <script src="../../js/bootstrap-js/jquery.js"></script>
   <script src="../../js/bootstrap-js/bootstrap.js"></script>
