@@ -33,6 +33,7 @@ body {
 
 .chat-item {
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .chat-item--name {
@@ -148,6 +149,7 @@ body {
     width: 100%;
     border: none;
     margin: 0 5px;
+    outline: none;
 }
 
 .msg--input-send {
@@ -158,6 +160,34 @@ body {
     display: block;
 }
 
+.text-selected {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 200px;
+}
+
+@media (min-width: 1200px) and (max-width: 1350px) {
+    #chat--list {
+        margin-left: 30px;
+    }
+    .text-selected {
+        width: 150px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .text-selected {
+        width: 100px;
+    }
+}
+
+@media (max-width: 1040) {
+    .text-selected {
+        width: 60px;
+    }
+}
+    
 @media screen and (max-width: 991px) {
     .msg--wrap {
         display: none;
@@ -167,5 +197,26 @@ body {
     }
     .chat--list-back {
         display: block;
+    }
+    .text-selected {
+        width: inherit;
+    }
+}
+
+@media (max-width: 600px) {
+    .text-selected {
+        width: 300px;
+    }
+}
+
+@media (max-width: 455px) {
+    .text-selected {
+        width: 200px;
+    }
+}
+
+@media (max-width: 350px) {
+    .text-selected {
+        width: 150px;
     }
 }
