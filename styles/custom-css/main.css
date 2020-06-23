@@ -18,8 +18,9 @@ body {
 
 /* The Above Css Was commented out 'cos it added a max height to the footer and that caused issues in the page flow */
 
-
-
+.clients-card{
+   height: 380px;
+}
 .nav-link, .talent-link{
    border-bottom-width: 3px;
    border-bottom-style: solid;
