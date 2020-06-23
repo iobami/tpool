@@ -16,7 +16,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding-top: 172px;
+  padding-top: 86px;
   background-color: rgba(10, 10, 11, 0.52); 
   z-index: 2; 
 }
@@ -66,6 +66,9 @@
 
 
 @media screen and (min-width: 768px){
+  .hero-overlay{
+    padding-top: 172px;
+  }
   .card{
     max-width: calc(33% - 5px);
       position: relative;
