@@ -16,50 +16,60 @@
 
 <body>
     <header class="header">
-        <div class="container-fluid custom-container">
-           <nav class="navbar navbar-expand-lg navbar-light py-4">
-              <a class="navbar-brand" href="index.html">
-                 <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
-              </a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item px-3 active">
-                    <a class="nav-link nav-link-black" href="#">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item px-3">
-                    <a class="nav-link nav-link-black" href="#">About Us</a>
-                  </li>
-                  <li class="nav-item px-3">
-                    <a class="nav-link nav-link-black" href="#">Directories</a>
-                  </li>
-                  <li class="nav-item px-3">
-                    <a class="nav-link nav-link-black" href="#">FAQ</a>
-                  </li>
-                  <li class="nav-item px-3">
-                    <a class="nav-link nav-link-black" href="#">Contact Us</a>
-                  </li>
-                  <li class="nav-item px-3 my-2 my-lg-0">
-                    <a class="nav-link btn btn-hire-talent px-3 py-1" href="#">Hire Talent</a>
-                  </li>
-                  <li class="nav-item px-3">
-                    <a class="nav-link btn btn-sign-up px-3 py-1" href="employee-sign-in.html">Sign In</a>
-                  </li>
-                </ul>
-              </div>
-           </nav>
-        </div>
-     </header>
+        <div class="container-fluid custom-container nav-container">
+            <nav class="navbar navbar-expand-lg navbar-light py-1">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item px-3 active">
+                            <a class="nav-link nav-link-black" href="../index.html">Home <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nav-link-black" href="./aboutUs.html">About Us</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nav-link-black" href="#">Directories</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nav-link-black" href="./faq.html">FAQ</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nav-link-black" href="./contact-us.html">Contact Us</a>
+                        </li>
+                        <li class="nav-item px-3 my-2 my-lg-0">
+                            <a class="nav-link btn btn-hire-talent px-3 py-1" href="./employer-sign-in.html">Sign in</a>
+                        </li>
+                        <li class="nav-item px-3 dropdown">
+                            <button class="nav-link btn btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sign Up
+                            </button>
 
-<main class="container-fluid custom-container">
+                            <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
+                                <p>Sign up as: </p>
+                                <a class="dropdown-item" href="./employer-sign-up.html">Employer</a>
+                                <a class="dropdown-item" href="./employee-sign-up.html">Talent</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+<main class="container-fluid">
     <div class="row">
         <div class="col-lg-5 d-none d-lg-block signUp-img-div" >
             <!-- <img src="img/employee_signup_image.png" alt="employee sign up image"> -->
         </div>
 
-        <div class=" col-lg-7">  
+        <div class=" col-lg-7 p-lg-5">  
             <div class="container p-md-0 pl-lg-5 pr-lg-3">
             <div class="py-5">
                 <p class="bigTitle">We make it easy for you to connect with top organizations</p>

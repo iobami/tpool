@@ -20,9 +20,9 @@
 <body>
     <!-- Navbar starts -->
     <header class="header">
-        <div class="container-fluid custom-container">
-            <nav class="navbar navbar-expand-lg navbar-light py-4">
-                <a class="navbar-brand" href="index.html">
+        <div class="container-fluid custom-container nav-container">
+            <nav class="navbar navbar-expand-lg navbar-light py-1">
+                <a class="navbar-brand" href="../index.html">
                     <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -32,25 +32,34 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item px-3 active">
-                            <a class="nav-link nav-link-black" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link nav-link-black" href="../index.html">Home <span
+                                    class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="#">About Us</a>
+                            <a class="nav-link nav-link-black" href="./aboutUs.html">About Us</a>
                         </li>
                         <li class="nav-item px-3">
                             <a class="nav-link nav-link-black" href="#">Directories</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="#">FAQ</a>
+                            <a class="nav-link nav-link-black" href="./faq.html">FAQ</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="#">Contact Us</a>
+                            <a class="nav-link nav-link-black" href="./contact-us.html">Contact Us</a>
                         </li>
                         <li class="nav-item px-3 my-2 my-lg-0">
-                            <a class="nav-link btn btn-hire-talent px-3 py-1" href="#">Hire Talent</a>
+                            <a class="nav-link btn btn-hire-talent px-3 py-1" href="./employer-sign-in.html">Sign in</a>
                         </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link btn btn-sign-up px-3 py-1" href="#">Sign Up</a>
+                        <li class="nav-item px-3 dropdown">
+                            <button class="nav-link btn btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sign Up
+                            </button>
+
+                            <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
+                                <p>Sign up as: </p>
+                                <a class="dropdown-item" href="./employer-sign-up.html">Employer</a>
+                                <a class="dropdown-item" href="./employee-sign-up.html">Talent</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -67,7 +76,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7 p-lg-5">
                     <div class="container">
                         <div class="form-box">
                             <div class="header my-3">
@@ -212,9 +221,11 @@
         <div class="container-fluid custom-container">
             <div class="row top justify-content-between">
                 <div class="col-md-3">
-                    <div class="py-3">
-                        <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
-                    </div>
+                    <a href="index.html">
+                        <div class="py-3">
+                            <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
+                        </div>
+                    </a>
                     <p class="py-2">
                         We are known for
                         connecting top talents with top companies. We
@@ -225,11 +236,11 @@
                 <div class="col-6 col-md-2">
                     <h5 class="py-3">Explore</h5>
                     <ul class="pl-0">
-                        <li><a href="">Home</a></li>
-                        <li class="py-1"><a href="">About Us</a></li>
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="py-1"><a href="aboutUs.html">About Us</a></li>
                         <li class="py-1"><a href="">Directories</a></li>
-                        <li class="py-1"><a href="">FAQ</a></li>
-                        <li class="py-1"><a href="">Contact Us</a></li>
+                        <li class="py-1"><a href="faq.html">FAQ</a></li>
+                        <li class="py-1"><a href="contact-us.html">Contact Us</a></li>
                         <li class="py-1"><a href="">Top Talent</a></li>
                     </ul>
                 </div>
@@ -238,6 +249,13 @@
                     <p>
                         3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
                     </p>
+                    <div class="d-none d-md-block">
+                        <h5 class="py-3">Get in touch</h5>
+                        <p>hello@hng.tech</p>
+                        <p>+234 (0) 812 345 6789</p>
+                    </div>
+                </div>
+                <div class="col-6 d-md-none">
                     <h5 class="py-3">Get in touch</h5>
                     <p>hello@hng.tech</p>
                     <p>+234 (0) 812 345 6789</p>
@@ -261,7 +279,7 @@
             <hr>
             <div class="row">
                 <div class="col py-2">
-                    <p>
+                    <p class="copyright">
                         TalentPool. All Rights Reserved.
                     </p>
                 </div>
