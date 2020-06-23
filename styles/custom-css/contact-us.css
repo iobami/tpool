@@ -6,17 +6,16 @@
 .hero{
   background: no-repeat url("../../img/contact-us-hero-img.png");
   background-size: cover;
-  height: auto;
 }
 .hero-overlay{
   position: relative;
   width: 100%;
-  height: 100%; 
+  height: 46rem; 
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  padding-top: 86px;
+  padding-top: 172px;
   background-color: rgba(10, 10, 11, 0.52); 
   z-index: 2; 
 }
@@ -46,7 +45,7 @@
 
 .spacer{
   background-color: #E5E5E5;
-  padding: 2rem 0;
+  padding: 13rem 0;
 }
 
 #clientName, #clientEmail, #messageSubject, #message{
@@ -65,15 +64,32 @@
 }
 
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 321px){
   .hero-overlay{
-    padding-top: 172px;
+    height: 44rem;
   }
+}
+
+@media screen and (min-width: 655px){
+.hero-overlay {
+    height: 41rem;
+}
+}
+/* @media screen and (min-width: 425px){
+  .hero-overlay{
+    height: 100%;
+  }
+} */
+
+@media screen and (min-width: 768px){
   .card{
     max-width: calc(33% - 5px);
       position: relative;
       top: 5.5rem;
   }
+  .hero-overlay {
+    height: 100%;
+}
   .spacer{
     padding: 4rem 0;
   }
