@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+body {
+  font-family: Poppins;
+  font-style: normal;
+  background-color: #f4f4f4;
+}
+#main-content {
+  padding-top: 104px;
+  position: relative;
+  overflow-x: hidden;
+}
+#main-content_2 {
+  background-color: #fff;
+  border-radius: 8px;
+}
+#ask {
+  position: absolute;
+  bottom: -60px;
+  padding-bottom: 11rem;
+}
+h3 {
+  font-weight: 500;
+  font-size: 32px;
+  margin-left: 220px;
+}
+.sidebar-margin {
+  margin-left: 190px !important;
+}
+#ask-anything {
+  position: relative;
+  top: 100px;
+}
+#section-a {
+  position: relative;
+  margin-left: 100px;
+}
+#search-bar {
+  position: relative;
+  background-color: #fff;
+  height: 56px;
+  width: 36.25rem;
+  border: 1px solid #b5b5b5;
+  border-radius: 5px;
+}
+#search-icon {
+  position: relative;
+  left: 35px;
+  z-index: 100;
+}
+ul li {
+  list-style-type: none;
+  text-align: left;
+  margin-bottom: 7px;
+}
+ul li a {
+  color: #337ab7;
+  text-decoration: none;
+}
+ul h4 {
+  margin-bottom: 10px;
+}
+#support-card-main {
+  position: relative;
+  max-width: 53rem;
+  height: 18rem;
+  margin: 0 12rem 0 7rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
+}
+button {
+  color: #fff;
+  background-color: #00aeff !important;
+  border: none !important;
+  border-radius: 5px;
+  height: 56px;
+}
+#search-btn {
+  width: 8.5rem;
+  color: #fff;
+  padding: 1rem 1rem;
+}
+#support-btn {
+  width: 13rem;
+  color: #fff;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 991px) {
+  .sidebar-margin {
+    margin-left: 0px !important;
+  }
+  #support-card-main {
+    margin: 0;
+  }
+  h3 {
+    text-align: center;
+    margin: 0;
+  }
+  #section-a {
+    margin-left: 0;
+  }
+}
+@media (max-width: 560px) {
+  #search-btn {
+    display: none;
+  }
+  #search-bar {
+    max-width: 300px;
+  }
+  #main-content_1 {
+    text-align: center;
+  }
+  h3,
+  #ask {
+    margin-bottom: 10px;
+  }
+}
