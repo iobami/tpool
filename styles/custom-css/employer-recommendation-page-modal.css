@@ -24,6 +24,13 @@
     cursor: pointer;
     font-size: large;
 }
+.roles-dropdown {
+    background-position: unset;
+    background-size: 10px;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
 .employer-rec-modal .form-group input::placeholder {
     color: rgba(178, 178, 178, 0.7);
 }

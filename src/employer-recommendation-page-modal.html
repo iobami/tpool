@@ -93,9 +93,10 @@
                         'use strict';
                         window.addEventListener('load', function() {
                             // Get the forms we want to add validation styles to
-                            var forms = document.getElementsByClassName('needs-validation');
+                            const forms = document.getElementsByClassName('needs-validation');
+                            const getSelectBtn = document.getElementById('role');
                             // Loop over them and prevent submission
-                            var validation = Array.prototype.filter.call(forms, function(form) {
+                            const validation = Array.prototype.filter.call(forms, function(form) {
                                 form.addEventListener('submit', function(event) {
                                     if (form.checkValidity() === false) {
                                         event.preventDefault();
@@ -104,6 +105,7 @@
                                         $('#myModal').modal('hide')
                                     }
                                     form.classList.add('was-validated');
+                                    getSelectBtn.classList.add('roles-dropdown');
                                 }, false);
                             });
                         }, false);
