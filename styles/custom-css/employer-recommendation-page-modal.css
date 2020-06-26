@@ -23,6 +23,16 @@
 .employer-rec-modal .form-group select {
     cursor: pointer;
     font-size: large;
+
+    border: 1px solid #337AB7;
+    /* needed */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* SVG background image */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23337AB7' viewBox='0 0 24 24'%3E%3Cpath d='M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z'/%3E%3C/svg%3E");
+    background-size: .6em;
+    background-position: calc(100% - 1.3em) center;
+    background-repeat: no-repeat;
 }
 .roles-dropdown {
     background-position: unset;
