@@ -123,10 +123,14 @@ body {
 }
 .rectangle{
     border-radius: 15px;
+    height: 738px;
 }
 .list{
-    height: 90px;
+    height: 100px;
     padding: 20px;
+}
+.time{
+    padding-left: 30px;
 }
 .list-top{
     background: #FFFFFF;
@@ -342,9 +346,9 @@ a{
         flex-direction: column;
         align-items: center;
     }
-    .time{
+    /* .time{
         display: none;
-    }
+    } */
     .title{
         font-size: 20px;
     }
@@ -353,6 +357,13 @@ a{
     }
     .pick{
         margin-left: 47px;
+    }
+    .bottom{
+        padding-left: 32%;
+    }
+    .list-group{
+        overflow-y: scroll;
+        height: 60%;
     }
     
 }
@@ -392,5 +403,8 @@ a{
     .move{
         margin-right: 20px;
         margin-top: 5px;
+    }
+    .bottom{
+        padding-left: 70%;
     }
 }
