@@ -33,12 +33,32 @@ body {
   box-shadow: 0px 4px 12px #eaeaea;
 }
 
-.chat-scroll {
+.chat-messages {
   position: relative;
+  max-height: 430px;
   overflow-y: scroll;
 }
 
-/* chat section */
+.chat-messages::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.chat-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  height: 30px;
+}
+
+/* Handle on hover */
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
 .chat-sender.msg {
   position: relative;
   padding: 9px 9px;
