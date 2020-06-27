@@ -9,7 +9,10 @@ main {
 .pen-modif{
     cursor: pointer;
 }
-
+.box-shadow{
+    box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+    border-radius: 5px;
+}
 .logo-container{
 
 width: 177px;
