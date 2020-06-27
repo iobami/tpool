@@ -172,3 +172,21 @@ body {
     transform: none;
   }
 }
+
+.dp-img {
+  width: 50px;
+}
+#chat-card {
+  box-shadow: 0 0 3px #d6d9df;
+  padding: 10px 0;
+}
+
+#chat-card:hover {
+  border-color: #00aeff;
+}
+.time-sent {
+  font-size: 10px;
+}
+.chat-content {
+  font-size: 14px;
+}
