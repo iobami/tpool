@@ -58,6 +58,9 @@ background: #C4C4C4;
     line-height: 36px;
     color: #353A45;
 }
+.desc-text{
+    width: 90%;
+}
 .company-card,.social-card ,.desc-card>p{
     font-size: 16px;
     line-height: 24px;
@@ -72,6 +75,9 @@ background: #C4C4C4;
 /* social Accounts Card */
 .account{
     border-top: 1px solid #E7EAEC;
+}
+.plus-social{
+    cursor: pointer;
 }
 .account>span{
     font-size: 16px;
@@ -89,4 +95,10 @@ background: #C4C4C4;
 /* Company infos card */
 .company-title,.company-info{
     border-bottom: 1px solid #E7EAEC;
+}
+@media only screen and (max-width:990px){
+    .desc-text{
+        width: 100%;
+        text-align: justify;
+    }
 }
