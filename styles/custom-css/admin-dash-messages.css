@@ -1,0 +1,30 @@
+body {
+  background-color: #f8f8f8;
+}
+
+#main-content {
+  padding-left: 234px;
+}
+
+.main-heading {
+  font-size: 1.5rem;
+}
+
+.chat-top,
+.chat {
+  max-width: 1011px;
+}
+
+.chat {
+  background-color: #fff;
+  height: 705px;
+}
+
+.top-tab {
+  background-color: #d6d9df;
+  padding-left: 20px;
+}
+
+#dp {
+  width: 48px;
+}
