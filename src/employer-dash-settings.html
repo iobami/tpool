@@ -80,12 +80,12 @@
           </div>
           ​
           <ul class="sidenav_links d-sm">
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="Employer Dashboard.html">Dashboard</a></li>
             <li><a href="#">Messages</a></li>
-            <li><a href="#">Employees</a></li>
-            <li><a href="#">Add a team</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#" class="active">Settings</a></li>
+            <li><a href="./employer-employees-gallery.html">Employees</a></li>
+            <li><a href="./employer-add-a-team.html">Add a team</a></li>
+            <li><a href="./employer-dash-support.html">Support</a></li>
+            <li><a href="./employer-dash-settings.html" class="active">Settings</a></li>
           </ul>
         </div>
         ​
@@ -474,16 +474,86 @@
                   <h4 class="mb-4 font-size-1em">
                     <span class="hr">My Privacy</span>
                   </h4>
-                  <p class="mb-2">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                    sint occaecat cupidatat non proident, sunt in culpa qui
-                    officia deserunt mollit anim id est laborum.
-                  </p>
+
+                  <form action="">
+                    <div class="form-group row no-gutters">
+                      <div class="col-10 border-bottom flex-1 mw-100">
+                        <label for="employment-message-switch" class="change-width"><span
+                            class="font-weight-600">Receive messages from everyone: </span>I want to receive direct messages from anyone (companies, individuals & employees).
+                        </label>
+                      </div>
+                      <div class="col-auto flex-0 d-flex justify-content-end align-items-center">
+                        <label class="switch">
+                          <input type="checkbox" class="default" id="employment-message-switch" />
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group row no-gutters">
+                      <div class="col-10 flex-1 mw-100 border-bottom">
+                        <label for="acceptance-message-switch" class="change-width"><span
+                            class="font-weight-600">Share my location with everyone: </span>Allow companies, individual & employees to see my location
+                        </label>
+                      </div>
+                      <div class="col-auto d-flex flex-0 justify-content-end align-items-center">
+                        <label class="switch">
+                          <input type="checkbox" class="default" id="acceptance-message-switch" />
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group row no-gutters">
+                      <div class="col-10 flex-1 mw-100 border-bottom">
+                        <label for="logins-switch" class="change-width"><span class="font-weight-600">Show read receipts: </span>Allow people in conversation with me know when I have seen their messages.
+                        </label>
+                      </div>
+                      <div class="col-auto d-flex flex-0 justify-content-end align-items-center">
+                        <label class="switch">
+                          <input type="checkbox" class="default" id="logins-switch" />
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group row no-gutters">
+                      <div class="col-10 flex-1 mw-100 border-bottom">
+                        <label for="profile-update-switch" class="change-width"><span class="font-weight-600">Project Tagging: </span>Get notifications when I am tagged in projects by companies, individuals or employees.
+                        </label>
+                      </div>
+                      <div class="col-auto flex-0 d-flex justify-content-end align-items-center">
+                        <label class="switch">
+                          <input type="checkbox" class="default" id="profile-update-switch" />
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group row no-gutters">
+                      <div class="col-10 flex-1 mw-100 border-bottom">
+                        <label for="verification-switch" class="change-width"><span class="font-weight-600">Protect my account: </span>Allow every employee access to my profile and portfolio.</label>
+                      </div>
+                      <div class="col-auto flex-0 d-flex justify-content-end align-items-center">
+                        <label class="switch">
+                          <input type="checkbox" class="default" id="verification-switch" />
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group row no-gutters">
+                      <div class="col-10 flex-1 mw-100 border-bottom">
+                        <label for="regular-update-switch" class="change-width"><span class="font-weight-600">Search engine notification: </span>Let me know whenever my profile is searched for</label>
+                      </div>
+                      <div class="col-auto flex-0 d-flex justify-content-end align-items-center">
+                        <label class="switch">
+                          <input type="checkbox" class="default" id="regular-update-switch" />
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group row no-gutters">
+                      <button type="submit" class="btn btn-lg btn-save ml-auto mt-5">
+                        Save Changes
+                      </button>
+                    </div>
+                  </form>
                 </div>
 
                 <div class="tab-pane fade rounded bg-white p-0 mb-7em" id="nav-abuse" role="tabpanel"
