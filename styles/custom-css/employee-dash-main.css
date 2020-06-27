@@ -407,4 +407,7 @@ a{
     .bottom{
         padding-left: 70%;
     }
+    .time{
+        display: none;
+    }
 }
