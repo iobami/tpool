@@ -97,8 +97,8 @@ table th {
 
 @media screen and (min-width: 576px){
   .talent-card{
-    min-width: calc(35% - 12px);
-    max-width: 18.5rem;
+    width: calc(33% - 12px);
+    max-width: 18.5rem !important;
   }
 }
 
