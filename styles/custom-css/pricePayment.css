@@ -46,6 +46,12 @@
     margin-bottom: 30px;
 }
 
+@media(max-width: 767px){
+    .price-payment .container .plan {
+        max-width: 100%;
+    }
+}
+
 .price-payment .container .pay-now__form {
     background: #FFFFFF;
     border: 1px solid #EEEEEE;
