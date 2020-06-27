@@ -1,0 +1,106 @@
+.employer-rec-modal {
+    padding: 14px 8px;
+}
+.employer-rec-modal .employer-rec-modal-header {
+    width: 96%;
+    margin: auto;
+    padding: 12px 6px;
+    color: #353A45;
+}
+.employer-rec-modal hr {
+    width: 97%;
+    margin: auto;
+}
+.employer-rec-modal .form-group .role {
+    font-size: 18px;
+    border: 2px solid #B5B5B5;
+}
+.employer-rec-modal .form-group .extra {
+    font-size: 16px;
+    border: 2px solid #B5B5B5;
+    padding: 21px 1rem;
+}
+.employer-rec-modal .form-group select {
+    cursor: pointer;
+    font-size: large;
+
+    border: 1px solid #337AB7;
+    /* needed */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* SVG background image */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23337AB7' viewBox='0 0 24 24'%3E%3Cpath d='M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z'/%3E%3C/svg%3E");
+    background-size: .6em;
+    background-position: calc(100% - 1.3em) center;
+    background-repeat: no-repeat;
+}
+.roles-dropdown {
+    background-position: unset;
+    background-size: 10px;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.employer-rec-modal .form-group input::placeholder {
+    color: rgba(178, 178, 178, 0.7);
+}
+.employer-rec-modal .modal-body label {
+    font-size: 18px;
+    margin-top: 4px;
+    color: #1F2430;
+}
+.employer-rec-modal .modal-body button {
+    background-color: #00AEFF;
+    margin: 8px 0;
+    color: white;
+}
+.employer-rec-modal .modal-body button:hover {
+    transition: ease-in-out 1.2s;
+    transition-delay: 0.7s;
+    background-color: #346eeb;
+    background-image: linear-gradient(to bottom right, #00AEFF, #346eeb);
+    color: white;
+}
+
+@media screen and (max-width: 650px){
+    .employer-rec-modal .employer-rec-modal-header h4 {
+        font-size: 22px;
+    }
+    .employer-rec-modal .modal-body button {
+        font-size: 16px;
+        margin: 6px 0;
+    }
+}
+@media screen and (max-width: 490px){
+    .employer-rec-modal .employer-rec-modal-header h4 {
+        font-size: 20px;
+    }
+    .employer-rec-modal .form-group .role {
+        font-size: 16px;
+    }
+    .employer-rec-modal .form-group .extra {
+        font-size: 13px;
+    }
+    .employer-rec-modal .form-group select {
+        cursor: pointer;
+        font-size: medium;
+    }
+}
+@media screen and (max-width: 400px){
+    .employer-rec-modal .employer-rec-modal-header h4 {
+        font-size: 19px;
+    }
+    .employer-rec-modal .form-group .role {
+        font-size: 16px;
+        padding: 11px 0 11px 13px;
+    }
+    .employer-rec-modal .form-group .extra {
+        font-size: 11px;
+        padding: 11px 0 11px 13px;
+    }
+    .employer-rec-modal .form-group select {
+        cursor: pointer;
+        font-size: medium;
+    }
+}
+
