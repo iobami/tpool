@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Profile Page | TalentPool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+  <link rel="stylesheet" href="../styles/custom-css/top-nav-admin.css">
+  <link rel="stylesheet" href="../styles/custom-css/side-nav.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="../styles/custom-css/employer-profile-page.css">
+</head>
+
+<body>
+
+  <!-- Header/Navbar Here -->
+  <div class="container-fluid w-100 top__nav__wrapper sticky-top">
+    <div class="top__nav__contents py-4">
+      <div
+        class="d-flex justify-content-between justify-content-lg-end align-items-center top__nav">
+
+        <div class="d-lg-none mr-3" id="top__nav__toggle">
+          <svg width="35" height="25" viewBox="0 0 35 25" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0 15.2571H35V10.4571H0V15.2571ZM0 24.8571H35V20.0571H0V24.8571ZM0 5.65712H35V0.857117H0V5.65712Z"
+              fill="#084482" fill-opacity="0.87" />
+          </svg>
+        </div>
+
+        <div class="d-flex align-items-center top__nav__links">
+          <div class="top__nav__icon d-none d-md-flex">
+            <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.6211 4.95313C19.7734 4.83203 20 4.94531 20 5.13672V13.125C20 14.1602 19.1602 15 18.125 15H1.875C0.839844 15 0 14.1602 0 13.125V5.14062C0 4.94531 0.222656 4.83594 0.378906 4.95703C1.25391 5.63672 2.41406 6.5 6.39844 9.39453C7.22266 9.99609 8.61328 11.2617 10 11.2539C11.3945 11.2656 12.8125 9.97266 13.6055 9.39453C17.5898 6.5 18.7461 5.63281 19.6211 4.95313ZM10 10C10.9063 10.0156 12.2109 8.85938 12.8672 8.38281C18.0508 4.62109 18.4453 4.29297 19.6406 3.35547C19.8672 3.17969 20 2.90625 20 2.61719V1.875C20 0.839845 19.1602 0 18.125 0H1.875C0.839844 -5.33333e-07 0 0.839842 0 1.875V2.61719C0 2.90625 0.132813 3.17578 0.359375 3.35547C1.55469 4.28906 1.94922 4.62109 7.13281 8.38281C7.78906 8.85938 9.09375 10.0156 10 10Z"
+                fill="black" />
+            </svg>
+          </div>
+
+          <div class="top__nav__icon d-none d-md-flex">
+            <svg width="18" height="20" viewBox="0 0 18 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M16.9486 14.2992C16.0795 13.43 15 12.3484 15 8.125C15 5.02367 12.741 2.45043 9.77879 1.95977C9.92315 1.75126 10.0003 1.50361 10 1.25C10 0.559648 9.44035 0 8.75 0C8.05964 0 7.5 0.559648 7.5 1.25C7.5 1.51367 7.58183 1.75813 7.72121 1.95977C4.75902 2.45043 2.5 5.02367 2.5 8.125C2.5 12.3484 1.42019 13.43 0.55105 14.2992C-0.626645 15.4769 0.208003 17.5 1.87687 17.5H6.25C6.25 18.8807 7.36929 20 8.75 20C10.1307 20 11.25 18.8807 11.25 17.5H15.6228C17.2883 17.5 18.1287 15.4793 16.9486 14.2992Z"
+                fill="black" />
+            </svg>
+          </div>
+
+          <div class="d-flex align-items-center top__nav__user">
+            <div class="img-fluid mr-2">
+                <img src="../img/Employer Dashboard/user2.png" alt=""></div>
+            <div class="top__nav__user__name">
+              <h6 class="text-primary m-0">Adelanke Adelanke</h6>
+              <p class="m-0 mr-0">Admin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <main class="container-fluid">
+
+    <div class="row mr-lg-5 position-relative">
+      <!-- SideNav Here -->
+     <div class="col-lg-3 side-nav" style="position: unset;">
+        <div class="sidenav" id="sideNav">
+          <div class="logo__wrapper">
+            <div
+              class="d-flex justify-content-center align-items-center logo__image">
+              <img src="../../img/navLogo.svg" alt="" />
+            </div>
+          </div>
+          ​
+          <ul class="sidenav_links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#" >Employees</a></li>
+            <li><a href="#">Add a team</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </div>
+        <div id="body__click" style="height: 100%;">
+        </div>
+      </div>
+      <!-- Main Content Here -->
+      <section class=" col-lg container-fluid profile mt-5 ml-lg-3">
+          <div class="row">
+              <!-- Profile Row + card -->
+               <div class="col-md-5 mb-4">
+                 <div class="card profile-card box-shadow">
+                      <div class="logo-container  mx-auto d-flex align-items-center">
+                         <span class="mx-auto">Logo</span>
+                          <img src="" alt="" class="img-fluid">
+                      </div>
+                            <h3 class="text-center mt-5 mb-3">PiggyVest</h3>
+                            <p class="text-center">E-Commerce Industry</p>
+                            <hr class="w-75 mx-auto">
+                       <div  class="w-75 profile-card-info mx-auto ">
+                           <p class=" py-2 ml-4 my-3"><i class="fas fa-map-marker-alt mr-3"></i>  Ibadan, Nigeria</p>
+                           <p class=" py-2 ml-4 my-3"><i class="far fa-envelope mr-3"></i>piggyvest@gmail.com</p>
+                       </div>
+                       <hr class="w-75 mx-auto">
+                       <button type='button' class="btn mx-auto mt-4 mb-5">Edit profile</button>
+                 </div>
+               </div>
+               <!-- Row for description / Social media link / company info -->
+               <div class="col-md-7 pl-lg-0" >
+                   <!-- description card start here -->
+                    <div  class="card desc-card px-4 py-5 box-shadow">
+                        <div class=" desc-card-header ">
+
+                            <h3>Description <img src="../img/Pen.png"  class=' pen-modif float-right'alt=""></h3>
+                            
+
+                        </div>
+                        <p class=" desc-text mt-3">
+                            Multionational company with
+                             the aim to make savings culture 
+                             easy for every individual in the world. 
+                             our sole aim is making live easier
+                        </p>
+                    </div>
+                    <!-- Social accounts card -->
+                    <div  class="card social-card px-4 pt-5 pb-3 mt-5 box-shadow">
+                        <div class=" desc-card-header ">
+                    
+                            <h3 class="d-flex justify-content-between align-items-center"
+                             >Social accounts <img src="../img/plus-blue.png" alt="" class="plus-social"> </h3>
+                        </div>
+                    
+                         <div class="social-accounts mt-4">
+                                    <div class=" account py-4 pl-1">
+                                             <i class="fab fa-twitter "></i>
+                                             <span class="ml-3">Twitter</span>
+                                             <img src="../img/Pen.png" class="pen-modif float-right">
+                                    </div>
+                    
+                                    <div class=" account py-4 pl-1">
+                    
+                                        <i class="fab fa-linkedin"></i>
+                                        <span class="ml-3">LinkedIn</span>
+                                        <img src="../img/Pen.png" class="pen-modif float-right">                              
+                    
+                                    </div>
+                                    <div class=" account py-4 pl-1">
+                    
+                                        <i class="fab fa-dribbble"></i>
+                                        <span class="ml-3">Dribbble</span>
+                                        <img src="../img/Pen.png" class="pen-modif float-right">                             
+                                    </div>
+                                    <div class=" account py-4 pl-1">
+
+                                        <i class="fab fa-behance"></i>
+                                        <span class="ml-3">Behance</span>
+                                        <img src="../img/Pen.png" class="pen-modif float-right">                            
+                                     </div>
+                                     
+                                    
+                                     <div class=" account py-4 pl-1">
+                                        <i class="fab fa-github"></i>
+                                        <span class="ml-3">GitHub</span>
+                                        <img src="../img/Pen.png" class="pen-modif float-right">                            
+                                     </div>
+                                     <div class=" account py-4 pl-1">
+                                        <i class="fa fa-hashnode" aria-hidden="true"></i>
+                                        <span class="ml-3">Hashnode</span>
+                                        <img src="../img/Pen.png" class="pen-modif float-right">                            
+                                     </div>
+                                     
+                        </div>
+                                    
+                    </div>
+                
+                   
+                    <!-- company info card -->
+                    <div  class="card company-card px-4 py-5 my-5 box-shadow">
+                        <div class=" desc-card-header company-title pb-4 ">
+
+                            <h3 class="" >
+                                Company Info 
+                             <img src="../img/Pen.png" class="pen-modif float-right">                              </div>
+                            </h3>
+                             <div class="company mt-2">
+                                    <div class=" company-info py-4 pl-1">
+                                        <img src="../img/verified.png" alt="">
+                                        <span class="ml-3">E-Commerce Industry</span>
+
+                                    </div>
+                                    <div class=" company-info py-4 pl-1">
+                                        <img src="../img/verified.png" alt="">
+                                        <span class="ml-3">7-20 Employees</span>
+
+                               </div>
+                               <div class=" company-info py-4 pl-1">
+
+                                <img src="../img/verified.png" alt="">
+                                <span class="ml-3">08185956620</span>
+
+                               </div>
+                             </div>
+                            
+                     </div>
+                
+                </div>
+          </div>        
+      </section>
+    </div>
+
+   
+  </main>
+
+
+
+  <script src="../js/bootstrap-js/popper.js"></script>
+  <script src="../js/bootstrap-js/jquery.js"></script>
+  <script src="../js/bootstrap-js/bootstrap.js"></script>
+  <script src="../js/custom-js/side-nav.js"></script>
+</body>
+
+</html>

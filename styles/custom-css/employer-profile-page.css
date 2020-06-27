@@ -1,0 +1,104 @@
+main {
+    background: #F4F4F4;
+    margin: 0;
+    padding: 0;
+}
+.side-nav{
+    max-width: 235px;
+}
+.pen-modif{
+    cursor: pointer;
+}
+.box-shadow{
+    box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+    border-radius: 5px;
+}
+.logo-container{
+
+width: 177px;
+height: 100px;
+margin-top: 6.5rem;
+background: #C4C4C4;
+}
+.profile-card>h3{
+    font-size: 24px;
+    line-height: 36px;
+    color: #084482;
+}
+.profile-card>p{
+    font-size: 16px;
+    line-height: 24px;
+    color: #4C5059;
+}
+.profile-card>hr{
+    border: 1px solid #E7EAEC;
+}
+.profile-card-info{
+    font-size: 16px;
+    line-height: 24px;
+    color: #4C5059;
+}
+.btn{
+    width: 238px;
+    height: 59px;
+    background: #00AEFF;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+}
+/* Second column*/
+
+/* Decription card */
+.desc-card-header>h3{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    color: #353A45;
+}
+.desc-text{
+    width: 90%;
+}
+.company-card,.social-card ,.desc-card>p{
+    font-size: 16px;
+    line-height: 24px;
+    color: #4C5059;
+    }
+.fa-plus{
+    cursor: pointer;
+    color: #084482;
+    font-size: 20px;
+    padding: .2rem;
+}
+/* social Accounts Card */
+.account{
+    border-top: 1px solid #E7EAEC;
+}
+.plus-social{
+    cursor: pointer;
+}
+.account>span{
+    font-size: 16px;
+    line-height: 24px;
+}
+.account>.pen-modif{
+    visibility: hidden;
+}
+.account:hover .pen-modif{
+    visibility: visible;
+}
+.fa-hashnode,.fab{
+    color:#00AEFF;
+}
+/* Company infos card */
+.company-title,.company-info{
+    border-bottom: 1px solid #E7EAEC;
+}
+@media only screen and (max-width:990px){
+    .desc-text{
+        width: 100%;
+        text-align: justify;
+    }
+}
