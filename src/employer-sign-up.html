@@ -2,295 +2,314 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>employer sign up</title>
-    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel="stylesheet" href="../styles/custom-css/employer-sign-up.css">
-    <link rel="stylesheet" href="../styles/custom-css/main.css">
-    <link rel="stylesheet" href="../styles/custom-css/header.css">
-    <link rel="stylesheet" href="../styles/custom-css/footer.css">
-    <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Employer Sign Up | TalentPool</title>
+  <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <link rel="stylesheet" href="../styles/custom-css/employer-sign-up.css">
+  <link rel="stylesheet" href="../styles/custom-css/main.css">
+  <link rel="stylesheet" href="../styles/custom-css/header.css">
+  <link rel="stylesheet" href="../styles/custom-css/footer.css">
+  <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
 
 </head>
 
 <body>
-    <!-- Navbar starts -->
-    <header class="header">
-        <div class="container-fluid custom-container nav-container">
-            <nav class="navbar navbar-expand-lg navbar-light py-1">
-                <a class="navbar-brand" href="../index.html">
-                    <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item px-3 active">
-                            <a class="nav-link nav-link-black" href="../index.html">Home <span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="./aboutUs.html">About Us</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="#">Directories</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="./faq.html">FAQ</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="./contact-us.html">Contact Us</a>
-                        </li>
-                        <li class="nav-item px-3 my-2 my-lg-0">
-                            <a class="nav-link btn btn-hire-talent px-3 py-1" href="./employer-sign-in.html">Sign in</a>
-                        </li>
-                        <li class="nav-item px-3 dropdown">
-                            <button class="nav-link btn btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sign Up
-                            </button>
+  <!-- Navbar starts -->
+  <header class="header">
+    <div class="container-fluid custom-container nav-container">
+      <nav class="navbar navbar-expand-lg navbar-light py-1">
+        <a class="navbar-brand" href="../index.html">
+          <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item px-3 active">
+              <a class="nav-link nav-link-black" href="../index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link nav-link-black" href="./aboutUs.html">About Us</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link nav-link-black" href="#">Directories</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link nav-link-black" href="./faq.html">FAQ</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link nav-link-black" href="./contact-us.html">Contact Us</a>
+            </li>
+            <li class="nav-item px-3 my-2 my-lg-0">
+              <a class="nav-link btn btn-hire-talent px-3 py-1" href="./employer-sign-in.html">Sign in</a>
+            </li>
+            <li class="nav-item px-3 dropdown">
+              <button class="nav-link btn btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sign Up
+              </button>
 
-                            <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
-                                <p>Sign up as: </p>
-                                <a class="dropdown-item" href="./employer-sign-up.html">Employer</a>
-                                <a class="dropdown-item" href="./employee-sign-up.html">Talent</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+              <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
+                <p>Sign up as: </p>
+                <a class="dropdown-item" href="./employer-sign-up.html">Employer</a>
+                <a class="dropdown-item" href="./employee-sign-up.html">Talent</a>
+              </div>
+            </li>
+          </ul>
         </div>
-    </header>
-    <!-- Navbar ends here -->
-    <!-- My task starts here -->
-    <section>
-        <div class="container-fluid content-container">
-            <div class="row">
-                <div class="col-lg-5 d-lg-block image overlay">
-                    <div class="">
+      </nav>
+    </div>
+  </header>
+  <!-- Navbar ends here -->
+  <!-- My task starts here -->
+  <section>
+    <div class="container-fluid content-container">
+      <div class="row">
+        <div class="col-lg-5 d-lg-block image overlay">
+          <div class="">
 
-                    </div>
-                </div>
-                <div class="col-lg-7 p-lg-5">
-                    <div class="container">
-                        <div class="form-box">
-                            <div class="header my-3">
-                                <h4>Welcome to TalentPool</h4>
-                                <p class="text-muted">Let's get your account setup so you can have access to a great
-                                    pool of talent</p>
-                            </div>
-                            <form class="needs-validation" novalidate>
-                                <div class="row   ">
-                                    <div class="col-md-12 my-3 form-group">
-                                        <label for="organization">Organization Name</label>
-                                        <input type="organization" class="form-control form-control-lg"
-                                            id="organization" placeholder="Enter organization" required>
-                                        <div class="invalid-feedback">
-                                            Enter your Organization
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="form-check my-3 col-md">
-                                        <label for="email" class="form-label ">Email address</label>
-                                        <input type="email" class="form-control form-control-lg" id="email"
-                                            placeholder="john@email.com" required>
-                                        <div class="invalid-feedback">
-                                            Enter a valid email
-                                        </div>
-                                    </div>
-                                    <div class="form-check my-3 col-md">
-                                        <label for="inputState">Sign up as</label>
-                                        <select id="inputState" class="form-control form-control-lg" required>
-                                            <option value="">--select--</option>
-                                            <option value="employer">Employer</option>
-                                            <option value="choose">Choose</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Select an option
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 my-3 form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" placeholder="at least 8 characters"
-                                            class="form-control form-control-lg" inputmode="alpha-numeric" minlength="8"
-                                            maxlength="10" size="12" id="password" required>
-                                        <div class="invalid-feedback">
-                                            Enter your password. It must contain at least 8 characters.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 my-3 form-group">
-                                        <label for="password">Confirm Password</label>
-                                        <input type="password" placeholder="at least 8 characters"
-                                            class="form-control form-control-lg" inputmode="alpha-numeric" minlength="8"
-                                            maxlength="10" size="10" id="confirm_password" required>
-                                        <div class="invalid-feedback">
-                                            Confirm Password
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="custom-control custom-checkbox col ml-3 mt-3">
-                                        <input type="checkbox" class="custom-control-input" id="recieveMail">
-                                        <label class="custom-control-label" for="recieveMail" style="color: black;">Yes,
-                                            I want
-                                            to recieve TalentPool
-                                            emails</label>
-                                    </div>
-                                </div>
-                                <div class="row my-3">
-                                    <div class="custom-control custom-checkbox col ml-3 mt-3">
-                                        <input type="checkbox" class="custom-control-input" id="termsPolicy">
-                                        <label class="custom-control-label" for="termsPolicy" style="color: black;">Yes,
-                                            I agree
-                                            to the <a href="#">Terms and Policy</a></label>
-                                    </div>
-                                </div>
-
-                                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                    Launch demo modal
-                                  </button> -->
-
-                                <div class="form-group my-3 pt-2">
-                                    <button class="btn btn-block  btn-sign py-3" type="submit" data-toggle="modal" data-target="#exampleModal">Sign
-                                        Up</button>
-                                </div>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                        <div class="modal-body d-flex flex-column align-items-center">
-                                            <div>
-                                                <img src="../img/logo.svg" alt="logo" />
-                                            </div>
-                                            <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z" fill="#337AB7"/>
-                                            </svg>
-
-                                            <h2>Registration Successful !</h2>
-                                            <p class="text-center"> A verification link has been sent to your email address, kindly check your mail and click to verify your account.</p>
-                                                
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group my-4 text-center">
-                                    <span class="text-muted wor">OR</span>
-                                </div>
-                                <div class="form-row  text-center ">
-                                    <div class="col-md my-2">
-                                        <button type="button"
-                                            class="btn btn-social btn-block btn-facebook text-center py-3">
-                                            <i class="fa fa-facebook pr-2"></i>Log in
-                                            with Facebook
-                                        </button>
-                                    </div>
-                                    <div class="col-md my-2 ">
-                                        <button type="button"
-                                            class="btn btn-block btn-social btn-google text-center  py-3">
-                                            <i class="fa fa-google pr-2"></i>Log in
-                                            using Google
-                                        </button>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="text-center acct mt-3 mb-5">Have an account with us? <a
-                                href="./employer-sign-in.html">Log
-                                in</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            </form>
+          </div>
         </div>
-    </section>
-    <!-- My task ends here -->
-    <!-- footer starts -->
-    <footer class="footer">
-        <div class="container-fluid custom-container">
-            <div class="row top justify-content-between">
-                <div class="col-md-3">
-                    <a href="index.html">
-                        <div class="py-3">
-                            <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
-                        </div>
-                    </a>
-                    <p class="py-2">
-                        We are known for
-                        connecting top talents with top companies. We
-                        make great possibilities
-                        happen.
-                    </p>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Explore</h5>
-                    <ul class="pl-0">
-                        <li><a href="../index.html">Home</a></li>
-                        <li class="py-1"><a href="aboutUs.html">About Us</a></li>
-                        <li class="py-1"><a href="">Directories</a></li>
-                        <li class="py-1"><a href="faq.html">FAQ</a></li>
-                        <li class="py-1"><a href="contact-us.html">Contact Us</a></li>
-                        <li class="py-1"><a href="">Top Talent</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h5 class="py-3">Visit</h5>
-                    <p>
-                        3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
-                    </p>
-                    <div class="d-none d-md-block">
-                        <h5 class="py-3">Get in touch</h5>
-                        <p>hello@hng.tech</p>
-                        <p>+234 (0) 812 345 6789</p>
+        <div class="col-lg-7 p-lg-5">
+          <div class="container">
+            <div class="form-box">
+              <div class="header my-3">
+                <h4>Welcome to TalentPool</h4>
+                <p class="text-muted">Let's get your account setup so you can have access to a great
+                  pool of talent</p>
+              </div>
+              <form class="needs-validation" novalidate>
+                <div class="row   ">
+                  <!-- <div class="col-md-12 my-3 form-group">
+                    <label for="organization">Organization Name</label>
+                    <input type="text" id="organization" class="form-control form-control-lg"
+                      placeholder="Enter organization" required>
+                    <div class="invalid-feedback">
+                      Enter your Organization
                     </div>
+                  </div> -->
+                  <div class="col-md my-3 form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" class="form-control form-control-lg form__input"
+                      placeholder="Enter first name" required>
+                    <div class="invalid-feedback">
+                      Enter your first name
+                    </div>
+                  </div>
+                  <div class="col-md my-3 form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" class="form-control form-control-lg form__input"
+                      placeholder="Enter last name" required>
+                    <div class="invalid-feedback">
+                      Enter your last name
+                    </div>
+                  </div>
                 </div>
-                <div class="col-6 d-md-none">
-                    <h5 class="py-3">Get in touch</h5>
-                    <p>hello@hng.tech</p>
-                    <p>+234 (0) 812 345 6789</p>
+                <div class="row ">
+                  <div class="my-3 col-md">
+                    <label for="email" class="form-label ">Email address</label>
+                    <input type="email" class="form-control form-control-lg form__input" id="email"
+                      placeholder="john@email.com" required>
+                    <div class="invalid-feedback">
+                      Enter a valid email
+                    </div>
+                  </div>
+                  <div class="my-3 col-md">
+                    <label for="phoneNo">Phone Number</label>
+                    <input type="number" class="form-control form-control-lg form__input" id="phoneNo"
+                      placeholder="e.g. +2348012345678">
+                    <!-- <label for="employerType">Sign up as</label>
+                    <select id="employerType" class="form-control form-control-lg form__select" required>
+                      <option value="individual" selected>Individual</option>
+                      <option value="organization">Organization</option>
+                    </select> -->
+                    <div class="invalid-feedback">
+                      <!-- Select an option -->
+                    </div>
+                  </div>
                 </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Follow</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Facebook</a></li>
-                        <li class="py-1"><a href="">LinkedIn</a></li>
-                        <li class="py-1"><a href="">Twitter</a></li>
-                    </ul>
+                <div class="row">
+                  <div class="col-md-6 my-3 form-group">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="at least 8 characters"
+                      class="form-control form-control-lg form__input" inputmode="alpha-numeric" minlength="8"
+                      id="password" required>
+                    <div class="invalid-feedback">
+                      Enter your password. It must contain at least 8 characters.
+                    </div>
+                  </div>
+                  <div class="col-md-6 my-3 form-group">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" placeholder="at least 8 characters"
+                      class="form-control form-control-lg form__input" inputmode="alpha-numeric" minlength="8"
+                      id="confirmPassword" required>
+                    <div class="invalid-feedback">
+                      Confirm Password
+                    </div>
+                  </div>
                 </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Legal</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Terms</a></li>
-                        <li class="py-1"><a href="">Privacy</a></li>
-                    </ul>
+                <div class="row">
+                  <div class="custom-control custom-checkbox col ml-3 mt-3">
+                    <input type="checkbox" class="custom-control-input" id="receiveMail">
+                    <label class="custom-control-label" for="receiveMail" style="color: black;">Yes,
+                      I want to recieve TalentPool emails</label>
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="custom-control custom-checkbox col ml-3 mt-3">
+                    <input type="checkbox" class="custom-control-input" id="termsPolicy">
+                    <label class="custom-control-label" for="termsPolicy" style="color: black;">Yes,
+                      I agree to the <a href="#">Terms and Conditions</a></label>
+                  </div>
+                </div>
+
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+Launch demo modal
+</button> -->
+
+                <!-- <div class="form-group my-3 pt-2">
+                  <button class="btn btn-block  btn-sign py-3" type="submit" data-toggle="modal"
+                    data-target="#exampleModal">Sign -->
+                <div class="form-group my-3 pt-2">
+                  <button class="btn btn-block  btn-sign py-3" type="submit">Sign
+                    Up</button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-body d-flex flex-column align-items-center">
+                        <div>
+                          <img src="../img/logo.svg" alt="logo" />
+                        </div>
+                        <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z"
+                            fill="#337AB7" />
+                        </svg>
+
+                        <h2>Registration Successful !</h2>
+                        <p class="text-center"> A verification link has been sent to your email address, kindly check
+                          your mail and click to verify your account.</p>
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Login</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group my-4 text-center">
+                  <span class="text-muted wor">OR</span>
+                </div>
+                <div class="form-row  text-center ">
+                  <div class="col-md my-2">
+                    <button type="button" class="btn btn-social btn-block btn-facebook text-center py-3">
+                      <i class="fa fa-facebook pr-2"></i>Log in
+                      with Facebook
+                    </button>
+                  </div>
+                  <div class="col-md my-2 ">
+                    <button type="button" class="btn btn-block btn-social btn-google text-center  py-3">
+                      <i class="fa fa-google pr-2"></i>Log in
+                      using Google
+                    </button>
+                  </div>
                 </div>
             </div>
-            <hr>
-            <div class="row">
-                <div class="col py-2">
-                    <p class="copyright">
-                        TalentPool. All Rights Reserved.
-                    </p>
-                </div>
+            <div class="text-center acct mt-3 mb-5">Have an account with us? <a href="./employer-sign-in.html">Log
+                in</a>
             </div>
+          </div>
         </div>
-    </footer>
-    <!-- footer ends -->
-    <script src="../js/custom-js/employer-signup.js"></script>
-    <script src="../js/bootstrap-js/jquery.js"></script>
-    <script src="../js/bootstrap-js/popper.js"></script>
-    <script src="../js/bootstrap-js/bootstrap.js"></script>
+
+      </div>
+      </form>
+    </div>
+  </section>
+  <!-- My task ends here -->
+  <!-- footer starts -->
+  <footer class="footer">
+    <div class="container-fluid custom-container">
+      <div class="row top justify-content-between">
+        <div class="col-md-3">
+          <a href="index.html">
+            <div class="py-3">
+              <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
+            </div>
+          </a>
+          <p class="py-2">
+            We are known for
+            connecting top talents with top companies. We
+            make great possibilities
+            happen.
+          </p>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5 class="py-3">Explore</h5>
+          <ul class="pl-0">
+            <li><a href="../index.html">Home</a></li>
+            <li class="py-1"><a href="aboutUs.html">About Us</a></li>
+            <li class="py-1"><a href="">Directories</a></li>
+            <li class="py-1"><a href="faq.html">FAQ</a></li>
+            <li class="py-1"><a href="contact-us.html">Contact Us</a></li>
+            <li class="py-1"><a href="">Top Talent</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3">
+          <h5 class="py-3">Visit</h5>
+          <p>
+            3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
+          </p>
+          <div class="d-none d-md-block">
+            <h5 class="py-3">Get in touch</h5>
+            <p>hello@hng.tech</p>
+            <p>+234 (0) 812 345 6789</p>
+          </div>
+        </div>
+        <div class="col-6 d-md-none">
+          <h5 class="py-3">Get in touch</h5>
+          <p>hello@hng.tech</p>
+          <p>+234 (0) 812 345 6789</p>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5 class="py-3">Follow</h5>
+          <ul class="pl-0">
+            <li><a href="">Facebook</a></li>
+            <li class="py-1"><a href="">LinkedIn</a></li>
+            <li class="py-1"><a href="">Twitter</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5 class="py-3">Legal</h5>
+          <ul class="pl-0">
+            <li><a href="">Terms</a></li>
+            <li class="py-1"><a href="">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col py-2">
+          <p class="copyright">
+            TalentPool. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- footer ends -->
+  <script src="../js/custom-js/employer-signup.js"></script>
+  <script src="../js/bootstrap-js/jquery.js"></script>
+  <script src="../js/bootstrap-js/popper.js"></script>
+  <script src="../js/bootstrap-js/bootstrap.js"></script>
 </body>
 
 </html>
