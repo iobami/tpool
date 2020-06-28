@@ -56,10 +56,11 @@ function showSuccess(input) {
 
 // email validation
 function checkEmail(input) {
+  clearError(input);
   const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (re.test(input.value.trim())) {
     showSuccess(input);
-  } else {
+  } else if (input.value.length > 0) {
     showError(input, "Email is not valid.");
   }
 }
@@ -70,14 +71,14 @@ function checkPhone(input) {
   // const length = String(Number(input.value)).length;
   const length = input.value.length;
   if (length > 10 && length < 16) {
-    if (/\D/.test(input.value.trim())) {
-      showError(input, "Phone number must only contain digits");
-    } else if (!/^0/.test(input.value.trim())) {
+    if (!/^0/.test(input.value.trim())) {
       showError(input, "Phone number must begin with 0");
     } else {
       // showError(input, "Please enter a valid phone number");
       showSuccess(input);
     }
+  } else if (/\D/.test(input.value.trim())) {
+    showError(input, "Phone number must only contain digits");
   } else {
     showError(input, "Phone number must be 11 to 15 digits");
   }
@@ -86,7 +87,7 @@ function checkPhone(input) {
 // Check Required fields
 function checkRequired(inputArr) {
   inputArr.forEach(function (input) {
-    if (validated[input.id] === false && input.value.trim() === "") {
+    if (input.value.trim() === "") {
       showRequired(input, `${getFieldName(input)} is required`);
     }
   });
@@ -128,6 +129,7 @@ function getFieldName(input) {
 
 // check password
 function checkPassword(input) {
+  clearError(input);
   let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
 
   if (input.value.length > 7) {
@@ -204,6 +206,12 @@ confirmPassword.addEventListener("blur", () => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  checkLength(firstName, 2);
+  checkLength(lastName, 2);
+  checkEmail(email);
+  checkPhone(phoneNo);
+  checkPassword(password);
+  checkPasswordsMatch(password, confirmPassword);
   checkRequired([
     firstName,
     lastName,
@@ -212,12 +220,6 @@ form.addEventListener("submit", (e) => {
     password,
     confirmPassword,
   ]);
-  checkLength(firstName, 2);
-  checkLength(lastName, 2);
-  checkEmail(email);
-  checkPhone(phoneNo);
-  checkPassword(password);
-  checkPasswordsMatch(password, confirmPassword);
 
   if (!Object.values(validated).includes(false)) {
     const formData = {
