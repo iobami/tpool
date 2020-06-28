@@ -65,6 +65,21 @@ function checkEmail(input) {
   }
 }
 
+// check phone number
+function checkPhone(input) {
+  const regex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
+
+  if (String(Number(input.value)).length >= 11) {
+    if (regex.test(input.value.trim())) {
+      showSuccess(input);
+    } else {
+      showError(input, "Please enter a valid phone number");
+    }
+  } else {
+    showError(input, "Phone number must be at least 11 digits");
+  }
+}
+
 // Check Required fields
 function checkRequired(inputArr) {
   inputArr.forEach(function (input) {
@@ -143,6 +158,10 @@ function checkPasswordsMatch(input1, input2) {
 }
 
 // event listeners
+firstName.addEventListener("blur", () => {
+  clearError(firstName);
+});
+
 email.addEventListener("input", () => {
   clearError(email);
   if (email.value !== "") {
@@ -151,6 +170,35 @@ email.addEventListener("input", () => {
     }, 1000);
   } else {
     clearError(email);
+  }
+});
+
+phoneNo.addEventListener("blur", () => {
+  clearError(phoneNo);
+  if (phoneNo.value !== "") {
+    setTimeout(() => {
+      checkPhone(phoneNo);
+    }, 1000);
+  } else {
+    clearError(phoneNo);
+  }
+});
+
+password.addEventListener("blur", () => {
+  clearError(password);
+  if (password.value !== "") {
+    checkPassword(password);
+  } else {
+    clearError(password);
+  }
+});
+
+confirmPassword.addEventListener("blur", () => {
+  clearError(confirmPassword);
+  if (confirmPassword.value !== "") {
+    checkPasswordsMatch(password, confirmPassword);
+  } else {
+    clearError(confirmPassword);
   }
 });
 
@@ -168,7 +216,7 @@ form.addEventListener("submit", (e) => {
   checkLength(firstName, 2);
   checkLength(lastName, 2);
   checkEmail(email);
-  checkLength(phoneNo, 10);
+  checkPhone(phoneNo);
   checkPassword(password);
   checkPasswordsMatch(password, confirmPassword);
 
@@ -187,7 +235,7 @@ form.addEventListener("submit", (e) => {
 
       const res = await fetch(API_URL, {
         method: "POST",
-        mode: "no-cors",
+        // mode: "no-cors",
         body: JSON.stringify(formData),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -200,6 +248,11 @@ form.addEventListener("submit", (e) => {
 
       try {
         console.log(data);
+        if (data.status === "success") {
+          $("#exampleModal").modal();
+        } else if (data.status === "error") {
+          alert(data.error);
+        }
       } catch (error) {
         console.log("Error:", error);
       }
