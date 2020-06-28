@@ -67,16 +67,20 @@ function checkEmail(input) {
 
 // check phone number
 function checkPhone(input) {
-  const regex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
-
-  if (String(Number(input.value)).length >= 11) {
-    if (regex.test(input.value.trim())) {
-      showSuccess(input);
+  // const regex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
+  // const length = String(Number(input.value)).length;
+  const length = input.value.length;
+  if (length > 10 && length < 16) {
+    if (/\D/.test(input.value.trim())) {
+      showError(input, "Phone number must only contain digits");
+    } else if (!/^0/.test(input.value.trim())) {
+      showError(input, "Phone number must begin with 0");
     } else {
-      showError(input, "Please enter a valid phone number");
+      // showError(input, "Please enter a valid phone number");
+      showSuccess(input);
     }
   } else {
-    showError(input, "Phone number must be at least 11 digits");
+    showError(input, "Phone number must be 11 to 15 digits");
   }
 }
 
@@ -176,9 +180,7 @@ email.addEventListener("input", () => {
 phoneNo.addEventListener("blur", () => {
   clearError(phoneNo);
   if (phoneNo.value !== "") {
-    setTimeout(() => {
-      checkPhone(phoneNo);
-    }, 1000);
+    checkPhone(phoneNo);
   } else {
     clearError(phoneNo);
   }
@@ -268,12 +270,12 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-// firstName.value = "testFirstName";
-// lastName.value = "testLastName";
-// email.value = "test@example.com";
-// password.value = "Test&1234";
-// confirmPassword.value = "Test&1234";
-// phoneNo.value = +2348012345678;
-// document.getElementById("termsPolicy").checked = true;
+firstName.value = "testFirstName";
+lastName.value = "testLastName";
+email.value = "test@example.com";
+password.value = "Test&1234";
+confirmPassword.value = "Test&1234";
+phoneNo.value = "08012345678";
+document.getElementById("termsPolicy").checked = true;
 
 // console.log(password.value, checkPassword(password));
