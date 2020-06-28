@@ -187,6 +187,7 @@ form.addEventListener("submit", (e) => {
 
       const res = await fetch(API_URL, {
         method: "POST",
+        mode: "no-cors",
         body: JSON.stringify(formData),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -220,5 +221,6 @@ form.addEventListener("submit", (e) => {
 // password.value = "Test&1234";
 // confirmPassword.value = "Test&1234";
 // phoneNo.value = +2348012345678;
+// document.getElementById("termsPolicy").checked = true;
 
 // console.log(password.value, checkPassword(password));
