@@ -45,9 +45,10 @@ body{
     transform: translate(-50%, -50%);
 }
 .row.text-center{
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 /*thumbnail*/
+
 .col-sm-4{
     padding-top: 100px;
 }
@@ -57,30 +58,34 @@ body{
     border-radius: 50%;
 }
 .content{
-    height: 97px;
-    position: relative;
+    margin-top: 2%;
 }
  .name{
     color: #084482;
     font-style: normal;
 font-weight: 500;
 font-size: 24px;
+line-height: 36px;
 }
  .stack{
-     position: absolute;
     font-style: normal;
 font-weight: normal;
 font-size: 16px;
+margin-top: -11px;
 color: #4c5059;
-top: 50px;
-left: 50%;
-transform: translate(-50%, -50%);
+line-height: 24px;
 }
-small{
+.small{
+    margin-top: -11px;
     font-style: normal;
     font-weight: 300;
     font-size: 12px;
-
+    line-height: 18px;
+}
+.col{
+   width: 316px;
+   margin: auto;
+   margin-top: 27px;
 }
 .text{
     font-style: normal;
@@ -107,7 +112,7 @@ font-weight: 500;
 font-size: 24px;
 line-height: 36px;
 }
-.col-sm-3, .col-sm-2{
+footer .col-sm-3,  footer .col-sm-2{
     margin-top: 5%;
 }
 footer p{
@@ -132,4 +137,11 @@ height: 2px;
 .nav-item{
     padding-top: 10px;
 }
+
+}
+@media only screen and (max-width: 767px) and (min-width: 580px){
+    .thumbnail img{
+        width: 130px;
+        height: 130px;
+    }
 }
