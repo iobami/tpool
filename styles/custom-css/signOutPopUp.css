@@ -1,0 +1,124 @@
+body{
+    font-family: 'Poppins', sans-serif;
+  }
+    .modal {
+        /* Transparent dimmed overlay */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: table;
+      }
+      .cancBtn{
+        background-color: white;
+        color:#8f999e;
+          border: 2px solid #00AEFF !important; 
+        box-sizing: border-box;
+        border-radius: 5px;
+        font-size: 24px;
+        width: 120px;
+        font-weight: 500;
+      }
+    
+      .signOutBtn{
+        background-color:#00AEFF;
+        border: 2px solid #00AEFF !important;
+        color:white;
+        box-sizing: border-box;
+        border-radius: 5px;
+        font-size: 24px;
+        width: 120px;
+        font-weight: 500;
+        
+      }
+   
+      .row {
+
+        justify-content: center;
+      
+      }
+      
+      .signOut{
+          text-align: center;
+      }
+      .center{
+          display: flex;
+          justify-content: center;
+      }
+
+      
+      /* .modal.hidden {
+        display: none;
+      } */
+      
+      .modal .container {
+       display: table-cell;
+       text-align: center;
+       vertical-align: middle;
+       width: 200px;
+      }
+      .jumbotron {
+          background-color: white;  
+          box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+          border-radius: 5px;
+      }
+
+      @media screen and (min-width: 535px) {
+          .jumbotron{
+          background-color: white;   
+          width: 40vw;
+          padding-top: 16px;
+          padding-bottom: 16px;
+          margin-left: 30%;
+          }
+     
+         }
+           
+ .modal .body {
+        box-shadow:2px 8px 20px rgba(181, 181, 181, 0.2);
+        border-radius: 5px;
+        display: inline-block;
+        background-color: #ffffff;
+        border: 1px solid black; 
+        padding: 10px;
+      }
+      .tProw{
+        position: relative;
+        left: 7%;
+        margin-top: 5%;
+        width: 30%;
+        margin-left: 0px;
+      }
+      @media screen and (max-width: 530px) {
+          .tProw{
+           
+            
+            position: relative;
+            left: 60px;
+          
+          }
+      }
+      .lead{
+        width: 50%;
+        text-align: center;
+        position: relative;
+        left: 25%;
+        font-weight: 300;
+        font-size: 16px;
+       
+      }
+      @media screen and (min-width: 535px) {
+          .lead{
+          
+            width: 80%;
+            position: relative;
+            left: 10%;
+            }
+      }
+      h3{
+        font-size: 24px;
+        font-weight: 600;
+        color: #25282B;
+      }
+      
