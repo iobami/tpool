@@ -261,10 +261,10 @@
     padding: 16px 24px;
     font-size: 16px;
     line-height: 24px;
-   
+
 }
 
-.filters .tab:not(.has-content){
+.filters .tab:not(.has-content) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -281,7 +281,7 @@
     border-radius: 5px;
 }
 
-.filters .tab.has-content> span{
+.filters .tab.has-content>span {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -349,16 +349,22 @@
     padding-left: 0;
 
 }
-.main .info p{
+
+.main .info p {
     line-height: 24px;
     text-transform: uppercase;
 }
+
 .main .info {
     box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
     border-radius: 5px;
     background-color: #ffffff;
     margin-top: 38px;
     padding: 91px 40px;
+}
+
+.directory-container .main {
+    max-width: 1200px;
 }
 
 @media screen and (min-width:768px) {
@@ -371,10 +377,12 @@
         padding: 36px 44px;
     }
 }
+
 @media screen and (max-width: 600px) {
     .user-cards .user-card .user-card-inner {
         display: block;
     }
+
     .user-cards .user-card .user-card-inner .profile .skills {
         padding: 8px 20px;
         /* color: #fcfdff; */
@@ -386,7 +394,8 @@
         border-bottom-right-radius: 20px;
 
     }
-    .user-cards .user-card .user-card-inner .profile a{
+
+    .user-cards .user-card .user-card-inner .profile a {
         align-self: center;
         margin-bottom: 10px;
     }
