@@ -7,7 +7,6 @@ const form = document.querySelector("form"),
   confirmPassword = document.getElementById("confirmPassword"),
   phoneNo = document.getElementById("phoneNo"),
   alert = document.getElementById("alert"),
-  alertHeading = document.getElementById("alertHeading"),
   alertMessage = document.getElementById("alertMessage");
 
 // object with validation status
@@ -20,6 +19,15 @@ const validated = {
   password: false,
   confirmPassword: false,
 };
+
+// show alert
+function showAlert(message) {
+  alertMessage.innerText = message;
+  alert.classList.remove("d-none");
+  setTimeout(() => {
+    alert.classList.add("d-none");
+  }, 6000);
+}
 
 // Show input error message
 function showError(input, message) {
@@ -133,7 +141,7 @@ function getFieldName(input) {
 // check password
 function checkPassword(input) {
   clearError(input);
-  let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+  let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([!@#$%^&*()_+=`~{}[\]-|'"<>,./?]*)(?=.{8,})/;
 
   if (input.value.length > 7) {
     if (!regex.test(input.value)) {
@@ -147,7 +155,7 @@ function checkPassword(input) {
   } else {
     showError(
       input,
-      "Password must be at least 8 characters long and include a capital letter, a symbol and a number"
+      "Password must be at least 8 characters long and include  a number, upper and lowercase letters"
     );
   }
 }
@@ -188,12 +196,26 @@ phoneNo.addEventListener("blur", () => {
   }
 });
 
-password.addEventListener("blur", () => {
+password.addEventListener("input", () => {
   clearError(password);
   if (password.value !== "") {
-    checkPassword(password);
+    setTimeout(() => {
+      checkPassword(password);
+      checkPasswordsMatch(password, confirmPassword);
+    }, 1000);
   } else {
     clearError(password);
+  }
+});
+
+confirmPassword.addEventListener("input", () => {
+  clearError(confirmPassword);
+  if (confirmPassword.value !== "") {
+    setTimeout(() => {
+      checkPasswordsMatch(password, confirmPassword);
+    });
+  } else {
+    clearError(confirmPassword);
   }
 });
 
@@ -250,18 +272,18 @@ form.addEventListener("submit", (e) => {
 
       const data = await res.json();
 
+      if (data) [(document.getElementById("submitBtn").innerText = "Sign Up")];
       try {
         if (data.status === "success") {
           $("#exampleModal").modal();
         } else if (data.status === "error") {
           const message =
             data.error === "Someone has already registered this email"
-              ? "Email already registered"
+              ? "Email already exists"
               : data.error === "Phone number already exist"
               ? "Phone number already exists"
               : data.error;
-          alert.classList = "alert alert-danger";
-          alertMessage.innerText = message;
+          showAlert(message);
         }
       } catch (error) {
         console.log("Error:", error);
@@ -270,12 +292,12 @@ form.addEventListener("submit", (e) => {
 
     // check for agreement to terms
     if (document.getElementById("termsPolicy").checked) {
+      document.getElementById("submitBtn").innerHTML =
+        '<span class="spinner-border spinner-border" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>';
       signupEmployer(formData);
       // $("#exampleModal").modal();
     } else {
-      alert.classList = "alert alert-danger";
-      alertMessage.innerText =
-        "Please agree to the Terms and Conditions to proceed.";
+      showAlert("Please accept the Terms and Conditions to proceed.");
     }
   }
 });
