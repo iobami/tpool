@@ -79,16 +79,16 @@
     <div id="main-content" class="pt-2 pb-5">
         <div class="container-fluid">
             <div class="container chat-top p-0">
-                <div class="row mt-3">
-                    <div class="col-md-10">
+                <div class="row mt-3 p-md-0 p-2">
+                    <div class="col-lg-10 col-6">
                         <h1 class="main-heading">Messages</h1>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-6 d-flex justify-content-end">
                         <p> <img src="../img/admin-dash-messages/Vector.svg" alt="">
                             Talent Offers</p>
                     </div>
                 </div>
-                <div class="mt-3">
+                <div class="mt-md-3 mt-0 p-md-0 p-2">
                     <p>Inbox</p>
                 </div>
             </div>
@@ -96,59 +96,12 @@
             <!-- chat section -->
             <div class="container chat">
                 <div class="row">
-                    <div class="col-md-5 left-side p-0">
-                        <div class="m-4">
-                            <input type="text" class="form-control text-center"
-                                placeholder="Search on Start a new message" aria-label="Large"
-                                aria-describedby="inputGroup-sizing-sm">
-                            <hr class="mt-4 mb-4">
-
-                            <div class="card d-flex flex-row justify-content-around mb-4" id="chat-card">
-                                <p class=" mb-1">
-                                    <img src="../img/admin-dash-messages/dp-image.png" alt="img" class="dp-img ">
-                                </p>
-
-
-                                <div class="chat-info">
-                                    <div class="content-top d-flex flex-row justify-content-between">
-                                        <p class="contact-name mb-0 font-weight-bold">Adeleke Oluwakemi</p>
-                                        <p class="time-sent mb-0">4:56pm</p>
-                                    </div>
-                                    <div class="content-bottom d-flex flex-row ">
-                                        <p class="mb-0 pr-2">
-                                            <img src="../img/admin-dash-messages/Read-tick.svg" alt="dp-img/" class="">
-                                        </p>
-
-                                        <p class="chat-content mb-1">Will you be at the conference?</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card d-flex flex-row justify-content-around mb-4" id="chat-card">
-                                <p class=" mb-1">
-                                    <img src="../img/admin-dash-messages/Ellipse 30.png" alt="img" class="dp-img ">
-                                </p>
-
-
-                                <div class="chat-info">
-                                    <div class="content-top d-flex flex-row justify-content-between">
-                                        <p class="contact-name mb-0 font-weight-bold">Nifemi Ajayi</p>
-                                        <p class="time-sent mb-0">4:56pm</p>
-                                    </div>
-                                    <div class="content-bottom d-flex flex-row ">
-                                        <p class="mb-0 pr-2">
-                                            <img src="../img/admin-dash-messages/Read-tick.svg" alt="dp-img/" class="">
-                                        </p>
-
-                                        <p class="chat-content mb-1">I hope you are ready for the int...</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="col-lg-5 left-side p-0">
 
                     </div>
-                    <div class="col-md-7 right-side p-0">
+
+                    <!-- right section -->
+                    <div class="col-lg-7 right-side p-0">
                         <div class="top-tab d-flex align-items-center p-2">
                             <p class="m-0 pl-4"><img src="../img/admin-dash-messages/dp-image.png" alt="profile-img"
                                     id="dp">
@@ -156,7 +109,7 @@
                         </div>
                         <div class="main-tab ">
 
-                            <div class="px-5 py-4 chat-messages">
+                            <div class="px-md-5 px-2 pt-4 chat-messages">
                                 <div class="day d-flex justify-content-center p-2">
                                     Yesterday
                                 </div>
@@ -221,12 +174,16 @@
                             </div>
 
                         </div>
-                        <div class="px-5">
-                            <div class="pt-5 py-4">
-                                <input type="text" placeholder="Type something..." id="type-msg">
-                                <img src="../img/admin-dash-messages/Emoji.svg" alt="" class="px-2 bottom-icon">
-                                <img src="../img/admin-dash-messages/pin.svg" alt="" class="px-2 bottom-icon">
-                                <img src="../img/admin-dash-messages/dots.svg" alt="" class="px-2 bottom-icon">
+                        <div class="px-md-5">
+                            <div class="pt-2 py-4 pl-2 d-flex w-100">
+                                <div class="msg-input">
+                                    <input type="text" placeholder="Type something..." id="type-msg">
+                                </div>
+                                <div class="emojipack d-flex">
+                                    <img src="../img/admin-dash-messages/Emoji.svg" alt="" class="px-2 bottom-icon">
+                                    <img src="../img/admin-dash-messages/pin.svg" alt="" class="px-2 bottom-icon">
+                                    <img src="../img/admin-dash-messages/dots.svg" alt="" class="px-2 bottom-icon">
+                                </div>
                             </div>
                         </div>
                     </div>
