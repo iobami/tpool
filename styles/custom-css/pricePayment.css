@@ -86,6 +86,15 @@
 .price-payment .container .pay-now__form .bottom-bar__content {
     padding: 40px 20px;
 }
+.price-payment .container .pay-now__form .bottom-bar__content .form{
+    display: none;
+    transition: all 0.5s ease-in-out;
+    /* margin-top: -50px; */
+}
+.price-payment .container .pay-now__form .bottom-bar__content .show-form{
+    display: block;
+    /* margin-top: 0px; */
+}
 .price-payment .container .pay-now__form .bottom-bar__content h4{
     font-weight: 500;
     font-size: 24px;
@@ -107,6 +116,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.price-payment .container .pay-now__form .bottom-bar__content .img-container:hover {
+    cursor: pointer;
+    background: rgba(196, 196, 196, 0.35);
 }
 
 .price-payment .container .pay-now__form .bottom-bar__content .img-container img{
