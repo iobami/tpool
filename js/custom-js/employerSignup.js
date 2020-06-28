@@ -26,7 +26,6 @@ function showError(input, message) {
   error.className = "invalid-feedback";
   error.innerText = input.value !== "" ? message : "";
   validated[input.id] = false;
-  // console.log(parent.removeChild(div.inv))
 }
 
 // clear error message
@@ -88,7 +87,6 @@ function checkPhone(input) {
 function checkRequired(inputArr) {
   inputArr.forEach(function (input) {
     if (validated[input.id] === false && input.value.trim() === "") {
-      // console.log(validated[input.id]);
       showRequired(input, `${getFieldName(input)} is required`);
     }
   });
@@ -154,7 +152,6 @@ function checkPasswordsMatch(input1, input2) {
   if (input1.value && input2.value) {
     if (input1.value !== input2.value) {
       showError(input2, "Passwords do not match");
-      console.log(input2.id);
     } else {
       showSuccess(input2);
     }
@@ -222,7 +219,6 @@ form.addEventListener("submit", (e) => {
   checkPassword(password);
   checkPasswordsMatch(password, confirmPassword);
 
-  // console.log(validated);
   if (!Object.values(validated).includes(false)) {
     const formData = {
       firstName: firstName.value.trim(),
@@ -249,7 +245,6 @@ form.addEventListener("submit", (e) => {
       const data = await res.json();
 
       try {
-        console.log(data);
         if (data.status === "success") {
           $("#exampleModal").modal();
         } else if (data.status === "error") {
@@ -269,13 +264,3 @@ form.addEventListener("submit", (e) => {
     }
   }
 });
-
-firstName.value = "testFirstName";
-lastName.value = "testLastName";
-email.value = "test@example.com";
-password.value = "Test&1234";
-confirmPassword.value = "Test&1234";
-phoneNo.value = "08012345678";
-document.getElementById("termsPolicy").checked = true;
-
-// console.log(password.value, checkPassword(password));
