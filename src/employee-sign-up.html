@@ -76,23 +76,21 @@
                 <p class="smallTitle">Create a profile to join the 1,000+ graduates to get connected with pontential employers.</p>
             </div>
 
-            <form class="needs-validation" novalidate>
+            <form name="Form" class="needs-validation" novalidate>
                 <div class="row">
                     <div class="col-md mb-3">
                         <label for="fname">First Name</label>
                         <div class="input-group">
-                            <input type="text" class="form-control " id="fname" placeholder="e.g. John" required>
-                            <div class="invalid-feedback">
-                            Your First Name is required.
+                            <input name="fname" type="text" class="form-control w-100" id="fname" placeholder="e.g. John" required>
+                            <div id="invalid">
                             </div>
                         </div>
                     </div>
                     <div class="col-md mb-3">
                         <label for="lname">Last Name</label>
                         <div class="input-group">
-                            <input type="text" class="form-control " id="lname" placeholder="e.g. Doe" required>
-                            <div class="invalid-feedback">
-                                Your Last Name is required.
+                            <input type="text" class="form-control w-100" id="lname" placeholder="e.g. Doe" required>
+                            <div id="invalidL">
                             </div>
                         </div>
                     </div>
@@ -102,32 +100,35 @@
                     <div class="col-md mb-3">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required>
-                        <div class="invalid-feedback">
-                            Your valid email address is required.
+                        <div id="invalidE">
                         </div>
                     </div>
                     <div class="col-md mb-3">
+                        <label for="phone">Phone number</label>
+                        <input type="phone" class="form-control" id="phone" maxlength="11" placeholder="e.g. 08023414785" required>
+                        <div id="invalidP">
+                        </div>
+                    </div>
+                    <!-- <div class="col-md mb-3">
                         <label for="gradClass">Graduation Class</label>
                         <input type="number" class="form-control" id="gradClass" min="2013" max="2020" placeholder="e.g. 2020" required>
                         <div class="invalid-feedback">
                             Your Graduation Year is required as 4 digits.
                         </div>
-                    </div>
-                </div> 
+                    </div> -->
+                    </div> 
                 
                 <div class="row">
                     <div class="col-md mb-3">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
-                        <div class="invalid-feedback">
-                            Minimum of 8 characters is required.
+                        <div id="invalidPass">
                         </div>
                     </div>
                     <div class="col-md mb-3">
                         <label for="confirmPassword">Confirm Password</label>
                         <input type="password" class="form-control" id="confirmPassword" minlength="8" placeholder="at least 8 characters" required>
-                        <div class="invalid-feedback">
-                            The passwords entered did not match.
+                        <div id="invalidPass2">
                         </div>
                     </div>
                 </div> 
@@ -143,7 +144,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit" data-toggle="modal" data-target="#exampleModal">Sign Up</button>
+                        <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit" data-toggle="" data-target="#exampleModal">Sign Up</button>
                     </div>
 
                      <!-- Modal -->

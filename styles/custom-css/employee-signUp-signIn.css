@@ -119,6 +119,11 @@ hr {
     padding: 15px;
 } 
 
+.form-select {
+  border-radius: 5px;
+  border: 2px solid #b5b5b5;
+  padding: 15px;
+}
 
 .modal-content {
   max-width: 540px;
@@ -127,6 +132,8 @@ hr {
   border: none;
   padding: 49px 37px 41px;
 }
+
+
 
 .modal-content svg {
   margin-top: 69.58px;
@@ -156,4 +163,16 @@ hr {
   font-weight: 500;
   font-size: 1.5rem;
   border: none;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#invalid, #invalidL, #invalidE, #invalidP, #invalidPass, #invalidPass2 {
+  display: none;
+  font-size: 12.8px;
+  color: #DB4A39;
 }
