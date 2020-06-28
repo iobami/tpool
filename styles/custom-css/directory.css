@@ -245,7 +245,6 @@
     background-color: #b2b2b2;
 } */
 .top-links .right-filter {
-    margin-bottom: 4px;
     color: #495057;
 }
 
@@ -258,10 +257,13 @@
 }
 
 .filters .tab {
-    padding: 16px 24px;
+    /* padding: 16px 24px; */
     font-size: 16px;
     line-height: 24px;
-
+    
+}
+.filters .tab >span{
+    padding: 16px 24px;
 }
 
 .filters .tab:not(.has-content) {
@@ -288,9 +290,9 @@
 }
 
 .filters .tab .content {
-    padding: 32px 0;
-    margin-top: 16px;
+    padding: 48px 24px;
     border-top: 2px solid #eeeeee;
+    
 }
 
 .filters .tab .content .form-check input[type="checkbox"] {
@@ -347,7 +349,6 @@
     position: relative;
     height: 28px;
     padding-left: 0;
-
 }
 
 .main .info p {
@@ -362,9 +363,18 @@
     margin-top: 38px;
     padding: 91px 40px;
 }
+.right-filter .interns{
+    padding-right: 10px;
+
+    border-right: 1px solid #b2b2b2;
+}
 
 .directory-container .main {
     max-width: 1200px;
+}
+.sort select{
+    padding: 10px 20px;
+    height: auto;
 }
 
 @media screen and (min-width:768px) {
@@ -385,14 +395,13 @@
 
     .user-cards .user-card .user-card-inner .profile .skills {
         padding: 8px 20px;
-        /* color: #fcfdff; */
-        /* font-size: 16px; */
-        /* line-height: 24px; */
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-
+        color: #fcfdff;
+        font-size: 16px;
+        line-height: 24px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 10px; 
     }
 
     .user-cards .user-card .user-card-inner .profile a {
