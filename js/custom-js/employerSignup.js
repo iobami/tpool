@@ -4,8 +4,11 @@ const form = document.querySelector("form"),
   email = document.getElementById("email"),
   employerType = document.getElementById("employerType"),
   password = document.getElementById("password"),
-  confirmPassword = document.getElementById("confirmPassword");
-const phoneNo = document.getElementById("phoneNo");
+  confirmPassword = document.getElementById("confirmPassword"),
+  phoneNo = document.getElementById("phoneNo"),
+  alert = document.getElementById("alert"),
+  alertHeading = document.getElementById("alertHeading"),
+  alertMessage = document.getElementById("alertMessage");
 
 // object with validation status
 const validated = {
@@ -205,6 +208,7 @@ confirmPassword.addEventListener("blur", () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  alert.classList.add("d-none");
 
   checkLength(firstName, 2);
   checkLength(lastName, 2);
@@ -250,7 +254,14 @@ form.addEventListener("submit", (e) => {
         if (data.status === "success") {
           $("#exampleModal").modal();
         } else if (data.status === "error") {
-          alert(data.error);
+          const message =
+            data.error === "Someone has already registered this email"
+              ? "Email already registered"
+              : data.error === "Phone number already exist"
+              ? "Phone number already exists"
+              : data.error;
+          alert.classList = "alert alert-danger";
+          alertMessage.innerText = message;
         }
       } catch (error) {
         console.log("Error:", error);
@@ -262,7 +273,9 @@ form.addEventListener("submit", (e) => {
       signupEmployer(formData);
       // $("#exampleModal").modal();
     } else {
-      alert("Please agree to the Terms and Conditions to proceed.");
+      alert.classList = "alert alert-danger";
+      alertMessage.innerText =
+        "Please agree to the Terms and Conditions to proceed.";
     }
   }
 });
