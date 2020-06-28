@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Talent Pool</title>
+    <link rel="shortcut icon" href="../img/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/custom-css/main.css">
+    <link rel="stylesheet" href="../styles/custom-css/header.css">
+    <link rel="stylesheet" href="../styles/custom-css/footer.css">
+    <link rel="stylesheet" href="../styles/custom-css/directory.css">
+    <link rel="stylesheet" href="<link href="
+        https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- NAV-BAR -->
+    <header class="header">
+        <div class="container-fluid custom-container nav-container">
+            <nav class="navbar navbar-expand-lg navbar-light py-1">
+                <a class="navbar-brand" href="index.html">
+                    <img src="../img/talentpool header logo.svg" alt="talent pool logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item px-3 active">
+                            <a class="nav-link nav-link-black" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nav-link-black" href="aboutUs.html">About Us</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nav-link-black" href="./directory.html">Directories <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nav-link-black" href="./faq.html">FAQ</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link nav-link-black" href="#">Contact Us</a>
+                        </li>
+                        <li class="nav-item px-3 my-2 my-lg-0">
+                            <a class="nav-link btn btn-hire-talent px-3 py-1" href="./employer-sign-in.html">Sign in</a>
+                        </li>
+                        <li class="nav-item px-3 dropdown">
+                            <button class="nav-link btn btn-sign-up px-3 py-1 dropdown-toggle" type="button"
+                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Sign Up
+                            </button>
+
+                            <div class="dropdown-menu dropdown-menu-right signup__dropdown"
+                                aria-labelledby="dropdownMenuButton">
+                                <p>Sign up as: </p>
+                                <a class="dropdown-item" href="./employer-sign-up.html">Employer</a>
+                                <a class="dropdown-item" href="./employee-sign-up.html">Talent</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="directory-container">
+
+        <div class="hero">
+            <div class="hero-header">
+                <img src="../img/directory-search-icon.svg" class="d-none d-md-block">
+                <div class="text">
+                    <h2>Directory</h2>
+                    <div> Find graduates with various skills and tracks. </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid main">
+            <div class="row">
+
+                <div class="col-lg-3">
+                    <div class="filters">
+                        <div class="tab">
+                            <span>
+                                <h2 class="title">
+                                    Filters
+                                </h2>
+                            </span>
+                        </div>
+                        <div class="tab has-content">
+                            <span data-target="#skillsContent" data-toggle="collapse" aria-controls="skillsContent">
+                                Skills
+                                <i class="fa fa-angle-down rotate-icon"></i>
+                            </span>
+                            <div id="skillsContent" class="content collapse">
+
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-UI" value="UI" class="form-check-input">
+                                    <label for="checkbox-UI" class="form-check-label"><span></span>UI</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-UX" value="UX" class="form-check-input">
+                                    <label for="checkbox-UX" class="form-check-label"><span></span>UX</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-Figma" value="Figma" class="form-check-input">
+                                    <label for="checkbox-Figma" class="form-check-label"><span></span>Figma</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-Sketch" value="Sketch" class="form-check-input">
+                                    <label for="checkbox-Sketch" class="form-check-label"><span></span>Sketch</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-JavaScript" value="JavaScript"
+                                        class="form-check-input">
+                                    <label for="checkbox-JavaScript"
+                                        class="form-check-label"><span></span>JavaScript</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-Mobile" value="Mobile" class="form-check-input">
+                                    <label for="checkbox-Mobile" class="form-check-label"><span></span>Mobile</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-FrontEnd" value="FrontEnd"
+                                        class="form-check-input">
+                                    <label for="checkbox-FrontEnd"
+                                        class="form-check-label"><span></span>FrontEnd</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-Backend" value="Backend"
+                                        class="form-check-input">
+                                    <label for="checkbox-Backend" class="form-check-label"><span></span>Backend</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <span>
+                                Years of Experience
+                            </span>
+                            <div>
+                                <select class="form-control">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <span>
+                                Age
+                            </span>
+                            <div>
+                                <select class="form-control">
+                                    <option>0</option>
+                                    <option>20</option>
+                                    <option>21</option>
+                                    <option>22</option>
+                                    <option>23</option>
+                                    <option>24</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <span>
+                                Location
+                            </span>
+                            <div>
+                                <select class="form-control">
+                                    <option disabled selected>Region</option>
+                                    <option>Nigeria</option>
+                                    <option>USA</option>
+                                    <option>UK</option>
+                                    <option>China</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="tab has-content">
+                            <span data-target="#availabilityContent" data-toggle="collapse"
+                                aria-controls="availabilityContent">
+                                Availability
+                                <i class="fa fa-angle-down rotate-icon"></i>
+                            </span>
+                            <div id="availabilityContent" class="content collapse">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p>
+                            Scroll through our list of qualified graduates or sort with the filter
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+
+
+                    <div class="search-bar">
+                        <div class="search-box form-group">
+                            <span class="fa fa-search form-control-icon" aria-hidden="true"></span>
+                            <input class="form-control" type="text" placeholder="Search Directory with keywords">
+                        </div>
+
+                        <div class="top-links">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <ul class="nav nav-pills flex-column flex-sm-row">
+                                        <li class="nav-link flex-sm-fill text-center active">All</li>
+                                        <li class="nav-link flex-sm-fill text-center">Design</li>
+                                        <li class="nav-link flex-sm-fill text-center">Mobile</li>
+                                        <li class="nav-link flex-sm-fill text-center">Frontend</li>
+                                        <li class="nav-link flex-sm-fill text-center">Backend</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-4 d-flex justify-content-around right-filter">
+                                    <span class="align-self-center interns">750 interns</span>
+                                    <div class="sort">
+                                        <select class="form-control">
+
+                                            <option>Relevance</option>
+                                            <option>Name</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-cards">
+                        <div class="user-card frontend">
+                            <div class="user-card-inner">
+
+                                <div class="title">
+
+                                    <div class="user-card-image-container">
+                                        <div class="user-card-image"
+                                            style="background-image: url(../img/directories/obinna.jpg);">
+                                        </div>
+                                    </div>
+
+                                    <div class="user-texts">
+                                        <h4>Obinna Nneji</h4>
+                                        <h6>Frontend Developer</h6>
+                                    </div>
+                                </div>
+                                <div class="profile">
+                                    <a href="./employee_profile.html">View profile</a>
+                                    <div class="skills">
+
+                                        <ul>
+                                            <li>
+                                                JavaScript
+                                            </li>
+                                            <li>
+                                                Figma
+                                            </li>
+                                            <li>
+                                                Sketch
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-card designer">
+                            <div class="user-card-inner">
+
+                                <div class="title">
+
+                                    <div class="user-card-image-container">
+                                        <div class="user-card-image"
+                                            style="background-image: url(../img/directories/jaden_tomi.jpg);">
+                                        </div>
+                                    </div>
+
+                                    <div class="user-texts">
+                                        <h4>Jaden Tega</h4>
+                                        <h6>Designer</h6>
+                                    </div>
+                                </div>
+                                <div class="profile">
+                                    <a href="./employee_profile.html">View profile</a>
+                                    <div class="skills">
+
+                                        <ul>
+                                            <li>
+                                                UI
+                                            </li>
+                                            <li>
+                                                UX
+                                            </li>
+                                            <li>
+                                                Figma
+                                            </li>
+                                            <li>
+                                                Sketch
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-card backend">
+                            <div class="user-card-inner">
+
+                                <div class="title">
+
+                                    <div class="user-card-image-container">
+                                        <div class="user-card-image"
+                                            style="background-image: url(../img/directories/julia.jpg);">
+                                        </div>
+                                    </div>
+
+                                    <div class="user-texts">
+                                        <h4>Julia Orji</h4>
+                                        <h6>Backend Developer</h6>
+                                    </div>
+                                </div>
+                                <div class="profile">
+                                    <a href="./employee_profile.html">View profile</a>
+                                    <div class="skills">
+
+                                        <ul>
+                                            <li>
+                                                JavaScript
+                                            </li>
+                                            <li>
+                                                Figma
+                                            </li>
+                                            <li>
+                                                Sketch
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-card backend">
+                            <div class="user-card-inner">
+
+                                <div class="title">
+
+                                    <div class="user-card-image-container">
+                                        <div class="user-card-image"
+                                            style="background-image: url(../img/directories/martha.jpg);">
+                                        </div>
+                                    </div>
+
+                                    <div class="user-texts">
+                                        <h4>Martha Bello</h4>
+                                        <h6>Backend Developer</h6>
+                                    </div>
+                                </div>
+                                <div class="profile">
+                                    <a href="./employee_profile.html">View profile</a>
+                                    <div class="skills">
+
+                                        <ul>
+                                            <li>
+                                                JavaScript
+                                            </li>
+                                            <li>
+                                                Figma
+                                            </li>
+                                            <li>
+                                                Sketch
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-card mobile">
+                            <div class="user-card-inner">
+
+                                <div class="title">
+
+                                    <div class="user-card-image-container">
+                                        <div class="user-card-image"
+                                            style="background-image: url(../img/directories/jaden_tomi.jpg);">
+                                        </div>
+                                    </div>
+
+                                    <div class="user-texts">
+                                        <h4>Tomi Ade</h4>
+                                        <h6>Mobile</h6>
+                                    </div>
+                                </div>
+                                <div class="profile">
+                                    <a href="./employee_profile.html">View profile</a>
+                                    <div class="skills">
+
+                                        <ul>
+                                            <li>
+                                                JavaScript
+                                            </li>
+                                            <li>
+                                                Sketch
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-card designer">
+                            <div class="user-card-inner">
+
+                                <div class="title">
+
+                                    <div class="user-card-image-container">
+                                        <div class="user-card-image"
+                                            style="background-image: url(../img/directories/Nelson.png);">
+                                        </div>
+                                    </div>
+
+                                    <div class="user-texts">
+                                        <h4>Nelson Fideli</h4>
+                                        <h6>Designer</h6>
+                                    </div>
+                                </div>
+                                <div class="profile">
+                                    <a href="./employee_profile.html">View profile</a>
+                                    <div class="skills">
+
+                                        <ul>
+                                            <li>
+                                                UX
+                                            </li>
+                                            <li>
+                                                Figma
+                                            </li>
+                                            <li>
+                                                Sketch
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        <div class="container-fluid custom-container">
+            <div class="row top justify-content-between">
+                <div class="col-md-3">
+                    <a href="../index.html">
+                        <div class="py-3">
+                            <img src="../img/talentpool footer logo.svg" alt="talent pool logo">
+                        </div>
+                    </a>
+                    <p class="py-2">
+                        We are known for
+                        connecting top talents with top companies. We
+                        make great possibilities
+                        happen.
+                    </p>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h5 class="py-3">Explore</h5>
+                    <ul class="pl-0">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="py-1"><a href="./aboutUs.html">About Us</a></li>
+                        <li class="py-1"><a href="./directory.html">Directories</a></li>
+                        <li class="py-1"><a href="./faq.html">FAQ</a></li>
+                        <li class="py-1"><a href="./contact-us.html">Contact Us</a></li>
+                        <li class="py-1"><a href="">Top Talent</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h5 class="py-3">Visit</h5>
+                    <p>
+                        3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
+                    </p>
+                    <div class="d-none d-md-block">
+                        <h5 class="py-3">Get in touch</h5>
+                        <p>hello@hng.tech</p>
+                        <p>+234 (0) 812 345 6789</p>
+                    </div>
+                </div>
+                <div class="col-6 d-md-none">
+                    <h5 class="py-3">Get in touch</h5>
+                    <p>hello@hng.tech</p>
+                    <p>+234 (0) 812 345 6789</p>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h5 class="py-3">Follow</h5>
+                    <ul class="pl-0">
+                        <li><a href="">Facebook</a></li>
+                        <li class="py-1"><a href="">LinkedIn</a></li>
+                        <li class="py-1"><a href="">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h5 class="py-3">Legal</h5>
+                    <ul class="pl-0">
+                        <li><a href="">Terms</a></li>
+                        <li class="py-1"><a href="">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col py-2">
+                    <p class="copyright">
+                        TalentPool. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/bootstrap-js/popper.js"></script>
+    <script src="../js/bootstrap-js/jquery.js"></script>
+    <script src="../js/bootstrap-js/bootstrap.js"></script>
+</body>
+
+</html>
