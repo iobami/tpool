@@ -254,8 +254,21 @@ button:focus {
     padding-left: 0;
   }
 
+  .main-section {
+    display: none;
+  }
+
+  .container-fluid {
+    padding: 0;
+    margin: 0;
+  }
+
   #type-msg {
     padding: 0.3rem 10rem 0.3rem 1rem;
+  }
+
+  #inbox-top {
+    background-color: #fff;
   }
 }
 

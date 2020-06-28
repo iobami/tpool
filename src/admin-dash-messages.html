@@ -76,32 +76,34 @@
     <div id="body__click"></div>
 
     <!-- main content -->
-    <div id="main-content" class="pt-2 pb-5">
+    <div id="main-content" class="pt-lg-2 pb-5">
         <div class="container-fluid">
             <div class="container chat-top p-0">
-                <div class="row mt-3 p-md-0 p-2">
-                    <div class="col-lg-10 col-6">
+                <div class="row mt-lg-3 m-0 p-md-0 p-1 main-section">
+                    <div class="col-lg-8 col-6">
                         <h1 class="main-heading">Messages</h1>
                     </div>
-                    <div class="col-lg-2 col-6 d-flex justify-content-end">
+                    <div class="col-lg-4 col-6 d-flex justify-content-end">
                         <p> <img src="../img/admin-dash-messages/Vector.svg" alt="">
                             Talent Offers</p>
                     </div>
                 </div>
-                <div class="mt-md-3 mt-0 p-md-0 p-2">
-                    <p>Inbox</p>
+                <div class="mt-lg-3 mt-0 p-lg-0 p-2" id="inbox-top">
+                    <p><button class="chat-btn" onclick="toggleBack()"><img
+                                src="../img/admin-dash-messages/back-arrow.svg" alt=""
+                                class="d-lg-none pr-2"></button><span>Inbox</span>
+                    </p>
                 </div>
             </div>
 
             <!-- chat section -->
             <div class="container chat">
                 <div class="row">
-                    <div class="col-lg-5 left-side p-0">
-
+                    <div class="col-lg-5 left-side p-0 main-section">
                     </div>
 
                     <!-- right section -->
-                    <div class="col-lg-7 right-side p-0">
+                    <div class="col-lg-7 right-side p-0" id="right-side">
                         <div class="top-tab d-flex align-items-center p-2">
                             <p class="m-0 pl-4"><img src="../img/admin-dash-messages/dp-image.png" alt="profile-img"
                                     id="dp">
@@ -198,6 +200,7 @@
     </div>
     </div>
     <script src="../js/custom-js/side-nav.js"></script>
+    <script src="../js/custom-js/admin-dash-messages.js"></script>
 </body>
 
 </html>
