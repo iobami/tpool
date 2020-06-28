@@ -267,7 +267,9 @@ button:focus {
     padding: 0.3rem 10rem 0.3rem 1rem;
   }
 
-  #inbox-top {
+  .chat-fixed-bottom {
+    position: fixed;
+    bottom: 0;
     background-color: #fff;
   }
 }
