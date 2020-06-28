@@ -257,13 +257,16 @@
 }
 
 .filters .tab {
-    /* padding: 16px 24px; */
     font-size: 16px;
     line-height: 24px;
-    
+    padding: 16px 20px;
 }
-.filters .tab >span{
-    padding: 16px 24px;
+.filters .tab>div {
+    /* margin-right: 20px; */
+}
+.filters .tab>span
+ {
+    /* padding: 16px 20px; */
 }
 
 .filters .tab:not(.has-content) {
@@ -290,9 +293,10 @@
 }
 
 .filters .tab .content {
-    padding: 48px 24px;
+    padding: 32px 20px;
     border-top: 2px solid #eeeeee;
-    
+    margin: 16px -20px;
+
 }
 
 .filters .tab .content .form-check input[type="checkbox"] {
@@ -363,7 +367,8 @@
     margin-top: 38px;
     padding: 91px 40px;
 }
-.right-filter .interns{
+
+.right-filter .interns {
     padding-right: 10px;
 
     border-right: 1px solid #b2b2b2;
@@ -372,7 +377,8 @@
 .directory-container .main {
     max-width: 1200px;
 }
-.sort select{
+
+.right-filter .sort select {
     padding: 10px 20px;
     height: auto;
 }
@@ -401,7 +407,7 @@
         border-top-left-radius: 0px;
         border-bottom-left-radius: 10px;
         border-top-right-radius: 0px;
-        border-bottom-right-radius: 10px; 
+        border-bottom-right-radius: 10px;
     }
 
     .user-cards .user-card .user-card-inner .profile a {
