@@ -6,6 +6,11 @@ body {
     color: #084482;
 }
 
+main {
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
+
 
 /* progress bar */
 
@@ -155,7 +160,7 @@ div.container.my-3.boxs {
     border: 2px solid #EEEEEE;
     box-sizing: border-box;
     border-radius: 5px;
-    height: 10rem;
+    height: 14rem;
 }
 
 input[type=radio] {
@@ -181,7 +186,18 @@ input[type=radio] {
 
 /* small devices*/
 
+main {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 @media (min-width: 576.98px) {
+    .dis-block {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
     .dis-block {
         display: none;
     }
@@ -263,6 +279,10 @@ input[type=radio] {
 }
 
 @media (max-width: 355px) {
+    main {
+        margin-left: 0;
+        margin-right: 0;
+    }
     .boxs-sm {
         height: 25rem !important;
     }
