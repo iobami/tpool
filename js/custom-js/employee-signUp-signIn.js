@@ -28,6 +28,7 @@ submitButton.addEventListener('click', addUser = (e) => {
 
   checkInputs()
   status()
+  //successSign()
   function status(){
 
     let firstName = document.getElementById('fname').value
@@ -56,12 +57,11 @@ submitButton.addEventListener('click', addUser = (e) => {
     .then((data) => {
       console.log(data)
     })
-    .then(() => {
-      submitButton.dataset.toggle = 'modal'
-    })
-    .catch((err) => console.log(err))
-  }
-
+    // .then(() => {
+      //   submitButton.dataset.toggle = 'modal'
+      // })
+      .catch((err) => console.log(err))
+    }
 })
 
 checkInputs = () => {
@@ -71,7 +71,7 @@ checkInputs = () => {
   let phone = document.getElementById('phone').value.trim()
   let password = document.getElementById('password').value.trim()
   let passwordTwo = document.getElementById('confirmPassword').value.trim()
-
+  
   if(firstName === '' ) {
     setError(firstName, '* First name cannot be blank')
   } else {
@@ -92,7 +92,7 @@ checkInputs = () => {
   } else {
     setRightP(phone)
   }
-  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+-=`~{}[\]|'"<>,./?])(?=.{8,})/;
   if(password === '') {
     setErrorPass(password, '* Password cannot be blank')
   } else if(!password.match(regex)) {
@@ -108,8 +108,9 @@ checkInputs = () => {
   } else {
     const small = document.querySelector('#invalidPass2')
     small.style.display = 'none'
+    $('#exampleModal').modal()
   }
-
+  
 }
 
 //First Name Error Functions
@@ -188,4 +189,3 @@ checkPass2 = (input, message) => {
   small.innerHTML = message
   small.style.display = 'block'
 }
-  
