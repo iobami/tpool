@@ -272,7 +272,10 @@ form.addEventListener("submit", (e) => {
 
       const data = await res.json();
 
-      if (data) [(document.getElementById("submitBtn").innerText = "Sign Up")];
+      if (data) {
+        document.getElementById("submitBtn").innerText = "Sign Up";
+        document.getElementById("submitBtn").disabled = false;
+      }
       try {
         if (data.status === "success") {
           $("#exampleModal").modal();
@@ -291,11 +294,18 @@ form.addEventListener("submit", (e) => {
     };
 
     // check for agreement to terms
+    // add button loader
     if (document.getElementById("termsPolicy").checked) {
+      document.getElementById("submitBtn").disabled = true;
       document.getElementById("submitBtn").innerHTML =
         '<span class="spinner-border spinner-border" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>';
+      setTimeout(() => {
+        showAlert("Sign Up failed, please check your internet and try again.");
+        document.getElementById("submitBtn").innerText = "Sign Up";
+      }, 15000);
+
+      // submit form
       signupEmployer(formData);
-      // $("#exampleModal").modal();
     } else {
       showAlert("Please accept the Terms and Conditions to proceed.");
     }
