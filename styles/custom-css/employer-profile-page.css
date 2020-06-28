@@ -51,6 +51,272 @@ background: #C4C4C4;
 }
 /* Second column*/
 
+/* Modal container*/
+
+
+.modal-container .content-wrapper {
+ width:919px; 
+height: 1130px;
+background: #FFFFFF;
+box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+border-radius: 5px;
+box-sizing: border-box;
+}
+
+.content-wrapper .title-text {
+    width: 127px;
+    height: 36px;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px;
+    align-items: center;
+   color: #353A45;
+}
+
+.content-wrapper .companyNameLabel {
+width: 150px;
+height: 27px;
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 27px;
+/* identical to box height */
+color: #1F2430;
+margin-bottom: 15px;
+}
+
+.content-wrapper .col1 input {
+width: 336px;
+height: 56px;
+border: 2px solid #B5B5B5;
+border-radius: 5px;
+padding: 5px;
+margin-bottom: 15px;
+}
+
+.content-wrapper .tagLabel {
+    width: 150px;
+    height: 27px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    color: #1F2430;
+    margin-bottom: 15px;
+    }
+    
+
+.content-wrapper .col2 input {
+width: 337px;
+height: 56px;
+border: 2px solid #B5B5B5;
+border-radius: 5px;
+padding: 5px;
+margin-bottom: 15px;
+}
+
+.content-wrapper .emailLabel {
+width: 115px;
+height: 27px;
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 27px;
+margin-bottom: 15px;
+/* identical to box height */
+color: #1F2430;
+
+}
+
+.content-wrapper .col3 input {
+width: 336px;
+height: 56px;
+border: 2px solid #B5B5B5;
+border-radius: 5px;
+padding: 5px;
+margin-bottom: 15px;
+}
+
+.content-wrapper .locationLabel {
+width: 77px;
+height: 27px;
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 27px;
+padding: 5px;
+margin-bottom: 15px;
+/* identical to box height */
+
+color: #1F2430;
+
+}
+
+.content-wrapper .col4 input {
+width: 336px;
+height: 56px;
+border: 2px solid #B5B5B5;
+border-radius: 5px;
+padding: 5px;
+margin-bottom: 15px;
+}
+
+.content-wrapper .industryTypeLabel {
+width: 121px;
+height: 27px;
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 27px;
+margin-bottom: 15px;
+/* identical to box height */
+
+
+color: #1F2430;
+
+}
+.content-wrapper .content-div {
+ width: 350px;
+height: 221px;
+border: 2px solid #B5B5B5;
+border-radius: 5px;
+margin-bottom: 15px;
+position: relative;
+}
+
+.content-div .myAdditionSign {
+position: absolute;
+right: 10px;
+top: 10px;
+color: #084482;
+font-size: 35px;
+}
+.content-div button {
+width: 125px;
+height: 26px;
+background: #00AEFF;
+border-radius: 4px;
+font-size: 11px;
+position: relative;
+color: #FFFFFF;;
+
+}
+
+.content-div button .myTimesSign1 {
+    position: absolute;
+    right: 4px;
+    top: 0px;
+    color: #FFFFFF;
+    font-size: 24px;
+
+}
+
+.content-div .btn1 {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+.content-div .btn2 {
+    position: absolute;
+    top: 20px;
+    left: 160px;
+}
+
+.content-div .btn3 {
+    position: absolute;
+    top: 50px;
+    left: 35px;
+}
+
+.content-div .btn4 {
+        position: absolute;
+        top: 50px;
+        left: 170px;
+}
+
+
+.content-div input {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 350px;
+height: 53px;
+border: 2px solid #00AEFF;
+border-radius: 5px;
+}
+
+.content-wrapper .companyLogoLabel {
+    width: 138px;
+height: 27px;
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 27px;
+margin-bottom: 15px;
+/* identical to box height */
+color: #1F2430;
+
+}
+
+.content-wrapper .browse-div {
+width: 336px;
+height: 56px;
+border: 2px solid #B5B5B5;
+border-radius: 5px;
+margin-bottom: 15px;
+position: relative;
+
+}
+.content-wrapper .browse-div button {
+width: 120px;
+height: 40px;
+background: #00AEFF;
+border: 1px solid #00AEFF;
+box-sizing: border-box;
+border-radius: 5px;
+position: absolute;
+top: 7px;
+right: 15px;
+font-size: 16px;
+text-align: center;
+padding: 5px;
+}
+.content-wrapper .browse-div p {
+    line-height: 1px;
+    padding: 0;
+}
+
+
+.content-wrapper .browse-div .logoFormat {
+    width: 71px;
+height: 24px;
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 24px;
+margin: 10px;
+/* identical to box height */
+
+color: rgba(178, 178, 178, 0.58);
+}
+
+ .content-wrapper .footer-container {
+   margin: auto;
+   text-align: center;
+    
+} 
+
+
 /* Decription card */
 .desc-card-header>h3{
     font-weight: 500;
@@ -101,4 +367,8 @@ background: #C4C4C4;
         width: 100%;
         text-align: justify;
     }
+}
+
+@media (max-width: 990px) {
+
 }

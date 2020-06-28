@@ -109,9 +109,92 @@
                            <p class=" py-2 ml-4 my-3"><i class="far fa-envelope mr-3"></i>piggyvest@gmail.com</p>
                        </div>
                        <hr class="w-75 mx-auto">
-                       <button type='button' class="btn mx-auto mt-4 mb-5">Edit profile</button>
+                       <button type='button' class="btn mx-auto mt-4 mb-5" data-toggle="modal" data-target="#profilepopup">Edit profile</button>
                  </div>
                </div>
+
+              
+
+
+<!-- Modal -->
+<div class="modal fade modal-container" id="profilepopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="position: relative;" >
+    <div class="modal-content content-wrapper" >
+      <div class="modal-header">
+        <h5 class="modal-title title-text" id="modal-header">Edit Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: #00AEFF; font-size: 45px;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: 200px;">
+         <div class="container">
+            <div class="row">
+              <div class="col-md-6 col1">
+                <label class="companyNameLabel" for="">Company Name</label><br>
+                <input type="text" name="" placeholder="Genesis" id="">
+
+              </div>
+              <div class="col-md-6 col2">
+                <label for="" class="tagLabel">Tag Line</label><br>
+                <input type="text" placeholder="Anosike">
+              </div>
+
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 col3">
+                <label for="" class="emailLabel">Email Address</label><br>
+                <input type="email" placeholder="anosikegenesis@gmail.com">
+   
+              </div>
+              <div class="col-md-6 col4">
+                <label for="" class="locationLabel">Location</label><br>
+                <input type="text" placeholder="Ibadan, Nigeria">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="" class="industryTypeLabel">Industry Type</label>
+                <div class="content-div" >
+                  <span class="myAdditionSign">&#x2b;</span>
+
+                 <button class="btn1">E-commerce<span class="myTimesSign1">&#xd7;</span></button>
+                 <button class="btn2">Banking<span class="myTimesSign1">&#xd7;</span></button>
+                 <button class="btn3">Finance & Tech<span class="myTimesSign1">&#xd7;</span></button>
+                 <button class="btn4">Business<span class="myTimesSign1">&#xd7;</span></button>
+                 <input type="search" placeholder="Search">
+               </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="" class="companyLogoLabel">Company Logo</label>
+                <div class="browse-div ">
+                   <label for="" class="logoFormat" >Logo.png</label>
+                   <button class="btn btn-primary">Browse</button>
+                </div>
+                <p>Recommended dimension: 200 <span>&#xd7;</span> 200px <br>
+                Maximum file size: 500Kb <br>
+                Please add only professional looking logo </p>
+
+              </div>
+
+            </div>
+         </div>
+
+
+
+
+
+      </div>
+      <div class="modal-footer col-sm-4 col-md-8 footer-container">
+        
+        <button  type="button" class="btn mr-2 mx-auto mt-4 mb-5 " >Save Profile</button>
+      </div>
+    </div>
+  </div>
+</div>
                <!-- Row for description / Social media link / company info -->
                <div class="col-md-7 pl-lg-0" >
                    <!-- description card start here -->
