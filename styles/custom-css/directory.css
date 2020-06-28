@@ -20,7 +20,7 @@
 .directory-container .hero .hero-header {
     display: flex;
     justify-content: center;
-    padding: 85px 0;
+    padding: 85px 20px;
 }
 
 .directory-container .hero .hero-header img {
