@@ -140,13 +140,13 @@ border: none;
 .content-div .btn1 {
     position: absolute;
     top: 20px;
-    left: 30px;
+    left: 10px;
 }
 
 .content-div .btn2 {
     position: absolute;
     top: 20px;
-    left: 160px;
+    left: 165px;
 }
 
 .content-div .btn3 {
@@ -317,6 +317,16 @@ color: rgba(178, 178, 178, 0.58);
        
        }
 
+       .content-div button {
+        width: 100px;
+        height: 26px;
+        background: #00AEFF;
+        border-radius: 4px;
+        font-size: 11px;
+        position: relative;
+        color: #FFFFFF;;
+        border: none;
+        }
        .content-div .btn1 {
         position: absolute;
         top: 40px;
@@ -332,7 +342,7 @@ color: rgba(178, 178, 178, 0.58);
     .content-div .btn3 {
         position: absolute;
         top: 70px;
-        left: 25px;
+        left: 35px;
     }
     
     .content-div .btn4 {
