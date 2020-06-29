@@ -258,9 +258,13 @@ button:focus {
     display: none;
   }
 
-  .container-fluid {
+  .main-chat-container {
     padding: 0;
     margin: 0;
+  }
+
+  #inbox-top {
+    background-color: #fff;
   }
 
   #type-msg {
