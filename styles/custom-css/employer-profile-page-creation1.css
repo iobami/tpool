@@ -7,6 +7,7 @@ body {
 }
 
 main {
+    /* padding: 0 15rem; */
     margin-left: 10rem;
     margin-right: 10rem;
 }
@@ -49,7 +50,7 @@ progress::-webkit-progress-bar {
     width: 25px;
     height: 25px;
     background: white;
-    background-image: ;
+    /* background-image: ; */
 }
 
 .form-progress-indicator.one {
@@ -91,6 +92,7 @@ progress::-webkit-progress-bar {
 
 .display-size {
     font-size: 1.3rem;
+    padding-left: 16px;
 }
 
 .new-btn {
@@ -183,6 +185,12 @@ input[type=radio] {
     color: #FFFFFF
 }
 
+@media (min-width: 992px) {
+    main {
+        padding: 0 15rem;
+    }
+}
+
 
 /* small devices*/
 
@@ -200,81 +208,6 @@ main {
 @media (min-width: 769px) {
     .dis-block {
         display: none;
-    }
-}
-
-@media (max-width: 575.98px) {
-    .fa-2x {
-        font-size: 1.8rem;
-    }
-    .non {
-        display: none;
-    }
-    progress {
-        display: block;
-        position: relative;
-        top: 7px;
-        left: 5px;
-        width: 100%;
-        height: 6px;
-        background: none;
-    }
-    .form-progress-indicator.two {
-        left: 100%;
-    }
-    .pd-8 {
-        padding-left: 8rem;
-        padding-right: 8rem;
-    }
-    input#logo.form-control.em-input {
-        width: 12rem !important;
-    }
-    .left-div {
-        float: left;
-        width: 100px;
-    }
-    .right-div {
-        margin-top: -55px;
-        margin-left: 200px;
-    }
-    .right-div1 {
-        margin-top: -55px;
-        margin-left: 100px;
-    }
-    .form-control {
-        width: 100%;
-    }
-    .wid {
-        width: 100% !important;
-    }
-    input#companyname.form-control.em-input {
-        width: 100% !important;
-    }
-    .boxs-sm {
-        height: 18rem !important;
-    }
-    .display-size {
-        font-size: 1rem;
-    }
-    .small-xs {
-        font-size: 0.8rem;
-    }
-    .center {
-        text-align: center !important;
-    }
-    .center1 {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 40%;
-    }
-    .col- {
-        display: inline-block;
-    }
-    *,
-     ::after,
-     ::before {
-        box-sizing: border-box;
     }
 }
 
@@ -296,3 +229,6 @@ main {
         margin-left: 150px;
     }
 }
+
+
+/* MOBILE VIEW */
