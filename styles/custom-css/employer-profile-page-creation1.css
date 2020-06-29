@@ -232,3 +232,129 @@ main {
 
 
 /* MOBILE VIEW */
+@media (max-width: 575.98px) {
+    .fa-2x {
+        font-size: 1.8rem;
+    }
+    .non {
+        display: none;
+    }
+    progress {
+        display: block;
+        position: relative;
+        top: 7px;
+        left: 5px;
+        width: 100%;
+        height: 6px;
+        background: none;
+    }
+    .form-progress-indicator.two {
+        left: 100%;
+    }
+    .pd-8 {
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+    input#logo.form-control.em-input {
+        width: 12rem !important;
+    }
+    .left-div {
+        float: left;
+        width: 100px;
+    }
+    .right-div {
+        margin-top: -55px;
+        margin-left: 200px;
+    }
+    .right-div1 {
+        margin-top: -55px;
+        margin-left: 100px;
+    }
+    .form-control {
+        width: 100%;
+    }
+    .wid {
+        width: 100% !important;
+    }
+    input#companyname.form-control.em-input {
+        width: 100% !important;
+    }
+    .boxs-sm {
+        height: 18rem !important;
+    }
+    .display-size {
+        font-size: 1rem;
+    }
+    .small-xs {
+        font-size: 0.8rem;
+    }
+    .center {
+        text-align: center !important;
+    }
+    .center1 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+    .col- {
+        display: inline-block;
+    }
+    *,
+     ::after,
+     ::before {
+        box-sizing: border-box;
+    }
+
+    /* //MOBILE VIEW EDITS */
+    .display-size {
+        font-size: 12px;
+        padding-left: 10px;
+    }
+
+    #profile {
+        margin-top: 32px !important;
+    }
+
+    .margt {
+        padding-top: .5rem !important;
+    }
+
+    .profile-figure {
+        margin-bottom: 0!important;
+    }
+
+    .profile-figcaption {
+        margin-top: 16px;
+    }
+
+    .mobile-margin-fix1 {
+        margin-top: 1.5rem!important;
+        
+    }
+    .mobile-margin-fix2 {
+        margin-top: .5rem!important;
+    }
+    .mobile-margin-zero {
+        margin-bottom: 0!important;
+    }
+    .heading-color {
+        padding-top: 0 !important;
+    }
+    .mobile-margin-fix4 {
+        margin-top: 1.5rem!important;
+    }
+    .mobile-margin-pixel {
+        margin-top: 57px!important;
+        margin-bottom: calc(57px + 1rem)!important;
+        padding-bottom: 0!important;
+    }
+    .new-btn2 {
+        margin-bottom: 0!important;
+    }
+
+    .interested-skills {
+        margin-bottom: 0!important;
+        margin-top: .5rem;
+    }
+}
