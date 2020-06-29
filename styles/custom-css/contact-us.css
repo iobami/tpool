@@ -7,6 +7,7 @@
   background: no-repeat url("../../img/contact-us-hero-img.png");
   background-size: cover;
 }
+
 .hero-overlay{
   position: relative;
   width: 100%;
@@ -44,8 +45,12 @@
 }
 
 .spacer{
-  background-color: #E5E5E5;
+  background-color: #F8F8F8;
   padding: 13rem 0;
+}
+
+.form-control {
+border: 1px solid #C5C5C5 !important;
 }
 
 #clientName, #clientEmail, #messageSubject, #message{
