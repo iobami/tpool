@@ -174,3 +174,18 @@ hr {
   color: #1F2430;
   border-bottom: 4px solid #084482;
 }
+
+<<<<<<< HEAD
+.input-group {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#invalid, #invalidL, #invalidE, #invalidP, #invalidPass, #invalidPass2 {
+  display: none;
+  font-size: 12.8px;
+  color: #DB4A39;
+}
+=======
+>>>>>>> 3fff5ed850d7091499e94490fda5f57b6abafc00

@@ -1,6 +1,6 @@
 .image {
     background-image: url(../../img/employersignup.jpg)!important;
-    background-size: auto cover 100% !important;
+    background-size: cover !important;
     background-repeat: no-repeat;
     display: block;
 } 
@@ -59,24 +59,25 @@
 }
 
 
-.btn-sign .btn-sign:visited {
+.btn-form-sign .btn-form-sign:visited {
     background-color: #00AEFF !important;
     color: white;
 }
-.btn-sign:hover{
+.btn-form-sign:hover{
     background-color: #337ab7 !important;
     color: white;
 } 
-.btn-sign:active{
+.btn-form-sign:active{
     background-color: #084482 !important;
     color: white;
 } 
-.btn-sign {
+.btn-form-sign {
     background-color: transparent!important;
-    border: 1.5px solid #00AEFF;
+    border: 1px solid #00AEFF;
     color: #00AEFF;
     font-weight: bolder;
 }
+
 a {
     text-decoration: none!important;
 }
@@ -191,3 +192,21 @@ span {
     font-size: 1.5rem;
     border: none;
 }
+
+.signup-nav {
+    border-bottom: 1px solid #084482;
+  }
+  
+  .individual,
+  .company {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 24px;
+    color: #AAAAAA;
+  }
+  
+  .signup-nav .active {
+    color: #1F2430;
+    border-bottom: 4px solid #084482;
+  }
+  
