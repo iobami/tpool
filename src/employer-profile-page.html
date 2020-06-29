@@ -117,19 +117,19 @@
 
 
 <!-- Modal -->
-<div class="modal fade modal-container" id="profilepopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="position: relative;" >
+<div class="modal fade" id="profilepopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-box" style="margin-right: 650px; ">
     <div class="modal-content content-wrapper" >
-      <div class="modal-header">
+      <div class="modal-header ">
         <h5 class="modal-title title-text" id="modal-header">Edit Profile</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" style="color: #00AEFF; font-size: 45px;">&times;</span>
+          <span aria-hidden="true" style="color: #00AEFF; font-size: 40px;">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="height: 200px;">
+      <div class="modal-body myModal-body">
          <div class="container">
             <div class="row">
-              <div class="col-md-6 col1">
+              <div class="col-md-6 col1 colMobile">
                 <label class="companyNameLabel" for="">Company Name</label><br>
                 <input type="text" name="" placeholder="Genesis" id="">
 
@@ -160,10 +160,10 @@
                 <div class="content-div" >
                   <span class="myAdditionSign">&#x2b;</span>
 
-                 <button class="btn1">E-commerce<span class="myTimesSign1">&#xd7;</span></button>
-                 <button class="btn2">Banking<span class="myTimesSign1">&#xd7;</span></button>
-                 <button class="btn3">Finance & Tech<span class="myTimesSign1">&#xd7;</span></button>
-                 <button class="btn4">Business<span class="myTimesSign1">&#xd7;</span></button>
+                 <button class="btn1">E-commerce <a href="#"></a><span class="myTimesSign1">&#xd7;</span></button>
+                 <button class="btn2">Banking <a href="#"><span class="myTimesSign1">&#xd7;</span></a></button>
+                 <button class="btn3">Finance & Tech <a href="#"><span class="myTimesSign1">&#xd7;</span></a></button>
+                 <button class="btn4">Business <a href="#"><span class="myTimesSign1">&#xd7;</span></a></button>
                  <input type="search" placeholder="Search">
                </div>
               </div>
@@ -188,13 +188,16 @@
 
 
       </div>
-      <div class="modal-footer col-sm-4 col-md-8 footer-container">
+      <div class="modal-footer footer-container">
         
-        <button  type="button" class="btn mr-2 mx-auto mt-4 mb-5 " >Save Profile</button>
+        <button  type="button" class="btn mx-auto " >Save Profile</button>
       </div>
     </div>
   </div>
 </div>
+
+<!--mobile view of popop window-->
+
                <!-- Row for description / Social media link / company info -->
                <div class="col-md-7 pl-lg-0" >
                    <!-- description card start here -->
