@@ -1,6 +1,6 @@
 .image {
   background-image: url(../../img/employersignup.jpg) !important;
-  background-size: auto cover 100% !important;
+  background-size: cover !important;
   background-repeat: no-repeat;
   display: block;
 }
@@ -54,24 +54,25 @@ input::placeholder {
   padding-left: 15px;
 }
 
-.btn-sign .btn-sign:visited {
+.btn-form-sign .btn-form-sign:visited {
   background-color: #00aeff !important;
   color: white;
 }
-.btn-sign:hover {
+.btn-form-sign:hover {
   background-color: #337ab7 !important;
   color: white;
 }
-.btn-sign:active {
+.btn-form-sign:active {
   background-color: #084482 !important;
   color: white;
 }
-.btn-sign {
+.btn-form-sign {
   background-color: transparent !important;
-  border: 1.5px solid #00aeff;
+  border: 1px solid #00aeff;
   color: #00aeff;
   font-weight: bolder;
 }
+
 a {
   text-decoration: none !important;
 }
@@ -184,6 +185,34 @@ input[type="checkbox"]:checked + label:before {
   border: none;
 }
 
+.signup-nav {
+  border-bottom: 1px solid #084482;
+}
+
+.individual,
+.company {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #aaaaaa;
+}
+
+.signup-nav .active {
+  color: #1f2430;
+  border-bottom: 4px solid #084482;
+}
+
+.modal-content button {
+  max-width: 238px;
+  width: 100%;
+  padding: 11px 0;
+  background: #00aeff;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1.5rem;
+  border: none;
+}
+
 /* styles added for validation */
 form .form__input,
 form .form__select {
@@ -229,9 +258,6 @@ form .form__button {
   border: none;
   font-weight: 500;
   font-size: 18px;
-  /* line-height: 2.25rem; */
-  /* letter-spacing: 0.03em; */
-  /* height: 3.9375rem; */
   text-align: center;
   border-radius: 5px;
   color: #fff;
