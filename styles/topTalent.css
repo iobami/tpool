@@ -115,6 +115,9 @@ line-height: 36px;
 footer .col-sm-3,  footer .col-sm-2{
     margin-top: 5%;
 }
+.address{
+    width: 150px;
+}
 footer p{
     font-style: normal;
 font-weight: 300;
@@ -129,6 +132,11 @@ height: 2px;
     border: 1.5px solid rgba(229, 229, 229, 0.4);
     content: "";
     background: rgba(229, 229, 229, 0.4);
+}
+@media only screen and (max-width: 1000px){
+    .address{
+        width: 100%;
+    }
 }
 @media only screen and (max-width: 768px){
 .bg-none p{
