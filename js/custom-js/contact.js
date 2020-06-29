@@ -27,7 +27,7 @@ function onsubmit(e) {
         }, 2000);
     } else {
         console.log("yeah");
-        successMessage.innerHTML = "Your message is being uploaded";
+        successMessage.innerHTML = "Your message has been sent";
         successMessage.style.background = "green";
         if (successMessage.style.display == "none") {
             successMessage.style.display = "block";
