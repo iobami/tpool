@@ -76,6 +76,19 @@ function checkEmail(input) {
   }
 }
 
+// check names
+function checkName(input) {
+  const re = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
+
+  if (re.test(input.value)) {
+    checkLength(input, 2);
+  } else if (input.value !== "") {
+    showError(input, "Please enter a valid name");
+  } else {
+    clearError(input);
+  }
+}
+
 // check phone number
 function checkPhone(input) {
   // const regex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
@@ -172,8 +185,20 @@ function checkPasswordsMatch(input1, input2) {
 }
 
 // event listeners
-firstName.addEventListener("blur", () => {
+firstName.addEventListener("input", () => {
   clearError(firstName);
+
+  setTimeout(() => {
+    checkName(firstName);
+  }, 1000);
+});
+
+lastName.addEventListener("input", () => {
+  clearError(lastName);
+
+  setTimeout(() => {
+    checkName(lastName);
+  }, 1000);
 });
 
 email.addEventListener("input", () => {
@@ -232,8 +257,8 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   alert.classList.add("d-none");
 
-  checkLength(firstName, 2);
-  checkLength(lastName, 2);
+  checkName(firstName);
+  checkName(lastName);
   checkEmail(email);
   checkPhone(phoneNo);
   checkPassword(password);
