@@ -70,6 +70,7 @@ border: 1px solid #C5C5C5 !important;
 
 
 @media screen and (min-width: 321px){
+  
   .hero {
     background-size: cover;
     background-position: center center;
@@ -88,28 +89,35 @@ border: 1px solid #C5C5C5 !important;
   }
 }
 
-@media screen and (min-width: 655px){
+@media screen and (max-width: 655px){
+.text {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
 .hero-overlay {
-    height: 22rem;
+    height: 15rem;
 }
 .hero {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 360px;
+  height: 15rem;
 }
 
 .cards {
   position: relative;
-  top: 3rem;
+  top: .2rem;
 }
 .spacer {
   padding: 4rem 0;
-  height: 38rem;
+  height: 40rem;
 }
 }
 
 @media screen and (min-width: 768px){
+  .text {
+    /* font-size: 4rem; */
+  }
   .hero {
     background-size: cover;
     background-position: center center;
