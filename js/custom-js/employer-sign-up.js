@@ -1,24 +1,24 @@
-const form = document.querySelector("form"),
+const individualForm = document.getElementById("individualForm"),
   firstName = document.getElementById("firstName"),
   lastName = document.getElementById("lastName"),
   email = document.getElementById("email"),
-  employerType = document.getElementById("employerType"),
   password = document.getElementById("password"),
   confirmPassword = document.getElementById("confirmPassword"),
   phoneNo = document.getElementById("phoneNo"),
+  submitBtn = document.getElementById("submitBtn");
+
+const orgForm = document.getElementById("orgForm"),
+  orgName = document.getElementById("orgName"),
+  orgEmail = document.getElementById("orgEmail"),
+  orgPassword = document.getElementById("orgPassword"),
+  confirmOrgPassword = document.getElementById("confirmOrgPassword"),
+  orgSubmitBtn = document.getElementById("orgSubmitBtn"),
+  // employerType = document.getElementById("employerType"),
   alert = document.getElementById("alert"),
   alertMessage = document.getElementById("alertMessage");
 
-// object with validation status
-const validated = {
-  firstName: false,
-  lastName: false,
-  email: false,
-  phoneNo: false,
-  // employerType: false,
-  password: false,
-  confirmPassword: false,
-};
+// object for storing validation status (variable)
+let validated = {};
 
 // show alert
 function showAlert(message) {
@@ -140,15 +140,26 @@ function checkLength(input, min, max = 30) {
 // get field names
 function getFieldName(input) {
   const fieldName = input.id.charAt(0).toUpperCase().concat(input.id.slice(1));
-  return fieldName === "LastName"
-    ? "Last Name"
-    : fieldName === "FirstName"
-    ? "First Name"
-    : fieldName === "ConfirmPassword"
-    ? "Password Confirmation"
-    : fieldName === "PhoneNo"
-    ? "Phone Number"
-    : fieldName;
+  switch (fieldName) {
+    case "LastName":
+      return "Last Name";
+    case "FirstName":
+      return "First Name";
+    case "ConfirmPassword":
+      return "Password Confirmation";
+    case "PhoneNo":
+      return "Phone Number";
+    case "OrgName":
+      return "Organization Name";
+    case "OrgEmail":
+      return "Organization Email";
+    case "OrgPassword":
+      return "Password";
+    case "ConfirmOrgPassword":
+      return "Password Confirmation";
+    default:
+      return fieldName;
+  }
 }
 
 // check password
@@ -253,9 +264,13 @@ confirmPassword.addEventListener("blur", () => {
   }
 });
 
-form.addEventListener("submit", (e) => {
+// form submissions
+
+individualForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  validated = {};
   alert.classList.add("d-none");
+  alertMessage.innerText = "";
 
   checkName(firstName);
   checkName(lastName);
@@ -321,16 +336,101 @@ form.addEventListener("submit", (e) => {
     // check for agreement to terms
     // add button loader
     if (document.getElementById("termsPolicy").checked) {
-      document.getElementById("submitBtn").disabled = true;
-      document.getElementById("submitBtn").innerHTML =
+      submitBtn.disabled = true;
+      submitBtn.innerHTML =
         '<span class="spinner-border spinner-border" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>';
       setTimeout(() => {
-        showAlert("Sign Up failed, please check your internet and try again.");
-        document.getElementById("submitBtn").innerText = "Sign Up";
-      }, 15000);
+        if (alertMessage.innerText === "") {
+          showAlert(
+            "Sign Up failed, please check your internet and try again."
+          );
+        }
+        submitBtn.innerText = "Sign Up";
+        submitBtn.disabled = false;
+      }, 20000);
 
       // submit form
       signupEmployer(formData);
+    } else {
+      showAlert("Please accept the Terms and Conditions to proceed.");
+    }
+  }
+});
+
+orgForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  validated = {};
+  alert.classList.add("d-none");
+  alertMessage.innerText = "";
+
+  checkName(orgName);
+  checkEmail(orgEmail);
+  checkPassword(orgPassword);
+  checkPasswordsMatch(orgPassword, confirmOrgPassword);
+  checkRequired([orgName, orgEmail, orgPassword, confirmOrgPassword]);
+
+  if (!Object.values(validated).includes(false)) {
+    const formData = {
+      orgName: orgName.value.trim(),
+      orgEmail: orgEmail.value.trim(),
+      orgPassword: orgPassword.value,
+    };
+
+    const signupOrgEmployer = async () => {
+      const API_URL = "";
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        // mode: "no-cors",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "User-Agent": "Developers Lancers",
+        },
+        redirect: "follow",
+      });
+
+      const data = await res.json();
+
+      if (data) {
+        document.getElementById("orgSubmitBtn").innerText = "Sign Up";
+        document.getElementById("orgSubmitBtn").disabled = false;
+      }
+      try {
+        if (data.status === "success") {
+          $("#exampleModal").modal();
+        } else if (data.status === "error") {
+          const message =
+            data.error === "Someone has already registered this email"
+              ? "Email already exists"
+              : data.error === "Phone number already exist"
+              ? "Phone number already exists"
+              : data.error;
+          showAlert(message);
+        }
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
+
+    // check for agreement to terms
+    // add button loader
+    if (document.getElementById("orgTerms").checked) {
+      orgSubmitBtn.disabled = true;
+      orgSubmitBtn.innerHTML =
+        '<span class="spinner-border spinner-border" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>';
+      setTimeout(() => {
+        if (alertMessage.innerText === "") {
+          showAlert(
+            "Sign Up failed, please check your internet and try again."
+          );
+        }
+        orgSubmitBtn.innerText = "Sign Up";
+        orgSubmitBtn.disabled = false;
+      }, 20000);
+
+      // submit form
+      signupOrgEmployer(formData);
     } else {
       showAlert("Please accept the Terms and Conditions to proceed.");
     }
