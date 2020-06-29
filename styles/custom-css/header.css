@@ -11,13 +11,15 @@ header {
 }
 
 .btn-hire-talent {
-   background: #00AEFF !important;
-   color: #fff !important;
+   background: #fff !important;
+   color: #00AEFF !important;
+   border: 1px solid #00AEFF;
 }
 
 .btn-sign-up {
    border: 1px solid#00AEFF;
-   color: #00AEFF !important;
+   color: #fff !important;
+   background: #00AEFF;
 }
 
 
