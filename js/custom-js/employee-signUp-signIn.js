@@ -1,36 +1,35 @@
-// //starter JavaScript for disabling form submissions if there are invalid fields
-// (function () {
-//     'use strict'
+//starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
   
-//     window.addEventListener('load', function () {
-//       // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//       var forms = document.getElementsByClassName('needs-validation')
+    window.addEventListener('load', function () {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation')
   
-//       // Loop over them and prevent submission
-//       Array.prototype.filter.call(forms, function (form) {
-//         form.addEventListener('submit', function (event) {
-//           if (form.checkValidity() === false) {
-//             event.preventDefault()
-//             event.stopPropagation()
-//           }
-//           form.classList.add('was-validated')
-//         }, false)
-//       })
-//     }, false)
-//   }())
-
-const submitButton = document.getElementById('signup-btn')
+      // Loop over them and prevent submission
+      Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+    }, false)
+  }())
+  
+  const submitButton = document.getElementById('signup-btn')
 const validCheck = document.getElementById('terms-policy')
-//document.querySelector('.needs-validation').classList.add('was-validated')
+
 
 submitButton.addEventListener('click', addUser = (e) => {
   e.preventDefault()
 
   checkInputs()
   status()
-  //successSign()
-  function status(){
 
+  function status(){
     let firstName = document.getElementById('fname').value
     let lastName = document.getElementById('lname').value
     let email = document.getElementById('email').value
@@ -57,10 +56,7 @@ submitButton.addEventListener('click', addUser = (e) => {
     .then((data) => {
       console.log(data)
     })
-    // .then(() => {
-      //   submitButton.dataset.toggle = 'modal'
-      // })
-      .catch((err) => console.log(err))
+    .catch((err) => console.log(err))
     }
 })
 
@@ -71,6 +67,8 @@ checkInputs = () => {
   let phone = document.getElementById('phone').value.trim()
   let password = document.getElementById('password').value.trim()
   let passwordTwo = document.getElementById('confirmPassword').value.trim()
+
+  document.querySelector('.needs-validation').classList.add('was-validated')
   
   if(firstName === '' ) {
     setError(firstName, '* First name cannot be blank')
@@ -115,7 +113,6 @@ checkInputs = () => {
 
 //First Name Error Functions
 setError = (input, message) => {
-  //const inputGroup = input.parentElement
   const small = document.querySelector('#invalid')
   small.innerHTML = message
   small.style.display = 'block'
@@ -128,7 +125,6 @@ setRight = (input) => {
 
 //Last Name Error Functions
 setErrorL = (input, message) => {
-  //const inputGroup = input.parentElement
   const small = document.querySelector('#invalidL')
   small.innerHTML = message
   small.style.display = 'block'
@@ -141,7 +137,6 @@ setRightL = (input) => {
 
 //Email Error Functions
 setErrorE = (input, message) => {
-  //const inputGroup = input.parentElement
   const small = document.querySelector('#invalidE')
   small.innerHTML = message
   small.style.display = 'block'
@@ -154,7 +149,6 @@ setRightE = (input) => {
 
 //Email Error Functions
 setErrorP = (input, message) => {
-  //const inputGroup = input.parentElement
   const small = document.querySelector('#invalidP')
   small.innerHTML = message
   small.style.display = 'block'

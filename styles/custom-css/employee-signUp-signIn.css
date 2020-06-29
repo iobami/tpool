@@ -119,11 +119,6 @@ hr {
     padding: 15px;
 } 
 
-.form-select {
-  border-radius: 5px;
-  border: 2px solid #b5b5b5;
-  padding: 15px;
-}
 
 .modal-content {
   max-width: 540px;
@@ -132,8 +127,6 @@ hr {
   border: none;
   padding: 49px 37px 41px;
 }
-
-
 
 .modal-content svg {
   margin-top: 69.58px;
@@ -163,6 +156,23 @@ hr {
   font-weight: 500;
   font-size: 1.5rem;
   border: none;
+}
+
+.signup-nav {
+  border-bottom: 1px solid #084482;
+}
+
+.intern-sign,
+.user-sign {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #AAAAAA;
+}
+
+.signup-nav .active {
+  color: #1F2430;
+  border-bottom: 4px solid #084482;
 }
 
 .input-group {
