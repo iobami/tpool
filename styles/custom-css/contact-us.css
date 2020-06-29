@@ -92,21 +92,21 @@ border: 1px solid #C5C5C5 !important;
 @media screen and (max-width: 655px){
 .text {
   font-size: 1.5rem;
-  font-weight: 200;
+  font-weight: 100;
 }
 .hero-overlay {
-    height: 15rem;
+    height: 13rem;
 }
 .hero {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 15rem;
+  height: 13rem;
 }
 
 .cards {
   position: relative;
-  top: .2rem;
+  top: .1rem;
 }
 .spacer {
   padding: 4rem 0;
