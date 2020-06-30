@@ -53,9 +53,14 @@ background: #C4C4C4;
 
 /* Modal container*/
 
+.modal-box {
+    margin: auto;
+    box-sizing: border-box;
+    
+}
 
 .content-wrapper {
-    min-width: 919px; 
+    min-width: 900px;
     min-height: 500px;
     background: #FFFFFF;
     box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
@@ -98,7 +103,23 @@ border-radius: 5px;
 padding: 5px;
 }
 
+.content-wrapper .custom-file label.custom-file-label{
+    width: 336px;
+    height: 56px;
+    border: 2px solid #B5B5B5;
+border-radius: 5px;
 
+}
+.content-wrapper label.custom-file-label::after{
+    background: #00AEFF;
+    color: white;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 120px;
+   height: 31px;
+border-radius: 5px;
+  text-align: center;
+}
 .content-wrapper .content-div {
  width: 350px;
 height: 221px;
@@ -107,6 +128,14 @@ border-radius: 5px;
 position: relative;
 box-sizing: border-box;
 
+}
+
+.content-div button .myTimesSign1 {
+    position: absolute;
+    right: 4px;
+    top: 0px;
+    color: #FFFFFF;
+    font-size: 24px;
 }
 
 .content-div .myAdditionSign {
@@ -118,6 +147,13 @@ font-size: 30px;
 cursor: pointer;
 }
 
+.content-div .btn-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+}
 .content-div button {
 width: 125px;
 height: 26px;
@@ -127,17 +163,16 @@ font-size: 11px;
 position: relative;
 color: #FFFFFF;;
 border: none;
-}
-
-.content-div button .myTimesSign1 {
-    position: absolute;
-    right: 4px;
-    top: 0px;
-    color: #FFFFFF;
-    font-size: 24px;
+outline: none;
 }
 
 .content-div .btn1 {
+    align-items: center;
+}
+
+
+
+ .content-div .btn1 {
     position: absolute;
     top: 20px;
     left: 10px;
@@ -159,7 +194,7 @@ border: none;
         position: absolute;
         top: 50px;
         left: 170px;
-}
+} 
 
 
 .content-div input {
@@ -197,6 +232,7 @@ font-size: 16px;
 text-align: center;
 padding: 5px;
 }
+
 .content-wrapper .browse-div p {
     line-height: 1px;
     padding: 0;
@@ -281,7 +317,16 @@ color: rgba(178, 178, 178, 0.58);
     }
 }
 
-@media (max-width: 990px) {
+@media only screen and (max-width:990px){
+    .modal-box{
+        margin-top: 0;
+        margin-right: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+}
+
+/* @media (max-width: 990px) {
 .modal-box {
     margin: auto;
     width: 50%;
@@ -326,6 +371,7 @@ color: rgba(178, 178, 178, 0.58);
         position: relative;
         color: #FFFFFF;;
         border: none;
+        outline: none;
         }
        .content-div .btn1 {
         position: absolute;
@@ -371,4 +417,4 @@ color: rgba(178, 178, 178, 0.58);
          
      }
      
-}
+} */
