@@ -1,0 +1,166 @@
+body{
+  background-color: #E5E5E5;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2rem;
+}
+
+.dropdownArrow{
+  display: none;
+}
+.main-content{
+  max-width: 75rem;
+}
+
+.talent-card{
+  border-radius: 10px !important;
+}
+
+.dropdown-toggle::after{
+  margin-left: 5rem;
+  color: #353A45;
+}
+
+.talent-btn-dropdown-item:hover{
+  background-color: #00aeff;
+  color: #fff;
+}
+
+.table-form-container{
+  background-color: #042241;
+}
+
+.form-control-outline{
+  border: #337ab7 solid 1px;
+}
+
+.btn-select-border{
+  border: 1px solid #B3B3B3;;
+}
+
+#search-input-employer{
+  border-color:  #337ab7;
+  font-size: 1rem;
+}
+#search-input-employer:focus{
+  box-shadow: none;
+  border-color:  #337ab7;
+}
+
+.talent-btn-dark{
+  color: #fff;
+  background-color:  #042241;
+}
+.talent-btn-dark:hover{
+  color: #fff;
+  background-color:  #042241;
+}
+
+.w-max-content{
+  width: max-content;
+}
+
+th, tr{
+  white-space: nowrap;
+}
+
+.talent-text-muted{
+  color: #ADADAD;
+}
+
+.custom-scroll-bar{
+  max-height: 28rem;
+}
+
+/* width */
+.custom-scroll-bar::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+/* Track */
+.custom-scroll-bar::-webkit-scrollbar-track {
+  border-radius: 4px;
+  box-shadow: inset 0 0 2px rgb(204, 204, 204);
+}
+ 
+/* Handle */
+.custom-scroll-bar::-webkit-scrollbar-thumb {
+  background:  #C4C4C4;; 
+  border-radius: 4px;
+}
+table th {
+  position: -webkit-sticky; /*safari*/
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  background: #fff;
+}
+.dashBoard_text h6{
+  color: #000000 !important;
+  display: none;
+}
+.sub-text{
+  color: #ADADAD;
+  display: none;
+}
+
+
+/* MEDIA QUERIES FOR SPECIFIC SCREEN SIZES*/
+
+@media screen and (min-width: 576px){
+  .talent-card{
+    width: calc(33% - 12px);
+    max-width: 18.5rem !important;
+  }
+  body{
+    padding-bottom: 4rem;
+  }
+  
+}
+
+@media screen and (max-width: 576px){
+  .display-none{
+    display: none !important;
+  }
+  .table-form-container{
+    margin-top: 50px;
+  }
+  .hide_content{
+    display: none;
+  }
+  .sub-text{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .l-padding{
+    padding-left: 5px !important;
+  }
+  .r-padding{
+    padding-right: 5px !important;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .dropdownArrow{
+    display: block;
+  }
+}
+
+@media screen and (min-width: 992px){
+  .main-content{
+    width: auto;
+    margin-left: 230px;
+  }
+}
+
+@media screen and (max-width: 992px){
+  .dashBoard_text h6{
+    color: #000000 !important;
+    display: block;
+  }
+}
+

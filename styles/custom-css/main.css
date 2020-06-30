@@ -24,68 +24,8 @@ input:focus, input:active {
    box-shadow: none !important;
 }
 
-/* .custom-container {
-   max-width: 1440px;
-   margin: 0 auto;
-   padding: 1rem;
-   overflow: hidden;
-   max-height: 500px;
-} */
-
-
-/* The Above Css Was commented out 'cos it added a max height to the footer and that caused issues in the page flow */
-
-header {
-   box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
-}
-
-.signup__dropdown {
-   padding: 1rem 1rem 0;
-}
-
-.btn-sign-up:hover {
-   background-color: #00AEFF;
-   color: white !important;
-}
-
-.signup__dropdown p {
-   font-weight: 500;
-   font-size: 1rem;
-   line-height: 157.2%;
-   color: #084482;
-}
-
-.signup__dropdown a {
-   padding: 5px 0;
-   text-align: center;
-   background: #00AEFF;
-   border-radius: 5px;
-   margin-bottom: 1rem;
-   color: white;
-}
-
-.signup__dropdown a:hover {
-   background: #00AEFF;
-   color: #333333;
-}
-
 .clients-card{
    height: 380px;
-}
-.nav-link, .talent-link{
-   border-bottom-width: 3px;
-   border-bottom-style: solid;
-   border-bottom-color: transparent;
-}
-
-.nav-link:hover, .talent-link:hover, .talent-link:active{
-   border-bottom-color: #084482;
-}
-
-.nav-link:hover, .talent-link:hover, .talent-link:active{
-   color: black;
-   text-decoration: none;
-   border-bottom: 3px solid #084482;
 }
 
 .main-section{
@@ -99,6 +39,23 @@ header {
 .talent-row{
    max-width: 1400px;
 }
+
+.talent-link{
+   border-bottom-width: 3px;
+   border-bottom-style: solid;
+   border-bottom-color: transparent;
+}
+
+.talent-link:hover, .talent-link:active{
+   border-bottom-color: #084482;
+}
+
+.talent-link:hover, .talent-link:active{
+   color: black;
+   text-decoration: none;
+   border-bottom: 3px solid #084482;
+}
+
 .main-section {
    background-color: #D6D9DF;
 }
@@ -249,5 +206,45 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
    .height-fix {
       min-height: 614px;
    }
+}
+
+.hire-heading {
+   font-weight: normal;
+   font-size: 2rem;
+   line-height: 48px;
+   text-align: center;
+   color: #1C1C1C;
+}
+
+.hire-talent-steps {
+   padding-top: 120px;
+   padding-bottom: 120px;
+}
+
+.hire-talent-steps span {
+   height: 48px;
+   width: 48px;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: #084482;
+   color: white;
+   margin: auto;
+   margin-bottom: 1.5rem;
+}
+
+.hire-talent-steps h5 {
+   font-size: 1.5rem;
+   line-height: 36px;
+   color: #676767;
+   margin-bottom: 9px;
+}
+
+.hire-talent-steps p {
+   font-weight: 300;
+   font-size: 1rem;
+   line-height: 160%;
+   color: #343434;
 }
 
