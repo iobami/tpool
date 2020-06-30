@@ -34,8 +34,6 @@ body {
     font-size: 32px;
     line-height: 24px;
     padding: 20px;
-    
-
 }
 .job-card__top-text {
     font-weight: 500;
@@ -58,6 +56,7 @@ body {
     align-items: center;
     text-align: center;
     color: #353A45;
+    margin-top: 15px;
 }
 
 .profile-wrap {
@@ -189,7 +188,8 @@ a{
     color: black;
 }
 .form-group{
-    margin-left: 20px;
+    width: 170px;
+    margin-right: 20px;
 }
 
 .select{
@@ -198,10 +198,8 @@ a{
     border-radius: 5px;
     height: 58px;
     padding-top: 7px;
-    width: 324px;
     text-align: center;
     padding-left: 30px;
-    margin-left: 40px;
 }
 .available{
     font-family: Poppins;
@@ -362,6 +360,7 @@ tbody{
     border-radius: 0px 0px 15px 15px;
     padding: 20px;
     padding-top: 30px;
+    padding-right: 100px;
 }
 td{
     font-family: Poppins;
@@ -407,9 +406,10 @@ table {
     }
     
     
+    
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .profile-wrap {
         display: flex;
         flex-direction: column;
@@ -451,11 +451,14 @@ table {
     }    
     .up{
         position: relative;
+        margin-bottom: 10px;
     }
     .down{
         position: relative;
         right: 25px;
         top: 7px;
+        margin-left: 9px;
+        margin-bottom: 7px;
     }
     .threedots{
         position: relative;
@@ -486,6 +489,7 @@ table {
     }
     .select{
         border: none;
+        padding-left: 0px;
     }
     .btn-2{
         display: none;
@@ -501,7 +505,7 @@ table {
         width: 130px;
     }
     .search-icon{
-        margin-left: 40px;
+        margin-left: 22px;
     }
     .move{
         margin-right: 20px;
