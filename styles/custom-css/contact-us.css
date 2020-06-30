@@ -81,6 +81,14 @@ border: 1px solid #C5C5C5 !important;
   color: #FFF;
 }
 
+#error-message {
+  color: #fff
+}
+
+#success-message {
+  color: #fff
+}
+
 
 @media screen and (min-width: 321px){
   

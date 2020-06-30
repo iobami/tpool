@@ -37,6 +37,10 @@
           </svg>
         </div>
 
+        <div class="d-flex align-items-center top__nav__user dashBoard_text">
+          <h6>Dashboard</h6>
+        </div>
+
         <div class="d-flex align-items-center top__nav__links">
           <div class="top__nav__icon d-none d-md-flex ">
             <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
@@ -56,12 +60,19 @@
             </svg>
           </div>
 
+
           <div class="d-flex align-items-center top__nav__user">
             <div class="img-fluid mr-2"><img
-                src="../../img/Employer Dashboard/user2.png" alt=""></div>
+                src="../img/Employer Dashboard/user2.png" alt=""></div>
+            
             <div class="top__nav__user__name">
-              <h6 class="text-primary m-0">Adelanke Adelanke</h6>
+              <h6 class="text-primary  m-0">Adelanke Adelanke</h6>
               <p class="m-0 mr-0">Admin</p>
+            </div>
+            <div class="dropdownArrow">
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L9 1" stroke="#084482" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
             </div>
           </div>
         </div>
@@ -115,7 +126,7 @@
       </div>
 
       <div
-        class="d-flex justify-content-between align-items-baseline flex-sm-row mb-4">
+        class="d-flex justify-content-between align-items-baseline flex-sm-row mb-4 display-none">
         <h6>Employers list</h6>
         <div class="btn-group ">
           <button type="button"
@@ -164,36 +175,36 @@
           <table class="table bg-white">
             <thead>
               <tr>
-                <th scope="col" class="text-start py-4 pl-4 pr-5">User ID</th>
-                <th scope="col" class="text-start py-4 pr-5">Employer's name
+                <th scope="col" class="text-start py-4 pl-4 pr-5 hide_content">User ID</th>
+                <th scope="col" class="text-start py-4 pr-4">Employer's name
                 </th>
-                <th scope="col" class="text-start py-4 pr-3">Employer type</th>
-                <th scope="col" class="text-start py-4">Date joined</th>
+                <th scope="col" class="text-start py-4 pr-3 hide_content">Employer type</th>
+                <th scope="col" class="text-start py-4 hide_content">Date joined</th>
                 <th scope="col" class="text-start py-4">Status</th>
                 <th scope="col" class="py-4"></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="align-middle pl-4 pr-5">HNG02E</td>
+                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
                 <td
                   class=" d-flex justify-content-start align-items-center align-middle">
                   <img class=" img-fluid rounded" src="../img/user.png"
                     alt="employer logo">
                   <span
                     class="d-inline-block align-middle w-max-content pl-3">Dealgo
-                    Inc</span>
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
                 </td>
-                <td class="align-middle talent-text-muted">Individual
+                <td class="align-middle talent-text-muted hide_content">Individual
                 </td>
-                <td class="align-middle talent-text-muted">
+                <td class="align-middle talent-text-muted hide_content">
                   Feb 12,2018
                 </td>
                 <td class="align-middle">
                   <button class="btn talent-btn-dark">Verified</button>
                 </td>
                 <td class="align-middle">
-                  <button class="btn">
+                  <button class="btn l-padding r-padding">
                     <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <circle cx="2" cy="12" r="2" fill="#353A45" />
@@ -211,25 +222,25 @@
                 </td>
               </tr>
               <tr>
-                <td class="align-middle pl-4 pr-5">HNG02E</td>
+                <td class="align-middle pl-4 pr-5 hide_content hide_content">HNG02E</td>
                 <td
                   class=" d-flex justify-content-start align-items-center align-middle">
                   <img class=" img-fluid rounded" src="../img/user.png"
                     alt="employer logo">
                   <span
                     class="d-inline-block align-middle w-max-content pl-3">Dealgo
-                    Inc</span>
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
                 </td>
-                <td class="align-middle talent-text-muted">Individual
+                <td class="align-middle talent-text-muted hide_content">Individual
                 </td>
-                <td class="align-middle talent-text-muted">
+                <td class="align-middle talent-text-muted hide_content">
                   Feb 12,2018
                 </td>
                 <td class="align-middle">
                   <button class="btn talent-btn-dark">Verified</button>
                 </td>
                 <td class="align-middle">
-                  <button class="btn">
+                  <button class="btn l-padding r-padding">
                     <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <circle cx="2" cy="12" r="2" fill="#353A45" />
@@ -247,25 +258,25 @@
                 </td>
               </tr>
               <tr>
-                <td class="align-middle pl-4 pr-5">HNG02E</td>
+                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
                 <td
                   class=" d-flex justify-content-start align-items-center align-middle">
                   <img class=" img-fluid rounded" src="../img/user.png"
                     alt="employer logo">
                   <span
                     class="d-inline-block align-middle w-max-content pl-3">Dealgo
-                    Inc</span>
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
                 </td>
-                <td class="align-middle talent-text-muted">Company
+                <td class="align-middle talent-text-muted hide_content">Company
                 </td>
-                <td class="align-middle talent-text-muted">
+                <td class="align-middle talent-text-muted hide_content">
                   Feb 12,2018
                 </td>
                 <td class="align-middle">
                   <button class="btn talent-btn-dark">Verified</button>
                 </td>
                 <td class="align-middle">
-                  <button class="btn">
+                  <button class="btn l-padding r-padding">
                     <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <circle cx="2" cy="12" r="2" fill="#353A45" />
@@ -283,25 +294,25 @@
                 </td>
               </tr>
               <tr>
-                <td class="align-middle pl-4 pr-5">HNG02E</td>
+                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
                 <td
                   class=" d-flex justify-content-start align-items-center align-middle">
                   <img class=" img-fluid rounded" src="../img/user.png"
                     alt="employer logo">
                   <span
                     class="d-inline-block align-middle w-max-content pl-3">Dealgo
-                    Inc</span>
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
                 </td>
-                <td class="align-middle talent-text-muted">Individual
+                <td class="align-middle talent-text-muted hide_content">Individual
                 </td>
-                <td class="align-middle talent-text-muted">
+                <td class="align-middle talent-text-muted hide_content">
                   Feb 12,2018
                 </td>
                 <td class="align-middle">
                   <button class="btn talent-btn-dark">Verified</button>
                 </td>
                 <td class="align-middle">
-                  <button class="btn">
+                  <button class="btn l-padding r-padding">
                     <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <circle cx="2" cy="12" r="2" fill="#353A45" />
@@ -319,25 +330,25 @@
                 </td>
               </tr>
               <tr>
-                <td class="align-middle pl-4 pr-5">HNG02E</td>
+                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
                 <td
-                  class=" d-flex justify-content-start align-items-center align-middle">
+                  class=" d-flex justify-content-start align-items-center align-middle  l-padding r-padding">
                   <img class=" img-fluid rounded" src="../img/user.png"
                     alt="employer logo">
                   <span
                     class="d-inline-block align-middle w-max-content pl-3">Dealgo
-                    Inc</span>
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
                 </td>
-                <td class="align-middle talent-text-muted">Company
+                <td class="align-middle talent-text-muted hide_content">Company
                 </td>
-                <td class="align-middle talent-text-muted">
+                <td class="align-middle talent-text-muted hide_content">
                   Feb 12,2018
                 </td>
                 <td class="align-middle">
                   <button class="btn talent-btn-dark">Verified</button>
                 </td>
                 <td class="align-middle">
-                  <button class="btn">
+                  <button class="btn l-padding r-padding">
                     <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <circle cx="2" cy="12" r="2" fill="#353A45" />
