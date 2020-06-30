@@ -290,17 +290,20 @@ individualForm.addEventListener("submit", (e) => {
   ]);
 
   if (!Object.values(validated).includes(false)) {
+    // clear object in localStorage then save unsent data to localStorage
+    localStorage.setItem("talentPool", "");
+    localStorage.setItem(
+      "talentPool",
+      JSON.stringify({
+        firstName: firstName.value.trim(),
+        lastName: lastName.value.trim(),
+        phoneNo: phoneNo.value.trim(),
+      })
+    );
+
     const formData = {
-      firstName: firstName.value.trim(),
-      lastName: lastName.value.trim(),
       email: email.value.trim(),
       password: password.value,
-      /* to pass the serverside validation, the phone number must begin with a '0', this takes care of that.*/
-      phoneNo: /^0/.test(phoneNo.value.trim())
-        ? phoneNo.value.trim()
-        : /^[+]/.test(phoneNo.value.trim())
-        ? phoneNo.value.trim().replace(/^[+]/, "0")
-        : "0".concat(phoneNo.value.trim()),
     };
 
     const signupEmployer = async () => {
@@ -336,7 +339,7 @@ individualForm.addEventListener("submit", (e) => {
           showAlert(message);
         }
       } catch (error) {
-        console.log("Error:", error);
+        showAlert(error);
       }
     };
 
@@ -377,14 +380,19 @@ orgForm.addEventListener("submit", (e) => {
   checkRequired([orgName, orgEmail, orgPassword, confirmOrgPassword]);
 
   if (!Object.values(validated).includes(false)) {
+    localStorage.setItem("talentPool", "");
+    localStorage.setItem(
+      "talentPool",
+      JSON.stringify({ orgName: orgName.value.trim() })
+    );
+
     const formData = {
-      orgName: orgName.value.trim(),
       orgEmail: orgEmail.value.trim(),
       orgPassword: orgPassword.value,
     };
 
     const signupOrgEmployer = async () => {
-      const API_URL = "";
+      const API_URL = "https://api.lancers.app/v1/auth/employer-signup";
 
       const res = await fetch(API_URL, {
         method: "POST",
@@ -416,7 +424,7 @@ orgForm.addEventListener("submit", (e) => {
           showAlert(message);
         }
       } catch (error) {
-        console.log("Error:", error);
+        showAlert(error);
       }
     };
 
