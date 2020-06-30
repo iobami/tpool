@@ -37,14 +37,27 @@ body {
     
 
 }
-
 .job-card__top-text {
-    font-size: 2rem;
     font-weight: 500;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    color: #495057;
 }
 
 .job-card__next-text {
-    font-size: 0.75rem;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    color: #353A45;
 }
 
 .profile-wrap {
@@ -126,6 +139,8 @@ body {
 .one{
     background: #042241;
     margin-top: 50px;
+    height: 78px;
+    padding-left: 32px;
 }
 .rectangle{
     border-radius: 15px;
@@ -159,6 +174,7 @@ body {
     border-radius: 0,0,15px,15px;
     margin-bottom: 30px;
     padding-left: 70%;
+    padding-bottom: 20px;
 }
 .btn-2:hover{
     border: 2px solid #084482;
@@ -169,6 +185,11 @@ a{
 }
 .form-control{
     border: 0px solid #ced4da;
+    font-size: 18px;
+    color: black;
+}
+.form-group{
+    margin-left: 20px;
 }
 
 .select{
@@ -179,7 +200,8 @@ a{
     padding-top: 7px;
     width: 324px;
     text-align: center;
-    padding-left: 20px;
+    padding-left: 30px;
+    margin-left: 40px;
 }
 .available{
     font-family: Poppins;
@@ -267,13 +289,13 @@ a{
 
 .up{
     position: absolute;
-    margin-left: 10px;
+    margin-left: 40px;
     margin-top: 1px;
 }
 .down{
     position: absolute;
     margin-top: 15px;
-    margin-left: 10px;
+    margin-left: 40px;
 
 }
 .title{
@@ -289,15 +311,15 @@ a{
     margin-left: 20px;
 }
 .search-box{
-    padding-left: 40px;
+    padding-left: 50px;
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
-    display: flex;
     align-items: center;
     color: #353A45;
+    height: 57px;
 }
 
 .threedots{
@@ -307,7 +329,7 @@ a{
     margin-left: 9px;
 }
 .options{
-    margin-left: 20px;
+    margin-left: 50px;
 }
 .col{
     font-family: Poppins;
@@ -319,14 +341,22 @@ a{
 }
 tbody{
     background: #FFFFFF;
+    padding-top: 100px;
+
+}
+.table th{
+    padding-top: 15px;
+    padding-left: 50px;
+}
+.zero{
+    height: 10px;
 }
 .table td{
-    padding-top: 30px;
+    height: 90px;
+    padding-top: 35px;
+    padding-left: 50px;
 }
-tr{
-    padding-top: 50px;
-    padding-top: 100px;
-}
+
 .top-select{   
     background: #FFFFFF;
     border-radius: 0px 0px 15px 15px;
@@ -340,18 +370,16 @@ td{
     font-size: 18px;
     color: #544C4C;
 }
-select{
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 30px;
-    color: #747E98;
-}
+
 table {
     overflow-x: auto;
-    white-space: nowrap;
-    
+    white-space: nowrap;    
+}
+.thead-light{
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 500;
+    color: #495057;
 }
 
 @media (max-width: 1224px) {
@@ -413,11 +441,7 @@ table {
         display: block;
         overflow: auto;
     }
-    /* .table{
-        display: block;
-        overflow: auto;
-        white-space: nowrap;
-    } */
+    
     .top-select h2{
         font-size: 20px;
         padding-top: 17px;
@@ -470,8 +494,11 @@ table {
         display: none;
     }
     
-    .form-control{
-        margin-left: 30px;
+    .form-group{
+        margin-top: 15px;
+        margin-left: 10px;
+        margin-right: 40px;
+        width: 130px;
     }
     .search-icon{
         margin-left: 40px;
