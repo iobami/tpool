@@ -252,6 +252,14 @@ height: 56px;
   transform: rotate(45deg);
 }
 
+input[type="text"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder {
+  font-family: inherit;
+  line-height: 24px;
+  color: rgba(178, 178, 178, 0.58);
+  position: relative;
+}
+
 .btn-lg {
 height: 59px;
 width: 238px
@@ -333,3 +341,4 @@ transform: translate3d(-100px, 24px, 0px) !important;
 
 
 }
+
