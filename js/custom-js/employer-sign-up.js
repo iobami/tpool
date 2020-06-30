@@ -91,14 +91,14 @@ function checkName(input) {
 
 // check phone number
 function checkPhone(input) {
-  // const regex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
+  const regex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
   // const length = String(Number(input.value)).length;
   const length = input.value.length;
   if (length > 10 && length < 16) {
-    if (!/^0/.test(input.value.trim())) {
-      showError(input, "Phone number must begin with 0");
+    if (!regex.test(input.value.trim())) {
+      showError(input, "Please enter a valid phone number");
+      // showError(input, "Phone number must begin with 0");
     } else {
-      // showError(input, "Please enter a valid phone number");
       showSuccess(input);
     }
   } else if (/\D/.test(input.value.trim())) {
@@ -223,13 +223,15 @@ email.addEventListener("input", () => {
   }
 });
 
-phoneNo.addEventListener("blur", () => {
+phoneNo.addEventListener("input", () => {
   clearError(phoneNo);
-  if (phoneNo.value !== "") {
-    checkPhone(phoneNo);
-  } else {
-    clearError(phoneNo);
-  }
+  setTimeout(() => {
+    if (phoneNo.value !== "") {
+      checkPhone(phoneNo);
+    } else {
+      clearError(phoneNo);
+    }
+  }, 1000);
 });
 
 password.addEventListener("input", () => {
@@ -293,7 +295,12 @@ individualForm.addEventListener("submit", (e) => {
       lastName: lastName.value.trim(),
       email: email.value.trim(),
       password: password.value,
-      phoneNo: phoneNo.value.trim(),
+      /* to pass the serverside validation, the phone number must begin with a '0', this takes care of that.*/
+      phoneNo: /^0/.test(phoneNo.value.trim())
+        ? phoneNo.value.trim()
+        : /^[+]/.test(phoneNo.value.trim())
+        ? phoneNo.value.trim().replace(/^[+]/, "0")
+        : "0".concat(phoneNo.value.trim()),
     };
 
     const signupEmployer = async () => {
