@@ -6,6 +6,9 @@ body{
   padding-bottom: 2rem;
 }
 
+.dropdownArrow{
+  display: none;
+}
 .main-content{
   max-width: 75rem;
 }
@@ -94,6 +97,17 @@ table th {
   z-index: 0;
   background: #fff;
 }
+.dashBoard_text h6{
+  color: #000000 !important;
+  display: none;
+}
+.sub-text{
+  color: #ADADAD;
+  display: none;
+}
+
+
+/* MEDIA QUERIES FOR SPECIFIC SCREEN SIZES*/
 
 @media screen and (min-width: 576px){
   .talent-card{
@@ -103,12 +117,50 @@ table th {
   body{
     padding-bottom: 4rem;
   }
+  
+}
+
+@media screen and (max-width: 576px){
+  .display-none{
+    display: none !important;
+  }
+  .table-form-container{
+    margin-top: 50px;
+  }
+  .hide_content{
+    display: none;
+  }
+  .sub-text{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .l-padding{
+    padding-left: 5px !important;
+  }
+  .r-padding{
+    padding-right: 5px !important;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .dropdownArrow{
+    display: block;
+  }
 }
 
 @media screen and (min-width: 992px){
   .main-content{
     width: auto;
     margin-left: 230px;
+  }
+}
+
+@media screen and (max-width: 992px){
+  .dashBoard_text h6{
+    color: #000000 !important;
+    display: block;
   }
 }
 

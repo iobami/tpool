@@ -157,3 +157,21 @@ hr {
   font-size: 1.5rem;
   border: none;
 }
+
+.signup-nav {
+  border-bottom: 1px solid #084482;
+}
+
+.intern-sign,
+.user-sign {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #AAAAAA;
+}
+
+.signup-nav .active {
+  color: #1F2430;
+  border-bottom: 4px solid #084482;
+}
+

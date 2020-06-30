@@ -289,14 +289,14 @@ setTimeout(()=>{
 function call_modal({title, content, size}){
 
 
-	$('.modal-title').html(' ');
-	$('.modal-body').html('');
+	$('#global_modal .modal-title').html(' ');
+	$('#global_modal .modal-body').html('');
 
   // $('body').css('overflow-y','hidden');
 
 	let modal_size = '';
 
-	$('.modal-dialog').removeClass('modal-lg modal-sm');
+	$('#global_modal .modal-dialog').removeClass('modal-lg modal-sm');
 
 	// alert(element.size);
 	switch (size) {
@@ -311,10 +311,10 @@ function call_modal({title, content, size}){
 			break;
 	}
 
-	$('.modal-dialog').addClass(modal_size);
+	$('#global_modal .modal-dialog').addClass(modal_size);
 
-	$('.modal-title').html(title);
-	$('.modal-body').html(content+'<br class="clear"/>');
+	$('#global_modal .modal-title').html(title);
+	$('#global_modal .modal-body').html(content+'<br class="clear"/>');
   // $('#add_skill_btn').attr('disabled',true);
 
 // setTimeout(()=>{
