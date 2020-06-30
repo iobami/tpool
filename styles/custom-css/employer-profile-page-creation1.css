@@ -358,3 +358,25 @@ main {
         margin-top: .5rem;
     }
 }
+
+
+div.btn.new-btn.m {
+    position: relative;
+    overflow: hidden;
+}
+
+input[type=file] {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+input#output.form-control.em-input {
+    width: 100%;
+}
+
+.form-control[readonly] {
+    background-color: #fff;
+}
