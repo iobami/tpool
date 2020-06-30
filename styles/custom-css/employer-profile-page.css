@@ -107,6 +107,7 @@ background: #C4C4C4;
     height: 56px;
     border: 2px solid #B5B5B5;
     border-radius: 5px;
+    padding-top: 15px;
 
 }
 .content-wrapper label.custom-file-label::after{
@@ -118,6 +119,7 @@ background: #C4C4C4;
     height: 31px;
     border-radius: 5px;
     text-align: center;
+   
 }
 .content-wrapper .content-div {
     width: 350px;
