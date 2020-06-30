@@ -51,6 +51,7 @@ header {
 
 .btn-sign-in {
    border: 1px solid #00AEFF;
+   width: 100%;
 }
 
 .btn-sign-up {
@@ -85,6 +86,35 @@ header {
 }
 
 .signup__dropdown a:hover {
+   background: #fff;
+   color: #00AEFF;
+   border: 1px #00AEFF solid;
+   border-radius: 5px;
+}
+
+.signin__dropdown {
+   padding: 1rem 1rem 0;
+   z-index: 9999 !important;
+}
+
+.signin__dropdown p {
+   font-weight: 500;
+   font-size: 1rem;
+   line-height: 157.2%;
+   color: #084482;
+}
+
+.signin__dropdown a {
+   padding: 5px 0;
+   text-align: center;
+   background: white;
+   border: 1px #00AEFF solid;
+   border-radius: 5px;
+   margin-bottom: 1rem;
+   color: #00AEFF;
+}
+
+.signin__dropdown a:hover {
    background: #00AEFF;
    color: #fff;
 }
