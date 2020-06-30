@@ -82,6 +82,16 @@ line-height: 24px;
     font-size: 12px;
     line-height: 18px;
 }
+.icons a{
+    width: 15px;
+    text-align: center;
+    margin: auto;
+    color: black;
+    text-decoration: none;
+}
+.icons a:hover{
+    color: blue;
+}
 .col{
    width: 316px;
    margin: auto;
@@ -94,7 +104,7 @@ font-size: 14px;
 text-transform: capitalize;
 line-height: 247.1%;
 }
-.btn{
+.details.btn{
     font-style: normal;
 font-weight: normal;
 font-size: 12px;
