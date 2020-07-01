@@ -342,7 +342,7 @@ button:focus {
   }
 
   #inbox-top {
-    background-color: rgb(189, 189, 189);
+    background-color: #fff;
   }
 
   .chat-content {
