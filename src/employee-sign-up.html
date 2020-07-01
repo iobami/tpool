@@ -20,8 +20,8 @@
         <div class="container-fluid">
             <div class="container nav-container">
                 <nav class="navbar navbar-expand-lg navbar-light py-1">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
+                    <a class="navbar-brand" href="../index.html">
+                        <img src="../img/talentpool header logo.svg" alt="talent pool logo">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,23 +30,34 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item px-3 active">
-                                <a class="nav-link nav-link-black" href="index.html">Home <span
+                                <a class="nav-link nav-link-black" href="../index.html">Home <span
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item px-3">
-                                <a class="nav-link nav-link-black" href="src/aboutUs.html">About Us</a>
+                                <a class="nav-link nav-link-black" href="./aboutUs.html">About Us</a>
                             </li>
                             <li class="nav-item px-3">
                                 <a class="nav-link nav-link-black" href="#">Directories</a>
                             </li>
                             <li class="nav-item px-3">
-                                <a class="nav-link nav-link-black" href="./src/faq.html">FAQ</a>
+                                <a class="nav-link nav-link-black" href="./faq.html">FAQ</a>
                             </li>
                             <li class="nav-item px-3">
-                                <a class="nav-link nav-link-black" href="./src/contact-us.html">Contact Us</a>
+                                <a class="nav-link nav-link-black" href="./contact-us.html">Contact Us</a>
                             </li>
-                            <li class="nav-item px-3 my-2 my-lg-0">
+                            <!-- <li class="nav-item px-3 my-2 my-lg-0">
                                 <a class="nav-link btn px-3 btn-sign btn-sign-in py-1" href="./src/employer-sign-in.html">Sign in</a>
+                            </li> -->
+                            <li class="nav-item px-3 dropdown mb-2 mb-lg-0">
+                                <button class="nav-link btn btn-sign btn-sign-in px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sign In
+                                </button>
+    
+                                <div class="dropdown-menu dropdown-menu-right signin__dropdown" aria-labelledby="dropdownMenuButton">
+                                    <p>Sign in as: </p>
+                                    <a class="dropdown-item" href="./employer-sign-in.html">Employer</a>
+                                    <a class="dropdown-item" href="./employee-sign-in.html">Talent</a>
+                                </div>
                             </li>
                             <li class="nav-item px-3 dropdown">
                                 <button class="nav-link btn btn-sign btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,8 +66,8 @@
     
                                 <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
                                     <p>Sign up as: </p>
-                                    <a class="dropdown-item" href="./src/employer-sign-up.html">Employer</a>
-                                    <a class="dropdown-item" href="./src/employee-sign-up.html">Talent</a>
+                                    <a class="dropdown-item" href="./employer-sign-up.html">Employer</a>
+                                    <a class="dropdown-item" href="./employee-sign-up.html">Talent</a>
                                 </div>
                             </li>
                         </ul>
@@ -240,13 +251,6 @@
                                             Your valid email address is required.
                                         </div>
                                     </div>
-                                    <div class="col-md mb-3">
-                                        <label for="gradClass">Graduation Class</label>
-                                        <input type="number" class="form-control" id="gradClass" min="2013" max="2020" placeholder="e.g. 2020" required>
-                                        <div class="invalid-feedback">
-                                            Your Graduation Year is required as 4 digits.
-                                        </div>
-                                    </div>
                                 </div> 
                                 
                                 <div class="row">
@@ -356,17 +360,17 @@
                     <h5 class="py-3">Explore</h5>
                     <ul class="pl-0">
                         <li><a href="">Home</a></li>
-                        <li class="py-1"><a href="src/aboutUs.html">About Us</a></li>
+                        <li class="py-1"><a href="./aboutUs.html">About Us</a></li>
                         <li class="py-1"><a href="">Directories</a></li>
-                        <li class="py-1"><a href="./src/faq.html">FAQ</a></li>
-                        <li class="py-1"><a href="./src/contact-us.html">Contact Us</a></li>
+                        <li class="py-1"><a href="./faq.html">FAQ</a></li>
+                        <li class="py-1"><a href="./contact-us.html">Contact Us</a></li>
                         <li class="py-1"><a href="">Top Talent</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md-3">
                     <h5 class="py-3">Visit</h5>
                     <p>
-                        3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
+                        Lagos NG, 17 Akinsanya St, Ojodu 100213, Ikeja
                     </p>
                     <div class="d-none d-md-block">
                         <h5 class="py-3">Get in touch</h5>
