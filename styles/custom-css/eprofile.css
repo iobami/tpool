@@ -307,6 +307,11 @@ pointer-events:stroke;
 
   }
 
+  #p-text {
+    font-weight: 300;
+    font-size: 16px;
+}
+
 
 @media (max-width: 600px) {
 
@@ -368,6 +373,43 @@ transform: translate3d(-100px, 24px, 0px) !important;
   font-size: .8rem;
 }
 
+
+}
+
+@media only screen and (max-width: 450px) {
+    .checkmark {
+      left: 0;
+      height: 20px;
+      width: 20px;
+  }
+
+  .form-check .checkmark:after {
+      left: 7px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+  }
+
+  .form-check-label {
+    line-height: unset !important;
+  }
+
+  #p-text {
+    font-size: 12px;
+}
+
+
+}
+
+@media only screen and (max-width: 450px) {
+  #placeholder {
+      font-size: 9px;
+  }
+
+  #file-btn {
+      width: 60px;
+      font-size: .6rem;
+  }
 
 }
 
