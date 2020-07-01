@@ -21,7 +21,7 @@ button:focus {
 
 .chat {
   background-color: #fff;
-  min-height: 570px;
+  max-height: 570px;
 }
 
 .top-tab {
@@ -46,7 +46,8 @@ button:focus {
 
 .chat-messages::-webkit-scrollbar,
 .chat-scroll-view::-webkit-scrollbar {
-  width: 5px;
+  width: 6px !important;
+  height: 6px !important;
 }
 
 /* Track */
@@ -97,7 +98,7 @@ button:focus {
 }
 
 .chatmsg {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 24px;
   letter-spacing: 0.15px;
   margin-top: 5px;
@@ -271,14 +272,17 @@ button:focus {
 }
 
 .chat-card {
-  border: 2px solid #ffffff;
   box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
   border-radius: 5px;
-  padding: 10px 20px;
+  border: none;
+  height: 80px;
+  color: #1f2430;
 }
 
-.chat-card:hover {
-  border: 2px solid #00aeff;
+.chat-card:hover,
+.active-card {
+  border: 1px solid #00aeff;
+  box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
 }
 
 .time-sent {
@@ -293,8 +297,8 @@ button:focus {
 }
 .blue-circle {
   background: #337ab7;
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -305,11 +309,21 @@ button:focus {
 }
 
 @media only screen and (max-width: 768px) {
-  #main-content {
-    padding-left: 0;
+  body {
+    background-color: #fff;
   }
 
-  .main-section {
+  #main-content {
+    padding-left: 0;
+    padding-top: 20px;
+  }
+
+  .left-side {
+    box-shadow: none;
+  }
+
+  #inbox-top,
+  #right-side {
     display: none;
   }
 
