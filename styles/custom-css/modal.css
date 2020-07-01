@@ -240,8 +240,8 @@ border:1px solid #337AB7 !important;
   } 
   
     button[type=submit] {
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 14px !important;
+      line-height: 18px !important;
       width: 138px;
   }
   .form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
