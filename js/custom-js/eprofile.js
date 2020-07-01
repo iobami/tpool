@@ -74,3 +74,65 @@ Filevalidation = () => {
     }
 };
 
+
+let myArray = [];
+const body = {
+  employee_id: "84b46b59-8d8f-4636-afdc-734bc7aaaaab",
+};
+
+function buildList(data) {
+  const list = document.querySelector(".lists");
+
+  data.forEach((skills) => {
+    console.log(skills.skill_description);
+
+    const row = `
+      <li>
+        <div class="list-item">
+            <span class="mr-2">
+                <img src="../img/iprofile/ic_sharp-verified.svg" alt="">
+            </span>
+            ${skills.skill_description}
+        </div>
+        <div class="list-trash">
+            <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z" fill="#084482"/>
+            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z" fill="#084482"/>
+            <path d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z" fill="#084482"/>
+            <path d="M13 5.87109H19V7.27271H13V5.87109Z" fill="#084482"/>
+            </svg>
+        </div>
+      </li>
+        `;
+    list.innerHTML += row;
+  });
+}
+
+async function getAllSkillsForIndividuals() {
+  const url = `https://api.lancers.app/v1/employee/skill/${body.employee_id}/all`;
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9ndW5zb2xhZGViYXlvQGdtYWlsLmNvbSIsInVzZXJJZCI6IjEyMzdhMjc0LTZmNDctNDA3YS1iMjFiLTFhMDQ0NGUwYzk3OCIsInVzZXJSb2xlIjoiUk9MLUVNUExPWUVFIiwidXNlclR5cGVJZCI6bnVsbCwiaWF0IjoxNTkzNjA0NjAyLCJleHAiOjE1OTM2OTEwMDJ9.SyLxTAXCk58eFDjwjBAiboMdqogxSEOl_2RGHqrldFI"
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "User-Agent": "Developers Lancers",
+        Authorization:
+          `Bearer ${token}`,
+      },
+    });
+    const result = await response.json();
+
+    console.log(result);
+    console.log(result.data.skills);
+
+    myArray = result.data.skills;
+    buildList(myArray);
+  } catch (error) {
+    alert("Opps! An error seems to have occured. Try again later. Thanks!");
+    console.log(error);
+  }
+}
+
+getAllSkillsForIndividuals();
