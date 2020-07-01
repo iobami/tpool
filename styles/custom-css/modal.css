@@ -202,3 +202,20 @@ border:1px solid #337AB7 !important;
   font-size: 1.2rem;
   cursor: pointer;
 }
+
+
+.modal.modal-static .modal-dialog {
+  margin-left: 16.5rem;
+}
+
+
+@media only screen and (max-width: 991px) {
+  .modal.modal-static .modal-dialog {
+    margin-left: auto;
+  }
+  
+  .modal-dialog {
+    max-width: 75%;
+  }
+  
+}

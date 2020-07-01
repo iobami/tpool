@@ -109,7 +109,7 @@ a {
   pointer-events: all !important;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .sidenav {
     transform: translate3d(-234px, 0, 0);
   }
