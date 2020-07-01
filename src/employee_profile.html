@@ -16,6 +16,9 @@
     <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
     <!-- <link href="css/font-awesome.css" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/fc9346f24c.js" crossorigin="anonymous"></script>
 
     <style media="screen">
 
@@ -26,10 +29,59 @@
         .upload-section, #skills, #socials{
           margin-bottom: 32px!important;
         }
+       
+        .form-group {
+            position:relative;
+        }
+
+        .form-group img {
+            position: absolute;
+            top: 53px;
+            color: #eaeaf2;
+        }
+        .modal {
+            color: #000;
+            font-weight: 500px;
+            font-size: 18px;
+        }
+        .modal select {
+            -webkit-appearance: none;
+            width: 100%;
+            background-image: url('../img/select-arrow.svg');
+            background-repeat: no-repeat;
+            background-position: 380px center;
+        }
+        input[type=text] {
+            color:#000;
+            font-size: 18px;
+        }
+
+        input[type=url] {
+                background: #f2f2f8;
+                outline: none;
+                border: 3px solid #ccc !important;
+                box-sizing: border-box;
+        }
+        button[type=submit] {
+            font-weight: 500px;
+            font-size: 24px;
+            line-height: 36px;
+        }
+
+
+        @media (max-width: 525px) {
+            .modal select {
+                background-position: 360px center;
+            }
+        }
+
 
         @media (min-width: 320px) and (max-width: 480px) {
             .upload-section{
               margin-bottom: 2px!important;
+            }
+            .modal select {
+                background-position: 240px center;
             }
         }
 
@@ -555,9 +607,49 @@ height: 24px;
                                     </div>
                                     <div class="section-icon">
                                         <!-- <img src="../img/iprofile/carbon_add.svg" alt=""> -->
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z" fill="#084482"/>
+
+                                <!---////////////////////////////////////////////////////////////////////////////
+                                                         Start of social media popup
+                                ////////////////////////////////////////////////////////////////////////////////--> 
+                                        <button type="button" class="btn" data-toggle="modal" data-target="#socialPopup"> 
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z" fill="#084482"/>
                                             </svg>
+                                        </button>
+                                        <div class="modal fade" id="socialPopup">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Add social media links</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button> 
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form role="form" action="/action_page.php">
+                                                            <div class="form-group">
+                                                                <label for="sMedia">Select platform</label>
+                                                                <select name="social-media" class="form-control border border-primary px-5" id="sMedia">
+                                                                    <option value="dribble">Dribble</option>
+                                                                    <option value="twitter">Twitter</option>
+                                                                    <option value="behance">Behance</option>
+                                                                    <option value="github">Github</option>
+                                                                    <option value="linkedin">LinkedIn</option>
+                                                                    <option value="hasnode">Hasnode</option>
+                                                                </select>
+                                                                <img src="../img/search-icon.png" class="img-fluid ml-3" alt="">
+                                                                <input type="text" class="form-control px-4 mt-2 mb-4" value="Dribble" placeholder="" required="required"/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="link">Account link</label>
+                                                                <input type="url" class="form-control text-muted" id="link" placeholder="Paste valid profile link here" required="required"/>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer border-0 mx-auto">
+                                                        <button type="submit" class="btn btn-primary btn-lg mb-4" data-dismiss="modal">Add link</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--- End of Social media popup --> 
                                     </div>
 
                                 </div>
