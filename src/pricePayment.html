@@ -114,12 +114,12 @@
                                 </div>
                             </div>
                             <div id="visa-card__form" class="form animate__animated animate__fadeIn show-form">
-                                <form action="/action_page.php">
+                                <form id="devugo-form" action="/action_page.php">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="card-number">CARD NUMBER*</label>
-                                                <input type="text" name="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control" id="card-number">
+                                                <input type="number" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control" id="card-number">
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" placeholder="03" class="form-control" id="expiration-date__month">
+                                                <input type="number" placeholder="03" class="form-control" id="expiration-date__month">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
@@ -145,8 +145,8 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <label for="cvc">CVC*</label>
-                                                <input placeholder="039" type="text" class="form-control" id="cvc">
+                                                <label for="cvv">CVV*</label>
+                                                <input placeholder="039" type="number" class="form-control" id="cvv">
                                             </div>
                                         </div>
                                     </div>
