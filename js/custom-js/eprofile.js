@@ -111,7 +111,7 @@ function buildList(data) {
 
 async function getAllSkillsForIndividuals() {
   const url = `https://api.lancers.app/v1/employee/skill/${body.employee_id}/all`;
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9ndW5zb2xhZGViYXlvQGdtYWlsLmNvbSIsInVzZXJJZCI6IjEyMzdhMjc0LTZmNDctNDA3YS1iMjFiLTFhMDQ0NGUwYzk3OCIsInVzZXJSb2xlIjoiUk9MLUVNUExPWUVFIiwidXNlclR5cGVJZCI6bnVsbCwiaWF0IjoxNTkzNjA0NjAyLCJleHAiOjE1OTM2OTEwMDJ9.SyLxTAXCk58eFDjwjBAiboMdqogxSEOl_2RGHqrldFI"
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9ndW5zb2xhZGViYXlvQGdtYWlsLmNvbSIsInVzZXJJZCI6IjEyMzdhMjc0LTZmNDctNDA3YS1iMjFiLTFhMDQ0NGUwYzk3OCIsInVzZXJSb2xlIjoiUk9MLUVNUExPWUVFIiwidXNlclR5cGVJZCI6Ijg0YjQ2YjU5LThkOGYtNDYzNi1hZmRjLTczNGJjN2FhYWFhYiIsImlhdCI6MTU5MzYyMjg5OSwiZXhwIjoxNTkzNzA5Mjk5fQ.oTwCe2CE4Hu5kfyRsTLfIML0_5vCjOor_aQ5yNCQoRI"
 
   try {
     const response = await fetch(url, {
@@ -124,8 +124,8 @@ async function getAllSkillsForIndividuals() {
     });
     const result = await response.json();
 
-    console.log(result);
-    console.log(result.data.skills);
+    // console.log(result);
+    // console.log(result.data.skills);
 
     myArray = result.data.skills;
     buildList(myArray);
