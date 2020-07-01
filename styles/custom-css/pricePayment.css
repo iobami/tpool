@@ -1,0 +1,181 @@
+.price-payment {
+    margin-top: 70px;
+    margin-bottom: 20px;
+    font-family: Poppins;
+}
+.price-payment .container .plan {
+    border: 1px solid #EEEEEE;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
+    padding: 76px;
+    max-width: 441px;
+    background: #FFFFFF;
+    margin-bottom: 50px;
+}
+.price-payment .container .plan h3 {
+    font-weight: bold;
+    font-size: 32px;
+    color: #555555;
+}
+.price-payment .container .plan p {
+    font-weight: 500;
+    font-size: 28px;
+    color: #000000;
+}
+.price-payment .container .plan span {
+    font-weight: bold;
+}
+.price-payment .container .plan ul{
+    list-style: none;
+    color: #4F4F4F;
+    margin: 0;
+    padding: 0;
+}
+.price-payment .container .plan ul li{
+    display: flex;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+.price-payment .container .plan ul i{
+    color: #00AEFF;
+    margin-right: 10px;
+}
+.price-payment .container .plan .content > div {
+    margin-bottom: 30px;
+}
+
+.price-payment .container .pay-now__form {
+    background: #FFFFFF;
+    border: 1px solid #EEEEEE;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
+    max-width: 572px;
+    padding: 20px 0px;
+}
+.price-payment .container .pay-now__form .top-bar__content {
+    padding: 20px;
+    border-bottom: 1.5px solid #E7EAEC;
+}
+.price-payment .container .pay-now__form .top-bar__content h4 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+    color: #555555;
+    margin-bottom: 30px;
+}
+.price-payment .container .pay-now__form .top-bar__content p {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.price-payment .container .pay-now__form .top-bar__content p span:nth-child(2){
+    font-size: 18px;
+}
+
+.price-payment .container .pay-now__form .bottom-bar__content {
+    padding: 40px 20px;
+}
+.price-payment .container .pay-now__form .bottom-bar__content .form{
+    display: none;
+    transition: all 0.5s ease-in-out;
+    /* margin-top: -50px; */
+}
+.price-payment .container .pay-now__form .bottom-bar__content .show-form{
+    display: block;
+    /* margin-top: 0px; */
+}
+.price-payment .container .pay-now__form .bottom-bar__content h4{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    color: #555555;
+    margin-bottom: 30px;
+}
+.price-payment .container .pay-now__form .bottom-bar__content .payment-cards {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.price-payment .container .pay-now__form .bottom-bar__content .img-container {
+    width: 112px;
+    height: 56px;
+    background: rgba(196, 196, 196, 0.15);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.price-payment .container .pay-now__form .bottom-bar__content .img-container:hover {
+    cursor: pointer;
+    background: rgba(196, 196, 196, 0.35);
+}
+
+.price-payment .container .pay-now__form .bottom-bar__content .img-container img{
+    width: 80%;
+    height: 70%;
+}
+
+.price-payment .container .pay-now__form .bottom-bar__content .form label{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.price-payment .container .pay-now__form .bottom-bar__content .form input{
+    border: 2px solid #B5B5B5;
+    border-radius: 5px;
+}
+.price-payment .container .pay-now__form .bottom-bar__content .form .row{
+    margin-bottom: 10px;
+}
+
+.price-payment .container .pay-now__form .bottom-bar__content .form .row:nth-child(2){
+    margin-bottom:0px;
+}
+/* .price-payment .container .pay-now__form .bottom-bar__content .form .row:nth-child(3) .form-group{
+    width: 70%;
+} */
+.price-payment .container .pay-now__form .bottom-bar__content .form button{
+    width: 100%;
+    height: 50px;
+    background: #00AEFF;
+    border-radius: 5px;
+    color: white;
+}
+
+@media(min-width: 992px){
+    .price-payment .container .plan {
+        margin-top: 70px;
+    }
+}
+@media(max-width: 991px){
+    .price-payment .container .plan {
+        padding: 20px;
+    }
+}
+
+@media(max-width: 991px){
+    .price-payment .container .plan, .price-payment .container .pay-now__form {
+        max-width: 100%;
+    }
+    .price-payment .container .pay-now__form .bottom-bar__content .payment-cards {
+        width: 100%;
+    }
+}
+
+@media(max-width: 500px){
+    .price-payment .container .pay-now__form .bottom-bar__content .img-container {
+        width: 70px;
+        height: 40px;
+    }
+}
+
+
