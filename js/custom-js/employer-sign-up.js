@@ -165,7 +165,9 @@ function getFieldName(input) {
 // check password
 function checkPassword(input) {
   clearError(input);
-  let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([!@#$%^&*()_+=`~{}[\]-|'"<>,./?]*)(?=.{8,})/;
+  let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(){}[\]\|;:'"<>,.?/])(?=.{8,})/;
+
+  // let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([!@#$%^&*()_+=`~{}[\]-|'"<>,./?]*)(?=.{8,})/;
 
   if (input.value.length > 7) {
     if (!regex.test(input.value)) {
@@ -251,7 +253,7 @@ confirmPassword.addEventListener("input", () => {
   if (confirmPassword.value !== "") {
     setTimeout(() => {
       checkPasswordsMatch(password, confirmPassword);
-    });
+    }, 1000);
   } else {
     clearError(confirmPassword);
   }
