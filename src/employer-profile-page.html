@@ -11,7 +11,7 @@
     rel="stylesheet">
   <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
   <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
-  <link rel="stylesheet" href="../styles/custom-css/top-nav-admin.css">
+  <link rel="stylesheet" href="../styles/custom-css/employer-top-nav.css">
   <link rel="stylesheet" href="../styles/custom-css/side-nav.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <link rel="stylesheet"
@@ -23,49 +23,48 @@
   <!-- Header/Navbar Here -->
   <div class="container-fluid w-100 top__nav__wrapper sticky-top">
     <div class="top__nav__contents py-4">
-      <div
-        class="d-flex justify-content-between justify-content-lg-end align-items-center top__nav">
+        <div class="d-flex justify-content-between justify-content-lg-end align-items-center top__nav">
 
-        <div class="d-lg-none mr-3" id="top__nav__toggle">
-          <svg width="35" height="25" viewBox="0 0 35 25" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M0 15.2571H35V10.4571H0V15.2571ZM0 24.8571H35V20.0571H0V24.8571ZM0 5.65712H35V0.857117H0V5.65712Z"
-              fill="#084482" fill-opacity="0.87" />
-          </svg>
-        </div>
+            <div class="d-lg-none mr-3" id="top__nav__toggle">
+                <svg width="35" height="25" viewBox="0 0 35 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 15.2571H35V10.4571H0V15.2571ZM0 24.8571H35V20.0571H0V24.8571ZM0 5.65712H35V0.857117H0V5.65712Z" fill="#084482" fill-opacity="0.87"/>
+                </svg>
+  </div>
+  
+ <h4 class="d-md-none">Dashboard</h4>
+            
+            <div class="d-flex align-items-center top__nav__links">
+                <div class="top__nav__icon d-none d-md-flex">
+                    <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.9486 14.2992C16.0795 13.43 15 12.3484 15 8.125C15 5.02367 12.741 2.45043 9.77879 1.95977C9.92315 1.75126 10.0003 1.50361 10 1.25C10 0.559648 9.44035 0 8.75 0C8.05964 0 7.5 0.559648 7.5 1.25C7.5 1.51367 7.58183 1.75813 7.72121 1.95977C4.75902 2.45043 2.5 5.02367 2.5 8.125C2.5 12.3484 1.42019 13.43 0.55105 14.2992C-0.626645 15.4769 0.208003 17.5 1.87687 17.5H6.25C6.25 18.8807 7.36929 20 8.75 20C10.1307 20 11.25 18.8807 11.25 17.5H15.6228C17.2883 17.5 18.1287 15.4793 16.9486 14.2992Z" fill="#084482"/>
+                    </svg>
+                </div>
 
-        <div class="d-flex align-items-center top__nav__links">
-          <div class="top__nav__icon d-none d-md-flex">
-            <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M19.6211 4.95313C19.7734 4.83203 20 4.94531 20 5.13672V13.125C20 14.1602 19.1602 15 18.125 15H1.875C0.839844 15 0 14.1602 0 13.125V5.14062C0 4.94531 0.222656 4.83594 0.378906 4.95703C1.25391 5.63672 2.41406 6.5 6.39844 9.39453C7.22266 9.99609 8.61328 11.2617 10 11.2539C11.3945 11.2656 12.8125 9.97266 13.6055 9.39453C17.5898 6.5 18.7461 5.63281 19.6211 4.95313ZM10 10C10.9063 10.0156 12.2109 8.85938 12.8672 8.38281C18.0508 4.62109 18.4453 4.29297 19.6406 3.35547C19.8672 3.17969 20 2.90625 20 2.61719V1.875C20 0.839845 19.1602 0 18.125 0H1.875C0.839844 -5.33333e-07 0 0.839842 0 1.875V2.61719C0 2.90625 0.132813 3.17578 0.359375 3.35547C1.55469 4.28906 1.94922 4.62109 7.13281 8.38281C7.78906 8.85938 9.09375 10.0156 10 10Z"
-                fill="black" />
-            </svg>
-          </div>
-
-          <div class="top__nav__icon d-none d-md-flex">
-            <svg width="18" height="20" viewBox="0 0 18 20" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M16.9486 14.2992C16.0795 13.43 15 12.3484 15 8.125C15 5.02367 12.741 2.45043 9.77879 1.95977C9.92315 1.75126 10.0003 1.50361 10 1.25C10 0.559648 9.44035 0 8.75 0C8.05964 0 7.5 0.559648 7.5 1.25C7.5 1.51367 7.58183 1.75813 7.72121 1.95977C4.75902 2.45043 2.5 5.02367 2.5 8.125C2.5 12.3484 1.42019 13.43 0.55105 14.2992C-0.626645 15.4769 0.208003 17.5 1.87687 17.5H6.25C6.25 18.8807 7.36929 20 8.75 20C10.1307 20 11.25 18.8807 11.25 17.5H15.6228C17.2883 17.5 18.1287 15.4793 16.9486 14.2992Z"
-                fill="black" />
-            </svg>
-          </div>
-
-          <div class="d-flex align-items-center top__nav__user">
-            <div class="img-fluid mr-2">
-                <img src="../img/Employer Dashboard/user2.png" alt=""></div>
-            <div class="top__nav__user__name">
-              <h6 class="text-primary m-0">Adelanke Adelanke</h6>
-              <p class="m-0 mr-0">Admin</p>
-            </div>
-          </div>
+                <div class="d-flex align-items-center top__nav__user">
+                    <div class="img-fluid mr-2"><img src="../img/Employer Dashboard/user2.png" alt=""></div>
+                    <div class="top__nav__user__name">
+                        <h6 class="text-primary m-0">Adelanke Adelanke</h6>
+                        <p class="m-0 mr-0">Employer</p>
+      </div>
+      
+      <div class="dropdown">
+        <div class="dropdown-toggle" href="#" role="button" id="navMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L5 5L9 1" stroke="#084482" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg> 
+        </div> 
+        
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navMenuLink">
+          <a class="dropdown-item" href="./employer-profile-page.html">Profile</a>
+          <a class="dropdown-item" href="#">Sign Out</a>
         </div>
       </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+  </div> 
+
   <main class="container-fluid">
 
     <div class="row mr-lg-5 position-relative">
@@ -80,12 +79,12 @@
           </div>
           ​
           <ul class="sidenav_links">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#" >Employees</a></li>
-            <li><a href="#">Add a team</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="Employer Dashboard.html" class="active">Dashboard</a></li>
+              <li><a href="#">Messages</a></li>
+              <li><a href="./employer-employees-gallery.html">Employees</a></li>
+              <li><a href="./employer-add-a-team.html">Add a team</a></li>
+              <li><a href="./employer-dash-support.html">Support</a></li>
+              <li><a href="./employer-dash-settings.html">Settings</a></li>
           </ul>
         </div>
         <div id="body__click" style="height: 100%;">
@@ -109,9 +108,105 @@
                            <p class=" py-2 ml-4 my-3"><i class="far fa-envelope mr-3"></i>piggyvest@gmail.com</p>
                        </div>
                        <hr class="w-75 mx-auto">
-                       <button type='button' class="btn mx-auto mt-4 mb-5">Edit profile</button>
+                       <button type='button' class="btn mx-auto mt-4 mb-5" data-toggle="modal" data-target="#profilepopup">Edit profile</button>
                  </div>
                </div>
+
+              
+
+
+<!-- Modal -->
+<div class="modal fade" id="profilepopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-box " >
+    <div class="modal-content content-wrapper" >
+      <div class="modal-header ">
+        <h5 class="modal-title title-text" id="modal-header">Edit Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="close-btn1" aria-hidden="true">&times;</span>
+          <svg class= "close-btn" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.6673 2.68301L21.3173 0.333008L12.0007 9.64968L2.68398 0.333008L0.333984 2.68301L9.65065 11.9997L0.333984 21.3163L2.68398 23.6663L12.0007 14.3497L21.3173 23.6663L23.6673 21.3163L14.3507 11.9997L23.6673 2.68301Z" fill="#00AEFF"/>
+            </svg> 
+            
+        </button>
+      </div>
+      <div class="modal-body myModal-body">
+         <div class="container">
+           
+            <div class="d-flex justify-content-around mobileContainer">
+              <div class=" col1 colMobile">
+                <label class="companyNameLabel" for="">Company Name</label><br>
+                <input type="text" name="" placeholder="Genesis" id="">
+
+              </div>
+              <div class="col2">
+                <label for="" class="tagLabel">Tag Line</label><br>
+                <input type="text" placeholder="Anosike">
+              </div>
+
+            </div>
+            
+            <div class="d-flex justify-content-around mobileContainer">
+              <div class=" col3">
+                <label for="" class="emailLabel">Email Address</label><br>
+                <input type="email" placeholder="anosikegenesis@gmail.com">
+   
+              </div>
+              <div class=" col4">
+                <label for="" class="locationLabel">Location</label><br>
+                <input type="text" placeholder="Ibadan, Nigeria">
+              </div>
+
+            </div>
+
+            <div class="d-flex justify-content-around mobileContainer">
+              <div>
+                <label for="" class="industryTypeLabel">Industry Type</label>
+                <div class="content-div" >
+                  <span class="myAdditionSign">&#x2b;</span>
+            <div class="btn-flex">
+                 <button class="btn1">E-commerce <a href="#"></a><span class="myTimesSign1">&#xd7;</span></button>
+                 <button class="btn2">Banking <a href="#"><span class="myTimesSign1">&#xd7;</span></a></button>
+                 <button class="btn3">Finance & Tech <a href="#"><span class="myTimesSign1">&#xd7;</span></a></button>
+                 <button class="btn4">Business <a href="#"><span class="myTimesSign1">&#xd7;</span></a></button>
+                 <input type="search" placeholder="Search">
+               </div>
+            </div>
+              </div>
+
+              <div class="browseCheck">
+                <label for="" class="companyLogoLabel">Company Logo</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input"  id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                    <label class="custom-file-label" for="inputGroupFile04">Logo.png</label>
+                  </div>
+                
+                </div>
+                <br>
+                <p>Recommended dimension: 200 <span>&#xd7;</span> 200px <br>
+                Maximum file size: 500Kb <br>
+                Please add only professional looking logo </p>
+
+              </div>
+
+            </div>
+         </div>
+
+
+
+
+
+      </div>
+      <div class="modal-footer  d-flex justify-content-around mobileFooter">
+        
+        <button  type="button" class="btn mx-auto " >Save Profile</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--mobile view of popop window-->
+
                <!-- Row for description / Social media link / company info -->
                <div class="col-md-7 pl-lg-0" >
                    <!-- description card start here -->
