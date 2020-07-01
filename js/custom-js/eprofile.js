@@ -84,7 +84,7 @@ function buildList(data) {
   const list = document.querySelector(".lists");
 
   data.forEach((skills) => {
-    console.log(skills.skill_description);
+    // console.log(skills.skill_description);
 
     const row = `
       <li>
