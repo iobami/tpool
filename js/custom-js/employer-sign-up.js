@@ -68,7 +68,7 @@ function showSuccess(input) {
 // email validation
 function checkEmail(input) {
   clearError(input);
-  const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/;
   if (re.test(input.value.trim())) {
     showSuccess(input);
   } else if (input.value.length > 0) {
