@@ -15,3 +15,13 @@ function toggleBack() {
     }
   }
 }
+
+// var tab1 = document.getElementById("card1");
+// var mainSection = document.getElementsByClassName("chat-scroll-view");
+// var messageToggle = document.getElementById("inbox-top");
+// var messages = document.getElementById("right-side");
+// tab1.onclick = function () {
+//   mainSection.style.display = "none";
+//   messages.style.display = "block";
+//   messageToggle.style.display = "block";
+// };

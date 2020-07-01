@@ -37,30 +37,39 @@ button:focus {
   box-shadow: 0px 4px 12px #eaeaea;
 }
 
-.chat-messages {
+.chat-messages,
+.chat-scroll-view {
   position: relative;
   max-height: 430px;
   overflow-y: scroll;
 }
 
-.chat-messages::-webkit-scrollbar {
+.chat-messages::-webkit-scrollbar,
+.chat-scroll-view::-webkit-scrollbar {
   width: 5px;
 }
 
 /* Track */
-.chat-messages::-webkit-scrollbar-track {
+.chat-messages::-webkit-scrollbar-track,
+.chat-scroll-view::-webkit-scrollbar-track {
   background: #fff;
 }
 
 /* Handle */
-.chat-messages::-webkit-scrollbar-thumb {
+.chat-messages::-webkit-scrollbar-thumb,
+.chat-scroll-view::-webkit-scrollbar-thumb {
   background: #c4c4c4;
   border-radius: 5px;
   max-height: 10px;
 }
 
+.chat-scroll-view::-webkit-scrollbar-thumb {
+  background-color: #fff;
+}
+
 /* Handle on hover */
-.chat-messages::-webkit-scrollbar-thumb:hover {
+.chat-messages::-webkit-scrollbar-thumb:hover,
+.chat-scroll-view::-webkit-scrollbar-thumb:hover {
   background: #888;
   max-height: 10px;
 }
@@ -247,6 +256,52 @@ button:focus {
 .chat-btn {
   border: none;
   background-color: #fff;
+}
+
+/* List of Chats Styles */
+#search-box::placeholder {
+  opacity: 0.5;
+}
+.img-class {
+  margin-right: 20px;
+}
+
+.dp-img {
+  width: 50px;
+}
+
+.chat-card {
+  border: 2px solid #ffffff;
+  box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.chat-card:hover {
+  border: 2px solid #00aeff;
+}
+
+.time-sent {
+  font-size: 10px;
+}
+
+.chat-content {
+  font-size: 14px;
+}
+.chat-info {
+  width: 300px;
+}
+.blue-circle {
+  background: #337ab7;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.noOfChats {
+  color: #ffffff;
 }
 
 @media only screen and (max-width: 768px) {
