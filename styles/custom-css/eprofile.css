@@ -291,6 +291,23 @@ pointer-events:stroke;
 } */
 
 
+#placeholder{
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  width: 118px;
+  height: 24px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  color: rgba(178, 178, 178, 0.58);
+
+  }
+
+
 @media (max-width: 600px) {
 
 .upload-section .curriculum {
@@ -340,6 +357,15 @@ transform: translate3d(-100px, 24px, 0px) !important;
  .top__nav {
   /* display: flex; */
   justify-content: space-between;
+}
+
+#placeholder {
+  font-size: 10px;
+}
+
+#file-btn {
+  width: 90px;
+  font-size: .8rem;
 }
 
 
