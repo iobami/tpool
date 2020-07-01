@@ -291,14 +291,18 @@ button:focus {
 
 .chat-content {
   font-size: 14px;
+  text-overflow: ellipsis;
+  width: calc(100% - 30px);
 }
+
 .chat-info {
-  width: 300px;
+  width: 100%;
 }
 .blue-circle {
   background: #337ab7;
-  width: 35px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -306,6 +310,11 @@ button:focus {
 }
 .noOfChats {
   color: #ffffff;
+}
+
+#talent-offers {
+  color: #084482;
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 768px) {
@@ -333,7 +342,11 @@ button:focus {
   }
 
   #inbox-top {
-    background-color: #fff;
+    background-color: rgb(189, 189, 189);
+  }
+
+  .chat-content {
+    font-size: 13px;
   }
 
   #type-msg {
@@ -351,5 +364,12 @@ button:focus {
 @media only screen and (max-width: 640px) {
   #type-msg {
     padding: 0.3rem 1rem 0.3rem 1rem;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .chat-card {
+    height: 100px;
+    font-size: 12px;
   }
 }
