@@ -6,10 +6,8 @@ body {
   max-width: 1440px;
 }
 
-.content-container {
-  max-width: 1440px;
-  padding-bottom: 0!important;
-  padding-top: 0!important;
+.container-fluid {
+  padding-bottom: 0 !important;
 }
 
 .signUp-img-div{
@@ -63,23 +61,20 @@ line-height: 50px;
 }
 
 #signup-btn{
-    background: #ffffff;
+    color: #ffffff;
     /* width: 572px;
     height: 68px; */
-   border: 2px solid #00AEFF;
-   color: #00AEFF;
-   font-weight: bolder;
+   border: 1px solid #00AEFF;
     box-sizing: border-box;
     border-radius: 5px;
 }
 
- #signup-btn:visited {
+#signup-btn, #signup-btn:visited {
   background-color: #00AEFF !important;
 }
 
 #signup-btn:hover{
   background-color: #337ab7 !important;
-  color: #ffffff;
 } 
 
 #signup-btn:active{
@@ -178,4 +173,16 @@ hr {
 .signup-nav .active {
   color: #1F2430;
   border-bottom: 4px solid #084482;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#invalid, #invalidL, #invalidE, #invalidP, #invalidPass, #invalidPass2 {
+  display: none;
+  font-size: 12.8px;
+  color: #DB4A39;
 }
