@@ -1,7 +1,7 @@
 @import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
 
 .directory-container {
-    background-color: #f8f8f8;
+    background-color: #ffffff;
 }
 
 .directory-container .hero .hero-header h2 {
@@ -15,6 +15,11 @@
     justify-content: center;
     background: rgba(8, 68, 130, 0.88);
     color: #FFFFFF;
+    width: 100%;
+}
+
+.directory-container .hero .hero-header .text{
+    padding-top: 20px;
 }
 
 .directory-container .hero .hero-header {
@@ -207,8 +212,11 @@
     margin-top: 30px;
 }
 
-.top-links .nav .nav-link {
+.top-links .nav .nav-link a{
     color: #b2b2b2;
+}
+
+.top-links .nav .nav-link {
     border-radius: 0;
 
 }
@@ -216,12 +224,16 @@
 .top-links .nav .nav-link:hover {
     border-bottom: 2px solid #337ab7;
 }
+.top-links .nav .nav-link:active a,
+.top-links .nav .nav-link.active a{
+    color: #084482;
+
+}
 
 .top-links .nav .nav-link:active,
 .top-links .nav .nav-link.active {
     border-bottom: 2px solid #084482;
     background-color: transparent;
-    color: #084482;
 }
 
 .top-links .nav .nav-link:focus,
@@ -246,6 +258,10 @@
 } */
 .top-links .right-filter {
     color: #495057;
+}
+
+.filters .tab .rotate-icon{
+    padding-right: 4px;
 }
 
 .filters .tab .title {
@@ -382,6 +398,9 @@
     padding: 10px 20px;
     height: auto;
 }
+.search-bar{
+    margin-top: 40px;
+}
 
 @media screen and (min-width:768px) {
     .directory-container .hero .hero-header {
@@ -392,7 +411,11 @@
         /* display: inline-block; */
         padding: 36px 44px;
     }
+    .search-bar{
+        margin-top: 0;
+    }
 }
+
 
 @media screen and (max-width: 600px) {
     .user-cards .user-card .user-card-inner {
