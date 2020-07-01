@@ -219,3 +219,15 @@ border:1px solid #337AB7 !important;
   }
   
 }
+
+@media only screen and (max-width: 576px) {
+  .modal.modal-static .modal-dialog {
+    margin: auto;
+  }
+  
+  .modal-dialog {
+    max-width: max-content;
+    width: 80vw;
+  }
+  
+}
