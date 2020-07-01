@@ -1,0 +1,440 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+.directory-container {
+    background-color: #ffffff;
+}
+
+.directory-container .hero .hero-header h2 {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 24px;
+}
+
+.directory-container .hero {
+    display: flex;
+    justify-content: center;
+    background: rgba(8, 68, 130, 0.88);
+    color: #FFFFFF;
+    width: 100%;
+}
+
+.directory-container .hero .hero-header .text{
+    padding-top: 20px;
+}
+
+.directory-container .hero .hero-header {
+    display: flex;
+    justify-content: center;
+    padding: 85px 20px;
+}
+
+.directory-container .hero .hero-header img {
+    margin-bottom: -10px;
+}
+
+
+.user-cards .user-card {
+    box-shadow: 0px 6px 20px rgba(166, 166, 166, 0.25);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+}
+
+
+.user-cards .user-card .user-card-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-cards .user-card.frontend .user-card-inner .profile .skills {
+    background-color: #337AB7;
+}
+
+.user-cards .user-card.designer .user-card-inner .profile .skills {
+    background-color: #00aeff;
+}
+
+.user-cards .user-card.backend .user-card-inner .profile .skills {
+    background-color: #084482;
+}
+
+.user-cards .user-card.mobile .user-card-inner .profile .skills {
+    background-color: #008bcc;
+}
+
+.user-cards .user-card .user-card-inner .profile>a {
+    align-self: flex-end;
+    margin-right: 20px;
+}
+
+.user-cards .user-card .user-card-inner h6 {
+    font-size: 16px;
+    line-height: 24px;
+    color: #084482;
+}
+
+.user-cards .user-card.frontend .user-card-inner .profile>a,
+.user-cards .user-card.frontend .user-card-inner h6 {
+    color: #337AB7;
+}
+
+.user-cards .user-card.designer .user-card-inner .profile>a,
+.user-cards .user-card.designer .user-card-inner h6 {
+    color: #00aeff;
+}
+
+.user-cards .user-card.backend .user-card-inner .profile>a,
+.user-cards .user-card.backend .user-card-inner h6 {
+    color: #084482;
+}
+
+.user-cards .user-card.mobile .user-card-inner .profile>a,
+.user-cards .user-card.mobile .user-card-inner h6 {
+    color: #008bcc;
+}
+
+.user-cards .user-card .user-card-inner .profile .skills {
+    padding: 8px 49px;
+    color: #fcfdff;
+    font-size: 16px;
+    line-height: 24px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+
+.user-cards .user-card .user-card-inner .profile .skills ul li:not(:first-child) {
+    padding-left: 10px;
+}
+
+.user-cards .user-card .user-card-inner .profile .skills ul li:not(:last-child)::after {
+    height: 18px;
+    content: " ";
+    /* display: inline-block; */
+    position: absolute;
+    width: 1px;
+    background-color: #e7eaec;
+    /* right: 0; */
+    margin-top: 3px;
+    margin-left: 10px;
+
+}
+
+.user-cards .user-card .user-card-inner .profile .skills ul li:not(:last-child) {
+    padding-right: 10px;
+
+}
+
+.user-cards .user-card .user-card-inner .profile .skills ul {
+    list-style: none;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0px;
+    padding-inline-start: 0px;
+}
+
+.user-cards .user-card .user-card-inner .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.user-cards .user-card .user-card-inner .title {
+    display: flex;
+}
+
+.user-cards .user-card .user-card-inner .user-card-image-container {
+    /* display: inline-block; */
+    padding: 36px 20px;
+}
+
+.user-cards .user-card .user-card-inner .user-card-image {
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.user-cards .user-card .user-card-inner .user-texts {
+    align-self: center;
+}
+
+.user-cards .user-card .user-card-inner h4 {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.main {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.search-bar .search-box {
+    display: block;
+    position: relative;
+}
+
+.search-bar .search-box::after {
+    content: " ";
+    height: 32px;
+    width: 1px;
+    background-color: #b2b2b2;
+    top: 14px;
+    position: absolute;
+    left: 88px;
+
+}
+
+.search-bar .search-box .form-control-icon {
+    position: absolute;
+    display: block;
+    height: 16px;
+    width: 16px;
+    top: 21px;
+    left: 36px;
+    color: #b2b2b2;
+
+}
+
+.search-bar .search-box .form-control {
+    padding: 16px 16px 16px 100px;
+    height: auto;
+    vertical-align: middle;
+    border-radius: 5px;
+
+}
+
+.top-links {
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+.top-links .nav .nav-link a{
+    color: #b2b2b2;
+}
+
+.top-links .nav .nav-link {
+    border-radius: 0;
+
+}
+
+.top-links .nav .nav-link:hover {
+    border-bottom: 2px solid #337ab7;
+}
+.top-links .nav .nav-link:active a,
+.top-links .nav .nav-link.active a{
+    color: #084482;
+
+}
+
+.top-links .nav .nav-link:active,
+.top-links .nav .nav-link.active {
+    border-bottom: 2px solid #084482;
+    background-color: transparent;
+}
+
+.top-links .nav .nav-link:focus,
+.top-links .nav .nav-link.focus {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #084482;
+
+}
+
+/* .top-links .sort{
+    position: relative;
+} */
+
+/* .top-links .sort::before{
+    content: " ";
+    top: 3px;
+    left: -11px;
+    height: 32px;
+    width: 1px;
+    background-color: #b2b2b2;
+} */
+.top-links .right-filter {
+    color: #495057;
+}
+
+.filters .tab .rotate-icon{
+    padding-right: 4px;
+}
+
+.filters .tab .title {
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #084482;
+    margin-bottom: 0;
+    line-height: 24px;
+}
+
+.filters .tab {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 16px 20px;
+}
+.filters .tab>div {
+    /* margin-right: 20px; */
+}
+.filters .tab>span
+ {
+    /* padding: 16px 20px; */
+}
+
+.filters .tab:not(.has-content) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filters .tab:not(:last-child):not(.has-content) {
+    border-bottom: 2px solid #eeeeee;
+
+}
+
+.filters {
+    box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.filters .tab.has-content>span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filters .tab .content {
+    padding: 32px 20px;
+    border-top: 2px solid #eeeeee;
+    margin: 16px -20px;
+
+}
+
+.filters .tab .content .form-check input[type="checkbox"] {
+    visibility: hidden;
+}
+
+
+.filters .tab .content .form-check label {
+    display: flex;
+    position: absolute;
+
+}
+
+.filters .tab .content .form-check label span::after {
+    width: 8px;
+    height: 16px;
+    border: solid #ffffff;
+    border-width: 3px 0 0 3px;
+    /* transform: rotate(-135deg); */
+    transform: scale(0) rotate(-135deg);
+    top: 4px;
+    left: 9px;
+    content: "";
+    position: relative;
+    border-radius: 2px;
+    transition: transform .6s ease-out;
+    display: block;
+
+}
+
+.filters .tab .content .form-check input[type="checkbox"]:checked+label span::after {
+    width: 8px;
+    height: 16px;
+    transform: scale(1) rotate(-135deg);
+}
+
+.filters .tab .content .form-check label span {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #b5b5b5;
+    border-radius: 4px;
+    margin-right: 12px;
+    transition: all .5s ease-in-out;
+}
+
+
+.filters .tab .content .form-check input[type="checkbox"]:checked+label span {
+    background-color: #084482;
+
+}
+
+.filters .tab .content .form-check {
+    margin-bottom: 16px;
+    position: relative;
+    height: 28px;
+    padding-left: 0;
+}
+
+.main .info p {
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+.main .info {
+    box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-top: 38px;
+    padding: 91px 40px;
+}
+
+.right-filter .interns {
+    padding-right: 10px;
+
+    border-right: 1px solid #b2b2b2;
+}
+
+.directory-container .main {
+    max-width: 1200px;
+}
+
+.right-filter .sort select {
+    padding: 10px 20px;
+    height: auto;
+}
+.search-bar{
+    margin-top: 40px;
+}
+
+@media screen and (min-width:768px) {
+    .directory-container .hero .hero-header {
+        padding-bottom: 0;
+    }
+
+    .user-cards .user-card .user-card-inner .user-card-image-container {
+        /* display: inline-block; */
+        padding: 36px 44px;
+    }
+    .search-bar{
+        margin-top: 0;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .user-cards .user-card .user-card-inner {
+        display: block;
+    }
+
+    .user-cards .user-card .user-card-inner .profile .skills {
+        padding: 8px 20px;
+        color: #fcfdff;
+        font-size: 16px;
+        line-height: 24px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .user-cards .user-card .user-card-inner .profile a {
+        align-self: center;
+        margin-bottom: 10px;
+    }
+}
