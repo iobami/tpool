@@ -3,39 +3,7 @@
 body{
     font-family: 'Poppins';;
 }
-.nav-item{
-    font-size: 16px;
-    padding-right: 20px;
-}
-.sign-up{
-    width: 160px;
-    background:  #00AEFF;
-    border-radius: 5px;
-    color: white;
-    margin: 16px;
-}
-.sign-up:hover{
-    background: white;
-    border: 1px solid #00AEFF;
-    border-radius: 5px;
-    color: #00AEFF;
-}
-.sign-in{
-    width: 160px;
-    background: white;
-    border: 1px solid #00AEFF;
-    border-radius: 5px;
-    color: #00AEFF;
-    margin: 16px;
-}
-.sign-in:hover{
-    background:  #00AEFF;
-    border-radius: 5px;
-    color: white;
-}
-.dropdown-toggle::after {
-    display:none;
-}
+
 /*Background Image*/
 .bg-img{
     background: url(https://res.cloudinary.com/olasumboeniola/image/upload/v1593474436/landing_jkratl.png);
@@ -54,12 +22,15 @@ body{
     top: 0;
     left: 0;
 }
- .bg-none h3{
+.bg-text{
     position: absolute;
-    top: 175px;
-    color: white;
+    top: 25%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,  50%);
+  width: 100%;
+}
+ .bg-text h3{
+     color: white;
     font-style: normal;
     font-weight: 600;
    font-size: 40px;
@@ -68,14 +39,16 @@ body{
 .col-sm-4{
     margin-top: 5%;
 }
-.bg-none p{
+.bg-text p{
     color: white;
     text-align: center;
     position: absolute;
     font-size: 24px;
-    top: 260px;
-    left: 50%;
+    text-align: center;
+    padding-top: 90px;
+    margin-left: 50%;
     transform: translate(-50%, -50%);
+   
 }
 .row.text-center{
     margin-bottom: 5%;
@@ -190,15 +163,14 @@ height: 2px;
 }
 @media only screen and (max-width: 768px){
     
-.bg-none p{
-    top: 280px;
-    font-size: 20px;
-}
-.nav-item{
-    padding-top: 10px;
+.bg-text{
+    top: 20%;
 }
 .stack{
     font-size: 2vw;
+}
+.bg-text p{
+    padding-top: 120px;
 }
 
 }
@@ -215,8 +187,11 @@ height: 2px;
     .stack{
         font-size: 16px;
     }
-    .bg-none p{
-        top: 290px;
-        font-size: 15px;
+    .bg-text{
+        top: 10%;
     }
+    .bg-text p{
+        font-size: 16px;
+    }
+  
 }

@@ -5,79 +5,94 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://use.fontawesome.com/3957c2f6e9.js"></script>
-    
+    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <link rel="stylesheet" href="../styles/custom-css/main.css">
+  <link rel="stylesheet" href="../styles/custom-css/header.css">
+  <link rel="stylesheet" href="../styles/custom-css/footer.css">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/custom-css/topTalent.css">
     <title>Talent Pool</title>
     <link rel="icon" href="../img/top-talent/Vector.svg" size="50x50">
   </head>
   <body>
-    <header>
+  
       <!--Navigation bar-->
-    <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top" style="box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);">
-        <div class="container">
-          <a class="navbar-brand" href="#" >
-                <img src="../img/top-talent/Dark.svg" alt="">
-              </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"  style="outline: none;">
-                <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true" style="color: #00AEFF;"></i></span>
-              </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive" >
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link  text-dark" href="#">Home   <span class="sr-only">(current)</span>  </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="#">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Directories</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="#">FAQ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Contact Us</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"  id="navbardrop" data-toggle="dropdown"
-                href="#" style="border: 1px solid #00AEFF; color: #00AEFF; width: 141px; text-align: center; border-radius: 5px">
-                Sign In</a>
-                <div class="dropdown-menu">
-                  <p class="dropdown-item" >Sign In as:</p>
-                  <a class="dropdown-item mb-1 sign-in" href="#">Employer</a>
-                  <a class="dropdown-item mb-1 sign-in" href="#">Talent</a>
-                </div>
-              </li>
-               <li class="nav-item dropdown">
-                <a class="nav-link  text-white dropdown-toggle"  id="navbardrop" data-toggle="dropdown"
-                href="#" style="background-color: #00AEFF; width: 141px; text-align: center; border-radius: 5px;">
-                Sign Up</a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" >Sign Up as:</p>
-                  <a class="dropdown-item mb-1 sign-up" href="#">Employer</a>
-                  <a class="dropdown-item mb-1 sign-up"  href="#" >Talent</a>
-                </div>
-              </li>
-        
-            </ul>
-          </div>
+      <header class="header">
+        <div class="container-fluid">
+            <div class="container nav-container">
+                <nav class="navbar navbar-expand-lg navbar-light py-1">
+                    <a class="navbar-brand" href="../index.html">
+                        <img src="../img/talentpool header logo.svg" alt="talent pool logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item px-3 active">
+                                <a class="nav-link nav-link-black" href="../index.html">Home <span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="./aboutUs.html">About Us</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="./directory.html">Directories</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="./faq.html">FAQ</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="./contact-us.html">Contact Us</a>
+                            </li>
+                            <!-- <li class="nav-item px-3 my-2 my-lg-0">
+                                <a class="nav-link btn px-3 btn-sign btn-sign-in py-1" href="./src/employer-sign-in.html">Sign in</a>
+                            </li> -->
+                            <li class="nav-item px-3 dropdown mb-2 mb-lg-0">
+                                <button class="nav-link btn btn-sign btn-sign-in px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sign In
+                                </button>
+    
+                                <div class="dropdown-menu dropdown-menu-right signin__dropdown" aria-labelledby="dropdownMenuButton">
+                                    <p>Sign in as: </p>
+                                    <a class="dropdown-item" href="./employer-sign-in.html">Employer</a>
+                                    <a class="dropdown-item" href="./employee-sign-in.html">Talent</a>
+                                </div>
+                            </li>
+                            <li class="nav-item px-3 dropdown">
+                                <button class="nav-link btn btn-sign btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sign Up
+                                </button>
+    
+                                <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
+                                    <p>Sign up as: </p>
+                                    <a class="dropdown-item" href="./employer-sign-up.html">Employer</a>
+                                    <a class="dropdown-item" href="./employee-sign-up.html">Talent</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
-      </nav>
-      
-  </header>
+      </header>
       <!--Main-->
       <main>
           <div class="bg-none">
           <div class="bg-img">
-              <div class="color"></div>
+              <div class="color">
+                <div class="bg-text">
+                  <h3>Our Top Talents</h3>
+                  <p>These talents have thrived in their different fields and are frequently hired by companies</p>
+                  </div>
+              </div>
           </div>
-          <div class="bg-text">
-          <h3>Our Top Talents</h3>
-          <p>These talents have thrived in their different fields and are frequently hired by companies</p>
-          </div>
+
           </div>
           <!--Thumbnails-->
           <div class="container mb-5">
