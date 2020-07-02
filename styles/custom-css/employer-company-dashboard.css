@@ -120,8 +120,25 @@ font-weight: 300 !important;
 @media (min-width: 1200px){
     .col-xl-3 {
         -ms-flex: 0 0 25%;
-        flex: 0 0 29%;
+        flex: 0 0 28%;
         max-width: 30%;
     }
 }
+
+@media (min-width: 768px){
+    .col-md-11{
+        margin-left: 0;
+        padding-top: 15px;
+        }
+        .mover-check{
+            margin-left: 0;
+        }
+
+        .col-md-12{
+            justify-content: center;
+            align-content: center;
+        }
+    }
+
+
 
