@@ -14,71 +14,67 @@ const errorMessage = document.querySelector("#error-message");
 const successMessage = document.querySelector("#success-message");
 
 if (editProfileForm) {
-    editProfileForm.addEventListener("submit", onsubmit);
+  editProfileForm.addEventListener("submit", onsubmit);
 }
 
 function onsubmit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!firstName.value || !lastName.value || !email.value) {
-        console.log("error");
-        errorMessage.innerHTML = "Please fill all the necessary details";
-        if (errorMessage.style.display == "none") {
-            errorMessage.style.display = "block";
-        }
-        setTimeout(function () {
-            errorMessage.style.display = "none";
-        }, 2000);
-    } else {
-        console.log("yeah");
-        errorMessage.innerHTML = "Your details are being uploaded";
-        if (successMessage.style.display == "none") {
-            successMessage.style.display = "block";
-        }
-        setTimeout(function () {
-            $("#staticBackdrop").modal("hide");
-            successMessage.style.display = "none";
-        }, 2000);
-        // window.location.replace('/employee_profile.html')
+  if (!firstName.value || !lastName.value || !email.value) {
+    console.log("error");
+    errorMessage.innerHTML = "Please fill all the necessary details";
+    if (errorMessage.style.display == "none") {
+      errorMessage.style.display = "block";
     }
+    setTimeout(function () {
+      errorMessage.style.display = "none";
+    }, 2000);
+  } else {
+    console.log("yeah");
+    errorMessage.innerHTML = "Your details are being uploaded";
+    if (successMessage.style.display == "none") {
+      successMessage.style.display = "block";
+    }
+    setTimeout(function () {
+      $("#staticBackdrop").modal("hide");
+      successMessage.style.display = "none";
+    }, 2000);
+    // window.location.replace('/employee_profile.html')
+  }
 }
 
 Filevalidation = () => {
-    const fi = document.getElementById("file");
-    const size = document.querySelector('#size');
-    const fileMessage = document.querySelector('#file-message');
-    // Check if any file is selected.
-    if (fi.files.length > 0) {
-        for (let i = 0; i <= fi.files.length - 1; i++) {
-            const fsize = fi.files.item(i).size;
-            const file = Math.round(fsize / 1024);
-            // The size of the file.
-            if (file >= 2048) {
-                fileMessage.innerHTML = 'File too Big, please select a file less than 600kb '
-                setTimeout(function () {
-                  
-                    fileMessage.style.display = "none";
-                }, 4000);
-                // alert("File too Big, please select a file less than 4mb");
-            } else if (file < 550) {
-                fileMessage.innerHTML = 'File too small, please select a file greater than 2mb'
-                // alert("File too small, please select a file greater than 2mb");
-                setTimeout(function () {
-
-                    fileMessage.style.display = "none";
-                }, 4000);
-            } else {
-                document.getElementById("size").innerHTML = "<b>" + file + "</b> KB";
-            }
-        }
+  const fi = document.getElementById("file");
+  const size = document.querySelector("#size");
+  const fileMessage = document.querySelector("#file-message");
+  // Check if any file is selected.
+  if (fi.files.length > 0) {
+    for (let i = 0; i <= fi.files.length - 1; i++) {
+      const fsize = fi.files.item(i).size;
+      const file = Math.round(fsize / 1024);
+      // The size of the file.
+      if (file >= 2048) {
+        fileMessage.innerHTML =
+          "File too Big, please select a file less than 600kb ";
+        setTimeout(function () {
+          fileMessage.style.display = "none";
+        }, 4000);
+        // alert("File too Big, please select a file less than 4mb");
+      } else if (file < 550) {
+        fileMessage.innerHTML =
+          "File too small, please select a file greater than 2mb";
+        // alert("File too small, please select a file greater than 2mb");
+        setTimeout(function () {
+          fileMessage.style.display = "none";
+        }, 4000);
+      } else {
+        document.getElementById("size").innerHTML = "<b>" + file + "</b> KB";
+      }
     }
+  }
 };
-
 
 let myArray = [];
-const body = {
-  employee_id: "84b46b59-8d8f-4636-afdc-734bc7aaaaab",
-};
 
 function buildList(data) {
   const list = document.querySelector(".lists");
@@ -110,16 +106,35 @@ function buildList(data) {
 }
 
 async function getAllSkillsForIndividuals() {
-  const url = `https://api.lancers.app/v1/employee/skill/${body.employee_id}/all`;
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9ndW5zb2xhZGViYXlvQGdtYWlsLmNvbSIsInVzZXJJZCI6IjEyMzdhMjc0LTZmNDctNDA3YS1iMjFiLTFhMDQ0NGUwYzk3OCIsInVzZXJSb2xlIjoiUk9MLUVNUExPWUVFIiwidXNlclR5cGVJZCI6Ijg0YjQ2YjU5LThkOGYtNDYzNi1hZmRjLTczNGJjN2FhYWFhYiIsImlhdCI6MTU5MzYyMjg5OSwiZXhwIjoxNTkzNzA5Mjk5fQ.oTwCe2CE4Hu5kfyRsTLfIML0_5vCjOor_aQ5yNCQoRI"
+  const getEmployeeId = function () {
+    if (document.cookie.length != 0) {
+      var nameValueCookie = document.cookie.split(";");
+      const result = nameValueCookie[2].split("=");
+      const employee_id = result[1];
+      return employee_id;
+    }
+  };
+  // console.log(getEmployeeId());
+
+  const getToken = function () {
+    if (document.cookie.length != 0) {
+      var nameValueCookie = document.cookie.split(";");
+      const result = nameValueCookie[0].split("=");
+      const token = result[1];
+      return token;
+    }
+  };
+  // console.log(getToken());
+
+  const url = `https://api.lancers.app/v1/employee/skill/${getEmployeeId()}/all`;
+  const token = `${getToken()}`;
 
   try {
     const response = await fetch(url, {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
         "User-Agent": "Developers Lancers",
-        Authorization:
-          `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     const result = await response.json();
