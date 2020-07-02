@@ -9,6 +9,7 @@ const backend = document.querySelector("backend");
 const frontend = document.querySelector("frontend");
 const mobile = document.querySelector("mobile");
 const design = document.querySelector("design");
+const addSkillForm = document.querySelector('#add-skills')
 
 const errorMessage = document.querySelector("#error-message");
 const successMessage = document.querySelector("#success-message");
@@ -73,6 +74,13 @@ Filevalidation = () => {
     }
   }
 };
+
+// addSkillForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const addSkill = e.querySelector('input').value;
+  
+//   fetch('')
+// })
 
 let myArray = [];
 
@@ -145,8 +153,8 @@ async function getAllSkillsForIndividuals() {
     myArray = result.data.skills;
     buildList(myArray);
   } catch (error) {
-    alert("Opps! An error seems to have occured. Try again later. Thanks!");
-    console.log(error);
+    // alert("Opps! An error seems to have occured. Try again later. Thanks!");
+    // console.log(error);
   }
 }
 
