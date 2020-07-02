@@ -8,7 +8,7 @@ body{
     padding-right: 20px;
 }
 .sign-up{
-    width: 142px;
+    width: 160px;
     background:  #00AEFF;
     border-radius: 5px;
     color: white;
@@ -21,7 +21,7 @@ body{
     color: #00AEFF;
 }
 .sign-in{
-    width: 142px;
+    width: 160px;
     background: white;
     border: 1px solid #00AEFF;
     border-radius: 5px;
@@ -189,8 +189,10 @@ height: 2px;
     }
 }
 @media only screen and (max-width: 768px){
+    
 .bg-none p{
-    top: 320px;
+    top: 280px;
+    font-size: 20px;
 }
 .nav-item{
     padding-top: 10px;
@@ -212,5 +214,9 @@ height: 2px;
     }
     .stack{
         font-size: 16px;
+    }
+    .bg-none p{
+        top: 290px;
+        font-size: 15px;
     }
 }
