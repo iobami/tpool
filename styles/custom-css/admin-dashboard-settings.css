@@ -124,6 +124,16 @@ body{
     }
 }
 
+@media screen and (max-width: 441px){
+    .settings-section{
+        margin-left: 40px;
+    }
+    #heading{
+        margin-left: 11px;
+    }
+}
+
+
 @media screen and (max-width: 736px){
     #save-changes-btn{
         width: auto;
