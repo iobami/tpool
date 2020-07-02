@@ -1,0 +1,173 @@
+
+body{
+    background: #F8F8F8;
+    overflow: scroll;
+}
+#heading{
+    color: #333333;
+    margin-left: 275px;
+    margin-top: 32px;
+    width: 99px;
+    height: 36px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.settings-section{
+    margin: 8px 32px 47px 275px;
+    height: auto;
+    width: auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.settings-list{
+    min-height: 797px;
+    border-left: 1px solid #5C95C5;
+    border-bottom: 1px solid #5C95C5;
+    border-top: 1px solid #5C95C5;
+    background-color: #E7EAEC;
+    border-radius: 0px 0px 0px 8px;
+}
+
+.settings-list li a{
+    border-left: 1px solid #5C95C5;
+    border-bottom: 1px solid #5C95C5;
+    min-height: 60px;
+    padding-top: 17px;
+    padding-left: 23px;
+
+    padding-right: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    text-decoration: none;
+    display: block;
+    color: #333333;
+}
+.settings-list img{
+    margin-right: 16px;
+}
+.settings-list li .active, .settings-list li:hover{
+    background-color: #FFFFFF;
+    color: #084482;
+}
+
+.settings-content{
+    background-color: #FFFFFF;
+    min-height: 797px;
+    border-radius: 8px;
+}
+
+.setting-name{
+    margin-top: 27px;
+    margin-left: 59px;
+    width: 111px;
+    height: 24px;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    color: #084482;
+}
+.setting-name:after {
+    content: ""; 
+    display: block; 
+    width: 45%; 
+    padding-top: 7.5px; 
+    border-bottom: 1.5px solid #084482; 
+}
+
+.settings-options{
+    margin: 23.5px 99px 0px 55px;
+}
+.settings-options li a{
+    display: block;
+    min-height: 64px;
+    padding: 24px 0 16px 5px;
+    border-bottom: 1px solid rgba(196, 196, 196, 0.5);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    color: #1F2430;
+}
+
+.settings-options img{
+    margin-right: 7px;
+    margin-top: 5px;
+    float: right;
+    color: #000000;
+}
+
+#save-changes-btn{
+    position: absolute;
+    bottom: 64px;
+    right: 31px;
+
+    width: 238px;
+    height: 59px;
+    color: #FFFFFF;
+    background: #084482;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 991px){
+    .settings-section{
+        margin-left: 40px;
+    }
+    #heading{
+        margin-left: 40px;
+    }
+}
+
+@media screen and (max-width: 441px){
+    .settings-section{
+        margin-left: 40px;
+    }
+    #heading{
+        margin-left: 11px;
+    }
+}
+
+
+@media screen and (max-width: 736px){
+    #save-changes-btn{
+        width: auto;
+        font-size: 20px;
+        line-height: 20px;
+    }
+    .settings-options{
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 575px){
+    .settings-section{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .settings-list li a{
+        margin: 10px;
+        border: none;
+    }
+    .settings-list li:hover{
+        margin: 10px;
+        border: none;
+    }
+    .settings-list{
+        border-left: none;
+        border-radius: 0px;
+        min-height: auto;
+    }
+    .settings-options{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .setting-name{
+        margin-left: 14px;
+    }
+} 

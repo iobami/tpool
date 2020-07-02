@@ -1,29 +1,143 @@
+header {
+   box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
+}
 
 .header .navbar-light .navbar-nav .nav-link-black {
    color: #25282B !important;
 }
 
 .header .navbar {
-   padding: 0.5rem 0;
+   padding: 0.25rem 0;
 }
 
 .btn-hire-talent {
-   background: #00AEFF !important;
-   color: #fff !important;
+   background: #fff !important;
+   color: #00AEFF !important;
+   border: 1px solid #00AEFF;
 }
 
 .btn-sign-up {
    border: 1px solid#00AEFF;
-   color: #00AEFF !important;
+   color: #fff !important;
+   background: #00AEFF;
 }
 
 
+.nav-container {
+   padding-top: 1.2rem;
+   padding-bottom: 1.2rem;
+}
 
-   .custom-container {
-     max-width: 1440px;
-     margin: 0 auto;
-     padding: 1rem;
+@media screen and ( max-width: 1200px ) {
+   .nav-container {
+      max-width: 1440px;
+      margin: 0;
+      padding: 1.2rem 0rem;
    }
+}
+
+.btn-sign {
+   padding: 5px 1.5rem;
+   border-radius: 5px;
+}
+
+.btn-sign:focus {
+   box-shadow: none;
+}
+
+.btn-sign:hover {
+   background-color: initial !important;
+}
+
+.btn-sign-in {
+   border: 1px solid #00AEFF;
+   width: 100%;
+}
+
+.btn-sign-up {
+   width: 100%;
+   background-color: #00AEFF !important;
+   color: #FFFFFF !important;
+}
+
+.btn-sign-up:hover {
+   background-color: #00AEFF !important;
+}
+
+.signup__dropdown {
+   padding: 1rem 1rem 0;
+   z-index: 9999 !important;
+}
+
+.signup__dropdown p {
+   font-weight: 500;
+   font-size: 1rem;
+   line-height: 157.2%;
+   color: #084482;
+}
+
+.signup__dropdown a {
+   padding: 5px 0;
+   text-align: center;
+   background: #00AEFF;
+   border-radius: 5px;
+   margin-bottom: 1rem;
+   color: white;
+}
+
+.signup__dropdown a:hover {
+   background: #fff;
+   color: #00AEFF;
+   border: 1px #00AEFF solid;
+   border-radius: 5px;
+}
+
+.signin__dropdown {
+   padding: 1rem 1rem 0;
+   z-index: 9999 !important;
+}
+
+.signin__dropdown p {
+   font-weight: 500;
+   font-size: 1rem;
+   line-height: 157.2%;
+   color: #084482;
+}
+
+.signin__dropdown a {
+   padding: 5px 0;
+   text-align: center;
+   background: white;
+   border: 1px #00AEFF solid;
+   border-radius: 5px;
+   margin-bottom: 1rem;
+   color: #00AEFF;
+}
+
+.signin__dropdown a:hover {
+   background: #00AEFF;
+   color: #fff;
+}
+
+
+.custom-container {
+   max-width: 1440px;
+   margin: 0 auto;
+   padding: 1.5rem 8.75rem;
+}
+
+@media screen and ( max-width: 1245px ) {
+   .custom-container {
+      padding: 1.5rem 4rem;
+   }
+}
+
+@media screen and ( max-width: 1105px ) {
+   .custom-container {
+      padding: 1.5rem 1rem;
+   }
+}
+
 
 
    
