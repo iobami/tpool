@@ -77,29 +77,12 @@ function responseHandler(res) {
 
 	if (res.status === "success") {
 		showMessage("Sign in successful. Re-directing...", "alert-success");
-		let date = new Date();
-		date.setTime(date.getTime() + 60 * 60 * 1000); // in milliseconds
-		document.cookie = `token=${
-			res.data.token
-		}; path=/; expires=${date.toUTCString()}`;
-		document.cookie = `user_id=${
-			res.data.user
-		}; path=/; expires=${date.toUTCString()}`;
-
-		// Function to decode JWT
-		function decodeToken() {
-			if (document.cookie.length != 0) {
-			var nameValueCookie = document.cookie.split(";");
-			const result = nameValueCookie[0].split("=");
 		
-			const token = result[1];
-			const code = JSON.parse(atob(token.split(".")[1]));
-			const employee_id = code.userTypeId;
-		
-			document.cookie = `employee_id=${employee_id}; path=/; expires=${date.toUTCString()}`;
-			}
-		}
-		decodeToken();
+		const user = {
+			token: res.data.token,
+			userId: res.data.user
+		};
+		localStorage.setItem("user", JSON.stringify(user))
 
 		return (window.location.href = "employee-dashboard.html");
 	}
