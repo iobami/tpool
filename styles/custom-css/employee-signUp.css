@@ -186,3 +186,43 @@ hr {
   font-size: 12.8px;
   color: #DB4A39;
 }
+#invalidV2, #invalidLV2, #invalidEV2, #invalidPV2, #invalidPassV2, #invalidPass2V2 {
+  display: none;
+  font-size: 12.8px;
+  color: #DB4A39;
+}
+
+#invalidCheck {
+  font-size: 12.8px;
+  color: #DB4A39;
+}
+#invalidCheckV2 {
+  font-size: 12.8px;
+  color: #DB4A39;
+}
+
+.loader {
+  display: none;
+  margin: auto;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #00aeff; /* Blue */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite;
+}
+.loaderV2 {
+  display: none;
+  margin: auto;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #00b7ff; /* Blue */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
