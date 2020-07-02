@@ -23,17 +23,22 @@ body {
 .job-card {
     margin: 3rem 1.8rem 1rem 1.8rem;
     border-radius: 10px;
-    background-color: #FFFFFF;
+    background-color: #084482;
     border-radius: 10px;
     width: 297px;
     height: 159px;
-    color: #495057;
     font-family: Poppins;
     font-style: normal;
     font-weight: 500;
     font-size: 32px;
     line-height: 24px;
     padding: 20px;
+}
+.job-card--second {
+    background-color: #5c95c5;
+}
+.job-card--third {
+    background-color: #33beff;
 }
 .job-card__top-text {
     font-weight: 500;
@@ -44,7 +49,6 @@ body {
     line-height: 24px;
     align-items: center;
     text-align: center;
-    color: #495057;
 }
 
 .job-card__next-text {
