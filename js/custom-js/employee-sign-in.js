@@ -82,6 +82,13 @@ function responseHandler(res) {
 			token: res.data.token
 		};
 		localStorage.setItem("user", JSON.stringify(user))
+		const userToken = JSON.parse(atob(res.data.token.split('.')[1]));
+
+		// if (userToken.userTypeId === null ) {
+		// 	return (window.location.href = "employee-profile-creation.html");
+		// } else {
+		// 	return (window.location.href = "employee-dashboard.html");
+		// }
 
 		return (window.location.href = "employee-dashboard.html");
 	}
