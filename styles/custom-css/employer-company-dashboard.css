@@ -131,6 +131,26 @@ font-size: 20px !important;
     }
 }
 
+@media (max-width: 320px){
+    .col-lg-12 {
+        margin-left: 0;
+        padding-top: 15px;
+        }
+        .chick{
+            width: 180px;
+        }
+        h4{
+            font-size: 20px;
+        }
+
+        .place{
+            font-size: 10px;
+        }
+
+        
+    }
+    
+
 @media (min-width: 1200px){
     .col-xl-3 {
         -ms-flex: 0 0 24%;
