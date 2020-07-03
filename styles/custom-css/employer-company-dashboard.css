@@ -122,7 +122,9 @@ font-size: 20px !important;
     .mover-check{
         margin-left: 0;
     }
-    
+    .edit{
+        width: 100%;
+    }
 }
 @media (min-width: 992px){
 .col-lg-12 {
@@ -146,7 +148,9 @@ font-size: 20px !important;
         .place{
             font-size: 10px;
         }
-
+        .edit{
+            width: 100%;
+        }
         
     }
     
@@ -169,6 +173,11 @@ font-size: 20px !important;
         }
         .mover-check{
             margin-left: 0;
+        }
+
+        .row{
+            justify-content: center;
+            align-content: center;
         }
 
         .col-md-12{
