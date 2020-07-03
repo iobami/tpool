@@ -70,6 +70,8 @@ body{
 #status{
 color: black !important;
 font-weight: 300 !important;
+line-height: 36px;
+font-size: 24px !important;
 }
 
 .piggy{
