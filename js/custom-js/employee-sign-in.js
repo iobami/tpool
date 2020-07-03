@@ -79,8 +79,7 @@ function responseHandler(res) {
 		showMessage("Sign in successful. Re-directing...", "alert-success");
 		
 		const user = {
-			token: res.data.token,
-			userId: res.data.user
+			token: res.data.token
 		};
 		localStorage.setItem("user", JSON.stringify(user))
 

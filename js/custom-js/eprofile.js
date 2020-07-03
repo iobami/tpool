@@ -10,6 +10,7 @@ const frontend = document.querySelector("frontend");
 const mobile = document.querySelector("mobile");
 const design = document.querySelector("design");
 const addSkillForm = document.querySelector('#add-skills')
+const userInformation = JSON.parse(localStorage.getItem("user"));
 
 const errorMessage = document.querySelector("#error-message");
 const successMessage = document.querySelector("#success-message");
@@ -75,12 +76,26 @@ Filevalidation = () => {
   }
 };
 
-// addSkillForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   const addSkill = e.querySelector('input').value;
+const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
+
+addSkillForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const skill = addSkillForm.querySelector('input').value;
   
-//   fetch('')
-// })
+  fetch(`https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      "User-Agent": "Developers Lancers",
+      Authorization: `Bearer ${userInformation.token}`,
+    },
+    body: JSON.stringify({"skill_description": skill})
+  })
+    .then(res => res.json())
+    .then(data => {
+      getAllSkillsForIndividuals()
+    })
+})
 
 let myArray = [];
 
@@ -88,7 +103,6 @@ function buildList(data) {
   const list = document.querySelector(".lists");
 
   data.forEach((skills) => {
-    // console.log(skills.skill_description);
 
     const row = `
       <li>
@@ -114,47 +128,23 @@ function buildList(data) {
 }
 
 async function getAllSkillsForIndividuals() {
-  const getEmployeeId = function () {
-    if (document.cookie.length != 0) {
-      var nameValueCookie = document.cookie.split(";");
-      const result = nameValueCookie[2].split("=");
-      const employee_id = result[1];
-      return employee_id;
-    }
-  };
-  // console.log(getEmployeeId());
-
-  const getToken = function () {
-    if (document.cookie.length != 0) {
-      var nameValueCookie = document.cookie.split(";");
-      const result = nameValueCookie[0].split("=");
-      const token = result[1];
-      return token;
-    }
-  };
-  // console.log(getToken());
-
-  const url = `https://api.lancers.app/v1/employee/skill/${getEmployeeId()}/all`;
-  const token = `${getToken()}`;
+  const url = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
 
   try {
     const response = await fetch(url, {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
         "User-Agent": "Developers Lancers",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${userInformation.token}`,
       },
     });
     const result = await response.json();
 
-    // console.log(result);
-    // console.log(result.data.skills);
 
     myArray = result.data.skills;
     buildList(myArray);
   } catch (error) {
-    // alert("Opps! An error seems to have occured. Try again later. Thanks!");
-    // console.log(error);
+    alert("Opps! An error seems to have occured. Try again later. Thanks!");
   }
 }
 
