@@ -11,7 +11,7 @@
     <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
     <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
     <link href="../styles/custom-css/modal.css" rel="stylesheet">
-    <link href="../styles/custom-css/eprofile.css" rel="stylesheet">
+    <link href="../styles/custom-css/employeeProfile.css" rel="stylesheet">
     <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
     <!-- <link href="css/font-awesome.css" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -24,42 +24,42 @@
 
 
 
-        <div class="sidenav" id="sideNav">
-            <div class="logo__wrapper">
-                <div class="d-flex justify-content-center align-items-center logo__image">
-                    <img src="../img/navLogo.svg" alt="" />
-                </div>
+    <div class="sidenav" id="sideNav">
+        <div class="logo__wrapper">
+            <div class="d-flex justify-content-center align-items-center logo__image">
+                <img src="../img/navLogo.svg" alt="" />
             </div>
-
-            <ul class="sidenav_links">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="/src/employee_profile.html" class="active">Profile</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Employers</a></li>
-                <li><a href="#">Support</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
         </div>
 
-        <div id="body__click"></div>
+        <ul class="sidenav_links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="/src/employee_profile.html" class="active">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Employers</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </div>
 
-            <div class="modal fade modal-static" tabindex="-1" role="dialog" id="global_modal">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="container">
+    <div id="body__click"></div>
 
-                  <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" onclick="close_modal()" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body"></div>
+        <div class="modal fade modal-static" tabindex="-1" role="dialog" id="global_modal">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="container">
+
+                <div class="modal-header formCol">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="close_modal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 </div>
-                </div>
-              </div>
+                <div class="modal-body"></div>
             </div>
+            </div>
+            </div>
+        </div>
     ​
 
     <div id="main-section">
@@ -139,43 +139,52 @@
                                             <p id="success-message"></p>
 
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 formCol">
                                                     <div class="form-group">
-                                                        <label for="first name" class="super-label">First
-                                                            name</label>
+                                                        <label for="first name" class="super-label">
+                                                            First name
+                                                        </label>
+                                                        <div style="position: relative;">
                                                         <input type="text" placeholder="Genesis"
                                                             class="form-control" id="first-name"
                                                             aria-describedby="nameHelp">
-
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 formCol">
                                                     <div class="form-group">
-                                                        <label for="lastname" class="super-label">Last
-                                                            name</label>
+                                                        <div style="position: relative;">
+                                                        <label for="lastname" class="super-label">
+                                                            Last name
+                                                        </label>
                                                         <input type="text" placeholder="Anosike"
                                                             class="form-control" id="last-name"
                                                             aria-describedby="nameHelp">
-
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 formCol">
                                                     <div class="form-group">
-                                                        <label for="email" class="super-label">Email</label>
-                                                        <input type="email"
-                                                            placeholder="anosikegenesis@gmail.com"
+                                                        <div style="position: relative;">
+                                                        <label for="email" class="super-label">
+                                                            Email
+                                                        </label>
+                                                        <input type="email" placeholder="anosikegenesis@gmail.com"
                                                             class="form-control" id="email"
                                                             aria-describedby="emailHelp">
-
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 formCol">
                                                     <div class="form-group">
-                                                        <label for="location"
-                                                            class="super-label">Location</label>
+                                                        <div style="position: relative;">
+                                                        <label for="location" class="super-label">
+                                                            Location
+                                                        </label>
                                                         <input type="text" placeholder="Ibadan, Nigeria"
                                                             class="form-control" id="location"
                                                             aria-describedby="locationHelp">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,10 +193,11 @@
 
                                             <div class="skills-choice">
                                                 <div class="row">
-                                                    <div class="col-md-6 tracks">
+                                                    <div class="col-md-6 tracks formCol">
                                                         <label class="super-label"
                                                             for="exampleFormControl">Track(s)</label>
-                                                        <div class="form-group form-check">
+                                                            
+                                                        <!-- <div class="form-group form-check">
                                                             <input type="checkbox" class="form-check-input noHover"
                                                                 id="Backend" value="Backend Development">
                                                             <label class="form-check-label"
@@ -214,7 +224,37 @@
                                                             <label class="form-check-label"
                                                                 for="exampleCheck1">Mobile
                                                                 Development</label>
-                                                        </div>
+                                                        </div> -->
+
+                                                        <label class="form-group form-check">
+                                                            <input type="checkbox" id="Backend" value="Backend Development">
+                                                            <label class="form-check-label" for="exampleCheck1">
+                                                                Backend Development
+                                                            </label>
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="form-group form-check">
+                                                            <input type="checkbox" checked="checked" id="design" value="UI/UX Design">
+                                                            <label class="form-check-label" for="exampleCheck1">
+                                                                UI/UX Design
+                                                            </label>
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="form-group form-check">
+                                                            <input type="checkbox" id="frontend" value="frontend">
+                                                            <label class="form-check-label" for="exampleCheck1">
+                                                                Frontend Development
+                                                            </label>
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                        <label class="form-group form-check">
+                                                            <input type="checkbox" id="mobile" value="Mobile Development">
+                                                            <label class="form-check-label" for="exampleCheck1">
+                                                                Mobile Development
+                                                            </label>
+                                                            <span class="checkmark"></span>
+                                                        </label>
+
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -233,9 +273,10 @@
                                                             <p id="size"> </p>
                                                             <p id="file-message"></p>
                                                         </div>
-                                                        <p>Recommended dimensions: 200 x 200px
+                                                        <p id="p-text">Recommended dimensions: 200 x 200px
                                                             Maximum file size: 500kb.
-                                                            Please add only a professional looking headshot</p>
+                                                            Please add only a professional looking headshot
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
