@@ -77,29 +77,18 @@ function responseHandler(res) {
 
 	if (res.status === "success") {
 		showMessage("Sign in successful. Re-directing...", "alert-success");
-		let date = new Date();
-		date.setTime(date.getTime() + 60 * 60 * 1000); // in milliseconds
-		document.cookie = `token=${
-			res.data.token
-		}; path=/; expires=${date.toUTCString()}`;
-		document.cookie = `user_id=${
-			res.data.user
-		}; path=/; expires=${date.toUTCString()}`;
+		
+		const user = {
+			token: res.data.token
+		};
+		localStorage.setItem("user", JSON.stringify(user))
+		const userToken = JSON.parse(atob(res.data.token.split('.')[1]));
 
-		// Function to decode JWT
-		function decodeToken() {
-			if (document.cookie.length != 0) {
-			var nameValueCookie = document.cookie.split(";");
-			const result = nameValueCookie[0].split("=");
-		
-			const token = result[1];
-			const code = JSON.parse(atob(token.split(".")[1]));
-			const employee_id = code.userTypeId;
-		
-			document.cookie = `employee_id=${employee_id}; path=/; expires=${date.toUTCString()}`;
-			}
-		}
-		decodeToken();
+		// if (userToken.userTypeId === null ) {
+		// 	return (window.location.href = "employee-profile-creation.html");
+		// } else {
+		// 	return (window.location.href = "employee-dashboard.html");
+		// }
 
 		return (window.location.href = "employee-dashboard.html");
 	}
