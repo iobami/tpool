@@ -9,59 +9,72 @@
     <link rel="shortcut icon" href="/img/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../styles/bootstrap-css/bootstrap.css">
-    <link rel="stylesheet" href="../../styles/custom-css/main.css">
-    <link rel="stylesheet" href="../../styles/custom-css/header.css">
-    <link rel="stylesheet" href="../../styles/custom-css/footer.css">
+    <link rel="stylesheet" href="./styles/bootstrap-css/bootstrap.css">
+    <link rel="stylesheet" href="./styles/custom-css/main.css">
+    <link rel="stylesheet" href="./styles/custom-css/header.css">
+    <link rel="stylesheet" href="./styles/custom-css/footer.css">
 </head>
 
 <body>
     <!-- NAV-BAR -->
     <header class="header">
-        <div class="container-fluid custom-container nav-container">
-            <nav class="navbar navbar-expand-lg navbar-light py-1">
-                <a class="navbar-brand" href="index.html">
-                    <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item px-3 active">
-                            <a class="nav-link nav-link-black" href="index.html">Home <span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="src/aboutUs.html">About Us</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="#">Directories</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="./src/faq.html">FAQ</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="#">Contact Us</a>
-                        </li>
-                        <li class="nav-item px-3 my-2 my-lg-0">
-                            <a class="nav-link btn btn-hire-talent px-3 py-1" href="./src/employer-sign-in.html">Sign in</a>
-                        </li>
-                        <li class="nav-item px-3 dropdown">
-                            <button class="nav-link btn btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sign Up
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
-                                <p>Sign up as: </p>
-                                <a class="dropdown-item" href="./src/employer-sign-up.html">Employer</a>
-                                <a class="dropdown-item" href="./src/employee-sign-up.html">Talent</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+        <div class="container-fluid">
+            <div class="container nav-container">
+                <nav class="navbar navbar-expand-lg navbar-light py-1">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="./img/talentpool header logo.svg" alt="talent pool logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item px-3 active">
+                                <a class="nav-link nav-link-black" href="index.html">Home <span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="src/aboutUs.html">About Us</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="./src/directory.html">Directories</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="./src/faq.html">FAQ</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="./src/contact-us.html">Contact Us</a>
+                            </li>
+                            <!-- <li class="nav-item px-3 my-2 my-lg-0">
+                                <a class="nav-link btn px-3 btn-sign btn-sign-in py-1" href="./src/employer-sign-in.html">Sign in</a>
+                            </li> -->
+                            <li class="nav-item px-3 dropdown mb-2 mb-lg-0">
+                                <button class="nav-link btn btn-sign btn-sign-in px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sign In
+                                </button>
+    
+                                <div class="dropdown-menu dropdown-menu-right signin__dropdown" aria-labelledby="dropdownMenuButton">
+                                    <p>Sign in as: </p>
+                                    <a class="dropdown-item" href="./src/employer-sign-in.html">Employer</a>
+                                    <a class="dropdown-item" href="./src/employee-sign-in.html">Talent</a>
+                                </div>
+                            </li>
+                            <li class="nav-item px-3 dropdown">
+                                <button class="nav-link btn btn-sign btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sign Up
+                                </button>
+    
+                                <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
+                                    <p>Sign up as: </p>
+                                    <a class="dropdown-item" href="./src/employer-sign-up.html">Employer</a>
+                                    <a class="dropdown-item" href="./src/employee-sign-up.html">Talent</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -82,7 +95,7 @@
                 <div class=" d-none d-lg-block col-lg-4 main-section-img">
                     <div class="card border-0 img-5 mt-1">
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid" src="/img/Adelanke.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="./img/Adelanke.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -94,14 +107,14 @@
                             <p class="card-text">Backend Developer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="/img/barter logo.svg" alt="" class="img-fluid w-25">
+                                <img src="./img/barter logo.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
 
                     <div class="card img-6">
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid" src="/img/Adelanke2.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="./img/Adelanke2.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -112,14 +125,14 @@
                             <p class="card-text">UI/UX Designer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="/img/hotels.svg" alt="" class="img-fluid w-25">
+                                <img src="./img/hotels.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
 
                     <div class="card border-0 mt-3 img-7">
                         <!-- Card image -->
-                        <img class="card-img-top" src="/img/Adelanke3.svg" alt="Card image cap">
+                        <img class="card-img-top" src="./img/Adelanke3.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -130,7 +143,7 @@
                             <p class="card-text">Frontend Developer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="/img/verifi.svg" alt="" class="img-fluid w-25 ">
+                                <img src="./img/verifi.svg" alt="" class="img-fluid w-25 ">
                             </div>
                         </div>
                     </div>
@@ -149,13 +162,13 @@
                 <div class="col-md-2">
                     <h6 class="text-muted  font-weight-normal text-center my-3">Trusted by Top Companies</h6>
                 </div>
-                <div class=" col-4 col-md-1 my-md-3 "><img src="/img/chatdesk.svg" alt="... " class="img-fluid"></div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="/img/oracle.svg" alt="..." class="img-fluid"></div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="/img/piggyvest.svg" alt="..." class="img-fluid">
+                <div class=" col-4 col-md-1 my-md-3 "><img src="./img/chatdesk.svg" alt="... " class="img-fluid"></div>
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/oracle.svg" alt="..." class="img-fluid"></div>
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/piggyvest.svg" alt="..." class="img-fluid">
                 </div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="/img/hotels.svg" alt="" class="img-fluid"></div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="/img/verifi.svg" alt="" class="img-fluid"></div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="/img/flutterwave.svg" alt="" class="img-fluid">
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/hotels.svg" alt="" class="img-fluid"></div>
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/verifi.svg" alt="" class="img-fluid"></div>
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/flutterwave.svg" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -242,10 +255,11 @@
                         class="fa fa-chevron-right" aria-hidden="true"></i></button>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- Meet Our Talents  Tabbed Content-->
-    <div class="container">
+    <div class="container pt-5 pt-md-3">
         <h2 class="my-2 my-md-5 text-center">Meet Our Talents</h2>
         <ul class="nav nav-tabs d-flex justify-content-center text-center border-0 mb-3 mb-md-5 talent-row">
             <li class="active my-2 my-md-0"><a data-toggle="tab" href="#designers"
@@ -263,12 +277,12 @@
                 <!-- Fist Tabbed Content Designers -->
                 <div class="row d-flex justify-content-center talent-section">
 
-                    <div class="col-md-4 talent-card">
+                    <div class="col-md-4 mb-4 mb-md-0">
                         <!-- Card -->
-                        <div class="card border-0 height-fix">
+                        <div class="card border-0 talent-card height-fix">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/whiteman.svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -281,11 +295,11 @@
                                     conceptualizing and crafting digital products helping businesses expand their
                                     capacity for impact <br>
                                     <small>Previously at <bold class="font-weight-bold">Facebook</bold></small><br>
-                                    <img src="/img/facebook.svg" alt="" class="img-fluid">
+                                    <img src="./img/facebook.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit David</a>
                                 </h6>
                             </div>
@@ -293,12 +307,12 @@
                         </div>
                     </div>
                     <!-- Card -->
-                    <div class="col-md-4 col-lg-4 talent-card">
+                    <div class="col-md-4 mb-4 mb-md-0">
                         <!-- Card -->
-                        <div class="card border-0 height-fix">
+                        <div class="card border-0 talent-card height-fix">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/Rectangle 18.svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/Rectangle 18.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -310,23 +324,23 @@
                                 <p class="card-text">I am a self-taught Frontend Developer from Lagos, Nigeria. I
                                     specialize in writing reusable codes that bring designs to life <br>
                                     <small>Previously at <bold class="font-weight-bold">Netflix</bold></small><br>
-                                    <img src="/img/netflix.svg" alt="" class="img-fluid">
+                                    <img src="./img/netflix.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Tammy</a>
                                 </h6>
                             </div>
 
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-4 talent-card">
+                    <div class="col-md-4">
                         <!-- Card -->
-                        <div class="card border-0 h-100 height-fix">
+                        <div class="card border-0 talent-card h-100 height-fix">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/Rectangle 19 (3).svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/Rectangle 19 (3).svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -339,11 +353,11 @@
                                     interfaces that will help communicate what a business represents and help them
                                     easily attract the audience they need <br>
                                     <small>Previously at <bold class="font-weight-bold">Flutterwave</bold></small><br>
-                                    <img src="/img/barter logo.svg" alt="" class="img-fluid pt-3">
+                                    <img src="./img/barter logo.svg" alt="" class="img-fluid pt-3">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Anita</a>
                                 </h6>
                             </div>
@@ -357,12 +371,12 @@
             <div id="developers" class="tab-pane fade">
                 <div class="row d-flex justify-content-center talent-section">
 
-                    <div class="col-md-4 talent-card">
+                    <div class="col-md-4 mb-4 mb-md-0">
                         <!-- Card -->
-                        <div class="card border-0">
+                        <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/Rectangle 18.svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/Rectangle 18.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -375,11 +389,11 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Facebook</bold></small><br>
-                                    <img src="/img/facebook.svg" alt="" class="img-fluid">
+                                    <img src="./img/facebook.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Adelanke</a>
                                 </h6>
                             </div>
@@ -387,12 +401,12 @@
                         </div>
                     </div>
                     <!-- Card -->
-                    <div class="col-md-4 col-lg-4 talent-card">
+                    <div class="col-md-4 mb-4 mb-md-0">
                         <!-- Card -->
-                        <div class="card border-0">
+                        <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/whiteman.svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -405,23 +419,23 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Netflix</bold></small><br>
-                                    <img src="/img/netflix.svg" alt="" class="img-fluid">
+                                    <img src="./img/netflix.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Adelanke</a>
                                 </h6>
                             </div>
 
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-4 talent-card">
+                    <div class="col-md-4">
                         <!-- Card -->
-                        <div class="card border-0 h-100">
+                        <div class="card talent-card border-0 h-100">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/Rectangle 19 (3).svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/Rectangle 19 (3).svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -434,11 +448,11 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Flutterwave</bold></small><br>
-                                    <img src="/img/barter logo.svg" alt="" class="img-fluid pt-3">
+                                    <img src="./img/barter logo.svg" alt="" class="img-fluid pt-3">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Adelanke</a>
                                 </h6>
                             </div>
@@ -452,12 +466,12 @@
             <div id="project-managers" class="tab-pane fade">
                 <div class="row d-flex justify-content-center talent-section">
 
-                    <div class="col-md-4 talent-card">
+                    <div class="col-md-4 mb-4 mb-md-0">
                         <!-- Card -->
-                        <div class="card border-0">
+                        <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/Rectangle 19 (3).svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/Rectangle 19 (3).svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -470,11 +484,11 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Facebook</bold></small><br>
-                                    <img src="/img/facebook.svg" alt="" class="img-fluid">
+                                    <img src="./img/facebook.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Adelanke</a>
                                 </h6>
                             </div>
@@ -482,12 +496,12 @@
                         </div>
                     </div>
                     <!-- Card -->
-                    <div class="col-md-4 col-lg-4 talent-card">
+                    <div class="col-md-4 mb-4 mb-md-0">
                         <!-- Card -->
-                        <div class="card border-0">
+                        <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/Rectangle 18.svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/Rectangle 18.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -500,23 +514,23 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Netflix</bold></small><br>
-                                    <img src="/img/netflix.svg" alt="" class="img-fluid">
+                                    <img src="./img/netflix.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Adelanke</a>
                                 </h6>
                             </div>
 
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-4 talent-card">
+                    <div class="col-md-4">
                         <!-- Card -->
-                        <div class="card border-0 h-100">
+                        <div class="card talent-card border-0 h-100">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/Rectangle 19 (3).svg" alt="Card image cap">
+                            <img class="card-img-top" src=",/img/Rectangle 19 (3).svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -529,11 +543,11 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Flutterwave</bold></small><br>
-                                    <img src="/img/barter logo.svg" alt="" class="img-fluid pt-3">
+                                    <img src="./img/barter logo.svg" alt="" class="img-fluid pt-3">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Adelanke</a>
                                 </h6>
                             </div>
@@ -547,12 +561,12 @@
             <div id="operations" class="tab-pane fade">
                 <div class="row d-flex justify-content-center talent-section">
 
-                    <div class="col-md-4 talent-card">
+                    <div class="col-md-4 mb-4 mb-md-0">
                         <!-- Card -->
-                        <div class="card border-0">
+                        <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/whiteman.svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -565,11 +579,11 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Facebook</bold></small><br>
-                                    <img src="/img/facebook.svg" alt="" class="img-fluid">
+                                    <img src="./img/facebook.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Adelanke</a>
                                 </h6>
                             </div>
@@ -577,12 +591,12 @@
                         </div>
                     </div>
                     <!-- Card -->
-                    <div class="col-md-4 col-lg-4 talent-card">
+                    <div class="col-md-4 mb-4 mb-md-0">
                         <!-- Card -->
-                        <div class="card border-0">
+                        <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/Rectangle 18.svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/Rectangle 18.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -595,23 +609,23 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Netflix</bold></small><br>
-                                    <img src="/img/netflix.svg" alt="" class="img-fluid">
+                                    <img src="./img/netflix.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Adelanke</a>
                                 </h6>
                             </div>
 
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-4 talent-card">
+                    <div class="col-md-4">
                         <!-- Card -->
-                        <div class="card border-0 h-100">
+                        <div class="card talent-card border-0 h-100">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="/img/Rectangle 19 (3).svg" alt="Card image cap">
+                            <img class="card-img-top" src="./img/Rectangle 19 (3).svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -624,11 +638,11 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Flutterwave</bold></small><br>
-                                    <img src="/img/barter logo.svg" alt="" class="img-fluid pt-3">
+                                    <img src="./img/barter logo.svg" alt="" class="img-fluid pt-3">
                                 </p>
                             </div>
 
-                            <div class="card-footer mb-3">
+                            <div class="card-footer">
                                 <h6 class="text-white text-center"><a href="#" class="text-white"> Visit Adelanke</a>
                                 </h6>
                             </div>
@@ -640,8 +654,35 @@
         </div>
     </div>
 
+    <!-- Hire Talents in 3 Steps -->
+    <div class="container hire-talent-steps">
+        <h3 class="hire-heading text-center mb-5">Hire Talents in 3 Steps</h3>
+        <div class="row">
+            <div class="col-md-4 mb-sm-4 mb-md-0 text-center">
+                <span>1</span>
+
+                <h5>Create Profile</h5>
+                <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare dapibus</p>
+            </div>
+
+            <div class="col-md-4 mb-sm-4 mb-md-0 text-center">
+                <span>1</span>
+
+                <h5>Create Profile</h5>
+                <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare dapibus</p>
+            </div>
+
+            <div class="col-md-4 mb-sm-4 mb-md-0 text-center">
+                <span>1</span>
+
+                <h5>Create Profile</h5>
+                <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare dapibus</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Hire the best talents -->
-    <section class="my-2">
+    <section class="my-2 mb-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center mt-2">
@@ -653,12 +694,12 @@
 
 
             <div class="row my-3 d-flex justify-content-around">
-                <div class="col-md-4 col-lg-4  text-center mb-5">
+                <div class="col-md-4 col-lg-4  text-center mb-4 mb-lg-5">
                     <!-- Card -->
                     <div class="card border-0 card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25 mx-auto px-2" src="/img/Group.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid w-25 mx-auto px-2" src="./img/Group.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -673,12 +714,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-4  text-center  mb-5">
+
+                <div class="col-md-4 col-lg-4  text-center mb-4 mb-lg-5">
                     <!-- Card -->
                     <div class="card border-0 card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="/img/Group2.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/Group2.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -694,13 +736,12 @@
                     </div>
                 </div>
 
-
-                <div class="col-md-4 col-lg-4  text-center mb-5">
+                <div class="col-md-4 col-lg-4  text-center mb-4 mb-lg-5">
                     <!-- Card -->
                     <div class="card border-0  card-four h-100 pt-5 ">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="/img/Group2.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/Group2.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -716,12 +757,12 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-lg-4  text-center  mb-5">
+                <div class="col-md-4 col-lg-4  text-center  mb-4 mb-lg-5">
                     <!-- Card -->
                     <div class="card border-0  card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="/img/frontend.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/frontend.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -737,12 +778,12 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-lg-4  text-center mb-5">
+                <div class="col-md-4 col-lg-4  text-center mb-4 mb-lg-5">
                     <!-- Card -->
                     <div class="card border-0  card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="/img/backend.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/backend.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -758,12 +799,12 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-lg-4  text-center  mb-5">
+                <div class="col-md-4 col-lg-4  text-center mb-4 mb-lg-5">
                     <!-- Card -->
                     <div class="card border-0  card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="/img/projectmanager.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/projectmanager.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -779,8 +820,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
         </div>
@@ -791,21 +830,22 @@
         <div class="container">
 
             <div class="row my-3 d-flex justify-content-around">
-                <div class="col-md-4 col-lg-4  text-center mb-5">
+                <div class="col-md-4 col-lg-4  text-center mb-4">
                     <!-- Card -->
-                    <div class="card border-0  h-100 pt-3">
+                    <div class="card border-0 h-100">
                         <!-- Card content -->
-                        <div class="card-body">
+                        <div class="card-body p-0 d-flex flex-column justify-content-center">
                             <!-- Title -->
-                            <h4 class="card-title">Why Organizations Choose Talentpool</h4>
+                            <h4 class="card-title text-md-left">Why Organizations Choose Talentpool</h4>
                             <!-- Text -->
-                            <p class="card-text">Talentpool reduces time to hire and improves the quality of hire by
+                            <p class="card-text text-md-left">Talentpool reduces time to hire and improves the quality of hire by
                                 supplying pre-screened & matching applicants
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-4  text-center test mb-5">
+
+                <div class="col-md-4 col-lg-4  text-center test mb-4">
                     <!-- Card -->
                     <a href="#" class="read-more">
                         <div class="card border-0  pt-5 bg-image1  h-100">
@@ -821,22 +861,23 @@
                     </a>
                 </div>
 
-                <div class="col-md-4 col-lg-4  text-center  mb-5">
+                <div class="col-md-4 col-lg-4  text-center test mb-4">
                     <!-- Card -->
-                    <div class="card border-0  pt-5 bg-image1  h-100">
-                        <div class="card-body text-white py-5">
-                            <!-- Title -->
-                            <h5 class="card-title text-left mt-5">Adelanke</h5>
+                    <a href="#" class="read-more">
+                        <div class="card border-0  pt-5 bg-image1  h-100">
+                            <div class="card-body text-white py-5">
+                                <!-- Title -->
+                                <h5 class="card-title text-left mt-5">Adelanke</h5>
 
-                            <p class="card-text text-left">
-                                Developing Oculus VR
-                            </p>
+                                <p class="card-text text-left">
+                                    Developing Oculus VR
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
-
-                <div class="col-md-4 col-lg-4  text-center  mb-5">
+                <div class="col-md-4 col-lg-4  text-center mb-4">
                     <a href="#" class="read-more"></a>
                     <!-- Card -->
                     <div class="card border-0  pt-5 bg-image1  h-100">
@@ -852,7 +893,7 @@
                     </a>
                 </div>
 
-                <div class="col-md-4 col-lg-4  text-center  mb-5">
+                <div class="col-md-4 col-lg-4  text-center mb-4">
                     <!-- Card -->
                     <a href="#" class="read-more">
                         <div class="card border-0  pt-5 bg-image1  h-100">
@@ -868,8 +909,7 @@
                     </a>
                 </div>
 
-
-                <div class="col-md-4 col-lg-4  text-center  mb-5">
+                <div class="col-md-4 col-lg-4  text-center mb-4">
                     <!-- Card -->
                     <a href="#" class="read-more">
                         <div class="card border-0  pt-5 bg-image1  h-100">
@@ -887,62 +927,66 @@
                 </div>
 
                 <!--Four Cards  -->
-                <div class="row">
+                <div class="container">
+                    <div class="row">
 
-                    <div class="col-md-4 col-lg-3  text-center mb-5">
-                        <!-- Card -->
-                        <div class="card border-0 h-100 pt-1">
-                            <!-- Card content -->
-                            <div class="card-body">
-                                <!-- Title -->
-                                <h4 class="card-title">Collaborating with Top Companies</h4>
-                                <!-- Text -->
-                                <p class="card-text ">We get information from the best companies to make our services
-                                    better for you
-                                </p>
+                        <div class="col-md-12 col-lg-3  text-center mb-4">
+                            <!-- Card -->
+                            <div class="card border-0 h-100 pt-1">
+                                <!-- Card content -->
+                                <div class="card-body p-0 d-flex flex-column justify-content-center">
+                                    <!-- Title -->
+                                    <h4 class="card-title text-lg-left">Collaborating with Top Companies</h4>
+                                    <!-- Text -->
+                                    <p class="card-text text-lg-left">We get information from the best companies to make our services
+                                        better for you
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+    
+                        <div class="col-lg-3 col-md-4 text-center mb-4">
+                            <!-- Card -->
+                            <div class="card border-0 rounded-0 four-cards text-white text-left pt-5">
+                                <!-- Card Content -->
+                                <div class="card-body">
+                                    <!-- Text -->
+                                    <p class="card-text">We analyze the skills needed by professionals in each space to
+                                        determine what you need
+                                    </p>
+                                    <a href="#" class="read-more">Read More <i class="fa fa-arrow-right"
+                                            aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="col-lg-3 col-md-4 text-center  mb-5">
-                        <!-- Card -->
-                        <div class="card border-0 rounded-0 four-cards text-white text-left pt-5">
-                            <!-- Card Content -->
-                            <div class="card-body">
-                                <!-- Text -->
-                                <p class="card-text">We analyze the skills needed by professionals in each space to
-                                    determine what you need
-                                </p>
-                                <a href="#" class="read-more">Read More <i class="fa fa-arrow-right"
-                                        aria-hidden="true"></i></a>
+                        <div class="col-lg-3 col-md-4 text-center mb-4">
+                            <!-- Card -->
+                            <div class="card border-0 rounded-0 four-cards text-white text-left  pt-5">
+                                <!-- Card Content -->
+                                <div class="card-body">
+                                    <!-- Text -->
+                                    <p class="card-text">We regularly train our experts to keep them current on present
+                                        technological needs
+                                    </p>
+                                    <a href="#" class="read-more text-white ">Read More <i class="fa fa-arrow-right"
+                                            aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 text-center  mb-5">
-                        <!-- Card -->
-                        <div class="card border-0 rounded-0 four-cards text-white text-left  pt-5">
-                            <!-- Card Content -->
-                            <div class="card-body">
-                                <!-- Text -->
-                                <p class="card-text">We regularly train our experts to keep them current on present
-                                    technological needs
-                                </p>
-                                <a href="#" class="read-more text-white ">Read More <i class="fa fa-arrow-right"
-                                        aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 text-center   mb-5">
-                        <!-- Card -->
-                        <div class="card border-0 rounded-0 four-cards text-white 0 text-left pt-5">
-                            <!-- Card Content -->
-                            <div class="card-body">
-                                <!-- Text -->
-                                <p class="card-text">>We scrutinize our process so we can offer you the best services
-                                    across various fields
-                                </p>
-                                <a href="#" class="read-more">Read More <i class="fa fa-arrow-right"
-                                        aria-hidden="true"></i></a>
+
+                        <div class="col-lg-3 col-md-4 text-center mb-4">
+                            <!-- Card -->
+                            <div class="card border-0 rounded-0 four-cards text-white 0 text-left pt-5">
+                                <!-- Card Content -->
+                                <div class="card-body">
+                                    <!-- Text -->
+                                    <p class="card-text">We scrutinize our process so we can offer you the best services
+                                        across various fields
+                                    </p>
+                                    <a href="#" class="read-more">Read More <i class="fa fa-arrow-right"
+                                            aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -952,7 +996,7 @@
     </section>
 
     <!-- Ready to get started -->
-    <section>
+    <section class="pt-5 pb-5">
         <div class="container mb-5">
             <div class="row">
                 <div class="col-md-12 d-block mx-auto text-center">
@@ -962,7 +1006,7 @@
             </div>
 
             <div class="row my-5">
-                <div class="col-sm-12  text-center text-lg-left col-lg-6 px-3 py-4">
+                <div class="container col-sm-12  text-center text-lg-left col-lg-6 px-3 py-4">
                     <h3>Build Amazing Teams on Demand</h3>
                     <p>Suscipit libero pretium nullam potenti. Interdum</p>
                     <div class="row">
@@ -972,20 +1016,23 @@
                             <p class="mt-4">Only those who have attained mastery in their chosen fields are selected
                                 here</p>
                         </div>
+
                         <div class="col-sm-6">
-                            <img src="/img/alevel.svg" alt="">
+                            <img src="./img/alevel.svg" alt="">
                             <h6 class="mt-3">A Level Talents</h6>
                             <p class="mt-4">We use a variety of channels to make sure that prospective talents have what
                                 their employers are looking for</p>
                         </div>
-                        <div class="col-md-6 mt-3">
-                            <img src="/img/growth.svg" alt="">
+
+                        <div class="col-sm-6 mt-3">
+                            <img src="./img/growth.svg" alt="">
                             <h6 class="mt-3">100% Guaranted</h6>
                             <p class="mt-4">We know that getting this right is fundamental to the success of our
                                 business so we guarantee improved quality of hire</p>
                         </div>
-                        <div class="col-md-6 mt-3">
-                            <img src="/img/specialized.svg" alt="">
+
+                        <div class="col-sm-6 mt-3">
+                            <img src="./img/specialized.svg" alt="">
                             <h6 class="mt-3">Specialized Skills</h6>
                             <p class="mt-4">We provide talents with skills targeted and specific to your company's need
                             </p>
@@ -995,7 +1042,7 @@
                 <div class="d-none d-lg-block p-5 col-lg-6 h-100">
                     <div class="card border-0 img-1 ">
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid" src="/img/Adelanke.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="./img/Adelanke.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1007,14 +1054,14 @@
                             <p class="card-text">Backend Developer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="/img/barter logo.svg" alt="" class="img-fluid w-25">
+                                <img src="./img/barter logo.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
 
                     <div class="card border-0 img-2 mx-2">
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid" src="/img/Adelanke2.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="./img/Adelanke2.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1025,14 +1072,14 @@
                             <p class="card-text">UI/UX Designer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="/img/hotels.svg" alt="" class="img-fluid w-25">
+                                <img src="./img/hotels.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
 
-                    <div class="card border-0 mt-3 img-3">
+                    <div class="card border-0 mt-5 img-3">
                         <!-- Card image -->
-                        <img class="card-img-top" src="/img/Adelanke3.svg" alt="Card image cap">
+                        <img class="card-img-top" src="./img/Adelanke3.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1043,7 +1090,7 @@
                             <p class="card-text">Frontend Developer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="/img/verifi.svg" alt="" class="img-fluid w-25">
+                                <img src="./img/verifi.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
@@ -1059,7 +1106,7 @@
                     <h2 class=" font-weight-normal mt-5">Not a graduate? you can join the pool of the <br>top vetted
                         talents
                         around the world</h2>
-                    <a href="./src/employee-sign-up.html"><button class="btn join-btn text-white px-5 py-2 my-5"> Join Talentpool</button></a>
+                    <a href="./src/employer-sign-up.html"><button class="btn join-btn text-white px-5 py-2 my-5"> Join Talentpool</button></a>
                 </div>
             </div>
         </div>
@@ -1074,12 +1121,12 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
-                <div class="col-md-4 ">
+                <div class="col-md-4 mb-4 mb-md-0">
                     <!-- Card -->
                     <div class="card border-0 blog-card h-100">
 
                         <!-- Card image -->
-                        <img class="card-img-top" src="/img/whiteman.svg" alt="Card image cap">
+                        <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1102,12 +1149,12 @@
                     </div>
                 </div>
                 <!-- Card -->
-                <div class="col-md-4 ">
+                <div class="col-md-4 mb-4 mb-md-0">
                     <!-- Card -->
                     <div class="card border-0 blog-card h-100">
 
                         <!-- Card image -->
-                        <img class="card-img-top" src="/img/whiteman.svg" alt="Card image cap">
+                        <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1129,12 +1176,13 @@
 
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <!-- Card -->
                     <div class="card border-0 blog-card h-100">
 
                         <!-- Card image -->
-                        <img class="card-img-top" src="/img/whiteman.svg" alt="Card image cap">
+                        <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1166,7 +1214,7 @@
                 <div class="col-md-3">
                     <a href="../index.html">
                         <div class="py-3">
-                            <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
+                            <img src="./img/talentpool footer logo.svg" alt="talent pool logo">
                         </div>
                     </a>
                     <p class="py-2">
@@ -1181,7 +1229,7 @@
                     <ul class="pl-0">
                         <li><a href="">Home</a></li>
                         <li class="py-1"><a href="src/aboutUs.html">About Us</a></li>
-                        <li class="py-1"><a href="">Directories</a></li>
+                        <li class="py-1"><a href="./src/directory.html">Directories</a></li>
                         <li class="py-1"><a href="./src/faq.html">FAQ</a></li>
                         <li class="py-1"><a href="./src/contact-us.html">Contact Us</a></li>
                         <li class="py-1"><a href="">Top Talent</a></li>
@@ -1190,7 +1238,7 @@
                 <div class="col-6 col-md-3">
                     <h5 class="py-3">Visit</h5>
                     <p>
-                        3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
+                        Lagos NG, 17 Akinsanya St, Ojodu 100213, Ikeja
                     </p>
                     <div class="d-none d-md-block">
                         <h5 class="py-3">Get in touch</h5>
@@ -1229,9 +1277,10 @@
             </div>
         </div>
     </footer>
-    <script src="../../js/bootstrap-js/popper.js"></script>
-    <script src="../../js/bootstrap-js/jquery.js"></script>
-    <script src="../../js/bootstrap-js/bootstrap.js"></script>
+    
+    <script src="./js/bootstrap-js/popper.js"></script>
+    <script src="./js/bootstrap-js/jquery.js"></script>
+    <script src="./js/bootstrap-js/bootstrap.js"></script>
 </body>
 
 </html>

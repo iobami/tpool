@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  line-height: 24px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.top__nav__wrapper {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgba(163, 163, 163, 0.25);
+  z-index: 1;
+}
+
+.top__nav__icon {
+  margin-right: 42.1px;
+  cursor: pointer;
+}
+
+.top__nav__img {
+  height: 56px;
+  width: 56px;
+  background: #C4C4C4;
+  border-radius: 10px;
+  margin-right: 8px;
+}
+
+.top__nav__user svg {
+    margin-left: 12px;
+}
+
+.top__nav__user__name h3,
+.top__nav__user__name p {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+
+/* MEDIA QUERIES FOR SPECIFIC SCREEN SIZES*/
+
+
+@media screen and (min-width: 768px) {
+  .top__nav__contents {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .top__nav__wrapper {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .top__nav__contents {
+    padding: 1.5rem 15px;
+  }
+  .top__nav__user__name h3 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top__nav__user__name{
+    display: none;
+  }
+}
+
+
+
+.cancBtn{
+  background-color: white;
+  color:#8f999e;
+    border: 2px solid #00AEFF !important; 
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 24px;
+  width: 120px;
+  font-weight: 500;
+}
+
+.signOutBtn{
+  background-color:#00AEFF;
+  border: 2px solid #00AEFF !important;
+  color:white;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 24px;
+  width: 120px;
+  font-weight: 500;
+  
+}
+
+.row {
+
+  justify-content: center;
+
+}
+
+.signOut{
+    text-align: center;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.jumbotron {
+    background-color: white;  
+    box-shadow: 2px 8px 20px rgba(181, 181, 181, 0.2);
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 535px) {
+  .jumbotron{
+    background-color: white;   
+    width: 40vw;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-left: 30%;
+  }
+}
+
+.tProw{
+  position: relative;
+  left: 7%;
+  margin-top: 5%;
+  width: 30%;
+  margin-left: 0px;
+}
+
+@media screen and (max-width: 530px) {
+  .tProw{
+    position: relative;
+    left: 60px;
+  }
+}
+
+.lead{
+  width: 50%;
+  text-align: center;
+  position: relative;
+  left: 25%;
+  font-weight: 300;
+  font-size: 16px;
+  
+
+}
+@media screen and (min-width: 535px) {
+  .lead{
+  
+    width: 80%;
+    position: relative;
+    left: 10%;
+  }
+}
+
+h3{
+  font-size: 24px;
+  font-weight: 600;
+  color: #25282B;
+}

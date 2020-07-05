@@ -35,6 +35,39 @@
     line-height: 42px;
 }
 
+.testimonial-wrapper {
+    background: #FFFFFF;
+}
+
+.testimony-content-wrapper {
+    max-width: 995px;
+    margin: auto;
+    background: #F2F2F2;
+    padding: 60px 45px;
+}
+
+@media screen and (max-width: 600px) {
+    .testimonial-wrapper,
+    .testimony-content-wrapper {
+        background: #EBECED;
+    }
+
+    .testimony-content-wrapper {
+        padding: 60px 0px;
+    }
+
+    h3 {
+        font-size: 1rem;
+        line-height: 16px;
+    }
+}
+
+.testimony-content {
+    background: #FFF;
+    padding: 48px 24px;
+}
+
+/* 
 @media (min-width: 768px){
     .test-content{
         max-width: 600px !important;
@@ -86,4 +119,4 @@
         font-size: 1.2em;}
 
    
-}
+} */

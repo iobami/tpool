@@ -2,7 +2,7 @@
 
 * {
   box-sizing: border-box;
-  line-height: 24px;
+  line-height: 27px;
 }
 
 body {
@@ -44,11 +44,16 @@ li {
   margin-right: 8px;
 }
 
+
+
 .top__nav__user__name h3,
 .top__nav__user__name p {
   margin: 0;
   padding: 0;
 }
+
+
+/* MEDIA QUERIES FOR SPECIFIC SCREEN SIZES*/
 
 @media screen and (max-width: 380px) {
   .top__nav__contents {
@@ -56,5 +61,11 @@ li {
   }
   .top__nav__user__name h3 {
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top__nav__user__name{
+    display: none;
   }
 }

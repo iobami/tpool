@@ -33,7 +33,6 @@
       }
 
       h5.modal-title{
-        font-family: Poppins;
         font-style: normal;
         font-weight: 500;
         font-size: 24px;
@@ -43,12 +42,12 @@
         color: #353A45;
       }
 
-      .modal .modal-header{
+     /*  .modal .modal-header{
 
-        /* width: 90%!important; */
-        /* margin: 0 auto; */
-        /* padding: 20px 30px 10px; */
-      }
+        width: 90%!important;
+        margin: 0 auto;
+        padding: 20px 30px 10px;
+      } */
 
       .btn-pry{
         width: 238px;
@@ -178,9 +177,9 @@ border:1px solid #337AB7 !important;
   background: #337AB7;
 }
 
-.skill_form{
-    /* padding: 0 24px; */
-}
+/* .skill_form{
+    padding: 0 24px;
+} */
 
 
 .form-group{
@@ -202,4 +201,71 @@ border:1px solid #337AB7 !important;
   right: 26px;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+
+.modal.modal-static .modal-dialog {
+  margin-left: 16.5rem;
+}
+
+
+@media only screen and (max-width: 991px) {
+  .modal.modal-static .modal-dialog {
+    margin-left: auto;
+  }
+  
+  .modal-dialog {
+    max-width: 75%;
+  }
+  
+}
+
+@media only screen and (max-width: 576px) {
+  .modal.modal-static .modal-dialog {
+    margin: auto;
+    -webkit-transform: unset;
+    transform: unset;
+    padding: .5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .modal-dialog {
+    max-width: max-content;
+    width: 100vw;
+  }
+  
+}
+
+@media only screen and (max-width: 450px) {
+
+  .modal.modal-static .modal-dialog {
+    padding: .5rem;
+  }
+
+    .modal-content {
+      padding-top: 15px;
+      padding-left: 0;
+      padding-right: 0;
+  } 
+  
+    button[type=submit] {
+      font-size: 14px !important;
+      line-height: 18px !important;
+      width: 138px;
+  }
+  .form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 11px;
+  }
+  .form-control::-moz-placeholder { /* Firefox 19+ */
+  font-size: 11px;
+  }
+  .form-control:-ms-input-placeholder { /* IE 10+ */
+  font-size: 11px;
+  }
+  .form-control:-moz-placeholder { /* Firefox 18- */
+  font-size: 11px;
+  }
+    .form-check {
+      font-size: 12px;
+  }
 }
