@@ -1,6 +1,6 @@
 module.exports = {
     employeeSignIn: (req, res) => {
-        res.render('employee-sign-in', { title: 'TalentPool | Employee Sign In' });
+        res.render('employee-sign-in', { pageName: 'Employee Sign In' });
       },
     
 }
