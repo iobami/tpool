@@ -3,81 +3,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Talent Pool</title>
-    <link rel="shortcut icon" href="/img/favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./styles/bootstrap-css/bootstrap.css">
-    <link rel="stylesheet" href="./styles/custom-css/main.css">
-    <link rel="stylesheet" href="./styles/custom-css/header.css">
-    <link rel="stylesheet" href="./styles/custom-css/footer.css">
+    <%- include('./Templates/head') %>
 </head>
 
 <body>
     <!-- NAV-BAR -->
-    <header class="header">
-        <div class="container-fluid">
-            <div class="container nav-container">
-                <nav class="navbar navbar-expand-lg navbar-light py-1">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="./img/talentpool header logo.svg" alt="talent pool logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item px-3 active">
-                                <a class="nav-link nav-link-black" href="index.html">Home <span
-                                        class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item px-3">
-                                <a class="nav-link nav-link-black" href="src/aboutUs.html">About Us</a>
-                            </li>
-                            <li class="nav-item px-3">
-                                <a class="nav-link nav-link-black" href="./src/directory.html">Directories</a>
-                            </li>
-                            <li class="nav-item px-3">
-                                <a class="nav-link nav-link-black" href="./src/faq.html">FAQ</a>
-                            </li>
-                            <li class="nav-item px-3">
-                                <a class="nav-link nav-link-black" href="./src/contact-us.html">Contact Us</a>
-                            </li>
-                            <!-- <li class="nav-item px-3 my-2 my-lg-0">
-                                <a class="nav-link btn px-3 btn-sign btn-sign-in py-1" href="./src/employer-sign-in.html">Sign in</a>
-                            </li> -->
-                            <li class="nav-item px-3 dropdown mb-2 mb-lg-0">
-                                <button class="nav-link btn btn-sign btn-sign-in px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Sign In
-                                </button>
-    
-                                <div class="dropdown-menu dropdown-menu-right signin__dropdown" aria-labelledby="dropdownMenuButton">
-                                    <p>Sign in as: </p>
-                                    <a class="dropdown-item" href="./src/employer-sign-in.html">Employer</a>
-                                    <a class="dropdown-item" href="./src/employee-sign-in.html">Talent</a>
-                                </div>
-                            </li>
-                            <li class="nav-item px-3 dropdown">
-                                <button class="nav-link btn btn-sign btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Sign Up
-                                </button>
-    
-                                <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
-                                    <p>Sign up as: </p>
-                                    <a class="dropdown-item" href="./src/employer-sign-up.html">Employer</a>
-                                    <a class="dropdown-item" href="./src/employee-sign-up.html">Talent</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </header>
-
+    <%- include('./Templates/header') %>
     <section class="main-section ">
         <div class="container pt-3">
             <div class="row">
@@ -95,7 +26,7 @@
                 <div class=" d-none d-lg-block col-lg-4 main-section-img">
                     <div class="card border-0 img-5 mt-1">
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid" src="./img/Adelanke.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="img/Adelanke.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -107,14 +38,14 @@
                             <p class="card-text">Backend Developer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="./img/barter logo.svg" alt="" class="img-fluid w-25">
+                                <img src="img/barter logo.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
 
                     <div class="card img-6">
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid" src="./img/Adelanke2.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="img/Adelanke2.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -125,14 +56,14 @@
                             <p class="card-text">UI/UX Designer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="./img/hotels.svg" alt="" class="img-fluid w-25">
+                                <img src="img/hotels.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
 
                     <div class="card border-0 mt-3 img-7">
                         <!-- Card image -->
-                        <img class="card-img-top" src="./img/Adelanke3.svg" alt="Card image cap">
+                        <img class="card-img-top" src="img/Adelanke3.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -143,7 +74,7 @@
                             <p class="card-text">Frontend Developer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="./img/verifi.svg" alt="" class="img-fluid w-25 ">
+                                <img src="img/verifi.svg" alt="" class="img-fluid w-25 ">
                             </div>
                         </div>
                     </div>
@@ -162,13 +93,13 @@
                 <div class="col-md-2">
                     <h6 class="text-muted  font-weight-normal text-center my-3">Trusted by Top Companies</h6>
                 </div>
-                <div class=" col-4 col-md-1 my-md-3 "><img src="./img/chatdesk.svg" alt="... " class="img-fluid"></div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/oracle.svg" alt="..." class="img-fluid"></div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/piggyvest.svg" alt="..." class="img-fluid">
+                <div class=" col-4 col-md-1 my-md-3 "><img src="img/chatdesk.svg" alt="... " class="img-fluid"></div>
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="img/oracle.svg" alt="..." class="img-fluid"></div>
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="img/piggyvest.svg" alt="..." class="img-fluid">
                 </div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/hotels.svg" alt="" class="img-fluid"></div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/verifi.svg" alt="" class="img-fluid"></div>
-                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="./img/flutterwave.svg" alt="" class="img-fluid">
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="img/hotels.svg" alt="" class="img-fluid"></div>
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="img/verifi.svg" alt="" class="img-fluid"></div>
+                <div class=" col-4 col-md-1 my-md-3 my-2"><img src="img/flutterwave.svg" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -282,7 +213,7 @@
                         <div class="card border-0 talent-card height-fix">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/whiteman.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -295,7 +226,7 @@
                                     conceptualizing and crafting digital products helping businesses expand their
                                     capacity for impact <br>
                                     <small>Previously at <bold class="font-weight-bold">Facebook</bold></small><br>
-                                    <img src="./img/facebook.svg" alt="" class="img-fluid">
+                                    <img src="img/facebook.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
@@ -312,7 +243,7 @@
                         <div class="card border-0 talent-card height-fix">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/Rectangle 18.svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/Rectangle 18.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -324,7 +255,7 @@
                                 <p class="card-text">I am a self-taught Frontend Developer from Lagos, Nigeria. I
                                     specialize in writing reusable codes that bring designs to life <br>
                                     <small>Previously at <bold class="font-weight-bold">Netflix</bold></small><br>
-                                    <img src="./img/netflix.svg" alt="" class="img-fluid">
+                                    <img src="img/netflix.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
@@ -340,7 +271,7 @@
                         <div class="card border-0 talent-card h-100 height-fix">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/Rectangle 19 (3).svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/Rectangle 19 (3).svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -353,7 +284,7 @@
                                     interfaces that will help communicate what a business represents and help them
                                     easily attract the audience they need <br>
                                     <small>Previously at <bold class="font-weight-bold">Flutterwave</bold></small><br>
-                                    <img src="./img/barter logo.svg" alt="" class="img-fluid pt-3">
+                                    <img src="img/barter logo.svg" alt="" class="img-fluid pt-3">
                                 </p>
                             </div>
 
@@ -376,7 +307,7 @@
                         <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/Rectangle 18.svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/Rectangle 18.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -389,7 +320,7 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Facebook</bold></small><br>
-                                    <img src="./img/facebook.svg" alt="" class="img-fluid">
+                                    <img src="img/facebook.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
@@ -406,7 +337,7 @@
                         <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/whiteman.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -419,7 +350,7 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Netflix</bold></small><br>
-                                    <img src="./img/netflix.svg" alt="" class="img-fluid">
+                                    <img src="img/netflix.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
@@ -435,7 +366,7 @@
                         <div class="card talent-card border-0 h-100">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/Rectangle 19 (3).svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/Rectangle 19 (3).svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -448,7 +379,7 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Flutterwave</bold></small><br>
-                                    <img src="./img/barter logo.svg" alt="" class="img-fluid pt-3">
+                                    <img src="img/barter logo.svg" alt="" class="img-fluid pt-3">
                                 </p>
                             </div>
 
@@ -471,7 +402,7 @@
                         <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/Rectangle 19 (3).svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/Rectangle 19 (3).svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -484,7 +415,7 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Facebook</bold></small><br>
-                                    <img src="./img/facebook.svg" alt="" class="img-fluid">
+                                    <img src="img/facebook.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
@@ -501,7 +432,7 @@
                         <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/Rectangle 18.svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/Rectangle 18.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -514,7 +445,7 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Netflix</bold></small><br>
-                                    <img src="./img/netflix.svg" alt="" class="img-fluid">
+                                    <img src="img/netflix.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
@@ -543,7 +474,7 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Flutterwave</bold></small><br>
-                                    <img src="./img/barter logo.svg" alt="" class="img-fluid pt-3">
+                                    <img src="img/barter logo.svg" alt="" class="img-fluid pt-3">
                                 </p>
                             </div>
 
@@ -566,7 +497,7 @@
                         <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/whiteman.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -579,7 +510,7 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Facebook</bold></small><br>
-                                    <img src="./img/facebook.svg" alt="" class="img-fluid">
+                                    <img src="img/facebook.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
@@ -596,7 +527,7 @@
                         <div class="card talent-card border-0">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/Rectangle 18.svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/Rectangle 18.svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -609,7 +540,7 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Netflix</bold></small><br>
-                                    <img src="./img/netflix.svg" alt="" class="img-fluid">
+                                    <img src="img/netflix.svg" alt="" class="img-fluid">
                                 </p>
                             </div>
 
@@ -625,7 +556,7 @@
                         <div class="card talent-card border-0 h-100">
 
                             <!-- Card image -->
-                            <img class="card-img-top" src="./img/Rectangle 19 (3).svg" alt="Card image cap">
+                            <img class="card-img-top" src="img/Rectangle 19 (3).svg" alt="Card image cap">
 
                             <!-- Card content -->
                             <div class="card-body">
@@ -638,7 +569,7 @@
                                     libero
                                     pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare <br>
                                     <small>Previously at <bold class="font-weight-bold">Flutterwave</bold></small><br>
-                                    <img src="./img/barter logo.svg" alt="" class="img-fluid pt-3">
+                                    <img src="img/barter logo.svg" alt="" class="img-fluid pt-3">
                                 </p>
                             </div>
 
@@ -699,7 +630,7 @@
                     <div class="card border-0 card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25 mx-auto px-2" src="./img/Group.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid w-25 mx-auto px-2" src="img/Group.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -720,7 +651,7 @@
                     <div class="card border-0 card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/Group2.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="img/Group2.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -741,7 +672,7 @@
                     <div class="card border-0  card-four h-100 pt-5 ">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/Group2.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="img/Group2.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -762,7 +693,7 @@
                     <div class="card border-0  card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/frontend.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="img/frontend.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -783,7 +714,7 @@
                     <div class="card border-0  card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/backend.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="img/backend.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -804,7 +735,7 @@
                     <div class="card border-0  card-four h-100 pt-5">
 
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="./img/projectmanager.svg"
+                        <img class="card-img-top img-fluid w-25  mx-auto px-2" src="img/projectmanager.svg"
                             alt="Card image cap">
 
                         <!-- Card content -->
@@ -1018,21 +949,21 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <img src="./img/alevel.svg" alt="">
+                            <img src="img/alevel.svg" alt="">
                             <h6 class="mt-3">A Level Talents</h6>
                             <p class="mt-4">We use a variety of channels to make sure that prospective talents have what
                                 their employers are looking for</p>
                         </div>
 
                         <div class="col-sm-6 mt-3">
-                            <img src="./img/growth.svg" alt="">
+                            <img src="img/growth.svg" alt="">
                             <h6 class="mt-3">100% Guaranted</h6>
                             <p class="mt-4">We know that getting this right is fundamental to the success of our
                                 business so we guarantee improved quality of hire</p>
                         </div>
 
                         <div class="col-sm-6 mt-3">
-                            <img src="./img/specialized.svg" alt="">
+                            <img src="img/specialized.svg" alt="">
                             <h6 class="mt-3">Specialized Skills</h6>
                             <p class="mt-4">We provide talents with skills targeted and specific to your company's need
                             </p>
@@ -1042,7 +973,7 @@
                 <div class="d-none d-lg-block p-5 col-lg-6 h-100">
                     <div class="card border-0 img-1 ">
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid" src="./img/Adelanke.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="img/Adelanke.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1054,14 +985,14 @@
                             <p class="card-text">Backend Developer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="./img/barter logo.svg" alt="" class="img-fluid w-25">
+                                <img src="img/barter logo.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
 
                     <div class="card border-0 img-2 mx-2">
                         <!-- Card image -->
-                        <img class="card-img-top img-fluid" src="./img/Adelanke2.svg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="img/Adelanke2.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1072,14 +1003,14 @@
                             <p class="card-text">UI/UX Designer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="./img/hotels.svg" alt="" class="img-fluid w-25">
+                                <img src="img/hotels.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
 
                     <div class="card border-0 mt-5 img-3">
                         <!-- Card image -->
-                        <img class="card-img-top" src="./img/Adelanke3.svg" alt="Card image cap">
+                        <img class="card-img-top" src="img/Adelanke3.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1090,7 +1021,7 @@
                             <p class="card-text">Frontend Developer</p>
                             <div class="div d-flex justify-content-between">
                                 <small class="">Previously at</small>
-                                <img src="./img/verifi.svg" alt="" class="img-fluid w-25">
+                                <img src="img/verifi.svg" alt="" class="img-fluid w-25">
                             </div>
                         </div>
                     </div>
@@ -1126,7 +1057,7 @@
                     <div class="card border-0 blog-card h-100">
 
                         <!-- Card image -->
-                        <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
+                        <img class="card-img-top" src="img/whiteman.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1154,7 +1085,7 @@
                     <div class="card border-0 blog-card h-100">
 
                         <!-- Card image -->
-                        <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
+                        <img class="card-img-top" src="img/whiteman.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1182,7 +1113,7 @@
                     <div class="card border-0 blog-card h-100">
 
                         <!-- Card image -->
-                        <img class="card-img-top" src="./img/whiteman.svg" alt="Card image cap">
+                        <img class="card-img-top" src="img/whiteman.svg" alt="Card image cap">
 
                         <!-- Card content -->
                         <div class="card-body">
@@ -1208,79 +1139,7 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container-fluid custom-container">
-            <div class="row top justify-content-between">
-                <div class="col-md-3">
-                    <a href="../index.html">
-                        <div class="py-3">
-                            <img src="./img/talentpool footer logo.svg" alt="talent pool logo">
-                        </div>
-                    </a>
-                    <p class="py-2">
-                        We are known for
-                        connecting top talents with top companies. We
-                        make great possibilities
-                        happen.
-                    </p>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Explore</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Home</a></li>
-                        <li class="py-1"><a href="src/aboutUs.html">About Us</a></li>
-                        <li class="py-1"><a href="./src/directory.html">Directories</a></li>
-                        <li class="py-1"><a href="./src/faq.html">FAQ</a></li>
-                        <li class="py-1"><a href="./src/contact-us.html">Contact Us</a></li>
-                        <li class="py-1"><a href="">Top Talent</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h5 class="py-3">Visit</h5>
-                    <p>
-                        Lagos NG, 17 Akinsanya St, Ojodu 100213, Ikeja
-                    </p>
-                    <div class="d-none d-md-block">
-                        <h5 class="py-3">Get in touch</h5>
-                        <p>hello@hng.tech</p>
-                        <p>+234 (0) 812 345 6789</p>
-                    </div>
-                </div>
-                <div class="col-6 d-md-none">
-                    <h5 class="py-3">Get in touch</h5>
-                    <p>hello@hng.tech</p>
-                    <p>+234 (0) 812 345 6789</p>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Follow</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Facebook</a></li>
-                        <li class="py-1"><a href="">LinkedIn</a></li>
-                        <li class="py-1"><a href="">Twitter</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Legal</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Terms</a></li>
-                        <li class="py-1"><a href="">Privacy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col py-2">
-                    <p class="copyright">
-                        TalentPool. All Rights Reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <script src="./js/bootstrap-js/popper.js"></script>
-    <script src="./js/bootstrap-js/jquery.js"></script>
-    <script src="./js/bootstrap-js/bootstrap.js"></script>
+    <%- include('./Templates/footer') %>
 </body>
 
 </html>
