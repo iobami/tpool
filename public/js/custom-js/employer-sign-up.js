@@ -465,14 +465,53 @@ orgForm.addEventListener("submit", (e) => {
 
 //Social auth implementation
 githubSubmit.addEventListener("click", (e) => {
-  
+
+  const signupEmployerGithub = async () => {
+    const API_URL = "https://api.lancers.app/v1/auth/google";
+
+    const res = await fetch(API_URL, {
+      method: "GET",
+      // mode: "no-cors",
+      //body: JSON.stringify(formData),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "User-Agent": "Developers Lancers",
+      },
+      redirect: "follow",
+    });
+
+    const data = await res.json();
+
+    if (data) {
+      document.getElementById("githubID").innerText = "Sign up with GitHub";
+      document.getElementById("githubID").disabled = false;
+    }
+    // try {
+    //   if (data.status === "success") {
+    //     $("#exampleModal").modal();
+    //   } else if (data.status === "error") {
+    //     const message =
+    //       data.error === "Someone has already registered this email"
+    //         ? "Email already exists"
+    //         : data.error === "Phone number already exist"
+    //           ? "Phone number already exists"
+    //           : data.error;
+    //     showAlert(message);
+    //   }
+    // } catch (error) {
+    //   showAlert(error);
+    // }
+  };
+
+
+  signupEmployerGithub();
 });
 googleSubmit.addEventListener("click", (e) => {
-  
+
 });
 githubSubmitOrg.addEventListener("click", (e) => {
-  
+
 });
 googleSubmitOrg.addEventListener("click", (e) => {
-  
+
 });
