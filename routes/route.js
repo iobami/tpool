@@ -4,7 +4,7 @@ const appRoute = express.Router();
 const employeeSignup = require('../controllers/employee-signup');
 
 appRoute.get('/', (req, res) => {
-  res.render('index', { pageName: 'Talent Pool' });
+  res.render('index', { pageName: 'Home' });
 });
 
 appRoute.get('/employee-sign-up', employeeSignup.employeeSignup );
