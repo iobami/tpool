@@ -3,7 +3,7 @@ const express = require("express");
 const appRoute = express.Router();
 
 appRoute.get('/', (req, res) => {
-  res.render('index', { pageName: 'Talent Pool' });
+  res.render('index', { pageName: 'Home' });
 });
 
 module.exports = appRoute;
