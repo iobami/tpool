@@ -8,7 +8,7 @@ const appRoute = express.Router();
 
 appRoute.get('/', (req, res) => {
   res.render('index', {
-    title: 'Home'
+    pageName: 'Home'
   });
 });
 
