@@ -84,13 +84,13 @@ function responseHandler(res) {
 		localStorage.setItem("user", JSON.stringify(user))
 		const userToken = JSON.parse(atob(res.data.token.split('.')[1]));
 
-		// if (userToken.userTypeId === null ) {
-		// 	return (window.location.href = "employee-profile-creation.html");
-		// } else {
-		// 	return (window.location.href = "employee-dashboard.html");
-		// }
+		if (userToken.userTypeId === null ) {
+			return (window.location.href = "employee-profile-creation.ejs");
+		} else {
+			return (window.location.href = "employee-dashboard.ejs");
+		}
 
-		return (window.location.href = "employee-dashboard.ejs");
+		// return (window.location.href = "employee-dashboard.ejs");
 	}
 }
 
