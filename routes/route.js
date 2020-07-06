@@ -7,6 +7,6 @@ appRoute.get('/', (req, res) => {
   res.render('index', { pageName: 'Home' });
 });
 
-appRoute.get('/employee-signin', employeeSignIn);
+appRoute.get('/employee-sign-in', employeeSignIn);
 
 module.exports = appRoute;
