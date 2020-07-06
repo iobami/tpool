@@ -467,11 +467,11 @@ orgForm.addEventListener("submit", (e) => {
 githubSubmit.addEventListener("click", (e) => {
 
   const signupEmployerGithub = async () => {
-    const API_URL = "https://api.lancers.app/v1/auth/google";
+    const API_URL = "https://api.lancers.app/v1/auth/github/";
 
     const res = await fetch(API_URL, {
       method: "GET",
-      // mode: "no-cors",
+      //mode: "no-cors",
       //body: JSON.stringify(formData),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -481,11 +481,11 @@ githubSubmit.addEventListener("click", (e) => {
     });
 
     const data = await res.json();
-
-    if (data) {
-      document.getElementById("githubID").innerText = "Sign up with GitHub";
-      document.getElementById("githubID").disabled = false;
-    }
+    console.log(data)
+    // if (data) {
+    //   document.getElementById("githubID").innerText = "Sign up with GitHub";
+    //   document.getElementById("githubID").disabled = false;
+    // }
     // try {
     //   if (data.status === "success") {
     //     $("#exampleModal").modal();
