@@ -17,6 +17,12 @@ const orgForm = document.getElementById("orgForm"),
   alert = document.getElementById("alert"),
   alertMessage = document.getElementById("alertMessage");
 
+//Define github and google variable for individual and organization
+const githubSubmit = document.getElementById("githubID");
+const googleSubmit = document.getElementById("googleID");
+const githubSubmitOrg = document.getElementById("githubIdOrg");
+const googleSubmitOrg = document.getElementById("googleIdOrg");
+
 // object for storing validation status (variable)
 let validated = {};
 
@@ -268,6 +274,8 @@ confirmPassword.addEventListener("blur", () => {
   }
 });
 
+
+
 // form submissions
 
 individualForm.addEventListener("submit", (e) => {
@@ -336,8 +344,8 @@ individualForm.addEventListener("submit", (e) => {
             data.error === "Someone has already registered this email"
               ? "Email already exists"
               : data.error === "Phone number already exist"
-              ? "Phone number already exists"
-              : data.error;
+                ? "Phone number already exists"
+                : data.error;
           showAlert(message);
         }
       } catch (error) {
@@ -421,8 +429,8 @@ orgForm.addEventListener("submit", (e) => {
             data.error === "Someone has already registered this email"
               ? "Email already exists"
               : data.error === "Phone number already exist"
-              ? "Phone number already exists"
-              : data.error;
+                ? "Phone number already exists"
+                : data.error;
           showAlert(message);
         }
       } catch (error) {
@@ -452,4 +460,19 @@ orgForm.addEventListener("submit", (e) => {
       showAlert("Please accept the Terms and Conditions to proceed.");
     }
   }
+});
+
+
+//Social auth implementation
+githubSubmit.addEventListener("click", (e) => {
+  
+});
+googleSubmit.addEventListener("click", (e) => {
+  
+});
+githubSubmitOrg.addEventListener("click", (e) => {
+  
+});
+googleSubmitOrg.addEventListener("click", (e) => {
+  
 });
