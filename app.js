@@ -3,10 +3,12 @@ const express = require('express');
 // const cookieParser = require('cookie-parser');
 const appRoute = require('./routes');
 const adminRoute = require('./routes/admin/auth');
+const adminDashRoute = require('./routes/admin/dashboard');
 const employeeAuthRoute = require('./routes/employee/auth');
 const employeeDashboardRoute = require('./routes/employee/dashboard');
 const employerAuthRoute = require('./routes/employer/auth');
 const employerDashboardRoute = require('./routes/employer/dashboard');
+const topTalentsRoute = require('./routes/employee/topTalents');
 const passwordRoute = require('./routes/password/index');
 
 
@@ -34,6 +36,8 @@ app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
 app.use(employerAuthRoute);
 app.use(employerDashboardRoute);
+app.use(adminDashRoute)
+app.use(topTalentsRoute);
 app.use(passwordRoute);
 
 module.exports = app;
