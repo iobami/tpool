@@ -1,6 +1,8 @@
 const express = require("express");
 const employeeController = require('../../controllers/employee/dashboard');
 const appRoute = express.Router();
+const { employerDashboard } = require('../../controllers/employer/dashboard');
+
 
 appRoute.get('/', (req, res) => {
   res.render('index', { variable: 'Hello Guys' });
@@ -15,5 +17,6 @@ appRoute.get('/employee-settings', employeeController.getEmployeeSettings);
 appRoute.get('/employee-employees', employeeController.getEmployeeEmployees);
 appRoute.get('/employee-profileCreation', employeeController.getEmployeeProfileCreation);
 module.exports = appRoute;
+
 
 
