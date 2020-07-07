@@ -85,7 +85,7 @@ function responseHandler(res) {
 		document.cookie = `user_id=${
 			res.data.user
 		}; path=/; expires=${date.toUTCString()}`;
-		return (window.location.href = "employer-profile-page-creation1.html");
+		return (window.location.href = "/employer-create-profile");
 	}
 }
 
