@@ -1,6 +1,6 @@
 module.exports = {
   employerSignIn : (req, res) => {
-    res.render('employer-signin', {pageName: 'Employer Login'})
+    res.render('Pages/employer-signin', {pageName: 'Employer Login'})
   },
 
   employerSignup: (req, res) => {
