@@ -23,5 +23,9 @@ module.exports = {
   
   adminVerification: (req, res) => {
     res.render('Pages/admin-verification', {pageName: 'Admin Verification'})
+  },
+
+  employeeReview: (req, res) => {
+    res.render('Pages/employee-review', { pageName: 'Employee Review'} )
   }
 }
