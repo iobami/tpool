@@ -18,10 +18,14 @@ module.exports = {
    },
   
    dashboard: (req, res) => {
-    res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard',path: "admin-dashboard",});
+    res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard',path: "admin-dashboard"});
   },
 
   adminVerification: (req, res) => {
     res.render('Pages/admin-verification', {pageName: 'Admin Verification'})
+  },
+
+  adminSettings: (req, res) => {
+    res.render('Pages/admin-settings', {pageName: 'Admin Settings',path: "admin-settings"})
   }
 }
