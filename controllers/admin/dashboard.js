@@ -15,6 +15,10 @@ module.exports = {
    allEmployers: (req, res) => {
     res.render('Pages/admin-dash-employers', { pageName: 'Admin | All Employers'})
    },
+
+   allEmployees: (req, res) => {
+    res.render('Pages/view-employee-dashboard', { pageName: 'View Employee' });
+   },
   
    dashboard: (req, res) => {
     res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard',path: "admin-dashboard"});
@@ -30,5 +34,9 @@ module.exports = {
 
   adminSettings: (req, res) => {
     res.render('Pages/admin-settings', {pageName: 'Admin Settings',path: "admin-settings"})
+  },
+
+  adminEmployee: (req, res) => {
+    res.render('Pages/admin-viewEmployee', {pageName: 'Talent Pool | View Employee',path: "admin-viewEmployee"})
   }
 }
