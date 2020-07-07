@@ -26,4 +26,12 @@ module.exports = {
   employerAddTeam: (req, res) => {
     res.render('Pages/employer-add-a-team', { pageName: 'Employer - Add Team' });
   },
+
+  employerCompanyDashboard: (req, res) => {
+    res.render('Pages/employer-company-dashboard', { pageName: 'Employer Dashboard' });
+  },
+
+  employerIndividualCreateProfile: (req, res) => {
+    res.render('Pages/employer-indiv', { pageName: 'Create Profile' });
+  },
 }

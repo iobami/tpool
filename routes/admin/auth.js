@@ -1,8 +1,9 @@
 const express = require("express");
 const appRoute = express.Router();
 
-const { adminSignUp } = require('../../controllers/admin/auth');
+const { adminSignUp, adminLogin } = require('../../controllers/admin/auth');
 
-appRoute.get('/admin-signup', adminSignUp)
+appRoute.get('/admin-signup', adminSignUp);
+appRoute.get('/admin-login', adminLogin);
 
 module.exports = appRoute;

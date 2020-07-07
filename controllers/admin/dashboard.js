@@ -1,12 +1,11 @@
 module.exports = {
-  faq : (req, res) => {
-     res.render('Pages/admin-dash-faq', { pageName: 'Faq'});
-   },
- 
-   employerMessages: (req, res) => {
-     res.render('Pages/admin-dash-employer-msg', { pageName: 'Messages for employer'});
-   },
+  faq: (req, res) => {
+    res.render('Pages/admin-dash-faq', { pageName: 'Faq' });
+  },
 
+  employerMessages: (req, res) => {
+    res.render('Pages/admin-dash-employer-msg', { pageName: 'Messages for employer' });
+  },
 
    messages: (req, res) => {
      res.render('Pages/admin-dash-messages', { pageName: 'Admin dashboard messages'});
@@ -18,14 +17,18 @@ module.exports = {
    },
   
    dashboard: (req, res) => {
-    res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard',path: "admin-dashboard",});
+    res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard',path: "admin-dashboard"});
   },
-  
+
   adminVerification: (req, res) => {
     res.render('Pages/admin-verification', {pageName: 'Admin Verification'})
   },
 
   employeeReview: (req, res) => {
     res.render('Pages/employee-review', { pageName: 'Employee Review'} )
+  },
+
+  adminSettings: (req, res) => {
+    res.render('Pages/admin-settings', {pageName: 'Admin Settings',path: "admin-settings"})
   }
 }

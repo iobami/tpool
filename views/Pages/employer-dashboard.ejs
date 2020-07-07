@@ -312,7 +312,10 @@
 
   <!-- Optional JavaScript -->
   <script src="../js/custom-js/side-nav.js"></script>
-  <%- include('../Templates/footer.ejs') %>
+  <script src="./js/bootstrap-js/popper.js"></script>
+<script src="./js/bootstrap-js/jquery.js"></script>
+<script src="./js/bootstrap-js/bootstrap.js"></script>
+  <script>
     $('#myModal').on('shown.bs.modal', function () {
       $('#myInput').trigger('focus')
     })
