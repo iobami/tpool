@@ -26,5 +26,9 @@ module.exports = {
 
   adminSettings: (req, res) => {
     res.render('Pages/admin-settings', {pageName: 'Admin Settings',path: "admin-settings"})
+  },
+
+  adminEmployee: (req, res) => {
+    res.render('Pages/admin-viewEmployee', {pageName: 'Talent Pool | View Employee',path: "admin-viewEmployee"})
   }
 }
