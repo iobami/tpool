@@ -4,7 +4,7 @@ module.exports = {
   },
 
   employerSignup: (req, res) => {
-    res.render('employer-sign-up', {
+    res.render('Pages/employer-sign-up', {
       pageName: 'Employer Signup'
   });
   }

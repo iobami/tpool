@@ -2,6 +2,11 @@ const path = require('path');
 const express = require('express');
 // const cookieParser = require('cookie-parser');
 const appRoute = require('./routes');
+const adminRoute = require('./routes/admin/auth');
+const employeeAuthRoute = require('./routes/employee/auth');
+const employeeDashboardRoute = require('./routes/employee/dashboard');
+const employerAuthRoute = require('./routes/employer/auth');
+const employerDashboardRoute = require('./routes/employer/dashboard');
 
 
 const app = express();
@@ -16,10 +21,17 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use(appRoute);
-// app.use('/static', express.static(path.join(__dirname, 'public')))
 
+// app.use('/static', express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+//All routes
+app.use(appRoute);
+//app.use(adminRoute);
+app.use(employeeAuthRoute);
+app.use(employeeDashboardRoute);
+app.use(employerAuthRoute);
+app.use(employerDashboardRoute);
 
 module.exports = app;

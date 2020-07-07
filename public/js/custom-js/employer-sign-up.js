@@ -467,7 +467,7 @@ orgForm.addEventListener("submit", (e) => {
 githubSubmit.addEventListener("click", (e) => {
 
   const signupEmployerGithub = async () => {
-    const API_URL = "https://api.lancers.app/v1/auth/github/";
+    const API_URL = "https://api.lancers.app/v1/auth/github";
 
     const res = await fetch(API_URL, {
       method: "GET",
