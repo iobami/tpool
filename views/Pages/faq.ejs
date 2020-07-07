@@ -2,71 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
-    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css">
-    <link rel="stylesheet" href="../styles/custom-css/main.css">
-    <link rel="stylesheet" href="../styles/custom-css/header.css">
-    <link rel="stylesheet" href="../styles/custom-css/footer.css">
-    <link rel="stylesheet" href="../styles/custom-css/faq.css">
-    <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
-    <title>FAQ</title>
+    <%- include('../Templates/head') %>
 </head>
 
 <body>
 
-
-
-    <header class="header">
-        <div class="container-fluid custom-container nav-container">
-            <nav class="navbar navbar-expand-lg navbar-light py-1">
-                <a class="navbar-brand" href="../index.html">
-                    <img src="../../img/talentpool header logo.svg" alt="talent pool logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item px-3 active">
-                            <a class="nav-link nav-link-black" href="../index.html">Home <span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="./aboutUs.html">About Us</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="./directory.html">Directories</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="./faq.html">FAQ</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link nav-link-black" href="./contact-us.html">Contact Us</a>
-                        </li>
-                        <li class="nav-item px-3 my-2 my-lg-0">
-                            <a class="nav-link btn btn-hire-talent px-3 py-1" href="./employer-sign-in.html">Sign in</a>
-                        </li>
-                        <li class="nav-item px-3 dropdown">
-                            <button class="nav-link btn btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sign Up
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
-                                <p>Sign up as: </p>
-                                <a class="dropdown-item" href="./employer-sign-up.html">Employer</a>
-                                <a class="dropdown-item" href="./employee-sign-up.html">Talent</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-
+    <%- include('../Templates/header') %>
       <main>
         <div class="container-fluid p-0">
 
@@ -490,7 +431,7 @@
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a role="button" href="#">
-                                            <span class="prepend"><img src="../img/telegram.svg" alt=""></span>
+                                            <span class="prepend"><img src="img/telegram.svg" alt=""></span>
                                             Telegram
                                         </a>
                                     </h4>
@@ -504,7 +445,7 @@
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a role="button" href="#">
-                                            <span class="prepend"><img src="../img/email.svg" alt=""></span>
+                                            <span class="prepend"><img src="img/email.svg" alt=""></span>
                                             contact@lancers.app
                                         </a>
                                     </h4>
@@ -519,7 +460,7 @@
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a role="button" href="#">
-                                            <span class="prepend"><img src="../img/slack.svg" alt=""></span>
+                                            <span class="prepend"><img src="img/slack.svg" alt=""></span>
                                             Slack
                                         </a>
                                     </h4>
@@ -532,82 +473,8 @@
             </div>
             </div>
       </main>
+      <%- include('../Templates/footer') %>
 
-      <footer class="footer">
-        <div class="container-fluid custom-container">
-            <div class="row top justify-content-between">
-                <div class="col-md-3">
-                    <a href="index.html">
-                        <div class="py-3">
-                            <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
-                        </div>
-                    </a>
-                    <p class="py-2">
-                        We are known for
-                        connecting top talents with top companies. We
-                        make great possibilities
-                        happen.
-                    </p>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Explore</h5>
-                    <ul class="pl-0">
-                        <li><a href="../index.html">Home</a></li>
-                        <li class="py-1"><a href="aboutUs.html">About Us</a></li>
-                        <li class="py-1"><a href="./directory.html">Directories</a></li>
-                        <li class="py-1"><a href="faq.html">FAQ</a></li>
-                        <li class="py-1"><a href="contact-us.html">Contact Us</a></li>
-                        <li class="py-1"><a href="">Top Talent</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h5 class="py-3">Visit</h5>
-                    <p>
-                        3 Birrel Avenue, Sabo. Yaba, Lagos State, Nigeria
-                    </p>
-                    <div class="d-none d-md-block">
-                        <h5 class="py-3">Get in touch</h5>
-                        <p>hello@hng.tech</p>
-                        <p>+234 (0) 812 345 6789</p>
-                    </div>
-                </div>
-                <div class="col-6 d-md-none">
-                    <h5 class="py-3">Get in touch</h5>
-                    <p>hello@hng.tech</p>
-                    <p>+234 (0) 812 345 6789</p>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Follow</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Facebook</a></li>
-                        <li class="py-1"><a href="">LinkedIn</a></li>
-                        <li class="py-1"><a href="">Twitter</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Legal</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Terms</a></li>
-                        <li class="py-1"><a href="">Privacy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col py-2">
-                    <p class="copyright">
-                        TalentPool. All Rights Reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-  <!-- </div> -->
-
-    <script src="../js/bootstrap-js/jquery.js"></script>
-    <script src="../js/bootstrap-js/bootstrap.js"></script>
-    <script src="../js/bootstrap-js/popper.js"></script>
     <script src="../js/custom-js/faq.js"></script>
 </body>
 
