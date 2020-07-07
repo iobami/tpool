@@ -17,5 +17,9 @@ module.exports = {
 
   employerDashboardSupport: (req, res) => {
     res.render('Pages/employer-dash-support', { pageName: 'Employer Dashboard' });
+  },
+
+  employerEmployeeGallery: (req, res) => {
+    res.render('Pages/employer-employees-gallery', { pageName: 'Employee Gallery' });
   }
 }
