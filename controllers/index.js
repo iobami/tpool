@@ -24,8 +24,5 @@ module.exports = {
   },
   comingSoon: (req, res) => {
     res.render('Pages/coming-soon', { pageName: 'Coming Soon' });
-  },
-  envelope: (req, res) => {
-    res.render('Pages/envelope', {pageName: 'Envelope'})
   }
 }
