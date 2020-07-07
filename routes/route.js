@@ -8,7 +8,10 @@ appRoute.get('/', (req, res) => {
   res.render('index', { pageName: 'Home' });
 });
 
-appRoute.get('/employee-sign-in', employeeSignIn);
+appRoute.get('/employer-sign-in', employerSignIn)
+
+
+appRoute.get('/employee-signin', employeeSignIn);
 appRoute.get('/employee-sign-up', employeeSignup );
 appRoute.get('/aboutUs', about);
 
