@@ -1,5 +1,5 @@
 module.exports = {
     employerDashboard: (req, res) => {
-        res.render('employer-dashboard', { pageName: 'Employer Dashboard' });
+        res.render('Pages/employer-dashboard', { pageName: 'Employer Dashboard' });
     },
 }
