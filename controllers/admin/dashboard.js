@@ -13,7 +13,7 @@ module.exports = {
    },
    dashboard: (req, res) => {
     res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard',path: "admin-dashboard",});
-  }
+  },
   adminVerification: (req, res) => {
     res.render('Pages/admin-verification', {pageName: 'Admin Verification'})
 }
