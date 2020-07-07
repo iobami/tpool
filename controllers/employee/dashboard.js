@@ -158,10 +158,10 @@ exports.getEmployeeSettings = (req, res, next) => {
   });
 };
 
-exports.getEmployeeEmployees = (req, res, next) => {
-  res.render("Pages/employee-employees", {
-    pageTitle: "Talent Pool | Employee Employees",
-    path: "/employee-employees",
+exports.getEmployeeEmployers = (req, res, next) => {
+  res.render("Pages/employee-employer", {
+    pageTitle: "Talent Pool | Employee Employers",
+    path: "/employee-employers",
   });
 };
 
