@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
  const userInformation = 'eee5269b-f4e7-4058-bcf5-77b4b2834c97';
 var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9kdXR1c2lub21vd3VubWlAZ21haWwuY29tIiwidXNlcklkIjoiZWVlNTI2OWItZjRlNy00MDU4LWJjZjUtNzdiNGIyODM0Yzk3IiwidXNlclJvbGUiOiJST0wtRU1QTE9ZRUUiLCJ1c2VyVHlwZUlkIjoiOWM2MzFmYzctNjViNC00ZDFiLTlkNGEtMTE4OTUxZjRkMzcxIiwiaWF0IjoxNTk0MTAxNjI1LCJleHAiOjE1OTQxODgwMjV9.V5y8ztfmM-M48KOJlL2ZjfZuQ9y8iSm-ByP9bUsskXc';
 const decodedToken = jwtDecode(token);
-console.log(decodedToken);
+// console.log(decodedToken);
 const userId = decodedToken.userTypeId;
 
 exports.getEmployeeDash = async (req, res, next) => {
@@ -32,10 +32,10 @@ exports.getEmployeeDash = async (req, res, next) => {
     let employeeSkill = userSkill.data.data.skills;
     let employeeProfile = userProfile.data.data;
     // console.log(userProfile.data.data.availability);
-    console.log(employeeSkill);
+    // console.log(employeeSkill);
     // .then((res) => {
     //   const data = res.data;
-    res.render("employee-dashboard", {
+    res.render("Pages/employee-dashboard", {
       pageTitle: "Talent Pool | Employee Dashboard",
       path: "employee-dashboard",
       employeeProfile,
@@ -107,7 +107,7 @@ exports.getEmployeeDash = async (req, res, next) => {
 };
 
 exports.getEmployeeMessages = (req, res, next) => {
-  res.render("employee-messages", {
+  res.render("Pages/employee-messages", {
     pageTitle: "Talent Pool | Employee Messages",
     path: "employee-messages",
   });
@@ -121,7 +121,7 @@ exports.getEmployeeProfile = async (req, res, next) => {
       },
     })
     let employeeProfile = userProfile.data.data;
-    res.render("employeeProfile", {
+    res.render("Pages/employeeProfile", {
       pageTitle: "Talent Pool | Employee Profile",
       path: "employee-profile",
       employeeProfile,
@@ -138,28 +138,28 @@ exports.getEmployeeProfile = async (req, res, next) => {
 };
 
 exports.getEmployeeAddTeam = (req, res, next) => {
-  res.render("employee-addTeam", {
+  res.render("Pages/employee-addTeam", {
     pageTitle: "Talent Pool | Employee Add Team",
     path: "employee-addTeam",
   });
 };
 
 exports.getEmployeeSupport = (req, res, next) => {
-  res.render("employee-support", {
+  res.render("Pages/employee-support", {
     pageTitle: "Talent Pool | Employee Support",
     path: "employee-support",
   });
 };
 
 exports.getEmployeeSettings = (req, res, next) => {
-  res.render("employee-settings", {
+  res.render("Pages/employee-settings", {
     pageTitle: "Talent Pool | Employee Settings",
     path: "employee-settings",
   });
 };
 
 exports.getEmployeeEmployees = (req, res, next) => {
-  res.render("employee-employees", {
+  res.render("Pages/employee-employees", {
     pageTitle: "Talent Pool | Employee Employees",
     path: "/employee-employees",
   });
@@ -167,7 +167,7 @@ exports.getEmployeeEmployees = (req, res, next) => {
 
 
 exports.getEmployeeProfileCreation = (req, res, next) => {
-  res.render("employee-profile-creation", {
+  res.render("Pages/employee-profile-creation", {
     pageTitle: "TalentPool | Employer Create Profile",
     path: "/employee-profileCreation",
   });
