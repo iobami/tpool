@@ -21,5 +21,9 @@ module.exports = {
 
   employerEmployeeGallery: (req, res) => {
     res.render('Pages/employer-employees-gallery', { pageName: 'Employee Gallery' });
-  }
+  },
+
+  employerAddTeam: (req, res) => {
+    res.render('Pages/employer-add-a-team', { pageName: 'Employer - Add Team' });
+  },
 }
