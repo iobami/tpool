@@ -22,12 +22,12 @@ const submitButton = document.getElementById('signup-btn')
 
 let logIn = document.getElementById('login-btn')
 logIn.addEventListener('click', () => {
-  window.location.replace('employee-sign-in')
+  window.location.replace('/employee-sign-in')
 })
 
 let logInV2 = document.getElementById('login-btnV2')
 logInV2.addEventListener('click', () => {
-  window.location.replace('employee-sign-in')
+  window.location.replace('/employee-sign-in')
 })
 
 let github = document.getElementById('githubBtn')
