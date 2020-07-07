@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include('../Templates/head') %>
+   <link rel="stylesheet" href="../styles/custom-css/employers-metrics-page.css">
+</head>
+<body>
+   <!-- Dashboard nav -->
+  <%- include('../Templates/header') %>
+       
+   <main>
+    <div class="jumbotron jumbotron-fluid text-white text-center">
+      <div class="container">
+      <p class="text-wrap"> Thanks for choosing HNG. Before we proceed, we’ll like to ask a few questions to <br> better understand your business needs</p>
+      </div>
+    </div>
+
+      <div class="container mt-5">
+       <form action="">
+          <div class="form-group">
+             <label class="form_label" for="category">Category of interns of interns of interest</label>
+             <select class="form-control form_select" id="category">
+                <option selected value="Front end developers">Front end developers</option>
+                <option value="Back end developers">Back end developers</option>
+                <option value="Mobile developers">Mobile developers</option>
+                <option value="UI/UX designers">UI/UX designers</option>
+             </select>
+             <div></div>
+          </div>
+          <div class="row">
+             <div class="col-md-6 form-group">
+                <label>How many interns are you hiring?</label>
+                <select class="form-control form_select" id="numofinterns">
+                   <option value="one">One</option>
+                </select>
+                <div></div>
+             </div>
+             <div class="col-md-6 form-group">
+                <label>What type of commitment are you on the lookout for?</label>
+                <select class="form-control form_select" id="commit">
+                   <option value="full-time">Full-time</option>
+                </select>
+                <div></div>
+             </div>
+          </div>
+          <div class="row">
+             <div class="col-md-6 form-group">
+                <label>When do you need the hire to start?</label>
+                <input class="form-control form_input" type="text">
+             </div>
+             <div></div>
+             <div class="col-md-6 form-group">
+               <p>Are you open to working with remote hires?</p>
+              <div class="justify-space-around">
+               <input class="check-input" type="radio" name="radiobutton">
+               <label class="" for="yes">Yes</label>
+               <input class="check-input ml-4" type="radio" name="radiobutton">
+               <label class="" for="yes">No</label>
+              </div>
+              <div></div>
+             </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6 form-group">
+           <label>What type of subscription are you going for?</label>
+           <select class="form-control form_select" id="commit">
+              <option value="full-time">Premium</option>
+           </select>
+           <div></div>
+          </div>
+          <div class="col-md-6 form-group">
+             <p>HNG has a pool of global top talents in the tech industries and our subscription goes for $80 per intern. Does your budget align with our subscription rate?</p>
+             <div class="justify-space-around">
+              <input class="check-input" type="radio" name="radiobutton1">
+              <label class="" for="yes">Yes</label>
+              <input class="check-input ml-4" type="radio" name="radiobutton1">
+              <label class="" for="yes">No</label>
+             </div>
+             <div></div>
+          </div>
+         </div>
+       </form>
+      </div>
+
+    <div class="d-flex justify-content-center">
+       <button class="btn mx-auto sub-btn" type="submit">Submit</button>
+    </div>
+
+  </main>
+  <%- include('../Templates/footer') %>
+</body>
+</html>
