@@ -8,5 +8,8 @@ appRoute.get('/', (req, res) => {
 });
 
 appRoute.get('/employee-sign-in', employeeSignIn);
+appRoute.get('/employer-dashboard', (req, res) => {
+  res.render('employer-dashboard', { pageName: 'Employer Dashboard' });
+})
 
 module.exports = appRoute;
