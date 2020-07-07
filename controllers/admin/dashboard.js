@@ -7,7 +7,7 @@ module.exports = {
      res.render('Pages/admin-dash-employer-msg', { pageName: 'Messages for employer'});
    },
 
-   messages: (req, res) => {
-     res.render('Pages/admin-dash-messages', { pageName: 'Admin dashboard messages'});
-   }
- }
+   adminVerification: (req, res) => {
+    res.render('Pages/admin-verification', {pageName: 'Admin Verification'})
+}
+}
