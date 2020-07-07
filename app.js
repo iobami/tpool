@@ -38,7 +38,7 @@ app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
 app.use(employerAuthRoute);
 app.use(employerDashboardRoute);
-// app.use(adminDashRoute)
+
 app.use(topTalentsRoute);
 app.use(testimonialsRoute);
 app.use(directoryRoute);
