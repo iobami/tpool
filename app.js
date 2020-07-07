@@ -7,6 +7,7 @@ const employeeAuthRoute = require('./routes/employee/auth');
 const employeeDashboardRoute = require('./routes/employee/dashboard');
 const employerAuthRoute = require('./routes/employer/auth');
 const employerDashboardRoute = require('./routes/employer/dashboard');
+const topTalentsRoute = require('./routes/employee/topTalents');
 
 
 const app = express();
@@ -33,5 +34,6 @@ app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
 app.use(employerAuthRoute);
 app.use(employerDashboardRoute);
+app.use(topTalentsRoute);
 
 module.exports = app;
