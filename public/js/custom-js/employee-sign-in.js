@@ -90,7 +90,7 @@ function responseHandler(res) {
 			return (window.location.href = "/employee-dashboard");
 		}
 
-		// return (window.location.href = "employee-dashboard.ejs");
+		// return (window.location.href = "employee-dashboard.html");
 	}
 }
 

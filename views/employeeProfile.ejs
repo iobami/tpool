@@ -1,48 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talent Pool | Employee Profile</title>
-    <!-- Bootstrap core CSS -->
-    <!-- Custom styles for this template -->
-    <link href="../styles/bootstrap-css/bootstrap.css" rel="stylesheet">
-
-    <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
-    <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
-    <link href="../styles/custom-css/modal.css" rel="stylesheet">
-    <link href="../styles/custom-css/employeeProfile.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
-    <!-- <link href="css/font-awesome.css" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/fc9346f24c.js" crossorigin="anonymous"></script>
+    <%- include('./includes/employeeProfileHead') %>
 </head>
 
 <body>
 
 
 
-    <div class="sidenav" id="sideNav">
-        <div class="logo__wrapper">
-            <div class="d-flex justify-content-center align-items-center logo__image">
-                <img src="../img/navLogo.svg" alt="" />
-            </div>
-        </div>
-
-        <ul class="sidenav_links">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="/src/employee_profile.html" class="active">Profile</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">Employers</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Settings</a></li>
-        </ul>
-    </div>
-
-    <div id="body__click"></div>
+    <%- include('./includes/employeeSideNav') %>
 
         <div class="modal fade modal-static" tabindex="-1" role="dialog" id="global_modal">
             <div class="modal-dialog modal-dialog-centered">
@@ -84,10 +50,10 @@
                         </div>
     
                         <div class="d-flex align-items-center top__nav__user">
-                            <div class="img-fluid mr-2"><img src="../img/Employer Dashboard/user2.png" alt=""></div>
+                            <div class="img-fluid mr-2"><%= employeeProfile.picture_url %></div>
                             <div class="top__nav__user__name">
-                                <h6 class="text-primary m-0">Adelanke Adelanke</h6>
-                                <p class="m-0 mr-0">Employee</p>
+                                <h6 class="text-primary m-0"><%= employeeProfile.first_name %></h6>
+                                <p class="m-0 mr-0"><%= employeeProfile.user_type %></p>
               </div>
               
               <div class="dropdown">
@@ -98,7 +64,7 @@
                 </div> 
                 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navMenuLink">
-                  <a class="dropdown-item" href="./employee_profile.html">Profile</a>
+                  <!-- <a class="dropdown-item" href="./employee_profile.html">Profile</a> -->
                   <a class="dropdown-item" href="#">Sign Out</a>
                 </div>
               </div>
@@ -113,18 +79,18 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="card px-4 py-5 bio">
-                            <img src="../img/iprofile/prof-pic.svg" alt="" class="img-fluid">
+                            <%= employeeProfile.picture_url %>
                             <div class="intern-main text-center mt-4">
-                                <h3>Genesis Anosike</h3>
-                                <p>UI/UX Designer</p>
+                                <h3><%= employeeProfile.first_name %><%= employeeProfile.last_name %></h3>
+                                <!-- <p><%= employeeProfile.skillCategory %></p> -->
                             </div>
                             <hr>
                             <div class="intern-other">
-                                <p><span><img src="../img/iprofile/carbon_location.svg" alt=""></span> Ibadan, Nigeria
-                                </p>
-
+                                <!-- <p><span><img src="../img/iprofile/carbon_location.svg" alt=""></span> <%= employeeProfile.location %>
+                                </p> -->
                                 <p><span><img src="../img/iprofile/carbon_email.svg" alt=""></span>
-                                    anosikegenesis@gmail.com
+                                
+                                    <%= decodedToken.email %>
                                 </p>
 
                             </div>
@@ -419,131 +385,7 @@
                             </div>
                         </section>
 
-                        <section id="socials">
-                            <div class="card p-4">
-                                <div class="section-title py-2">
-                                    <div class="section-name">
-                                        <h4>Social accounts</h4>
-                                    </div>
-                                    <div class="section-icon">
-                                        <!-- <img src="../img/iprofile/carbon_add.svg" alt=""> -->
-
-                                <!---////////////////////////////////////////////////////////////////////////////
-                                                         Start of social media popup
-                                ////////////////////////////////////////////////////////////////////////////////--> 
-                                        <button type="button" class="btn" data-toggle="modal" data-target="#socialPopup"> 
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z" fill="#084482"/>
-                                            </svg>
-                                        </button>
-                                        <div class="modal fade" id="socialPopup">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Add social media links</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button> 
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form role="form" action="/action_page.php">
-                                                            <div class="form-group">
-                                                                <label for="sMedia">Select platform</label>
-                                                                <select name="social-media" class="form-control border border-primary px-5" id="sMedia">
-                                                                    <option value="dribble">Dribble</option>
-                                                                    <option value="twitter">Twitter</option>
-                                                                    <option value="behance">Behance</option>
-                                                                    <option value="github">Github</option>
-                                                                    <option value="linkedin">LinkedIn</option>
-                                                                    <option value="hasnode">Hasnode</option>
-                                                                </select>
-                                                                <img src="../img/search-icon.png" class="img-fluid ml-3" alt="">
-                                                                <input type="text" class="form-control px-4 mt-2 mb-4" value="Dribble" placeholder="" required="required"/>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="link">Account link</label>
-                                                                <input type="url" class="form-control text-muted" id="link" placeholder="Paste valid profile link here" required="required"/>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer border-0 mx-auto">
-                                                        <button type="submit" class="btn btn-primary btn-lg mb-4" data-dismiss="modal">Add link</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!--- End of Social media popup --> 
-                                    </div>
-
-                                </div>
-                                <ul class='lists'>
-                                    <li>
-                                        <div class="list-item"><span class="mr-2"><img
-                                                    src="../img/iprofile/ant-design_twitter-outlined.svg" alt="">
-                                            </span>Twitter</div>
-                                        <div class="list-trash">
-                                          <!-- <img src="../img/iprofile/edit.svg" alt=""> -->
-                                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M21.5 4.25L17.75 0.5L2.75 15.5L1.25 20.75L6.5 19.25L21.5 4.25ZM14.75 3.5L18.5 7.25L14.75 3.5ZM2.75 15.5L6.5 19.25L2.75 15.5Z" stroke="#084482" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="list-item"><span class="mr-2"><img
-                                                    src="../img/iprofile/topcoat_dribble.svg" alt="">
-                                            </span>Dribble</div>
-                                        <div class="list-trash">
-                                          <!-- <img src="../img/iprofile/edit.svg" alt=""> -->
-                                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M21.5 4.25L17.75 0.5L2.75 15.5L1.25 20.75L6.5 19.25L21.5 4.25ZM14.75 3.5L18.5 7.25L14.75 3.5ZM2.75 15.5L6.5 19.25L2.75 15.5Z" stroke="#084482" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="list-item"><span class="mr-2"><img
-                                                    src="../img/iprofile/ant-design_behance-outlined.svg" alt="">
-                                            </span>Behance</div>
-                                        <div class="list-trash">
-                                          <!-- <img src="../img/iprofile/edit.svg" alt=""> -->
-                                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M21.5 4.25L17.75 0.5L2.75 15.5L1.25 20.75L6.5 19.25L21.5 4.25ZM14.75 3.5L18.5 7.25L14.75 3.5ZM2.75 15.5L6.5 19.25L2.75 15.5Z" stroke="#084482" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="list-item"><span class="mr-2"><img
-                                                    src="../img/iprofile/ant-design_github-filled.svg" alt="">
-                                            </span>Github</div>
-                                        <div class="list-trash">
-                                          <!-- <img src="../img/iprofile/edit.svg" alt=""> -->
-                                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M21.5 4.25L17.75 0.5L2.75 15.5L1.25 20.75L6.5 19.25L21.5 4.25ZM14.75 3.5L18.5 7.25L14.75 3.5ZM2.75 15.5L6.5 19.25L2.75 15.5Z" stroke="#084482" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="list-item"><span class="mr-2"><img
-                                                    src="../img/iprofile/ant-design_linkedin-filled.svg" alt="">
-                                            </span>Linkedin</div>
-                                        <div class="list-trash">
-                                          <!-- <img src="../img/iprofile/edit.svg" alt=""> -->
-                                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M21.5 4.25L17.75 0.5L2.75 15.5L1.25 20.75L6.5 19.25L21.5 4.25ZM14.75 3.5L18.5 7.25L14.75 3.5ZM2.75 15.5L6.5 19.25L2.75 15.5Z" stroke="#084482" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="list-item"><span class="mr-2"><img
-                                                    src="../img/iprofile/cib_hashnode.svg" alt="">
-                                            </span>Hashnode</div>
-                                        <div class="list-trash">
-                                          <!-- <img src="../img/iprofile/edit.svg" alt=""> -->
-                                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M21.5 4.25L17.75 0.5L2.75 15.5L1.25 20.75L6.5 19.25L21.5 4.25ZM14.75 3.5L18.5 7.25L14.75 3.5ZM2.75 15.5L6.5 19.25L2.75 15.5Z" stroke="#084482" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-
+                        
                     </div>
                 </div>
             </div>
