@@ -15,6 +15,10 @@ module.exports = {
    allEmployers: (req, res) => {
     res.render('Pages/admin-dash-employers', { pageName: 'Admin | All Employers'})
    },
+
+   allEmployees: (req, res) => {
+    res.render('Pages/view-employee-dashboard', { pageName: 'View Employee' });
+   },
   
    dashboard: (req, res) => {
     res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard',path: "admin-dashboard"});
