@@ -9,5 +9,8 @@ module.exports = {
 
    messages: (req, res) => {
      res.render('Pages/admin-dash-messages', { pageName: 'Admin dashboard messages'});
-   }
+   },
+   dashboard: (req, res) => {
+    res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard',path: "admin-dashboard",});
+  }
  }
