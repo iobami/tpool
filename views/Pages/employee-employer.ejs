@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <%- include('../includes/employee-employerHead') %>
+</head>
+
+<body>
+    <!-- header -->
+    <%- include('../includes/employeeHeader') %>
+    <!-- header ends -->
+
+    <div class="container-fluid mt-4 pb-5">
+        <div class="row">
+            <!-- side nav -->
+            <%- include('../includes/employeeSideNav') %>
+            <!-- side nav ends -->
+
+            <!-- page content -->
+            <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5">
+                <h1 class="ml-3 mt-3 employers">Employees</h1>
+                <!-- Cards -->
+                <div class="row align-items-center">
+                    <div class="col-md d-flex flex-column job-card">
+                        <span class="job-card__top-text text-center text-dark pt-5">15,000</span>
+                        <span class="job-card__next-text text-center text-dark pt-2 pb-5">EMPLOYEES</span>
+                    </div>
+                    <div class="col-md d-flex flex-column job-card job-card--second">
+                        <span class="job-card__top-text text-center text-dark pt-5">7,000</span>
+                        <span class="job-card__next-text text-center text-dark pt-2 pb-5">HIRED</span>
+                    </div>
+                    <div class="col-md d-flex flex-column job-card job-card--third">
+                        <span class="job-card__top-text text-center text-dark pt-5">5,000</span>
+                        <span class="job-card__next-text text-center text-dark pt-2 pb-5">AVIALABLE</span>
+                    </div>
+                </div>
+                <!-- Cards end -->
+
+                <div class="row mt-5 mx-1">
+                    <div class="col-12">
+                        <nav class="navbar navbar-light bg-search">
+                            <form id="search-employees" class="py-1 pl-md-3 col-md-5 col-xl-4">
+                                <input class="form-control form-control-lg search-bar mr-sm-2 p-4" type="search"
+                                    placeholder="Search employer" aria-label="Search" />
+                                <span style="position: absolute; top: 24px; left: 33px;"><i
+                                        class="fa fa-search"></i></span>
+                            </form>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="row mx-1">
+                    <div class="col-12">
+                        <div class="bg-gray">
+                            <div class="select_form_div">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <h1 class="employers_text">Employers</h1>
+                                    </div>
+                                    <div class="col-11 col-md-4">
+                                        <select class="custom-select custom-select-lg select_form">
+                                            <option selected>Avialable For: All</option>
+                                            <option value="1">Frontend</option>
+                                            <option value="2">Backend</option>
+                                            <option value="3">Design</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <td class="table_head pl-md-5 pl-lg-3 pl-xl-5">
+                                            employee's name
+                                            <span class="caret"><i class="fa fa-caret-up caret_up_one"></i> <br />
+                                                <i class="fa fa-caret-down caret_down_one"></i></span>
+                                        </td>
+                                        <td class="table_head">
+                                            avialable for
+                                            <span class="caret"><i class="fa fa-caret-up caret_up_two"></i> <br />
+                                                <i class="fa fa-caret-down caret_down_two"></i></span>
+                                        </td>
+                                        <td class="table_head">
+                                            track
+                                            <span class="caret"><i class="fa fa-caret-up caret_up_three"></i> <br />
+                                                <i class="fa fa-caret-down caret_down_three"></i></span>
+                                        </td>
+                                        <td class="table_head">
+                                            date added
+                                            <span class="caret"><i class="fa fa-caret-up caret_up_four"></i> <br />
+                                                <i class="fa fa-caret-down caret_down_four"></i></span>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="table_row pl-md-5 pl-lg-3 pl-xl-5">
+                                            SoftCom Limited
+                                        </td>
+                                        <td class="table_row">Full Time</td>
+                                        <td class="table_row">Frontend</td>
+                                        <td class="table_row">
+                                            Feb 12,2018
+                                            <span class="ml-4"><i class="fa fa-ellipsis-v ellipsis"></i></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="table_row pl-md-5 pl-lg-3 pl-xl-5">
+                                            Guaranty Trust Bank
+                                        </td>
+                                        <td class="table_row">Part Time</td>
+                                        <td class="table_row">Design</td>
+                                        <td class="table_row">
+                                            Feb 12,2018
+                                            <span class="ml-4"><i class="fa fa-ellipsis-v ellipsis"></i></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="table_row pl-md-5 pl-lg-3 pl-xl-5">
+                                            Interswitch Group
+                                        </td>
+                                        <td class="table_row">Remote</td>
+                                        <td class="table_row">Backend</td>
+                                        <td class="table_row">
+                                            Feb 12,2018
+                                            <span class="ml-4"><i class="fa fa-ellipsis-v ellipsis"></i></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page content ends -->
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <script src="../js/custom-js/side-nav.js"></script>
+    <script>
+        // search
+        let searchbar = document.forms["search-employees"].querySelector("input");
+
+        searchbar.addEventListener("keyup", function (e) {
+            const term = e.target.value.toLowerCase();
+            const employees = document.querySelectorAll("tbody tr");
+            employees.forEach(function (employee) {
+                const title = employee.firstElementChild.textContent.toLowerCase();
+                if (title.indexOf(term) != -1) {
+                    employee.style.display = "";
+                } else {
+                    employee.style.display = "none";
+                }
+            });
+        });
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../js/bootstrap-js/popper.js"></script>
+    <script src="../js/bootstrap-js/jquery.js"></script>
+    <script src="../js/bootstrap-js/bootstrap.js"></script>
+</body>
+
+</html>
+<!-- background: rgba(8, 68, 130, 0.1); -->
