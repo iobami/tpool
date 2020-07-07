@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>Admin Dashboard</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="../../img/favicon.svg" type="image/x-icon">
+        <%- include('../Templates/head') %>
         <link href="../styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
         <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
         <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
@@ -55,24 +52,7 @@
             </div>
           </div> 
 
-        <div class="sidenav" id="sideNav">
-			<div class="logo__wrapper">
-				<div class="d-flex justify-content-center align-items-center logo__image">
-					<img src="../../img/navLogo.svg" alt="" />
-				</div>
-			</div>
-
-			<ul class="sidenav_links">
-				<li><a href="./admin-dashboard.html" class="active">Dashboard</a></li>
-				<li><a href="./admin-verification.html">Verification</a></li>
-				<li><a href="./adminDashViewEmployers.html">Employers</a></li>
-				<li><a href="./view-employee-dashboard.html">Employees</a></li>
-				<li><a href="#">Messages</a></li>
-				<li><a href="#">Support</a></li>
-				<li><a href="faq.html">FAQs</a></li>
-				<li><a href="#">Settings</a></li>
-			</ul>
-		</div>
+          <%- include('../Templates/admin-sidebar') %>
 
         <section class="admin__dashboard">
             <h2 class="dashboard__heading">Dashoard</h2>
