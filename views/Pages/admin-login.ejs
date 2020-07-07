@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../Templates/head.ejs') %>
+    <link rel="stylesheet" href="../styles/custom-css/adminLogin.css">
+    <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Main Nav -->
+    <%- include('../Templates/header.ejs') %>
+
+
+    <!-- /Main Nav -->
+
+
+    <div class="container-fluid custom-container">
+        <div class="row">
+            <div class="col-lg-5 d-none d-lg-block signup-img ">
+            </div>
+            <div class="col-lg-7">
+                <div class="container p-md-0 pl-lg-5 pr-lg-3">
+                    <h2 class="mt-lg-5 inspo-text">Welcome back</h2>
+                    <p class="mt-3 signup-info">Enter your email and password to access your account</p>
+                    <form>
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label for="email"  class="form-label mb-2 mt-3">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label for="password"  class="form-label mb-2">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="enter your password">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="row">
+                            <div class="col my-1">
+                                <div class="custom-control custom-checkbox mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                    <label class="custom-control-label policyAgree" for="rememberMe">Remember me</label>
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <p> <a href="#" class="login-link">Forgot Password?</a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 " type="submit">Login</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row">
+                        <div class="col-md-5 d-none d-md-block">
+                            <hr>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="text-center">OR</p>
+                        </div>
+                        <div class="col-md-5 d-none d-md-block">
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md">
+                            <button type="button" class="btn  btn-block  btn-facebook py-3 my-1"><i class="fab fa-facebook-f pr-2"></i>Login with facebook</button>
+                        </div class>
+
+                        <div class="col-md">
+                            <button type="button" class="btn btn-block  btn-google py-3 my-1"><i class="fab fa-google pr-2"></i>Login with Google</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-5 mt-3">
+                        <p class="text-center haveAccount">Already have an account with us? <a href="#" class="login-link"> Login.</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <%- include('../Templates/footer.ejs') %>
+</body>
+
+</html>
