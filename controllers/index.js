@@ -15,4 +15,8 @@ module.exports = {
   faq: (req, res) => {
     res.render('Pages/faq', { pageName: 'FAQ' });
   },
+  
+  contactUs: (req, res) => {
+    res.render('Pages/contactUs', { pageName: 'Contact Us' });
+  }
 }
