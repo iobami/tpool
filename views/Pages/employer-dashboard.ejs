@@ -4,11 +4,11 @@
 <head>
   
 </head>
-  <%- include('./Templates/head') %>
-  <%- include('./Templates/dashboard-head') %>
+  <%- include('../Templates/head') %>
+  <%- include('../Templates/dashboard-head') %>
 <body>
   <!-- Dashboard nav -->
-  <%- include('./Templates/dashboard-header') %>
+  <%- include('../Templates/dashboard-header') %>
 
   <div class="container-fluid mt-4">
 
@@ -18,7 +18,7 @@
       <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
 
         <!-- Dashboard sidebar -->
-        <%- include('./Templates/dashboard-sidebar') %>​
+        <%- include('../Templates/dashboard-sidebar') %>​
 
         <div id="body__click"></div>
       </div>
@@ -312,11 +312,7 @@
 
   <!-- Optional JavaScript -->
   <script src="../js/custom-js/side-nav.js"></script>
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="../js/bootstrap-js/popper.js"></script>
-  <script src="../js/bootstrap-js/jquery.js"></script>
-  <script src="../js/bootstrap-js/bootstrap.js"></script>
-  <script>
+  <%- include('../Templates/footer.ejs') %>
     $('#myModal').on('shown.bs.modal', function () {
       $('#myInput').trigger('focus')
     })
