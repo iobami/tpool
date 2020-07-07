@@ -1,28 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css" crossorigin="anonymous">
-
-    
-    <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
-    
-    <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
-    <link href="../styles/custom-css/employee-dash-main.css" rel="stylesheet" />
-    
-	<link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <title> Talent Pool | Employee Dashboard</title>
-  </head>
+<head>
+    <%- include('./includes/employeeHead') %>
+</head>
   
   <body>
-
 
     <div class="container-fluid w-100 top__nav__wrapper sticky-top">
         <div class="top__nav__contents py-4">
@@ -44,10 +28,11 @@
                     </div>
 
                     <div class="d-flex align-items-center top__nav__user">
-                        <div class="img-fluid mr-2"><img src="../img/Employer Dashboard/user2.png" alt=""></div>
+                        <!-- <div class="img-fluid mr-2"><img src="../img/Employer Dashboard/user2.png" alt=""></div> -->
+                        <div class="img-fluid mr-2"><%= employeeProfile.picture_url %></div>
                         <div class="top__nav__user__name">
-                            <h6 class="text-primary m-0">Adelanke Adelanke</h6>
-                            <p class="m-0 mr-0">Employee</p>
+                            <h6 class="text-primary m-0"><%= employeeProfile.first_name %></h6>
+                            <p class="m-0 mr-0"><%= employeeProfile.user_type %></p>
           </div>
           
           <div class="dropdown">
@@ -58,7 +43,7 @@
             </div> 
             
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navMenuLink">
-              <a class="dropdown-item" href="./employee_profile.html">Profile</a>
+              
               <a class="dropdown-item" href="#">Sign Out</a>
             </div>
           </div>
@@ -75,46 +60,29 @@
 
 
         <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
-          <div class="sidenav sidenav__unactive" id="sideNav">
-            <div class="logo__wrapper">
-              <div class="d-flex justify-content-center align-items-center logo__image">
-                <img src="../../img/navLogo.svg" alt="" />
-              </div>
-            </div>
-                 ​
-            <ul class="sidenav_links d-sm">
-              <li><a href="./employee-dashboard.html" class="active">Dashboard</a></li>
-              <li><a href="#">Messages</a></li>
-              <li><a href="#">Employees</a></li>
-              <li><a href="#">Add a team</a></li>
-              <li><a href="#">Support</a></li>
-              <li><a href="./employee-dash-settings.html">Settings</a></li>
-            </ul>
-          </div>
-              ​
-          <div id="body__click"></div>
+            <%- include('./includes/employeeSideNav') %>
         </div>
 
         <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5">
           <h1 class="ml-3 mt-3 dash-board">Dashboard</h1>
           <div class="job-filter">
-            <div class="row align-items-center">
+            <!-- <div class="row align-items-center">
               <div class="col-md d-flex flex-column job-card ">
-                  <span class="job-card__top-text text-center text-white pt-4">3,052</span>
+                  <span class="job-card__top-text text-center text-white pt-4"><%= jobs.available %></span>
                   <span class="job-card__next-text text-center text-white ">JOBS</span>
                   <span class="job-card__next-text text-center text-white pb-3">AVAILABLE</span>
               </div>
               <div class="col-md d-flex flex-column job-card job-card--second ">
-                  <span class="job-card__top-text text-center text-white pt-4">12</span>
+                  <span class="job-card__top-text text-center text-white pt-4"><%= jobs.appliedFor %></span>
                   <span class="job-card__next-text text-center text-white ">JOBS</span>
                   <span class="job-card__next-text text-center text-white pb-3">APPLIED FOR</span>
               </div>
               <div class="col-md d-flex flex-column job-card job-card--third ">
-                  <span class="job-card__top-text text-center text-white pt-4">16</span>
+                  <span class="job-card__top-text text-center text-white pt-4"><%= applications.pending %></span>
                   <span class="job-card__next-text text-center text-white ">PENDING</span>
                   <span class="job-card__next-text text-center text-white pb-3">APPLICATIONS</span>
               </div>
-            </div>
+            </div> -->
             <div class="profile-main--wrap">
               <div class="profile-wrap mx-3">
                 <div class=" profile-info">
@@ -122,54 +90,56 @@
                     <div class="bg-white d-flex align-items-center profile-info--details">
                         <div class="profile-info__img-cont d-flex flex-column align-items-center">
                             <div class="">
-                                <img class="" src="../img/employee-dash-profile-img.png" alt="profile-image" />
+                                <%= employeeProfile.picture_url %></p>
                             </div>
-                            <p class="pt-3 m-0 text-center profile-info__name">Genesis Anosike</p>
-                            <span class="text-center profile-info--norm-text">UI/UX Designer</span>
+                            <p class="pt-3 m-0 text-center profile-info__name"><%= employeeProfile.first_name %><%= employeeProfile.last_name %></p>
+                            <!-- <span class="text-center profile-info--norm-text"><%= employeeProfile.stack %></span> -->
                         </div>
                         <div class="profile-info__contact">
-                            <div class="d-flex">
+                            <!-- <div class="d-flex">
                                 <img class="mr-2" src="../../img/cil_location-pin.svg" alt="location">
-                                <p class="profile-info--norm-text">Ibadan, Nigeria</p>
-                            </div>
+                                <p class="profile-info--norm-text"><%= employeeProfile.location %></p>
+                            </div> -->
                             <div class="d-flex">
                                 <img class="mr-2" src="../../img/carbon_email.svg" alt="email">
-                                <p class="profile-info--norm-text">anosikegenesis@gmail.com</p>
+                                <p class="profile-info--norm-text"><%= decodedToken.email %></p>
                             </div>
                             <div class="d-flex ">
                                 <img class="mr-2" src="../../img/bx_bx-phone.svg" alt="phone">
-                                <p class="profile-info--norm-text">0801 - 234 - 5678</p>
+                                <p class="profile-info--norm-text"><%= employeeProfile.phone_no %></p>
                             </div>
                             <!-- <div class="">
                                 <img class="" src="" alt="phone">
                                 <p class="">0801 - 234 - 5678</p>
                             </div> -->
-                            <p class="profile-info--norm-text mt-5">Portfolio</p>
-                            <div class="d-flex ">
+                            <!-- <p class="profile-info--norm-text mt-5">Portfolio</p> -->
+                            <!-- <div class="d-flex ">
                                 <img class="mr-2" src="../../img/il_twitter.svg" alt="twitter-icon">
-                                <a href="" class="profile-info--norm-text profile-info--link">@Anosike_UI</a>
+                                <a href="" class="profile-info--norm-text profile-info--link"><%= user.socials.twitter %></a>
                             </div>
                             <div class="d-flex ">
                                 <img class="mr-2" src="../../img/topcoat_dribble.svg" alt="dribble-icon">
-                                <a href="" class="profile-info--norm-text profile-info--link">https://dribble.com</a>
+                                <a href="" class="profile-info--norm-text profile-info--link"><%= user.socials.dribble %></a>
                             </div>
                             <div class="d-flex ">
                                 <img class="mr-2" src="../../img/jam_behance-square.svg" alt="behance-icon">
-                                <a href="" class="profile-info--norm-text profile-info--link">https://www.behance.net</a>
-                            </div>
+                                <a href="" class="profile-info--norm-text profile-info--link"><%= user.socials.behance %></a>
+                            </div> -->
                         </div>   
                     </div>
                 </div>
                 <div class="skill-cont">
                     <p class="profile-info__title my-4">Software Assessment</p>
+                    <% if (employeeSkill.length > 0) { %>
                     <div class="bg-white skill__flex py-4">
+                        <% for (let tool of employeeSkill) { %>
                         <div class="pl-4 py-2">
-                            <p class="profile-info--norm-text">Figma</p>
+                            <p class="profile-info--norm-text"><%= tool.skill_description %></p>
                             <div class="skill__wrap">
                                 <div class="skill"><i class="skill-stop"></i></div>
                             </div>
                         </div>
-                        <div class="pl-4 py-2">
+                        <!-- <div class="pl-4 py-2">
                             <p class="profile-info--norm-text">Adobe XD</p>
                             <div class="skill__wrap">
                                 <div class="skill"><i class="skill-stop"></i></div>
@@ -192,8 +162,12 @@
                             <div class="skill__wrap">
                                 <div class="skill"><i class="skill-stop"></i></div>
                             </div>
-                        </div>
+                        </div> -->
+                        <% } %>
                     </div>
+                    <% } else { %>
+                        <h1>No Employee Tools Found!</h1>
+                        <% } %>
                 </div>
             </div>
             </div>
