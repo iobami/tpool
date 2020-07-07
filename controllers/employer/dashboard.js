@@ -8,5 +8,9 @@ module.exports = {
 
   employerCreateProfile: (req, res) => {
     res.render('Pages/employer-profile-creation', { pageName: 'Create Profile'});
-  }
+  },
+
+  employeeDashboardSettings: (req, res) => {
+    res.render('Pages/employer-dash-settings.ejs', { pageName: 'Employer Dashboard - Settings' });
+  },
 }
