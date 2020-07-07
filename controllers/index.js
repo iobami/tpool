@@ -18,5 +18,8 @@ module.exports = {
   
   contactUs: (req, res) => {
     res.render('Pages/contactUs', { pageName: 'Contact Us' });
+  },
+  signOutPopUp: (req, res) => {
+    res.render('Pages/signOutPopUp', { pageName: 'Sign Out' });
   }
 }
