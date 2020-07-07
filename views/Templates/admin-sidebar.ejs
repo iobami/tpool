@@ -8,11 +8,11 @@
   <ul class="sidenav_links">
     <li><a class="<%= path === 'admin-dashboard' ? 'active' : '' %>" href="admin-dashboard" >Dashboard</a></li>
     <li><a href="/admin-verification">Verification</a></li>
-    <li><a href="/admin-view-employers">Employers</a></li>
+    <li><a class="<%= path === 'admin-all-employers' ? 'active' : '' %>" href="/admin-all-employers">Employers</a></li>
     <li><a href="/admin-view-employees">Employees</a></li>
-    <li><a href="#">Messages</a></li>
+    <li><a class="<%= path === 'admin-messages' ? 'active' : '' %>" href="/admin-messages">Messages</a></li>
     <li><a href="#">Support</a></li>
-    <li><a href="admin-faq">FAQs</a></li>
+    <li><a class="<%= path === 'admin-faq' ? 'active' : '' %>" href="/admin-faq">FAQs</a></li>
     <li><a href="#">Settings</a></li>
   </ul>
 </div>
