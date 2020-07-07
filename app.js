@@ -10,6 +10,7 @@ const employerAuthRoute = require('./routes/employer/auth');
 const employerDashboardRoute = require('./routes/employer/dashboard');
 const topTalentsRoute = require('./routes/employee/topTalents');
 const testimonialsRoute = require('./routes/employer/testimonials');
+const directoryRoute = require('./routes');
 const passwordRoute = require('./routes/password/index');
 
 
@@ -40,6 +41,7 @@ app.use(employerDashboardRoute);
 app.use(adminDashRoute)
 app.use(topTalentsRoute);
 app.use(testimonialsRoute);
+app.use(directoryRoute);
 app.use(passwordRoute);
 
 module.exports = app;
