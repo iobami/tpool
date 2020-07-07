@@ -10,6 +10,7 @@ const {
     adminVerification,
     adminSettings,
     allEmployees,
+    employeeReview,
 } = require('../../controllers/admin/dashboard');
 
 appRoute.get('/admin-faq', faq);
@@ -20,5 +21,6 @@ appRoute.get('/admin-dashboard', dashboard);
 appRoute.get('/admin-verification', adminVerification)
 appRoute.get('/admin-settings', adminSettings);
 appRoute.get('/admin-all-employees', allEmployees);
+appRoute.get('/employee-review', employeeReview);
 
 module.exports = appRoute;
