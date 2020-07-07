@@ -1,27 +1,27 @@
 module.exports = {
   faq: (req, res) => {
-    res.render('Pages/admin-dash-faq', { pageName: 'Faq' });
+    res.render('Pages/admin-dash-faq', { pageName: 'Faq', path : "admin-faq"});
   },
 
   employerMessages: (req, res) => {
-    res.render('Pages/admin-dash-employer-msg', { pageName: 'Messages for employer' });
+    res.render('Pages/admin-dash-employer-msg', { pageName: 'Messages for employer', path: "admin-dashboard"});
   },
 
    messages: (req, res) => {
-     res.render('Pages/admin-dash-messages', { pageName: 'Admin dashboard messages'});
+     res.render('Pages/admin-dash-messages', { pageName: 'Admin dashboard messages', path : "admin-messages"});
    },
 
 
    allEmployers: (req, res) => {
-    res.render('Pages/admin-dash-employers', { pageName: 'Admin | All Employers'})
+    res.render('Pages/admin-dash-employers', { pageName: 'Admin | All Employers', path: "admin-all-employers"})
    },
 
    allEmployees: (req, res) => {
-    res.render('Pages/view-employee-dashboard', { pageName: 'View Employee' });
+    res.render('Pages/view-employee-dashboard', { pageName: 'View Employee', path : "admin-viewEmployee" });
    },
   
    dashboard: (req, res) => {
-    res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard',path: "admin-dashboard"});
+    res.render('Pages/admin-dashboard', { pageName: 'Admin dashboard', path: "admin-dashboard"});
   },
 
   adminVerification: (req, res) => {
