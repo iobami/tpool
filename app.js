@@ -15,6 +15,7 @@ const paymentRoute = require('./routes/payment/index');
 const adminAuthRoute = require('./routes/admin/auth');
 const employerMetrics = require('./routes/employer/metrics');
 const employerRecommendation = require('./routes/employer/recommendation');
+const verifyModal = require('./routes/admin/verifyModal');
 
 
 const app = express();
@@ -50,5 +51,6 @@ app.use(paymentRoute);
 app.use(adminAuthRoute);
 app.use(employerMetrics);
 app.use(employerRecommendation);
+app.use(verifyModal);
 
 module.exports = app;

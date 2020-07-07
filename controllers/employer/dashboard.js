@@ -29,5 +29,9 @@ module.exports = {
 
   employerCompanyDashboard: (req, res) => {
     res.render('Pages/employer-company-dashboard', { pageName: 'Employer Dashboard' });
-  }
+  },
+
+  employerIndividualCreateProfile: (req, res) => {
+    res.render('Pages/employer-indiv', { pageName: 'Create Profile' });
+  },
 }
