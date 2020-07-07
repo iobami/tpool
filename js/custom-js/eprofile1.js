@@ -9,7 +9,7 @@ const backend = document.querySelector("backend");
 const frontend = document.querySelector("frontend");
 const mobile = document.querySelector("mobile");
 const design = document.querySelector("design");
-const addSkillForm = document.querySelector("#add-skills");
+const addSkillForm = document.querySelector('#add-skills')
 const userInformation = JSON.parse(localStorage.getItem("user"));
 
 const errorMessage = document.querySelector("#error-message");
@@ -76,12 +76,12 @@ Filevalidation = () => {
   }
 };
 
-const userInfo = JSON.parse(atob(userInformation.token.split(".")[1]));
+const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
 
 addSkillForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const skill = addSkillForm.querySelector("input").value;
-
+  const skill = addSkillForm.querySelector('input').value;
+  
   fetch(`https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}`, {
     method: "POST",
     headers: {
@@ -89,13 +89,13 @@ addSkillForm.addEventListener("submit", (e) => {
       "User-Agent": "Developers Lancers",
       Authorization: `Bearer ${userInformation.token}`,
     },
-    body: JSON.stringify({ skill_description: skill }),
+    body: JSON.stringify({"skill_description": skill})
   })
-    .then((res) => res.json())
-    .then((data) => {
-      getAllSkillsForIndividuals();
-    });
-});
+    .then(res => res.json())
+    .then(data => {
+      getAllSkillsForIndividuals()
+    })
+})
 
 let myArray = [];
 
@@ -103,6 +103,7 @@ function buildList(data) {
   const list = document.querySelector(".lists");
 
   data.forEach((skills) => {
+
     const row = `
       <li>
         <div class="list-item">
@@ -113,7 +114,7 @@ function buildList(data) {
         </div>
         <div class="list-trash">
             <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
-            <svg width="32" height="32" viewBox="0 0 32 32" id="${skills.id}" onclick="deleteSkill(this.id)" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 12.8789H14.5V21.2886H13V12.8789Z" fill="#084482"/>
             <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z" fill="#084482"/>
             <path d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z" fill="#084482"/>
@@ -124,31 +125,6 @@ function buildList(data) {
         `;
     list.innerHTML += row;
   });
-}
-
-async function deleteSkill(id) {
-  console.log(`Skill ID: ${id} selected`);
-  const url = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/${id}`;
-
-  try {
-    const response = await fetch(url, {
-      headers: {
-        method: "DELETE",
-        "Content-type": "application/json; charset=UTF-8",
-        "User-Agent": "Developers Lancers",
-        Authorization: `Bearer ${userInformation.token}`,
-      },
-      body: {},
-    });
-    const result = await response.json();
-
-    console.log(`Skill ID: ${id} selected`);
-    console.log(response);
-    console.log(result);
-
-  } catch (error) {
-    // alert("Opps! An error seems to have occured. Try again later. Thanks!");
-  }
 }
 
 async function getAllSkillsForIndividuals() {
@@ -164,6 +140,7 @@ async function getAllSkillsForIndividuals() {
     });
     const result = await response.json();
 
+    console.log(result);
     myArray = result.data.skills;
     buildList(myArray);
   } catch (error) {
