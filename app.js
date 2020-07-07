@@ -13,6 +13,8 @@ const directoryRoute = require('./routes');
 const passwordRoute = require('./routes/password/index');
 const paymentRoute = require('./routes/payment/index');
 const adminAuthRoute = require('./routes/admin/auth');
+const employerMetrics = require('./routes/employer/metrics');
+const employerRecommendation = require('./routes/employer/recommendation');
 
 
 const app = express();
@@ -46,5 +48,7 @@ app.use(directoryRoute);
 app.use(passwordRoute);
 app.use(paymentRoute);
 app.use(adminAuthRoute);
+app.use(employerMetrics);
+app.use(employerRecommendation);
 
 module.exports = app;
