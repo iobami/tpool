@@ -14,7 +14,7 @@ appRoute.get('/employee-profile', employeeController.getEmployeeProfile);
 appRoute.get('/employee-addTeam', employeeController.getEmployeeAddTeam);
 appRoute.get('/employee-support', employeeController.getEmployeeSupport);
 appRoute.get('/employee-settings', employeeController.getEmployeeSettings);
-appRoute.get('/employee-employees', employeeController.getEmployeeEmployees);
+appRoute.get('/employee-employers', employeeController.getEmployeeEmployers);
 appRoute.get('/employee-profileCreation', employeeController.getEmployeeProfileCreation);
 module.exports = appRoute;
 
