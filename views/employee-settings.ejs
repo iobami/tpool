@@ -2,27 +2,7 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no" />
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css" />
-
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
-  <link rel="stylesheet" href="../styles/custom-css/employer-dash-settings.css" />
-
-  <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
-
-  <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
-
-  <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-
-  <title>Employer Dashboard - Settings | TalentPool</title>
+  <%- include('./includes/employeeSettingsHead') %>
 </head>
 
 <body>
@@ -75,22 +55,7 @@
   <div class="container-fluid mt-4">
     <div class="row">
       <div class="col-auto d-md-block sticky-top remove-block">
-        <div class="sidenav" id="sideNav">
-          <div class="logo__wrapper">
-            <div class="d-flex justify-content-center align-items-center logo__image">
-              <img src="../img/navLogo.svg" alt="" />
-            </div>
-          </div>
-          ​
-          <ul class="sidenav_links d-sm">
-            <li><a href="Employer Dashboard.html">Dashboard</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="./employer-employees-gallery.html">Employees</a></li>
-            <li><a href="./employer-add-a-team.html">Add a team</a></li>
-            <li><a href="./employer-dash-support.html">Support</a></li>
-            <li><a href="./employer-dash-settings.html" class="active">Settings</a></li>
-          </ul>
-        </div>
+        <%- include('./includes/employeeSideNav') %>
         ​
       </div>
 
