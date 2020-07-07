@@ -10,8 +10,9 @@ appRoute.get('/', (req, res) => {
 });
 
 
-appRoute.get('/employer-sign-in', employerSignIn)
+appRoute.get('/employer-sign-in', employerSignIn);
 appRoute.get('/employee-sign-in', employeeSignIn);
+appRoute.get('/employee-sign-up', employeeSignup );
 appRoute.get('/aboutUs', about);
 appRoute.get('/employer-dashboard', (req, res) => {
   res.render('employer-dashboard', { pageName: 'Employer Dashboard' });
