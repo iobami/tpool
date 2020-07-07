@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css" crossorigin="anonymous" />
+
+  <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
+
+  <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
+
+  <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="../styles/custom-css/employer-add-a-team.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <title>TalentPool | <%= pageName %></title>
+</head>
+
+<body>
+  <!-- Dashboard nav -->
+  <%- include('../Templates/dashboard-header') %>
+
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
+        <!-- Dashboard sidebar -->
+        <%- include('../Templates/dashboard-sidebar') %>
+        ​
+        <div id="body__click"></div>
+      </div>
+
+      <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5 a-m">
+        <h4 class="invite-header">Invite a team member</h4>
+
+        <form class="bg-white p-4 rounded">
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="form-group email mr-lg-3 position-relative">
+              <img src="../img/email-icon.svg" class="email-icon position-absolute" alt="email icon" />
+              <input type="text" class="form-control p-4 pl-5" placeholder="email address" />
+            </div>
+            <div class="form-group mr-lg-3 full-name position-relative">
+              <img src="../img/profile.svg" class="profile-icon position-absolute" alt="Profile icon" />
+              <input type="text" class="form-control p-4 pl-5" placeholder="Full name" />
+            </div>
+
+            <div class="form-group mr-lg-3">
+              <label for="Role"></label>
+              <select class="p-2">
+                <option value="role" selected>Role</option>
+                <option value="HR manager">HR Personnel</option>
+                <option value="Business manager">Member</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="invite-btn"></label>
+              <input type="submit" value="Invite" id="invite-btn"
+                class="btn btn-invite text-white py-2 px-5 invite-btn" />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <section class="member-list a-v col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5 mt-4 a-m">
+        <div class="search-member p-2 w-100 rounded position-relative">
+          <img src="../img/search-icon-sm.svg" class="search-icon position-absolute" />
+          <input type="search" class="search-invite border-0 p-3 pl-5 rounded" aria-label="search invites" name="search"
+            id="search" placeholder="Search Invites" />
+        </div>
+        <div class="table-responsive table-wrapper overflow-auto">
+          <table class="table">
+            <thead class="p-5">
+              <tr class="">
+                <th scope="col">Email address</th>
+                <th scope="col">Name</th>
+                <th scope="col">Role</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">eteubom.sparky@doodle.com</td>
+                <td>Eteubom Sparky</td>
+                <td>Member</td>
+                <td>
+                  <button class="btn btn-invite-accepted text-white py-2 px-3 invite-btn col-md-2">
+                    Accepted
+                  </button>
+                </td>
+                <td>
+                  <img src="../img/menu.svg" alt="menu toggle" class="invite-menu" />
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">ucarter95544@doodle.com</td>
+                <td>Ukpong Carter</td>
+                <td>HR Personnel</td>
+                <td>
+                  <button class="btn btn-invite-accepted text-white py-2 px-3 invite-btn col-md-2">
+                    Accepted
+                  </button>
+                </td>
+                <td>
+                  <img src="../img/menu.svg" alt="menu toggle" class="invite-menu" />
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">dubios.george@doodle.com</td>
+                <td>Dubios George</td>
+                <td>Member</td>
+                <td>
+                  <button class="btn btn-invite-sent text-white py-2 px-3 invite-btn col-md-2">
+                    Invite sent
+                  </button>
+                </td>
+                <td>
+                  <img src="../img/menu.svg" alt="menu toggle" class="invite-menu" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Sidenav js JavaScript -->
+  <script src="../js/custom-js/side-nav.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="../js/bootstrap-js/popper.js"></script>
+  <script src="../js/bootstrap-js/jquery.js"></script>
+  <script src="../js/bootstrap-js/bootstrap.js"></script>
+</body>
+
+</html>
