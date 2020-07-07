@@ -6,7 +6,7 @@
   </div>
 
   <ul class="sidenav_links">
-    <li><a href="/admin-dashboard" class="active">Dashboard</a></li>
+    <li><a class="<%= path === 'admin-dashboard' ? 'active' : '' %>" href="admin-dashboard" >Dashboard</a></li>
     <li><a href="/admin-verification">Verification</a></li>
     <li><a class="<%= path === 'admin-all-employers' ? 'active' : '' %>" href="/admin-all-employers">Employers</a></li>
     <li><a href="/admin-view-employees">Employees</a></li>
