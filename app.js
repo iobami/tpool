@@ -12,6 +12,7 @@ const testimonialsRoute = require('./routes/employer/testimonials');
 const directoryRoute = require('./routes');
 const passwordRoute = require('./routes/password/index');
 const paymentRoute = require('./routes/payment/index');
+const adminAuthRoute = require('./routes/admin/auth');
 
 
 const app = express();
@@ -44,5 +45,6 @@ app.use(testimonialsRoute);
 app.use(directoryRoute);
 app.use(passwordRoute);
 app.use(paymentRoute);
+app.use(adminAuthRoute);
 
 module.exports = app;
