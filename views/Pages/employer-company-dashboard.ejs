@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../Templates/dashboard-head') %>
+    <script src="https://kit.fontawesome.com/0268f71e2c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles/custom-css/main.css">
+    <link rel="stylesheet" href="../styles/custom-css/employer-dashboard-settings.css">
+    <link rel="stylesheet" href="../styles/custom-css/employer-company-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../styles/custom-css/top-nav-admin.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Dashboard nav -->
+  <%- include('../Templates/dashboard-header') %>
+    ​
+    <div class="container-fluid">
+        <div class="row" id="row-column">
+            <div class="col-2 col-lg-3 col-xl-2">
+                 <!-- Dashboard sidebar -->
+        <%- include('../Templates/dashboard-sidebar') %>​
+                ​
+                <div id="body__click">
+                    <!-- Settings Starts Here -->
+                    <div
+                        class="inner-content-settings container-fluid d-flex justify-content-lg-end justify-content-center ">
+                        <div class="col-10 col-xl-10 col-lg-9">
+                            <h3>Settings</h3>
+                            <div class="setting row bg-white mx-lg-0">
+                                <div
+                                    class="setting-nav border border-primary border-right-0  rounded-left col-md-3  col-12 bg-light p-0">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="setting-tab list-group-item list-group-item-action active "
+                                            id="list-general-list" data-toggle="list" href="#list-general" role="tab"
+                                            aria-controls="general">
+                                            <i class="fas fa-cog mr-2"></i> General
+                                        </a>
+                                        <a class="setting-tab list-group-item list-group-item-action"
+                                            id="list-home-list" data-toggle="list" href="#list-appearance" role="tab"
+                                            aria-controls="appearance">
+                                            <i class="fas fa-file-video mr-2"></i> Appearance
+                                        </a>
+                                        <a class="setting-tab list-group-item list-group-item-action"
+                                            id="list-appearance-list" data-toggle="list" href="#list-notification"
+                                            role="tab" aria-controls="notification">
+                                            <i class="fas fa-bell mr-2"></i> Notification
+                                        </a>
+                                        <a class="setting-tab list-group-item list-group-item-action"
+                                            id="list-contact-list" data-toggle="list" href="#list-contact" role="tab"
+                                            aria-controls="contact">
+                                            <i class="fas fa-tty mr-2"></i> Contact Us
+                                        </a>
+                                        <a class="setting-tab list-group-item list-group-item-action"
+                                            id="list-privacy-list" data-toggle="list" href="#list-privacy" role="tab"
+                                            aria-controls="privacy">
+                                            <i class="fas fa-user-shield mr-2"></i> My Privacy
+                                        </a>
+                                        <a class="setting-tab list-group-item list-group-item-action rounded-0"
+                                            id="list-abuse-list" data-toggle="list" href="#list-abuse" role="tab"
+                                            aria-controls="abuse">
+                                            <i class="fas fa-headset mr-2"></i> Report Abuse
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="settings-body col-md-8 col-12 ml-md-5">
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="general tab-pane fade active show" id="list-general" role="tabpanel"
+                                            aria-labelledby="list-general-list">
+                                            <div class="setting-tab-header mb-3">
+                                                <h5 class="py-2 d-inline-block">General</h5>
+                                            </div>
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="card border-left-0 border-right-0 border-top-0">
+                                                    <div class="card-header bg-white border-bottom-0 px-0"
+                                                        id="headingOne">
+                                                        <h2 class="mb-0">
+                                                            <button class="general-btn btn btn-block text-left px-0"
+                                                                type="button" data-toggle="collapse"
+                                                                data-target="#collapseOne" aria-expanded="true"
+                                                                aria-controls="collapseOne">
+                                                                Profile <span class="float-right"><i
+                                                                        class="fas fa-chevron-right"></i></span>
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                                        data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            Update your Profile
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card border-left-0 border-right-0">
+                                                    <div class="card-header bg-white border-bottom-0 px-0"
+                                                        id="headingTwo">
+                                                        <h2 class="mb-0">
+                                                            <button
+                                                                class="general-btn btn btn-block text-left collapsed px-0"
+                                                                type="button" data-toggle="collapse"
+                                                                data-target="#collapseTwo" aria-expanded="false"
+                                                                aria-controls="collapseTwo">
+                                                                Account Preferences <span class="float-right"><i
+                                                                        class="fas fa-chevron-right"></i></span>
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                        data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            Update your Account Preferences
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card border-left-0 border-right-0">
+                                                    <div class="card-header bg-white border-bottom-0 px-0"
+                                                        id="headingThree">
+                                                        <h2 class="mb-0">
+                                                            <button
+                                                                class="general-btn btn btn-block text-left collapsed px-0"
+                                                                type="button" data-toggle="collapse"
+                                                                data-target="#collapseThree" aria-expanded="false"
+                                                                aria-controls="collapseThree">
+                                                                Login & Security <span class="float-right"><i
+                                                                        class="fas fa-chevron-right"></i></span>
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapseThree" class="collapse"
+                                                        aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            Update your Login & Security
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card border-left-0 border-right-0 mb-5">
+                                                    <div class="card-header bg-white border-bottom-0 px-0"
+                                                        id="headingThree">
+                                                        <h2 class="mb-0">
+                                                            <button
+                                                                class="general-btn btn btn-block text-left collapsed px-0"
+                                                                type="button" data-toggle="collapse"
+                                                                data-target="#accessibility" aria-expanded="false"
+                                                                aria-controls="accessibility">
+                                                                Accessibility <span class="float-right"><i
+                                                                        class="fas fa-chevron-right"></i></span>
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="accessibility" class="collapse"
+                                                        aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            Update your Accessibility
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="save-changes d-flex justify-content-lg-end align-items-end justify-content-center mt-5 mb-3">
+                                                <button style="background: #084482;" class="btn text-white">Save
+                                                    Changes</button>
+                                            </div>
+                                        </div>
+                                        <div class="appearance tab-pane fade" id="list-appearance" role="tabpanel"
+                                            aria-labelledby="list-appearance-list">
+                                            <div class="setting-tab-header mb-4">
+                                                <h5 class="py-2 d-inline-block">Appearance</h5>
+                                            </div>
+                                            <div>
+                                                Content Here
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="list-notification" role="tabpanel"
+                                            aria-labelledby="list-notification-list">
+                                            <div class="setting-tab-header mb-4">
+                                                <h5 class="py-2 d-inline-block">Notification</h5>
+                                            </div>
+                                            <div>
+                                                Content Here
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="list-contact" role="tabpanel"
+                                            aria-labelledby="list-contact-list">
+                                            <div class="setting-tab-header mb-4">
+                                                <h5 class="py-2 d-inline-block">Contact Us</h5>
+                                            </div>
+                                            <div>
+                                                Content Here
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="list-privacy" role="tabpanel"
+                                            aria-labelledby="list-privacy-list">
+                                            <div class="setting-tab-header mb-4">
+                                                <h5 class="py-2 d-inline-block">My Privacy</h5>
+                                            </div>
+                                            <div>
+                                                Content Here
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade col-lg-9 col-12 px-0" id="list-abuse" role="tabpanel"
+                                            aria-labelledby="list-abuse-list">
+                                            <div class="setting-tab-header mb-4">
+                                                <h5 class="py-2 d-inline-block">Report Abuse</h5>
+                                            </div>
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control border-primary"
+                                                        id="employer-name" placeholder="Your Name*">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control border-primary"
+                                                        id="employer-email" placeholder="Your Email*">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control border-primary"
+                                                        id="report-abuse-msg-subject" placeholder="Subject...">
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea class="form-control border-primary" id="report-abuse-msg"
+                                                        rows="3" placeholder="Your Message..."></textarea>
+                                                </div>
+                                                <div class="form-group d-flex justify-content-center mt-4">
+                                                    <button style="background: #084482;" class="btn text-white"
+                                                        type="submit">Send Message</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Settings Ends Here -->
+                </div>
+            </div>
+            <div class="col-12 col-xl-10 col-lg-9 col-md-12 ">
+                <h4 class="p-2 top-side">Dashboard</h4>
+                <div class="row row-header">
+                    <div class="col-11 col-xl-3 col-lg-3.5 blue" id="one">
+                        <div class="text-center mt-5 text-style">
+                            <a href="#"><i class="fa fa-toolbox icon-box " style="font-size: 24px;"></i></a>
+                            <p class="text-center ok">2000</p>
+                            <p class="text-center ok">Talent Available</p>
+                        </div>
+                    </div>
+
+                    <div class="col-11 col-xl-3 col-lg-3.5  blue" id="two">
+                        <div class="text-center mt-5 text-style">
+                            <a href="#"><i class="fa fa-toolbox icon-box" style="font-size: 24px;"></i></a>
+                            <p class="text-center ok">150</p>
+                            <p class="text-center ok">Talent Contacted</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-11 col-xl-3 col-lg-3.5 blue " id="three">
+                        <div class="text-center mt-5 text-style">
+                            <a href="#"><i class="fa fa-toolbox icon-box" style="font-size: 24px;"></i></a>
+                            <p class="text-center ok">20</p>
+                            <p class="text-center ok">Talent Employed</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12 col-xl-4 col-lg-12 col-md-11  mover-left">
+                        <a href="#"><i class="fa fa-pencil p-4 mt-1 pencil" style="color: #084482;"></i></a>
+                        <div class="text-center p-5 logo-header shadow-lg">
+                            <div class="text-center mt-4  color-change" style="color: #084482;">
+                                <div class="wow" style="background: #C4C4C4;">
+                                    <p class="logo text-black place mt-4">Logo</p>
+                                </div>
+
+                            </div>
+                            <p class="piggy mt-5">Piggyvest</p>
+                            <p class="place mt-2" style="font-size: 16px;">E-Commerce Industry</p>
+                            <p class="place mt-2" style="font-size: 16px;"><a href="#" style="color: #4C5059;"><i
+                                        class="fa fa-map-marker px-1"></i></a> Ibadan Nigeria</p>
+                            <a href="mailto:piggyvest@gmail.com">
+                                <p class="place mt-2" style="font-size: 16px;"><a href="#" style="color: #4C5059;"><i
+                                            class="fa fa-envelope px-1" style="font-size: 16px;"></i></a>
+                                    Piggyvest@gmail.com</p>
+                            </a>
+
+                            <p class="" id="status"> Status: Not Verified <a href="#"><i
+                                        class="fa fa-question-circle px-1"
+                                        style="color: #00AEFF;font-size: 16px;"></i></a></p>
+
+                            <button class="chick">Verify Profile</button>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-7 col-lg-12 col-12 col-md-11">
+                        <div class="text-left bg-white shadow-lg p-2">
+                            <h4 class="header-dis px-3 my-3" style="font-size: 24px;">Description <a href="#"><i
+                                        class="fa fa-pencil pencil" style="font-size: 16px; color: #084482;"></i></a>
+                            </h4>
+                            <p class="px-3 edit" style="font-size: 16px; color: #4C5059;">Multinational company with the
+                                aim to make savings culture easy for every individual in the world.
+                                our sole aim is making live easier
+                            </p>
+                        </div>
+                        <br>
+
+                        <div class="col-12 col-xl-12 col-lg-12 col-md-12 bg-white shadow-lg ">
+
+                            <h4 class=" mt-2">Social Accounts <a href="#"><i class="fa fa-plus pencil"
+                                        style="font-size: 16px; font-weight: 100; color: #4C5059;"></i></a> </h4>
+                            <hr>
+                            <a href="">
+                                <p class="place" style="font-size: 13px; color: #4C5059; "><i class="fa fa-twitter px-2"
+                                        style="color: #00AEFF;"></i> Twitter<i class="fa fa-pencil pencil"
+                                        style="font-size: 16px; color: #084482;"></i></p>
+                            </a>
+                            <hr>
+                            <a href="#">
+                                <p class="place" style="font-size: 13px;"><i class="fa fa-github px-2"
+                                        style="color: #00AEFF;"></i> GitHub</p>
+                            </a>
+                            <hr>
+                            <a href="">
+                                <p class="place" style="font-size: 13px;"><i class="fa fa-behance px-2"
+                                        style="color: #00AEFF;"></i> Behance</p>
+                            </a>
+                            <hr>
+                            <a href="#">
+                                <p class="place" style="font-size: 13px;"><i class="fa fa-linkedin px-2"
+                                        style="color: #00AEFF;"></i> Linkedin</p>
+                            </a>
+                            <hr>
+                            <a href="#">
+                                <p class="place" style="font-size: 13px;"><i class="fa fa-github px-2"
+                                        style="color: #00AEFF;"></i>Hashnode</p>
+                            </a>
+                            <hr>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-12 col-12 p-3 col-md-11 p-3 mover-check">
+                        <div class="text-left shadow-lg bg-white p-3">
+                            <h4>Company Info<i class="fa fa-pencil pencil" style="color: #084482;"></i></h4>
+                            <hr>
+                            <p class="px-2" style="font-size: 16px; color: #4C5059;"><a href="#"><i
+                                        class="fa fa-check-circle px-2" style="color: #00AEFF;"></i></a> E-Commerce
+                                Industry</p>
+                            <hr>
+                            <p class="px-2" style="font-size: 16px; color: #4C5059;"><a href="#"><i
+                                        class="fa fa-check-circle px-2" style="color: #00AEFF;"></i></a>7-20 Employees
+                            </p>
+                            <hr>
+                            <a href="tel:08185956620" style="color: #4C5059;">
+                                <p class="px-2" style="font-size: 16px;"><i class="fa fa-check-circle px-2"
+                                        style="color: #00AEFF;"></i>08185956620</p>
+                            </a>
+
+                        </div>
+
+                    </div>
+                    <div class="col-xl-7 col-lg-12 col-md-11 moove ">
+                        <div class="text-left bg-white shadow-lg p-4">
+                            <h4 class="header-dis">Need a Recommedation? <a href=""><i class="fa fa-pencil pencil"
+                                        style="font-size: 16px; color: #084482;"></i></a></h4>
+                            <p class="">
+                                You can make a request for available intern if you don’t want to go through the stress
+                                of searching
+                            </p>
+
+                            <h4 class="">Email Us:</h4>
+                            <a href="mailto:help@lancers.app">
+                                <p class="px-2" style="color: #00AEFF;">help@Lancers.app</p><br>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/bootstrap-js/jquery.js"></script>
+    <script src="../js/bootstrap-js/popper.js"></script>
+    <script src="../js/bootstrap-js/bootstrap.js"></script>
+</body>
+
+</html>

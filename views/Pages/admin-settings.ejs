@@ -2,9 +2,7 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Admin Settings</title>
+	<%- include('../Templates/head') %>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link href="../styles/custom-css/top-nav-admin.css" rel="stylesheet" />
@@ -71,24 +69,7 @@
 	</div>
 
 	<!-- SideNav -->
-	<div class="sidenav" id="sideNav">
-		<div class="logo__wrapper">
-			<div class="d-flex justify-content-center align-items-center logo__image">
-				<img src="../img/navLogo.svg" alt="" />
-			</div>
-		</div>
-
-		<ul class="sidenav_links">
-			<li><a href="#">Dashboard</a></li>
-			<li><a href="#">Verification</a></li>
-			<li><a href="#">Employers</a></li>
-			<li><a href="#">Employees</a></li>
-			<li><a href="#">Messages</a></li>
-			<li><a href="#">Support</a></li>
-			<li><a href="#">FAQs</a></li>
-			<li><a href="#" class="active">Settings</a></li>
-		</ul>
-	</div>
+	<%- include('../Templates/admin-sidebar') %>
 
 	<div id="body__click"></div>
 
