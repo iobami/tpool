@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../Templates/head') %>
+    <link rel="stylesheet" href="../styles/custom-css/employer-profile-page-creation1.css">
+  </head>
+  <body>
+   <!-- NAV-BAR -->
+  <%- include('../Templates/header') %>
+
+    <main>
+      <form id="employerProfileCreation">
+      <div class="mt-5">
+          <div class="container text-center">
+              <h5 class="heading-color ">Let’s get started with a few details about your company </h5>
+              <div class="container pt-5 center">
+                  <div class="row ">
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm col-">
+                          <div class="form-progress ">
+                              <div class="center">
+                                  <progress class="form-progress-bar" min="0" max="33" value="0" step="33" aria-labelledby="form-progress-completion"></progress>
+                                  <div class="form-progress-indicator one active"> <i class="text-default mb-2 fa-2x fa fa-check-circle" aria-hidden="true"></i>
+                                  </div>
+                                  <div class="form-progress-indicator two"><i class="text-default mb-2 fa-2x fa fa-circle-thin" aria-hidden="true"></i></div>
+                                  <p id="form-progress-completion" class="js-form-progress-completion sr-only" aria-live="polite">0% complete</p>
+                              </div>
+                          </div>
+                      </div>
+
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div id="details" class="mt-5">
+          <div class="container">
+            <div class="alert alert-danger d-none" style="padding: 0.5rem 1rem;" id="alert" role="alert">
+              <p class="my-0" id="alertMessage"></p>
+            </div>
+              <h5 class="heading-color">Company details</h5>
+              <div class="row">
+                  <div id="profile" class="mt-5">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-md">
+                                  <figure class="profile-figure">
+                                      <img class="profile-img img-fluid" height=243px width=243px src="../img/employer-profile-creation-page1.png" alt="" />
+                                      <figcaption class="mt-2 d-md-none profile-figcaption">Profile Picture</figcaption>
+                                  </figure>
+                              </div>
+
+                                  <div class="col-md margt">
+                                  <div class="row ">
+                                      <div class="col-sm-8 left-div"> <input type="text" class="form-control em-input" id="logo" placeholder="Upload file" readonly>
+                                      </div>
+                                      <div class="col-sm right-div">
+                                          <div class="btn new-btn m"> <input id="organization_logo" type="file" name="logo" />Browse</div>
+
+                                      </div>
+                                      <!-- <div style='clear:both;'>&nbsp;</div> -->
+
+
+                                  </div>
+                                  <span class="small">300 x 300px recommended. JPGs and PNG supported</span>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+
+
+              </div>
+              <div class="row mt-5 mobile-margin-fix1">
+                  <div class="col-sm-6 col-lg-6 form-group">
+                    <label for="industry">Employer Type</label>
+                    <select class="form-control em-input select" name="industry" id="employer_type">
+                        <option value="">Select Employer type</option>
+                        <option value="company">Company</option>
+                        <option value="individual">Individual</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6 col-lg-6 form-group">
+                      <label for="lastname">Organization Name</label>
+                      <input type="text" class="form-control em-input" id="organization_name" placeholder="Tom">
+                  </div>
+              </div>
+              <div class="row mt-5 mobile-margin-fix2">
+                  <div class="col-sm-6 col-lg-6 form-group">
+                      <label for="companyaddress">Email</label>
+                      <input type="text" class="form-control em-input" id="organization_email" placeholder="Timitom@gmail.com">
+                  </div>
+                  <div class="col-sm-6 col-lg-6 form-group">
+                    <label for="phone">Phone Number</label>
+                    <div class="row">
+                        <div class="col-sm-4 left-div">
+                            <input type="text" class="form-control wid em-input" id="country_code" placeholder="+234">
+
+                        </div>
+                        <div class="col-sm-8 right-div1"> <input type="text" class="form-control em-input" id="organization_phone" placeholder="">
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row mt-5 mobile-margin-fix2">
+                  <div class="col-sm-6 col-lg-6 form-group">
+                    <label for="industry">Industry</label>
+                    <select class="form-control em-input select" name="industry" id="company_category">
+                        <option value="">Select Industry</option>
+                        <option value="frontend">Frontend</option>
+                        <option value="backend">Backend</option>
+                        <option value="Design">Design</option>
+                        <option value="mobile">Mobile</option>
+                    </select>
+                </div>
+                  
+                  <div class="col-sm-6 col-lg-6 form-group mobile-margin-zero">
+                    <label for="website">Website</label>
+                    <input type="text" class="form-control em-input" id="website_url" placeholder="Enter website url">
+                </div>
+
+              </div>
+              <div class="row mt-5 mobile-margin-fix2">
+
+                <div class="col-sm-6 col-lg-6 form-group">
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control em-input" id="organization_address" placeholder="Nigeria">
+              </div>
+
+                <div class="form-group col-sm-12 col-lg-6 mobile-margin-fix2">
+                  <label for="exampleFormControlTextarea1">About your Organization</label>
+                  <textarea class="form-control" id="description" rows="8" placeholder="Enter short description about you"></textarea>
+              </div>
+                  <!-- <div class="col-sm-6 col-lg-6 form-group">
+                      <label for="">How did you hear about us ?</label>
+                      <select class="form-control em-input select" name="companytype" id="companytype">
+                          <option value="Blank">Select</option>
+                              <option value="online">Online</option>
+                              <option  value="Fs">Friend Suggestion</option>
+                              <option value="Bi">Referral</option>
+                          </select>
+                  </div> -->
+                  
+              </div>
+
+              <!-- <div class=" container mb-5 form-group">
+                  <div class="row mt-5 mobile-margin-fix2">
+                      <label for="" class="interested-skills">Interested Skills</label>
+                      <div class="container my-3 boxs boxs-sm">
+                          <div class="mx-2 row mt-4">
+                              <div class="bg-white col-xs mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+                                  Flutter
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                              </div>
+                              <div class="bg-white col-xs mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+                                  PHP
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                              </div>
+                              <div class="bg-white col-xs mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+                                  Java
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                              </div>
+                              <div class="bg-white col-xs mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+                                  Web design
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                              </div>
+                          </div>
+                          <input style="border:0 !important; outline:0 !important" type="text" class="form-control em-input" id="tag" placeholder="Enter interested skills...">
+                      </div>
+                      <div class="inline-block">
+                          <p class="small-xs">Suggested Skills<span class=" display-size text-primary">
+                          Software testing, HTML, CSS, React, Vue</span> </p>
+                      </div>
+                  </div>
+              </div> -->
+          </div>
+      </div>
+      </div>
+
+
+      <!-- <div id="networks" class="mt-5">
+          <div class="container">
+              <h5 class="pt-3 heading-color">Social Information</h5>
+              <div class="row mt-5 mobile-margin-fix4">
+
+                  <div class="col-sm-6 col-lg-6 form-group">
+                      <label for="facebook">Facebook</label>
+                      <input type="text" class="form-control em-input" id="facebook" placeholder="Enter Facebook url">
+                  </div>
+                  <div class="col-sm-6 col-lg-6 form-group">
+                      <label for="twitter`">Twitter</label>
+                      <input type="text" class="form-control em-input" id="twitter" placeholder="Enter Twitter url">
+                  </div>
+              </div>
+              <div class="row mt-5 mobile-margin-fix2">
+                  <div class="col-sm-6 col-lg-6 form-group">
+                      <label for="linkedin">LinkedIn</label>
+                      <input type="text" class="form-control em-input" id="linkedin" placeholder="Enter LinkedIn url">
+                  </div>
+                  <div class="col-sm-6 col-lg-6 form-group">
+                      <label for="instagram">Instagram</label>
+                      <input type="text" class="form-control em-input" id="instagram" placeholder="Enter Instagram url">
+                  </div>
+              </div>
+          </div>
+      </div> -->
+
+      <div class="mt-5 mb-5 pb-5 mobile-margin-pixel">
+          <div class="container text-right center">
+              <button class="btn new-btn2 mb-5" type="submit">Create</button>
+          </div>
+      </div>
+    </form>
+  </main>
+
+  <script type="module" src="js/custom-js/employer-profile-creation.js"></script>
+  <%- include('../Templates/footer') %>
+  </body>
+</html>
