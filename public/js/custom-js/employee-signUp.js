@@ -84,51 +84,67 @@ submitButton.addEventListener('click', (e) => {
     let password = document.getElementById('password').value
     
     // spin()
-    
     if (document.getElementById('terms-policy').checked) {
       signupEmployee();
-      async function signupEmployee(){
-        const requestOptions = {
-          method: "POST",
-          body: JSON.stringify({
-            // firstName: firstName,
-            // lastName: lastName,
-            email: email,
-            // phoneNo: phone,
-            password: password,
-          }),
-          headers: {
-            'Accept': 'application/json, text/plain',
-            'Content-type': 'application/json',
-          }
-        }
+      function signupEmployee(){
         const url = 'https://api.lancers.app/v1/auth/employee-signup'
-        try {
-          const res = await fetch(url , requestOptions);
-          const resp = await res.json();
-          submitButton.innerText = 'Sign Up';
-          let i = 'success'
-          if(resp.status === i ) {
-            $('#exampleModal2').modal();
+        localStorage.setItem('talentPool', JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          phoneNo: phone
+        }))
+        axios({
+          method: 'POST',
+          url: url,
+          data: {
+            email: email,
+            password: password
+          }
+        })
+        .then((res) => {
+          submitButton.innerText = 'Sign Up'
+          let ok = 'success'
+          if(res.data.status === ok) {
+            $('#exampleModal').modal();
             localStorage.setItem('talentPool', JSON.stringify({
-                  firstName: firstName,
-                  lastName: lastName,
-                  phoneNo: phone
-                }))
-            // document.querySelector('.loaderV2').style.display = 'none'
+              firstName: firstName,
+              lastName: lastName,
+              phoneNo: phone
+            }))
           } else {
             submitButton.innerText = 'Sign Up';
-            showAlert(resp.error)
+            showAlert(res.error)
           }
-        } catch (error) {
-          submitButton.innerText = 'Sign Up';
-          showAlert(error)
-        }
+        })
+        .catch((err) => {
+            if(err.response.status === 403) {
+              // console.log('responded with error', err.response.status)
+              submitButton.innerText = 'Sign Up'
+              showAlert('Email already exist!')
+            } else if(err.response.status === 400) {
+              if(email === '') {
+                submitButton.innerText = 'Sign Up'
+                showAlert('Email cannot be empty')
+              } else {
+              submitButton.innerText = 'Sign Up'
+              showAlert('Cannot have duplicate unique fields!')
+              }
+            } else if(err.response.status === 500) {
+              submitButton.innerText = 'Sign Up'
+              showAlert('Internal Server Error! Please try again.')
+            } else if(err.request) {
+              // console.log('issue with request')
+            } else {
+              showAlert(err.message)
+              console.log('Error', err.message)
+            }
+        })
       };
       } else {
-      showAlert('Please accept the Terms and Conditions to proceed')
+      showAlert('Please fill required and/or accept the Terms and Conditions to proceed')
       submitButton.innerText = 'Sign Up';
-    }}
+    }
+  }
 })
 
  function checkInputs() {
@@ -291,50 +307,68 @@ submitButtonV2.addEventListener('click', (e) => {
     let password = document.getElementById('passwordV2').value
     
     // spinV2()
-  if(document.getElementById('terms-policyV2').checked) {
-    signupEmployee();
-    async function signupEmployee() {
-      const requestOptions = {
-        method: "POST",
-        body: JSON.stringify({
-          // firstName: firstName,
-          // lastName: lastName,
-          email: email,
-          // phoneNo: phone,
-          password: password,
-        }),
-        headers: {
-          'Accept': 'application/json, text/plain',
-          'Content-type': 'application/json',
-        }
-      }
-      const url = 'https://api.lancers.app/v1/auth/employee-signup'
-      try {
-        const res = await fetch(url , requestOptions);
-        const resp = await res.json();
-        submitButtonV2.innerText = 'Sign Up';
-        let i = 'success'
-        if(resp.status === i ) {
-          $('#exampleModal').modal();
-          localStorage.setItem('talentPool', JSON.stringify({
-                firstName: firstName,
-                lastName: lastName,
-                phoneNo: phone
-              }))
-          // document.querySelector('.loaderV2').style.display = 'none'
-        } else {
-          submitButtonV2.innerText = 'Sign Up';
-          showAlert(resp.error)
-        }
-      } catch (err) {
-        submitButtonV2.innerText = 'Sign Up';
-        showAlert(err)
-      }
+    if (document.getElementById('terms-policyV2').checked) {
+      signupEmployee();
+      function signupEmployee(){
+        const url = 'https://api.lancers.app/v1/auth/employee-signup'
+        localStorage.setItem('talentPool', JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          phoneNo: phone
+        }))
+        axios({
+          method: 'POST',
+          url: url,
+          data: {
+            email: email,
+            password: password
+          }
+        })
+        .then((res) => {
+          submitButtonV2.innerText = 'Sign Up'
+          let ok = 'success'
+          if(res.data.status === ok) {
+            $('#ModalV2').modal();
+            // submitButtonV2.dataset
+            localStorage.setItem('talentPool', JSON.stringify({
+              firstName: firstName,
+              lastName: lastName,
+              phoneNo: phone
+            }))
+          } else {
+            submitButtonV2.innerText = 'Sign Up';
+            showAlert(res.error)
+          }
+        })
+        .catch((err) => {
+          if(err.response.status === 403) {
+            // console.log('responded with error', err.response.status)
+            submitButtonV2.innerText = 'Sign Up'
+            showAlert('Email already exist!')
+          } else if(err.response.status === 400) {
+            if(email === '') {
+              submitButtonV2.innerText = 'Sign Up'
+              showAlert('Email cannot be empty')
+            } else {
+            submitButtonV2.innerText = 'Sign Up'
+            showAlert('Cannot have duplicate unique fields!')
+            }
+          } else if(err.response.status === 500) {
+            submitButtonV2.innerText = 'Sign Up'
+            showAlert('Internal Server Error! Please try again.')
+          } else if(err.request) {
+            // console.log('issue with request')
+          } else {
+            showAlert(err.message)
+            console.log('Error', err.message)
+          }
+        V2})
+      };
+      } else {
+      showAlert('Please fill required and/or accept the Terms and Conditions to proceed')
+      submitButtonV2.innerText = 'Sign Up';
     }
-    } else {
-    showAlert('Please accept the Terms and Conditions to proceed')
-    submitButtonV2.innerText = 'Sign Up';
-  }}
+  }
 })
 
 function checkInputsV2() {
