@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../includes/employeeprofilecreationHead') %>
+    </head>
+
+    <body>
+        <!-- NAV-BAR -->
+        <header class="header">
+        <div class="container-fluid">
+            <div class="container nav-container">
+                <nav class="navbar navbar-expand-lg navbar-light py-1">
+                    <a class="navbar-brand" href="/">
+                        <img src="../img/talentpool header logo.svg" alt="talent pool logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item px-3 active">
+                                <a class="nav-link nav-link-black" href="/">Home <span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="/aboutUs">About Us</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="/directory">Directories</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="/faql">FAQ</a>
+                            </li>
+                            <li class="nav-item px-3">
+                                <a class="nav-link nav-link-black" href="/contactUs">Contact Us</a>
+                            </li>
+                            <!-- <li class="nav-item px-3 my-2 my-lg-0">
+                                <a class="nav-link btn px-3 btn-sign btn-sign-in py-1" href="./src/employer-sign-in.html">Sign in</a>
+                            </li> -->
+                            <li class="nav-item px-3 dropdown mb-2 mb-lg-0">
+                                <button class="nav-link btn btn-sign btn-sign-in px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sign In
+                                </button>
+
+                                <div class="dropdown-menu dropdown-menu-right signin__dropdown" aria-labelledby="dropdownMenuButton">
+                                    <p>Sign in as: </p>
+                                    <a class="dropdown-item" href="/employer-sign-in">Employer</a>
+                                    <a class="dropdown-item" href="/employee-sign-in">Talent</a>
+                                </div>
+                            </li>
+                            <li class="nav-item px-3 dropdown">
+                                <button class="nav-link btn btn-sign btn-sign-up px-3 py-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sign Up
+                                </button>
+
+                                <div class="dropdown-menu dropdown-menu-right signup__dropdown" aria-labelledby="dropdownMenuButton">
+                                    <p>Sign up as: </p>
+                                    <a class="dropdown-item" href="/employer-sign-up">Employer</a>
+                                    <a class="dropdown-item" href="/employee-sign-up">Talent</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        </header>
+        <!-- Navbar ends here -->
+
+        <main>
+            <form id="employeeProfileCreation">
+                <div class="mt-5">
+                    <div class="container text-center">
+                        <h5 class="heading-color ">Let’s get started with a few details about you </h5>
+                        <div class="container pt-5 center">
+                            <div class="row ">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm col-">
+                                    <div class="form-progress ">
+                                        <div class="center">
+                                            <progress class="form-progress-bar" min="0" max="33" value="0" step="33" aria-labelledby="form-progress-completion"></progress>
+                                            <div class="form-progress-indicator one active"> <i class="text-default mb-2 fa-2x fa fa-check-circle" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="form-progress-indicator two"><i class="text-default mb-2 fa-2x fa fa-circle-thin" aria-hidden="true"></i></div>
+                                            <p id="form-progress-completion" class="js-form-progress-completion sr-only" aria-live="polite">0% complete</p>
+                                        </div>
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+                        </div>
+    
+    
+    
+    
+                    </div>
+    
+    
+                </div>
+    
+                <div id="details" class="mt-5">
+                    <div class="container">
+                        <h5 class="heading-color">Personal Information</h5>
+                        <div class="row">
+                            <div id="profile" class="mt-5">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <figure class="profile-figure">
+                                                <!-- <img class="profile-img img-fluid" height=243px width=243px src="../img/employer-profile-creation-page1.png" alt="" /> -->
+                                                <figcaption class="mt-2 d-md-none profile-figcaption">Profile Picture</figcaption>
+                                            </figure>
+                                        </div>
+    
+                                            <div class="col-md-12 pt-2">
+                                            <div class="row ">
+                                                <div class="col-sm-12"> <label for="employeeImg">Hosted Image Link</label>
+                                                    <input type="text" class="form-control em-input" id="employeeImg" placeholder="CV">
+                                                </div>
+                                            </div>
+                                            <span class="small">300 x 300px recommended. JPGs and PNG supported</span>
+                                        </div>
+    
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+                        </div>
+                        <div class="row mt-5 mobile-margin-fix1">
+                            <div class="col-sm-6 col-lg-6 form-group">
+                                <label for="employeeFirstName">First Name</label>
+                                <input type="text" class="form-control em-input" id="employeeFirstName" placeholder="Timi">
+                            </div>
+                            <div class="col-sm-6 col-lg-6 form-group">
+                                <label for="employeeLastName">Last Name</label>
+                                <input type="text" class="form-control em-input" id="employeeLastName" placeholder="Tom">
+                            </div>
+    
+                        </div>
+                        <div class="row mt-5 mobile-margin-fix2">
+                            <div class="col-sm-6 col-lg-6 form-group">
+                                <label for="userType">User Type</label>
+                                <select class="form-control em-input select" name="userType" id="userType">
+                                    <option value="non-hng">NON-HNG</option>
+                                    <option value="hng">HNG</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 col-lg-6 form-group">
+                                <label for="hngId">HNG ID</label>
+                                <input type="text" class="form-control em-input" id="hngId" value="None" placeholder="HNG ID" disabled>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-5 mobile-margin-fix1">
+                        <div class="col-sm-6 col-lg-6 form-group">
+                            <label for="employeeAge">Age</label>
+                            <input type="number" class="form-control em-input" id="employeeAge" placeholder="Age">
+                        </div>
+                        <div class="col-sm-6 col-lg-6 form-group">
+                            <label for="employeeAvailability">Availability</label>
+                            <select class="form-control em-input select" name="employeeAvailability" id="employeeAvailability">
+                                <option value="Not-Available">Not-Available</option>
+                                <option value="on-site">On-site</option>
+                                <option value="remote">Remote</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-5 mobile-margin-fix1">
+                        <div class="col-sm-6 col-lg-6 form-group">
+                            <label for="employeeDOB">DOB</label>
+                            <input type="date" class="form-control em-input" id="employeeDOB" placeholder="DOB">
+                        </div>
+                        <div class="col-sm-6 col-lg-6 form-group">
+                            <label for="employeeCV">Hosted CV Link</label>
+                            <input type="text" class="form-control em-input" id="employeeCV" placeholder="CV">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6 form-group">
+                        <label for="employeePhone">Phone Number</label>
+                        <input type="number" class="form-control em-input" id="employeePhone" placeholder="09022222222">
+                    </div>
+    
+                </div>
+                </div>
+    
+                <div class="mt-5 mb-5 pb-5 mobile-margin-pixel">
+                    <div class="container text-right center">
+                        <button class="btn new-btn2 mb-5 ">Create</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+
+
+        <footer class="footer">
+            <div class="container-fluid custom-container">
+                <div class="row top justify-content-between">
+                    <div class="col-md-3">
+                        <a href="../index.html">
+                            <div class="py-3">
+                                <img src="../../img/talentpool footer logo.svg" alt="talent pool logo">
+                            </div>
+                        </a>
+                        <p class="py-2">
+                            We are known for
+                            connecting top talents with top companies. We
+                            make great possibilities
+                            happen.
+                        </p>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <h5 class="py-3">Explore</h5>
+                        <ul class="pl-0">
+                            <li><a href="">Home</a></li>
+                            <li class="py-1"><a href="/aboutUsl">About Us</a></li>
+                            <li class="py-1"><a href="/directory">Directories</a></li>
+                            <li class="py-1"><a href="/faq">FAQ</a></li>
+                            <li class="py-1"><a href="/contactUs">Contact Us</a></li>
+                            <li class="py-1"><a href="">Top Talent</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <h5 class="py-3">Visit</h5>
+                        <p>
+                            Lagos NG, 17 Akinsanya St, Ojodu 100213, Ikeja
+                        </p>
+                        <div class="d-none d-md-block">
+                            <h5 class="py-3">Get in touch</h5>
+                            <p>hello@hng.tech</p>
+                            <p>+234 (0) 812 345 6789</p>
+                        </div>
+                    </div>
+                    <div class="col-6 d-md-none">
+                        <h5 class="py-3">Get in touch</h5>
+                        <p>hello@hng.tech</p>
+                        <p>+234 (0) 812 345 6789</p>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <h5 class="py-3">Follow</h5>
+                        <ul class="pl-0">
+                            <li><a href="">Facebook</a></li>
+                            <li class="py-1"><a href="">LinkedIn</a></li>
+                            <li class="py-1"><a href="">Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <h5 class="py-3">Legal</h5>
+                        <ul class="pl-0">
+                            <li><a href="">Terms</a></li>
+                            <li class="py-1"><a href="">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col py-2">
+                        <p class="copyright">
+                            TalentPool. All Rights Reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer ends -->
+
+        <script src="../js/bootstrap-js/jquery.js"></script>
+        <script src="../js/bootstrap-js/popper.js"></script>
+        <script src="../js/bootstrap-js/bootstrap.js"></script>
+        <script src="../js/custom-js/employee-profile-creation.js"></script>
+    </body>
+</html>

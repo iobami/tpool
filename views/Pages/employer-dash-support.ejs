@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../Templates/dashboard-head') %>
+    <link rel="stylesheet" href="../styles/custom-css/employer-dash-support.css">
+</head>
+
+<body class="">
+    <div id="body__click"></div>
+
+         <!-- Dashboard nav -->
+  <%- include('../Templates/dashboard-header') %>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+
+            <div class="col-auto d-md-block sticky-top remove-block">
+                <!-- Dashboard sidebar -->
+        <%- include('../Templates/dashboard-sidebar') %>
+
+            </div>
+
+
+            <!-- main content start -->
+            <div class="pt-5 container-fluid" id="main-content">
+
+                <div class="container-fluid d-inline-block align-items-center justify-content-center"
+                    id="main-content_1">
+                    <h3 class="pb-5">Support</h3>
+
+                    <div class="d-flex align-items-center justify-content-center p-5 container-fluid" id="section-a">
+                        <label for="search-bar" id="ask" class="text-center"> Ask about a topic before trying to contact
+                            support</label>
+
+                        <!-- search icon begins -->
+                        <div id="search-icon">
+                            <img src="../img/search-icon-sm.svg">
+                        </div>
+                        <!-- search icon ends -->
+
+                        <!-- search bar begins -->
+                        <input type="search" name="search-bar" id="search-bar" placeholder="Ask us anything"
+                            class="px-5 form-control">
+                        <!-- search bar ends -->
+
+                        <button id="search-btn" class="ml-2 btn">Search</button>
+                    </div>
+                </div>
+
+                <div class="container-fluid pb-5 sidebar-margin pt-5 px-md-5 mr-5 " id="main-content_2">
+                    <div class="container-fluid  row justify-content-start align-items-start" id="section-b">
+
+                        <div id="questions" class="mb-5 mb-md-none  col-lg col-md-6 col-12">
+                            <ul>
+                                <h4>Top 5 Questions</h4>
+                                <li><a href="#">How do I get an employee</a></li>
+                                <li><a href="#">What are the ways to get started</a></li>
+                                <li><a href="#">How do I subscribe for Newsletter</a></li>
+                                <li><a href="#">How do I unsubscribe from mailing list</a></li>
+                                <li><a href="#">How do i remove a team member</a></li>
+                            </ul>
+                        </div>
+                        <div id="talentpool-basics" class="mb-5 mb-md-none col-lg col-md-6 col-sm-12">
+                            <ul>
+                                <h4>Talentpool Basics</h4>
+                                <li><a href="#">User Guide</a></li>
+                                <li><a href="#">Talentpool Features</a></li>
+                                <li><a href="#">Account Settings</a></li>
+                                <li><a href="#">Community help forum</a></li>
+                                <li><a href="#">Blog content</a></li>
+                            </ul>
+                        </div>
+
+                        <div id="subscription" class="mb-5 mb-md-none mr-5 col-lg col-md-12 col-sm-12">
+                            <ul>
+                                <h4>Subscription &#38 Payment</h4>
+                                <li><a href="#">Business Plan</a></li>
+                                <li><a href="#">Trial Plan</a></li>
+                                <li><a href="#">Payment and difficulties</a></li>
+                                <li><a href="#">Support Plan</a></li>
+                                <li><a href="#">Return Policy</a></li>
+                                <li><a href="#">Terms &#38 Conditions</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="card" id="support-card-main">
+
+                        <div id="support-card" class="card-body ">
+                            <h4 class="card-title text-center">Need Support&#63</h4>
+                            <p class="card-text text-center d-flex align-items-center justify-content-center h-50">Can't
+                                find the answer you are looking for&#63 Don't worry
+                                </br>we
+                                got you
+                                covered
+                            </p>
+                            <button id="support-btn" class="btn text-center mx-auto ">Contact
+                                Support</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/bootstrap-js/bootstrap.js"></script>
+        <script src="../js/bootstrap-js/jquery.js"></script>
+        <script src="../js/bootstrap-js/popper.js"></script>
+        <script src="../js/custom-js/side-nav.js"></script>
+</body>
+
+</html>

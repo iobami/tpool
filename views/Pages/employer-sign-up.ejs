@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <%- include('../Templates/head') %>
+    <!-- Employer sign up additional styles -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="styles/custom-css/employer-sign-up.css">
+</head>
+
+<body>
+    <!-- NAV-BAR -->
+    <%- include('../Templates/header') %>
+
+    <section>
+        <div class="container-fluid content-container">
+          <div class="row">
+            <div class="col-lg-5 d-lg-block image overlay">
+              <div class="">
+    
+              </div>
+            </div>
+    
+            <div class="col-lg-7 p-lg-5">
+              <div class="container">
+                <div class="form-box">
+                  <div class="header my-3">
+                    <h4>Welcome to TalentPool</h4>
+                    <p class="text-muted">Let's get your account setup so you can have access to a great
+                      pool of talent</p>
+                  </div>
+                  <div class="alert alert-danger d-none" style="padding: 0.5rem 1rem;" id="alert" role="alert">
+                    <p class="my-0" id="alertMessage"></p>
+                  </div>
+                  <section class="mt-5">
+                    <div>
+                      <div class="nav signup-nav row mb-4" id="nav-tab" role="tablist">
+                        <a class="col-6 text-center nav-item nav-link active individual" id="individual-tab"
+                          data-toggle="tab" href="#individual" role="tab" aria-controls="individual"
+                          aria-selected="true">Sign up as Individual<a>
+                            <a class="col-6 text-center nav-item nav-link company" id="company-tab" data-toggle="tab"
+                              href="#company" role="tab" aria-controls="company" aria-selected="false">Sign up as
+                              Organization</a>
+                      </div>
+                    </div>
+    
+                    <div class="tab-content" id="nav-tabContent">
+                      <div class="tab-pane fade show active" id="individual" role="tabpanel"
+                        aria-labelledby="individual-tab">
+                        <form class="needs-validation" id="individualForm" novalidate>
+                          <div class="row   ">
+                            <!-- <div class="col-md-12 my-3 form-group">
+                              <label for="organization">Organization Name</label>
+                              <input type="text" id="organization" class="form-control form-control-lg"
+                                placeholder="Enter organization" required>
+                              <div class="invalid-feedback">
+                                Enter your Organization
+                              </div>
+                            </div> -->
+                            <div class="col-md my-3 form-group">
+                              <label for="firstName">First Name</label>
+                              <input type="text" id="firstName" class="form-control form-control-lg form__input"
+                                placeholder="Enter first name" name="firstName" required>
+                              <div class="invalid-feedback">
+                                Enter your first name
+                              </div>
+                            </div>
+                            <div class="col-md my-3 form-group">
+                              <label for="lastName">Last Name</label>
+                              <input type="text" id="lastName" class="form-control form-control-lg form__input"
+                                placeholder="Enter last name" name="lastName" required>
+                              <div class="invalid-feedback">
+                                Enter your last name
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row ">
+                            <div class="my-3 col-md">
+                              <label for="email" class="form-label ">Email address</label>
+                              <input type="email" class="form-control form-control-lg form__input" id="email"
+                                placeholder="john@email.com" required>
+                              <div class="invalid-feedback">
+                                Enter a valid email
+                              </div>
+                            </div>
+                            <div class="my-3 col-md">
+                              <label for="phoneNo">Phone Number</label>
+                              <input type="tel" maxlength="15" inputmode="tel"
+                                class="form-control form-control-lg form__input" id="phoneNo"
+                                placeholder="e.g. 08012345678">
+                              <!-- <label for="employerType">Sign up as</label>
+                              <select id="employerType" class="form-control form-control-lg form__select" required>
+                                <option value="individual" selected>Individual</option>
+                                <option value="organization">Organization</option>
+                              </select> -->
+                              <div class="invalid-feedback">
+                                <!-- Select an option -->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6 my-3 form-group">
+                              <label for="password">Password</label>
+                              <input type="password" placeholder="at least 8 characters"
+                                class="form-control form-control-lg form__input" inputmode="alpha-numeric" minlength="8"
+                                id="password" required>
+                              <div class="invalid-feedback">
+                                Enter your password. It must contain at least 8 characters.
+                              </div>
+                            </div>
+                            <div class="col-md-6 my-3 form-group">
+                              <label for="password">Confirm Password</label>
+                              <input type="password" placeholder="at least 8 characters"
+                                class="form-control form-control-lg form__input" inputmode="alpha-numeric" minlength="8"
+                                id="confirmPassword" required>
+                              <div class="invalid-feedback">
+                                Confirm Password
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="custom-control custom-checkbox col ml-3 mt-3">
+                              <input type="checkbox" class="custom-control-input" id="receiveMail">
+                              <label class="custom-control-label" for="receiveMail" style="color: black;">Yes,
+                                I want to recieve TalentPool emails</label>
+                            </div>
+                          </div>
+                          <div class="row my-3">
+                            <div class="custom-control custom-checkbox col ml-3 mt-3">
+                              <input type="checkbox" class="custom-control-input" id="termsPolicy">
+                              <label class="custom-control-label" for="termsPolicy" style="color: black;">Yes,
+                                I agree to the <a href="#">Terms and Conditions</a></label>
+                            </div>
+                          </div>
+    
+                          <div class="form-group my-3 pt-2">
+                            <button class="btn btn-block form__button py-3" type="submit" id="submitBtn">Sign
+                              Up</button>
+                          </div>
+    
+                          <div class="form-group my-4 text-center">
+                            <span class="text-muted wor">OR</span>
+                          </div>
+                          <div class="form-row  text-center ">
+                            <div class="col-md my-2">
+                              <button type="button" id="githubID" class="btn btn-social btn-block btn-facebook text-center py-3">
+                                <i class="fa fa-github pr-2"></i>Sign up
+                                with GitHub
+                              </button>
+                            </div>
+                            <div class="col-md my-2 ">
+                              <button type="button" id="googleID" class="btn btn-block btn-social btn-google text-center  py-3">
+                                <i class="fa fa-google pr-2"></i>Sign up
+                                using Google
+                              </button>
+                            </div>
+                          </div>
+                          <div class="text-center acct mt-3 mb-5">Have an account with us? <a
+                              href="/employer-sign-in">Log
+                              in</a>
+                          </div>
+                        </form>
+                      </div>
+    
+                      <div class="tab-pane fade" id="company" role="tabpanel" aria-labelledby="company-tab">
+                        <form class="needs-validation" id="orgForm" novalidate>
+                          <div class="row">
+                            <div class="col-md-12 my-3 form-group">
+                              <label for="orgName">Organization Name</label>
+                              <input type="text" class="form-control form-control-lg form__input" id="orgName"
+                                placeholder="Enter organization name" required>
+                              <div class="invalid-feedback">Please enter your organization's name</div>
+                            </div>
+                          </div>
+    
+                          <div class="row">
+                            <div class="form-group my-3 col-md">
+                              <label for="orgEmail" class="form-label ">Email address</label>
+                              <input type="email" class="form-control form-control-lg form__input" id="orgEmail"
+                                placeholder="john@email.com" required>
+                              <div class="invalid-feedback">
+                                Enter a valid email
+                              </div>
+                            </div>
+                          </div>
+    
+                          <div class="row">
+                            <div class="col-md my-3 form-group">
+                              <label for="orgPassword">Password</label>
+                              <input type="password" placeholder="at least 8 characters"
+                                class="form-control form-control-lg form__input" inputmode="alpha-numeric" id="orgPassword"
+                                required>
+                              <div class="invalid-feedback">
+                                Enter your password. It must contain at least 8 characters.
+                              </div>
+                            </div>
+                            <div class="col-md my-3 form-group">
+                              <label for="confirmOrgPassword">Confirm Password</label>
+                              <input type="password" placeholder="at least 8 characters"
+                                class="form-control form-control-lg form__input" inputmode="alpha-numeric"
+                                id="confirmOrgPassword" required>
+                              <div class="invalid-feedback">
+                                Enter your password. It must contain at least 8 characters.
+                              </div>
+                            </div>
+                          </div>
+    
+                          <div class="row">
+                          </div>
+    
+                          <div class="row">
+                            <div class="custom-control custom-checkbox col ml-3 mt-3">
+                              <input type="checkbox" class="custom-control-input" id="orgRecieveMail">
+                              <label class="custom-control-label" for="orgRecieveMail" style="color: black;">Yes,
+                                we want to receive TalentPool emails</label>
+                            </div>
+                          </div>
+    
+                          <div class="row my-3">
+                            <div class="custom-control custom-checkbox col ml-3 mt-3">
+                              <input type="checkbox" class="custom-control-input" id="orgTerms">
+                              <label class="custom-control-label" for="orgTerms" style="color: black;">Yes,
+                                we have read and agree to the <a href="#">Terms and Conditions</a></label>
+                            </div>
+                          </div>
+    
+                          <div class="form-group my-3 pt-2">
+                            <button class="btn btn-block form__button py-3" type="submit" id="orgSubmitBtn">Sign
+                              Up</button>
+                          </div>
+    
+                          <div class="form-group my-4 text-center">
+                            <span class="text-muted wor">OR</span>
+                          </div>
+                          <div class="form-row  text-center ">
+                            <div class="col-md my-2">
+                              <button type="button" id="githubIdOrg"  class="btn btn-social btn-block btn-facebook text-center py-3">
+                                <i class="fa fa-github pr-2"></i>Sign up
+                                with GitHub
+                              </button>
+    
+                            </div>
+                            <div class="col-md my-2 ">
+                              <button type="button" id="googleIdOrg" class="btn btn-block btn-social btn-google text-center  py-3">
+                                <i class="fa fa-google pr-2"></i>Sign up
+                                using Google
+                              </button>
+                            </div>
+                          </div>
+                          <div class="text-center acct mt-3 mb-5">Have an account with us? <a
+                              href="/employer-sign-in">Log
+                              in</a>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </section>
+    
+                </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-body d-flex flex-column align-items-center">
+                <div>
+                  <img src="../img/logo.svg" alt="logo" />
+                </div>
+                <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z"
+                    fill="#337AB7" />
+                </svg>
+    
+                <h2>Registration Successful!</h2>
+                <p class="text-center"> A verification link has been sent to your email address, kindly
+                  check your mail and click to verify your account.</p>
+    
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                  onclick="location.assign('/employer-sign-in')">Log in</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <%- include('../Templates/footer') %>
+    <%- include('../Templates/script') %>
+    <script src="js/custom-js/employer-sign-up.js" type="module"></script>
+
+</body>

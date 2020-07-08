@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../Templates/dashboard-head') %>
+    <link rel="stylesheet" href="../styles/custom-css/employer-top-nav.css">
+    <link rel="stylesheet" href="../styles/custom-css/side-nav.css">
+    <link rel="stylesheet" href="../styles/custom-css/employer-profile-page.css">
+  </head>
+  <body>
+     <!-- NAV-BAR -->
+     <%- include('../Templates/dashboard-header') %>
+
+    <main class="container-fluid">
+      <div class="row mr-lg-5 position-relative">
+        <!-- SideNav Here -->
+       <div class="col-lg-3 side-nav" style="position: unset;">
+
+          <%- include('../Templates/dashboard-sidebar') %>
+
+          <div id="body__click" style="height: 100%;">
+          </div>
+        </div>
+        <!-- Main Content Here -->
+        <section class=" col-lg container-fluid profile mt-5 ml-lg-3">
+            <div class="row">
+                <!-- Profile Row + card -->
+                 <div class="col-md-5 mb-4">
+                   <div class="card profile-card box-shadow">
+                        <div class="logo-container  mx-auto d-flex align-items-center">
+                           <span class="mx-auto">Logo</span>
+                            <img src="" alt="" class="img-fluid">
+                        </div>
+                              <h3 class="text-center mt-5 mb-3">PiggyVest</h3>
+                              <p class="text-center">E-Commerce Industry</p>
+                              <hr class="w-75 mx-auto">
+                         <div  class="w-75 profile-card-info mx-auto ">
+                             <p class=" py-2 ml-4 my-3"><i class="fas fa-map-marker-alt mr-3"></i> Ibadan, Nigeria</p>
+                             <p class=" py-2 ml-4 my-3"><i class="far fa-envelope mr-3"></i>piggyvest@gmail.com</p>
+                         </div>
+                         <hr class="w-75 mx-auto">
+                         <button type='button' class="btn mx-auto mt-4 mb-5" data-toggle="modal" data-target="#profilepopup">Edit profile</button>
+                   </div>
+                 </div>
+  
+                
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="profilepopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-box " >
+      <div class="modal-content content-wrapper" >
+        <div class="modal-header ">
+          <h5 class="modal-title title-text" id="modal-header">Edit Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="close-btn1" aria-hidden="true">&times;</span>
+            <svg class= "close-btn" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.6673 2.68301L21.3173 0.333008L12.0007 9.64968L2.68398 0.333008L0.333984 2.68301L9.65065 11.9997L0.333984 21.3163L2.68398 23.6663L12.0007 14.3497L21.3173 23.6663L23.6673 21.3163L14.3507 11.9997L23.6673 2.68301Z" fill="#00AEFF"/>
+              </svg> 
+              
+          </button>
+        </div>
+        <div class="modal-body myModal-body">
+           <div class="container">
+             
+              <div class="d-flex justify-content-around mobileContainer">
+                <div class=" col1 colMobile">
+                  <label class="companyNameLabel" for="">Company Name</label><br>
+                  <input type="text" name="" placeholder="Genesis" id="">
+  
+                </div>
+                <div class="col2">
+                  <label for="" class="tagLabel">Tag Line</label><br>
+                  <input type="text" placeholder="Anosike">
+                </div>
+  
+              </div>
+              
+              <div class="d-flex justify-content-around mobileContainer">
+                <div class=" col3">
+                  <label for="" class="emailLabel">Email Address</label><br>
+                  <input type="email" placeholder="anosikegenesis@gmail.com">
+     
+                </div>
+                <div class=" col4">
+                  <label for="" class="locationLabel">Location</label><br>
+                  <input type="text" placeholder="Ibadan, Nigeria">
+                </div>
+  
+              </div>
+  
+              <div class="d-flex justify-content-around mobileContainer">
+                <div>
+                  <label for="" class="industryTypeLabel">Industry Type</label>
+                  <div class="content-div" >
+                    <span class="myAdditionSign">&#x2b;</span>
+              <div class="btn-flex">
+                   <button class="btn1">E-commerce <a href="#"></a><span class="myTimesSign1">&#xd7;</span></button>
+                   <button class="btn2">Banking <a href="#"><span class="myTimesSign1">&#xd7;</span></a></button>
+                   <button class="btn3">Finance & Tech <a href="#"><span class="myTimesSign1">&#xd7;</span></a></button>
+                   <button class="btn4">Business <a href="#"><span class="myTimesSign1">&#xd7;</span></a></button>
+                   <input type="search" placeholder="Search">
+                 </div>
+              </div>
+                </div>
+  
+                <div class="browseCheck">
+                  <label for="" class="companyLogoLabel">Company Logo</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input"  id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                      <label class="custom-file-label" for="inputGroupFile04">Logo.png</label>
+                    </div>
+                  
+                  </div>
+                  <br>
+                  <p>Recommended dimension: 200 <span>&#xd7;</span> 200px <br>
+                  Maximum file size: 500Kb <br>
+                  Please add only professional looking logo </p>
+  
+                </div>
+  
+              </div>
+           </div>
+  
+  
+  
+  
+  
+        </div>
+        <div class="modal-footer  d-flex justify-content-around mobileFooter">
+          
+          <button  type="button" class="btn mx-auto " >Save Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--mobile view of popop window-->
+  
+                 <!-- Row for description / Social media link / company info -->
+                 <div class="col-md-7 pl-lg-0" >
+                     <!-- description card start here -->
+                      <div  class="card desc-card px-4 py-5 box-shadow">
+                          <div class=" desc-card-header ">
+  
+                              <h3>Description <img src="../img/Pen.png"  class=' pen-modif float-right'alt=""></h3>
+                              
+  
+                          </div>
+                          <p class=" desc-text mt-3">
+                              Multionational company with
+                               the aim to make savings culture 
+                               easy for every individual in the world. 
+                               our sole aim is making live easier
+                          </p>
+                      </div>
+                      <!-- Social accounts card -->
+                      <div  class="card social-card px-4 pt-5 pb-3 mt-5 box-shadow">
+                          <div class=" desc-card-header ">
+                      
+                              <h3 class="d-flex justify-content-between align-items-center"
+                               >Social accounts <img src="../img/plus-blue.png" alt="" class="plus-social"> </h3>
+                          </div>
+                      
+                           <div class="social-accounts mt-4">
+                                      <div class=" account py-4 pl-1">
+                                               <i class="fab fa-twitter "></i>
+                                               <span class="ml-3">Twitter</span>
+                                               <img src="../img/Pen.png" class="pen-modif float-right">
+                                      </div>
+                      
+                                      <div class=" account py-4 pl-1">
+                      
+                                          <i class="fab fa-linkedin"></i>
+                                          <span class="ml-3">LinkedIn</span>
+                                          <img src="../img/Pen.png" class="pen-modif float-right">                              
+                      
+                                      </div>
+                                      <div class=" account py-4 pl-1">
+                      
+                                          <i class="fab fa-dribbble"></i>
+                                          <span class="ml-3">Dribbble</span>
+                                          <img src="../img/Pen.png" class="pen-modif float-right">                             
+                                      </div>
+                                      <div class=" account py-4 pl-1">
+  
+                                          <i class="fab fa-behance"></i>
+                                          <span class="ml-3">Behance</span>
+                                          <img src="../img/Pen.png" class="pen-modif float-right">                            
+                                       </div>
+                                       
+                                      
+                                       <div class=" account py-4 pl-1">
+                                          <i class="fab fa-github"></i>
+                                          <span class="ml-3">GitHub</span>
+                                          <img src="../img/Pen.png" class="pen-modif float-right">                            
+                                       </div>
+                                       <div class=" account py-4 pl-1">
+                                          <i class="fa fa-hashnode" aria-hidden="true"></i>
+                                          <span class="ml-3">Hashnode</span>
+                                          <img src="../img/Pen.png" class="pen-modif float-right">                            
+                                       </div>
+                                       
+                          </div>
+                                      
+                      </div>
+                  
+                     
+                      <!-- company info card -->
+                      <div  class="card company-card px-4 py-5 my-5 box-shadow">
+                          <div class=" desc-card-header company-title pb-4 ">
+  
+                              <h3 class="" >
+                                  Company Info 
+                               <img src="../img/Pen.png" class="pen-modif float-right">                              </div>
+                              </h3>
+                               <div class="company mt-2">
+                                      <div class=" company-info py-4 pl-1">
+                                          <img src="../img/verified.png" alt="">
+                                          <span class="ml-3">E-Commerce Industry</span>
+  
+                                      </div>
+                                      <div class=" company-info py-4 pl-1">
+                                          <img src="../img/verified.png" alt="">
+                                          <span class="ml-3">7-20 Employees</span>
+  
+                                 </div>
+                                 <div class=" company-info py-4 pl-1">
+  
+                                  <img src="../img/verified.png" alt="">
+                                  <span class="ml-3">08185956620</span>
+  
+                                 </div>
+                               </div>
+                              
+                       </div>
+                  
+                  </div>
+            </div>        
+        </section>
+      </div>
+     
+    </main>
+    <script src="./js/bootstrap-js/popper.js"></script>
+    <script src="./js/bootstrap-js/jquery.js"></script>
+    <script src="./js/bootstrap-js/bootstrap.js"></script>
+    <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
+    <script src="../js/custom-js/side-nav.js"></script>
+  </body>
+</html>
