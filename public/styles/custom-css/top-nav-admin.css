@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  line-height: 27px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.top__nav__wrapper {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgba(163, 163, 163, 0.25);
+  z-index: 1;
+}
+
+.top__nav__icon {
+  height: 56px;
+  width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #C4C4C4;
+  border-radius: 10px;
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+
+.top__nav__img {
+  height: 56px;
+  width: 56px;
+  background: #C4C4C4;
+  border-radius: 10px;
+  margin-right: 8px;
+}
+
+
+
+.top__nav__user__name h3,
+.top__nav__user__name p {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* MEDIA QUERIES FOR SPECIFIC SCREEN SIZES*/
+
+@media screen and (max-width: 380px) {
+  .top__nav__contents {
+    padding: 1.5rem 15px;
+  }
+  .top__nav__user__name h3 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top__nav__user__name{
+    display: none;
+  }
+}

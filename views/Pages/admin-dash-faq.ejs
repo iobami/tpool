@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <%- include('../Templates/admin-head') %>
+
+    <link href="../styles/custom-css/admin-dash-faq.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
+    
+</head>
+<body>
+
+    <!-- Top Navbar -->
+    <%- include('../Templates/admin-header') %>
+
+    <!-- Side Nav -->
+    <%- include('../Templates/admin-sidebar') %>
+
+    <div id="body__click"></div>
+
+    <!-- FAQ Page -->
+    <div id="heading">
+        FAQs
+    </div>
+
+    <div class="faq_section container">
+        <div class="row no-gutters">
+        <div class="faq_sidenav col-sm-4" >
+            <ul class="faq_sidenav_options">
+				<li><a href="#">About Talent Pool</a></li>
+				<li><a href="#">Employee's Benefit</a></li>
+                <li><a href="#" class="active">Pricing</a></li>
+            </ul>
+            <div class="faq_button_div"><button class="btn btn-link faq_button" type="button"> <img src="../img/plus-20.png" style="margin-right: 8px;"> Add FAQ</button></div>
+        </div>
+
+        <div id="faq_page" class="col-sm-8">
+        <div class="row">
+            <div class="pricing">Pricing</div>
+            <div class="edit"><a href="#">Edit</a></div>
+        </div>
+        
+        <div class="accordion" id="questions">
+            <div class="card">
+                <div type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="card-header" id="headingOne">
+                    <img class="plus" src="../img/plus.png"> Question #1
+              </div>
+          
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#questions">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="card-header" id="headingTwo">
+                <img class="plus" src="../img/plus.png"> Question #2
+              </div>
+            
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#questions">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="card-header faq_tog" id="headingThree">
+                <img class="plus" src="../img/plus.png"> Question #3
+              </div>
+                </a>
+
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#questions">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+                <div type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="card-header faq_tog" id="headingFour">
+                  <img class="plus" src="../img/plus.png"> Question #4
+                </div>
+                  </a>
+  
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#questions">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" class="card-header faq_tog" id="headingFive">
+                  <img class="plus" src="../img/plus.png"> Question #5
+                </div>
+                  </a>
+  
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#questions">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+
+        </div>
+
+        </div> <!--col-->
+    </div>    <!-- row -->
+    </div>  <!-- container -->
+<!-- <img class="plus" src="../img/plus.png"> -->
+    <!-- <script> 
+        $('.card-header').click(function() { 
+            $(this).find('i').toggleClass('fa fa-plus fa fa-minus'); 
+        }); 
+    </script> -->
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../js/custom-js/side-nav.js"></script>
+</body>
+</html>

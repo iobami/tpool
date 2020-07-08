@@ -1,0 +1,18 @@
+<div class="sidenav" id="sideNav">
+  <div class="logo__wrapper">
+    <div class="d-flex justify-content-center align-items-center logo__image">
+      <img src="img/navLogo.svg" alt="" />
+    </div>
+  </div>
+
+  <ul class="sidenav_links">
+    <li><a class="<%= path === 'admin-dashboard' ? 'active' : '' %>" href="admin-dashboard" >Dashboard</a></li>
+    <li><a href="/admin-verification">Verification</a></li>
+    <li><a class="<%= path === 'admin-all-employers' ? 'active' : '' %>" href="/admin-all-employers">Employers</a></li>
+    <li><a  class="<%= path === 'admin-viewEmployee' ? 'active' : '' %>" href="admin-viewEmployee">Employees</a></li>
+    <li><a class="<%= path === 'admin-messages' ? 'active' : '' %>" href="/admin-messages">Messages</a></li>
+    <li><a href="#">Support</a></li>
+    <li><a class="<%= path === 'admin-faq' ? 'active' : '' %>" href="/admin-faq">FAQs</a></li>
+    <li><a class="<%= path === 'admin-settings' ? 'active' : '' %>" href="admin-settings">Settings</a></li>
+  </ul>
+</div>

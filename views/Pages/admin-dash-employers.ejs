@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../Templates/admin-head') %>
+  <link href="../styles/custom-css/adminDashViewEmployers.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- Header/Navbar Here -->
+  <%- include('../Templates/admin-header') %>
+
+  <main>
+    <!-- SideNav Here -->
+    <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
+
+      <%- include('../Templates/admin-sidebar') %>
+
+      <div id="body__click">
+      </div>
+    </div>
+
+    <!-- Main Content Here -->
+    <section class="container-fluid main-content px-3 px-md-4 px-lg-5">
+      <header class="title">
+        <h4 class="py-4">Employers</h4>
+      </header>
+
+      <div
+        class="talent-cards mb-4 mb-sm-5 d-flex flex-column justify-content-start flex-sm-row flex-sm-nowrap">
+        <div
+          class="talent-card bg-white text-center rounded mb-3 mb-sm-0 py-5 mr-sm-4">
+          <h3>10,000</h3>
+          <small>INDIVIDUALS</small>
+        </div>
+        <div class="talent-card bg-white text-center rounded py-5">
+          <h3>400</h3>
+          <small>COMPANIES</small>
+        </div>
+      </div>
+
+      <div
+        class="d-flex justify-content-between align-items-baseline flex-sm-row mb-4 display-none">
+        <h6>Employers list</h6>
+        <div class="btn-group ">
+          <button type="button"
+            class="btn btm-sm dropdown-toggle btn-select-border bg-white"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            All
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item talent-btn-dropdown-item"
+              type="button"> <small>Option
+                1</small> </button>
+            <button class="dropdown-item talent-btn-dropdown-item"
+              type="button"> <small>Option
+                2</small> </button>
+            <button class="dropdown-item talent-btn-dropdown-item"
+              type="button"> <small>Option 3
+              </small></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container pb-4">
+        <div class="table-form-container py-2">
+          <form class="form-inline col-12 pl-sm-4 ml-sm-2">
+            <label class="sr-only" for="search-input-employer">Search for
+              employers</label>
+            <div class="input-group input-group-lg">
+              <div class="input-group-prepend">
+                <div
+                  class="input-group-text bg-white border-right-0 form-control-outline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M19.3187 18.0273L13.232 11.9406C14.1766 10.7195 14.6875 9.22656 14.6875 7.65625C14.6875 5.77656 13.9539 4.01406 12.6273 2.68516C11.3008 1.35625 9.53359 0.625 7.65625 0.625C5.77891 0.625 4.01172 1.35859 2.68516 2.68516C1.35625 4.01172 0.625 5.77656 0.625 7.65625C0.625 9.53359 1.35859 11.3008 2.68516 12.6273C4.01172 13.9562 5.77656 14.6875 7.65625 14.6875C9.22656 14.6875 10.7172 14.1766 11.9383 13.2344L18.025 19.3187C18.0428 19.3366 18.064 19.3508 18.0874 19.3604C18.1107 19.3701 18.1357 19.3751 18.1609 19.3751C18.1862 19.3751 18.2112 19.3701 18.2345 19.3604C18.2578 19.3508 18.279 19.3366 18.2969 19.3187L19.3187 18.2992C19.3366 18.2814 19.3508 18.2602 19.3604 18.2369C19.3701 18.2135 19.3751 18.1885 19.3751 18.1633C19.3751 18.138 19.3701 18.113 19.3604 18.0897C19.3508 18.0664 19.3366 18.0452 19.3187 18.0273ZM11.3688 11.3688C10.375 12.3602 9.05781 12.9062 7.65625 12.9062C6.25469 12.9062 4.9375 12.3602 3.94375 11.3688C2.95234 10.375 2.40625 9.05781 2.40625 7.65625C2.40625 6.25469 2.95234 4.93516 3.94375 3.94375C4.9375 2.95234 6.25469 2.40625 7.65625 2.40625C9.05781 2.40625 10.3773 2.95 11.3688 3.94375C12.3602 4.9375 12.9062 6.25469 12.9062 7.65625C12.9062 9.05781 12.3602 10.3773 11.3688 11.3688Z"
+                      fill="#000" />
+                  </svg>
+                </div>
+              </div>
+              <input type="search"
+                class="form-control border-left-0 pl-1 form-control-outline"
+                id="search-input-employer" placeholder="Search for employer">
+            </div>
+          </form>
+        </div>
+        <div class="table-responsive custom-scroll-bar">
+          <table class="table bg-white">
+            <thead>
+              <tr>
+                <th scope="col" class="text-start py-4 pl-4 pr-5 hide_content">User ID</th>
+                <th scope="col" class="text-start py-4 pr-4">Employer's name
+                </th>
+                <th scope="col" class="text-start py-4 pr-3 hide_content">Employer type</th>
+                <th scope="col" class="text-start py-4 hide_content">Date joined</th>
+                <th scope="col" class="text-start py-4">Status</th>
+                <th scope="col" class="py-4"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
+                <td
+                  class=" d-flex justify-content-start align-items-center align-middle">
+                  <img class=" img-fluid rounded" src="../img/user.png"
+                    alt="employer logo">
+                  <span
+                    class="d-inline-block align-middle w-max-content pl-3">Dealgo
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
+                </td>
+                <td class="align-middle talent-text-muted hide_content">Individual
+                </td>
+                <td class="align-middle talent-text-muted hide_content">
+                  Feb 12,2018
+                </td>
+                <td class="align-middle">
+                  <button class="btn talent-btn-dark">Verified</button>
+                </td>
+                <td class="align-middle">
+                  <button class="btn l-padding r-padding">
+                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                    </svg>
+
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="align-middle pl-4 pr-5 hide_content hide_content">HNG02E</td>
+                <td
+                  class=" d-flex justify-content-start align-items-center align-middle">
+                  <img class=" img-fluid rounded" src="../img/user.png"
+                    alt="employer logo">
+                  <span
+                    class="d-inline-block align-middle w-max-content pl-3">Dealgo
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
+                </td>
+                <td class="align-middle talent-text-muted hide_content">Individual
+                </td>
+                <td class="align-middle talent-text-muted hide_content">
+                  Feb 12,2018
+                </td>
+                <td class="align-middle">
+                  <button class="btn talent-btn-dark">Verified</button>
+                </td>
+                <td class="align-middle">
+                  <button class="btn l-padding r-padding">
+                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                    </svg>
+
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
+                <td
+                  class=" d-flex justify-content-start align-items-center align-middle">
+                  <img class=" img-fluid rounded" src="../img/user.png"
+                    alt="employer logo">
+                  <span
+                    class="d-inline-block align-middle w-max-content pl-3">Dealgo
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
+                </td>
+                <td class="align-middle talent-text-muted hide_content">Company
+                </td>
+                <td class="align-middle talent-text-muted hide_content">
+                  Feb 12,2018
+                </td>
+                <td class="align-middle">
+                  <button class="btn talent-btn-dark">Verified</button>
+                </td>
+                <td class="align-middle">
+                  <button class="btn l-padding r-padding">
+                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                    </svg>
+
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
+                <td
+                  class=" d-flex justify-content-start align-items-center align-middle">
+                  <img class=" img-fluid rounded" src="../img/user.png"
+                    alt="employer logo">
+                  <span
+                    class="d-inline-block align-middle w-max-content pl-3">Dealgo
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
+                </td>
+                <td class="align-middle talent-text-muted hide_content">Individual
+                </td>
+                <td class="align-middle talent-text-muted hide_content">
+                  Feb 12,2018
+                </td>
+                <td class="align-middle">
+                  <button class="btn talent-btn-dark">Verified</button>
+                </td>
+                <td class="align-middle">
+                  <button class="btn l-padding r-padding">
+                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                    </svg>
+
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
+                <td
+                  class=" d-flex justify-content-start align-items-center align-middle  l-padding r-padding">
+                  <img class=" img-fluid rounded" src="../img/user.png"
+                    alt="employer logo">
+                  <span
+                    class="d-inline-block align-middle w-max-content pl-3">Dealgo
+                    Inc<p class="sub-text">Feb 12,2018</p></span>
+                </td>
+                <td class="align-middle talent-text-muted hide_content">Company
+                </td>
+                <td class="align-middle talent-text-muted hide_content">
+                  Feb 12,2018
+                </td>
+                <td class="align-middle">
+                  <button class="btn talent-btn-dark">Verified</button>
+                </td>
+                <td class="align-middle">
+                  <button class="btn l-padding r-padding">
+                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="12" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="7" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                      <circle cx="2" cy="2" r="2" fill="#353A45" />
+                    </svg>
+
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+
+  <script src="../js/bootstrap-js/popper.js"></script>
+  <script src="../js/bootstrap-js/jquery.js"></script>
+  <script src="../js/bootstrap-js/bootstrap.js"></script>
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
+  </script>
+  <script src="../js/custom-js/side-nav.js"></script>
+</body>
+
+</html>
