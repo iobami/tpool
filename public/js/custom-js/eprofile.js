@@ -137,21 +137,23 @@ function buildList(data) {
 }
 
 async function getAllSkillsForIndividuals() {
-  const url = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
+  const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
 
   try {
-    const response = await fetch(url, {
+    const { data } = await axios({
+      method: 'GET',
+      url: skillUrl,
       headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "User-Agent": "Developers Lancers",
+        "Content-Type": "application/json; charset=UTF-8",
         Authorization: `Bearer ${userInformation.token}`,
       },
     });
-    const result = await response.json();
 
+    if (data.status === 'success') {
+      myArray = data.data.skills;
+      buildList(myArray);
+    }
 
-    myArray = result.data.skills;
-    buildList(myArray);
   } catch (error) {
     alert("Opps! An error seems to have occured. Try again later. Thanks!");
   }
