@@ -6,6 +6,7 @@ exports.logout = async (request, response) => {
 
         console.log(data.data);
     } catch (e) {
+        
         console.log(`error occured ${e}`);
     }
 

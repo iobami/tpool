@@ -1,5 +1,6 @@
 function logOutFunction() {
-    localStorage.setItem('tpAuth', '');
+    localStorage.clear()
+    // localStorage.setItem('tpAuth', '');
     window.location.replace('/');
 }
 logOutFunction();
