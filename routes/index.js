@@ -11,5 +11,4 @@ appRoute.get('/faq', faq);
 appRoute.get('/signOutPopUp', signOutPopUp);
 appRoute.get('/coming-soon', comingSoon);
 
-
 module.exports = appRoute;
