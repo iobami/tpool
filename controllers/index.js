@@ -24,9 +24,5 @@ module.exports = {
   },
   comingSoon: (req, res) => {
     res.render('Pages/coming-soon', { pageName: 'Coming Soon' });
-  },
-  adminSuper : (req, res) => {
-    res.render('Pages/adminSuper', {pageName: 'Super'})
-    
   }
 }
