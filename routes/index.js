@@ -1,7 +1,7 @@
 const express = require("express");
 const appRoute = express.Router();
 
-const { about, home, directory, faq, contactUs, signOutPopUp, comingSoon , adminSuper } = require('../controllers');
+const { about, home, directory, faq, contactUs, signOutPopUp, comingSoon } = require('../controllers');
 
 appRoute.get('/', home);
 appRoute.get('/aboutUs', about);
