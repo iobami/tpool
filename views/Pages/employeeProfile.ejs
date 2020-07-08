@@ -37,18 +37,18 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="card px-4 py-5 bio">
-                            <%= employeeProfile.picture_url %>
+                            <!-- <%= employeeProfile.picture_url %> -->
                             <div class="intern-main text-center mt-4">
                                 <h3><%= employeeProfile.first_name %><%= employeeProfile.last_name %></h3>
-                                <!-- <p><%= employeeProfile.skillCategory %></p> -->
+                                <p><%= employeeProfile.skillCategory %></p>
                             </div>
                             <hr>
                             <div class="intern-other">
-                                <!-- <p><span><img src="../img/iprofile/carbon_location.svg" alt=""></span> <%= employeeProfile.location %>
-                                </p> -->
+                                <p><span><img src="../img/iprofile/carbon_location.svg" alt=""></span> <%= employeeProfile.location %>
+                                </p>
                                 <p><span><img src="../img/iprofile/carbon_email.svg" alt=""></span>
                                 
-                                    <%= decodedToken.email %>
+                                    <%= employeeProfile.email %>
                                 </p>
 
                             </div>
@@ -121,7 +121,7 @@
                                                         <label class="super-label"
                                                             for="exampleFormControl">Track(s)</label>
                                                             
-                                                        <!-- <div class="form-group form-check">
+                                                        <div class="form-group form-check">
                                                             <input type="checkbox" class="form-check-input noHover"
                                                                 id="Backend" value="Backend Development">
                                                             <label class="form-check-label"
@@ -148,7 +148,7 @@
                                                             <label class="form-check-label"
                                                                 for="exampleCheck1">Mobile
                                                                 Development</label>
-                                                        </div> -->
+                                                        </div>
 
                                                         <label class="form-group form-check">
                                                             <input type="checkbox" id="Backend" value="Backend Development">
