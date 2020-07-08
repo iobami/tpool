@@ -85,7 +85,7 @@ function responseHandler(res) {
 		const userToken = JSON.parse(atob(res.data.token.split('.')[1]));
 
 		if (userToken.userTypeId === null ) {
-			return (window.location.href = "/employee-profile-creation");
+			return (window.location.href = "/employee-profileCreation");
 		} else {
 			return (window.location.href = "/employee-dashboard");
 		}
