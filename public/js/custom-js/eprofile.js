@@ -77,12 +77,14 @@ Filevalidation = () => {
 };
 
 const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
+// clear this later | just for trst
+userInfo['employee_id'] = 'a4b67f2a-c81b-480d-b4c7-68ac750a4cc3';
 
 addSkillForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const skill = addSkillForm.querySelector('input').value;
   
-  fetch(`https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}`, {
+  fetch(`https://api.lancers.app/v1/employee/skill/${userInfo.employee_id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
@@ -93,7 +95,10 @@ addSkillForm.addEventListener("submit", (e) => {
   })
     .then(res => res.json())
     .then(data => {
-      getAllSkillsForIndividuals()
+      getAllSkillsForIndividuals();
+      alert(data.message);
+    }).catch(e => {
+      alert(e.message);
     })
 })
 
@@ -128,7 +133,7 @@ function buildList(data) {
 }
 
 async function getAllSkillsForIndividuals() {
-  const url = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
+  const url = `https://api.lancers.app/v1/employee/skill/${userInfo.employee_id}/all`;
 
   try {
     const response = await fetch(url, {
