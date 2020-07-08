@@ -116,25 +116,29 @@ submitButton.addEventListener('click', (e) => {
             showAlert(res.error)
           }
         })
-        .catch(
-          (err) => {
+        .catch((err) => {
             if(err.response.status === 403) {
-              console.log('responded with error', err.response.status)
+              // console.log('responded with error', err.response.status)
               submitButton.innerText = 'Sign Up'
               showAlert('Email already exist!')
             } else if(err.response.status === 400) {
+              if(email === '') {
+                submitButton.innerText = 'Sign Up'
+                showAlert('Email cannot be empty')
+              } else {
               submitButton.innerText = 'Sign Up'
               showAlert('Cannot have duplicate unique fields!')
+              }
             } else if(err.response.status === 500) {
               submitButton.innerText = 'Sign Up'
               showAlert('Internal Server Error! Please try again.')
             } else if(err.request) {
-              console.log('issue with request')
+              // console.log('issue with request')
             } else {
               showAlert(err.message)
               console.log('Error', err.message)
             }
-          })
+        })
       };
       } else {
       showAlert('Please fill required and/or accept the Terms and Conditions to proceed')
@@ -336,26 +340,29 @@ submitButtonV2.addEventListener('click', (e) => {
             showAlert(res.error)
           }
         })
-        .catch(
-          (err) => {
-            if(err.response.status === 403) {
-              console.log('responded with error', err.response.status)
+        .catch((err) => {
+          if(err.response.status === 403) {
+            // console.log('responded with error', err.response.status)
+            submitButtonV2.innerText = 'Sign Up'
+            showAlert('Email already exist!')
+          } else if(err.response.status === 400) {
+            if(email === '') {
               submitButtonV2.innerText = 'Sign Up'
-              showAlert('Email already exist!')
-            } else if(err.response.status === 400) {
-              submitButtonV2.innerText = 'Sign Up'
-              showAlert('Cannot have duplicate unique fields!')
-            } else if(err.response.status === 500) {
-              submitButtonV2.innerText = 'Sign Up'
-              showAlert('Internal Server Error! Please try again.')
-            } else if(err.request) {
-              console.log('issue with request')
+              showAlert('Email cannot be empty')
             } else {
-              submitButtonV2.innerText = 'Sign Up'
-              showAlert(err.message)
-              console.log('Error', err.message)
+            submitButtonV2.innerText = 'Sign Up'
+            showAlert('Cannot have duplicate unique fields!')
             }
-          })
+          } else if(err.response.status === 500) {
+            submitButtonV2.innerText = 'Sign Up'
+            showAlert('Internal Server Error! Please try again.')
+          } else if(err.request) {
+            // console.log('issue with request')
+          } else {
+            showAlert(err.message)
+            console.log('Error', err.message)
+          }
+        V2})
       };
       } else {
       showAlert('Please fill required and/or accept the Terms and Conditions to proceed')
