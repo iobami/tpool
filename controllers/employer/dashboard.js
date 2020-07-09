@@ -7,6 +7,10 @@ module.exports = {
       res.render('Pages/employer-profile-page', { pageName: 'Profile'});
     },
 
+  employerMessages : (req, res) => {
+      res.render('Pages/employer-messages', { pageName: 'Employer Messages'});
+    },
+
   employerCreateProfile: (req, res) => {
     res.render('Pages/employer-profile-creation', { pageName: 'Create Profile'});
   },

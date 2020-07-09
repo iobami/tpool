@@ -59,7 +59,6 @@ employeeProfileCreationForm.addEventListener('submit', (e) => {
             "Content-Type": "application/json; charset=UTF-8",
             "User-Agent": "Developers Lancers",
             Authorization: `Bearer ${userInformation.token}`,
-            // Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9kdXR1c2lub21vd3VubWlAZ21haWwuY29tIiwidXNlcklkIjoiZWVlNTI2OWItZjRlNy00MDU4LWJjZjUtNzdiNGIyODM0Yzk3IiwidXNlclJvbGUiOiJST0wtRU1QTE9ZRUUiLCJ1c2VyVHlwZUlkIjoiOWM2MzFmYzctNjViNC00ZDFiLTlkNGEtMTE4OTUxZjRkMzcxIiwiaWF0IjoxNTk0MTAxNjI1LCJleHAiOjE1OTQxODgwMjV9.V5y8ztfmM-M48KOJlL2ZjfZuQ9y8iSm-ByP9bUsskXc`,
         },
         body: JSON.stringify({
             "firstName": employeeFirstName,
