@@ -1,11 +1,19 @@
-const express = require("express");
+const express = require('express');
 const appRoute = express.Router();
 
-const { about, home, directory, faq, contactUs, signOutPopUp, comingSoon } = require('../controllers');
+const {
+  about,
+  home,
+  directory,
+  faq,
+  contactUs,
+  signOutPopUp,
+  comingSoon,
+} = require('../controllers');
 
 appRoute.get('/', home);
-appRoute.get('/aboutUs', about);
-appRoute.get('/contactUs', contactUs);
+appRoute.get('/about-us', about);
+appRoute.get('/contact-us', contactUs);
 appRoute.get('/directory', directory);
 appRoute.get('/faq', faq);
 appRoute.get('/signOutPopUp', signOutPopUp);
