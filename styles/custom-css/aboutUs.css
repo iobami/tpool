@@ -1,4 +1,3 @@
-
 .first {
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("/img/AboutUs/AboutUs1.svg");
     background-repeat: no-repeat;
@@ -26,8 +25,6 @@ p, h1,h2,h3,h4,h5,h6 {
     font-style: normal;
     font-weight: normal;
 }
-
-
 .second {
     padding: 120px;
     padding-bottom: 180px;
@@ -37,11 +34,8 @@ p, h1,h2,h3,h4,h5,h6 {
     text-align: center;
     color: #343434;
 }
-
-
 .second h5{
     line-height: 2rem;
-    text-align: center;
 }
 .card-body{
     padding-bottom:2rem !important;
@@ -76,7 +70,6 @@ p, h1,h2,h3,h4,h5,h6 {
     .second {
         font-size: 16px;
     }
-   
 }
 @media (max-width: 576px){
    .first h4{
