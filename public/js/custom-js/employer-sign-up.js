@@ -315,49 +315,40 @@ individualForm.addEventListener("submit", (e) => {
 
     const signupEmployer = async () => {
       const API_URL = "https://api.lancers.app/v1/auth/employer-signup";
-      // const res = await fetch(API_URL, {
-      //   method: "POST",
-      //   // mode: "no-cors",
-      //   body: JSON.stringify(formData),
-      //   headers: {
-      //     "Content-type": "application/json; charset=UTF-8",
-      //     "User-Agent": "Developers Lancers",
-      //   },
-      //   redirect: "follow",
-      // });
-      const { data } = await axios({
-        method: 'POST',
-        url: API_URL,
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        // mode: "no-cors",
+        body: JSON.stringify(formData),
         headers: {
-          "Content-Type": "application/json; charset=UTF-8",
+          "Content-type": "application/json; charset=UTF-8",
+          "User-Agent": "Developers Lancers",
         },
-        data: JSON.stringify(formData),
         redirect: "follow",
       });
-      console.log(data);
-      if (data.data) {
+
+      const data = await res.json();
+
+      if (data) {
         document.getElementById("submitBtn").innerText = "Sign Up";
         document.getElementById("submitBtn").disabled = false;
       }
       try {
-        if (data.data.status === "success") {
+        if (data.status === "success") {
           $("#exampleModal").modal();
-        } else if (data.data.status === "error") {
+        } else if (data.status === "error") {
           const message =
-            data.data.error === "Someone has already registered this email"
+            data.error === "Someone has already registered this email"
               ? "Email already exists"
-              : data.data.error === "Phone number already exist"
+              : data.error === "Phone number already exist"
                 ? "Phone number already exists"
-                : data.data.error;
+                : data.error;
           showAlert(message);
         }
       } catch (error) {
         showAlert(error);
       }
     };
-
-     
-    
 
     // check for agreement to terms
     // add button loader
@@ -408,49 +399,41 @@ orgForm.addEventListener("submit", (e) => {
     };
 
     const signupOrgEmployer = async () => {
-  const API_URL = "https://api.lancers.app/v1/auth/employer-signup";
-  // const res = await fetch(API_URL, {
-  //   method: "POST",
-  //   // mode: "no-cors",
-  //   body: JSON.stringify(formData),
-  //   headers: {
-  //     "Content-type": "application/json; charset=UTF-8",
-  //     "User-Agent": "Developers Lancers",
-  //   },
-  //   redirect: "follow",
-  // });
-  // const data = await res.json();
-  const { data } = await axios({
-    method: 'POST',
-    url: API_URL,
-    headers: {
-      "Content-Type": "application/json; charset=UTF-8",
-    },
-    data: JSON.stringify(formData),
-    redirect: "follow",
-  });
-  if (data.data) {
-    document.getElementById("orgSubmitBtn").innerText = "Sign Up";
-    document.getElementById("orgSubmitBtn").disabled = false;
-  }
-  try {
-    if (data.data.status === "success") {
-      $("#exampleModal").modal();
-    } else if (data.data.status === "error") {
-      const message =
-        data.data.error === "Someone has already registered this email"
-          ? "Email already exists"
-          : data.data.error === "Phone number already exist"
-            ? "Phone number already exists"
-            : data.data.error;
-      showAlert(message);
-    }
-  } catch (error) {
-    showAlert(error);
-  }
-};
+      const API_URL = "https://api.lancers.app/v1/auth/employer-signup";
 
+      const res = await fetch(API_URL, {
+        method: "POST",
+        // mode: "no-cors",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "User-Agent": "Developers Lancers",
+        },
+        redirect: "follow",
+      });
 
+      const data = await res.json();
+
+      if (data) {
+        document.getElementById("orgSubmitBtn").innerText = "Sign Up";
+        document.getElementById("orgSubmitBtn").disabled = false;
+      }
+      try {
+        if (data.status === "success") {
+          $("#exampleModal").modal();
+        } else if (data.status === "error") {
+          const message =
+            data.error === "Someone has already registered this email"
+              ? "Email already exists"
+              : data.error === "Phone number already exist"
+                ? "Phone number already exists"
+                : data.error;
+          showAlert(message);
+        }
+      } catch (error) {
+        showAlert(error);
+      }
+    };
 
     // check for agreement to terms
     // add button loader
