@@ -1,0 +1,12 @@
+.mini-footer{
+    background-color: #EBECED;
+    color: #212529;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    white-space: normal;
+}
+
+.justify-content{
+    justify-content: space-evenly;
+}
