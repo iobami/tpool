@@ -15,6 +15,18 @@ module.exports = {
     res.render('Pages/employer-profile-creation', { pageName: 'Create Profile'});
   },
 
+  employerType: (req, res) => {
+    res.render('Pages/employer-type', { pageName: 'Profile Type'});
+  },
+
+  employerCompany: (req, res) => {
+    res.render('Pages/employer-company', { pageName: 'Company Profile'});
+  },
+
+  employerIndividual: (req, res) => {
+    res.render('Pages/employer-individual', { pageName: 'Individual Profile'});
+  },
+
   employerDashboardSettings: (req, res) => {
     res.render('Pages/employer-dash-settings.ejs', { pageName: 'Employer Dashboard - Settings' });
   },
