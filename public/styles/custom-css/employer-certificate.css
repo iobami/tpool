@@ -2,11 +2,10 @@
     width: 92%;
     margin: auto;
     min-height: 67vh;
-    padding: 20px 4px;
-}
-
-.container-fluid {
-    background-color: #FFFFFF
+    padding: 40px 24px 0 24px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 1px #ccc; 
 }
 
 .employer-certificate-upload h3 {
@@ -79,6 +78,7 @@ tbody td .btn:hover {
 tfoot .btn {
     background-color: #084482;
     color: #FFFFFF;
+    margin-right: 16px;
 }
 tfoot .btn:hover {
     background-color: #fff;
