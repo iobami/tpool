@@ -315,27 +315,34 @@ individualForm.addEventListener("submit", (e) => {
 
     const signupEmployer = async () => {
       const API_URL = "https://api.lancers.app/v1/auth/employer-signup";
-
-      const res = await fetch(API_URL, {
-        method: "POST",
-        // mode: "no-cors",
-        body: JSON.stringify(formData),
+      // const res = await fetch(API_URL, {
+      //   method: "POST",
+      //   // mode: "no-cors",
+      //   body: JSON.stringify(formData),
+      //   headers: {
+      //     "Content-type": "application/json; charset=UTF-8",
+      //     "User-Agent": "Developers Lancers",
+      //   },
+      //   redirect: "follow",
+      // });
+      const { data } = await axios({
+        method: 'POST',
+        url: API_URL,
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "User-Agent": "Developers Lancers",
+          "Content-Type": "application/json; charset=UTF-8",
         },
+        data: JSON.stringify(formData),
         redirect: "follow",
       });
-
-      const data = await res.json();
-
-      if (data) {
+      console.log(data);
+      if (data.data) {
         document.getElementById("submitBtn").innerText = "Sign Up";
         document.getElementById("submitBtn").disabled = false;
       }
       try {
         if (data.status === "success") {
           $("#exampleModal").modal();
+          proceedToLogin();
         } else if (data.status === "error") {
           const message =
             data.error === "Someone has already registered this email"
@@ -350,8 +357,22 @@ individualForm.addEventListener("submit", (e) => {
       }
     };
 
+    // function proceedToLogin() {
+    //   setTimeout(() => {
+    //     window.location.assign('/employer-sign-in');
+    //   }, 5000)
+    // }
+
+     
+    
+
     // check for agreement to terms
     // add button loader
+    if (!document.getElementById("termsPolicy")) {
+         signupEmployer(formData);
+
+    }
+
     if (document.getElementById("termsPolicy").checked) {
       submitBtn.disabled = true;
       submitBtn.innerHTML =
@@ -393,47 +414,61 @@ orgForm.addEventListener("submit", (e) => {
       JSON.stringify({ orgName: orgName.value.trim() })
     );
 
-    const formData = {
-      orgEmail: orgEmail.value.trim(),
-      orgPassword: orgPassword.value,
+    const orgFormData = {
+      email: orgEmail.value.trim(),
+      password: orgPassword.value,
     };
 
     const signupOrgEmployer = async () => {
-      const API_URL = "https://api.lancers.app/v1/auth/employer-signup";
+  const API_URL = "https://api.lancers.app/v1/auth/employer-signup";
+  // const res = await fetch(API_URL, {
+  //   method: "POST",
+  //   // mode: "no-cors",
+  //   body: JSON.stringify(formData),
+  //   headers: {
+  //     "Content-type": "application/json; charset=UTF-8",
+  //     "User-Agent": "Developers Lancers",
+  //   },
+  //   redirect: "follow",
+  // });
+  // const data = await res.json();
+  const { data } = await axios({
+    method: 'POST',
+    url: API_URL,
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+    },
+    data: JSON.stringify(orgFormData),
+    redirect: "follow",
+  });
+  if (data.data) {
+    document.getElementById("orgSubmitBtn").innerText = "Sign Up";
+    document.getElementById("orgSubmitBtn").disabled = false;
+  }
+  try {
+    if (data.status === "success") {
+      $("#exampleModal").modal();
+      proceedToLogin();
+    } else if (data.status === "error") {
+      const message =
+        data.error === "Someone has already registered this email"
+          ? "Email already exists"
+          : data.error === "Phone number already exist"
+            ? "Phone number already exists"
+            : data.error;
+      showAlert(message);
+    }
+  } catch (error) {
+    showAlert(error);
+  }
+};
 
-      const res = await fetch(API_URL, {
-        method: "POST",
-        // mode: "no-cors",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "User-Agent": "Developers Lancers",
-        },
-        redirect: "follow",
-      });
 
-      const data = await res.json();
+if (!document.getElementById("orgTerms")) {
+  signupOrgEmployer(orgFormData);
 
-      if (data) {
-        document.getElementById("orgSubmitBtn").innerText = "Sign Up";
-        document.getElementById("orgSubmitBtn").disabled = false;
-      }
-      try {
-        if (data.status === "success") {
-          $("#exampleModal").modal();
-        } else if (data.status === "error") {
-          const message =
-            data.error === "Someone has already registered this email"
-              ? "Email already exists"
-              : data.error === "Phone number already exist"
-                ? "Phone number already exists"
-                : data.error;
-          showAlert(message);
-        }
-      } catch (error) {
-        showAlert(error);
-      }
-    };
+}
+
 
     // check for agreement to terms
     // add button loader
@@ -452,12 +487,19 @@ orgForm.addEventListener("submit", (e) => {
       }, 20000);
 
       // submit form
-      signupOrgEmployer(formData);
+      signupOrgEmployer(orgFormData);
     } else {
       showAlert("Please accept the Terms and Conditions to proceed.");
     }
   }
 });
+
+function proceedToLogin() {
+  setTimeout(() => {
+    window.location.assign('/employer-sign-in');
+  }, 5000)
+};
+
 
 
 //Social auth implementation
@@ -499,6 +541,7 @@ githubSubmit.addEventListener("click", (e) => {
     //   showAlert(error);
     // }
   };
+  
 
 
   signupEmployerGithub();
