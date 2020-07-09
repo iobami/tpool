@@ -10,7 +10,13 @@ const frontend = document.querySelector("frontend");
 const mobile = document.querySelector("mobile");
 const design = document.querySelector("design");
 const addSkillForm = document.querySelector('#add-skills')
-const userInformation = JSON.parse(localStorage.getItem("user"));
+// const userInformation = JSON.parse(localStorage.getItem("user"));
+
+const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
+
+if (!userInformation) {
+  alert('Error! User Information not found, please sign in again.');
+}
 
 const errorMessage = document.querySelector("#error-message");
 const successMessage = document.querySelector("#success-message");
@@ -136,27 +142,24 @@ function buildList(data) {
   });
 }
 
-async function getAllSkillsForIndividuals() {
-  const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
-
-  try {
-    const { data } = await axios({
-      method: 'GET',
-      url: skillUrl,
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-        Authorization: `Bearer ${userInformation.token}`,
-      },
-    });
-
-    if (data.status === 'success') {
-      myArray = data.data.skills;
-      buildList(myArray);
+  async function getAllSkillsForIndividuals() {
+    const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
+    try {
+      const { data } = await axios({
+        method: 'GET',
+        url: skillUrl,
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${userInformation.token}`,
+        },
+      });
+      if (data.status === 'success') {
+        myArray = data.data.skills;
+        buildList(myArray);
+      }
+    } catch (error) {
+      alert("Opps! An error seems to have occured. Try again later. Thanks!");
     }
-
-  } catch (error) {
-    alert("Opps! An error seems to have occured. Try again later. Thanks!");
   }
-}
 
 getAllSkillsForIndividuals();

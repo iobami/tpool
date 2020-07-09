@@ -4,6 +4,7 @@ const appRoute = express.Router();
 const {
     employerDashboard,
     employerProfile,
+    employerMessages,
     employerCreateProfile,
     employerDashboardSettings,
     employerDashboardSupport,
@@ -16,6 +17,7 @@ const {
 
 appRoute.get('/employer-dashboard', employerDashboard);
 appRoute.get('/employer-profile', employerProfile);
+appRoute.get('/employer-messages', employerMessages);
 appRoute.get('/employer-create-profile', employerCreateProfile);
 appRoute.get('/employer-dashboard-settings', employerDashboardSettings);
 appRoute.get('/employer-dashboard-support', employerDashboardSupport);

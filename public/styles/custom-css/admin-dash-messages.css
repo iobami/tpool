@@ -317,6 +317,15 @@ button:focus {
   font-weight: 500;
 }
 
+#talent-offers-img-size, .check-mark {
+  width: 17px;
+  height: 17px;
+}
+
+#talent-offers-size {
+  font-size: 17px;
+}
+
 @media only screen and (max-width: 768px) {
   body {
     background-color: #fff;

@@ -127,7 +127,7 @@ submitButton.addEventListener('click', (e) => {
                 showAlert('Email cannot be empty')
               } else {
               submitButton.innerText = 'Sign Up'
-              showAlert('Cannot have duplicate unique fields!')
+              // showAlert('Cannot have duplicate unique fields!')
               }
             } else if(err.response.status === 500) {
               submitButton.innerText = 'Sign Up'
@@ -351,7 +351,7 @@ submitButtonV2.addEventListener('click', (e) => {
               showAlert('Email cannot be empty')
             } else {
             submitButtonV2.innerText = 'Sign Up'
-            showAlert('Cannot have duplicate unique fields!')
+            // showAlert('Cannot have duplicate unique fields!')
             }
           } else if(err.response.status === 500) {
             submitButtonV2.innerText = 'Sign Up'
@@ -362,7 +362,7 @@ submitButtonV2.addEventListener('click', (e) => {
             showAlert(err.message)
             console.log('Error', err.message)
           }
-        V2})
+        })
       };
       } else {
       showAlert('Please fill required and/or accept the Terms and Conditions to proceed')
