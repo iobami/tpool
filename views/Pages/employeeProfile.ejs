@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('../includes/employeeProfileHead') %>
 </head>
@@ -10,22 +11,23 @@
 
     <%- include('../includes/employeeSideNav') %>
 
-        <div class="modal fade modal-static" tabindex="-1" role="dialog" id="global_modal">
-            <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade modal-static" tabindex="-1" role="dialog" id="global_modal">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="container">
 
-                <div class="modal-header formCol">
-                <h5 class="modal-title"></h5>
-                <button type="button" class="close" data-dismiss="modal" onclick="close_modal()" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <div class="modal-header formCol">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" onclick="close_modal()"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"></div>
                 </div>
-                <div class="modal-body"></div>
-            </div>
-            </div>
             </div>
         </div>
+    </div>
     ​
 
     <div id="main-section">
@@ -44,21 +46,23 @@
                             </div>
                             <hr>
                             <div class="intern-other">
-                                <p><span><img src="../img/iprofile/carbon_location.svg" alt=""></span> <%= employeeProfile.location %>
+                                <p><span><img src="../img/iprofile/carbon_location.svg" alt=""></span>
+                                    <%= employeeProfile.location %>
                                 </p>
                                 <p><span><img src="../img/iprofile/carbon_email.svg" alt=""></span>
-                                
+
                                     <%= employeeProfile.email %>
                                 </p>
 
                             </div>
                             <hr>
                             <div class="text-center">
-                                <a href="#" type="button" class="btn btn-lg btn-primary call-modal"  title="Edit profile" data-modal-size="lg"><span id="edit_text">Edit Profile</span>
-                                  <div class="hidden-content">
+                                <a href="#" type="button" class="btn btn-lg btn-primary call-modal" title="Edit profile"
+                                    data-modal-size="lg"><span id="edit_text">Edit Profile</span>
+                                    <div class="hidden-content">
 
-                                    <!-- <div class="container"> -->
-                                          <form action="" id="edit-profile">
+                                        <!-- <div class="container"> -->
+                                        <form action="" id="edit-profile">
                                             <p id="error-message"></p>
                                             <p id="success-message"></p>
 
@@ -69,45 +73,45 @@
                                                             First name
                                                         </label>
                                                         <div style="position: relative;">
-                                                        <input type="text" placeholder="Genesis"
-                                                            class="form-control" id="first-name"
-                                                            aria-describedby="nameHelp">
+                                                            <input type="text" placeholder="Genesis"
+                                                                class="form-control" id="first-name"
+                                                                aria-describedby="nameHelp">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 formCol">
                                                     <div class="form-group">
                                                         <div style="position: relative;">
-                                                        <label for="lastname" class="super-label">
-                                                            Last name
-                                                        </label>
-                                                        <input type="text" placeholder="Anosike"
-                                                            class="form-control" id="last-name"
-                                                            aria-describedby="nameHelp">
+                                                            <label for="lastname" class="super-label">
+                                                                Last name
+                                                            </label>
+                                                            <input type="text" placeholder="Anosike"
+                                                                class="form-control" id="last-name"
+                                                                aria-describedby="nameHelp">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 formCol">
                                                     <div class="form-group">
                                                         <div style="position: relative;">
-                                                        <label for="email" class="super-label">
-                                                            Email
-                                                        </label>
-                                                        <input type="email" placeholder="anosikegenesis@gmail.com"
-                                                            class="form-control" id="email"
-                                                            aria-describedby="emailHelp">
+                                                            <label for="email" class="super-label">
+                                                                Email
+                                                            </label>
+                                                            <input type="email" placeholder="anosikegenesis@gmail.com"
+                                                                class="form-control" id="email"
+                                                                aria-describedby="emailHelp">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 formCol">
                                                     <div class="form-group">
                                                         <div style="position: relative;">
-                                                        <label for="location" class="super-label">
-                                                            Location
-                                                        </label>
-                                                        <input type="text" placeholder="Ibadan, Nigeria"
-                                                            class="form-control" id="location"
-                                                            aria-describedby="locationHelp">
+                                                            <label for="location" class="super-label">
+                                                                Location
+                                                            </label>
+                                                            <input type="text" placeholder="Ibadan, Nigeria"
+                                                                class="form-control" id="location"
+                                                                aria-describedby="locationHelp">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,45 +124,43 @@
                                                     <div class="col-md-6 tracks formCol">
                                                         <label class="super-label"
                                                             for="exampleFormControl">Track(s)</label>
-                                                            
+
                                                         <div class="form-group form-check">
                                                             <input type="checkbox" class="form-check-input noHover"
                                                                 id="Backend" value="Backend Development">
-                                                            <label class="form-check-label"
-                                                                for="exampleCheck1">Backend
+                                                            <label class="form-check-label" for="exampleCheck1">Backend
                                                                 Development</label>
                                                         </div>
                                                         <div class="form-group form-check">
                                                             <input type="checkbox" class="form-check-input noHover"
                                                                 id="design" value="UI/UX Design">
-                                                            <label class="form-check-label"
-                                                                for="exampleCheck1">UI/UX
+                                                            <label class="form-check-label" for="exampleCheck1">UI/UX
                                                                 Design</label>
                                                         </div>
                                                         <div class="form-group form-check">
                                                             <input type="checkbox" class="form-check-input noHover"
                                                                 id="frontend" value="frontend">
-                                                            <label class="form-check-label"
-                                                                for="exampleCheck1">Frontend
+                                                            <label class="form-check-label" for="exampleCheck1">Frontend
                                                                 Development</label>
                                                         </div>
                                                         <div class="form-group form-check">
                                                             <input type="checkbox" class="form-check-input noHover"
                                                                 id="mobile" value="Mobile Development">
-                                                            <label class="form-check-label"
-                                                                for="exampleCheck1">Mobile
+                                                            <label class="form-check-label" for="exampleCheck1">Mobile
                                                                 Development</label>
                                                         </div>
 
                                                         <label class="form-group form-check">
-                                                            <input type="checkbox" id="Backend" value="Backend Development">
+                                                            <input type="checkbox" id="Backend"
+                                                                value="Backend Development">
                                                             <label class="form-check-label" for="exampleCheck1">
                                                                 Backend Development
                                                             </label>
                                                             <span class="checkmark"></span>
                                                         </label>
                                                         <label class="form-group form-check">
-                                                            <input type="checkbox" checked="checked" id="design" value="UI/UX Design">
+                                                            <input type="checkbox" checked="checked" id="design"
+                                                                value="UI/UX Design">
                                                             <label class="form-check-label" for="exampleCheck1">
                                                                 UI/UX Design
                                                             </label>
@@ -172,7 +174,8 @@
                                                             <span class="checkmark"></span>
                                                         </label>
                                                         <label class="form-group form-check">
-                                                            <input type="checkbox" id="mobile" value="Mobile Development">
+                                                            <input type="checkbox" id="mobile"
+                                                                value="Mobile Development">
                                                             <label class="form-check-label" for="exampleCheck1">
                                                                 Mobile Development
                                                             </label>
@@ -185,12 +188,12 @@
                                                             <label for="exampleFormControlFile1"
                                                                 class="super-label">Profile photo</label>
                                                             <div class="file-box">
-                                                              <span id="placeholder">profile-pic.png</span>
+                                                                <span id="placeholder">profile-pic.png</span>
                                                                 <!-- <label for="file" class="btn btn-primary">Browse</label> -->
-                                                                <input type="file" class=""
-                                                                    placeholder="profile.png" id="file"
-                                                                    onchange="Filevalidation()">
-                                                                    <button type="button" name="button" class="btn" id="file-btn">Browse</button>
+                                                                <input type="file" class="" placeholder="profile.png"
+                                                                    id="file" onchange="Filevalidation()">
+                                                                <button type="button" name="button" class="btn"
+                                                                    id="file-btn">Browse</button>
 
 
                                                             </div>
@@ -211,12 +214,12 @@
                                             </div>
 
 
-                                          </form>
-                                    <!-- </div> -->
+                                        </form>
+                                        <!-- </div> -->
 
-                                  </div>
+                                    </div>
 
-                                  </a>
+                                </a>
                             </div>
 
                             <!-- Button trigger modal -->
@@ -236,8 +239,11 @@
                                             </div>
                                             <div class="section-icon">
                                                 <!-- <img src="../img/iprofile/ant-design_minus-outlined.svg" alt=""> -->
-                                                <svg width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                  <path d="M15.8261 0H0.173913C0.0782609 0 0 0.0947368 0 0.210526V1.78947C0 1.90526 0.0782609 2 0.173913 2H15.8261C15.9217 2 16 1.90526 16 1.78947V0.210526C16 0.0947368 15.9217 0 15.8261 0Z" fill="#084482"/>
+                                                <svg width="16" height="2" viewBox="0 0 16 2" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M15.8261 0H0.173913C0.0782609 0 0 0.0947368 0 0.210526V1.78947C0 1.90526 0.0782609 2 0.173913 2H15.8261C15.9217 2 16 1.90526 16 1.78947V0.210526C16 0.0947368 15.9217 0 15.8261 0Z"
+                                                        fill="#084482" />
                                                 </svg>
 
 
@@ -259,10 +265,65 @@
                                                 <h4>Portfolio</h4>
                                             </div>
                                             <div class="section-icon">
-                                                <!-- <img src="../img/iprofile/carbon_add.svg" alt=""> -->
+                                                <div class="modal fade" id="modalRegisterForm" tabindex="-1"
+                                                    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header text-center">
+                                                                <h4 class="modal-title w-100 font-weight-bold">Upload Portfolio
+                                                                </h4>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body mx-3">
+                                                                <div class="md-form mb-5">
+                                                                    <!-- <i class="fas fa-user prefix grey-text"></i> -->
+                                                                    <input type="text" id="title"
+                                                                        class="form-control validate">
+                                                                    <label data-error="wrong" data-success="right"
+                                                                        for="orangeForm-name">Title</label>
+                                                                </div>
+                                                                <div class="md-form mb-5">
+                                                                    <!-- <i class="fas fa-envelope prefix grey-text"></i> -->
+                                                                    <input type="text" id="description"
+                                                                        class="form-control validate">
+                                                                    <label data-error="wrong" data-success="right"
+                                                                        for="orangeForm-email">Description</label>
+                                                                </div>
+
+                                                                <div class="md-form mb-4">
+                                                                    <!-- <i class="fas fa-lock prefix grey-text"></i> -->
+                                                                    <input type="url" id="link"
+                                                                        class="form-control validate">
+                                                                    <label data-error="wrong" data-success="right"
+                                                                        for="orangeForm-pass">Link</label>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="modal-footer d-flex justify-content-center">
+                                                                <button class="btn btn-primary" id="submitPortfolio" onclick="qwerty()">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-center">
+                                                    <a href="" class="btn btn-default btn-rounded mb-4"
+                                                        data-toggle="modal" data-target="#modalRegisterForm"><svg
+                                                            width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z" fill="#084482" />
+                                                        </svg>
+                                                    </a>
+                                                </div>
+
+
+                                                <!-- <img src="../img/iprofile/carbon_add.svg" alt="">
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z" fill="#084482"/>
-                                                </svg>
+                                                </svg> -->
 
                                             </div>
 
@@ -285,18 +346,33 @@
                                     <div class="section-name">
                                         <h4>Skillsets</h4>
                                     </div>
-                                    <div class="section-icon call-modal" title="Add skill"  data-modal-size="md" id="call_modalx">
+                                    <div class="section-icon call-modal" title="Add skill" data-modal-size="md"
+                                        id="call_modalx">
                                         <!-- <img src="../img/iprofile/carbon_add.svg" alt=""> -->
 
                                         <div data-toggle="modal" data-target="#exampleModal">
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z" fill="#084482"/>
-                                                </svg>
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z" fill="#084482" />
+                                            </svg>
                                         </div>
-                                        
+
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
+<<<<<<< HEAD
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <form id="add-skills">
+                                                            <input class="form-control form-control-lg" type="text"
+                                                                placeholder="User">
+                                                            <button type="button" class="btn btn-primary">Add
+                                                                Skill</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+=======
                                             <div class="modal-content">
                                                 <div class="modal-body">
                                                     <form id="add-skills">
@@ -305,6 +381,7 @@
                                                     </form>
                                                 </div>                                        
                                             </div>
+>>>>>>> e5ab61c0931713126a11ed0ced48c4a0137cd882
                                             </div>
                                         </div>
 
@@ -343,14 +420,13 @@
                             </div>
                         </section>
 
-                        
+
                     </div>
                 </div>
             </div>
 
         </section>
     </div>
-
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/bootstrap-js/jquery.js"></script>
     <script src="../js/bootstrap-js/popper.js"></script>
@@ -358,6 +434,10 @@
     <script src="../js/bootstrap-js/bootstrap.js"></script>
     <script src="../js/custom-js/side-nav.js"></script>
     <script src="../js/custom-js/eprofile.js"></script>
+    <script src="../js/custom-js/employee-portfolio.js"></script>
 </body>
+<<<<<<< HEAD
+=======
 
+>>>>>>> e5ab61c0931713126a11ed0ced48c4a0137cd882
 </html>
