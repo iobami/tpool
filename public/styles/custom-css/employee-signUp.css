@@ -99,6 +99,17 @@ hr {
   text-decoration: none;
 }
 
+.github-btn:hover {
+  color: white;
+  background-color: #384050;
+}
+
+.google-btn:hover {
+  color: white;
+  background: #f7220b;
+}
+
+
   .github-btn {
     color: #ffffff;
     /* width: 264px;
