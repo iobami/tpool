@@ -109,9 +109,6 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
    max-width: 200px;  
 box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
 }
-.blog-card{
-   box-shadow: 0px 4px 12px #9B9B9B;
-}
 
 .hire-btn,
 .vetting-section {
@@ -169,9 +166,11 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
    background-color: black;
 }
 
-.blog-card{
-   box-shadow: 0px 4px 12px #9B9B9B;
+.filter{
+   filter: brightness(.6) contrast(3);
+   padding: 0;
 }
+
 
 .read-more{
    color: white;
@@ -207,6 +206,28 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
       min-height: 614px;
    }
 }
+
+@media(min-width: 300px) and (max-width: 800px) {
+   .text-sm-center{
+    text-align: center;
+    padding: 1rem 1.2rem;
+   }
+ 
+   .filter{
+    padding-right: 15px;
+    padding-left: 15px;
+   }
+   
+ }
+ 
+ @media(max-width: 360px){
+    h1{
+       font-size: 2rem;
+    }
+    p{
+       font-size: .8rem;
+    }
+ }
 
 .hire-heading {
    font-weight: normal;
