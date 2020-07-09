@@ -19,3 +19,4 @@ exports.logout = async (request, response) => {
         logoutMessage: message,
     });
 }
+
