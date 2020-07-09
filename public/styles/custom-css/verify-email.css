@@ -3,7 +3,7 @@
   border-bottom: 10px solid #337AB7;
   margin: 100px auto;
 }
-.verify-success, .verify-fail, .resend-form-wrap, .resent-notify {
+.verify-success, .verify-fail, .resend-form-wrap, .resent-notify, .existing-email {
   display: none;
 }
 #invalid-email {
