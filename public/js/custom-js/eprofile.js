@@ -136,27 +136,24 @@ function buildList(data) {
   });
 }
 
-async function getAllSkillsForIndividuals() {
-  const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
-
-  try {
-    const { data } = await axios({
-      method: 'GET',
-      url: skillUrl,
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-        Authorization: `Bearer ${userInformation.token}`,
-      },
-    });
-
-    if (data.status === 'success') {
-      myArray = data.data.skills;
-      buildList(myArray);
+  async function getAllSkillsForIndividuals() {
+    const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
+    try {
+      const { data } = await axios({
+        method: 'GET',
+        url: skillUrl,
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${userInformation.token}`,
+        },
+      });
+      if (data.status === 'success') {
+        myArray = data.data.skills;
+        buildList(myArray);
+      }
+    } catch (error) {
+      alert("Opps! An error seems to have occured. Try again later. Thanks!");
     }
-
-  } catch (error) {
-    alert("Opps! An error seems to have occured. Try again later. Thanks!");
   }
-}
 
 getAllSkillsForIndividuals();

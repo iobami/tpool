@@ -38,5 +38,8 @@ module.exports = {
 
   adminEmployee: (req, res) => {
     res.render('Pages/admin-viewEmployee', {pageName: 'Talent Pool | View Employee',path: "admin-viewEmployee"})
+  },
+  adminsList: (req, res) => {
+    res.render('Pages/admins-list', {pageName: 'Talent Pool | View Employee',path: "admins-list"})
   }
 }
