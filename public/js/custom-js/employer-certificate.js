@@ -1,3 +1,10 @@
+
+const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
+const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
+
+// store all added documents and display in table
+let documentsArray = [];
+
 (function() {
     'use strict';
     window.addEventListener('load', function() {
@@ -14,22 +21,24 @@
                     event.stopPropagation();
                 } else if (form.checkValidity()) {
 
+                    // add to array
                     const imageData = readImage();
                     if (imageData) {
-                        const response = await uploadSingleImage(imageData);
-                        console.log(response);
+                        documentsArray.push({
+                            file: imageData,
+                            name: name.value,
+                            number: number.value,
+                        });
 
-                        if (!response.data) {
-                            const tbody = document.querySelector('tbody');
-                            newTableRow(tbody, { name: name.value, number: number.value });
-                            const clearForm = document.querySelector('form');
-                            clearForm.className = 'needs-validation';
-                            addValidation = false;
-                            name.value = '';
-                            number.value = '';
-                            labelText('');
-                            clearFileInput(file);
-                        }
+                        const tbody = document.querySelector('tbody');
+                        newTableRow(tbody, { name: name.value, number: number.value });
+                        const clearForm = document.querySelector('form');
+                        clearForm.className = 'needs-validation';
+                        addValidation = false;
+                        name.value = '';
+                        number.value = '';
+                        labelText('');
+                        clearFileInput(file);
                     }
 
                 }
@@ -76,7 +85,16 @@ const newTableRow = (container, data) => {
 
 };
 
-const removeTableRow = (rowId) => {
+const removeTableRow = async (rowId) => {
+
+    // filter array to remove document object
+
+    const checkDocumentId = (data) => {
+        return `id${data.number}` != rowId;
+    };
+
+    documentsArray = await documentsArray.filter(checkDocumentId);
+
     const rowTarget = document.getElementById(rowId);
     rowTarget.style.display = 'none';
 };
@@ -118,30 +136,65 @@ const labelText = (value) => {
     labelText.innerText = value
 };
 
-const uploadSingleImage = async (imageData) => {
+const uploadSingleImage = async (imageData, data) => {
     try {
         const reader = new FileReader();
 
-        // reader.onload = function changeFile(e) {
-        //     console.log(e.target.result);
-        // };
-
         reader.readAsDataURL(imageData);
 
-        const imageUrl = `/idx/users/upload_image`;
+        const documentUploadUrl = 'https://api.lancers.app/v1/employer/uploaddocument';
         const fileUploadData = new FormData();
-        fileUploadData.append('image', imageData);
-        return await fetch({
+        fileUploadData.append('image_document', imageData);
+        fileUploadData.append('document_name', data.name);
+        fileUploadData.append('document_number', data.number);
+        fileUploadData.append('employer_id', data.userTypeId);
+
+        return await axios({
             method: 'POST',
-            url: imageUrl,
+            url: documentUploadUrl,
             headers: {
-                accept: 'application/json',
-                // 'content-type': 'application/json',
-                'x-ibm-client-id': process.env.VUE_APP_CLIENT_ID,
+            accept: 'application/json',
+            // 'content-type': 'application/json',
+            'Authorization': `Bearer ${data.token}`,
             },
             data: fileUploadData,
         });
+
     } catch (e) {
         return e;
     }
+};
+
+const batchUpload = async () => {
+    const upload = document.getElementById('upload');
+    const loader = document.getElementById('loader');
+    upload.style.display = 'none';
+    loader.style.display = 'block';
+
+    // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5b2JhbWlhbGFkZW5veWVAeWFob28uY29tIiwidXNlcklkIjoiMTljNzNmNDYtMWRhNy00NDVhLWFhZmEtODExYTc3ZTRmNWQwIiwidXNlclJvbGUiOiJST0wtRU1QTE9ZRUUiLCJ1c2VyVHlwZUlkIjoiN2EyZWQ4MTQtZDc4Mi00ODZlLTlmYzQtMTk3ZTA2ZDBhZTg4IiwiaWF0IjoxNTk0MzExOTkxLCJleHAiOjE1OTQzOTgzOTF9.sxHq3-mMQAnjDbL4fe_ktIxq_f3OIYDfqXt5FOqF_2k';
+    // const userTypeId = 'bf160643-3ea7-4b93-8532-33df5248972d';
+
+     for (const documentObject of documentsArray) {
+
+        const payload = {
+            userTypeId: userInfo.userTypeId,
+            token: userInformation.token,
+            name: documentObject.name,
+            number: documentObject.number,
+        };
+
+        try {
+
+            const { data } = await uploadSingleImage(documentObject.file, payload);
+            console.log(data.message);
+
+        } catch (e) {
+            console.log(e.message);
+        }
+
+     }
+
+     loader.style.display = 'none';
+     upload.style.display = 'block';
+
 };

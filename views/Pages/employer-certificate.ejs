@@ -87,23 +87,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr id="row1">
-                                <td>Image name here</td>
-                                <td>number here</td>
-                                <td style="text-align: center">
-                                    <button class="btn btn-danger" onclick="removeTableRow('row1')">Remove</button>
-                                </td>
-                            </tr>
                         </tbody>
                         <tfoot>
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td class="row justify-content-end">
-                                <button class="btn btn-lg" onclick="alert('API not available yet.')">
-                                    Finish
+                            <td class="row justify-content-center">
+                                <button id="upload" class="btn" onclick="batchUpload()">
+                                    Upload All
                                 </button>
-                                <button class="btn btn-lg lds-ellipsis" style="display: none">
+                                <button class="btn lds-ellipsis" id="loader"
+                                 disabled style="display: none; cursor: wait">
                                     <div></div>
                                     <div></div>
                                     <div></div>
@@ -152,6 +146,7 @@
       profileBtn.querySelector(".fa").classList.remove("open");
     });
   </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="../js/custom-js/side-nav.js"></script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="../js/bootstrap-js/popper.js"></script>
