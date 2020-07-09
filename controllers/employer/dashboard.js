@@ -7,6 +7,10 @@ module.exports = {
       res.render('Pages/employer-profile-page', { pageName: 'Profile'});
     },
 
+  employerMessages : (req, res) => {
+      res.render('Pages/employer-messages', { pageName: 'Employer Messages'});
+    },
+
   employerCreateProfile: (req, res) => {
     res.render('Pages/employer-profile-creation', { pageName: 'Create Profile'});
   },
@@ -33,5 +37,9 @@ module.exports = {
 
   employerIndividualCreateProfile: (req, res) => {
     res.render('Pages/employer-indiv', { pageName: 'Create Profile' });
+  },
+
+  employerCertificate: (req, res) => {
+    res.render('Pages/employer-certificate', { pageName: 'Upload Certificate' });
   },
 }
