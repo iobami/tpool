@@ -1,6 +1,6 @@
 const express = require('express');
 const appRoute = express.Router();
-
+// const {}
 const {
   about,
   home,
@@ -10,6 +10,7 @@ const {
   signOutPopUp,
   comingSoon,
 } = require('../controllers');
+const { logout } = require('../controllers/logout');
 
 appRoute.get('/', home);
 appRoute.get('/about-us', about);

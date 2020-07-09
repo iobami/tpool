@@ -7,4 +7,4 @@ function logOutFunction() {
 $('.toast').toast({
     delay: 1200,
 });
-logOutFunction();
+
