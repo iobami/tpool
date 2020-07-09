@@ -7,6 +7,7 @@ const resendForm = document.getElementById('resend-form')
 const resendLink = document.getElementById('resend-link')
 const resendButton = document.getElementById('resend-button')
 const resentNotify = document.getElementById('resent-notify')
+const existingEmail = document.getElementById('existing-email')
 // const invalidEmail = document.getElementById('invalid-email')
 // const validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/
 
@@ -22,6 +23,11 @@ axios({
 .catch((err) => {
   if(err.response.status === 400) {
     verifyFail.style.display = 'block'
+  } else if(err.response.status === 401) {
+    existingEmail.style.display = 'block'
+    setTimeout(() => {
+      redirect()
+    }, 5000);
   }
 })
 
