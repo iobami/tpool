@@ -9,6 +9,7 @@ const {
   contactUs,
   signOutPopUp,
   comingSoon,
+  verify,
 } = require('../controllers');
 const { logout } = require('../controllers/logout');
 
@@ -19,6 +20,7 @@ appRoute.get('/directory', directory);
 appRoute.get('/faq', faq);
 appRoute.get('/signOutPopUp', signOutPopUp);
 appRoute.get('/coming-soon', comingSoon);
+appRoute.get('/verify-email', verify);
 appRoute.get('/logout', logout);
 
 module.exports = appRoute;
