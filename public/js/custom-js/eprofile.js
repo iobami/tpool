@@ -11,6 +11,7 @@ const mobile = document.querySelector("mobile");
 const design = document.querySelector("design");
 const addSkillForm = document.querySelector('#add-skills')
 // const userInformation = JSON.parse(localStorage.getItem("user"));
+
 const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
 
 if (!userInformation) {
