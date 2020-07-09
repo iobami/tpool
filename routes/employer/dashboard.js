@@ -6,6 +6,9 @@ const {
     employerProfile,
     employerMessages,
     employerCreateProfile,
+    employerType,
+    employerIndividual,
+    employerCompany,
     employerDashboardSettings,
     employerDashboardSupport,
     employerEmployeeGallery,
@@ -19,6 +22,9 @@ appRoute.get('/employer-dashboard', employerDashboard);
 appRoute.get('/employer-profile', employerProfile);
 appRoute.get('/employer-messages', employerMessages);
 appRoute.get('/employer-create-profile', employerCreateProfile);
+appRoute.get('/employer-type', employerType);
+appRoute.get('/employer-company', employerCompany);
+appRoute.get('/employer-individual', employerIndividual);
 appRoute.get('/employer-dashboard-settings', employerDashboardSettings);
 appRoute.get('/employer-dashboard-support', employerDashboardSupport);
 appRoute.get('/employer-employees-gallery', employerEmployeeGallery);
