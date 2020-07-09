@@ -3,6 +3,16 @@
     --text-color: #C4C4C4;
 }
 
+.main {
+    background: #e5e5e5;
+    height: 100%;
+}
+
+.dropdown-menu a:hover {
+    background: #337ab7;
+    color: #ffffff;
+}
+
 .grid-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
