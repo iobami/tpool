@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <%- include('../includes/employeeHead') %>
+</head>
+  
+  <body>
+
+   
+    <%- include('../includes/employeeHeader') %>
+
+    <div class="container-fluid mt-4">
+
+      <div class="row">
+
+
+        <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
+            <%- include('../includes/employeeSideNav') %>
+        </div>
+
+        <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5">
+          <h1 class="ml-3 mt-3 dash-board">Dashboard</h1>
+          <div class="job-filter">
+            <div class="row align-items-center">
+              <div class="col-md d-flex flex-column job-card ">
+                  <span class="job-card__top-text text-center text-white pt-4"><%= jobs.available %></span>
+                  <span class="job-card__next-text text-center text-white ">JOBS</span>
+                  <span class="job-card__next-text text-center text-white pb-3">AVAILABLE</span>
+              </div>
+              <div class="col-md d-flex flex-column job-card job-card--second ">
+                  <span class="job-card__top-text text-center text-white pt-4"><%= jobs.appliedFor %></span>
+                  <span class="job-card__next-text text-center text-white ">JOBS</span>
+                  <span class="job-card__next-text text-center text-white pb-3">APPLIED FOR</span>
+              </div>
+              <div class="col-md d-flex flex-column job-card job-card--third ">
+                  <span class="job-card__top-text text-center text-white pt-4"><%= applications.pending %></span>
+                  <span class="job-card__next-text text-center text-white ">PENDING</span>
+                  <span class="job-card__next-text text-center text-white pb-3">APPLICATIONS</span>
+              </div>
+            </div>
+            <div class="profile-main--wrap">
+              <div class="profile-wrap mx-3">
+                <div class=" profile-info">
+                    <p class="profile-info__title my-4">Contact Information</p>
+                    <div class="bg-white d-flex align-items-center profile-info--details">
+                        <div class="profile-info__img-cont d-flex flex-column align-items-center">
+                            <div class="">
+                                <%= employeeProfile.picture_url %></p>
+                            </div>
+                            <p class="pt-3 m-0 text-center profile-info__name"><%= employeeProfile.first_name %><%= employeeProfile.last_name %></p>
+                            <!-- <span class="text-center profile-info--norm-text"><%= employeeProfile.stack %></span> -->
+                        </div>
+                        <div class="profile-info__contact">
+                             <div class="d-flex">
+                                <img class="mr-2" src="../../img/cil_location-pin.svg" alt="location">
+                                <p class="profile-info--norm-text"><%= employeeProfile.location %></p> 
+                            </div> 
+                            <div class="d-flex">
+                                <img class="mr-2" src="../../img/carbon_email.svg" alt="email">
+                                <p class="profile-info--norm-text"><%= employeeProfile.email %></p>
+                            </div>
+                            <div class="d-flex ">
+                                <img class="mr-2" src="../../img/bx_bx-phone.svg" alt="phone">
+                                <p class="profile-info--norm-text"><%= employeeProfile.phone_no %></p>
+                            </div>
+                            <div class="">
+                                <img class="" src="../../img/bx_bx-phone.svg" alt="phone">
+                                <p class="">0801 - 234 - 5678</p>
+                            </div>
+                            <p class="profile-info--norm-text mt-5">Portfolio</p>
+                             <div class="d-flex ">
+                                <img class="mr-2" src="../../img/il_twitter.svg" alt="twitter-icon">
+                                <a href="" class="profile-info--norm-text profile-info--link"><%= user.socials.twitter %></a>
+                            </div>
+                            <div class="d-flex ">
+                                <img class="mr-2" src="../../img/topcoat_dribble.svg" alt="dribble-icon">
+                                <a href="" class="profile-info--norm-text profile-info--link"><%= user.socials.dribble %></a>
+                            </div>
+                            <div class="d-flex ">
+                                <img class="mr-2" src="../../img/jam_behance-square.svg" alt="behance-icon">
+                                <a href="" class="profile-info--norm-text profile-info--link"><%= user.socials.behance %></a>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+                <div class="skill-cont">
+                    <p class="profile-info__title my-4">Software Assessment</p>
+                    <% if (employeeSkill.length > 0) { %>
+                    <div class="bg-white skill__flex py-4">
+                        <% for (let tool of employeeSkill) { %>
+                        <div class="pl-4 py-2">
+                            <p class="profile-info--norm-text"><%= tool%></p>
+                            <div class="skill__wrap">
+                                <div class="skill"><i class="skill-stop"></i></div>
+                            </div>
+                        </div>
+                        <!-- <div class="pl-4 py-2">
+                            <p class="profile-info--norm-text">Adobe XD</p>
+                            <div class="skill__wrap">
+                                <div class="skill"><i class="skill-stop"></i></div>
+                            </div>
+                        </div>
+                        <div class="pl-4 py-2">
+                            <p class="profile-info--norm-text">Photoshop</p>
+                            <div class="skill__wrap">
+                                <div class="skill"><i class="skill-stop"></i></div>
+                            </div>
+                        </div>
+                        <div class="pl-4 py-2">
+                            <p class="profile-info--norm-text">UX Research</p>
+                            <div class="skill__wrap">
+                                <div class="skill"><i class="skill-stop"></i></div>
+                            </div>
+                        </div>
+                        <div class="pl-4 py-2">
+                            <p class="profile-info--norm-text">Mockflow</p>
+                            <div class="skill__wrap">
+                                <div class="skill"><i class="skill-stop"></i></div>
+                            </div>
+                        </div> -->
+                        <% } %>
+                    </div>
+                    <% } else { %>
+                        <h1>No Employee Tools Found!</h1>
+                        <% } %>
+                </div>
+            </div>
+            </div>
+          </div>   
+      </div> 
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="../js/custom-js/side-nav.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../js/bootstrap-js/popper.js"></script>
+    <script src="../js/bootstrap-js/jquery.js"></script>
+    <script src="../js/bootstrap-js/bootstrap.js"></script>
+  </body>
+
+</html>

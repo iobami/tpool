@@ -1,0 +1,382 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.heading-color {
+    color: #084482;
+}
+
+main {
+    /* padding: 0 15rem; */
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
+
+
+/* progress bar */
+
+.form-progress {
+    position: relative;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 25%;
+    max-width: 400px;
+}
+
+progress {
+    display: block;
+    position: relative;
+    top: 7px;
+    left: 5px;
+    width: 45%;
+    height: 6px;
+    background: none;
+}
+
+.text-default {
+    color: #5C95C5;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #5C95C5;
+}
+
+.form-progress-indicator {
+    position: absolute;
+    top: -7px;
+    left: 0;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: white;
+    /* background-image: ; */
+}
+
+.form-progress-indicator.one {
+    left: 0;
+}
+
+.form-progress-indicator.two {
+    left: 40%;
+}
+
+
+/* progress bar End */
+
+.radio-select input[type=radio] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-clip: content-box;
+    border: 2px solid #5C95C5;
+    background-color: #e7e6e7;
+    border-radius: 50%;
+}
+
+.radio-select input[type=radio]:checked {
+    background-color: #5C95C5;
+}
+
+.vector {
+    color: #5C95C5;
+    margin: -10px -30px;
+}
+
+.rectangle29 {
+    margin: -5px;
+}
+
+.display-size {
+    font-size: 1.3rem;
+    padding-left: 16px;
+}
+
+.new-btn {
+    background-color: #33BEFF;
+    width: 8rem;
+    height: 56px;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 36px;
+}
+
+.new-btn2 {
+    background-color: #33BEFF;
+    width: 12rem;
+    height: 56px;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 36px;
+}
+
+.form-control {
+    border: 3px solid #ced4da;
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-color: rgb(181, 181, 181) !important;
+    border-image: initial !important;
+}
+
+div.container.my-3.boxs {
+    border: 3px solid #ced4da;
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-color: rgb(181, 181, 181) !important;
+    border-image: initial !important;
+}
+
+.alert-warning {
+    color: #62666E;
+    background-color: #fff;
+    border: 1px solid #B5B5B5
+}
+
+.em-input {
+    border: 2px solid #B5B5B5;
+    height: 56px;
+    border-radius: 5px;
+}
+
+ ::placeholder {
+    color: rgba(178, 178, 178, 0.58) !important;
+    letter-spacing: 0.03em;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.select {
+    color: rgba(178, 178, 178, 0.58) !important;
+}
+
+.small {
+    color: rgba(98, 102, 110, 0.9);
+}
+
+.boxs {
+    border: 2px solid #EEEEEE;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 14rem;
+}
+
+input[type=radio] {
+    border: 0px;
+    width: 50px;
+    height: 2em;
+}
+
+.noti-label {
+    color: #62666E;
+}
+
+.margt {
+    padding-top: 6rem;
+}
+
+.new-btn:hover,
+.new-btn2:hover {
+    background-color: #33BEFF;
+    color: #FFFFFF
+}
+
+@media (min-width: 992px) {
+    main {
+        padding: 0 15rem;
+    }
+}
+
+
+/* small devices*/
+
+main {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (min-width: 576.98px) {
+    .dis-block {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .dis-block {
+        display: none;
+    }
+}
+
+@media (max-width: 355px) {
+    main {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .boxs-sm {
+        height: 25rem !important;
+    }
+    .new-btn {
+        width: 8rem
+    }
+    input#logo.form-control.em-input {
+        width: 8rem !important;
+    }
+    .right-div {
+        margin-left: 150px;
+    }
+}
+
+
+/* MOBILE VIEW */
+@media (max-width: 575.98px) {
+    .fa-2x {
+        font-size: 1.8rem;
+    }
+    .non {
+        display: none;
+    }
+    progress {
+        display: block;
+        position: relative;
+        top: 7px;
+        left: 5px;
+        width: 100%;
+        height: 6px;
+        background: none;
+    }
+    .form-progress-indicator.two {
+        left: 100%;
+    }
+    .pd-8 {
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+    input#logo.form-control.em-input {
+        width: 12rem !important;
+    }
+    .left-div {
+        float: left;
+        width: 100px;
+    }
+    .right-div {
+        margin-top: -55px;
+        margin-left: 200px;
+    }
+    .right-div1 {
+        margin-top: -55px;
+        margin-left: 100px;
+    }
+    .form-control {
+        width: 100%;
+    }
+    .wid {
+        width: 100% !important;
+    }
+    input#companyname.form-control.em-input {
+        width: 100% !important;
+    }
+    .boxs-sm {
+        height: 18rem !important;
+    }
+    .display-size {
+        font-size: 1rem;
+    }
+    .small-xs {
+        font-size: 0.8rem;
+    }
+    .center {
+        text-align: center !important;
+    }
+    .center1 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+    .col- {
+        display: inline-block;
+    }
+    *,
+     ::after,
+     ::before {
+        box-sizing: border-box;
+    }
+
+    /* //MOBILE VIEW EDITS */
+    .display-size {
+        font-size: 12px;
+        padding-left: 10px;
+    }
+
+    #profile {
+        margin-top: 32px !important;
+    }
+
+    .margt {
+        padding-top: .5rem !important;
+    }
+
+    .profile-figure {
+        margin-bottom: 0!important;
+    }
+
+    .profile-figcaption {
+        margin-top: 16px;
+    }
+
+    .mobile-margin-fix1 {
+        margin-top: 1.5rem!important;
+        
+    }
+    .mobile-margin-fix2 {
+        margin-top: .5rem!important;
+    }
+    .mobile-margin-zero {
+        margin-bottom: 0!important;
+    }
+    .heading-color {
+        padding-top: 0 !important;
+    }
+    .mobile-margin-fix4 {
+        margin-top: 1.5rem!important;
+    }
+    .mobile-margin-pixel {
+        margin-top: 57px!important;
+        margin-bottom: calc(57px + 1rem)!important;
+        padding-bottom: 0!important;
+    }
+    .new-btn2 {
+        margin-bottom: 0!important;
+    }
+
+    .interested-skills {
+        margin-bottom: 0!important;
+        margin-top: .5rem;
+    }
+}
+
+
+div.btn.new-btn.m {
+    position: relative;
+    overflow: hidden;
+}
+
+input[type=file] {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+input#output.form-control.em-input {
+    width: 100%;
+}
+
+.form-control[readonly] {
+    background-color: #fff;
+}

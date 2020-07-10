@@ -121,3 +121,5 @@ dist
 nbproject
 package-lock.json
 log.csv
+.gitignore
+deploy.php

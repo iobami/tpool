@@ -1,7 +1,7 @@
 //starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
     'use strict'
-  
+    
     window.addEventListener('load', function () {
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
       var forms = document.getElementsByClassName('needs-validation')
@@ -18,20 +18,53 @@
       })
     }, false)
   }())
-  
 const submitButton = document.getElementById('signup-btn')
 
-
 let logIn = document.getElementById('login-btn')
-logIn.addEventListener('click', goToLogIn = () => {
-  window.location.replace('../../src/employee-sign-in.html')
-})
-let logInV2 = document.getElementById('login-btnV2')
-logInV2.addEventListener('click', goToLogIn = () => {
-  window.location.replace('../../src/employee-sign-in.html')
+logIn.addEventListener('click', () => {
+  window.location.replace('/employee-sign-in')
 })
 
-submitButton.addEventListener('click', addUser = (e) => {
+let logInV2 = document.getElementById('login-btnV2')
+logInV2.addEventListener('click', () => {
+  window.location.replace('/employee-sign-in')
+})
+
+let github = document.getElementById('githubBtn')
+github.addEventListener('click', () => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      'Accept': 'application/json, text/plain',
+      'Content-type': 'application/json',
+    }
+  }
+  const url = 'https://api.lancers.app/v1/auth/github'
+  try {
+    const githbauth = fetch(url , requestOptions);
+  } catch (err) {
+    
+    showAlert(err)
+  }
+})
+let google = document.getElementById('googleBtn')
+google.addEventListener('click', () => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      'Accept': 'application/json, text/plain',
+      'Content-type': 'application/json',
+    }
+  }
+  const url = 'https://api.lancers.app/v1/auth/google'
+  try {
+    const googleauth = fetch(url , requestOptions);
+  } catch (err) {
+    showAlert(err)
+  }
+})
+
+submitButton.addEventListener('click', (e) => {
   e.preventDefault()
 
   submitButton.innerHTML = '<span class="spinner-border spinner-border" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>';
@@ -51,49 +84,70 @@ submitButton.addEventListener('click', addUser = (e) => {
     let password = document.getElementById('password').value
     
     // spin()
-    
     if (document.getElementById('terms-policy').checked) {
-      
-      fetch('https://api.lancers.app/v1/auth/employee-signup', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json, text/plain',
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          //firstName: firstName,
-          //lastName: lastName,
-          email: email,
-          //phoneNo: phone,
-          password: password,
+      signupEmployee();
+      function signupEmployee(){
+        const url = 'https://api.lancers.app/v1/auth/employee-signup'
+        localStorage.setItem('talentPool', JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          phoneNo: phone
+        }))
+        axios({
+          method: 'POST',
+          url: url,
+          data: {
+            email: email,
+            password: password
+          }
         })
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data),
-        if(data.status) {
-          submitButton.innerText = 'Sign Up';
-          if (data.status === 'success') {
+        .then((res) => {
+          submitButton.innerText = 'Sign Up'
+          let ok = 'success'
+          if(res.data.status === ok) {
+            $('#exampleModal').modal();
             localStorage.setItem('talentPool', JSON.stringify({
               firstName: firstName,
               lastName: lastName,
               phoneNo: phone
             }))
-            $('#exampleModal').modal()
           } else {
-            showAlert(data.error)
+            submitButton.innerText = 'Sign Up';
+            showAlert(res.error)
           }
-          // document.querySelector('.loader').style.display = 'none'
-        } 
-      })
-      .catch((err) => showAlert(err));
+        })
+        .catch((err) => {
+            if(err.response.status === 403) {
+              // console.log('responded with error', err.response.status)
+              submitButton.innerText = 'Sign Up'
+              showAlert('Email already exist!')
+            } else if(err.response.status === 400) {
+              if(email === '') {
+                submitButton.innerText = 'Sign Up'
+                showAlert('Email cannot be empty')
+              } else {
+              submitButton.innerText = 'Sign Up'
+              // showAlert('Cannot have duplicate unique fields!')
+              }
+            } else if(err.response.status === 500) {
+              submitButton.innerText = 'Sign Up'
+              showAlert('Oops! Something went wrong. Please try again.')
+            } else if(err.request) {
+              // console.log('issue with request')
+            } else {
+              showAlert(err.message)
+              console.log('Error', err.message)
+            }
+        })
+      };
       } else {
-      showAlert('Please accept the Terms and Conditions to proceed')
+      showAlert('Please fill required and/or accept the Terms and Conditions to proceed')
       submitButton.innerText = 'Sign Up';
-    }}
+    }
+  }
 })
 
-checkInputs = () => {
+ function checkInputs() {
   let firstName = document.getElementById('fname').value.trim()
   let lastName = document.getElementById('lname').value.trim()
   let email = document.getElementById('email').value.trim()
@@ -159,75 +213,75 @@ checkInputs = () => {
 }
 
 //First Name Error Functions
-setError = (input, message) => {
+function setError (input, message) {
   const small = document.querySelector('#invalid')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-setRight = (input) => {
+function setRight(input){
   const small = document.querySelector('#invalid')
   small.style.display = 'none'
 }
 
 //Last Name Error Functions
-setErrorL = (input, message) => {
+function setErrorL(input, message){
   const small = document.querySelector('#invalidL')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-setRightL = (input) => {
+function setRightL(input){
   const small = document.querySelector('#invalidL')
   small.style.display = 'none'
 }
 
 //Email Error Functions
-setErrorE = (input, message) => {
+function setErrorE(input, message){
   const small = document.querySelector('#invalidE')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-setRightE = (input, message) => {
+function setRightE(input, message){
   const small = document.querySelector('#invalidE')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
 //Phone Error Functions
-setErrorP = (input, message) => {
+function setErrorP(input, message){
   const small = document.querySelector('#invalidP')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-setRightP = (input, message) => {
+function setRightP(input, message){
   const small = document.querySelector('#invalidP')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
 //Password Error Functions
-setErrorPass = (input, message) => {
+function setErrorPass(input, message){
   const small = document.querySelector('#invalidPass')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-checkPass = (input, message) => {
+function checkPass(input, message){
   const small = document.querySelector('#invalidPass')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-setErrorPass2 = (input, message) => {
+function setErrorPass2(input, message){
   const small = document.querySelector('#invalidPass2')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-checkPass2 = (input, message) => {
+function checkPass2(input, message){
   const small = document.querySelector('#invalidPass2')
   small.innerHTML = message
   small.style.display = 'block'
@@ -235,7 +289,7 @@ checkPass2 = (input, message) => {
 
 const submitButtonV2 = document.getElementById('signup-btnV2');
 
-submitButtonV2.addEventListener('click', addUserV2 = (e) => {
+submitButtonV2.addEventListener('click', (e) => {
   e.preventDefault()
   submitButtonV2.innerHTML = '<span class="spinner-border spinner-border" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>';
 
@@ -253,46 +307,71 @@ submitButtonV2.addEventListener('click', addUserV2 = (e) => {
     let password = document.getElementById('passwordV2').value
     
     // spinV2()
-  if(document.getElementById('terms-policyV2').checked) {
-    fetch('https://api.lancers.app/v1/auth/employee-signup', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain',
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        //firstName: firstName,
-        //lastName: lastName,
-        email: email,
-        //phoneNo: phone,
-        password: password,
-      })
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      // console.log(data),
-      submitButtonV2.innerText = 'Sign Up';
-      let i = 'success'
-      if(data.status === i ) {
-        $('#exampleModal2').modal();
+    if (document.getElementById('terms-policyV2').checked) {
+      signupEmployee();
+      function signupEmployee(){
+        const url = 'https://api.lancers.app/v1/auth/employee-signup'
         localStorage.setItem('talentPool', JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          phoneNo: phone
+        }))
+        axios({
+          method: 'POST',
+          url: url,
+          data: {
+            email: email,
+            password: password
+          }
+        })
+        .then((res) => {
+          submitButtonV2.innerText = 'Sign Up'
+          let ok = 'success'
+          if(res.data.status === ok) {
+            $('#ModalV2').modal();
+            // submitButtonV2.dataset
+            localStorage.setItem('talentPool', JSON.stringify({
               firstName: firstName,
               lastName: lastName,
               phoneNo: phone
             }))
-        // document.querySelector('.loaderV2').style.display = 'none'
+          } else {
+            submitButtonV2.innerText = 'Sign Up';
+            showAlert(res.error)
+          }
+        })
+        .catch((err) => {
+          if(err.response.status === 403) {
+            // console.log('responded with error', err.response.status)
+            submitButtonV2.innerText = 'Sign Up'
+            showAlert('Email already exist!')
+          } else if(err.response.status === 400) {
+            if(email === '') {
+              submitButtonV2.innerText = 'Sign Up'
+              showAlert('Email cannot be empty')
+            } else {
+            submitButtonV2.innerText = 'Sign Up'
+            // showAlert('Cannot have duplicate unique fields!')
+            }
+          } else if(err.response.status === 500) {
+            submitButtonV2.innerText = 'Sign Up'
+            showAlert('Internal Server Error! Please try again.')
+          } else if(err.request) {
+            // console.log('issue with request')
+          } else {
+            showAlert(err.message)
+            console.log('Error', err.message)
+          }
+        })
+      };
       } else {
-        showAlert(data.error)
-      }
-    })
-    .catch((err) => showAlert(err));
-    } else {
-    showAlert('Please accept the Terms and Conditions to proceed')
-    submitButtonV2.innerText = 'Sign Up';
-  }}
+      showAlert('Please fill required and/or accept the Terms and Conditions to proceed')
+      submitButtonV2.innerText = 'Sign Up';
+    }
+  }
 })
 
-checkInputsV2 = () => {
+function checkInputsV2() {
   let firstName = document.getElementById('fnameV2').value.trim()
   let lastName = document.getElementById('lnameV2').value.trim()
   let email = document.getElementById('emailV2').value.trim()
@@ -360,44 +439,44 @@ checkInputsV2 = () => {
 }
 
 //First Name Error Functions
-setErrorV2 = (input, message) => {
+function setErrorV2(input, message){
   const small = document.querySelector('#invalidV2')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-setRightV2 = (input) => {
+function setRightV2(input){
   const small = document.querySelector('#invalidV2')
   small.style.display = 'none'
 }
 
 //Last Name Error Functions
-setErrorLV2 = (input, message) => {
+function setErrorLV2(input, message){
   const small = document.querySelector('#invalidLV2')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-setRightLV2 = (input) => {
+function setRightLV2(input){
   const small = document.querySelector('#invalidLV2')
   small.style.display = 'none'
 }
 
 //Email Error Functions
-setErrorEV2 = (input, message) => {
+function setErrorEV2(input, message){
   const small = document.querySelector('#invalidEV2')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-setRightEV2 = (input, message) => {
+function setRightEV2(input, message){
   const small = document.querySelector('#invalidEV2')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
 //Phone Error Functions
-setErrorPV2 = (input, message) => {
+function setErrorPV2(input, message){
   const small = document.querySelector('#invalidPV2')
   small.innerHTML = message
   small.style.display = 'block'
@@ -410,25 +489,25 @@ setErrorPV2 = (input, message) => {
 // }
 
 //Password Error Functions
-setErrorPassV2 = (input, message) => {
+function setErrorPassV2(input, message){
   const small = document.querySelector('#invalidPassV2')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-checkPassV2 = (input, message) => {
+function checkPassV2(input, message){
   const small = document.querySelector('#invalidPassV2')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-setErrorPass2V2 = (input, message) => {
+function setErrorPass2V2(input, message){
   const small = document.querySelector('#invalidPass2V2')
   small.innerHTML = message
   small.style.display = 'block'
 }
 
-checkPass2V2 = (input, message) => {
+function checkPass2V2(input, message){
   const small = document.querySelector('#invalidPass2V2')
   small.innerHTML = message
   small.style.display = 'block'
