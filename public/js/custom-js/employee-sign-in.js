@@ -92,6 +92,8 @@ function responseHandler(res) {
       if (/admin/gi.test(response.userRole)) {
         showMessage("Redirecting to Admin Dashboard", "alert-success");
         window.location.assign("/admin-dashboard");
+      } else if (/employer/gi.test(response.userRole)) {
+        window.location.assign("/employer-create-profile");
       } else {
         window.location.assign("/employee-profileCreation");
       }
