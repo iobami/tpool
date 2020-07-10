@@ -49,7 +49,7 @@
                             <div class="">
                                 <%= employeeProfile.picture_url %></p>
                             </div>
-                            <p class="pt-3 m-0 text-center profile-info__name"><%= employeeProfile.first_name %><%= employeeProfile.last_name %></p>
+                            <p class="pt-3 m-0 text-center profile-info__name" id="full-name"><%= employeeProfile.first_name %><%= employeeProfile.last_name %></p>
                             <!-- <span class="text-center profile-info--norm-text"><%= employeeProfile.stack %></span> -->
                         </div>
                         <div class="profile-info__contact">
@@ -63,12 +63,12 @@
                             </div>
                             <div class="d-flex ">
                                 <img class="mr-2" src="../../img/bx_bx-phone.svg" alt="phone">
-                                <p class="profile-info--norm-text"><%= employeeProfile.phone_no %></p>
+                                <p class="profile-info--norm-text" id="phone"><%= employeeProfile.phone_no %></p>
                             </div>
-                            <div class="">
+                            <!-- <div class="">
                                 <img class="" src="../../img/bx_bx-phone.svg" alt="phone">
                                 <p class="">0801 - 234 - 5678</p>
-                            </div>
+                            </div> -->
                             <p class="profile-info--norm-text mt-5">Portfolio</p>
                              <div class="d-flex ">
                                 <img class="mr-2" src="../../img/il_twitter.svg" alt="twitter-icon">
@@ -135,9 +135,11 @@
     <!-- Optional JavaScript -->
     <script src="../js/custom-js/side-nav.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/bootstrap-js/popper.js"></script>
     <script src="../js/bootstrap-js/jquery.js"></script>
     <script src="../js/bootstrap-js/bootstrap.js"></script>
+    <script src="../js/custom-js/employees-profile.js"></script>
   </body>
 
 </html>
