@@ -34,10 +34,10 @@ function showMessage(message, alertType) {
 	const parent = document.querySelector("#parent");
 
 	alert.innerHTML = `
- <div class="alert ${alertType}" role="alert" id="error">
-   ${message}
- </div>
- `;
+   <div class="alert ${alertType}" role="alert" id="error">
+	 ${message}
+   </div>
+   `;
 	parent.insertBefore(alert, form);
 	setTimeout(removeMessage, 6000);
 }
@@ -52,19 +52,19 @@ function removeMessage() {
 function loadButton() {
 	const buttonDiv = document.querySelector("#button-div");
 	buttonDiv.innerHTML = `
-  <button class="btn btn-primary btn-color w-100 py-3 m-2" type="button" disabled>
-      <span class="spinner-border spinner-border" role="status" aria-hidden="true"></span>
-      <span class="sr-only">Loading...</span>
-  </button>
-  `;
+	<button class="btn btn-primary btn-color w-100 py-3 m-2" type="button" disabled>
+		<span class="spinner-border spinner-border" role="status" aria-hidden="true"></span>
+		<span class="sr-only">Loading...</span>
+	</button>
+	`;
 }
 
 // Function to revert back to sign in button upon recieving http response
 function revertButton() {
 	const buttonDiv = document.querySelector("#button-div");
 	buttonDiv.innerHTML = `
- <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit">Sign Up</button>
- `;
+   <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit">Sign Up</button>
+   `;
 }
 
 // Function to handle response from API
@@ -77,20 +77,34 @@ function responseHandler(res) {
 
 	if (res.status === "success") {
 		showMessage("Sign in successful. Re-directing...", "alert-success");
-		
-		const user = {
-			token: res.data.token
+		const value = {
+			token: res.data.token,
+			userId: res.data.user,
 		};
-		localStorage.setItem("user", JSON.stringify(user))
-		const userToken = JSON.parse(atob(res.data.token.split('.')[1]));
-		
-		if (userToken.userTypeId === null ) {
+		localStorage.setItem("tpAuth", JSON.stringify(value));
+
+		// Decoding token
+		const response = JSON.parse(atob(value.token.split(".")[1]));
+
+		// Redirecting
+		if (response.userTypeId == null) {
+			// Redirect to employer profile creation page
 			return (window.location.href = "/employee-profileCreation");
+		} else if (response.userTypeId !== null) {
+			// Add userTypeId to to tpAuth in localStorage
+			const newValue = {
+				token: res.data.token,
+				userId: res.data.user,
+				userTypeId: response.userTypeId,
+				role: response.userRole
+			};
+			localStorage.setItem("tpAuth", JSON.stringify(newValue));
+			return (window.location.href = "/employee-dashboard");
 		} else {
+			// Redirect to dashboard
 			return (window.location.href = "/employee-dashboard");
 		}
 
-		// return (window.location.href = "employee-dashboard.html");
 	}
 }
 
@@ -104,20 +118,18 @@ function errorHandler(err) {
 async function sendData(userData) {
 	const url = "https://api.lancers.app/v1/auth/employee-login";
 
-	const requestOptions = {
-		method: "POST",
-		body: JSON.stringify(userData),
-		headers: {
-			"Content-type": "application/json",
-		},
-	};
-
 	try {
-		const res = await fetch(url, requestOptions);
-		const data = await res.json();
-		return data;
+		const res = axios({
+			method: "post",
+			url: url,
+			data: userData,
+			headers: {
+				"Content-type": "application/json",
+			},
+		});
+		return res;
 	} catch (err) {
-		return "Error: ", err;
+		console.log(err);
 	}
 }
 
@@ -136,7 +148,9 @@ form.addEventListener("submit", (e) => {
 		};
 
 		sendData(userData)
-			.then((res) => responseHandler(res))
+			.then((res) => {
+				responseHandler(res.data);
+			})
 			.catch((err) => errorHandler(err));
 	}
 });
