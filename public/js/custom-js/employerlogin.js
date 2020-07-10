@@ -81,9 +81,15 @@ function responseHandler(res) {
 			token: res.data.token,
 			userId: res.data.user
 		};
+		const expire = 1 * 24 * 60 * 60 * 1000;
+		const name = 'tokenauth';
+		//cname + "=" + cvalue + ";" + expires + ";path=/";
+
+		document.cookie = `${name}=${value}${expire}; path=/`;
 		localStorage.setItem('tpAuth', JSON.stringify(value));
+
 		// Redirect to dashboard
-		return (window.location.href = '/employer-dashboard');
+		return (window.location.href = '/employer-verification');
 	}
 }
 

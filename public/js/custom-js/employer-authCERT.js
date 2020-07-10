@@ -6,7 +6,7 @@ if (!token) {
 (function () {
 	'use strict';
 	const response = JSON.parse(atob(token.token.split('.')[1]));
-	console.log(response.userTypeId);
+	//console.log(response.userTypeId);
 	// Redirecting
 	if (response.userTypeId == null) {
 		// Redirect to employer profile creation page
