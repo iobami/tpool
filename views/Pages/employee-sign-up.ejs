@@ -129,6 +129,7 @@
                                                 minlength="8" placeholder="at least 8 characters" required>
                                             <div id="invalidPass2">
                                             </div>
+
                                             <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z" fill="#337AB7"/>
                                             </svg>
@@ -151,7 +152,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="loader"></div>
                                     <div class="row">
                                         <div class="col">
@@ -175,6 +175,24 @@
                                 <hr>
                             </div>
                         </div>
+        
+                        <div class="row mt-2">
+                            <div class="col-md">
+                                <button id="githubBtn" type='button' class="btn  btn-block  github-btn py-3 my-1"><i
+                                        class="fab fa-github pr-2"></i>Sign In with Github</button>
+                            </div class>
+        
+                            <div class="col-md">
+                                <a href="https://api.lancers.app/v1/auth/google" id="googleBtn" class="btn btn-block  google-btn py-3 my-1"><i
+                                        class="fab fa-google pr-2"></i>Sign In with Google
+                                       
+                                        </a>
+                            </div>
+                        </div>
+        
+                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee-sign-in" class="login-link">Sign In.</a></p>
+                    </div>
+
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -403,8 +421,9 @@
                                         class="login-link">Sign In.</a></p>
                             </div>
                         </div>
+
                     </section>
-        
+
                 </div>
             </div>
         </div>
