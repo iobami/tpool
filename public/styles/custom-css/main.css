@@ -40,6 +40,26 @@ input:focus, input:active {
    max-width: 1400px;
 }
 
+.nav-tabs .nav-link {
+   display: inline !important;
+   transition: all 0.3s ease-in-out;
+}
+
+.nav-tabs .nav-link.active {
+   color: black !important;
+   border-bottom: 3px solid #084482 !important;
+   border-top-color: transparent !important;
+   border-left-color: transparent !important;
+   border-right-color: transparent !important;
+}
+
+.nav-tabs .nav-link:hover {
+   border-bottom: 3px solid #084482 !important;
+   border-top-color: transparent !important;
+   border-left-color: transparent !important;
+   border-right-color: transparent !important;
+}
+
 .talent-link{
    border-bottom-width: 3px;
    border-bottom-style: solid;

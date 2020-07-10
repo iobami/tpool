@@ -113,17 +113,17 @@ span:after {
   padding-bottom: 10px;
 }
 
-.btn-facebook {
-  background: #3b5998;
+.btn-github {
+  background: #4c5466;
 }
 
 .btn-google {
   background: #db4a39;
 }
 
-.btn-facebook:hover {
+.btn-github:hover {
   color: white;
-  background-color: #3a65c4;
+  background-color: #384050;
 }
 
 .btn-google:hover {
