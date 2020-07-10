@@ -11,8 +11,8 @@
     <%- include('../Templates/admin-header') %>
 
     <!-- sidebar -->
-     <%- include('../Templates/admin-sidebar') %>
-     
+    <%- include('../Templates/admin-sidebar') %>
+
     <div id="body__click"></div>
 
     <!-- main content -->
@@ -55,6 +55,7 @@
                         </div>
 
                         <div class="chat-scroll-view px-md-2 p-2 pb-2 pt-0">
+                            <div id="disp">message</div>
                             <div class="card d-flex flex-row mb-3  p-3 chat-card active-card" id="card1"
                                 onclick="toggleBack()">
                                 <div class=" mb-1 img-class">
@@ -64,14 +65,14 @@
 
                                 <div class="chat-info">
                                     <div class="content-top d-flex flex-row justify-content-between">
-                                        <p class="contact-name mb-0 font-weight-bold">Adeleke Oluwakemi</p>
+                                        <p class="contact-name mb-0 font-weight-bold"></p>
                                         <p class="time-sent mb-0">4:56pm</p>
                                     </div>
                                     <div class="content-bottom d-flex flex-row ">
                                         <p class="mb-0 pr-2">
                                             <img src="img/admin-dash-messages/Read-tick.svg" alt="dp-img/" class="">
                                         </p>
-                                        <p class="chat-content mb-1">Will you be at the conference?</p>
+                                        <p class="chat-content mb-1"></p>
                                     </div>
                                 </div>
                             </div>
@@ -264,8 +265,9 @@
 
     </div>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/custom-js/side-nav.js"></script>
-    <script src="js/custom-js/admin-dash-messages.js"></script>
+    <script src="js/custom-js/admin-dash-messages.js" type="module"></script>
 </body>
 
 </html>
