@@ -2,7 +2,7 @@ const employeeProfileCreationForm = document.querySelector('#employeeProfileCrea
 const userType = document.querySelector("#userType");
 const hngId = document.querySelector("#hngId");
 
-const userInformation = JSON.parse(localStorage.getItem("user"));
+const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
 
 userType.addEventListener('click', (e) => {
     for (var i = 0, len = userType.options.length; i < len; i++) {
