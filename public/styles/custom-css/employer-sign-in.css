@@ -1,18 +1,18 @@
 body {
-    color: #495057;
+  color: #495057;
 }
 
- .custom-container {
+.custom-container {
   max-width: 1440px;
 }
 
 .content-container {
   max-width: 1440px;
-  padding-bottom: 0!important;
-  padding-top: 0!important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
 }
 
-.signUp-img-div{
+.signUp-img-div {
   display: block;
   background: no-repeat url("../../img/employee_signup_image.png");
   background-size: 100% auto cover;
@@ -20,75 +20,75 @@ body {
   /* width: 614px !important; */
 }
 
-.signIn-img-div{
+.signIn-img-div {
   display: block;
   background: no-repeat url("../../img/signin.jpg");
   background-size: 100% auto cover;
   /* width: 614px !important; */
 }
-    
+
 .smallTitle {
-color: #B5B5B5;
-font-size: 16px;
-line-height: 24px;
+  color: #b5b5b5;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .bigTitle {
-color: #084482;
-font-weight: 500;
-font-size: 32px;
-line-height: 42px;
+  color: #084482;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 42px;
 }
 
 label {
-font-size: 18px;
-line-height: 27px;
-color: #1F2430;
+  font-size: 18px;
+  line-height: 27px;
+  color: #1f2430;
 }
 
-.form-control{
-border-radius: 5px;
-border: 1px solid #b5b5b5;
-padding: 25px;
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #b5b5b5;
+  padding: 25px;
 }
 
 input::placeholder {
-font-size: 16px;
-line-height: 24px;
-color: rgba(178, 178, 178, 0.58);
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(178, 178, 178, 0.58);
 }
 
 #terms-policy {
-line-height: 50px;
+  line-height: 50px;
 }
 
-#signup-btn{
-    background: #ffffff;
-    /* width: 572px;
+#signup-btn {
+  background: #ffffff;
+  /* width: 572px;
     height: 68px; */
-   border: 2px solid #00AEFF;
-   color: #00AEFF;
-   font-weight: bolder;
-    box-sizing: border-box;
-    border-radius: 5px;
+  border: 2px solid #00aeff;
+  color: #00aeff;
+  font-weight: bolder;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
- #signup-btn:visited {
-  background-color: #00AEFF !important;
+#signup-btn:visited {
+  background-color: #00aeff !important;
 }
 
-#signup-btn:hover{
+#signup-btn:hover {
   background-color: #337ab7 !important;
   color: #ffffff;
-} 
+}
 
-#signup-btn:active{
+#signup-btn:active {
   background-color: #084482 !important;
-} 
+}
 
 hr {
   color: #084482;
-  border: .5px solid #084482;
+  border: 0.5px solid #084482;
 }
 
 .login-link {
@@ -104,26 +104,25 @@ hr {
   text-decoration: none;
 }
 
-  .facebook-btn {
-    color: #ffffff;
-    /* width: 264px;
+.facebook-btn {
+  color: #ffffff;
+  /* width: 264px;
     height: 63px; */
-    background: #3B5998;
-    box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
-    border-radius: 5px;
-    padding: 15px;
+  background: #3b5998;
+  box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
+  border-radius: 5px;
+  padding: 15px;
 }
 
 .google-btn {
-    color: #ffffff;
-    /* width: 264px;
+  color: #ffffff;
+  /* width: 264px;
     height: 63px; */
-    background: #DB4A39;
-    box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
-    border-radius: 5px;
-    padding: 15px;
-} 
-
+  background: #db4a39;
+  box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
+  border-radius: 5px;
+  padding: 15px;
+}
 
 .modal-content {
   max-width: 540px;
@@ -142,7 +141,7 @@ hr {
   font-size: 1.5rem;
   line-height: 24px;
   margin-top: 48.6px;
-  color: #25282B;
+  color: #25282b;
 }
 
 .modal-content p {
@@ -156,7 +155,7 @@ hr {
   max-width: 238px;
   width: 100%;
   padding: 11px 0;
-  background: #00AEFF;
+  background: #00aeff;
   border-radius: 5px;
   font-weight: 500;
   font-size: 1.5rem;
@@ -172,11 +171,29 @@ hr {
   font-weight: 600;
   font-size: 1rem;
   line-height: 24px;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
 
 .signup-nav .active {
-  color: #1F2430;
+  color: #1f2430;
   border-bottom: 4px solid #084482;
 }
 
+.github-btn {
+  background: #000000d2;
+  color: white;
+}
+
+.google-btn {
+  background: #db4a39;
+}
+
+.github-btn:hover {
+  background: #000;
+  color: white;
+}
+
+.google-btn:hover {
+  color: white;
+  background: #f7220b;
+}
