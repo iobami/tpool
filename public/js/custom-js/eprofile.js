@@ -15,8 +15,8 @@ const addSkillForm = document.querySelector('#add-skills')
 const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
 
 if (!userInformation) {
-  alert('Error! User Information not found, please sign in again.');
-  location.href = '/employee-sign-in';
+  // alert('Error! User Information not found, please sign in again.');
+  // location.href = '/employee-sign-in';
 }
 
 const errorMessage = document.querySelector("#error-message");
@@ -144,7 +144,7 @@ function buildList(data) {
 }
 
   async function getAllSkillsForIndividuals() {
-    const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
+    // const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
     try {
       const { data } = await axios({
         method: 'GET',
@@ -159,7 +159,7 @@ function buildList(data) {
         buildList(myArray);
       }
     } catch (error) {
-      alert("Opps! An error seems to have occured. Try again later. Thanks!");
+      // alert("Opps! An error seems to have occured. Try again later. Thanks!");
     }
   }
 
