@@ -46,15 +46,7 @@ exports.getEmployeeMessages = (req, res, next) => {
 exports.getEmployeeProfile = async (req, res, next) => {
   res.render("Pages/employeeProfile", {
     pageTitle: "Talent Pool | Employee Profile",
-    path: "employee-profile",
-    employeeProfile: {
-      first_name: "Moses",
-      last_name: "Bolarinwa",
-      email: "odutusinmoses@gmail.com",
-      location: "Toronto,Canada",
-      phone_no: "08147793653",
-      skillCategory: "UI?UX Designer",
-    },
+    path: "employee-profile"
   });
 };
 
