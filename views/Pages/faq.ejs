@@ -9,7 +9,7 @@
 <body>
 
     <%- include('../Templates/header') %>
-      <main>
+    <main>
         <div class="container-fluid p-0">
 
             <div class="header-sec">
@@ -37,297 +37,292 @@
                         </h4>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6 col-md-4 offset-md-1 mb-4">
-                        <h4 class="d-flex justify-content-between align-items-center mb-3"
-                            style="margin-left: 40px; color: white;">
-                            TalentPool
-                        </h4>
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
-                            style="width: 80%; margin-left: 35px;">
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                                            aria-expanded="true" aria-controls="collapseOne">
-                                            <i id="icon" class="more-less fa fa-chevron-down" aria-hidden="true"></i>
-                                            What HNGi is all about
-                                        </a>
+                <div id="accordion">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 offset-md-1 mb-4">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3"
+                                style="margin-left: 40px; color: white;">
+                                TalentPool
+                            </h4>
+
+
+                            <div class="panel-group"  style="width: 80%; margin-left: 35px">
+                                <div class="panel-default mb-2">
+                                <div class="panel-heading" id="headingOne">
+                                    <h4 class="mb-0 panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What HNGi is all about
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                    </a>
                                     </h4>
                                 </div>
-                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingOne">
+                            
+                                <div id="collapseOne" class="collapse panel-collapse collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="panel-body">
                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
                                         cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
-                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae!
-                                    </div>
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
                                 </div>
-                            </div>
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i id="icon" class="more-less fa fa-chevron-down"></i>
-                                            History
+                                </div>
+                                </div>
+
+                                <div class="panel-default mb-2">
+                                    <div class="panel-heading" id="headingOne">
+                                    <h4 class="mb-0 panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                        History
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
                                         </a>
                                     </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod provident alias
-                                        voluptatem, autem iusto nihil nesciunt accusamus veniam quia, animi placeat? Soluta
-                                        praesentium, eius rem eos eveniet adipisci inventore blanditiis?
                                     </div>
-                                </div>
-                            </div>
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingThree">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            <i id="icon" class="more-less fa fa-chevron-down"></i>
-                                            Functionalities of talentpool
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut veritatis facere
-                                        doloremque
-                                        ad libero nulla nisi eaque illo rem nesciunt molestiae est, recusandae, itaque eius
-                                        minima facilis earum maxime vitae!
-                                    </div>
-                                </div>
-                            </div>
-    
-                        </div><!-- panel-group -->
-    
-                    </div>
-                    <div class="col-sm-6 col-md-4 offset-md-1 mb-4">
-                        <h4 class="d-flex justify-content-between align-items-center mb-3"
-                            style="color: white; margin-left: 40px;">
-                            Getting started
-                        </h4>
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
-                            style="width: 80%; margin-left: 35px;">
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingFour">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                            <i class="more-less fa fa-chevron-down"></i>
-                                            How to sign up
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingFour">
+                                
+                                    <div id="collapseTwo" class="collapse panel-collapse collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="panel-body">
                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
                                         cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
-                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae!
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
                                     </div>
                                 </div>
-                            </div>
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingFive">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                            <i class="more-less fa fa-chevron-down"></i>
-                                            How to sign in
+
+                                <div class="panel-default">
+                                    <div class="panel-heading" id="headingOne">
+                                    <h4 class="mb-0 panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                        Functionalities of TalentPool
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
                                         </a>
                                     </h4>
-                                </div>
-                                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingFive">
-                                    <div class="panel-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod provident alias
-                                        voluptatem, autem iusto nihil nesciunt accusamus veniam quia, animi placeat? Soluta
-                                        praesentium, eius rem eos eveniet adipisci inventore blanditiis?
                                     </div>
-                                </div>
-                            </div>
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingSix">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                            <i class="more-less fa fa-chevron-down"></i>
-                                            How to set password
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingSix">
+                                
+                                    <div id="collapseThree" class="collapse panel-collapse collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="panel-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut veritatis facere
-                                        doloremque
-                                        ad libero nulla nisi eaque illo rem nesciunt molestiae est, recusandae, itaque eius
-                                        minima facilis earum maxime vitae!
-                                    </div>
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
                                 </div>
+                                    </div>
+                                </div>           
                             </div>
+
+
+                            <!-- panel-group -->
+        
                         </div>
-    
-                    </div><!-- panel-group -->
-    
+
+                        
+                        <div class="col-sm-6 col-md-4 offset-md-1 mb-4">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3"
+                                style="color: white; margin-left: 40px;">
+                                Getting started
+                            </h4>
+
+                            <div class="panel-group"  style="width: 80%; margin-left: 35px">
+                                <div class="panel-default mb-2">
+                                <div class="panel-heading" id="headingFour">
+                                    <h4 class="mb-0 panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                        How to sign up
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                    </a>
+                                    </h4>
+                                </div>
+                            
+                                <div id="collapseFour" class="panel-collapse collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                    <div class="panel-body">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
+                                </div>
+                                </div>
+
+                                <div class="panel-default mb-2">
+                                    <div class="panel-heading" id="headingFive">
+                                    <h4 class="mb-0 panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                        How to sign in
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                        </a>
+                                    </h4>
+                                    </div>
+                                
+                                    <div id="collapseFive" class="collapse panel-collapse collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                    <div class="panel-body">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-default">
+                                    <div class="panel-heading" id="headingsix">
+                                    <h4 class="mb-0 panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                        How to set Password
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                        </a>
+                                    </h4>
+                                    </div>
+                                
+                                    <div id="collapseSix" class="collapse panel-collapse" aria-labelledby="headingsix" data-parent="#accordion">
+                                    <div class="panel-body">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
+                                    </div>
+                                </div>           
+                            </div>
+                            
+
+                        </div><!-- panel-group -->
+        
+                    </div>
+        
+                    <div class="row">
+                        
+                        <div class="col-sm-6 col-md-4 offset-md-1 mb-4">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3"
+                                style="margin-left: 40px; color: white;">
+                                Application
+                            </h4>
+
+
+                            <div class="panel-group"  style="width: 80%; margin-left: 35px">
+                                <div class="panel-default mb-2">
+                                <div class="panel-heading" id="headingSeven">
+                                    <h4 class="mb-0 panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                                        How to sign
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                    </a>
+                                    </h4>
+                                </div>
+                            
+                                <div id="collapseSeven" class="panel-collapse collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                                    <div class="panel-body">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
+                                </div>
+                                </div>
+
+                                <div class="panel-default mb-2">
+                                    <div class="panel-heading" id="headingEight">
+                                    <h4 class="mb-0 panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                                        Application process
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                        </a>
+                                    </h4>
+                                    </div>
+                                
+                                    <div id="collapseEight" class="collapse panel-collapse collapse" aria-labelledby="headingEight" data-parent="#accordion">
+                                    <div class="panel-body">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
+                                    </div>
+                                </div> <!-- panel-group -->
+        
+                        </div>
+
+
+                    </div>
+
+                        <div class="col-sm-6 col-md-4 offset-md-1 mb-4">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3"
+                                style="color: white; margin-left: 40px;">
+                                Membership
+                            </h4>
+                            
+
+                            <div class="panel-group"  style="width: 80%; margin-left: 35px">
+                                <div class="panel-default mb-2">
+                                <div class="panel-heading" id="headingNine">
+                                    <h4 class="mb-0 panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+                                        How to become a maember
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                    </a>
+                                    </h4>
+                                </div>
+                            
+                                <div id="collapseNine" class="panel-collapse collapse" aria-labelledby="headingNine" data-parent="#accordion">
+                                    <div class="panel-body">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
+                                </div>
+                                </div>
+
+                                <div class="panel-default mb-2">
+                                    <div class="panel-heading" id="headingTen">
+                                    <h4 class="mb-0 panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+                                        How long membership last
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                        </a>
+                                    </h4>
+                                    </div>
+                                
+                                    <div id="collapseTen" class="collapse panel-collapse collapse" aria-labelledby="headingTen" data-parent="#accordion">
+                                    <div class="panel-body">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="panel-default mb-2">
+                                    <div class="panel-heading" id="headingEleven">
+                                    <h4 class="mb-0 panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
+                                        Who is elegible to be a member
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                        </a>
+                                    </h4>
+                                    </div>
+                                
+                                    <div id="collapseEleven" class="collapse panel-collapse collapse" aria-labelledby="headingEleven" data-parent="#accordion">
+                                    <div class="panel-body">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-default">
+                                    <div class="panel-heading" id="headingTwelve">
+                                    <h4 class="mb-0 panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="true" aria-controls="collapseTwelve">
+                                        Types of membership
+                                        <i id="icon" class="more-less fa fa-chevron-right" aria-hidden="true"></i>
+                                        </a>
+                                    </h4>
+                                    </div>
+                                
+                                    <div id="collapseTwelve" class="collapse panel-collapse collapse" aria-labelledby="headingTwelve" data-parent="#accordion">
+                                    <div class="panel-body">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
+                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
+                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae! 
+                                </div>
+                                    </div>
+                                </div>
+        
+                        </div><!-- panel-group -->
+
+                        </div>
+                    
                 </div>
-    
-                <div class="row">
-                    <div class="col-sm-6 col-md-4 offset-md-1 mb-4">
-                        <h4 class="d-flex justify-content-between align-items-center mb-3"
-                            style="margin-left: 40px; color: white;">
-                            Application
-                        </h4>
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
-                            style="width: 80%; margin-left: 35px;">
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingSeven">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
-                                            <i class="more-less fa fa-chevron-down"></i>
-                                            How to apply
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingSeven">
-                                    <div class="panel-body">
-                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
-                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
-                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae!
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingEight">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                            <i class="more-less fa fa-chevron-down"></i>
-                                            Application process
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseEight" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingEight">
-                                    <div class="panel-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod provident alias
-                                        voluptatem, autem iusto nihil nesciunt accusamus veniam quia, animi placeat? Soluta
-                                        praesentium, eius rem eos eveniet adipisci inventore blanditiis?
-                                    </div>
-                                </div>
-                            </div>
-    
-                        </div><!-- panel-group -->
-    
-                    </div>
-                    <div class="col-sm-6 col-md-4 offset-md-1 mb-4">
-                        <h4 class="d-flex justify-content-between align-items-center mb-3"
-                            style="color: white; margin-left: 40px;">
-                            Membership
-                        </h4>
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
-                            style="width: 80%; margin-left: 35px;">
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingNine">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
-                                            <i class="more-less fa fa-chevron-down"></i>
-                                            How to become a member
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseNine" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingNine">
-                                    <div class="panel-body">
-                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias exercitationem
-                                        cupiditate voluptates culpa eos odit ipsam enim soluta, rem cum in sit, ullam
-                                        consequatur ad aspernatur consequuntur, reprehenderit provident recusandae!
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTen">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                                            <i class="more-less fa fa-chevron-down"></i>
-                                            How long membership lasts
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTen" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingTen">
-                                    <div class="panel-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod provident alias
-                                        voluptatem, autem iusto nihil nesciunt accusamus veniam quia, animi placeat? Soluta
-                                        praesentium, eius rem eos eveniet adipisci inventore blanditiis?
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingEleven">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-                                            <i class="more-less fa fa-chevron-down"></i>
-                                            Who is eligible to be a member
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseEleven" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingEleven">
-                                    <div class="panel-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut veritatis facere
-                                        doloremque
-                                        ad libero nulla nisi eaque illo rem nesciunt molestiae est, recusandae, itaque eius
-                                        minima facilis earum maxime vitae!
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwelve">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                            href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
-                                            <i class="more-less fa fa-chevron-down"></i>
-                                            Types of membership
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwelve" class="panel-collapse collapse" role="tabpanel"
-                                    aria-labelledby="headingTwelve">
-                                    <div class="panel-body">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut veritatis facere
-                                        doloremque
-                                        ad libero nulla nisi eaque illo rem nesciunt molestiae est, recusandae, itaque eius
-                                        minima facilis earum maxime vitae!
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- panel-group -->
             </div>
     
             <!---popular searches-->
@@ -339,10 +334,10 @@
                     TalentPool are:
                 </p>
     
-                <div class="row">
-                    <div class="col-sm-6 mb-4">
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
-                            style="width: 80%; margin-left: 36px;">
+                <div class="row justify-content-md-around">
+                    <div class="col-sm-6 col-md-4 col-xl-6 mb-4">
+                        <div class="panel-group pop-question" id="accordion" role="tablist" aria-multiselectable="true"
+                            style="">
     
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab">
@@ -377,9 +372,9 @@
                         </div><!-- panel-group -->
     
                     </div>
-                    <div class="col-sm-6 mb-4">
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
-                            style="width: 80%; margin-left: 36px;">
+                    <div class="col-sm-6 col-md-4 col-xl-6 mb-4">
+                        <div class="panel-group pop-question" id="accordion" role="tablist" aria-multiselectable="true"
+                            style="">
     
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab">
@@ -432,7 +427,7 @@
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a role="button" href="#">
-                                            <span class="prepend"><img src="img/telegram.svg" alt=""></span>
+                                            <span class="prepend"><img src="../img/telegram.svg" alt=""></span>
                                             Telegram
                                         </a>
                                     </h4>
@@ -446,7 +441,7 @@
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a role="button" href="#">
-                                            <span class="prepend"><img src="img/email.svg" alt=""></span>
+                                            <span class="prepend"><img src="../img/email.svg" alt=""></span>
                                             contact@lancers.app
                                         </a>
                                     </h4>
@@ -461,7 +456,7 @@
                                 <div class="panel-heading" role="tab">
                                     <h4 class="panel-title">
                                         <a role="button" href="#">
-                                            <span class="prepend"><img src="img/slack.svg" alt=""></span>
+                                            <span class="prepend"><img src="../img/slack.svg" alt=""></span>
                                             Slack
                                         </a>
                                     </h4>
@@ -477,7 +472,176 @@
       <%- include('../Templates/footer') %>
 
     <script src="js/custom-js/faq.js"></script>
+    <script>
+
+        let panels = document.querySelectorAll('.accordion-toggle')
     
+        panels.forEach(function(panel){
+            panel.addEventListener('click', function(e){
+       
+              if (e.target == panels[0]){
+                  panels[0].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if(e.target == panels[1]){
+                  panels[1].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[2]){
+                  panels[2].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[3]){
+                panels[3].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[4]){
+                panels[4].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[5]){
+                panels[5].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[6]){
+                panels[6].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[7]){
+                panels[7].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[8]){
+                panels[8].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[9]){
+                panels[9].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[10]){
+                panels[10].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[11].querySelector('.more-less').classList.remove('rotate-down')
+              }else if (e.target == panels[11]){
+                panels[11].querySelector('.more-less').classList.toggle('rotate-down')
+                  panels[1].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[0].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[2].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[4].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[5].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[6].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[7].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[8].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[9].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[10].querySelector('.more-less').classList.remove('rotate-down')
+                  panels[3].querySelector('.more-less').classList.remove('rotate-down')
+              }
+    
+            })
+        })
+       
+      </script>
+
 </body>
 
 </html>
