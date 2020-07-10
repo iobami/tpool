@@ -2,6 +2,11 @@
 const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
 const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
 
+if (!userInformation) {
+    alert('Error! User Information not found, please sign in again.');
+    location.href = '/employer-sign-in';
+  }
+
 // store all added documents and display in table
 let documentsArray = [];
 
@@ -76,7 +81,7 @@ const newTableRow = (container, data) => {
     textNode = document.createTextNode('Remove');
     button.appendChild(textNode);
     td = document.createElement('td');
-    td.setAttribute('style', 'text-align: center;');
+    td.setAttribute('style', 'text-align: right; padding-right: 12px;'); 
     td.appendChild(button);
     tr.appendChild(td);
 
@@ -189,7 +194,7 @@ const batchUpload = async () => {
             console.log(data.message);
 
         } catch (e) {
-            console.log(e.message);
+            console.log(e);
         }
 
      }
