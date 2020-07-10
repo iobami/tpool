@@ -63,7 +63,7 @@ function loadButton() {
 function revertButton() {
   const buttonDiv = document.querySelector("#button-div");
   buttonDiv.innerHTML = `
- <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit">Sign Up</button>
+ <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit">Sign In</button>
  `;
 }
 
@@ -83,26 +83,40 @@ function responseHandler(res) {
     };
     localStorage.setItem("tpAuth", JSON.stringify(value));
 
+    // // Redirect to dashboard
+    // return (window.location.href = '/employer-dashboard');
+
     // Decoding token
     const response = JSON.parse(atob(value.token.split(".")[1]));
 
     // Redirecting
-    if (response.userTypeId == null) {
-      // Redirect to employer profile creation page
-      return (window.location.href = "/employer-create-profile");
-    } else if (response.userTypeId !== null) {
+    if (!response.userTypeId) {
+      // Redirect to correct profile creation page
+      if (/admin/gi.test(response.userRole)) {
+        showMessage("Redirecting to Admin Dashboard", "alert-success");
+        window.location.assign("/admin-dashboard");
+      } else if (/employer/gi.test(response.userRole)) {
+        window.location.assign("/employer-create-profile");
+      } else {
+        window.location.assign("/employee-profileCreation");
+      }
+    } else {
       // Add userTypeId to to tpAuth in localStorage
       const newValue = {
         token: res.data.token,
         userId: res.data.user,
         userTypeId: response.userTypeId,
-        role: response.userRole
+        userRole: response.userRole,
       };
       localStorage.setItem("tpAuth", JSON.stringify(newValue));
-      return (window.location.href = "/employer-dashboard");
-    } else {
-      // Redirect to dashboard
-      return (window.location.href = "/employer-dashboard");
+      if (/employee/gi.test(newValue.userRole)) {
+        window.location.assign("/employee-dashboard");
+        // console.log("employee; ", /employee/gi.test(newValue.userRole));
+      } else if (/employer/gi.test(newValue.userRole)) {
+        showMessage("Redirecting to Employer Dashboard", "alert-success");
+        window.location.assign("/employer-dashboard");
+        // console.log("employer or admin; ", newValue.userRole, /employee/gi.test(newValue.userRole));
+      }
     }
   }
 }
@@ -110,7 +124,8 @@ function responseHandler(res) {
 // Function to handle error from http request
 function errorHandler(err) {
   revertButton();
-  showMessage("Sign In failed. Please try again", "alert-danger");
+  // showMessage('Sign In failed. Please try again', 'alert-danger');
+  showMessage(err.error, "alert-danger");
 }
 
 // Function to send user data to API
@@ -150,6 +165,6 @@ form.addEventListener("submit", (e) => {
       .then((res) => {
         responseHandler(res.data);
       })
-      .catch((err) => errorHandler(err));
+      .catch((err) => errorHandler(err.response.data));
   }
 });

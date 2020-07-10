@@ -1,11 +1,12 @@
 const express = require("express");
 const appRoute = express.Router();
 
-const { paymentMethod, paymentSuccessModal, pricePayment } = require('../../controllers/payment/payment');
+const { packages, paymentSuccessModal, pricePayment, paymentSuccess } = require('../../controllers/payment/payment');
 
-appRoute.get('/payment-method', paymentMethod);
+appRoute.get('/packages', packages);
 appRoute.get('/payment-success-modal', paymentSuccessModal);
 appRoute.get('/price-payment', pricePayment);
+appRoute.get('/s', paymentSuccess);
 
 module.exports = appRoute;
 
