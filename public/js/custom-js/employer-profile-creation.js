@@ -1,5 +1,26 @@
 const employerProfileCreationForm = document.querySelector('#employerProfileCreation');
-const userInformation = JSON.parse(localStorage.getItem("user"));
+const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
+
+const userInfo1 = JSON.parse(atob(userInformation.token.split('.')[1]));
+const { userTypeId, userRole } = userInfo1;
+
+const [navBar] = document.getElementsByClassName('navbar-brand');
+
+if (userRole === 'ROL-EMPLOYEE') {
+    if (userTypeId)  {
+        navBar.href = '/employee-dashboard';
+    } else {
+        navBar.href = '/employee-profileCreation';
+    }
+}
+
+if (userRole === 'ROL-EMPLOYER') {
+  if (userTypeId)  {
+      navBar.href = '/employer-dashboard';
+  } else {
+      navBar.href = '/employer-create-profile';
+  }
+} 
 // getdata();
 // Get data for the company types
 // const requestOptions = {
