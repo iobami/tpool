@@ -6,7 +6,7 @@
 
 :root {
   --primary-color: #084482;
-  --secondary-color: #E5E5E5;
+  --secondary-color: #e5e5e5;
 }
 
 .container-fluid {
@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: 'poppins';
+  font-family: "poppins";
   scroll-behavior: smooth !important;
   margin: 0;
   padding: 0;
@@ -38,8 +38,6 @@ body {
   z-index: 10;
 }
 
-
-
 .header-sec .form-control::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   font-family: Poppins;
@@ -48,7 +46,6 @@ body {
   font-size: 16px;
   line-height: 24px;
   /* identical to box height */
-
 
   color: rgba(178, 178, 178, 0.58);
 }
@@ -63,7 +60,6 @@ body {
   line-height: 24px;
   /* identical to box height */
 
-
   color: rgba(178, 178, 178, 0.58);
 }
 
@@ -75,7 +71,6 @@ body {
   font-size: 16px;
   line-height: 24px;
   /* identical to box height */
-
 
   color: rgba(178, 178, 178, 0.58);
 }
@@ -89,11 +84,8 @@ body {
   line-height: 24px;
   /* identical to box height */
 
-
   color: rgba(178, 178, 178, 0.58);
 }
-
-
 
 .pop-sec {
   background: var(--secondary-color);
@@ -103,7 +95,6 @@ body {
 .questions-sec {
   background: var(--primary-color);
 }
-
 
 .fot-sec {
   background: var(--primary-color);
@@ -120,11 +111,12 @@ body {
   margin-top: 20px;
 }
 
-
 .prepend img {
   width: 20px;
 }
-
+.panel-default {
+  cursor: pointer;
+}
 .panel-body {
   background: white;
   color: #084482;
@@ -135,37 +127,37 @@ body {
 .panel-group .panel {
   border-radius: 0;
   box-shadow: none;
-  border-color: #EEEEEE;
+  border-color: #eeeeee;
 }
 
-.panel-default>.panel-heading {
+.panel-default > .panel-heading {
   padding: 0;
   border-radius: 5px;
   color: #212121;
-  background-color: #FAFAFA;
-  border-color: #EEEEEE;
+  background-color: #fafafa;
+  border-color: #eeeeee;
 }
 
 .panel-title {
   font-size: 14px;
 }
 
-.panel-title>a {
+.panel-title > a {
   display: block;
   padding: 15px;
   text-decoration: none;
-  color: #B2B2B2;
+  color: #b2b2b2;
 }
 
-.panel-title>a:hover {
+.panel-title > a:hover {
   color: #084482;
 }
 
-.panel-title>a:active {
+.panel-title > a:active {
   color: #084482;
 }
 
-.fot-sec .social a:hover{
+.fot-sec .social a:hover {
   border-bottom: none !important;
 }
 
@@ -176,29 +168,25 @@ body {
 .more-less {
   float: right;
   color: #084482;
+  -moz-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 
-.rotate {
-  -moz-transition: all 2s linear;
-  -webkit-transition: all 2s linear;
-  transition: all 2s linear;
+.rotate-down {
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
-.rotate.down {
-  -moz-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-.panel-default>.panel-heading+.panel-collapse>.panel-body {
-  border-top-color: #EEEEEE;
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #eeeeee;
   margin-top: -8px;
   margin-bottom: 8px;
 }
 
-
 .pop-sec .panel {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 1px 2px 4px rgba(214, 217, 223, 0.5);
   border-radius: 5px;
   margin-top: 8px;
@@ -212,26 +200,30 @@ body {
 .pop-sec .panel-group {
   margin-top: 30px;
 }
-
-
+.pop-question {
+  width: 80%;
+  margin-left: 36px;
+}
 
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
-
   .pop-sec .row {
     margin-left: 38px;
   }
 }
 
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
-
   .pop-sec .row {
     margin-left: 38px;
   }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-  .questions-sec .row .panel{
+  .questions-sec .row .panel {
     margin-left: -15%;
     width: 150%;
+  }
+  .pop-question {
+    width: 80%;
+    margin-left: 30px;
   }
 }
