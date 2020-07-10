@@ -39,20 +39,24 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="card px-4 py-5 bio">
+                            <img src="" alt="" id="employee-img">
                             <!-- <%= employeeProfile.picture_url %> -->
                             <div class="intern-main text-center mt-4">
-                                <h3><%= employeeProfile.first_name %><%= employeeProfile.last_name %></h3>
-                                <p><%= employeeProfile.skillCategory %></p>
+                                <h3 id="full-name"><%= employeeProfile.first_name %><%= employeeProfile.last_name %></h3>
+                                <p id="skill-category"><%= employeeProfile.skillCategory %></p>
                             </div>
                             <hr>
                             <div class="intern-other">
                                 <p><span><img src="../img/iprofile/carbon_location.svg" alt=""></span>
-                                    <%= employeeProfile.location %>
+                                   <span id="employee-location"><%= employeeProfile.location %></span>
                                 </p>
                                 <p><span><img src="../img/iprofile/carbon_email.svg" alt=""></span>
 
                                     <%= employeeProfile.email %>
                                 </p>
+                                <p id="intern-id" class="ml-4"></p>
+                                <p id="availability"  class="ml-4"></p>
+                                <p id="phone" class="ml-4"></p>
 
                             </div>
                             <hr>
@@ -249,10 +253,10 @@
 
                                             </div>
                                         </div>
-                                        <p>File uploaded</p>
+                                        <p id="cv-message">File uploaded</p>
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <button type="button" class="btn btn-primary">View file</button>
+                                                <a id="employee-cv" class="btn btn-primary" href="">View file</a>
                                             </div>
                                             <div class="col-md-4"></div>
                                         </div>
@@ -402,6 +406,7 @@
 
                                 </div>
                                 <ul class='lists'>
+                                    <p id="skill-message"></p>
                                     <!-- Dynamic Content Goes Here -->
                                 </ul>
                             </div>
@@ -417,14 +422,11 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/bootstrap-js/jquery.js"></script>
     <script src="../js/bootstrap-js/popper.js"></script>
+    <script src="../js/custom-js/employees-profile.js"></script>
     <script src="../js/custom-js/modal.js"></script>
     <script src="../js/bootstrap-js/bootstrap.js"></script>
     <script src="../js/custom-js/side-nav.js"></script>
     <script src="../js/custom-js/eprofile.js"></script>
     <script src="../js/custom-js/employee-portfolio.js"></script>
 </body>
-<<<<<<< HEAD
-=======
-
->>>>>>> e5ab61c0931713126a11ed0ced48c4a0137cd882
 </html>
