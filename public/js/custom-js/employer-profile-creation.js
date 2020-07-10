@@ -98,7 +98,6 @@ function showAlert(message) {
 
   alert.classList.remove('d-none');
   alertMessage.innerText = message;
-
   setTimeout(() => {
     hideAlert()
   }, 6000);
