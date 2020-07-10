@@ -99,11 +99,11 @@ tfoot .btn:hover {
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    background: #084482;
+    background: #fff;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .lds-ellipsis:hover div {
-    background: #fff;
+    background: #084482;
     transition: 0.7s;
 }
 .lds-ellipsis div:nth-child(1) {

@@ -131,7 +131,7 @@ submitButton.addEventListener('click', (e) => {
               }
             } else if(err.response.status === 500) {
               submitButton.innerText = 'Sign Up'
-              showAlert('Internal Server Error! Please try again.')
+              showAlert('Oops! Something went wrong. Please try again.')
             } else if(err.request) {
               // console.log('issue with request')
             } else {
