@@ -6,6 +6,14 @@
     <%- include('../Templates/head') %>
     <link rel="stylesheet" href="../styles/custom-css/employee-signUp.css">
     <link rel="stylesheet" href="styles/custom-css/employee-signUp-signIn.css">
+        <!-- BEGIN Pre-requisites -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id"
+            content="1044934768285-u3jh3gs8dv4u21uie9o32cbu0gv2erh4.apps.googleusercontent.com">
+        <!-- END Pre-requisites -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 
 <body>
@@ -163,18 +171,21 @@
                             </div>
                         </div>
         
-                        <div class="row mt-2">
-                            <div class="col-md">
+                        <div class="row mt-2 p-auto ">
+                            <!-- <div class="col-md">
                                 <button id="githubBtn" type='button' class="btn  btn-block  github-btn py-3 my-1"><i
                                         class="fab fa-github pr-2"></i>Sign In with Github</button>
-                            </div class>
+                            </div class> -->
         
-                            <div class="col-md">
+                            <!-- <div class="col-md">
                                 <a href="https://api.lancers.app/v1/auth/google" id="googleBtn" class="btn btn-block  google-btn py-3 my-1"><i
                                         class="fab fa-google pr-2"></i>Sign In with Google
                                        
                                         </a>
-                            </div>
+                            </div> -->
+                            <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
+                                            data-onsuccess="onSignIn">
+                                        </div>
                         </div>
         
                         <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee-sign-in" class="login-link">Sign In.</a></p>
@@ -307,15 +318,18 @@
                         </div>
         
                         <div class="row mt-2">
-                            <div class="col-md">
+                            <!-- <div class="col-md">
                                 <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
                                         class="fab fa-github pr-2"></i>Sign In with Github</button>
-                            </div class>
+                            </div class> -->
         
-                            <div class="col-md">
+                            <!-- <div class="col-md">
                                 <a href='https://api.lancers.app/v1/auth/google'  class="btn btn-block  google-btn py-3 my-1"><i
                                         class="fab fa-google pr-2"></i>Sign In with Google</a>
-                            </div> 
+                            </div>  -->
+                            <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
+                                    data-onsuccess="onSignIn">
+                                </div>
                         </div>
                        
         
