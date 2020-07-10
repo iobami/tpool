@@ -144,7 +144,7 @@ function buildList(data) {
 }
 
   async function getAllSkillsForIndividuals() {
-    // const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
+    const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
     try {
       const { data } = await axios({
         method: 'GET',
