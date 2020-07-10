@@ -1,3 +1,4 @@
+
 //starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
     'use strict'
@@ -30,39 +31,45 @@ logInV2.addEventListener('click', () => {
   window.location.replace('/employee-sign-in')
 })
 
-let github = document.getElementById('githubBtn')
-github.addEventListener('click', () => {
-  const requestOptions = {
-    method: "GET",
-    headers: {
-      'Accept': 'application/json, text/plain',
-      'Content-type': 'application/json',
-    }
-  }
-  const url = 'https://api.lancers.app/v1/auth/github'
-  try {
-    const githbauth = fetch(url , requestOptions);
-  } catch (err) {
+
+// let github = document.getElementById('githubBtn')
+// github.addEventListener('click', () => {
+//   const requestOptions = {
+//     method: "GET",
+//     headers: {
+//       'Accept': 'application/json, text/plain',
+//       'Content-type': 'application/json',
+//     }
+//   }
+//   const url = 'https://api.lancers.app/v1/auth/github'
+//   try {
+//     const githbauth = fetch(url , requestOptions);
+//   } catch (err) {
     
-    showAlert(err)
-  }
-})
-let google = document.getElementById('googleBtn')
-google.addEventListener('click', () => {
-  const requestOptions = {
-    method: "GET",
-    headers: {
-      'Accept': 'application/json, text/plain',
-      'Content-type': 'application/json',
-    }
-  }
-  const url = 'https://api.lancers.app/v1/auth/google'
-  try {
-    const googleauth = fetch(url , requestOptions);
-  } catch (err) {
-    showAlert(err)
-  }
-})
+//     showAlert(err)
+//   }
+// })
+// let google = document.getElementById('googleBtn')
+// google.addEventListener('click', () => {
+//   const requestOptions = {
+//     method: "GET",
+//     headers: {
+//       'Accept': 'application/json, text/plain',
+//       'Content-type': 'application/json',
+//     }
+//   }
+//   const url = 'https://api.lancers.app/v1/auth/google'
+//   try {
+//     const googleauth = fetch(url , requestOptions);
+//   } catch (err) {
+//     showAlert(err)
+//   }
+// })
+// new google auth
+
+
+
+
 
 submitButton.addEventListener('click', (e) => {
   e.preventDefault()
@@ -131,7 +138,7 @@ submitButton.addEventListener('click', (e) => {
               }
             } else if(err.response.status === 500) {
               submitButton.innerText = 'Sign Up'
-              showAlert('Internal Server Error! Please try again.')
+              showAlert('Oops! Something went wrong. Please try again.')
             } else if(err.request) {
               // console.log('issue with request')
             } else {
