@@ -13,5 +13,9 @@ module.exports = {
 
     recoverPassword: (req, res) => {
         res.render('Pages/password/recover_password', { pageName: 'Recover Password' });
+    },
+
+    updatePassword: (req, res) => {
+        res.render('Pages/password/password-update', {pageName: 'Update Password'});
     }
 }

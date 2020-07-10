@@ -24,5 +24,8 @@ module.exports = {
   },
   comingSoon: (req, res) => {
     res.render('Pages/coming-soon', { pageName: 'Coming Soon' });
+  },
+  verify: (req, res) => {
+    res.render('Pages/verify-email', { pageName: 'Verify Email' });
   }
 }

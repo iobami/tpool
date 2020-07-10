@@ -40,6 +40,26 @@ input:focus, input:active {
    max-width: 1400px;
 }
 
+.nav-tabs .nav-link {
+   display: inline !important;
+   transition: all 0.3s ease-in-out;
+}
+
+.nav-tabs .nav-link.active {
+   color: black !important;
+   border-bottom: 3px solid #084482 !important;
+   border-top-color: transparent !important;
+   border-left-color: transparent !important;
+   border-right-color: transparent !important;
+}
+
+.nav-tabs .nav-link:hover {
+   border-bottom: 3px solid #084482 !important;
+   border-top-color: transparent !important;
+   border-left-color: transparent !important;
+   border-right-color: transparent !important;
+}
+
 .talent-link{
    border-bottom-width: 3px;
    border-bottom-style: solid;
@@ -167,10 +187,19 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
 }
 
 .filter{
-   filter: brightness(.6) contrast(3);
-   padding: 0;
+   transition: filter .4s ease-in, transform .4s ease-in;
+   -webkit-filter: grayscale(100%);
+   filter: grayscale(100%)   brightness(0.9);
+   padding-left: 15px;
+   padding-right: 15px;
+   opacity: 0.7;
 }
 
+.filter:hover{
+   transform: scale(1.1);
+   -webkit-filter: grayscale(0%);
+   filter: grayscale(0%)   brightness(.7) ;
+}
 
 .read-more{
    color: white;
@@ -202,20 +231,27 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
+   .filter{
+      padding-left: 4px;
+      padding-right: 4px
+   }
+
    .height-fix {
       min-height: 614px;
    }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+   .filter{
+   padding-left: 45px;
+   padding-right: 45px
+}
 }
 
 @media(min-width: 300px) and (max-width: 800px) {
    .text-sm-center{
     text-align: center;
     padding: 1rem 1.2rem;
-   }
- 
-   .filter{
-    padding-right: 15px;
-    padding-left: 15px;
    }
    
  }
@@ -227,6 +263,10 @@ box-shadow: 0px 4px 12px rgba(181, 181, 181, 0.25);
     p{
        font-size: .8rem;
     }
+    .filter{
+      padding-right: 12px;
+      padding-left: 12px;
+     }
  }
 
 .hire-heading {
