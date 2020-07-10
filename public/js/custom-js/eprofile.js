@@ -15,8 +15,8 @@ const addSkillForm = document.querySelector('#add-skills')
 const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
 
 if (!userInformation) {
-  // alert('Error! User Information not found, please sign in again.');
-  // location.href = '/employee-sign-in';
+  alert('Error! User Information not found, please sign in again.');
+  location.href = '/employee-sign-in';
 }
 
 const errorMessage = document.querySelector("#error-message");

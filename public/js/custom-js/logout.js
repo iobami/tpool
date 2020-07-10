@@ -17,7 +17,7 @@ async function logoutFunction(fromLogoutPage = false) {
     // localStorage.setItem('tpAuth', '');
     window.location.replace('/');
 }
-// $('.toast').toast({
-//     delay: 1200,
-// });
+$('.toast').toast({
+    delay: 1200,
+});
 
