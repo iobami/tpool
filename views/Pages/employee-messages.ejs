@@ -13,7 +13,7 @@
 
     <!----------Side Nav------------>
     <%- include('../includes/employeeSideNav') %>
-     
+
     <div id="body__click"></div>
 
     <!-- main content -->
@@ -63,7 +63,8 @@
                                 </div>
 
 
-                                <div class="chat-info">
+                                <div class="chat-info" data-name="esther"
+                                    data-id="e06c1530-968a-46ca-99e1-0d05da1e8e14">
                                     <div class="content-top d-flex flex-row justify-content-between">
                                         <p class="contact-name mb-0 font-weight-bold">Adeleke Oluwakemi</p>
                                         <p class="time-sent mb-0">4:56pm</p>
@@ -83,7 +84,8 @@
                                 </div>
 
 
-                                <div class="chat-info">
+                                <div class="chat-info" data-name="Joshua"
+                                    data-id="708d7cac-4700-4698-9ec0-81da1959502e">
                                     <div class="content-top d-flex flex-row justify-content-between">
                                         <p class="contact-name mb-0 font-weight-bold">Nifemi Ajayi</p>
                                         <p class="time-sent mb-0">4:56pm</p>
@@ -182,91 +184,40 @@
                                     Yesterday
                                 </div>
 
-                                <div class="sender">
-                                    <div class="chat-container">
-                                        <div class="chat-sender msg">
-                                            <div class="chatmsg">If you intend to seek financial support from an
-                                                investor or
-                                                financial institution, a traditional business plan is a must.
-                                            </div>
-                                        </div>
+                                <div class="realchat">
 
-                                    </div>
-                                    <div class="time"><span>11:46 AM</span></div>
+
+
                                 </div>
 
-                                <div class="respond">
-                                    <div class="chat-container respond">
-                                        <div class="chat-respond msg">
-                                            <div class="flippd">
-                                                <div class="chatmsg">Very correct
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="time"><span>11:46 AM</span>
-                                        <span class="sent"><img src="img/admin-dash-messages/sent.svg"
-                                                alt="delivered"></span>
-                                    </div>
-                                </div>
-
-                                <div class="sender">
-                                    <div class="chat-container">
-                                        <div class="chat-sender msg">
-                                            <div class="chatmsg">Thank you</div>
-                                        </div>
-                                    </div>
-                                    <div class="time"><span>11:52 AM</span></div>
-                                </div>
-
-                                <div class="respond">
-                                    <div class="chat-container respond">
-                                        <div class="chat-respond msg">
-                                            <div class="flippd">
-                                                <div class="chatmsg">WIll you be at the conference?</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="time"><span>11:57 AM</span>
-                                        <span class="sent"><img src="img/admin-dash-messages/sent.svg"
-                                                alt="delivered"></span>
-                                    </div>
-                                </div>
-
-                                <div class="chat-container">
-                                    <div class="chat-sender msg">
-                                        <div class="chatmsg">Thank you</div>
-                                    </div>
-                                </div>
-                                <div class="time"><span>11:52 AM</span></div>
                             </div>
-
-                        </div>
-                        <div class="px-md-5 chat-fixed-bottom">
-                            <div class="pt-2 py-4 pl-2 d-flex w-100">
-                                <div class="msg-input">
-                                    <input type="text" placeholder="Type something..." id="type-msg">
-                                </div>
-                                <div class="emojipack d-flex">
-                                    <button class="chat-btn p-0"><img src="img/admin-dash-messages/Emoji.svg" alt=""
-                                            class="px-2 bottom-icon"></button>
-                                    <button class="chat-btn p-0"><img src="img/admin-dash-messages/pin.svg" alt=""
-                                            class="px-2 bottom-icon"></button>
-                                    <button class="chat-btn p-0"><img src="img/admin-dash-messages/dots.svg" alt=""
-                                            class="px-2 bottom-icon"></button>
+                            <div class="px-md-5 chat-fixed-bottom">
+                                <div class="pt-2 py-4 pl-2 d-flex w-100">
+                                    <div class="msg-input">
+                                        <input type="text" placeholder="Type something..." id="type-msg">
+                                    </div>
+                                    <div class="emojipack d-flex">
+                                        <button class="chat-btn p-0"><img src="img/admin-dash-messages/Emoji.svg" alt=""
+                                                class="px-2 bottom-icon"></button>
+                                        <button class="chat-btn p-0"><img src="img/admin-dash-messages/pin.svg" alt=""
+                                                class="px-2 bottom-icon"></button>
+                                        <button class="chat-btn p-0"><img src="img/admin-dash-messages/dots.svg" alt=""
+                                                class="px-2 bottom-icon"></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
-
-
     </div>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="js/custom-js/side-nav.js"></script>
     <script src="js/custom-js/admin-dash-messages.js"></script>
+    <script type="module" src="js/custom-js/employee-chat.js"></script>
 </body>
 
 </html>
