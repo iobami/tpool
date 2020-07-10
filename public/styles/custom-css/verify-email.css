@@ -1,0 +1,13 @@
+.verify-card {
+  border-radius: 10px;
+  border-bottom: 10px solid #337AB7;
+  margin: 100px auto;
+}
+.verify-success, .verify-fail, .resend-form-wrap, .resent-notify, .existing-email {
+  display: none;
+}
+#invalid-email {
+  display: none;
+  font-size: 12.8px;
+  color: #DB4A39;
+}

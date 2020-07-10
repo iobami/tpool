@@ -10,7 +10,14 @@ const frontend = document.querySelector("frontend");
 const mobile = document.querySelector("mobile");
 const design = document.querySelector("design");
 const addSkillForm = document.querySelector('#add-skills')
-const userInformation = JSON.parse(localStorage.getItem("user"));
+// const userInformation = JSON.parse(localStorage.getItem("user"));
+
+const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
+
+if (!userInformation) {
+  alert('Error! User Information not found, please sign in again.');
+  location.href = '/employee-sign-in';
+}
 
 const errorMessage = document.querySelector("#error-message");
 const successMessage = document.querySelector("#success-message");
