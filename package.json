@@ -8,10 +8,6 @@
     "dev": "nodemon server",
     "test": "mocha ./test/unit/**"
   },
-  "keywords": [
-    "example",
-    "heroku"
-  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
