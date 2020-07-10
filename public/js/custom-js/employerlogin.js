@@ -90,29 +90,13 @@ function responseHandler(res) {
     const response = JSON.parse(atob(value.token.split(".")[1]));
 
     // Redirecting
-    // if (response.userTypeId == null) {
-    //   // Redirect to employer profile creation page
-    //   window.location.assign("/employer-create-profile");
-    // } else {
-    //   // Add userTypeId to to tpAuth in localStorage
-    //   const newValue = {
-    //     token: res.data.token,
-    //     userId: res.data.user,
-    //     userTypeId: response.userTypeId,
-    //     userRole: response.userRole,
-    //   };
-    //   localStorage.setItem("tpAuth", JSON.stringify(newValue));
-    //   if (/employee/gi.test(newValue.userRole)) {
-    //     window.location.assign("/employee-dashboard");
-    //   } else {
-    //     window.location.assign("/employer-dashboard");
-    //   }
-    // }
     if (!response.userTypeId) {
       // Redirect to correct profile creation page
       if (/admin/gi.test(response.userRole)) {
         showMessage("Redirecting to Admin Dashboard", "alert-success");
         window.location.assign("/admin-dashboard");
+      } else if (/employer/gi.test(response.userRole)) {
+        window.location.assign("/employer-create-profile");
       } else {
         window.location.assign("/employee-profileCreation");
       }

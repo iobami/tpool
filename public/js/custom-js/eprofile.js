@@ -88,7 +88,8 @@ const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
 addSkillForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let skill = addSkillForm.querySelector('input').value;
-  const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}`;
+  // const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}`;
+  const skillUrl = `https://api.lancers.app/v1/employee/skill`;
 
   axios({
     method: 'POST',
@@ -97,13 +98,13 @@ addSkillForm.addEventListener("submit", (e) => {
       "Content-Type": "application/json; charset=UTF-8",
       Authorization: `Bearer ${userInformation.token}`,
     },
-    data: JSON.stringify({"skill_description": skill})
+    data: JSON.stringify({"skill_description": skill, employee_id: userInfo.userTypeId})
   }).then(({ data }) => {
     if (data.status === 'success') {
       $('#exampleModal').modal('hide');
       skill = '';
       alert('Skill Added');
-      buildList([data.data.skill]);
+      buildList([{skill_description:data.data.skill_description, id: data.data.id}]);
     } else {
       alert('Skill not added, please try again.');
     }
@@ -144,7 +145,7 @@ function buildList(data) {
 }
 
   async function getAllSkillsForIndividuals() {
-    const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
+    const skillUrl = `https://api.lancers.app/v1/employee/${userInfo.userTypeId}/skill`;
     try {
       const { data } = await axios({
         method: 'GET',
@@ -154,8 +155,9 @@ function buildList(data) {
           Authorization: `Bearer ${userInformation.token}`,
         },
       });
+      
       if (data.status === 'success') {
-        myArray = data.data.skills;
+        myArray = data.data;
         buildList(myArray);
       }
     } catch (error) {
