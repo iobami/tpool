@@ -4,7 +4,6 @@ const appRoute = express.Router();
 const {
   about,
   home,
-  directory,
   faq,
   contactUs,
   signOutPopUp,
@@ -12,6 +11,7 @@ const {
   verify,
 } = require('../controllers');
 const { logout } = require('../controllers/logout');
+const { directory } = require('../controllers/directory');
 
 appRoute.get('/', home);
 appRoute.get('/about-us', about);
