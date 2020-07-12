@@ -9,7 +9,6 @@ module.exports = {
 		//res.cookie('auth', token);
 		const via = req.headers.cookie.split('; ');
 		console.log(via);
-
 		// const token = req.cookies.tokenauth;
 		// if (!token) {
 		// 	console.log('not seen');

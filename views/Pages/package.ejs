@@ -28,14 +28,14 @@
           </div>
           <div class="card-body">
             <h1 class="card-title packages-card-title">
-              <%- package.price %> <small class="text-muted">/ mo</small>
+              <%= package.price %> <small class="text-muted">/ mo</small>
             </h1>
             <ul class="list-unstyled mt-3 mb-4">
               <p>
-                <%- package.description %>
+                <%= package.description %>
               </p>
             </ul>
-            <a href="/price-payment?id=<%- package.id %>" class="text-white">
+            <a href="/price-payment?id=<%= package.id %>" class="text-white">
               <button
                 type="button"
                 class="btn hire-btn btn-lg btn-block text-white"
