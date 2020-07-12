@@ -207,7 +207,7 @@ function buildList(data) {
         buildList(myArray);
       }
     } catch (error) {
-      alert("Opps! An error seems to have occured. Try again later. Thanks!");
+      // alert("Opps! An error seems to have occured. Try again later. Thanks!");
     }
   }
 
