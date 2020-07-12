@@ -334,7 +334,19 @@ function hideAlert() {
   document.getElementById('alert').classList.add('d-none');
 }
 
+const playAudio = () => {
+    const sound = document.createElement("audio");
+    sound.id       = 'notification';
+    sound.controls = 'controls';
+    sound.src      = '/audio/notification.mp3';
+    sound.type     = 'audio/mpeg';
+    document.querySelector('body').appendChild(sound);
+    const notify = document.getElementById('notification');
+    notify.play();
+};
+
 const toaster = (message, type) => {
+    playAudio();
     const [messageSpan] = document.querySelectorAll('.slide-in-content span');
     messageSpan.innerHTML = message;
 
