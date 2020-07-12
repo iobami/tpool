@@ -74,47 +74,6 @@ function responseHandler(res) {
   if (res.status === "error") {
     showMessage(res.error, "alert-danger");
   }
-<<<<<<< HEAD
-  
-  // Function to handle response from API
-  function responseHandler(res) {
-	revertButton();
-  
-	if (res.status === "error") {
-	  showMessage(res.error, "alert-danger");
-	}
-  
-	if (res.status === "success") {
-	  showMessage("Sign in successful. Re-directing...", "alert-success");
-	  const value = {
-		token: res.data.token,
-		userId: res.data.user,
-	  };
-	  localStorage.setItem("tpAuth", JSON.stringify(value));
-  
-	  // Decoding token
-	  const response = JSON.parse(atob(value.token.split(".")[1]));
-  
-	  // Redirecting
-	  if (response.userTypeId == null) {
-		// Redirect to employer profile creation page
-		return (window.location.href = "/employee-profileCreation");
-	  } else if (response.userTypeId) {
-		// Add userTypeId to to tpAuth in localStorage
-		const newValue = {
-		  token: res.data.token,
-		  userId: res.data.user,
-		  userTypeId: response.userTypeId,
-		  role: response.userRole
-		};
-		localStorage.setItem("tpAuth", JSON.stringify(newValue));
-		return (window.location.href = "/employee-dashboard");
-	  } else {
-		// Redirect to dashboard
-		return (window.location.href = "/employee-dashboard");
-	  }
-	}
-=======
 
   if (res.status === "success") {
     showMessage("Sign in successful. Re-directing...", "alert-success");
@@ -156,7 +115,6 @@ function responseHandler(res) {
         // console.log("employer or admin; ", newValue.userRole, /employee/gi.test(newValue.userRole));
       }
     }
->>>>>>> 27e776da6523a79376ac3baf6f88b5536c798b23
   }
 }
 // Function to handle error from http request
@@ -210,29 +168,4 @@ form.addEventListener("submit", (e) => {
         errorHandler(err.response.data);
       });
   }
-<<<<<<< HEAD
-  
-  // Perform action on form submission
-  form.addEventListener("submit", (e) => {
-	const email = document.querySelector("#email"),
-	  password = document.querySelector("#password");
-  
-	if (form.checkValidity() === true) {
-	  e.preventDefault();
-	  loadButton();
-  
-	  const userData = {
-		email: email.value,
-		password: password.value,
-	  };
-  
-	  sendData(userData)
-		.then((res) => {
-		  responseHandler(res.data);
-		})
-		.catch((err) => errorHandler(err));
-	}
-  });
-=======
 });
->>>>>>> 27e776da6523a79376ac3baf6f88b5536c798b23
