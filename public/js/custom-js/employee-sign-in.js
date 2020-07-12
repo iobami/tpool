@@ -90,7 +90,7 @@
 	  if (response.userTypeId == null) {
 		// Redirect to employer profile creation page
 		return (window.location.href = "/employee-profileCreation");
-	  } else if (response.userTypeId !== null) {
+	  } else if (response.userTypeId) {
 		// Add userTypeId to to tpAuth in localStorage
 		const newValue = {
 		  token: res.data.token,
@@ -153,4 +153,3 @@
 		.catch((err) => errorHandler(err));
 	}
   });
-  
