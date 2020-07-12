@@ -1,17 +1,16 @@
 exports.getEmployeeDash = async (req, res, next) => {
-
   res.render("Pages/employee-dashboard", {
     pageTitle: "Talent Pool | Employee Dashboard",
     path: "employee-dashboard",
     employeeProfile: {
-      first_name: 'Moses',
-      last_name: 'Bolarinwa',
-      email: 'odutusinmoses@gmail.com',
-      location: 'Toronto,Canada',
-      phone_no: '08147793653',
-      skillCategory: 'UI?UX Designer'
+      first_name: "Moses",
+      last_name: "Bolarinwa",
+      email: "odutusinmoses@gmail.com",
+      location: "Toronto,Canada",
+      phone_no: "08147793653",
+      skillCategory: "UI?UX Designer",
     },
-    employeeSkill: ['Vuejs', 'Figma', 'Jenkins', 'Adobe'],
+    employeeSkill: ["Vuejs", "Figma", "Jenkins", "Adobe"],
     // userPortfolio
     user: {
       name: "bolarin",
@@ -35,14 +34,9 @@ exports.getEmployeeDash = async (req, res, next) => {
       pending: 2,
     },
   });
-
-
 };
 
 exports.getEmployeeMessages = (req, res, next) => {
-
-  
-
   res.render("Pages/employee-messages", {
     pageTitle: "Talent Pool | Employee Messages",
     path: "employee-messages",
@@ -50,20 +44,10 @@ exports.getEmployeeMessages = (req, res, next) => {
 };
 
 exports.getEmployeeProfile = async (req, res, next) => {
-
   res.render("Pages/employeeProfile", {
     pageTitle: "Talent Pool | Employee Profile",
-    path: "employee-profile",
-    employeeProfile: {
-      first_name: 'Moses',
-      last_name: 'Bolarinwa',
-      email: 'odutusinmoses@gmail.com',
-      location: 'Toronto,Canada',
-      phone_no: '08147793653',
-      skillCategory: 'UI?UX Designer'
-    },
+    path: "employee-profile"
   });
-
 };
 
 exports.getEmployeeAddTeam = (req, res, next) => {
@@ -94,10 +78,9 @@ exports.getEmployeeEmployers = (req, res, next) => {
   });
 };
 
-
 exports.getEmployeeProfileCreation = (req, res, next) => {
   res.render("Pages/employee-profile-creation", {
     pageTitle: "TalentPool | Employer Create Profile",
-    path: "/employee-profileCreation",
+    path: "/employee-profile-creation",
   });
 };
