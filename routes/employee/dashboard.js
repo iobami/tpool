@@ -11,6 +11,7 @@ appRoute.get('/', (req, res) => {
 appRoute.get('/employee-dashboard', employeeController.getEmployeeDash);
 appRoute.get('/employee-messages', employeeController.getEmployeeMessages);
 appRoute.get('/employee-profile', employeeController.getEmployeeProfile);
+appRoute.get('/employee-profile/:id', employeeController.getEmployeeProfile);
 appRoute.get('/employee-addTeam', employeeController.getEmployeeAddTeam);
 appRoute.get('/employee-support', employeeController.getEmployeeSupport);
 appRoute.get('/employee-settings', employeeController.getEmployeeSettings);
