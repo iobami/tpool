@@ -7,8 +7,8 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
+const bodyParser = require('body-parser');
 const csrf = require('csurf');
-
 // Requiring express rate limit
 // const rateLimit = require('express-rate-limit');
 const fileupload = require('express-fileupload');
@@ -102,14 +102,14 @@ const app = express();
 app.use(morgan('tiny'));
 app.use(cors());
 const csrfProtection = csrf();
-app.use(flash());
-
 // Set Security HTTP Headers
 app.use(helmet());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // View Engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(flash());
 
 // using rateLimit
 // const limiter = rateLimit({
@@ -136,14 +136,32 @@ app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     name: 'session',
+    sameSite: true,
     keys: [process.env.TALENT_POOL_SESSION_COOKIEKEY],
   }),
 );
-
+// app.use(
+//   cookieSession({
+//     name: auth,
+//     resave: false,
+//     secret: 'myname',
+//     cookie: {
+//       maxAge: time,
+//       sameSite: true
+//     }
+//   })
+// );
 // passportjs initialization
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(csrfProtection);
+app.use((req, res, next) => {
+  const token = req.csrfToken();
+  // console.log(token);
+  res.cookie('csrf-token', token);
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 // express body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

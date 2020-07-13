@@ -3,8 +3,7 @@ const express = require('express');
 const { body } = require('express-validator');
 const { authorize } = require('../Middleware/index');
 const { UserValidation } = require('../Utils/validators/user-validator-new');
-// const { validateEmployer } = require('../Utils/validators/user-validator');
-// const { validateEmployer } = require('../Utils/validators/user-validator');
+const authController = require('../Controllers/auth');
 
 const {
   registerEmployer,
@@ -48,6 +47,7 @@ router.post(
   UserValidation.resendVerificationLink,
   forgotPassword,
 );
+router.post('/logout', authController.postLogout);
 router.post('/superadmin-login', UserValidation.validateLogin, superAdminLogin);
 router.put(
   '/reset-password/:resettoken',
