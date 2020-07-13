@@ -49,16 +49,10 @@ router.post(
 );
 router.post('/logout', authController.postLogout);
 router.post('/superadmin-login', UserValidation.validateLogin, superAdminLogin);
-router.put(
-  '/reset-password/:resettoken',
+router.put('/reset-password/:resettoken',
   UserValidation.resetPassword,
-  resetPassword,
-);
-router.put(
-  '/email/verify/resend',
-  UserValidation.resendVerificationLink,
-  resendVerificationLink,
-);
+  resetPassword,);
+router.post('/email/verify/resend', [body('email').isEmail().withMessage('Please enter a valid email address').normalizeEmail()], resendVerificationLink,);
 router.get('/email/verify', verifyEmail);
 router.put(
   '/update-password/:userId',

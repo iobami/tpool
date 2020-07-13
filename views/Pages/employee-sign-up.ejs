@@ -57,17 +57,17 @@
                             </div>
                         </div>
                     <% }if(errors && errors.length > 0){ %>
-                      <% for(var i=0; i < error.length; i++) { %>
+                      <% for(var i=0; i < errors.length; i++) { %>
                         <div class="alert alert-danger alert-dismissible deposit-alert" role="alert">
                           <div class="container">
-                            <%- error[i].msg %> 
+                            <%- errors[i].msg %> 
                           </div>
                       </div>
                       <% } } %>
                     <div class="tab-pane fade show active" id="intern" role="tabpanel" aria-labelledby="intern-tab">
                         <form class="needs-validation" action="v1/auth/employee-signup" method="POST" novalidate>
                             <div class="row">
-                                <input type="hidden" name="_csrf" value=" <%- csrfToken %>">
+                                <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                                 <div class="col-md mb-3">
                                     <label for="fname">First Name</label>
                                     <div class="input-group">
