@@ -169,7 +169,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(csrfProtection);
+app.use((req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 // ROUTES
 
 // chat route
