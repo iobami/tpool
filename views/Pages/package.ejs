@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <%- include('../Templates/head') %>
+    <link rel="stylesheet" href="../styles/custom-css/payment-method.css" />
+  </head>
+
+  <body style="background-color: #fafafa;">
+    <%- include('../Templates/header') %>
+    <div
+      class="packages-header mt-4 px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center"
+    >
+      <h1 class="h2">Packages</h1>
+      <p>
+        Premium packages to help you hire talents faster.
+      </p>
+    </div>
+    <div class="container">
+      <div class="card-deck mb-3 text-center">
+        <% packages.forEach(function(package) { %>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">
+              <%- package.package.split(' ') .map(w => w[0].toUpperCase() +
+              w.substr(1).toLowerCase()) .join(' ') %>
+            </h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title packages-card-title">
+              <%= package.price %> <small class="text-muted">/ mo</small>
+            </h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <p>
+                <%= package.description %>
+              </p>
+            </ul>
+            <a href="/price-payment?id=<%= package.id %>" class="text-white">
+              <button
+                type="button"
+                class="btn hire-btn btn-lg btn-block text-white"
+              >
+                Get started
+              </button>
+            </a>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+    <%- include('../Templates/footer') %>
+  </body>
+</html>

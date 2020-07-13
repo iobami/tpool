@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		employer-authDIS
+		<script src="../js/custom-js/employer-authDIS.js"></script>
+	</head>
+	<%- include('../Templates/head') %> <%- include('../Templates/dashboard-head') %>
+	<body>
+		<!-- Dashboard nav -->
+		<%- include('../Templates/dashboard-header') %>
+
+		<div class="container-fluid mt-4">
+			<div class="row">
+				<div class="col-lg-3 col-xl-2 d-md-block sticky-top">
+					<!-- Dashboard sidebar -->
+					<%- include('../Templates/dashboard-sidebar') %>​
+
+					<div id="body__click"></div>
+				</div>
+
+				<div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5">
+					<div class="row shift">
+						<div class="col mt-3 mb-4 d-flex flex-column">
+							<div>
+								<div class="card border border-white shadow rounded-lg py-5 text-center">
+									<div class="card-img-top d-flex justify-content-center">
+										<img
+											src="https://res.cloudinary.com/bellomuboye/image/upload/v1594308518/talent-pool-icons/failure_nfwmrx.svg"
+											alt="logo"
+											class="w-25"
+											style="max-width: 100px;"
+										/>
+									</div>
+									<div class="card-body">
+										<h4 class="card-title">Upload failed!</h4>
+										<p class="card-text text-muted">Document disapproved. Reupload your document.</p>
+										<a h class="btn btn-primary">Back</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<script src="../js/custom-js/side-nav.js"></script>
+		<script src="./js/bootstrap-js/popper.js"></script>
+		<script src="./js/bootstrap-js/jquery.js"></script>
+		<script src="./js/bootstrap-js/bootstrap.js"></script>
+		<script>
+			$('#myModal').on('shown.bs.modal', function () {
+				$('#myInput').trigger('focus');
+			});
+		</script>
+	</body>
+</html>
