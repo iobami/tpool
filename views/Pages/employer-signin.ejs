@@ -27,28 +27,44 @@
                         <p class="bigTitle">Welcome Back</p>
                         <p class="smallTitle">Get the right talent for that job now.</p>
                     </div>
-
-                    <form class="needs-validation" method="POST" action="/" novalidate id="form">
+                    <% if (errorMessage) { %>
+                        <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+                    <% } %>
+                    <form class="needs-validation" method="POST" action="/employer-sign-in" novalidate id="form">
 
                         <div class="col-md mb-3 px-0">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="example@gmail.com"
+                            <input 
+                            class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                            type="email" 
+                            name="email" 
+                            id="email" 
+                            placeholder="abc@gmail.com"
+                            value="<%= oldInput.email %>">
+                            <!-- <input type="email" class="form-control" id="email" placeholder="example@gmail.com"
                                 required>
                             <div class="invalid-feedback">
                                 Your valid email address is required.
-                            </div>
+                            </div> -->
                         </div>
 
 
                         <div class="col-md mb-3 px-0">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" minlength="8"
+                            <input 
+                            class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                            type="password" 
+                            name="password" 
+                            id="password" 
+                            minlength="8" placeholder="at least 8 characters"
+                            value="<%= oldInput.password %>">
+                            <!-- <input type="password" class="form-control" id="password" minlength="8"
                                 placeholder="at least 8 characters" required>
                             <div class="invalid-feedback" style="width: 100%;">
                                 Your have not entered a correct password.
-                            </div>
+                            </div> -->
                         </div>
-
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
                         <div class="row px-3">
                             <div class="col my-1 px-0">
@@ -106,7 +122,7 @@
 
     <%- include('../Templates/footer') %>
 
-    <script>
+    <!-- <script>
         async function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
             const role_id = document.querySelector('.g-signin2').dataset.user;
@@ -136,13 +152,13 @@
                 });
         }
         
-      </script>
+      </script> -->
 
     <!-- <script src="../js/bootstrap-js/popper.js"></script>
     <script src="../js/bootstrap-js/jquery.js"></script>
     <script src="../js/bootstrap-js/bootstrap.js"></script> -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/custom-js/employerlogin.js" type="module"></script>
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/custom-js/employerlogin.js" type="module"></script> -->
 </body>
 
 </html>

@@ -51,7 +51,9 @@ border-radius: 5px;
 border: 1px solid #b5b5b5;
 padding: 25px;
 }
-
+.form-control input .invalid{
+  border-color: red;
+}
 input::placeholder {
 font-size: 16px;
 line-height: 24px;
@@ -179,3 +181,4 @@ hr {
   color: #1F2430;
   border-bottom: 4px solid #084482;
 }
+
