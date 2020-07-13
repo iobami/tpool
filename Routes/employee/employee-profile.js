@@ -45,13 +45,16 @@ const attributes = [
 let image;
 
 const uploadImageFunction = async (req, res) => {
-  await cloudinary.uploader.upload(req.files.image.tempFilePath, (error, result) => {
-    if (result) {
-      image = result.secure_url;
-      return image;
-    }
-    return errorResMsg(res, 400, 'Image Upload Failed!, Kindly retry');
-  });
+  await cloudinary.uploader.upload(
+    req.files.image.tempFilePath,
+    (error, result) => {
+      if (result) {
+        image = result.secure_url;
+        return image;
+      }
+      return errorResMsg(res, 400, 'Image Upload Failed!, Kindly retry');
+    },
+  );
   return image;
 };
 
@@ -66,7 +69,18 @@ router.post(
     console.log('url to image', imageUrl);
 
     const {
-      firstName, lastName, userType, hngId, userName, location, track, phoneNo, availability, dateOfBirth, employeeCv, userId
+      firstName,
+      lastName,
+      userType,
+      hngId,
+      userName,
+      location,
+      track,
+      phoneNo,
+      availability,
+      dateOfBirth,
+      employeeCv,
+      userId,
     } = req.body;
     const newBody = {
       first_name: firstName,
@@ -83,7 +97,7 @@ router.post(
       employee_id: employeeId,
       views: '0',
       employee_cv: employeeCv,
-      user_id: userId
+      user_id: userId,
     };
 
     try {
@@ -119,82 +133,76 @@ router.post(
 
 // GET AN EMPLOYEE PROFILE
 // eslint-disable-next-line consistent-return
-router.get(
-  '/profile/:employee_id',
-  async (req, res) => {
-    try {
-      const { employee_id: employeeId } = req.params;
+router.get('/profile/:employee_id', async (req, res) => {
+  try {
+    const { employee_id: employeeId } = req.params;
 
-      const query = await models.Employee.findOne({
-        where: { employee_id: employeeId },
-        attributes,
-      });
+    const query = await models.Employee.findOne({
+      where: { employee_id: employeeId },
+      attributes,
+    });
 
-      const skillQuery = await models.Skill.findAll({
-        where: { employee_id: employeeId }
-      });
+    const skillQuery = await models.Skill.findAll({
+      where: { employee_id: employeeId },
+    });
 
-      const portfolioQuery = await models.Portfolio.findAll({
-        where: { employee_id: employeeId }
-      });
+    const portfolioQuery = await models.Portfolio.findAll({
+      where: { employee_id: employeeId },
+    });
 
-      const employee = await query;
-      const skills = await skillQuery;
-      const portfolios = await portfolioQuery;
+    const employee = await query;
+    const skills = await skillQuery;
+    const portfolios = await portfolioQuery;
 
-      const data = { employee, skills, portfolios };
+    const data = { employee, skills, portfolios };
 
-      if (!employee) {
-        return errorResMsg(res, 404, 'Profile not found');
-      }
-
-      return successResMsg(res, 200, data);
-    } catch (err) {
-      return errorResMsg(res, 500, err.message);
+    if (!employee) {
+      return errorResMsg(res, 404, 'Profile not found');
     }
-  },
-);
 
-// GET AN EMPLOYEE PROFILE
+    return successResMsg(res, 200, data);
+  } catch (err) {
+    return errorResMsg(res, 500, err.message);
+  }
+});
+
+// GET AN EMPLOYEE PROFILE BY USERNAME
 // eslint-disable-next-line consistent-return
-router.get(
-  '/:username',
-  async (req, res) => {
-    try {
-      const { username } = req.params;
+router.get('/:username', async (req, res) => {
+  try {
+    const { username } = req.params;
 
-      const query = await models.Employee.findOne({
-        where: { username },
-        attributes,
-      });
+    const query = await models.Employee.findOne({
+      where: { username },
+      attributes,
+    });
 
-      // eslint-disable-next-line camelcase
-      const { employee_id } = await query;
+    // eslint-disable-next-line camelcase
+    const { employee_id } = await query;
 
-      const skillQuery = await models.Skill.findAll({
-        where: { employee_id }
-      });
+    const skillQuery = await models.Skill.findAll({
+      where: { employee_id },
+    });
 
-      const portfolioQuery = await models.Portfolio.findAll({
-        where: { employee_id }
-      });
+    const portfolioQuery = await models.Portfolio.findAll({
+      where: { employee_id },
+    });
 
-      const employee = await query;
-      const skills = await skillQuery;
-      const portfolios = await portfolioQuery;
+    const employee = await query;
+    const skills = await skillQuery;
+    const portfolios = await portfolioQuery;
 
-      const data = { employee, skills, portfolios };
+    const data = { employee, skills, portfolios };
 
-      if (!employee) {
-        return errorResMsg(res, 404, 'Profile not found');
-      }
-
-      return successResMsg(res, 200, data);
-    } catch (err) {
-      return errorResMsg(res, 500, err.message);
+    if (!employee) {
+      return errorResMsg(res, 404, 'Profile not found');
     }
-  },
-);
+
+    return successResMsg(res, 200, data);
+  } catch (err) {
+    return errorResMsg(res, 500, err.message);
+  }
+});
 
 // UPDATE AN EMPLOYEE PROFILE
 // eslint-disable-next-line consistent-return
@@ -240,7 +248,7 @@ router.patch(
       );
     } catch (err) {
       console.log(err);
-      
+
       return errorResMsg(res, 500, err.message);
     }
   },
