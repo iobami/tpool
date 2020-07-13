@@ -6,6 +6,8 @@ const dotenv = require('dotenv');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+const csrf = require('csurf');
 
 // Requiring express rate limit
 // const rateLimit = require('express-rate-limit');
@@ -99,6 +101,8 @@ const app = express();
 
 app.use(morgan('tiny'));
 app.use(cors());
+const csrfProtection = csrf();
+app.use(flash());
 
 // Set Security HTTP Headers
 app.use(helmet());
@@ -147,7 +151,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(csrfProtection);
+app.use((req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 // ROUTES
 
 // chat route
@@ -203,9 +211,9 @@ app.use('/v1/package', packageRoutes);
 // global error handler
 app.use(errorHandler);
 
-//All routes
+// All routes
 app.use(appRoute);
-//app.use(adminRoute);
+// app.use(adminRoute);
 app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
 app.use(employerAuthRoute);

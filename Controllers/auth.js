@@ -7,17 +7,19 @@
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const { uuid } = require('uuidv4');
+const { validationResult } = require('express-validator');
 const model = require('../Models/index');
 const jsonWT = require('../Utils/auth-token');
 const asyncHandler = require('../Middleware/async');
 const sendEmail = require('../Utils/sendEmail');
+
 const {
   successResMsg,
   errorResMsg,
   sessionSuccessResMsg,
 } = require('../Utils/response');
 
-const catchAsync = require('../Utils/catchAsync');
+// const catchAsync = require('../Utils/catchAsync');
 
 // eslint-disable-next-line operator-linebreak
 const URL =
@@ -25,10 +27,17 @@ const URL =
     ? process.env.TALENT_POOL_DEV_URL
     : process.env.TALENT_POOL_FRONT_END_URL;
 
-exports.registerEmployer = (req, res, next) => {
+exports.registerEmployer = (req, res) => {
   (async () => {
     try {
       // eslint-disable-next-line camelcase
+      // Validate input
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        const errResponse = errors.array({ onlyFirstError: true });
+        req.flash('errors', errResponse);
+        res.redirect('/employer-sign-up');
+      }
       // encrypt password
       const salt = bcrypt.genSaltSync(10);
       const hashPassword = bcrypt.hashSync(req.body.password, salt);
@@ -54,41 +63,43 @@ exports.registerEmployer = (req, res, next) => {
           role_id: 'ROL-EMPLOYER',
           user_id: userId,
         };
-        await model.User.create(userData);
-
-        // mail verification code to the user
-        const verificationUrl = `${URL}/verify-email?verification_code=${token}`;
-
-        const message = `<p> Hi, thanks for registering, kindly verify your email using this
-    <a href ='${verificationUrl}'>link</a></p>`;
-
-        // eslint-disable-next-line no-console
+        // create new user and send verification mail
         try {
+          await model.User.create(userData);
+          // mail verification code to the user
+          const verificationUrl = `${URL}/verify-email?verification_code=${token}`;
+          const message = `<p> Hi, thanks for registering, kindly verify your email using this <a href ='${verificationUrl}'>link</a></p>`;
+
           await sendEmail({
             email: req.body.email,
             subject: 'Email verification',
             message,
           });
-          const data = { message: 'Verification email sent!' };
-          return successResMsg(res, 201, data);
+
+          // return successResMsg(res, 201, data);
+          req.flash('success', 'Verification email sent!');
+          res.redirect('/employer-sign-up');
         } catch (err) {
-          if (!err.statusCode) {
-            err.statusCode = 500;
-          }
+          req.flash('error', 'An error Occoured');
+          res.redirect('/employer-sign-up');
+          return errorResMsg(res, 500, err);
         }
       } else {
-        return errorResMsg(
-          res,
-          403,
-          'Someone has already registered this email',
-        );
+        // return errorResMsg(
+        //   res,
+        //   403,
+        //   'Someone has already registered this email',
+        // );
+        req.flash('error', 'Someone has already registered this email');
+        res.redirect('/employer-sign-up');
       }
     } catch (err) {
       if (!err.statusCode) {
         err.statusCode = 500;
       }
-
-      next(err);
+      // return errorResMsg(res, 500, 'An error occurred');
+      req.flash('error', 'An error Occoured');
+      res.redirect('/employer-sign-up');
     }
   })();
 };
