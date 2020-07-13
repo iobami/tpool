@@ -1,7 +1,10 @@
+/* eslint-disable no-console */
 const { uuid } = require('uuidv4');
+const bcrypt = require('bcryptjs');
+const jsonWT = require('../auth-token');
 const model = require('../../Models');
 
-const getUserData = async (profile, user, done) => {
+exports.getUserData = async (profile, user, done) => {
   try {
     let userTypeId = null;
     let verificationStatus = null;
@@ -42,35 +45,44 @@ const getUserData = async (profile, user, done) => {
   }
 };
 
+exports.createUser = async (profile, userRole) => {
+  try {
+    const password = process.env.TALENT_POOL_JWT_SECRET;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
-const createUser = async (accessToken, profile) => {
-  // save the profile id in a variable
-  const value = `${profile.id}`;
-  const data = {
-    user_id: uuid(),
-    gender: 'male',
-    first_name: profile.displayName,
-    last_name: profile.displayName,
-    username: profile.username,
-    email: profile.emails[0].value,
-    password: '12345678',
-    picture_url: profile.photos[0].value,
-    provider: profile.provider,
-    verification_token: accessToken,
-  };
+    const data = {
+      email: profile.emails[0].value,
+    };
+    const token = jsonWT.signJWT(data);
 
-  let dataToCreate;
-  // check provider to know how to populate the povider id field
-  if (profile.provider === 'google') {
-    dataToCreate = { ...data, googleId: value };
-  } else if (profile.provider === 'github') {
-    dataToCreate = { ...data, githubId: value };
-  } else {
-    dataToCreate = { ...data, linkedinId: value };
+    const userSave = {
+      email: profile.emails[0].value,
+      password: hashedPassword,
+      verification_token: token,
+      role_id: userRole,
+      user_id: uuid(),
+      status: '1',
+      picture_url: profile.photos[0].value,
+      provider: profile.provider,
+    };
+    const userData = await model.User.create(userSave);
+    return userData;
+  } catch (error) {
+    console.log(error);
   }
-
-  // create user with created object
-  const newUser = await models.User.create(dataToCreate);
-  return newUser;
 };
-module.exports = createUser;
+
+// const value = `${profile.id}`;
+// let dataToCreate;
+// // check provider to know how to populate the povider id field
+// if (profile.provider === 'google') {
+//   dataToCreate = { ...data, googleId: value };
+// } else if (profile.provider === 'github') {
+//   dataToCreate = { ...data, githubId: value };
+// } else {
+//   dataToCreate = { ...data, linkedinId: value };
+// }
+
+// // create user with created object
+// const newUser = await models.User.create(dataToCreate);

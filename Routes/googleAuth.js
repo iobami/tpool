@@ -19,6 +19,7 @@ router.get('/auth/employer/google/callback',
   passport.authenticate('google-employer', { failureRedirect: '/' }),
   (req, res) => {
     // Successful authentication,
+    const { user } = req;
     res.redirect('/auth/dashboard');
   });
 
@@ -27,6 +28,10 @@ router.get('/auth/employee/google/callback',
   passport.authenticate('google-employee', { failureRedirect: '/' }),
   (req, res) => {
   // Successful authentication,
+    const { user } = req;
+    if(!user.userTypeId || user.userTypeId == null) {
+      
+    }
     res.redirect('/auth/dashboard');
   });
 

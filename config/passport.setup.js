@@ -6,6 +6,7 @@ const { uuid } = require('uuidv4');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const model = require('../Models/index');
 const jsonWT = require('../Utils/auth-token');
+const { getUserData, createUser } = require('../Utils/helpers/passport-helper');
 
 // serialize user object and send as a cookie
 passport.serializeUser((user, done) => {
@@ -40,62 +41,11 @@ passport.use('google-employer',
         const user = await checkUser;
         if (user) {
           // user exists, send user object for serialization
-          let userTypeId = null;
-          let verificationStatus = null;
-          let isEmployer = false;
-          if (user.role_id === 'ROL-EMPLOYEE') {
-            const employee = await model.Employee.findOne({ where: { user_id: user.user_id } });
-            if (employee) {
-              userTypeId = employee.employee_id;
-            }
-          } else if (user.role_id === 'ROL-EMPLOYER') {
-            isEmployer = true;
-            const employer = await model.Employer.findOne({ where: { user_id: user.user_id } });
-            if (employer) {
-              userTypeId = employer.employer_id;
-              verificationStatus = employer.verification_status;
-            }
-          }
-
-          if (user.status === '0') {
-            return done(null, false);
-          }
-
-          if (user.block) {
-            return done(null, false);
-          }
-          let data = {
-            email: user.email,
-            userId: user.user_id.toString(),
-            userRole: user.role_id,
-            userTypeId,
-          };
-
-          if (isEmployer) data = { ...data, verificationStatus };
-
+          const data = await getUserData(profile, user, done);
           done(null, data);
         } else {
           // create a new user
-          const password = process.env.TALENT_POOL_JWT_SECRET;
-          const salt = await bcrypt.genSalt(10);
-          const hashedPassword = await bcrypt.hash(password, salt);
-
-          const data = {
-            email: profile.emails[0].value,
-          };
-          const token = jsonWT.signJWT(data);
-
-          const userSave = {
-            email: profile.emails[0].value,
-            password: hashedPassword,
-            verification_token: token,
-            role_id: 'ROL-EMPLOYER',
-            user_id: uuid(),
-            status: '1',
-            picture_url: profile.photos[0].value,
-            provider: profile.provider,
-          };
-          const userData = await model.User.create(userSave);
+          const userData = await createUser(profile, 'ROL-EMPLOYER');
 
           return done(null, userData);
         }
@@ -124,62 +74,11 @@ passport.use('google-employee',
         const user = await checkUser;
         if (user) {
           // user exists, send user object for serialization
-          let userTypeId = null;
-          let verificationStatus = null;
-          let isEmployer = false;
-          if (user.role_id === 'ROL-EMPLOYEE') {
-            const employee = await model.Employee.findOne({ where: { user_id: user.user_id } });
-            if (employee) {
-              userTypeId = employee.employee_id;
-            }
-          } else if (user.role_id === 'ROL-EMPLOYER') {
-            isEmployer = true;
-            const employer = await model.Employer.findOne({ where: { user_id: user.user_id } });
-            if (employer) {
-              userTypeId = employer.employer_id;
-              verificationStatus = employer.verification_status;
-            }
-          }
-
-          if (user.status === '0') {
-            return done(null, false);
-          }
-
-          if (user.block) {
-            return done(null, false);
-          }
-          let data = {
-            email: user.email,
-            userId: user.user_id.toString(),
-            userRole: user.role_id,
-            userTypeId,
-          };
-
-          if (isEmployer) data = { ...data, verificationStatus };
-
+          const data = await getUserData(profile, user, done);
           done(null, data);
         } else {
           // create a new user
-          const password = process.env.TALENT_POOL_JWT_SECRET;
-          const salt = await bcrypt.genSalt(10);
-          const hashedPassword = await bcrypt.hash(password, salt);
-
-          const data = {
-            email: profile.emails[0].value,
-          };
-          const token = jsonWT.signJWT(data);
-
-          const userSave = {
-            email: profile.emails[0].value,
-            password: hashedPassword,
-            verification_token: token,
-            role_id: 'ROL-EMPLOYEE',
-            user_id: uuid(),
-            status: '1',
-            picture_url: profile.photos[0].value,
-            provider: profile.provider,
-          };
-          const userData = await model.User.create(userSave);
+          const userData = await createUser(profile, 'ROL-EMPLOYEE');
 
           return done(null, userData);
         }
