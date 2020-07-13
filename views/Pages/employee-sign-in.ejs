@@ -27,26 +27,43 @@
                     <p class="smallTitle">Get connected to the right job now.</p>
                 </div>
 
-                <form class="needs-validation" novalidate id="form">
+                <% if (errorMessage) { %>
+                    <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+                <% } %>
+
+                <form class="needs-validation" novalidate id="form" action="/employee-sign-in" method="POST">
 
                     <div class="col-md mb-3 px-0">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required>
-                        <div class="invalid-feedback">
+                        <input 
+                        class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                        type="email" 
+                        name="email" 
+                        id="email" 
+                        placeholder="example@gmail.com"
+                        value="<%= oldInput.email %>">
+                        <!-- <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required> -->
+                        <!-- <div class="invalid-feedback">
                             Your valid email address is required.
-                        </div>
+                        </div> -->
                     </div>
 
 
                     <div class="col-md mb-3 px-0">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
-                        <div class="invalid-feedback" style="width: 100%;">
+                        <input 
+                        class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                        type="password" 
+                        name="password" 
+                        id="password" 
+                        minlength="8" placeholder="at least 8 characters"
+                        value="<%= oldInput.password %>">
+                        <!-- <input type="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required> -->
+                        <!-- <div class="invalid-feedback" style="width: 100%;">
                             Your have not entered a correct password.
-                        </div>
+                        </div> -->
                     </div>
-                
-
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     <div class="row px-3" >
                         <div class="col my-1 px-0">
                             <div class="custom-control custom-checkbox mr-sm-2" >
@@ -60,9 +77,16 @@
                     </div>
 
 
-                    <div class="row" >
+                    <!-- <div class="row" >
                         <div class="col d-flex align-items-center justify-content-center" id="button-div">
                             <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit">Sign In</button>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white"
+                                id="signup-btn" type="submit" data-toggle=""
+                                data-target="#exampleModal">Sign In</button>
                         </div>
                     </div>
                 </form>
@@ -80,15 +104,21 @@
                 </div>
 
                 <div class="row mt-2 justify-content-center">
-                    <!-- <div class="col-md">
+                    <div class="col-md">
                         <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
                                 class="fab fa-github pr-2"></i>Login with Github</button>
-                    </div> -->
+                    </div>
+
+                    <div class="col-md">
+                        <button type="button" id="googleBtn" class="btn btn-block  google-btn py-3 my-1" data-user="ROL-EMPLOYEE" data-longtitle="true"
+                        data-onsuccess="onSignIn"><i
+                                class="fab fa-google pr-2"></i>Login with Google</button>
+                    </div>
                  
 
-                        <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
+                        <!-- <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
                             data-onsuccess="onSignIn">
-                        </div>
+                        </div> -->
                 </div>
 
                 <p class="text-center py-2 mt-3 mb-4">Don't have an account with us? <a href="/employee-sign-up" class="login-link">Sign Up.</a></p>
@@ -99,7 +129,7 @@
 
     <%- include('../Templates/footer') %>
 
-    <script>
+    <!-- <script>
         async function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
             const role_id = document.querySelector('.g-signin2').dataset.user;
@@ -129,10 +159,10 @@
                 });
         }
         
-      </script>
+      </script> -->
     <!-- Employee sign in script -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/custom-js/employee-sign-in.js" type="module"></script>
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/custom-js/employee-sign-in.js" type="module"></script> -->
 
 </body>
 </html>
