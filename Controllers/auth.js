@@ -443,9 +443,8 @@ exports.adminLogin = (req, res, next) => {
 };
 
 exports.postLogout = (req, res) => {
-  req.session.destroy(() => {
-    res.redirect('/');
-  });
+  req.session = null;
+  res.redirect('/');
 };
 
 const getResetPasswordToken = () => {
