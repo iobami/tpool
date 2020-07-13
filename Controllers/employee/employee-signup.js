@@ -25,14 +25,14 @@ exports.create = async (req, res) => {
     if (!errors.isEmpty()) {
       const errResponse = errors.array({ onlyFirstError: true });
       req.flash('errors', errResponse);
-      res.redirect('/employee-sign-up');
+      return res.redirect('/employee-sign-up');
     }
     const user = req.body;
     const { email } = user;
     const userExists = await model.User.findOne({ where: { email } });
     if (userExists !== null) {
       req.flash('error', 'Someone has already registered this email');
-      res.redirect('/employee-sign-up');
+      return res.redirect('/employee-sign-up');
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -65,7 +65,7 @@ exports.create = async (req, res) => {
       });
       // return successResMsg(res, 201, data);
       req.flash('success', 'Verification email sent!');
-      res.redirect('/employee-sign-up');
+      return res.redirect('/employee-sign-up');
     } catch (error) {
       // return errorResMsg(
       //   res,
@@ -73,12 +73,12 @@ exports.create = async (req, res) => {
       //   'An error occurred while creating user',
       // );
       req.flash('error', 'Someone has already registered this email');
-      res.redirect('/employee-sign-up');
+      return res.redirect('/employee-sign-up');
     }
   } catch (error) {
     // return errorResMsg(res, 500, 'An error occurred');
     req.flash('error', 'An Error occoured');
-    res.redirect('/employee-sign-up');
+    return res.redirect('/employee-sign-up');
   }
 };
 
