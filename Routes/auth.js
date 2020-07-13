@@ -3,7 +3,7 @@ const express = require('express');
 const { body } = require('express-validator');
 const { authorize } = require('../Middleware/index');
 const { UserValidation } = require('../Utils/validators/user-validator-new');
-const authController = require('../Controllers/auth');
+
 
 const {
   registerEmployer,
@@ -47,18 +47,12 @@ router.post(
   UserValidation.resendVerificationLink,
   forgotPassword,
 );
-router.post('/logout', authController.postLogout);
+
 router.post('/superadmin-login', UserValidation.validateLogin, superAdminLogin);
-router.put(
-  '/reset-password/:resettoken',
+router.put('/reset-password/:resettoken',
   UserValidation.resetPassword,
-  resetPassword,
-);
-router.put(
-  '/email/verify/resend',
-  UserValidation.resendVerificationLink,
-  resendVerificationLink,
-);
+  resetPassword,);
+router.post('/email/verify/resend', [body('email').isEmail().withMessage('Please enter a valid email address').normalizeEmail()], resendVerificationLink,);
 router.get('/email/verify', verifyEmail);
 router.put(
   '/update-password/:userId',
