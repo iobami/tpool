@@ -6,22 +6,33 @@
             <img src="img/talentpool header logo.svg" alt="talent pool logo" />
           </a>
           <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-            </ul>
-          </div>
+          class="navbar-toggler"
+          href="/logout" 
+          style="padding: .5em 1em;margin-top: .5em;background: #33BEFF; color: #fff;"
+				>
+					Sign out
+				</button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ml-auto">
+                      <a class="dropdown-item" href="/logout" 
+                    style="padding: .5em 1em;margin-top: .5em;background: #33BEFF; color: #fff;border-radius: 5px;"
+                      
+                      >Sign Out</a>
+                  </ul>
+              </div>
+
+          
         </nav>
       </div>
     </div>
+    <!-- <script>
+      const logoutFunction = () => {
+         localStorage.clear('tpAuth');
+         setTimeout(()=>{
+          window.location.replace("/");
+         }, 3000)
+      }
+    </script> -->
   </header>
+
   

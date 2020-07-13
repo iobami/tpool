@@ -4,6 +4,13 @@
 
 <head>
     <%- include('../Templates/head') %>
+     <!-- BEGIN Pre-requisites -->
+     <script src="https://apis.google.com/js/platform.js" async defer></script>
+     <meta name="google-signin-client_id"
+         content="1044934768285-u3jh3gs8dv4u21uie9o32cbu0gv2erh4.apps.googleusercontent.com">
+         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     <!-- END Pre-requisites -->
+
     <!-- Employer sign up additional styles -->
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
@@ -47,10 +54,25 @@
                     </div>
     
                     <div class="tab-content" id="nav-tabContent">
+                      <% if(error && error.length > 0) { %>
+                        <div class="alert alert-danger alert-dismissible deposit-alert" role="alert">
+                            <div class="container">
+                              <%- error %> 
+                            </div>
+                        </div>
+                    <% }if(errors && errors.length > 0){ %>
+                      <% for(var i=0; i < errors.length; i++) { %>
+                        <div class="alert alert-danger alert-dismissible deposit-alert" role="alert">
+                          <div class="container">
+                            <%- errors[i].msg %> 
+                          </div>
+                      </div>
+                      <% } } %>
                       <div class="tab-pane fade show active" id="individual" role="tabpanel"
                         aria-labelledby="individual-tab">
-                        <form class="needs-validation" id="individualForm" novalidate>
-                          <div class="row   ">
+                        <form action="v1/auth/employer-signup" method="POST" class="needs-validation" id="individualForm" novalidate>
+                          <div class="row">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <!-- <div class="col-md-12 my-3 form-group">
                               <label for="organization">Organization Name</label>
                               <input type="text" id="organization" class="form-control form-control-lg"
@@ -62,7 +84,7 @@
                             <div class="col-md my-3 form-group">
                               <label for="firstName">First Name</label>
                               <input type="text" id="firstName" class="form-control form-control-lg form__input"
-                                placeholder="Enter first name" name="firstName" required>
+                                placeholder="Enter first name" required>
                               <div class="invalid-feedback">
                                 Enter your first name
                               </div>
@@ -70,7 +92,7 @@
                             <div class="col-md my-3 form-group">
                               <label for="lastName">Last Name</label>
                               <input type="text" id="lastName" class="form-control form-control-lg form__input"
-                                placeholder="Enter last name" name="lastName" required>
+                                placeholder="Enter last name" required>
                               <div class="invalid-feedback">
                                 Enter your last name
                               </div>
@@ -80,7 +102,7 @@
                             <div class="my-3 col-md">
                               <label for="email" class="form-label ">Email address</label>
                               <input type="email" class="form-control form-control-lg form__input" id="email"
-                                placeholder="john@email.com" required>
+                                placeholder="john@email.com" name="email" required>
                               <div class="invalid-feedback">
                                 Enter a valid email
                               </div>
@@ -105,7 +127,7 @@
                               <label for="password">Password</label>
                               <input type="password" placeholder="at least 8 characters"
                                 class="form-control form-control-lg form__input" inputmode="alpha-numeric" minlength="8"
-                                id="password" required>
+                                id="password" name="password" required>
                               <div class="invalid-feedback">
                                 Enter your password. It must contain at least 8 characters.
                               </div>
@@ -143,30 +165,28 @@
                           <div class="form-group my-4 text-center">
                             <span class="text-muted wor">OR</span>
                           </div>
-                          <div class="form-row  text-center ">
-                            <div class="col-md my-2">
-                              <button type="button" id="githubID" class="btn btn-social btn-block btn-facebook text-center py-3">
-                                <i class="fa fa-github pr-2"></i>Sign up
-                                with GitHub
-                              </button>
-                            </div>
-                            <div class="col-md my-2 ">
-                              <button type="button" id="googleID" class="btn btn-block btn-social btn-google text-center  py-3">
-                                <i class="fa fa-google pr-2"></i>Sign up
-                                using Google
-                              </button>
-                            </div>
-                          </div>
+                          
+                          <div class="row mt-2 justify-content-center">
+                            <!-- <div class="col-md">
+                                <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
+                                        class="fab fa-github pr-2"></i>Login with Github</button>
+                            </div> -->
+                         
+        
+                                <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYER" data-longtitle="true"
+                                    data-onsuccess="onSignIn">
+                                </div>
+                        </div>
                           <div class="text-center acct mt-3 mb-5">Have an account with us? <a
-                              href="/employer-sign-in">Log
-                              in</a>
+                              href="/employer-sign-in">Sign In</a>
                           </div>
                         </form>
                       </div>
     
                       <div class="tab-pane fade" id="company" role="tabpanel" aria-labelledby="company-tab">
-                        <form class="needs-validation" id="orgForm" novalidate>
+                        <form action="v1/auth/employer-signup" method="POST" class="needs-validation" id="orgForm" novalidate>
                           <div class="row">
+                            <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                             <div class="col-md-12 my-3 form-group">
                               <label for="orgName">Organization Name</label>
                               <input type="text" class="form-control form-control-lg form__input" id="orgName"
@@ -178,7 +198,7 @@
                           <div class="row">
                             <div class="form-group my-3 col-md">
                               <label for="orgEmail" class="form-label ">Email address</label>
-                              <input type="email" class="form-control form-control-lg form__input" id="orgEmail"
+                              <input type="email" name="email" class="form-control form-control-lg form__input" id="orgEmail"
                                 placeholder="john@email.com" required>
                               <div class="invalid-feedback">
                                 Enter a valid email
@@ -189,7 +209,7 @@
                           <div class="row">
                             <div class="col-md my-3 form-group">
                               <label for="orgPassword">Password</label>
-                              <input type="password" placeholder="at least 8 characters"
+                              <input type="password" name="password" placeholder="at least 8 characters"
                                 class="form-control form-control-lg form__input" inputmode="alpha-numeric" id="orgPassword"
                                 required>
                               <div class="invalid-feedback">
@@ -234,24 +254,21 @@
                           <div class="form-group my-4 text-center">
                             <span class="text-muted wor">OR</span>
                           </div>
-                          <div class="form-row  text-center ">
-                            <div class="col-md my-2">
-                              <button type="button" id="githubIdOrg"  class="btn btn-social btn-block btn-facebook text-center py-3">
-                                <i class="fa fa-github pr-2"></i>Sign up
-                                with GitHub
-                              </button>
-    
-                            </div>
-                            <div class="col-md my-2 ">
-                              <button type="button" id="googleIdOrg" class="btn btn-block btn-social btn-google text-center  py-3">
-                                <i class="fa fa-google pr-2"></i>Sign up
-                                using Google
-                              </button>
-                            </div>
+
+                          <div class="row mt-2 justify-content-center">
+                            <!-- <div class="col-md">
+                                <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
+                                        class="fab fa-github pr-2"></i>Login with Github</button>
+                            </div> -->
+                         
+                            
+                                <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYER" data-longtitle="true"
+                                    data-onsuccess="onSignIn">
+                                </div>
+
                           </div>
                           <div class="text-center acct mt-3 mb-5">Have an account with us? <a
-                              href="/employer-sign-in">Log
-                              in</a>
+                              href="/employer-sign-in">Sign In</a>
                           </div>
                         </form>
                       </div>
@@ -285,7 +302,7 @@
                   check your mail and click to verify your account.</p>
     
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                  onclick="location.assign('/employer-sign-in')">Log in</button>
+                  onclick="location.assign('/employer-sign-in')">Sign in</button>
               </div>
             </div>
           </div>
@@ -294,7 +311,46 @@
 
     <%- include('../Templates/footer') %>
     <%- include('../Templates/script') %>
+    <script>
+      // Getting verify status to know if registration is successful or not
+      const verifyStatus = `<%- success %>`;
+      if (verifyStatus == 'Verification email sent!') {
+          // Displaying the modal
+        $('#exampleModal').modal();
+      }
+      async function onSignIn(googleUser) {
+          var profile = googleUser.getBasicProfile();
+          const role_id = document.querySelector('.g-signin2').dataset.user;
+          var token = googleUser.getAuthResponse().id_token
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.disconnect();
+          const userData = {
+              role_id,
+              token: token
+          }
+          console.log(userData)
+          axios.post('https://api.lancers.app/v1/auth/google', userData)
+              .then(data => {
+                  let decodedData = JSON.parse(atob(data.data.data.token.split('.')[1]))
+                  const userData = {
+                      ...decodedData,
+                      token: data.data.data.token
+                  }
+                  localStorage.setItem("tpAuth", JSON.stringify(userData));
+                  if (decodedData.userTypeId == null) {
+                      window.location.replace('/employer-create-profile')
+                  } else {
+                      window.location.replace('/employer-dashboard')
+                  }
+              }).catch(function (error) {
+                  console.log(error);
+                  window.location.replace('/')
+              });
+      }
+      
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-    <script src="js/custom-js/employer-sign-up.js" type="module"></script>
+    <!-- <script src="js/custom-js/employer-sign-up.js" type="module"></script> -->
 
 </body>

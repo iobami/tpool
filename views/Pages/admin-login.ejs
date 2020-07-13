@@ -8,8 +8,8 @@
 </head>
 
 <body>
-  <!-- NAV-BAR -->
-  <%- include('../Templates/header') %>
+    <!-- NAV-BAR -->
+    <%- include('../Templates/header') %>
 
     <main class="container-fluid custom-container">
         <div class="row">
@@ -17,51 +17,75 @@
             </div>
 
             <!-- <div class=" col-lg-7 p-lg-5">   -->
-            <div class=" col-lg-7">  
-                <section >
+            <div class=" col-lg-7">
+                <section>
                     <div class="container p-md-0 pl-lg-5 pr-lg-3">
                         <div class="py-5">
                             <p class="bigTitle">Welcome back</p>
                             <p class="smallTitle">Enter your email and password to access your account</p>
                         </div>
-                        <form class="needs-validation" novalidate>
-                                        
-                                        <div class="row">
-                                            <div class="col-md">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required>
-                                                <div id="invalidE">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-3 mb-3">
-                                            <div class="col-md">
-                                                <label for="password">Password</label>
-                                                <input type="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
-                                                <div id="invalidPass">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col my-1">
-                                                <div class="custom-control custom-checkbox mr-sm-2">
-                                                    <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                                    <label class="custom-control-label policyAgree" for="rememberMe">Remember me</label>
-                                                </div>
-                                            </div>
-                                            <div class="col text-right">
-                                                <p class="mt-1"> <a href="./recover-password" class="login-link">Forgot Password?</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="loader"></div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white" id="signup-btn" type="submit" data-toggle="" data-target="#exampleModal">Login</button>
-                                            </div>
-                                        </div>
-                        </form>                                
+                        <% if (errorMessage) { %>
+                            <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+                        <% } %>
+                        <form class="needs-validation" novalidate action="/admin-login" method="POST">
+
+                            <div class="row">
+                                <div class="col-md">
+                                    <label for="email">Email</label>
+                                    <input 
+                                    class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                                    type="email" 
+                                    name="email" 
+                                    id="email" 
+                                    placeholder="example@gmail.com"
+                                    value="<%= oldInput.email %>">
+                                    <!-- <input type="email" class="form-control" id="email" placeholder="example@gmail.com"
+                                        required>
+                                    <div id="invalidE">
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="row mt-3 mb-3">
+                                <div class="col-md">
+                                    <label for="password">Password</label>
+                                    <input 
+                                    class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                                    type="password" 
+                                    name="password" 
+                                    id="password" 
+                                    minlength="8" placeholder="at least 8 characters"
+                                    value="<%= oldInput.password %>">
+                                    <!-- <input type="password" class="form-control" id="password" minlength="8"
+                                        placeholder="at least 8 characters" required>
+                                    <div id="invalidPass">
+                                    </div> -->
+                                </div>
+                            </div>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <div class="row">
+                                <div class="col my-1">
+                                    <div class="custom-control custom-checkbox mr-sm-2">
+                                        <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                        <label class="custom-control-label policyAgree" for="rememberMe">Remember
+                                            me</label>
+                                    </div>
+                                </div>
+                                <div class="col text-right">
+                                    <p class="mt-1"> <a href="./recover-password" class="login-link">Forgot
+                                            Password?</a></p>
+                                </div>
+                            </div>
+                            <div class="loader"></div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white"
+                                        id="signup-btn" type="submit" data-toggle=""
+                                        data-target="#exampleModal">Login</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-        
+
                     <div class="row pl-5 pr-2">
                         <div class="col-md-5 d-none d-md-block">
                             <hr>
@@ -86,17 +110,19 @@
                         </div>
                     </div>
 
-                    <p class="text-center py-2">Already have an account with us? <a href="/employee-sign-in" class="login-link">Sign In.</a></p>
-                    </div>
-                </section>             
-            </div>        
+                    <p class="text-center py-2">Already have an account with us? <a href="/employee-sign-in"
+                            class="login-link">Sign In.</a></p>
+            </div>
+            </section>
+        </div>
         </div>
     </main>
 
-<%- include('../Templates/footer') %>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-<script type="module" src="js/custom-js/admin-login.js"></script>
-<script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
+    <%- include('../Templates/footer') %>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script type="module" src="js/custom-js/admin-login.js"></script>
+    <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script> -->
 
 </body>
+
 </html>
