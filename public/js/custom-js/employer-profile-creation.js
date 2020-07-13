@@ -1,47 +1,5 @@
 const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
 
-const createAudio = () => {
-    const sound = document.createElement("audio");
-    // const source = document.createElement("source");
-    sound.id       = 'notification';
-    sound.controls = 'controls';
-    sound.src      = '/audio/notification.mp3';
-    sound.type     = 'audio/mpeg';
-    document.querySelector('body').appendChild(sound);
-    const notify = document.getElementById('notification');
-    notify.style.position = 'absolute';
-    notify.style.left = '-2000px';
-    return 'done';
-};
-
-createAudio();
-
-const playAudio = () => {
-    const notify = document.getElementById('notification');
-    notify.play();
-    return 'done';
-};
-
-const toaster = async (message, type) => {
-    await playAudio();
-    const [messageSpan] = document.querySelectorAll('.slide-in-content span');
-    messageSpan.innerHTML = message;
-
-    const [toast] = document.getElementsByClassName('slide-in');
-    const [toastBgColor] = document.getElementsByClassName('slide-in-content');
-    toastBgColor.classList.add(type);
-    toast.classList.add('show');
-};
-
-const removeToaster = (time) => {
-    const toast = () => {
-        const [toast] = document.getElementsByClassName('slide-in');
-        toast.className = 'slide-in from-right';
-    };
-    setTimeout(toast, time)
-};
-
-
 window.onload = (event) => {
     if (userInformation === null) {
         toaster('Token not found, please sign in.', 'error');
@@ -200,6 +158,9 @@ getData().then();
                 const uploadBtn = document.getElementById('uploadProfile');
                 const loader = document.getElementById('loader');
 
+                const imageError = document.getElementById('noImage');
+                imageError.style.display = 'none';
+
                 let addValidation = true;
 
                 if (form.checkValidity() === false) {
@@ -209,8 +170,7 @@ getData().then();
                     event.preventDefault();
 
                     if (checkUploadedImage()) {
-                        toaster('! Please upload an image', 'error');
-                        removeToaster(4000);
+                        imageError.style.display = 'block';                        
                         return;
                     }
 
@@ -360,11 +320,16 @@ const readImage = () => {
 
     if (!files.length) return;
 
+    const [desc] = document.querySelectorAll('#profile .small');
+    desc.style.color = '#A0A0A0';
+
     const [imageFile] = files;
     const fileNameArray = imageFile.name.split('.');
     const fileExtension = fileNameArray[fileNameArray.length - 1].toLowerCase();
     if (['jpg', 'jpeg', 'png'].includes(fileExtension) === false) {
-        alert('This file is not in a JPG, JPEG or PNG format.');
+        desc.style.color = '#dc3545';        
+        labelText('! File not supported', 'error');
+        $('#profile-image-preview').attr('src', '/img/profile-image.jpeg');
         return;
     }
 
@@ -381,10 +346,18 @@ const readImage = () => {
         reader.readAsDataURL(imageFile);
     }
 
+    const imageError = document.getElementById('noImage');
+    imageError.style.display = 'none';
+
     logoData = imageFile;
 };
 
-const labelText = (value) => {
+const labelText = (value, error) => {
     const labelText = document.getElementById('logo');
     labelText.value = value
+    if (error) {
+        labelText.style.color = '#dc3545';
+    } else {
+        labelText.style.color = '#383838';
+    }
 };

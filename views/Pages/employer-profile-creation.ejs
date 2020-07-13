@@ -8,6 +8,10 @@
    <!-- NAV-BAR -->
   <%- include('../Templates/employeeHeaderLogin', { route: '/employer-dashboard' }) %>
 
+  <style>
+    
+  </style>
+
    <!--NOTIFICATION TOAST-->
    <div class="slide-in from-right">
        <div class="slide-in-content">
@@ -60,7 +64,7 @@
                                             <div class="img-preview-sect"
                                                  style="padding: 14px 4em 14px 10px; display: inline-block; border-right: 1px solid #084482">
                                                 <img id="profile-image-preview" class="profile-img img-fluid"
-                                                     height=243px width=243px src="../img/profile-image.jpeg" alt=""
+                                                     height=243px width=243px src="/img/profile-image.jpeg" alt=""
                                                      style="min-height: 243px; max-height: 243px"
                                                 />
                                             </div>
@@ -196,12 +200,14 @@
                         <div></div>
                     </span>
                 </button>
+                <span class="small" id="noImage" style="display: none; color: #dc3545">! Please upload an image</span>
             </div>
         </div>
       </form>
     </main>
 
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <script src="/js/custom-js/toast.js"></script>
    <script src="/js/custom-js/employer-profile-creation.js"></script>
   <%- include('../Templates/footer') %>
   </body>
