@@ -278,84 +278,84 @@ exports.postEmployerLogin = (req, res, next) => {
     });
 };
 
-exports.userLogin = (req, res, next) => {
-  const { email } = req.body;
-  const { password } = req.body;
-  let currentUser;
-  model.User.findOne({ where: { email } })
-    .then(async (user) => {
-      if (!user) {
-        return errorResMsg(
-          res,
-          404,
-          'Incorrect login details, user does not exist',
-        );
-      }
+// exports.userLogin = (req, res, next) => {
+//   const { email } = req.body;
+//   const { password } = req.body;
+//   let currentUser;
+//   model.User.findOne({ where: { email } })
+//     .then(async (user) => {
+//       if (!user) {
+//         return errorResMsg(
+//           res,
+//           404,
+//           'Incorrect login details, user does not exist',
+//         );
+//       }
 
-      // Getting the user type ID
-      let userTypeId = null;
-      let verificationStatus = null;
-      let isEmployer = false;
-      if (user.role_id === 'ROL-EMPLOYEE') {
-        const employee = await model.Employee.findOne({
-          where: { user_id: user.user_id },
-        });
-        if (employee) {
-          userTypeId = employee.employee_id;
-        }
-      } else if (user.role_id === 'ROL-EMPLOYER') {
-        isEmployer = true;
-        const employer = await model.Employer.findOne({
-          where: { user_id: user.user_id },
-        });
-        if (employer) {
-          userTypeId = employer.employer_id;
-          verificationStatus = employer.verification_status;
-        }
-      }
+//       // Getting the user type ID
+//       let userTypeId = null;
+//       let verificationStatus = null;
+//       let isEmployer = false;
+//       if (user.role_id === 'ROL-EMPLOYEE') {
+//         const employee = await model.Employee.findOne({
+//           where: { user_id: user.user_id },
+//         });
+//         if (employee) {
+//           userTypeId = employee.employee_id;
+//         }
+//       } else if (user.role_id === 'ROL-EMPLOYER') {
+//         isEmployer = true;
+//         const employer = await model.Employer.findOne({
+//           where: { user_id: user.user_id },
+//         });
+//         if (employer) {
+//           userTypeId = employer.employer_id;
+//           verificationStatus = employer.verification_status;
+//         }
+//       }
 
-      if (user.status === '0') {
-        return errorResMsg(res, 401, 'User is not verified');
-      }
+//       if (user.status === '0') {
+//         return errorResMsg(res, 401, 'User is not verified');
+//       }
 
-      if (user.block) {
-        return errorResMsg(res, 401, 'User Blocked!');
-      }
+//       if (user.block) {
+//         return errorResMsg(res, 401, 'User Blocked!');
+//       }
 
-      currentUser = user;
-      bcrypt.compare(password, user.password).then((valid) => {
-        if (!valid) {
-          return errorResMsg(res, 401, 'Incorrect login details');
-        }
+//       currentUser = user;
+//       bcrypt.compare(password, user.password).then((valid) => {
+//         if (!valid) {
+//           return errorResMsg(res, 401, 'Incorrect login details');
+//         }
 
-        let data = {
-          email: currentUser.email,
-          userId: currentUser.user_id.toString(),
-          userRole: currentUser.role_id,
-          userTypeId,
-        };
+//         let data = {
+//           email: currentUser.email,
+//           userId: currentUser.user_id.toString(),
+//           userRole: currentUser.role_id,
+//           userTypeId,
+//         };
 
-        if (isEmployer) data = { ...data, verificationStatus };
+//         if (isEmployer) data = { ...data, verificationStatus };
 
-        const token = jsonWT.signJWT(data);
+//         const token = jsonWT.signJWT(data);
 
-        sessionSuccessResMsg(
-          res,
-          'login successful',
-          200,
-          token,
-          currentUser.user_id.toString(),
-        );
-      });
-    })
-    .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
+//         sessionSuccessResMsg(
+//           res,
+//           'login successful',
+//           200,
+//           token,
+//           currentUser.user_id.toString(),
+//         );
+//       });
+//     })
+//     .catch((err) => {
+//       if (!err.statusCode) {
+//         err.statusCode = 500;
+//       }
 
-      next(err);
-    });
-};
+//       next(err);
+//     });
+// };
 
 exports.adminLogin = (req, res, next) => {
   const { email } = req.body;

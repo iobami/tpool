@@ -7,7 +7,7 @@ const { UserValidation } = require('../Utils/validators/user-validator-new');
 
 const {
   registerEmployer,
-  userLogin,
+  // userLogin,
   forgotPassword,
   resetPassword,
   resendVerificationLink,
@@ -39,9 +39,9 @@ router.post('/employer-signup',
       .withMessage('Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)')
   ],
   registerEmployer);
-router.post('/admin-login', UserValidation.validateLogin, userLogin);
-router.post('/employer-login', UserValidation.validateLogin, userLogin);
-router.post('/employee-login', UserValidation.validateLogin, userLogin);
+// router.post('/admin-login', UserValidation.validateLogin, userLogin);
+// router.post('/employer-login', UserValidation.validateLogin, userLogin);
+// router.post('/employee-login', UserValidation.validateLogin, userLogin);
 router.post(
   '/forgot-password',
   UserValidation.resendVerificationLink,
