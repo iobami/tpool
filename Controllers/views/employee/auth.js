@@ -5,9 +5,9 @@ module.exports = {
     });
   },
   
-employeeSignIn: (req, res) => {
+  employeeSignIn: (req, res) => {
     if (req.session.isLoggedIn) {
-      res.redirect('/employee-dashboard');
+      res.redirect('/employee/dashboard');
     }
 
     let message = req.flash('error');
