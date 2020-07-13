@@ -27,7 +27,7 @@
                         <% if (errorMessage) { %>
                             <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
                         <% } %>
-                        <form class="needs-validation" novalidate>
+                        <form class="needs-validation" novalidate action="/admin-login" method="POST">
 
                             <div class="row">
                                 <div class="col-md">
@@ -119,9 +119,9 @@
     </main>
 
     <%- include('../Templates/footer') %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <script type="module" src="js/custom-js/admin-login.js"></script>
-    <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script> -->
 
 </body>
 

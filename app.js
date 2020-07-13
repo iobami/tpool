@@ -156,6 +156,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(csrfProtection);
 app.use((req, res, next) => {
+  const token = req.csrfToken();
+  // console.log(token);
+  res.cookie('csrf-token', token);
   res.locals.csrfToken = req.csrfToken();
   next();
 });

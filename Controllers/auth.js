@@ -418,9 +418,7 @@ exports.adminLogin = (req, res, next) => {
         if (valid) {
           req.session.isLoggedIn = true;
           req.session.userId = user.user_id;
-          return req.session.save((e) => {
-            res.redirect('/admin-dashboard');
-          });
+          res.redirect('/admin-dashboard');
         }
         return res.status(422).render('Pages/admin-login', {
           path: '/admin-login',
@@ -434,7 +432,7 @@ exports.adminLogin = (req, res, next) => {
         });
       })
         .catch(() => {
-          res.redirect('/employee-sign-in');
+          res.redirect('/admin-login');
         });
     })
     .catch((err) => {
@@ -442,6 +440,12 @@ exports.adminLogin = (req, res, next) => {
       error.httpStatusCode = 500;
       return next(error);
     });
+};
+
+exports.postLogout = (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
 };
 
 const getResetPasswordToken = () => {
