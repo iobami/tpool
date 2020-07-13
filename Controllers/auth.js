@@ -167,7 +167,7 @@ exports.postEmployeeLogin = (req, res, next) => {
           if (valid) {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            res.redirect('/employee-dashboard');
+            res.redirect('/employee/dashboard');
           }
           return res.status(422).render('Pages/employee-sign-in', {
             path: '/employee-sign-in',
@@ -453,9 +453,8 @@ exports.adminLogin = (req, res, next) => {
 };
 
 exports.postLogout = (req, res) => {
-  req.session.destroy(() => {
-    res.redirect('/');
-  });
+  req.session = null;
+  res.redirect('/');
 };
 
 const getResetPasswordToken = () => {
