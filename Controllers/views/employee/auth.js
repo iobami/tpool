@@ -4,7 +4,7 @@ module.exports = {
       pageName: 'Employee Signup', error: req.flash('error'), errors: req.flash('errors'), success: req.flash('success'),
     });
   },
-  
+
   employeeSignIn: (req, res) => {
     if (req.session.isLoggedIn) {
       res.redirect('/employee/dashboard');
