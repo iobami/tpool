@@ -1,15 +1,13 @@
 module.exports = {
-  // employeeSignIn: (req, res) => {
-  //   res.render('Pages/employee-sign-in', { pageName: 'Employee Sign In' });
-  // },
-
   employeeSignup: (req, res) => {
-    res.render('Pages/employee-sign-up', { pageName: 'Sign Up' });
+    res.render('Pages/employee-sign-up', {
+      pageName: 'Employee Signup', error: req.flash('error'), errors: req.flash('errors'), success: req.flash('success'),
+    });
   },
-
+  
   employeeSignIn: (req, res) => {
     if (req.session.isLoggedIn) {
-      res.redirect('/employee-dashboard');
+      res.redirect('/employee/dashboard');
     }
 
     let message = req.flash('error');
@@ -29,5 +27,4 @@ module.exports = {
       validationErrors: [],
     });
   },
-
 };
