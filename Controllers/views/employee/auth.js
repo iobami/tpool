@@ -8,6 +8,7 @@ module.exports = {
   },
 
   employeeSignIn: (req, res) => {
+
     if (req.session.isLoggedIn) {
       res.redirect('/employee-dashboard');
     }
