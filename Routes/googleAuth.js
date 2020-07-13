@@ -20,7 +20,14 @@ router.get('/auth/employer/google/callback',
   (req, res) => {
     // Successful authentication,
     const { user } = req;
-    res.redirect('/auth/dashboard');
+    if ((!user.userTypeId) || user.userTypeId == null) {
+      req.session.isLoggedIn = true;
+      req.session.userId = user.user_id;
+      return res.redirect('/employer-create-profile');
+    }
+    req.session.isLoggedIn = true;
+    req.session.userId = user.user_id;
+    return res.redirect('/employer-dashboard');
   });
 
 // receive process details from passport.setup
@@ -29,10 +36,14 @@ router.get('/auth/employee/google/callback',
   (req, res) => {
   // Successful authentication,
     const { user } = req;
-    if(!user.userTypeId || user.userTypeId == null) {
-      
+    if ((!user.userTypeId) || user.userTypeId == null) {
+      req.session.isLoggedIn = true;
+      req.session.userId = user.user_id;
+      return res.redirect('/employee/profile');
     }
-    res.redirect('/auth/dashboard');
+    req.session.isLoggedIn = true;
+    req.session.userId = user.user_id;
+    return res.redirect('/employee-dashboard');
   });
 
 module.exports = router;
