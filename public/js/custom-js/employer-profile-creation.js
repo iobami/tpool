@@ -24,6 +24,38 @@ if (userRole === 'ROL-EMPLOYER') {
 // store data after image is read
 let logoData;
 
+const inputSize = () => {
+    const individualNameContainer = document.getElementById('individualNameContainer');
+    const organizationNameContainer = document.getElementById('organizationNameContainer');
+    const genderContainer = document.getElementById('genderContainer');
+    const countryContainer = document.getElementById('countryContainer');
+    const orgPhoneContainer = document.getElementById('orgPhoneContainer');
+
+    if ((window.innerWidth < 576) && (    individualNameContainer.style.display === 'block')) {
+        genderContainer.className = 'col-sm-6 col-6';
+        countryContainer.className = 'col-sm-6 col-6';
+        orgPhoneContainer.className = 'col-sm-12 col-12';
+    }
+
+    if ((window.innerWidth < 576) && (    organizationNameContainer.style.display === 'block')) {
+        countryContainer.className = 'col-sm-3 col-3';
+        orgPhoneContainer.className = 'col-sm-9 col-9';
+    }
+
+    if ((window.innerWidth >= 576) && (    individualNameContainer.style.display === 'block')) {
+        genderContainer.className = 'col-sm-4 col-4';
+        countryContainer.className = 'col-sm-3 col-3';
+        countryContainer.style.paddingLeft = '0';
+        orgPhoneContainer.className = 'col-sm-5 col-5';
+        orgPhoneContainer.style.paddingLeft = '0';
+    }
+
+    if ((window.innerWidth >= 576) && (    organizationNameContainer.style.display === 'block')) {
+        countryContainer.className = 'col-sm-4 col-4';
+        orgPhoneContainer.className = 'col-sm-8 col-8';
+    }
+};
+
 const getEmployerType = () => {
   const employerType = document.getElementById('employer_type').value;
   const organizationNameContainer = document.getElementById('organizationNameContainer');
@@ -62,38 +94,6 @@ const getEmployerType = () => {
   }
 };
 
-const inputSize = () => {
-    const individualNameContainer = document.getElementById('individualNameContainer');
-    const organizationNameContainer = document.getElementById('organizationNameContainer');
-    const genderContainer = document.getElementById('genderContainer');
-    const countryContainer = document.getElementById('countryContainer');
-    const orgPhoneContainer = document.getElementById('orgPhoneContainer');
-
-    if ((window.innerWidth < 576) && (    individualNameContainer.style.display === 'block')) {
-        genderContainer.className = 'col-sm-6 col-6';
-        countryContainer.className = 'col-sm-6 col-6';
-        orgPhoneContainer.className = 'col-sm-12 col-12';
-    }
-
-    if ((window.innerWidth < 576) && (    organizationNameContainer.style.display === 'block')) {
-        countryContainer.className = 'col-sm-3 col-3';
-        orgPhoneContainer.className = 'col-sm-9 col-9';
-    }
-
-    if ((window.innerWidth >= 576) && (    individualNameContainer.style.display === 'block')) {
-        genderContainer.className = 'col-sm-4 col-4';
-        countryContainer.className = 'col-sm-3 col-3';
-        countryContainer.style.paddingLeft = '0';
-        orgPhoneContainer.className = 'col-sm-5 col-5';
-        orgPhoneContainer.style.paddingLeft = '0';
-    }
-
-    if ((window.innerWidth >= 576) && (    organizationNameContainer.style.display === 'block')) {
-        countryContainer.className = 'col-sm-4 col-4';
-        orgPhoneContainer.className = 'col-sm-8 col-8';
-    }
-};
-
 // Get data for the company types
 const requestOptions = {
   headers: {
@@ -106,20 +106,31 @@ const url = 'https://api.lancers.app/v1/company/category';
 async function getData(){
   try {
     const companyTypes = await fetch(url , requestOptions);
-    const { data } = await companyTypes.json();
+    const response = await companyTypes.json();
 
-    let dropdown = document.getElementById('company_category');
-    let option;
-      data.forEach((data) => {
+    if (response.data) {
+        let dropdown = document.getElementById('company_category');
+        let option;
+        data.forEach((data) => {
+            option = document.createElement('option');
+            option.innerHTML = data.category_name;
+            option.value = data.category_id;
+            dropdown.appendChild(option);
+        });
+    } else {
+        let dropdown = document.getElementById('company_category');
         option = document.createElement('option');
-        option.innerHTML = data.category_name;
-        option.value = data.category_id;
+        option.innerHTML = 'N/A';
+        option.value = 'none';
         dropdown.appendChild(option);
-    });
+        toaster(response.message, 'error');
+        removeToaster(4000);
+    }
 
   } catch (error) {
     // Display error
-    showAlert(error)
+    toaster(error.message, 'error');
+    removeToaster(4000);
   }
 }
 getData().then();
@@ -133,7 +144,7 @@ getData().then();
         Array.prototype.filter.call(forms, function(form) {
             form.addEventListener('submit', async function(event) {
                 const [empType, gender, industryType] = document.querySelectorAll('form select');
-                const [, formData] = document.querySelectorAll('form');
+                const [formData] = document.querySelectorAll('form');
                 const uploadBtn = document.getElementById('uploadProfile');
                 const loader = document.getElementById('loader');
 
@@ -154,28 +165,37 @@ getData().then();
                     uploadBtn.style.display = 'none';
                     loader.style.display = 'inline-block';
 
-                    const details = await getUserDetails(empType.value, gender.value, industryType.value, formData);
-                    const response = await createProfile(details);
-                    console.log(response);
+                    try {
+                        const details = await getUserDetails(empType.value, gender.value, industryType.value, formData);
+                        const response = await createProfile(details);
+                        formData.className = 'needs-validation';
+                        addValidation = false;
 
-                    formData.className = 'needs-validation';
-                    addValidation = false;
-
-                    if (response.status === 'success') {
-                        toaster(`! ${response.message}`, 'success');
-                        removeToaster(2000);
-                        const redirect = () => {
-                            window.location.replace('/employer-dashboard');
+                        if (response.status === 'success') {
+                            toaster(`! ${response.message}`, 'success');
+                            removeToaster(2000);
+                            const redirect = () => {
+                                window.location.replace('/employer-dashboard');
+                                loader.style.display = 'none';
+                                uploadBtn.style.display = 'inline-block';
+                            };
+                            setTimeout(redirect, 2000);
+                        } else {
+                            toaster(`! ${response.message}`, 'error');
+                            removeToaster(4000);
                             loader.style.display = 'none';
                             uploadBtn.style.display = 'inline-block';
-                        };
-                        setTimeout(redirect, 2000);
-                    } else {
-                        toaster(`! ${response.message}`, 'error');
+                        }
+                    } catch (e) {
+                        toaster(`! ${e.message}`, 'error');
                         removeToaster(4000);
+                    } finally {
                         loader.style.display = 'none';
                         uploadBtn.style.display = 'inline-block';
+                        formData.className = 'needs-validation';
+                        addValidation = false;
                     }
+
                 }
 
                 if (addValidation) {
@@ -318,35 +338,28 @@ const labelText = (value) => {
     labelText.value = value
 };
 
-// show alert message on page
-function showAlert(message) {
-  const alert = document.getElementById('alert');
-  const alertMessage = document.getElementById('alertMessage');
-
-  alert.classList.remove('d-none');
-  alertMessage.innerText = message;
-  setTimeout(() => {
-    hideAlert()
-  }, 6000);
-}
-
-function hideAlert() {
-  document.getElementById('alert').classList.add('d-none');
-}
-
-const playAudio = () => {
+const createAudio = () => {
     const sound = document.createElement("audio");
+    // const source = document.createElement("source");
     sound.id       = 'notification';
     sound.controls = 'controls';
     sound.src      = '/audio/notification.mp3';
     sound.type     = 'audio/mpeg';
     document.querySelector('body').appendChild(sound);
     const notify = document.getElementById('notification');
+    notify.style.position = 'absolute';
+    notify.style.left = '-2000px';
+};
+createAudio();
+
+const playAudio = () => {
+    const notify = document.getElementById('notification');
     notify.play();
+    return 'done';
 };
 
-const toaster = (message, type) => {
-    playAudio();
+const toaster = async (message, type) => {
+    await playAudio();
     const [messageSpan] = document.querySelectorAll('.slide-in-content span');
     messageSpan.innerHTML = message;
 
