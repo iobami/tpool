@@ -4,11 +4,8 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const { uuid } = require('uuidv4');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-// const GitHubStrategy = require('passport-github2').Strategy;
-// const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const model = require('../Models/index');
 const jsonWT = require('../Utils/auth-token');
-// const { throwError } = require('../Exceptions/custom-error');
 
 // serialize user object and send as a cookie
 passport.serializeUser((user, done) => {
@@ -35,7 +32,6 @@ passport.use('google-employer',
     async (accessToken, refreshToken, profile, done) => {
       try {
         // check user in our db
-        console.log(profile);
         const checkUser = await model.User.findOne({
           where: {
             email: profile.emails[0].value,
@@ -192,71 +188,3 @@ passport.use('google-employee',
       }
     },
   ));
-
-// github auth strategy
-// passport.use(
-//   new GitHubStrategy(
-//     {
-//       clientID: process.env.TALENT_POOL_GITHUB_CLIENTID,
-//       clientSecret: process.env.TALENT_POOL_GITHUB_CLIENTSECRET,
-//       callbackURL: process.env.TALENT_POOL_GITHUB_CALLBACKURL,
-//     },
-//     async (accessToken, refreshToken, profile, done) => {
-//       try {
-//         // check user in our db
-//         const checkUser = await models.User.findOne({
-//           where: {
-//             email: profile.emails[0].value,
-//           },
-//         });
-//         const data = await checkUser;
-//         if (data) {
-//           // user exists, send user object for serialization
-//           done(null, data);
-//         } else {
-//           // create a new user
-//           const newUser = await createUser(accessToken, profile);
-//           await newUser;
-//           return done(null, newUser);
-//         }
-//       } catch (error) {
-//         throwError(error);
-//       }
-//     },
-//   ),
-// );
-
-// linkedin auth strategy
-// passport.use(
-//   new LinkedInStrategy(
-//     {
-//       clientID: process.env.TALENT_POOL_LINKEDIN_CLIENTID,
-//       clientSecret: process.env.TALENT_POOL_LINKEDIN_CLIENTSECRET,
-//       callbackURL: process.env.TALENT_POOL_LINKEDIN_CALLBACKURL,
-//       scope: ['r_emailaddress', 'r_liteprofile'],
-//       state: true,
-//     },
-//     async (accessToken, refreshToken, profile, done) => {
-//       try {
-//         // check user in our db
-//         const checkUser = await models.User.findOne({
-//           where: {
-//             email: profile.emails[0].value,
-//           },
-//         });
-//         const data = await checkUser;
-//         if (data) {
-//           // user exists, send user object for serialization
-//           done(null, data);
-//         } else {
-//           // create a new user
-//           const newUser = await createUser(accessToken, profile);
-//           await newUser;
-//           return done(null, newUser);
-//         }
-//       } catch (error) {
-//         throwError(error);
-//       }
-//     },
-//   ),
-// );

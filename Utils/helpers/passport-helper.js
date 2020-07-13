@@ -1,5 +1,47 @@
 const { uuid } = require('uuidv4');
-const models = require('../../Models');
+const model = require('../../Models');
+
+const getUserData = async (profile, user, done) => {
+  try {
+    let userTypeId = null;
+    let verificationStatus = null;
+    let isEmployer = false;
+    if (user.role_id === 'ROL-EMPLOYEE') {
+      const employee = await model.Employee.findOne({ where: { user_id: user.user_id } });
+      if (employee) {
+        userTypeId = employee.employee_id;
+      }
+    } else if (user.role_id === 'ROL-EMPLOYER') {
+      isEmployer = true;
+      const employer = await model.Employer.findOne({ where: { user_id: user.user_id } });
+      if (employer) {
+        userTypeId = employer.employer_id;
+        verificationStatus = employer.verification_status;
+      }
+    }
+
+    if (user.status === '0') {
+      return done(null, false);
+    }
+
+    if (user.block) {
+      return done(null, false);
+    }
+    let data = {
+      email: user.email,
+      userId: user.user_id.toString(),
+      userRole: user.role_id,
+      userTypeId,
+    };
+
+    if (isEmployer) data = { ...data, verificationStatus };
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 const createUser = async (accessToken, profile) => {
   // save the profile id in a variable
