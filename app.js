@@ -124,7 +124,7 @@ app.set('views', path.join(__dirname, 'views'));
 // });
 
 app.use(fileupload({ useTempFiles: true }));
-db.sequelize.sync().then(() => {
+db.sequelize.sync({}).then(() => {
   seedSuperAdmin();
 });
 
@@ -164,7 +164,7 @@ app.use('/v1/employee', employeeSkillsRoutes);
 app.use('/v1/employee', employeeSearchRoutes);
 
 // employers route goes here
-app.use('/v1/employer', employerRoute);
+app.use('/employer', employerRoute);
 app.use('/v1/employer', employerUpgradeRoute);
 app.use('/v1/employer', employerReviews);
 app.use('/v1/employer', employerTransaction);
@@ -192,7 +192,7 @@ app.use('/v1/team', teamRoutes);
 
 // auth
 app.use('/v1/auth', googleAuth);
-app.use('/v1/auth', auth);
+app.use('/auth', auth);
 
 // app.use('/v1/admin', adminRoute); // admin
 app.use('/v1/admin', adminManagementRoute); // super admin
@@ -208,7 +208,7 @@ app.use(appRoute);
 //app.use(adminRoute);
 app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
-app.use(employerAuthRoute);
+app.use(employerAuthRoute); //mark this
 app.use(employerDashboardRoute);
 app.use(adminDashRoute);
 app.use(topTalentsRoute);
