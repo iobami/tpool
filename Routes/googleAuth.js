@@ -11,20 +11,30 @@ const isLoggedIn = (req, res, next) => {
 };
 
 // user sent to dashboard on successfull auth
-router.get('/dashboard', isLoggedIn, (req, res) => {
-  const data = req.user;
-  return res.json(data);
+router.get('/auth/dashboard', (req, res) => {
+  res.json(req.user);
 });
 
 // get profile details from google
-router.get('/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/auth/employer/google',
+  passport.authenticate('google-employer', { scope: ['profile', 'email'] }));
 
-router.get('/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
+// get profile details from google
+router.get('/auth/employee/google',
+  passport.authenticate('google-employee', { scope: ['profile', 'email'] }));
+
+router.get('/auth/employer/google/callback',
+  passport.authenticate('google-employer', { failureRedirect: '/' }),
   (req, res) => {
     // Successful authentication,
-    res.redirect('/v1/auth/dashboard');
+    res.redirect('/auth/dashboard');
+  });
+
+router.get('/auth/employee/google/callback',
+  passport.authenticate('google-employee', { failureRedirect: '/' }),
+  (req, res) => {
+  // Successful authentication,
+    res.redirect('/auth/dashboard');
   });
 
 // github routes
