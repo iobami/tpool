@@ -1,6 +1,5 @@
 const express = require('express');
 
-
 const { body } = require('express-validator');
 
 const authController = require('../../../Controllers/auth');
@@ -12,10 +11,10 @@ const {
   employeeSignup,
 } = require('../../../Controllers/views/employee/auth');
 
-appRoute.get('/employee-sign-in', employeeSignIn);
-appRoute.get('/employee-sign-up', employeeSignup);
+appRoute.get('/employee/login', employeeSignIn);
+appRoute.get('/employee/register', employeeSignup);
 appRoute.post(
-  '/employee-sign-in',
+  '/employee/login',
   [
     body('email')
       .isEmail()

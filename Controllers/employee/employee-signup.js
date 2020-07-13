@@ -25,14 +25,14 @@ exports.create = async (req, res) => {
     if (!errors.isEmpty()) {
       const errResponse = errors.array({ onlyFirstError: true });
       req.flash('errors', errResponse);
-      return res.redirect('/employee-sign-up');
+      return res.redirect('/employee/register');
     }
     const user = req.body;
     const { email } = user;
     const userExists = await model.User.findOne({ where: { email } });
     if (userExists !== null) {
       req.flash('error', 'Someone has already registered this email');
-      return res.redirect('/employee-sign-up');
+      return res.redirect('/employee/register');
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -65,7 +65,7 @@ exports.create = async (req, res) => {
       });
       // return successResMsg(res, 201, data);
       req.flash('success', 'Verification email sent!');
-      return res.redirect('/employee-sign-up');
+      return res.redirect('/employee/register');
     } catch (error) {
       // return errorResMsg(
       //   res,
@@ -73,12 +73,12 @@ exports.create = async (req, res) => {
       //   'An error occurred while creating user',
       // );
       req.flash('error', 'Someone has already registered this email');
-      return res.redirect('/employee-sign-up');
+      return res.redirect('/employee/register');
     }
   } catch (error) {
     // return errorResMsg(res, 500, 'An error occurred');
     req.flash('error', 'An Error occoured');
-    return res.redirect('/employee-sign-up');
+    return res.redirect('/employee/register');
   }
 };
 
@@ -103,10 +103,10 @@ exports.verifyEmail = async (req, res) => {
       if (user.status === '1') {
         if (user.role === 'ROL-EMPLOYER') {
           req.flash('success', 'This email has been verified');
-          return res.redirect('/employee-sign-in');
+          return res.redirect('/employer-sign-in');
         }
         req.flash('success', 'This email has been verified');
-        return res.redirect('/employer-sign-in');
+        return res.redirect('/employee/login');
         // return errorResMsg(res, 401, 'This email has been verified');
       }
       // update user status
@@ -126,7 +126,7 @@ exports.verifyEmail = async (req, res) => {
           return res.redirect('/employer-sign-in');
         }
         req.flash('success', 'Email verification successful');
-        return res.redirect('/employee-sign-in');
+        return res.redirect('/employee/login');
         // return successResMsg(res, 200, 'Email verification successful');
       }
     } else {

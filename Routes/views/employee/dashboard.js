@@ -9,10 +9,10 @@ appRoute.get(
   employeeController.getDashboard,
 );
 // Portfolio Page
-appRoute.get(
-  '/employee/portfolio',
-  employeeViewController.getEmployeePortfolio,
-);
+// appRoute.get(
+//   '/employee/portfolio',
+//   employeeViewController.getEmployeePortfolio,
+// );
 // Get Employee Messages
 appRoute.get('/employee/messages', employeeViewController.getEmployeeMessages);
 // Create Profile
