@@ -620,7 +620,7 @@ exports.resendVerificationLink = async (req, res) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    res.render('Pages/verify-email');
+    res.render('Pages/verify-email', { PageName: 'Verify Email' });
   }
 };
 
