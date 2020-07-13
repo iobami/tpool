@@ -5,7 +5,6 @@
 
 		<link rel="stylesheet" href="../styles/custom-css/employer-dash-settings.css" />
 		<link rel="stylesheet" href="../styles/custom-css/employer-certificate.css" />
-		employer-authAPP.js
 		<script src="../js/custom-js/employer-authCERT.js"></script>
 	</head>
 
@@ -14,7 +13,6 @@
 
 		<!-- Dashboard nav -->
 		<%- include('../Templates/dashboard-header') %>
-
 		<div class="container-fluid mt-4">
 			<div class="row">
 				<div class="col-auto d-md-block sticky-top remove-block">
@@ -23,40 +21,76 @@
 				</div>
 
 				<div class="col ml-sm-auto pl-0 pr-0 pl-lg-0 sidebar-margin">
-					<!-- Content Begins Here -->
+                    <!-- Content Begins Here -->
+                    <!--NOTIFICATION TOAST-->
+                    <div class="slide-in from-right">
+                        <div class="slide-in-content">
+                            <div class="row">
+                                <span class="col-10" style="padding-top: 3px">Success Message oei </span>
+                                <span class="col-2" style="padding-top: 2px"><span class="lds-hourglass"></span></span>
+                            </div>
+                        </div>
+                    </div>
 
 					<section class="container employer-certificate-upload-main">
 						<div class="employer-certificate-upload">
 							<div class="">
-								<h3 style="text-align: left;">Upload Certificate</h3>
+                                <h3 style="text-align: left;">Upload Certificate</h3>
+                                <small class="certificate-upload-descrption">Kindly upload front and back images of your certificate for verificstion. Maximum upload of 5 files.</small>                                
 							</div>
 
-							<form action="#" class="needs-validation" novalidate>
+                            <form action="#" class="needs-validation" novalidate
+                             enctype="multipart/form-data">
 								<div class="form-row">
 									<div class="col-md-6 col-sm-6 col-12">
 										<label for="name">Name</label>
 										<input type="text" class="form-control" id="name" placeholder="Name *" required />
-										<div class="valid-feedback">
+										<!-- <div class="valid-feedback">
 											Looks good!
-										</div>
+										</div> -->
 									</div>
 									<div class="col-md-6 col-sm-6 col-12">
 										<label for="number">Document No.</label>
 										<input type="text" class="form-control" id="number" placeholder=" Document No. *" required />
-										<div class="valid-feedback">
+										<!-- <div class="valid-feedback">
 											Looks good!
-										</div>
+										</div> -->
 									</div>
 								</div>
 
-								<div class="form-row custom-file">
+								<!-- <div class="form-row custom-file">
 									<input onchange="readImage()" type="file" class="custom-file-input" id="customFile" required />
 									<label class="custom-file-label" for="customFile">Choose file</label>
-								</div>
+                                </div> -->
 
-								<div class="form-row justify-content-end">
-									<button type="submit" class="btn btn-lg">Add</button>
-								</div>
+								<div class="form-row d-flex justify-content-start" style="padding-top: 10px">
+                                    <div class="col-10">
+                                        <div id="drop-area">
+                                            <div class="my-form">
+                                                <div class="d-flex justify-content-around">
+                                                    <div class="col-sm-3 col-3 align-self-center image-preview-sect">
+                                                        <label for="fileElem">
+                                                            <img id="image-preview" src="/img/attach_file.svg" alt="">
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-9 col-9 align-self-center">
+                                                        <input type="file" id="fileElem" accept="image/*"
+                                                         onchange="readImage(this.files)">
+                                                        <label for="fileElem" class="upload-label-button">
+                                                            Upload image
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 align-self-end add___btn">
+                                        <button type="submit" class="btn">Add</button>
+                                    </div>
+                                </div>
+                                <div class="form-row justify-content-end">
+                                    <small class="file-upload-count-error">! Max upload is 5</small>
+                                </div>
 								<div class="form-row justify-content-end">
 									<button class="btn btn-lg lds-ellipsis" style="display: none;">
 										<div></div>
@@ -68,8 +102,6 @@
 							</form>
 						</div>
 
-						<br />
-						<br />
 						<div class="row">
 							<table class="table">
                                 <thead>
@@ -86,7 +118,7 @@
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td class="row justify-content-end">
-                                        <button id="upload" class="btn" onclick="batchUpload()">
+                                        <button id="upload" style="display: none;" class="btn" onclick="batchUpload()">
                                             Upload
                                         </button>
                                         <button class="btn lds-ellipsis" id="loader"
@@ -148,6 +180,7 @@
   <script src="../js/bootstrap-js/popper.js"></script>
   <script src="../js/bootstrap-js/jquery.js"></script>
   <script src="../js/bootstrap-js/bootstrap.js"></script>
+  <script src="../js/custom-js/toast.js"></script>
   <script src="../js/custom-js/employer-certificate.js"></script>
 </body>
 
