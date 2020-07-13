@@ -393,6 +393,7 @@ input#output.form-control.em-input {
 .slide-in.from-right {
     right: 0;
     max-width: 280px;
+    min-width: 240px;
     font-size: 14px;
 }
 
