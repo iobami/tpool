@@ -1,5 +1,57 @@
 const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
 
+const createAudio = () => {
+    const sound = document.createElement("audio");
+    // const source = document.createElement("source");
+    sound.id       = 'notification';
+    sound.controls = 'controls';
+    sound.src      = '/audio/notification.mp3';
+    sound.type     = 'audio/mpeg';
+    document.querySelector('body').appendChild(sound);
+    const notify = document.getElementById('notification');
+    notify.style.position = 'absolute';
+    notify.style.left = '-2000px';
+    return 'done';
+};
+
+createAudio();
+
+const playAudio = () => {
+    const notify = document.getElementById('notification');
+    notify.play();
+    return 'done';
+};
+
+const toaster = async (message, type) => {
+    await playAudio();
+    const [messageSpan] = document.querySelectorAll('.slide-in-content span');
+    messageSpan.innerHTML = message;
+
+    const [toast] = document.getElementsByClassName('slide-in');
+    const [toastBgColor] = document.getElementsByClassName('slide-in-content');
+    toastBgColor.classList.add(type);
+    toast.classList.add('show');
+};
+
+const removeToaster = (time) => {
+    const toast = () => {
+        const [toast] = document.getElementsByClassName('slide-in');
+        toast.className = 'slide-in from-right';
+    };
+    setTimeout(toast, time)
+};
+
+
+window.onload = (event) => {
+    if (userInformation === null) {
+        toaster('Token not found, please sign in.', 'error');
+        const redirect = () => {
+            return window.location.replace('/');
+        };
+        setTimeout(redirect, 2000);
+    }
+};
+
 const userInfo1 = JSON.parse(atob(userInformation.token.split('.')[1]));
 const { userTypeId, userRole } = userInfo1;
 
@@ -111,7 +163,7 @@ async function getData(){
     if (response.data) {
         let dropdown = document.getElementById('company_category');
         let option;
-        data.forEach((data) => {
+        response.data.forEach((data) => {
             option = document.createElement('option');
             option.innerHTML = data.category_name;
             option.value = data.category_id;
@@ -208,7 +260,6 @@ getData().then();
 })();
 
 const createProfile = async (userData) => {
-    console.log(userData);
     const profileUrl = 'https://api.lancers.app/v1/employer/create';
 
     try {
@@ -336,43 +387,4 @@ const readImage = () => {
 const labelText = (value) => {
     const labelText = document.getElementById('logo');
     labelText.value = value
-};
-
-const createAudio = () => {
-    const sound = document.createElement("audio");
-    // const source = document.createElement("source");
-    sound.id       = 'notification';
-    sound.controls = 'controls';
-    sound.src      = '/audio/notification.mp3';
-    sound.type     = 'audio/mpeg';
-    document.querySelector('body').appendChild(sound);
-    const notify = document.getElementById('notification');
-    notify.style.position = 'absolute';
-    notify.style.left = '-2000px';
-};
-createAudio();
-
-const playAudio = () => {
-    const notify = document.getElementById('notification');
-    notify.play();
-    return 'done';
-};
-
-const toaster = async (message, type) => {
-    await playAudio();
-    const [messageSpan] = document.querySelectorAll('.slide-in-content span');
-    messageSpan.innerHTML = message;
-
-    const [toast] = document.getElementsByClassName('slide-in');
-    const [toastBgColor] = document.getElementsByClassName('slide-in-content');
-    toastBgColor.classList.add(type);
-    toast.classList.add('show');
-};
-
-const removeToaster = (time) => {
-    const toast = () => {
-        const [toast] = document.getElementsByClassName('slide-in');
-        toast.className = 'slide-in from-right';
-    };
-    setTimeout(toast, time)
 };
