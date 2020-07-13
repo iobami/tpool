@@ -55,7 +55,7 @@ exports.create = async (req, res) => {
     // create new user and send verification mail
     try {
       await model.User.create(userSave);
-      const verificationUrl = `${URL}/verify-email?verification_code=${token}`;
+      const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
 
       const message = `<p> Hi, thanks for registering, kindly verify your email </p><a href ='${verificationUrl}'>link</a>`;
       await sendEmail({
@@ -96,23 +96,17 @@ exports.verifyEmail = async (req, res) => {
     // check token expiration
     if (Date.now() <= decoded.exp + Date.now() + 60 * 60) {
       if (!user) {
-        if (user.role === 'ROL-EMPLOYER') {
-          req.flash('error', 'Email has not been registered');
-          res.redirect('/employer-sign-in');
-        } else {
-          req.flash('error', 'Email has not been registered');
-          res.redirect('/employee-sign-in');
-        }
+        req.flash('error', 'Email has not been registered');
+        return res.redirect('/verify-email');
       }
       // return errorResMsg(res, 404, 'Email has not been registerd');
       if (user.status === '1') {
         if (user.role === 'ROL-EMPLOYER') {
-          req.flash('error', 'This email has been verified');
-          res.redirect('/employer-sign-in');
-        } else {
-          req.flash('error', 'This email has been verified');
-          res.redirect('/employee-sign-in');
+          req.flash('success', 'This email has been verified');
+          return res.redirect('/employee-sign-in');
         }
+        req.flash('success', 'This email has been verified');
+        return res.redirect('/employer-sign-in');
         // return errorResMsg(res, 401, 'This email has been verified');
       }
       // update user status
@@ -128,28 +122,21 @@ exports.verifyEmail = async (req, res) => {
       const data = await updateUser;
       if (data[0] === 1) {
         if (user.role === 'ROL-EMPLOYER') {
-          req.flash('error', 'Email verification successful');
-          res.redirect('/employer-sign-in');
-        } else {
-          req.flash('error', 'Email verification successful');
-          res.redirect('/employee-sign-in');
+          req.flash('success', 'Email verification successful');
+          return res.redirect('/employer-sign-in');
         }
+        req.flash('success', 'Email verification successful');
+        return res.redirect('/employee-sign-in');
         // return successResMsg(res, 200, 'Email verification successful');
       }
     } else {
-      // eslint-disable-next-line no-lonely-if
-      if (user.role === 'ROL-EMPLOYER') {
-        req.flash('error', 'Invalid or expired token');
-        res.redirect('/employer-sign-in');
-      } else {
-        req.flash('error', 'Invalid or expired token');
-        res.redirect('/employee-sign-in');
-      }
+      req.flash('error', 'Sorry, this link is either invalid or has expired. ');
+      return res.redirect('/verify-email');
       // return errorResMsg(res, 400, 'Invalid or expired token');
     }
   } catch (error) {
-    req.flash('error', 'An error occured');
-    res.redirect('/employer-sign-in');
+    req.flash('error', 'Sorry, this link is either invalid or has expired. ');
+    return res.redirect('/verify-email');
     // return errorResMsg(res, 500, 'An error occured');
   }
 };
