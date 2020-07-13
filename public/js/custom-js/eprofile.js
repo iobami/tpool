@@ -10,7 +10,21 @@ const frontend = document.querySelector("frontend");
 const mobile = document.querySelector("mobile");
 const design = document.querySelector("design");
 const addSkillForm = document.querySelector('#add-skills')
-const userInformation = JSON.parse(localStorage.getItem("user"));
+// const userInformation = JSON.parse(localStorage.getItem("user"));
+
+const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
+
+const employeename = document.querySelector('.employeename');
+const employeeName = document.querySelector('.employeeName');
+const employeeSkill = document.querySelector('.employeeSkill');
+const employeeLocation = document.querySelector('.employeeLocation');
+const employeeEmail = document.querySelector('.employeeEmail');
+const employeeProfilePhoto = document.querySelector('.employeeProfilePhoto')
+
+if (!userInformation) {
+  alert('Error! User Information not found, please sign in again.');
+  location.href = '/employee-sign-in';
+}
 
 const errorMessage = document.querySelector("#error-message");
 const successMessage = document.querySelector("#success-message");
@@ -44,6 +58,45 @@ function onsubmit(e) {
     // window.location.replace('/employee_profile.html')
   }
 }
+
+function getEmployeeDetails(){
+  let employeeUrl = `https://api.lancers.app/v1/employee/profile/${userInformation.userTypeId}`
+  axios({
+    method: 'GET',
+    url: employeeUrl,
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${userInformation.token}`,
+    }
+  }).then(data => {
+    console.log(data.data.data.employee)
+    employeename.innerHTML = data.data.data.employee.first_name
+    employeeName.innerHTML = data.data.data.employee.first_name + data.data.data.employee.last_name
+
+    if(data.data.data.employee.email === undefined){
+      employeeEmail.innerHTML = 'No email set'
+    } else {
+      employeeEmail.innerHTML = data.data.data.employee.email
+    }
+
+    if(data.data.data.employee.skill === undefined){
+      employeeSkill.innerHTML = 'No skill set'
+    } else {
+      employeeSkill.innerHTML = data.data.data.employee.skill
+    }
+
+    if(data.data.data.employee.location === undefined){
+      employeeLocation.innerHTML = 'No location set'
+    } else {
+      employeeLocation.innerHTML = data.data.data.employee.location
+    }
+    
+    employeeProfilePhoto.src = data.data.data.employee.picture_url
+    
+  })
+}
+
+getEmployeeDetails()
 
 Filevalidation = () => {
   const fi = document.getElementById("file");
@@ -80,21 +133,31 @@ const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
 
 addSkillForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const skill = addSkillForm.querySelector('input').value;
-  
-  fetch(`https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}`, {
-    method: "POST",
+  let skill = addSkillForm.querySelector('input').value;
+  // const skillUrl = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}`;
+  const skillUrl = `https://api.lancers.app/v1/employee/skill`;
+
+  axios({
+    method: 'POST',
+    url: skillUrl,
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
-      "User-Agent": "Developers Lancers",
       Authorization: `Bearer ${userInformation.token}`,
     },
-    body: JSON.stringify({"skill_description": skill})
-  })
-    .then(res => res.json())
-    .then(data => {
-      getAllSkillsForIndividuals()
-    })
+    data: JSON.stringify({"skill_description": skill, employee_id: userInfo.userTypeId})
+  }).then(({ data }) => {
+    if (data.status === 'success') {
+      $('#exampleModal').modal('hide');
+      skill = '';
+      alert('Skill Added');
+      buildList([{skill_description:data.data.skill_description, id: data.data.id}]);
+    } else {
+      alert('Skill not added, please try again.');
+    }
+  
+  }).catch(e => {
+    alert(e.message);
+  });
 })
 
 let myArray = [];
@@ -127,25 +190,25 @@ function buildList(data) {
   });
 }
 
-async function getAllSkillsForIndividuals() {
-  const url = `https://api.lancers.app/v1/employee/skill/${userInfo.userTypeId}/all`;
-
-  try {
-    const response = await fetch(url, {
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "User-Agent": "Developers Lancers",
-        Authorization: `Bearer ${userInformation.token}`,
-      },
-    });
-    const result = await response.json();
-
-
-    myArray = result.data.skills;
-    buildList(myArray);
-  } catch (error) {
-    alert("Opps! An error seems to have occured. Try again later. Thanks!");
+  async function getAllSkillsForIndividuals() {
+    const skillUrl = `https://api.lancers.app/v1/employee/${userInfo.userTypeId}/skill`;
+    try {
+      const { data } = await axios({
+        method: 'GET',
+        url: skillUrl,
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${userInformation.token}`,
+        },
+      });
+      
+      if (data.status === 'success') {
+        myArray = data.data;
+        buildList(myArray);
+      }
+    } catch (error) {
+      // alert("Opps! An error seems to have occured. Try again later. Thanks!");
+    }
   }
-}
 
 getAllSkillsForIndividuals();

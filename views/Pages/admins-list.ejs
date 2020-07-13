@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../Templates/head') %>
+        <link href="../styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
+        <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
+        <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
+        <link href="../styles/custom-css/admins-list.css"  rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" />
+    </head>
+    <body>
+
+        <%- include('../Templates/admin-header') %>
+
+          <%- include('../Templates/admin-sidebar') %>
+
+        <section class="admin__dashboard">
+            <h2 class="dashboard__heading">Admins List </h2>
+
+            <div class="page-content mt-5  py-0">
+                <!-- header -->
+                <div class="container px-3 pb-sm-0 mt-5"> 
+                     <div class="row  justify-content-between">
+                        <div class="   col-md-5  col-lg-4" >
+                            <div class="form-group">
+                                <input type="search" class="form-control" id="search-admin" placeholder="type admin name">
+                            </div>
+                         </div>
+                        <div class="  col-md-4 col-lg-3">
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">Add Admin</button>
+    
+                        </div>
+                     </div>
+                </div>
+    
+                <div class="container px-3 pt-sm-0 ">
+                     <div class="table-responsive">
+                        <table class="table table-striped  ">
+                            <thead class="">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Random Shalaye</td>
+                                <td>Random@Shalaye.omo</td>
+                                <td>Random</td>
+                                <td>Active</td>
+                                <td class="px-0"> 
+                                    <i class="admin-action fas fa-ban"></i>
+                                    <i class="admin-action fas fa-pen"></i>
+                                    <i class="admin-action fas fa-trash-alt"></i>
+                                </td>
+                              </tr>
+                        
+                            </tbody>
+                          </table>
+                     </div>
+                </div>
+                <!-- Modal -->
+    <div class="modal fade p-0" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content p-3">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add new admin</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form action=""  >
+                    <div class="row">
+                        <div class="col-md form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        </div>
+                        <div class="col-md form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lasttName" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="Email">Email :</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="row">
+                        <div class="col-md form-group">
+                            <label for="Password">Password :</label>
+                            <input type="password" class="form-control" id="password1" placeholder="Password">
+    
+                          </div>
+                          <div class="col-md form-group">
+                            <label for="confirm-password">Confirm Password :</label>
+                            <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password">
+                          </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="phone">Phone :</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter Phone number">
+                    </div>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+    
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+           
+        </section>
+
+        <div id="body__click"></div>
+        
+        <script src="../js/bootstrap-js/popper.js"></script>
+        <script src="../js/bootstrap-js/jquery.js"></script>
+        <script src="../js/bootstrap-js/bootstrap.js"></script>
+        <script>
+        $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+        })
+        </script>
+        <script src="../js/custom-js/side-nav.js"></script>
+    </body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<%- include('../Templates/head') %>
+		<link rel="stylesheet" href="../styles/custom-css/employer-individual-profile.css" />
+	</head>
+	<body>
+		<!-- NAV-BAR -->
+		<%- include('../Templates/employerhead') %>
+
+		<main>
+			<form id="employerCompany">
+			<div class="mt-5">
+				<div class="container text-center">
+					<h5 class="heading-color">
+						Let’s get started with a few details about you
+					</h5>
+					<div class="container pt-5 center">
+						<div class="row">
+							<div class="col-sm-2"></div>
+							<div class="col-sm col-">
+								<div class="form-progress">
+									<div class="center">
+										<progress
+											class="form-progress-bar"
+											min="0"
+											max="33"
+											value="0"
+											step="33"
+											aria-labelledby="form-progress-completion"
+										></progress>
+										<div class="form-progress-indicator one active">
+											<i class="text-default mb-2 fa-2x fa fa-check-circle" aria-hidden="true"></i>
+										</div>
+										<div class="form-progress-indicator two">
+											<i class="text-default mb-2 fa-2x fa fa-circle-thin" aria-hidden="true"></i>
+										</div>
+										<p id="form-progress-completion" class="js-form-progress-completion sr-only" aria-live="polite">
+											0% complete
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="details" class="mt-5">
+				<div class="container">
+					<h5 class="heading-color">Personal Information</h5>
+					<div class="row">
+						<div id="profile" class="mt-5">
+							<div class="container">
+								<div class="row">
+									<div class="col-md">
+										<figure class="profile-figure">
+											<img
+												class="profile-img img-fluid"
+												height="243px"
+												width="243px"
+												src="../img/employer-profile-creation-page1.png"
+												alt=""
+											/>
+											<figcaption class="mt-2 d-md-none profile-figcaption">
+												Profile Picture
+											</figcaption>
+										</figure>
+									</div>
+
+									<div class="col-md margt">
+										<div class="row">
+											<div><span  id="logoname"></span></div>
+											<div class="col-sm right-div">
+												<div class="btn new-btn m"><input id="input" id="logo" type="file" name="file" />Browse</div>
+											</div>
+											<!-- <div style='clear:both;'>&nbsp;</div> -->
+										</div>
+										<span class="small">300 x 300px recommended. JPGs and PNG supported</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-5 mobile-margin-fix1">
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="companyname">First Name</label>
+							<input type="text" class="form-control em-input" id="companyname" placeholder="Timi" />
+						</div>
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="companyname">Last Name</label>
+							<input type="text" class="form-control em-input" id="companyname" placeholder="Tom" />
+						</div>
+					</div>
+					<div class="row mt-5 mobile-margin-fix2">
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="companyaddress">Email</label>
+							<input type="text" class="form-control em-input" id="companyaddress" placeholder="Timitom@gmail.com" />
+						</div>
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="companytype">Sex</label>
+							<select class="form-control em-input select" name="companytype" id="companytype">
+								<option value="Blank">Select</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+								<option value="Bi">Bi-sesexual</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row mt-5 mobile-margin-fix2">
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="country">Country</label>
+							<input type="text" class="form-control em-input" id="" placeholder="Nigeria" />
+						</div>
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="companyphone">Phone Number</label>
+							<div class="row">
+								<div class="col-sm-4 left-div">
+									<input type="text" class="form-control wid em-input" id="companyname" placeholder="+234" />
+								</div>
+							</div>
+						</div>
+						<div class="mt-5 form-group col-sm-12 col-lg-12 mobile-margin-fix2">
+							<label for="desc">About you</label>
+							<textarea
+								class="form-control"
+								id="desc"
+								rows="8"
+								placeholder="Enter short description about you"
+							></textarea>
+						</div>
+					</div>
+					<div class="row mt-5 mobile-margin-fix2">
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="companyname">How did you hear about us ?</label>
+							<select class="form-control em-input select" name="companytype" id="companytype">
+								<option value="Blank">Select</option>
+								<option value="online">Online</option>
+								<option value="Fs">Friend Suggestion</option>
+								<option value="Bi">Referral</option>
+							</select>
+						</div>
+						<div class="col-sm-6 col-lg-6 form-group mobile-margin-zero">
+							<label for="website">Website</label>
+							<input type="text" class="form-control em-input" id="website" placeholder="Enter website url" />
+						</div>
+					</div>
+					<div class="container mb-5 form-group">
+						<!-- <div class="row mt-5 mobile-margin-fix2">
+                    <label for="" class="interested-skills">Interested Skills</label>
+
+
+                    <div class="container my-3 boxs boxs-sm">
+
+                        <div class="mx-2 row mt-4">
+
+                            <div class="bg-white col-xs mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+                                Flutter
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="bg-white col-xs mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+                                PHP
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="bg-white col-xs mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+                                Java
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="bg-white col-xs mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+                                Web design
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+
+                        </div>
+
+                        <input style="border:0 !important; outline:0 !important" type="text" class="form-control em-input" id="tag" placeholder="Enter interested skills...">
+                    </div>
+                    <div class="inline-block">
+                        <p class="small-xs">Suggested Skills<span class=" display-size text-primary">
+                        Software testing, HTML, CSS, React, Vue</span> </p>
+                    </div>
+
+                </div>
+            </div> -->
+					</div>
+				</div>
+			</div>
+
+			<div id="networks" class="mt-5">
+				<div class="container">
+					<h5 class="pt-3 heading-color">Social Information</h5>
+					<div class="row mt-5 mobile-margin-fix4">
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="linkedin">LinkedIn</label>
+							<input type="text" class="form-control em-input" id="linkedin" placeholder="Enter LinkedIn url" />
+						</div>
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="facebook">Facebook</label>
+							<input type="text" class="form-control em-input" id="facebook" placeholder="Enter Facebook url" />
+						</div>
+					</div>
+					<div class="row mt-5 mobile-margin-fix2">
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="twitter">Twitter</label>
+							<input type="text" class="form-control em-input" id="Twitterr" placeholder="Enter Twitter url" />
+						</div>
+						<div class="col-sm-6 col-lg-6 form-group">
+							<label for="instagram">Instagram</label>
+							<input type="text" class="form-control em-input" id="instagram" placeholder="Enter Instagram url" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class=" container alert alert-danger d-none" style="padding: 0.5rem 1rem;" id="alert" role="alert">
+				<p class="my-0" id="alertMessage"></p>
+			  </div>
+
+			<div class="mt-5 mb-5 pb-5 mobile-margin-pixel">
+				<div class="container text-right center">
+					<button class="btn new-btn2 mb-5" type="submit">Create</button>
+				</div>
+			</div>
+			</form>
+		</main>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="../js/custom-js/employer-company.js"></script>
+		<!-- <script type="module" src="js/custom-js/employer-profile-creation.js"></script> -->
+		<%- include('../Templates/footer') %>
+	</body>
+</html>

@@ -1,0 +1,148 @@
+.employer-certificate-upload-main {
+    width: 92%;
+    margin: auto;
+    min-height: 67vh;
+    padding: 40px 24px 0 24px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 1px #ccc; 
+}
+
+.employer-certificate-upload h3 {
+    margin: -20px 0 6px 0;
+    text-align: left !important;
+}
+
+.form-row label {
+    margin: 3px 0;
+}
+
+form .btn {
+    background-color: #fff;
+    color: #084482;
+    transition: .4s;
+    border: 1px solid #084482 !important;
+    margin-right: 6px;
+}
+form .btn:hover {
+    background-color: #084482;
+    color: #FFFFFF;
+}
+
+.form-row .form-control {
+    border: 1px solid #ccc !important;
+}
+.form-row .form-control::placeholder {
+    opacity: 0.7;
+}
+
+.custom-file {
+    margin: 12px 0 12px 1px;
+}
+
+.custom-file-input {
+    cursor: pointer;
+}
+.custom-file-input label:focus {
+    box-shadow: none;
+}
+
+.custom-file-label::after {
+    color: #FFFFFF;
+    content: "Select Image";
+    background-color: #084482;
+    border-left: inherit;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+.custom-file-input:lang(en)~.custom-file-label::after {
+    content: "Select Image";
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 500;
+}
+
+tbody tr {
+    transition: 1s;
+}
+
+tbody td .btn:hover {
+    background-color: white;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    transition: 0.6s;
+}
+
+tfoot .btn {
+    background-color: #084482;
+    color: #FFFFFF;
+    margin-right: 16px;
+}
+tfoot .btn:hover {
+    background-color: #fff;
+    color: #084482;
+    transition: .4s;
+    border: 1px solid #084482;
+}
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 74px;
+    height: 48px;
+}
+.lds-ellipsis div {
+    position: absolute;
+    top: 19px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis:hover div {
+    background: #084482;
+    transition: 0.7s;
+}
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
