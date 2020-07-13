@@ -203,9 +203,9 @@ app.use('/v1/package', packageRoutes);
 // global error handler
 app.use(errorHandler);
 
-//All routes
+// All routes
 app.use(appRoute);
-//app.use(adminRoute);
+// app.use(adminRoute);
 app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
 app.use(employerAuthRoute);
