@@ -44,60 +44,63 @@ const attributes = [
 let image;
 
 const uploadImageFunction = async (req, res) => {
-  await cloudinary.uploader.upload(
-    req.files.image.tempFilePath,
-    (error, result) => {
-      if (result) {
-        image = result.secure_url;
-        return image;
-      }
-      // return errorResMsg(res, 400, 'Image Upload Failed!, Kindly retry');
-      req.flash('error', 'Image Upload Failed!, Kindly retry');
-      return res.redirect('/employee/profile/create');
-    },
-  );
-  return image;
+  try {
+    await cloudinary.uploader.upload(
+      req.files.image.tempFilePath,
+      (error, result) => {
+        if (result) {
+          image = result.secure_url;
+          return image;
+        }
+        // return errorResMsg(res, 400, 'Image Upload Failed!, Kindly retry');
+        req.flash('error', 'Image Upload Failed!, Kindly retry');
+        return res.redirect('/employee/profile/create');
+      },
+    );
+    return image;
+  } catch (err) {
+    req.flash('error', err.message);
+    return errorResMsg(res, 500, err.message);
+  }
 };
 
 // CREATE A PROFILE -- To be consumed with axios
 exports.createProfile = async (req, res) => {
-  const employeeId = uuid();
-  const imageUrl = await uploadImageFunction(req, res);
-  const { userId } = req.session;
-  // console.log('session', req.session);
-
-  const {
-    firstName,
-    lastName,
-    userType,
-    hngId,
-    userName,
-    location,
-    track,
-    phoneNo,
-    availability,
-    dateOfBirth,
-    employeeCv,
-  } = req.body;
-  const newBody = {
-    first_name: firstName,
-    last_name: lastName,
-    user_type: userType,
-    phone_no: phoneNo,
-    hng_id: hngId,
-    username: userName,
-    image: imageUrl,
-    location,
-    track,
-    availability,
-    dob: dateOfBirth,
-    employee_id: employeeId,
-    views: '0',
-    employee_cv: employeeCv,
-    user_id: userId
-  };
-
   try {
+    const employeeId = uuid();
+    const imageUrl = await uploadImageFunction(req, res);
+    const { userId } = req.session;
+    const {
+      firstName,
+      lastName,
+      userType,
+      hngId,
+      userName,
+      location,
+      track,
+      phoneNo,
+      availability,
+      dateOfBirth,
+      employeeCv,
+    } = req.body;
+    const newBody = {
+      first_name: firstName,
+      last_name: lastName,
+      user_type: userType,
+      phone_no: phoneNo,
+      hng_id: hngId,
+      username: userName,
+      image: imageUrl,
+      location,
+      track,
+      availability,
+      dob: dateOfBirth,
+      employee_id: employeeId,
+      views: '0',
+      employee_cv: employeeCv,
+      user_id: userId,
+    };
+
     // eslint-disable-next-line camelcase
     // const { user_id: } = req.session;
     const userQuery = await models.User.findOne({ where: { user_id: userId } });
@@ -112,22 +115,25 @@ exports.createProfile = async (req, res) => {
 
     const userProfile = await query;
     // Check if profile does not already exist
-    if (!userProfile) {
-      // Create new profile
-      const data = await models.Employee.create(newBody);
-
-      // return successResMsg(res, 201, data);
-      if (!data) {
-        req.flash('error', 'User already has a profile. Please, update existing profile');
-        return res.redirect(`/employee/dashboard/${employeeId}`);
-      }
-      req.flash('success', 'Profile Created Succesfully!');
+    if (userProfile) {
+      req.flash(
+        'error',
+        'User already has a profile. Please, update existing profile',
+      );
       return res.redirect(`/employee/dashboard/${employeeId}`);
     }
+    // Create new profile
+    await models.Employee.create(newBody);
+
+    // return successResMsg(res, 201, data);
+    req.flash('success', 'Profile Created Succesfully!');
+    req.session.isProfileCreated = true;
+    req.session.profileId = employeeId;
+    return res.redirect(`/employee/dashboard/${employeeId}`);
   } catch (err) {
-    // return errorResMsg(res, 500, err.message);
     req.flash('error', err.message);
-    return res.redirect('/employee/profile/create');
+    return errorResMsg(res, 500, err.message);
+    // return res.redirect('/employee/profile/create');
   }
 };
 
@@ -135,12 +141,13 @@ exports.createProfile = async (req, res) => {
 exports.getDashboard = async (req, res) => {
   try {
     let employeeId;
+    const { isLoggedIn, userTypeId } = req.session;
 
     if (req.params.employee_id) {
       employeeId = req.params.employee_id;
+    } else if (isLoggedIn && userTypeId) {
+      employeeId = req.session.employeeId;
     }
-
-    employeeId = req.session.employeeId;
 
     const query = await models.Employee.findOne({
       where: { employee_id: employeeId },
@@ -206,9 +213,10 @@ exports.getProfileByUsername = async (req, res) => {
       return errorResMsg(res, 404, 'Profile not found');
     }
 
-    return res.status(200).render('no page yet', { // TODO create a page for get profile by username
-      pageTitle: 'Talent Pool | Profile',
-      path: `${username}`,
+    return res.status(200).render('no page yet', {
+      // TODO create a page for get profile by username
+      pageTitle: `Talent Pool | ${username}'s Profile`,
+      path: `/${username}`,
       data,
     });
   } catch (err) {
@@ -227,7 +235,6 @@ exports.updateProfile = async (req, res) => {
       if (req.files) {
         const imageUrl = await uploadImageFunction(req, res);
         reqBody = { image: imageUrl, ...req.body };
-        console.log(reqBody);
       }
 
       await models.Employee.update(reqBody, {
@@ -256,8 +263,6 @@ exports.updateProfile = async (req, res) => {
       'Bad Request! Please, try again with accepted entries!!!',
     );
   } catch (err) {
-    console.log(err);
-
     return errorResMsg(res, 500, err.message);
   }
 };
