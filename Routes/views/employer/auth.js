@@ -9,8 +9,8 @@ const authController = require('../../../Controllers/auth');
 const { employerSignIn } = require('../../../Controllers/views/employer/auth');
 const { employerSignup } = require('../../../Controllers/views/employer/auth');
 
-appRoute.get('/employer-sign-in', employerSignIn);
-appRoute.get('/employer-sign-up', employerSignup);
+appRoute.get('/employer/login', employerSignIn);
+appRoute.get('/employer/register', employerSignup);
 appRoute.post(
   '/employer-sign-in',
   [

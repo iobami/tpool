@@ -210,22 +210,20 @@ class Employers {
     }
   }
 
-  static async getemployerdetails(req, res, nameofpage, self) {
-    const id = req.session.userId;
+  static async getemployerdetails(req, res) {
     try {
-      const getemployerdetails = await employerss.findAll({
+      const employerinformation = await employerss.findOne({
         where: {
-          employer_id: id,
+          employer_id: req.session.employerId,
         },
-        include: [company_type],
+        include: [company_type, mainuser],
       });
       if (getemployerdetails.length <= 0) {
         return res.send('404 error');
       }
-      res.render(self, {
-        pageName: nameofpage,
-        getemployerdetails,
-      });
+      req.user = employerinformation;
+
+      // return employerinformation;
     } catch (err) {
       res.status(500).send({
         status: 'error',
@@ -233,32 +231,6 @@ class Employers {
       });
     }
   }
-  //check the user info with the user id
-  static async getuserinfo(req, res, next) {
-    const id = req.session.userId;
-    console.log(id);
-    try {
-      const getuseremployer = await employerss.findAll({
-        attributes: ['employer_id', 'employer_name'],
-        where: {
-          user_id: id,
-        },
-      });
-      if (getuseremployer.length <= 0) {
-        
-      }
-      req.session.employerId = getuseremployer[0].dataValues.employer_id;
-      // res.send(getuseremployer);
-
-      //return getuseremployer;
-    } catch (err) {
-      res.status(500).send({
-        status: 'error',
-        message: 'An error occured',
-      });
-    }
-  }
-
   static async documentupload(req, res) {
     // upload document
     const { employer_id, document_name, document_number } = req.body;

@@ -12,7 +12,7 @@ const {
   uploaddocsuccess,
   uploaddocfailure,
 } = require('../../../Controllers/views/employer/dashboard');
-const componenreuse = require('../../../controllers/employer/employer-controller'); //set by kukere
+//const componenreuse = require('../../../controllers/employer/employer-controller'); //set by kukere
 const {
   auth_main,
   auth_validuser,
@@ -20,6 +20,7 @@ const {
   auth_pending,
   auth_uploaded,
   auth_disapproved,
+  auth_approved,
 } = require('../../../Middleware/employerAuth');
 //employer dashboard
 appRoute.get(
@@ -36,12 +37,7 @@ appRoute.get(
 
 appRoute.get('/employer/profile', (req, res) => {
   req.session.userId = 'd8bd7c2c-6722-406d-a30c-1cac4ac09b6a';
-  componenreuse.getemployerdetails(
-    req,
-    res,
-    'Profile',
-    'Pages/employer-profile-page',
-  );
+  return res.redirect('/employer/login');
 }); //there will be middlewarerlfkgfkh
 appRoute.get(
   '/employer/dasboard/success',
@@ -50,6 +46,7 @@ appRoute.get(
   auth_valid_profile,
   auth_pending,
   auth_disapproved,
+  auth_approved,
   //the main controller
   uploaddocsuccess,
 );
@@ -60,6 +57,7 @@ appRoute.get(
   auth_valid_profile,
   auth_pending,
   auth_uploaded,
+  auth_approved,
   //the main controller
   uploaddocfailure,
 );
@@ -81,6 +79,7 @@ appRoute.get(
   auth_pending,
   auth_uploaded,
   auth_disapproved,
+  auth_approved,
   //the main contoller
   employerCreateProfile,
 ); //there will be a middleware
@@ -118,7 +117,6 @@ appRoute.get(
   auth_valid_profile,
   auth_pending,
   auth_uploaded,
-  auth_disapproved,
   //the main controller
   employerAddTeam,
 );
@@ -129,6 +127,7 @@ appRoute.get(
   auth_valid_profile,
   auth_uploaded,
   auth_disapproved,
+  auth_approved,
   //the main controller
   employerCertificate,
 );

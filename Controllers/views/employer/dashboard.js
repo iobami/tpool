@@ -50,52 +50,65 @@ getActive.then(getCookie);*/
   },
 
   employerCompany: (req, res) => {
-    res.render('Pages/employer-company', { pageName: 'Company Profile' });
+    res.render('Pages/employer-company', {
+      pageName: 'Company Profile',
+      EmployerInfo: req.session.details,
+    });
   },
 
   uploaddocsuccess: (req, res) => {
-    res.render('Pages/upload-doc-success', { pageName: 'Document Uploaded' });
+    res.render('Pages/upload-doc-success', {
+      pageName: 'Document Uploaded',
+      EmployerInfo: req.session.details,
+    });
   },
 
   uploaddocfailure: (req, res) => {
     res.render('Pages/upload-doc-failure', {
       pageName: 'Document Disapproved',
+      EmployerInfo: req.session.details,
     });
   },
 
   employerDashboardSettings: (req, res) => {
     res.render('Pages/employer-dash-settings.ejs', {
       pageName: 'Employer Dashboard - Settings',
+      EmployerInfo: req.session.details,
     });
   },
 
   employerDashboardSupport: (req, res) => {
     res.render('Pages/employer-dash-support', {
       pageName: 'Employer Dashboard',
+      EmployerInfo: req.session.details,
     });
   },
 
   employerEmployeeGallery: (req, res) => {
     res.render('Pages/employer-employees-gallery', {
       pageName: 'Employee Gallery',
+      EmployerInfo: req.session.details,
     });
   },
 
   employerAddTeam: (req, res) => {
     res.render('Pages/employer-add-a-team', {
       pageName: 'Employer - Add Team',
+      EmployerInfo: req.session.details,
     });
   },
 
   employerCompanyDashboard: (req, res) => {
     res.render('Pages/employer-company-dashboard', {
       pageName: 'Employer Dashboard',
+      EmployerInfo: req.session.details,
     });
   },
 
   employerCertificate: (req, res) => {
     res.render('Pages/employer-certificate', {
       pageName: 'Upload Certificate',
+      EmployerInfo: req.session.details,
     });
   },
 };
