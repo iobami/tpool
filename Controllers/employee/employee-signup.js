@@ -55,7 +55,9 @@ exports.create = async (req, res) => {
     // create new user and send verification mail
     try {
       await model.User.create(userSave);
-      const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
+
+      // TODO: Fix link
+      const verificationUrl = `${URL}/email/verify?verification_code=${token}`;
 
       const message = `<p> Hi, thanks for registering, kindly verify your email </p><a href ='${verificationUrl}'>link</a>`;
       await sendEmail({
