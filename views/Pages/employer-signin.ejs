@@ -4,6 +4,11 @@
 <head>
     <%- include('../Templates/head') %>
     <link rel="stylesheet" href="../styles/custom-css/employer-sign-in.css">
+    <style>
+        form .invalid{
+            border: 2px solid red !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +36,7 @@
                         <div class="col-md mb-3 px-0">
                             <label for="email">Email</label>
                             <input 
-                            class="form-control invalid <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                            class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
                             type="email" 
                             name="email" 
                             id="email" 
@@ -48,7 +53,7 @@
                         <div class="col-md mb-3 px-0">
                             <label for="password">Password</label>
                             <input 
-                            class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid-value' : '' %>"
+                            class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
                             type="password" 
                             name="password" 
                             id="password" 
