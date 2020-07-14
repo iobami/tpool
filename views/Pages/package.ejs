@@ -17,33 +17,38 @@
       </p>
     </div>
     <div class="container">
-      <div class="card-deck mb-3 text-center">
+      <div class="row">
         <% packages.forEach(function(package) { %>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">
-              <%- package.package.split(' ') .map(w => w[0].toUpperCase() +
-              w.substr(1).toLowerCase()) .join(' ') %>
-            </h4>
+        <div class="col-sm-10 col-md-6 col-lg-4">
+        <div class="card-deck mb-3 text-center">
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">
+                <%- package.package.split(' ') .map(w => w[0].toUpperCase() +
+                w.substr(1).toLowerCase()) .join(' ') %>
+              </h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title packages-card-title">
+                <%= package.price %> <small class="text-muted">/ mo</small>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <p class="card-description">
+                  <%= package.description %>
+                </p>
+              </ul>
+              <a href="/price-payment?id=<%= package.id %>" class="text-white">
+                <button
+                  type="button"
+                  class="btn hire-btn btn-lg btn-block text-white"
+                >
+                  Get started
+                </button>
+              </a>
+            </div>
           </div>
-          <div class="card-body">
-            <h1 class="card-title packages-card-title">
-              <%= package.price %> <small class="text-muted">/ mo</small>
-            </h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <p>
-                <%= package.description %>
-              </p>
-            </ul>
-            <a href="/price-payment?id=<%= package.id %>" class="text-white">
-              <button
-                type="button"
-                class="btn hire-btn btn-lg btn-block text-white"
-              >
-                Get started
-              </button>
-            </a>
-          </div>
+          
+        </div>
         </div>
         <% }); %>
       </div>
