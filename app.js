@@ -141,7 +141,7 @@ app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     name: 'session',
-    sameSite: true,
+    // sameSite: true,
     keys: [process.env.TALENT_POOL_SESSION_COOKIEKEY],
   }),
 );
@@ -249,5 +249,6 @@ app.use(employerRecommendation);
 app.use(verifyModal);
 app.use(adminPackages);
 app.use(employerPackages);
+app.use(googleAuth);
 
 module.exports = app;
