@@ -84,8 +84,8 @@ const getAllEmployees = require('./Routes/employer/get-employees');
 const employerDashboard = require('./Routes/employer/employer-dashboard');
 
 // IMPORT THE VIEWS ROUTES
-const adminPackages = require('./Routes/views/payment/admin_package')
-const employerPackages = require('./Routes/views/payment/employer_package')
+const adminPackages = require('./Routes/views/payment/admin_package');
+const employerPackages = require('./Routes/views/payment/employer_package');
 const appRoute = require('./Routes/views');
 const adminDashRoute = require('./Routes/views/admin/dashboard');
 const employeeAuthRoute = require('./Routes/views/employee/auth');
@@ -235,7 +235,7 @@ app.use(appRoute);
 // app.use(adminRoute);
 app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
-app.use(employerAuthRoute); //mark this
+app.use(employerAuthRoute); // mark this
 app.use(employerDashboardRoute);
 app.use(adminDashRoute);
 app.use(topTalentsRoute);
