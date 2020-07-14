@@ -1,0 +1,136 @@
+@media (min-width: 992px) {
+  main {
+    padding: 0 15rem;
+  }
+}
+
+/* .visibility {
+  visibility: visible;
+}
+
+.hngIdDiv {
+  visibility: hidden;
+} */
+
+.shadow {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
+  border-radius: 5px !important;
+}
+
+.btn-lg {
+  padding: 0.75rem 4rem !important;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.label {
+  /* font-size: 1.25em; */
+  /* font-weight: 700; */
+  border: 2px solid #b5b5b5 !important;
+  border-radius: 5px !important;
+  height: auto !important;
+  padding: 0.975rem 0.75rem !important;
+  color: white;
+  /* background-color: black; */
+  display: inline-block;
+  cursor: pointer;
+}
+
+.inputfile:focus,
+.label,
+.inputfile,
+.label:hover {
+  background-color: #337ab7;
+}
+
+.btn-primary {
+  background: #33beff !important;
+  border-color: #33beff !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  border-color: #33beff !important;
+  transform: scale(0.98);
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+.form-control {
+  border: 2px solid #b5b5b5 !important;
+  border-radius: 5px !important;
+  height: auto !important;
+  padding: 0.975rem 0.75rem !important;
+}
+
+.form-control:focus,
+.form-control:active {
+  outline: none !important;
+  border: 2px solid #337ab7 !important;
+  box-shadow: none !important;
+}
+
+.start-text,
+.form-title {
+  color: #084482;
+}
+
+.start-text {
+  padding: 0 18%;
+}
+
+/* progress bar */
+.form-progress {
+  position: relative;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 25%;
+  max-width: 400px;
+}
+
+progress {
+  display: block;
+  position: relative;
+  top: 7px;
+  left: 5px;
+  width: 45%;
+  height: 6px;
+  background: none;
+}
+
+.text-default {
+  color: #5c95c5;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #5c95c5;
+}
+
+.form-progress-indicator {
+  position: absolute;
+  top: -7px;
+  left: 0;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: white;
+  /* background-image: ; */
+}
+
+.form-progress-indicator.one {
+  left: 0;
+}
+
+.form-progress-indicator.two {
+  left: 40%;
+}

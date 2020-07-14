@@ -24,7 +24,7 @@
                     <% if (errorMessage) { %>
                         <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
                     <% } %>
-                    <form class="needs-validation" method="POST" action="/employer-sign-in" novalidate id="form">
+                    <form class="needs-validation" method="POST" action="/employer/login" novalidate id="form">
 
                         <div class="col-md mb-3 px-0">
                             <label for="email">Email</label>
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="col text-right px-0">
-                                <p> <a href="./recover-password" class="login-link">Forgot Password?</a></p>
+                                <p> <a href="./recover/password" class="login-link">Forgot Password?</a></p>
                             </div>
                         </div>
 
@@ -118,7 +118,7 @@
                         </div>
                     </div>
     
-                    <p class="text-center py-2">Don't have an account with us? <a href="/employer-sign-up"
+                    <p class="text-center py-2">Don't have an account with us? <a href="/employer/signup"
 
                             class="login-link">Sign Up.</a></p>
                 </div>

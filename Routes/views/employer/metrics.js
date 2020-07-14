@@ -5,6 +5,6 @@ const {
   employerMetrics,
 } = require('../../../Controllers/views/employer/metrics');
 
-appRoute.get('/employer-metrics', employerMetrics);
+appRoute.get('/employer/metrics', employerMetrics);
 
 module.exports = appRoute;
