@@ -43,7 +43,7 @@ router.get('/auth/employee/google/callback',
     }
     req.session.isLoggedIn = true;
     req.session.userId = user.user_id;
-    return res.redirect('/employee-dashboard');
+    return res.redirect('/employee/dashboard');
   });
 
 module.exports = router;
