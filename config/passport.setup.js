@@ -27,11 +27,12 @@ passport.deserializeUser(async (id, done) => {
 passport.use('google-employer',
   new GoogleStrategy(
     {
+      passReqToCallback: true,
       clientID: process.env.TALENT_POOL_GOOGLE_CLIENTID,
       clientSecret: process.env.TALENT_POOL_GOOGLE_CLIENTSECRET,
       callbackURL: process.env.TALENT_POOL_GOOGLE_EMPLOYER_CALLBACKURL,
     },
-    async (accessToken, refreshToken, profile, done) => {
+    async (req, accessToken, refreshToken, profile, done) => {
       try {
         // check user in our db
         const checkUser = await model.User.findOne({
@@ -42,7 +43,7 @@ passport.use('google-employer',
         const user = await checkUser;
         if (user) {
           // user exists, send user object for serialization
-          const data = await getUserData(profile, user, done);
+          const data = await getUserData(req, profile, user, done);
           done(null, data);
         } else {
           // create a new user
@@ -51,7 +52,7 @@ passport.use('google-employer',
           return done(null, userData);
         }
       } catch (error) {
-        return done(null, false, { errorMessage: 'Authentication error' });
+        return done(null, false, req.flash('errorMessage', 'Authentication error'));
       }
     },
   ));
@@ -60,11 +61,12 @@ passport.use('google-employer',
 passport.use('google-employee',
   new GoogleStrategy(
     {
+      passReqToCallback: true,
       clientID: process.env.TALENT_POOL_GOOGLE_CLIENTID,
       clientSecret: process.env.TALENT_POOL_GOOGLE_CLIENTSECRET,
       callbackURL: process.env.TALENT_POOL_GOOGLE_EMPLOYEE_CALLBACKURL,
     },
-    async (accessToken, refreshToken, profile, done) => {
+    async (req, accessToken, refreshToken, profile, done) => {
       try {
         // check user in our db
         const checkUser = await model.User.findOne({
@@ -75,7 +77,7 @@ passport.use('google-employee',
         const user = await checkUser;
         if (user) {
           // user exists, send user object for serialization
-          const data = await getUserData(profile, user, done);
+          const data = await getUserData(req, profile, user, done);
           done(null, data);
         } else {
           // create a new user
@@ -84,7 +86,7 @@ passport.use('google-employee',
           return done(null, userData);
         }
       } catch (error) {
-        return done(null, false, { errorMessage: 'Authentication error' });
+        return done(null, false, req.flash('errorMessage', 'Authentication error'));
       }
     },
   ));
@@ -93,11 +95,12 @@ passport.use('google-employee',
 passport.use('github-employer',
   new GitHubStrategy(
     {
+      passReqToCallback: true,
       clientID: process.env.TALENT_POOL_GITHUB_CLIENTID,
       clientSecret: process.env.TALENT_POOL_GITHUB_CLIENTSECRET,
       callbackURL: process.env.TALENT_POOL_GITHUB_CALLBACKURL,
     },
-    async (accessToken, refreshToken, profile, done) => {
+    async (req, accessToken, refreshToken, profile, done) => {
       try {
         // check user in our db
         const checkUser = await model.User.findOne({
@@ -108,7 +111,7 @@ passport.use('github-employer',
         const user = await checkUser;
         if (user) {
           // user exists, send user object for serialization
-          const data = await getUserData(profile, user, done);
+          const data = await getUserData(req, profile, user, done);
           done(null, data);
         } else {
           // create a new user
@@ -117,7 +120,7 @@ passport.use('github-employer',
           return done(null, userData);
         }
       } catch (error) {
-        return done(null, false, { errorMessage: 'Authentication error' });
+        return done(null, false, req.flash('errorMessage', 'Authentication error'));
       }
     },
   ));
@@ -126,11 +129,12 @@ passport.use('github-employer',
 passport.use('github-employee',
   new GitHubStrategy(
     {
+      passReqToCallback: true,
       clientID: process.env.TALENT_POOL_GITHUB_CLIENTID,
       clientSecret: process.env.TALENT_POOL_GITHUB_CLIENTSECRET,
       callbackURL: process.env.TALENT_POOL_GITHUB_CALLBACKURL,
     },
-    async (accessToken, refreshToken, profile, done) => {
+    async (req, accessToken, refreshToken, profile, done) => {
       try {
         // check user in our db
         const checkUser = await model.User.findOne({
@@ -141,7 +145,7 @@ passport.use('github-employee',
         const user = await checkUser;
         if (user) {
           // user exists, send user object for serialization
-          const data = await getUserData(profile, user, done);
+          const data = await getUserData(req, profile, user, done);
           done(null, data);
         } else {
           // create a new user
@@ -150,7 +154,7 @@ passport.use('github-employee',
           return done(null, userData);
         }
       } catch (error) {
-        return done(null, false, { errorMessage: 'Authentication error' });
+        return done(null, false, req.flash('errorMessage', 'Authentication error'));
       }
     },
   ));
