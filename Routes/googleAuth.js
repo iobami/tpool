@@ -13,7 +13,10 @@ router.get('/auth/employee/google',
 
 // receive process details from passport.setup
 router.get('/auth/employer/google/callback',
-  passport.authenticate('google-employer', { failureRedirect: '/employer/login' }),
+  passport.authenticate('google-employer', {
+    failureRedirect: '/employer/login',
+    failureFlash: true,
+  }),
   async (req, res) => {
     try {
       // Successful authentication,
@@ -21,10 +24,12 @@ router.get('/auth/employer/google/callback',
       if ((!user.userTypeId) || user.userTypeId == null) {
         req.session.isLoggedIn = false;
         req.session.userId = user.user_id;
+        req.flash('success', 'Authentication successful!');
         return res.redirect('/employer-create-profile');
       }
       req.session.isLoggedIn = true;
       req.session.userId = user.user_id;
+      req.flash('success', 'Login successful!');
       return res.redirect('/employer-dashboard');
     } catch (error) {
       res.redirect('/employer-sign-in');
@@ -33,7 +38,10 @@ router.get('/auth/employer/google/callback',
 
 // receive process details from passport.setup
 router.get('/auth/employee/google/callback',
-  passport.authenticate('google-employee', { failureRedirect: '/employee/login' }),
+  passport.authenticate('google-employee', {
+    failureRedirect: '/employee/login',
+    failureFlash: true,
+  }),
   async (req, res) => {
     try {
       // Successful authentication,
@@ -41,10 +49,12 @@ router.get('/auth/employee/google/callback',
       if ((!user.userTypeId) || user.userTypeId == null) {
         req.session.isLoggedIn = false;
         req.session.userId = user.user_id;
+        req.flash('success', 'Authentication successful!');
         return res.redirect('/employee/profile/create');
       }
       req.session.isLoggedIn = true;
       req.session.userId = user.user_id;
+      req.flash('success', 'Login successful!');
       return res.redirect(`/employee/dashboard/${user.userTypeId}`);
     } catch (error) {
       res.redirect('/employee/login');
@@ -59,7 +69,10 @@ router.get('/auth/employer/github',
 
 // receive process details from passport.setup
 router.get('/auth/github/callback',
-  passport.authenticate('github-employer', { failureRedirect: '/employer-sign-in' }),
+  passport.authenticate('github-employer', {
+    failureRedirect: '/employer-sign-in',
+    failureFlash: true,
+  }),
   (req, res) => {
     try {
       const { user } = req;
@@ -67,19 +80,23 @@ router.get('/auth/github/callback',
         if ((!user.userTypeId) || user.userTypeId == null) {
           req.session.isLoggedIn = false;
           req.session.userId = user.user_id;
+          req.flash('success', 'Authentication successful!');
           return res.redirect('/employer-create-profile');
         }
         req.session.isLoggedIn = true;
         req.session.userId = user.user_id;
+        req.flash('success', 'Login successful!');
         return res.redirect('/employer-dashboard');
       }
       if ((!user.userTypeId) || user.userTypeId == null) {
         req.session.isLoggedIn = false;
         req.session.userId = user.user_id;
+        req.flash('success', 'Authentication successful!');
         return res.redirect('/employee/profile/create');
       }
       req.session.isLoggedIn = true;
       req.session.userId = user.user_id;
+      req.flash('success', 'Login successful!');
       return res.redirect(`/employee/dashboard/${user.userTypeId}`);
     } catch (error) {
       res.redirect('/employer-sign-in');
@@ -92,7 +109,10 @@ router.get('/auth/employee/github',
 
 // receive process details from passport.setup
 router.get('/auth/github/callback',
-  passport.authenticate('github-employee', { failureRedirect: '/employee/login' }),
+  passport.authenticate('github-employee', {
+    failureRedirect: '/employee/login',
+    failureFlash: true,
+  }),
   (req, res) => {
     try {
       const { user } = req;
@@ -100,19 +120,23 @@ router.get('/auth/github/callback',
         if ((!user.userTypeId) || user.userTypeId == null) {
           req.session.isLoggedIn = false;
           req.session.userId = user.user_id;
+          req.flash('success', 'Authentication successful!');
           return res.redirect('/employer-create-profile');
         }
         req.session.isLoggedIn = true;
         req.session.userId = user.user_id;
+        req.flash('success', 'Login successful!');
         return res.redirect('/employer-dashboard');
       }
       if ((!user.userTypeId) || user.userTypeId == null) {
         req.session.isLoggedIn = false;
         req.session.userId = user.user_id;
+        req.flash('success', 'Authentication successful!');
         return res.redirect('/employee/profile/create');
       }
       req.session.isLoggedIn = true;
       req.session.userId = user.user_id;
+      req.flash('success', 'Login successful!');
       return res.redirect(`/employee/dashboard/${user.userTypeId}`);
     } catch (error) {
       res.redirect('/employee/login');

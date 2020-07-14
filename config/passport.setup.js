@@ -51,7 +51,7 @@ passport.use('google-employer',
           return done(null, userData);
         }
       } catch (error) {
-        console.log(error);
+        return done(null, false, { errorMessage: 'Authentication error' });
       }
     },
   ));
@@ -84,7 +84,7 @@ passport.use('google-employee',
           return done(null, userData);
         }
       } catch (error) {
-        console.log(error);
+        return done(null, false, { errorMessage: 'Authentication error' });
       }
     },
   ));
@@ -117,7 +117,7 @@ passport.use('github-employer',
           return done(null, userData);
         }
       } catch (error) {
-        console.log(error);
+        return done(null, false, { errorMessage: 'Authentication error' });
       }
     },
   ));
@@ -150,7 +150,7 @@ passport.use('github-employee',
           return done(null, userData);
         }
       } catch (error) {
-        console.log(error);
+        return done(null, false, { errorMessage: 'Authentication error' });
       }
     },
   ));

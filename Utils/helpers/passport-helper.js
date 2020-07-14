@@ -25,11 +25,11 @@ exports.getUserData = async (profile, user, done) => {
     }
 
     if (user.status === '0') {
-      return done(null, false);
+      return done(null, false, { errorMessage: 'User is not verified' });
     }
 
     if (user.block) {
-      return done(null, false);
+      return done(null, false, { errorMessage: 'User is blocked' });
     }
     let data = {
       email: user.email,

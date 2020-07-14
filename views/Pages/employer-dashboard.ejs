@@ -31,7 +31,11 @@
 
         <div id="body__click"></div>
       </div>
-
+      <% if (errorMessage.length > 0) { %>
+        <div role="alert" class="alert alert-danger text-center user-message user-message--error"><%= errorMessage %></div>
+    <% }if (success && success.length > 0) { %>
+        <div role="alert" class="alert alert-success text-center user-message user-message--error"><%= success %></div>
+    <% } %>
 
       <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5">
 

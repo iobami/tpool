@@ -32,6 +32,8 @@ exports.getEmployeeEmployers = (req, res) => {
 };
 exports.getEmployeeProfileCreation = (req, res) => {
   res.render('Pages/employee-profile-creation', {
+    success: req.flash('success'),
+    errorMessage: req.flash('error'),
     pageTitle: 'TalentPool | Create Profile',
     path: '/employee-profile-creation',
   });

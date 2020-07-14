@@ -10,6 +10,11 @@
         <!-- Navbar ends here -->
 
         <main>
+            <% if (errorMessage.length > 0) { %>
+                <div role="alert" class="alert alert-danger text-center user-message user-message--error"><%= errorMessage %></div>
+            <% }if (success && success.length > 0) { %>
+                <div role="alert" class="alert alert-success text-center user-message user-message--error"><%= success %></div>
+            <% } %>
             <form id="employeeProfileCreation" action="/employee/profile/create" method="POST">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="mt-5">
