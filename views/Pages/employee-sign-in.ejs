@@ -33,7 +33,7 @@
                     <div class="col-md mb-3 px-0">
                         <label for="email">Email</label>
                         <input 
-                        class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                        class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid-value' : '' %>"
                         type="email" 
                         name="email" 
                         id="email" 
@@ -49,7 +49,7 @@
                     <div class="col-md mb-3 px-0">
                         <label for="password">Password</label>
                         <input 
-                        class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                        class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid-value' : '' %>"
                         type="password" 
                         name="password" 
                         id="password" 
