@@ -1,18 +1,61 @@
-
-    <div class="sidenav sidenav__unactive" id="sideNav">
-      <div class="logo__wrapper">
-        <div class="d-flex justify-content-center align-items-center logo__image">
-          <img src="/img/navLogo.svg" alt="" />
-        </div>
-      </div>
-           ​
-      <ul class="sidenav_links d-sm">
-        <li><a class="<%= path === '/employee/dashboard' ? 'active' : '' %>"  href="<%= path %>">Dashboard</a></li>
-        <li><a  class=" <%= path === 'employee-profile' ? 'active' : '' %>"  href="/employee/profile">Profile</a></li>
-        <li><a class="<%= path === 'employee-employers' ? 'active' : '' %>"  href="/employee/employers">Employers</a></li>
-        <li><a class="<%= path === 'employee-settings' ? 'active' : '' %>"  href="/employee/settings">Settings</a></li>
-      </ul>
+<div class="sidenav sidenav__unactive" id="sideNav">
+  <div class="logo__wrapper">
+    <div class="d-flex justify-content-center align-items-center logo__image">
+      <img src="/img/navLogo.svg" alt="" />
     </div>
-        ​
-    <div id="body__click"></div>
- 
+  </div>
+  ​
+  <ul class="sidenav_links d-sm">
+    <li>
+      <a
+        class="<%= path === '/employee/dashboard' ? 'active' : '' %>"
+        href="<%= path %>"
+        >Dashboard</a
+      >
+    </li>
+    <li>
+      <a
+        class="<%= path === '/employee/profile' ? 'active' : '' %>"
+        href="/employee/profile"
+        >Profile</a
+      >
+    </li>
+    <li>
+      <a
+        class="<%= path === '/employee/portfolio' ? 'active' : '' %>"
+        href="/employee/portfolio"
+        >Portfolio</a
+      >
+    </li>
+    <li>
+      <a
+        class="<%= path === '/employee/messages' ? 'active' : '' %>"
+        href="/employee/messages"
+        >Messages</a
+      >
+    </li>
+    <li>
+      <a
+        class="<%= path === '/employee/employers' ? 'active' : '' %>"
+        href="/employee/employers"
+        >Employers</a
+      >
+    </li>
+    <li>
+      <a
+        class="<%= path === '/employee/team' ? 'active' : '' %>"
+        href="/employee/employers"
+        >Team</a
+      >
+    </li>
+    <li>
+      <a
+        class="<%= path === '/employee/settings' ? 'active' : '' %>"
+        href="/employee/settings"
+        >Settings</a
+      >
+    </li>
+  </ul>
+</div>
+​
+<div id="body__click"></div>
