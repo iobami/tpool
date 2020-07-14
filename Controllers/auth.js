@@ -67,7 +67,7 @@ exports.registerEmployer = (req, res) => {
         try {
           await model.User.create(userData);
           // mail verification code to the user
-          const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
+          const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
           const message = `<p> Hi, thanks for registering, kindly verify your email using this <a href ='${verificationUrl}'>link</a></p>`;
 
           await sendEmail({
@@ -647,7 +647,7 @@ exports.resendVerificationLink = async (req, res) => {
   checkUser.save();
 
   // mail verification code to the user
-  const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
+  const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
 
   const message = `<p> Hello, you requested for the resend of your verification link. 
         Kindly verify your email </p><a href ='${verificationUrl}'>link</a>`;
