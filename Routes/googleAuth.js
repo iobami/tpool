@@ -1,10 +1,6 @@
+/* eslint-disable consistent-return */
 const router = require('express').Router();
 const passport = require('passport');
-
-// user sent to dashboard on successfull auth
-router.get('/auth/dashboard', (req, res) => {
-  res.json(req.user);
-});
 
 // <----------------------- GOOOGLE ROUTE AND CONTOLLERS ------------------------------>
 // get employer profile details from google
@@ -17,34 +13,42 @@ router.get('/auth/employee/google',
 
 // receive process details from passport.setup
 router.get('/auth/employer/google/callback',
-  passport.authenticate('google-employer', { failureRedirect: '/' }),
-  (req, res) => {
-    // Successful authentication,
-    const { user } = req;
-    if ((!user.userTypeId) || user.userTypeId == null) {
-      req.session.isLoggedIn = false;
+  passport.authenticate('google-employer', { failureRedirect: '/employer/login' }),
+  async (req, res) => {
+    try {
+      // Successful authentication,
+      const { user } = req;
+      if ((!user.userTypeId) || user.userTypeId == null) {
+        req.session.isLoggedIn = false;
+        req.session.userId = user.user_id;
+        return res.redirect('/employer-create-profile');
+      }
+      req.session.isLoggedIn = true;
       req.session.userId = user.user_id;
-      return res.redirect('/employer-create-profile');
+      return res.redirect('/employer-dashboard');
+    } catch (error) {
+      res.redirect('/employer-sign-in');
     }
-    req.session.isLoggedIn = true;
-    req.session.userId = user.user_id;
-    return res.redirect('/employer-dashboard');
   });
 
 // receive process details from passport.setup
 router.get('/auth/employee/google/callback',
-  passport.authenticate('google-employee', { failureRedirect: '/' }),
-  (req, res) => {
-  // Successful authentication,
-    const { user } = req;
-    if ((!user.userTypeId) || user.userTypeId == null) {
-      req.session.isLoggedIn = false;
+  passport.authenticate('google-employee', { failureRedirect: '/employee/login' }),
+  async (req, res) => {
+    try {
+      // Successful authentication,
+      const { user } = req;
+      if ((!user.userTypeId) || user.userTypeId == null) {
+        req.session.isLoggedIn = false;
+        req.session.userId = user.user_id;
+        return res.redirect('/employee/profile/create');
+      }
+      req.session.isLoggedIn = true;
       req.session.userId = user.user_id;
-      return res.redirect('/employee/profile');
+      return res.redirect(`/employee/dashboard/${user.userTypeId}`);
+    } catch (error) {
+      res.redirect('/employee/login');
     }
-    req.session.isLoggedIn = true;
-    req.session.userId = user.user_id;
-    return res.redirect('/employee/dashboard');
   });
 // <===================== END GOOGLE ===================>
 
@@ -76,7 +80,7 @@ router.get('/auth/github/callback',
       }
       req.session.isLoggedIn = true;
       req.session.userId = user.user_id;
-      return res.redirect('/employee/dashboard/:employee_id');
+      return res.redirect(`/employee/dashboard/${user.userTypeId}`);
     } catch (error) {
       res.redirect('/employer-sign-in');
     }
@@ -109,7 +113,7 @@ router.get('/auth/github/callback',
       }
       req.session.isLoggedIn = true;
       req.session.userId = user.user_id;
-      return res.redirect('/employee/dashboard/:employee_id');
+      return res.redirect(`/employee/dashboard/${user.userTypeId}`);
     } catch (error) {
       res.redirect('/employee/login');
     }

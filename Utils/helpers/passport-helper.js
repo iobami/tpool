@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-console */
 const { uuid } = require('uuidv4');
 const bcrypt = require('bcryptjs');
@@ -72,17 +73,3 @@ exports.createUser = async (profile, userRole) => {
     console.log(error);
   }
 };
-
-// const value = `${profile.id}`;
-// let dataToCreate;
-// // check provider to know how to populate the povider id field
-// if (profile.provider === 'google') {
-//   dataToCreate = { ...data, googleId: value };
-// } else if (profile.provider === 'github') {
-//   dataToCreate = { ...data, githubId: value };
-// } else {
-//   dataToCreate = { ...data, linkedinId: value };
-// }
-
-// // create user with created object
-// const newUser = await models.User.create(dataToCreate);
