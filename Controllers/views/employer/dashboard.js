@@ -49,10 +49,6 @@ getActive.then(getCookie);*/
     });
   },
 
-  employerType: (req, res) => {
-    res.render('Pages/employer-type', { pageName: 'Profile Type' });
-  },
-
   employerCompany: (req, res) => {
     res.render('Pages/employer-company', { pageName: 'Company Profile' });
   },
@@ -94,12 +90,6 @@ getActive.then(getCookie);*/
   employerCompanyDashboard: (req, res) => {
     res.render('Pages/employer-company-dashboard', {
       pageName: 'Employer Dashboard',
-    });
-  },
-
-  employerIndividualCreateProfile: (req, res) => {
-    res.render('Pages/employer-indiv', {
-      pageName: 'Create Profile',
     });
   },
 
