@@ -12,6 +12,15 @@
   visibility: hidden;
 } */
 
+.shadow {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
+  border-radius: 5px !important;
+}
+
+.btn-lg {
+  padding: 0.75rem 4rem !important;
+}
+
 .inputfile {
   width: 0.1px;
   height: 0.1px;

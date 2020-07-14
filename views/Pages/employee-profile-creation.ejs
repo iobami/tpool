@@ -11,7 +11,7 @@
     <!-- Navbar ends here -->
 
     <main>
-        <div class="container my-5">
+        <div class="container my-5 shadow py-5">
             <p class="start-text text-center">Let’s get started with a few details about you</p>
 
             <!-- progress bar starts -->
@@ -37,7 +37,7 @@
 
             <!-- progress bar ends -->
 
-            <form id="employeeProfileCreation" action="/employee/profile/create" method="POST">
+            <form id="employeeProfileCreation" action="/employee/profile/create" method="POST" class="">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <h4 class="form-title mb-4">Personal Information</h4>
                 <div class="form-row">
@@ -126,7 +126,7 @@
                         <input type="url" class="form-control" placeholder="Link to your CV (URL)" required>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center mt-3">
+                <div class="d-flex justify-content-center justify-content-md-end mt-3">
                     <button type="submit" class="btn btn-primary btn-lg">Create</button>
                 </div>
             </form>
