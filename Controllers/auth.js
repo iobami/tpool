@@ -107,7 +107,7 @@ exports.registerEmployer = (req, res) => {
 exports.postEmployeeLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
-
+  let currentUser;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('Pages/employee-sign-in', {
@@ -122,8 +122,8 @@ exports.postEmployeeLogin = async (req, res, next) => {
     });
   }
 
-  await model.User.findOne({ where: { email, role_id: 'ROL-EMPLOYEE' } })
-    .then((user) => {
+  model.User.findOne({ where: { email, role_id: 'ROL-EMPLOYEE' } })
+    .then(async (user) => {
       if (!user) {
         return res.status(422).render('Pages/employee-sign-in', {
           path: '/employee/login',
@@ -136,6 +136,16 @@ exports.postEmployeeLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
+
+      let userTypeId = null;
+
+      const employee = await model.Employee.findOne({
+        where: { user_id: user.user_id },
+      });
+      if (employee) {
+        userTypeId = employee.employee_id;
+      }
+
       if (user.status === '0') {
         return res.status(422).render('Pages/employee-sign-in', {
           path: '/employee/login',
@@ -161,10 +171,17 @@ exports.postEmployeeLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
+      currentUser = user;
       bcrypt
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
+            const data = {
+              email: currentUser.email,
+              userRole: currentUser.role_id,
+              userTypeId,
+            };
+            req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             if (!user.employee_id) {
@@ -197,12 +214,12 @@ exports.postEmployeeLogin = async (req, res, next) => {
 exports.postEmployerLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
-
+  let currentUser;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(401).render('Pages/employer-signin', {
       path: '/employer/login',
-      pageName: 'Employee Login',
+      pageName: 'Employer Login',
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email,
@@ -212,8 +229,8 @@ exports.postEmployerLogin = async (req, res, next) => {
     });
   }
 
-  await model.User.findOne({ where: { email, role_id: 'ROL-EMPLOYER' } })
-    .then((user) => {
+  model.User.findOne({ where: { email, role_id: 'ROL-EMPLOYER' } })
+    .then(async (user) => {
       if (!user) {
         return res.status(401).render('Pages/employer-signin', {
           path: '/employer/login',
@@ -226,6 +243,18 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
+
+      let userTypeId = null;
+      let verificationStatus = null;
+
+      const employer = await model.Employer.findOne({
+        where: { user_id: user.user_id },
+      });
+      if (employer) {
+        userTypeId = employer.employer_id;
+        verificationStatus = employer.verification_status;
+      }
+
       if (user.status === '0') {
         return res.status(422).render('Pages/employer-signin', {
           path: '/employer/login',
@@ -241,7 +270,7 @@ exports.postEmployerLogin = async (req, res, next) => {
 
       if (user.block) {
         return res.status(422).render('Pages/employer-signin', {
-          path: '/employer/loginn',
+          path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'User is blocked.',
           oldInput: {
@@ -251,19 +280,18 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
+      currentUser = user;
       bcrypt
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
-       
-           
-            // const data = {
-            //   email: user.email,
-            //   userId: user.user_id.toString(),
-            //   userRole: user.role_id,
-            //   userTypeId: user.employee_id
-            // };
-            // req.session.data = data;
+            const data = {
+              email: currentUser.email,
+              userRole: currentUser.role_id,
+              userTypeId,
+              verificationStatus
+            };
+            req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             if (!user.employer_id) {
