@@ -3,11 +3,6 @@
 <head>
     <%- include('../Templates/head') %>
     <link rel="stylesheet" href="/styles/custom-css/employee-signUp-signIn.css">
-    <!-- BEGIN Pre-requisites -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id"
-        content="1044934768285-u3jh3gs8dv4u21uie9o32cbu0gv2erh4.apps.googleusercontent.com">
-    <!-- END Pre-requisites -->
 </head>
 
 <body>
@@ -103,6 +98,7 @@
                     </div>
                 </div>
 
+
                 <div class="row mt-2 justify-content-center">
                     <div class="col-md">
                         <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
@@ -110,9 +106,11 @@
                     </div>
 
                     <div class="col-md">
-                        <button type="button" id="googleBtn" class="btn btn-block  google-btn py-3 my-1" data-user="ROL-EMPLOYEE" data-longtitle="true"
-                        data-onsuccess="onSignIn"><i
-                                class="fab fa-google pr-2"></i>Login with Google</button>
+                        <a href="/auth/employee/google">
+                            <button type="button" id="googleBtn" class="btn btn-block  google-btn py-3 my-1" data-user="ROL-EMPLOYEE" data-longtitle="true"
+                            data-onsuccess="onSignIn"><i
+                            class="fab fa-google pr-2"></i>Login with Google</button>
+                        </a>
                     </div>
                  
 
@@ -120,46 +118,13 @@
                             data-onsuccess="onSignIn">
                         </div> -->
                 </div>
-
-                <p class="text-center py-2 mt-3 mb-4">Don't have an account with us? <a href="/employee-sign-up" class="login-link">Sign Up.</a></p>
+                <p class="text-center py-2 mt-3 mb-4">Don't have an account with us? <a href="/employee/register" class="login-link">Sign Up.</a></p>
             </div>
         </div>
         </div>
     </main>
 
     <%- include('../Templates/footer') %>
-
-    <!-- <script>
-        async function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            const role_id = document.querySelector('.g-signin2').dataset.user;
-            var token = googleUser.getAuthResponse().id_token
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.disconnect();
-            const userData = {
-                role_id,
-                token: token
-            }
-            axios.post('https://api.lancers.app/v1/auth/google', userData)
-                .then(data => {
-                    let decodedData = JSON.parse(atob(data.data.data.token.split('.')[1]))
-                    const userData = {
-                        ...decodedData,
-                        token: data.data.data.token
-                    }
-                    localStorage.setItem("tpAuth", JSON.stringify(userData));
-                    if (decodedData.userTypeId == null) {
-                        window.location.replace('/employee-profileCreation')
-                    } else {
-                        window.location.replace('/employee-dashboard')
-                    }
-                }).catch(function (error) {
-                    console.log(error);
-                    window.location.replace('/')
-                });
-        }
-        
-      </script> -->
     <!-- Employee sign in script -->
     <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/custom-js/employee-sign-in.js" type="module"></script> -->
