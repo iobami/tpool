@@ -10,7 +10,7 @@ module.exports = {
 
   employerSignIn: (req, res) => {
     if (req.session.isLoggedIn) {
-      res.redirect('/employer/dashboard');
+      res.redirect('/employee/dashboard');
     }
 
     let message = req.flash('error');

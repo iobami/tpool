@@ -36,7 +36,7 @@ exports.registerEmployer = (req, res) => {
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
         req.flash('errors', errResponse);
-        res.redirect('/employer-sign-up');
+        res.redirect('/employer/register');
       }
       // encrypt password
       const salt = bcrypt.genSaltSync(10);
@@ -78,7 +78,7 @@ exports.registerEmployer = (req, res) => {
 
           // return successResMsg(res, 201, data);
           req.flash('success', 'Verification email sent!');
-          res.redirect('/employer-sign-up');
+          res.redirect('/employer/register');
         } catch (err) {
           req.flash('error', 'An error Occoured');
           res.redirect('/employer-sign-up');
@@ -91,7 +91,7 @@ exports.registerEmployer = (req, res) => {
         //   'Someone has already registered this email',
         // );
         req.flash('error', 'Someone has already registered this email');
-        res.redirect('/employer-sign-up');
+        res.redirect('/employer/register');
       }
     } catch (err) {
       if (!err.statusCode) {
@@ -99,15 +99,15 @@ exports.registerEmployer = (req, res) => {
       }
       // return errorResMsg(res, 500, 'An error occurred');
       req.flash('error', 'An error Occoured');
-      res.redirect('/employer-sign-up');
+      res.redirect('/employer/register');
     }
   })();
 };
 
-exports.postEmployeeLogin = (req, res, next) => {
+exports.postEmployeeLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
-
+  let currentUser;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('Pages/employee-sign-in', {
@@ -122,8 +122,8 @@ exports.postEmployeeLogin = (req, res, next) => {
     });
   }
 
-  model.User.findOne({ where: { email }, role_id: 'ROL-EMPLOYEE' })
-    .then((user) => {
+  model.User.findOne({ where: { email, role_id: 'ROL-EMPLOYEE' } })
+    .then(async (user) => {
       if (!user) {
         return res.status(422).render('Pages/employee-sign-in', {
           path: '/employee/login',
@@ -136,6 +136,16 @@ exports.postEmployeeLogin = (req, res, next) => {
           validationErrors: [],
         });
       }
+
+      let userTypeId = null;
+
+      const employee = await model.Employee.findOne({
+        where: { user_id: user.user_id },
+      });
+      if (employee) {
+        userTypeId = employee.employee_id;
+      }
+
       if (user.status === '0') {
         return res.status(422).render('Pages/employee-sign-in', {
           path: '/employee/login',
@@ -161,10 +171,17 @@ exports.postEmployeeLogin = (req, res, next) => {
           validationErrors: [],
         });
       }
+      currentUser = user;
       bcrypt
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
+            const data = {
+              email: currentUser.email,
+              userRole: currentUser.role_id,
+              userTypeId,
+            };
+            req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             if (!user.employee_id) {
@@ -194,15 +211,15 @@ exports.postEmployeeLogin = (req, res, next) => {
     });
 };
 
-exports.postEmployerLogin = (req, res, next) => {
+exports.postEmployerLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
-
+  let currentUser;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(401).render('Pages/employer-signin', {
-      path: '/employer-sign-in',
-      pageName: 'Employee Login',
+      path: '/employer/login',
+      pageName: 'Employer Login',
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email,
@@ -212,11 +229,11 @@ exports.postEmployerLogin = (req, res, next) => {
     });
   }
 
-  model.User.findOne({ where: { email }, role_id: 'ROL-EMPLOYER' })
-    .then((user) => {
+  model.User.findOne({ where: { email, role_id: 'ROL-EMPLOYER' } })
+    .then(async (user) => {
       if (!user) {
         return res.status(401).render('Pages/employer-signin', {
-          path: '/employer-sign-in',
+          path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'Invalid email or password.',
           oldInput: {
@@ -226,9 +243,21 @@ exports.postEmployerLogin = (req, res, next) => {
           validationErrors: [],
         });
       }
+
+      let userTypeId = null;
+      let verificationStatus = null;
+
+      const employer = await model.Employer.findOne({
+        where: { user_id: user.user_id },
+      });
+      if (employer) {
+        userTypeId = employer.employer_id;
+        verificationStatus = employer.verification_status;
+      }
+
       if (user.status === '0') {
         return res.status(422).render('Pages/employer-signin', {
-          path: '/employer-sign-in',
+          path: '/employer/login',
           pageName: 'Employer Sign In',
           errorMessage: 'User is not verified',
           oldInput: {
@@ -241,7 +270,7 @@ exports.postEmployerLogin = (req, res, next) => {
 
       if (user.block) {
         return res.status(422).render('Pages/employer-signin', {
-          path: '/employer-sign-in',
+          path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'User is blocked.',
           oldInput: {
@@ -251,16 +280,27 @@ exports.postEmployerLogin = (req, res, next) => {
           validationErrors: [],
         });
       }
+      currentUser = user;
       bcrypt
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
+            const data = {
+              email: currentUser.email,
+              userRole: currentUser.role_id,
+              userTypeId,
+              verificationStatus
+            };
+            req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            res.redirect('/employer-dashboard');
+            if (!user.employer_id) {
+              res.redirect('/employer/profile/create');
+            }
+            res.redirect(`/employer/dashboard/${user.employer_id}`);
           }
           return res.status(422).render('Pages/employer-signin', {
-            path: '/employer-sign-in',
+            path: '/employer/login',
             pageName: 'Employer Login',
             errorMessage: 'Invalid email or password.',
             oldInput: {
@@ -271,7 +311,7 @@ exports.postEmployerLogin = (req, res, next) => {
           });
         })
         .catch(() => {
-          res.redirect('/employer-signin');
+          res.redirect('/employer/login');
         });
     })
     .catch((err) => {
@@ -281,93 +321,93 @@ exports.postEmployerLogin = (req, res, next) => {
     });
 };
 
-exports.userLogin = (req, res, next) => {
-  const { email } = req.body;
-  const { password } = req.body;
-  let currentUser;
-  model.User.findOne({ where: { email } })
-    .then(async (user) => {
-      if (!user) {
-        return errorResMsg(
-          res,
-          404,
-          'Incorrect login details, user does not exist',
-        );
-      }
+// exports.userLogin = (req, res, next) => {
+//   const { email } = req.body;
+//   const { password } = req.body;
+//   let currentUser;
+//   model.User.findOne({ where: { email } })
+//     .then(async (user) => {
+//       if (!user) {
+//         return errorResMsg(
+//           res,
+//           404,
+//           'Incorrect login details, user does not exist',
+//         );
+//       }
 
-      // Getting the user type ID
-      let userTypeId = null;
-      let verificationStatus = null;
-      let isEmployer = false;
-      if (user.role_id === 'ROL-EMPLOYEE') {
-        const employee = await model.Employee.findOne({
-          where: { user_id: user.user_id },
-        });
-        if (employee) {
-          userTypeId = employee.employee_id;
-        }
-      } else if (user.role_id === 'ROL-EMPLOYER') {
-        isEmployer = true;
-        const employer = await model.Employer.findOne({
-          where: { user_id: user.user_id },
-        });
-        if (employer) {
-          userTypeId = employer.employer_id;
-          verificationStatus = employer.verification_status;
-        }
-      }
+//       // Getting the user type ID
+//       let userTypeId = null;
+//       let verificationStatus = null;
+//       let isEmployer = false;
+//       if (user.role_id === 'ROL-EMPLOYEE') {
+//         const employee = await model.Employee.findOne({
+//           where: { user_id: user.user_id },
+//         });
+//         if (employee) {
+//           userTypeId = employee.employee_id;
+//         }
+//       } else if (user.role_id === 'ROL-EMPLOYER') {
+//         isEmployer = true;
+//         const employer = await model.Employer.findOne({
+//           where: { user_id: user.user_id },
+//         });
+//         if (employer) {
+//           userTypeId = employer.employer_id;
+//           verificationStatus = employer.verification_status;
+//         }
+//       }
 
-      if (user.status === '0') {
-        return errorResMsg(res, 401, 'User is not verified');
-      }
+//       if (user.status === '0') {
+//         return errorResMsg(res, 401, 'User is not verified');
+//       }
 
-      if (user.block) {
-        return errorResMsg(res, 401, 'User Blocked!');
-      }
+//       if (user.block) {
+//         return errorResMsg(res, 401, 'User Blocked!');
+//       }
 
-      currentUser = user;
-      bcrypt.compare(password, user.password).then((valid) => {
-        if (!valid) {
-          return errorResMsg(res, 401, 'Incorrect login details');
-        }
+//       currentUser = user;
+//       bcrypt.compare(password, user.password).then((valid) => {
+//         if (!valid) {
+//           return errorResMsg(res, 401, 'Incorrect login details');
+//         }
 
-        let data = {
-          email: currentUser.email,
-          userId: currentUser.user_id.toString(),
-          userRole: currentUser.role_id,
-          userTypeId,
-        };
+//         let data = {
+//           email: currentUser.email,
+//           userId: currentUser.user_id.toString(),
+//           userRole: currentUser.role_id,
+//           userTypeId,
+//         };
 
-        if (isEmployer) data = { ...data, verificationStatus };
+//         if (isEmployer) data = { ...data, verificationStatus };
 
-        const token = jsonWT.signJWT(data);
+//         const token = jsonWT.signJWT(data);
 
-        sessionSuccessResMsg(
-          res,
-          'login successful',
-          200,
-          token,
-          currentUser.user_id.toString(),
-        );
-      });
-    })
-    .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
+//         sessionSuccessResMsg(
+//           res,
+//           'login successful',
+//           200,
+//           token,
+//           currentUser.user_id.toString(),
+//         );
+//       });
+//     })
+//     .catch((err) => {
+//       if (!err.statusCode) {
+//         err.statusCode = 500;
+//       }
 
-      next(err);
-    });
-};
+//       next(err);
+//     });
+// };
 
-exports.adminLogin = (req, res, next) => {
+exports.adminLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('Pages/admin-login', {
-      path: '/admin-login',
+      path: '/admin/login',
       pageName: 'Admin login',
       errorMessage: errors.array()[0].msg,
       oldInput: {
@@ -377,11 +417,11 @@ exports.adminLogin = (req, res, next) => {
       validationErrors: errors.array(),
     });
   }
-  model.User.findOne({ where: { email } })
+  await model.User.findOne({ where: { email } })
     .then((user) => {
       if (!user) {
         return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
+          path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'Incorrect login details,user does not exist.',
           oldInput: {
@@ -393,7 +433,7 @@ exports.adminLogin = (req, res, next) => {
       }
       if (user.role_id !== 'ROL-ADMIN' && user.role_id !== 'ROL-SUPERADMIN') {
         return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
+          path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not an admin.',
           oldInput: {
@@ -405,7 +445,7 @@ exports.adminLogin = (req, res, next) => {
       }
       if (user.status === '0') {
         return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
+          path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not verified.',
           oldInput: {
@@ -417,7 +457,7 @@ exports.adminLogin = (req, res, next) => {
       }
       if (user.block) {
         return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
+          path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is blocked.',
           oldInput: {
@@ -433,10 +473,10 @@ exports.adminLogin = (req, res, next) => {
           if (valid) {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            res.redirect('/admin-dashboard');
+            res.redirect('/admin/dashboard');
           }
           return res.status(422).render('Pages/admin-login', {
-            path: '/admin-login',
+            path: '/admin/login',
             pageName: 'Admin Login',
             errorMessage: 'Incorrect login details.',
             oldInput: {
@@ -447,7 +487,7 @@ exports.adminLogin = (req, res, next) => {
           });
         })
         .catch(() => {
-          res.redirect('/admin-login');
+          res.redirect('/admin/login');
         });
     })
     .catch((err) => {
