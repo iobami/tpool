@@ -40,6 +40,6 @@ forgotPasswordForm.addEventListener('submit', (e) => {
       email: email,
     })
     .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .catch((err));
   document.getElementById('forgot-password').reset();
 });
