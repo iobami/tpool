@@ -1,8 +1,5 @@
 module.exports = {
-<<<<<<< HEAD
 
-=======
->>>>>>> ab976a75c6c6cf98366139f82506e84606e37382
   employerSignup: (req, res) => {
     res.render('Pages/employer-sign-up', {
       pageName: 'Employer Registration',
