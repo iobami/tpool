@@ -288,7 +288,7 @@ exports.postEmployerLogin = async (req, res, next) => {
               email: currentUser.email,
               userRole: currentUser.role_id,
               userTypeId,
-              verificationStatus
+              verificationStatus,
             };
             req.session.data = data;
             req.session.isLoggedIn = true;
@@ -564,7 +564,6 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
     const data = { message: 'Reset password email sent' };
     return successResMsg(res, 201, data);
   } catch (err) {
-    //console.log(err);
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
     user.reset_password_expire = null;
