@@ -13,7 +13,7 @@ const {
   resendVerificationLink,
   updatePassword,
   superAdminLogin,
-} = require('../controllers/auth');
+} = require('../Controllers/auth');
 
 const { verifyEmail } = require('../Controllers/employee/employee-signup');
 
