@@ -50,9 +50,24 @@
                 </div>
 
                 <div class="tab-content" id="nav-tabContent">
+                    <% if(error && error.length > 0) { %>
+                        <div class="alert alert-danger alert-dismissible deposit-alert" role="alert">
+                            <div class="container">
+                              <%- error %> 
+                            </div>
+                        </div>
+                    <% }if(errors && errors.length > 0){ %>
+                      <% for(var i=0; i < errors.length; i++) { %>
+                        <div class="alert alert-danger alert-dismissible deposit-alert" role="alert">
+                          <div class="container">
+                            <%- errors[i].msg %> 
+                          </div>
+                      </div>
+                      <% } } %>
                     <div class="tab-pane fade show active" id="intern" role="tabpanel" aria-labelledby="intern-tab">
-                        <form class="needs-validation" novalidate>
+                        <form class="needs-validation" action="v1/auth/employee-signup" method="POST" novalidate>
                             <div class="row">
+                                <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                                 <div class="col-md mb-3">
                                     <label for="fname">First Name</label>
                                     <div class="input-group">
@@ -91,7 +106,7 @@
                             <div class="row">
                                 <div class="col-md mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com" required>
                                     <div id="invalidE">
                                     </div>
                                 </div>
@@ -113,7 +128,7 @@
                             <div class="row">
                                 <div class="col-md mb-3">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
+                                    <input type="password" name="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
                                     <div id="invalidPass">
                                     </div>
                                 </div>
@@ -192,8 +207,9 @@
                     </div>
 
                     <div class="tab-pane fade" id="new-user" role="tabpanel" aria-labelledby="new-user-tab">
-                        <form class="needs-validation" novalidate>
+                        <form action="v1/auth/employee-signup" method="POST" class="needs-validation" novalidate>
                             <div class="row">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <div class="col-md mb-3">
                                     <label for="fname">First Name</label>
                                     <div class="input-group">
@@ -232,7 +248,7 @@
                             <div class="row">
                                 <div class="col-md mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="emailV2" placeholder="example@gmail.com" required>
+                                    <input type="email" name="email" class="form-control" id="emailV2" placeholder="example@gmail.com" required>
                                     <div id="invalidEV2">
                                     </div>
                                 </div>
@@ -254,7 +270,7 @@
                             <div class="row">
                                 <div class="col-md mb-3">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="passwordV2" minlength="8" placeholder="at least 8 characters" required>
+                                    <input type="password" name="password" class="form-control" id="passwordV2" minlength="8" placeholder="at least 8 characters" required>
                                     <div id="invalidPassV2">
                                     </div>
                                 </div>
@@ -339,7 +355,14 @@
     </div>
 </main>
 
+<%- include('../Templates/footer') %>
 <script>
+    // Getting verify status to know if registration is successful or not
+    const verifyStatus = `<%- success %>`;
+      if (verifyStatus == 'Verification email sent!') {
+          // Displaying the modal
+        $('#exampleModal').modal();
+      }
     async function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
         const role_id = document.querySelector('.g-signin2').dataset.user;
@@ -370,10 +393,8 @@
     }
     
   </script>
-
-<%- include('../Templates/footer') %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-<script type="module" src="js/custom-js/employee-signUp.js"></script>
+<!-- <script type="module" src="js/custom-js/employee-signUp.js"></script> -->
 <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
 
 </body>
