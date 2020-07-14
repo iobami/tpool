@@ -113,10 +113,10 @@
     transition: all 0.5s ease-in-out;
 }
 
-.price-payment .container .pay-now__form .bottom-bar__content .img-container:hover {
+/* .price-payment .container .pay-now__form .bottom-bar__content .img-container:hover {
     cursor: pointer;
     background: rgba(196, 196, 196, 0.35);
-}
+} */
 
 .price-payment .container .pay-now__form .bottom-bar__content .img-container img{
     width: 80%;
