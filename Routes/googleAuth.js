@@ -16,34 +16,34 @@ router.get('/auth/employee/google',
 
 // receive process details from passport.setup
 router.get('/auth/employer/google/callback',
-  passport.authenticate('google-employer', { failureRedirect: '/' }),
+  passport.authenticate('google-employer', { failureRedirect: '/employer/login' }),
   (req, res) => {
     // Successful authentication,
     const { user } = req;
     if ((!user.userTypeId) || user.userTypeId == null) {
       req.session.isLoggedIn = false;
       req.session.userId = user.user_id;
-      return res.redirect('/employer-create-profile');
+      return res.redirect('/employer/create/profile');
     }
     req.session.isLoggedIn = true;
     req.session.userId = user.user_id;
-    return res.redirect('/employer-dashboard');
+    return res.redirect('/employer/dashboard');
   });
 
 // receive process details from passport.setup
 router.get('/auth/employee/google/callback',
-  passport.authenticate('google-employee', { failureRedirect: '/' }),
+  passport.authenticate('google-employee', { failureRedirect: '/employee/login' }),
   (req, res) => {
   // Successful authentication,
     const { user } = req;
     if ((!user.userTypeId) || user.userTypeId == null) {
       req.session.isLoggedIn = false;
       req.session.userId = user.user_id;
-      return res.redirect('/employee/profile');
+      return res.redirect('/employee/profile/create');
     }
     req.session.isLoggedIn = true;
     req.session.userId = user.user_id;
-    return res.redirect('/employee/dashboard');
+    return res.redirect('/employee/dashboard/:employee_id');
   });
 
 module.exports = router;
