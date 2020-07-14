@@ -1,13 +1,11 @@
 module.exports = {
-  // employerSignIn: (req, res) => {
-  //   res.render('Pages/employer-signin', { pageName: 'Employer Login' });
-  // },
-
-  employerSignup: (req, res) => {
+  
+   employerSignup: (req, res) => {
     res.render('Pages/employer-sign-up', {
-      pageName: 'Employer Signup',
+      pageName: 'Employer Signup', error: req.flash('error'), errors: req.flash('errors'), success: req.flash('success'),
     });
   },
+  
   employerSignIn: (req, res) => {
     if (req.session.isLoggedIn) {
       res.redirect('/employee-dashboard');

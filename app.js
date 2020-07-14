@@ -80,6 +80,9 @@ const employerTransaction = require('./Routes/employer/employer-transaction');
 // IMPORT GET VERFIED EMPLOYEES ROUTES
 const getAllEmployees = require('./Routes/employer/get-employees');
 
+// IMPORT EMPLOYER DASHBOARD
+const employerDashboard = require('./Routes/employer/employer-dashboard');
+
 // IMPORT THE VIEWS ROUTES
 const appRoute = require('./Routes/views');
 const adminDashRoute = require('./Routes/views/admin/dashboard');
@@ -169,7 +172,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
-
 // ROUTES
 
 // chat route
@@ -190,6 +192,7 @@ app.use('/v1/employer', employerRoute);
 app.use('/v1/employer', employerUpgradeRoute);
 app.use('/v1/employer', employerReviews);
 app.use('/v1/employer', employerTransaction);
+app.use('/v1/employer', employerDashboard);
 
 // Employers get all verified employees
 app.use('/v1/employer', getAllEmployees);
