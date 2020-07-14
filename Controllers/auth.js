@@ -186,9 +186,9 @@ exports.postEmployeeLogin = async (req, res, next) => {
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;
             if (!data.userTypeId) {
-              res.redirect('/employee/profile/create');
+              return res.redirect('/employee/profile/create');
             }
-            res.redirect(`/employee/dashboard/${data.userTypeId}`);
+            return res.redirect(`/employee/dashboard/${data.userTypeId}`);
           }
           return res.status(422).render('Pages/employee-sign-in', {
             path: '/employee/login',
@@ -201,9 +201,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
             validationErrors: [],
           });
         })
-        .catch(() => {
-          res.redirect('/employee/login');
-        });
+        .catch(() => res.redirect('/employee/login'));
     })
     .catch((err) => {
       const error = new Error(err);

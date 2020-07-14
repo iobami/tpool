@@ -2,7 +2,6 @@ const express = require('express');
 const employeeViewController = require('../../../Controllers/views/employee/dashboard');
 const employeeController = require('../../../Controllers/employee/employee-profile');
 
-
 const { EmployeeProfile } = require('../../../Utils/validators/employee-profile');
 
 const appRoute = express.Router();

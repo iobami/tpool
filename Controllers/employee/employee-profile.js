@@ -43,7 +43,6 @@ const uploadImageFunction = async (req, res) => {
     (error, result) => {
       if (result) {
         image = result.secure_url;
-        console.log(image);
         return image;
       }
       // return errorResMsg(res, 400, 'Image Upload Failed!, Kindly retry');
@@ -59,7 +58,7 @@ exports.createProfile = async (req, res) => {
   const employeeId = uuid();
   const imageUrl = await uploadImageFunction(req, res);
   const { userId } = req.session;
-  console.log('session', req.session);
+  // console.log('session', req.session);
 
   const {
     firstName,
@@ -112,17 +111,13 @@ exports.createProfile = async (req, res) => {
       const data = await models.Employee.create(newBody);
 
       // return successResMsg(res, 201, data);
+      if (!data) {
+        req.flash('error', 'User already has a profile. Please, update existing profile');
+        return res.redirect(`/employee/dashboard/${employeeId}`);
+      }
       req.flash('success', 'Profile Created Succesfully!');
-      return res.redirect(`/employee/dashboard/${data.employee_id}`);
+      return res.redirect(`/employee/dashboard/${employeeId}`);
     }
-    // Check if profile already exist
-    // return errorResMsg(
-    //   res,
-    //   400,
-    //   'User already has a profile. Please, update existing profile',
-    // );
-    req.flash('error', 'User already has a profile. Please, update existing profile');
-    return res.redirect('/employee/profile/create');
   } catch (err) {
     // return errorResMsg(res, 500, err.message);
     req.flash('error', err.message);
@@ -133,7 +128,11 @@ exports.createProfile = async (req, res) => {
 // GET AN EMPLOYEE PROFILE -- Renders a page
 exports.getDashboard = async (req, res) => {
   try {
-    const { employee_id: employeeId } = req.session;
+    let employeeId;
+
+    if (req.params.employee_id) {
+      employeeId = req.params.employee_id;
+    }
 
     const query = await models.Employee.findOne({
       where: { employee_id: employeeId },
