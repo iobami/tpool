@@ -29,7 +29,7 @@ appRoute.post(
   EmployeeProfile.validateProfile,
 );
 // Get Profile By Username -- No Page, use AXIOS then render data
-appRoute.get('/employee/:username', employeeController.getProfileByUsername);
+appRoute.get('/:username', employeeController.getProfileByUsername);
 // Employee Support
 appRoute.get('/employee/support', employeeViewController.getEmployeeSupport);
 // Employee Settings

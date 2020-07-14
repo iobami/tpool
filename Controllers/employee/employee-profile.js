@@ -133,7 +133,7 @@ exports.createProfile = async (req, res) => {
 // GET AN EMPLOYEE PROFILE -- Renders a page
 exports.getDashboard = async (req, res) => {
   try {
-    const { employee_id: employeeId } = req.params;
+    const { employee_id: employeeId } = req.session;
 
     const query = await models.Employee.findOne({
       where: { employee_id: employeeId },
@@ -155,11 +155,11 @@ exports.getDashboard = async (req, res) => {
     const data = { employee, skills, portfolios };
 
     if (!employee) {
-      return errorResMsg(res, 404, 'Profile not found');
+      return req.flash('error', 'Profile not found');
     }
     return res.status(200).render('Pages/employee-dashboard', {
       pageTitle: 'Talent Pool | Dashboard',
-      path: 'employee-dashboard',
+      path: '/employee/dashboard',
       data,
     });
   } catch (err) {
@@ -199,7 +199,11 @@ exports.getProfileByUsername = async (req, res) => {
       return errorResMsg(res, 404, 'Profile not found');
     }
 
-    return successResMsg(res, 200, data);
+    return res.status(200).render('no page yet', { // TODO create a page for get profile by username
+      pageTitle: 'Talent Pool | Profile',
+      path: `${username}`,
+      data,
+    });
   } catch (err) {
     return errorResMsg(res, 500, err.message);
   }
