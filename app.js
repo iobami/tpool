@@ -99,7 +99,7 @@ const adminAuthRoute = require('./Routes/views/admin/auth');
 const employerMetrics = require('./Routes/views/employer/metrics');
 const employerRecommendation = require('./Routes/views/employer/recommendation');
 const verifyModal = require('./Routes/views/admin/verifyModal');
-
+const teamRoute = require('./Routes/views/team/index');
 const app = express();
 
 app.use(morgan('tiny'));
@@ -245,5 +245,6 @@ app.use(adminAuthRoute);
 app.use(employerMetrics);
 app.use(employerRecommendation);
 app.use(verifyModal);
+app.use(teamRoute);
 
 module.exports = app;
