@@ -13,7 +13,7 @@ module.exports = {
     if (req.session.isLoggedIn) {
       res.redirect('/employee/dashboard');
     }
-
+    const success = req.flash('success');
     let message = req.flash('error');
     if (message.length > 0) {
       [message] = message;
@@ -23,6 +23,7 @@ module.exports = {
     res.render('Pages/employee-sign-in', {
       path: '/employee/login',
       pageName: 'Employee Login',
+      success,
       errorMessage: message,
       oldInput: {
         email: '',
