@@ -11,7 +11,8 @@ const db = require('../../Models');
 
 const employerss = db.Employer;
 const documentupload = db.Employerdocument;
-const comoany_type = db.Company_category;
+const company_type = db.Company_category;
+const mainuser = db.User;
 
 // configure cloudinary
 cloud.config({
@@ -57,7 +58,7 @@ class Employers {
     } = req.body;
     // file.name=`${dir}${organization_name}.png`
     // eslint-disable-next-line no-unused-vars
-    const fname = file.name;
+    //const fname = file.name;
     // eslint-disable-next-line no-console
     const employer = {
       employer_name,
@@ -119,7 +120,8 @@ class Employers {
     } catch (err) {
       res.status(500).send({
         status: 'error',
-        message: 'An error occurred, make sure you fill all forms field',
+        message:
+          'An error occurred,invalid industry selected and makesure you fill all fields',
       });
     }
   }
@@ -209,23 +211,19 @@ class Employers {
   }
 
   static async getemployerdetails(req, res) {
-    const { id } = req.params;
     try {
-      const getemployerdetails = await employerss.findAll({
+      const employerinformation = await employerss.findOne({
         where: {
-          employer_id: id,
+          employer_id: req.session.employerId,
         },
-        include: [comoany_type],
+        include: [company_type, mainuser],
       });
       if (getemployerdetails.length <= 0) {
-        return res
-          .status(400)
-          .json({ status: 'error', message: 'Employer details not found' });
+        return res.send('404 error');
       }
-      return res.status(201).json({
-        status: 'success',
-        getemployerdetails,
-      });
+      req.user = employerinformation;
+
+      // return employerinformation;
     } catch (err) {
       res.status(500).send({
         status: 'error',
@@ -233,7 +231,6 @@ class Employers {
       });
     }
   }
-
   static async documentupload(req, res) {
     // upload document
     const { employer_id, document_name, document_number } = req.body;
@@ -253,13 +250,12 @@ class Employers {
     if (!validate) {
       return res
         .status(400)
-        .json({ status: 'error', message: 'Invalid employer id' });
+        .json({ status: 'error', message: 'Employer not valid' });
     }
     // run the process
     const resultview = await cloud.uploader.upload(file.tempFilePath);
     const { secure_url } = resultview;
     // eslint-disable-next-line no-console
-    console.log(secure_url);
     const documentobject = {
       document_id: uuid(),
       employer_id,
@@ -300,7 +296,7 @@ class Employers {
           .status(400)
           .json({ statu: 'error', message: 'No document found' });
       }
-
+      //whenever the page is ready i am available
       return res.status(201).json({
         status: 'success',
         getdocumentdetails,
