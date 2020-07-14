@@ -14,13 +14,17 @@ const csrf = require('csurf');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
 // eslint-disable-next-line no-unused-vars
-const { errorResMsg } = require('./Utils/response');
+const {
+  errorResMsg
+} = require('./Utils/response');
 
 dotenv.config();
 // eslint-disable-next-line import/order
 const morgan = require('morgan');
 const db = require('./Models');
-const { seedSuperAdmin } = require('./seed');
+const {
+  seedSuperAdmin
+} = require('./seed');
 const googleAuth = require('./Routes/googleAuth'); // require google auth route to test endpoint
 
 require('./config/passport.setup');
@@ -99,6 +103,7 @@ const adminAuthRoute = require('./Routes/views/admin/auth');
 const employerMetrics = require('./Routes/views/employer/metrics');
 const employerRecommendation = require('./Routes/views/employer/recommendation');
 const verifyModal = require('./Routes/views/admin/verifyModal');
+const messageRoute = require('./Routes/views/message/message');
 
 const app = express();
 
@@ -107,7 +112,9 @@ app.use(cors());
 const csrfProtection = csrf();
 // Set Security HTTP Headers
 app.use(helmet());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -130,7 +137,9 @@ app.use(flash());
 //   errorResMsg(res, 404, { message: 'Resource not found' });
 // });
 
-app.use(fileupload({ useTempFiles: true }));
+app.use(fileupload({
+  useTempFiles: true
+}));
 db.sequelize.sync().then(() => {
   seedSuperAdmin();
 });
@@ -167,7 +176,9 @@ app.use((req, res, next) => {
 });
 // express body parser
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 // Cookie Parser
 app.use(cookieParser());
 // Serving static files
@@ -246,5 +257,6 @@ app.use(employerMetrics);
 app.use(employerRecommendation);
 app.use(verifyModal);
 app.use(googleAuth);
+app.use(messageRoute);
 
 module.exports = app;
