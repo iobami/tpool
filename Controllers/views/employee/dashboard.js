@@ -13,6 +13,12 @@ exports.getEmployeeProfile = (req, res) => {
     path: '/employee/profile',
   });
 };
+exports.getEmployeePortfolio = (req, res) => {
+  res.render('Pages/employee-portfolio', {
+    pageTitle: 'Talent Pool | Portfolio',
+    path: '/employee/portfolio',
+  });
+};
 
 exports.getEmployeeSupport = (req, res) => {
   res.render('Pages/employee-support', {
