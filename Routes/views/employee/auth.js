@@ -21,17 +21,21 @@ appRoute.post(
       .isEmail()
       .withMessage('Please enter a valid email address')
       .normalizeEmail(),
-    body('password')
+    body('password', 'Password has to be valid.')
       .isLength({ min: 8 })
-      .withMessage(
-        'Password Incorrect)',
-      )
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_`,/@#\-"=:;~<>'\$%\^&\*\?\|\+\(\)\[\]\{}\.])(?=.{8,})/,
-      )
-      .withMessage(
-        'Password does not match required pattern',
-      ),
+      // .isAlphanumeric()
+      .trim(),
+    // body('password')
+    //   .isLength({ min: 8 })
+    //   .withMessage(
+    //     'Password Incorrect)',
+    //   )
+    //   .matches(
+    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_`,/@#\-"=:;~<>'\$%\^&\*\?\|\+\(\)\[\]\{}\.])(?=.{8,})/,
+    //   )
+    //   .withMessage(
+    //     'Password does not match required pattern',
+    //   ),
   ],
   authController.postEmployeeLogin,
 );
