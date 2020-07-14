@@ -1,8 +1,14 @@
 module.exports = {
+<<<<<<< HEAD
 
+=======
+>>>>>>> ab976a75c6c6cf98366139f82506e84606e37382
   employerSignup: (req, res) => {
     res.render('Pages/employer-sign-up', {
-      pageName: 'Employer Signup', error: req.flash('error'), errors: req.flash('errors'), success: req.flash('success'),
+      pageName: 'Employer Registration',
+      error: req.flash('error'),
+      errors: req.flash('errors'),
+      success: req.flash('success'),
     });
   },
 
@@ -18,7 +24,7 @@ module.exports = {
       message = null;
     }
     res.render('Pages/employer-signin', {
-      path: '/employee-sign-in',
+      path: '/employer/login',
       pageName: 'Employer Login',
       errorMessage: message,
       success,
