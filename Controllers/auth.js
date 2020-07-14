@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable operator-linebreak */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
