@@ -88,6 +88,8 @@ const getAllEmployees = require('./Routes/employer/get-employees');
 const employerDashboard = require('./Routes/employer/employer-dashboard');
 
 // IMPORT THE VIEWS ROUTES
+const adminPackages = require('./Routes/views/payment/admin_package');
+const employerPackages = require('./Routes/views/payment/employer_package');
 const appRoute = require('./Routes/views');
 const adminDashRoute = require('./Routes/views/admin/dashboard');
 const employeeAuthRoute = require('./Routes/views/employee/auth');
@@ -137,10 +139,8 @@ app.use(flash());
 //   errorResMsg(res, 404, { message: 'Resource not found' });
 // });
 
-app.use(fileupload({
-  useTempFiles: true
-}));
-db.sequelize.sync().then(() => {
+app.use(fileupload({ useTempFiles: true }));
+db.sequelize.sync({}).then(() => {
   seedSuperAdmin();
 });
 
@@ -199,7 +199,7 @@ app.use('/v1/employee', employeeSkillsRoutes);
 app.use('/v1/employee', employeeSearchRoutes);
 
 // employers route goes here
-app.use('/v1/employer', employerRoute);
+app.use('/employer', employerRoute);
 app.use('/v1/employer', employerUpgradeRoute);
 app.use('/v1/employer', employerReviews);
 app.use('/v1/employer', employerTransaction);
@@ -228,7 +228,7 @@ app.use('/v1/team', teamRoutes);
 
 // auth
 app.use('/v1/auth', googleAuth);
-app.use('/v1/auth', auth);
+app.use('/auth', auth);
 
 // app.use('/v1/admin', adminRoute); // admin
 app.use('/v1/admin', adminManagementRoute); // super admin
@@ -244,7 +244,7 @@ app.use(appRoute);
 // app.use(adminRoute);
 app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
-app.use(employerAuthRoute);
+app.use(employerAuthRoute); // mark this
 app.use(employerDashboardRoute);
 app.use(adminDashRoute);
 app.use(topTalentsRoute);
@@ -256,6 +256,8 @@ app.use(adminAuthRoute);
 app.use(employerMetrics);
 app.use(employerRecommendation);
 app.use(verifyModal);
+app.use(adminPackages);
+app.use(employerPackages);
 app.use(googleAuth);
 app.use(messageRoute);
 

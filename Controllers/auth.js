@@ -186,8 +186,10 @@ exports.postEmployeeLogin = async (req, res, next) => {
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;
             if (!data.userTypeId) {
+              req.flash('success', 'Login Successful');
               return res.redirect('/employee/profile/create');
             }
+            req.flash('success', 'Login Successful');
             return res.redirect(`/employee/dashboard/${data.userTypeId}`);
           }
           return res.status(422).render('Pages/employee-sign-in', {
@@ -288,7 +290,7 @@ exports.postEmployerLogin = async (req, res, next) => {
               email: currentUser.email,
               userRole: currentUser.role_id,
               userTypeId,
-              verificationStatus
+              verificationStatus,
             };
             req.session.data = data;
             req.session.isLoggedIn = true;
