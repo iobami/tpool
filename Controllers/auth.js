@@ -36,7 +36,7 @@ exports.registerEmployer = (req, res) => {
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
         req.flash('errors', errResponse);
-        res.redirect('/employer/register');
+        return res.redirect('/employer/register');
       }
       // encrypt password
       const salt = bcrypt.genSaltSync(10);
@@ -78,11 +78,11 @@ exports.registerEmployer = (req, res) => {
 
           // return successResMsg(res, 201, data);
           req.flash('success', 'Verification email sent!');
-          res.redirect('/employer/register');
+          return res.redirect('/employer/register');
         } catch (err) {
           req.flash('error', 'An error Occoured');
-          res.redirect('/employer-sign-up');
-          return errorResMsg(res, 500, err);
+          return res.redirect('/employer/register');
+          // return errorResMsg(res, 500, err);
         }
       } else {
         // return errorResMsg(
@@ -91,7 +91,7 @@ exports.registerEmployer = (req, res) => {
         //   'Someone has already registered this email',
         // );
         req.flash('error', 'Someone has already registered this email');
-        res.redirect('/employer/register');
+        return res.redirect('/employer/register');
       }
     } catch (err) {
       if (!err.statusCode) {
@@ -99,7 +99,7 @@ exports.registerEmployer = (req, res) => {
       }
       // return errorResMsg(res, 500, 'An error occurred');
       req.flash('error', 'An error Occoured');
-      res.redirect('/employer/register');
+      return res.redirect('/employer/register');
     }
   })();
 };
@@ -255,8 +255,6 @@ exports.postEmployerLogin = async (req, res, next) => {
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
-       
-           
             // const data = {
             //   email: user.email,
             //   userId: user.user_id.toString(),

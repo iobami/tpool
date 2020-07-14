@@ -5,9 +5,9 @@ const { authorize } = require('../Middleware/index');
 const { UserValidation } = require('../Utils/validators/user-validator-new');
 
 const {
-  adminLogin,
-  postEmployeeLogin,
-  postEmployerLogin,
+  // adminLogin,
+  // postEmployeeLogin,
+  // postEmployerLogin,
   forgotPassword,
   resetPassword,
   resendVerificationLink,
