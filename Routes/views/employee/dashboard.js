@@ -2,7 +2,6 @@ const express = require('express');
 const employeeViewController = require('../../../Controllers/views/employee/dashboard');
 const employeeController = require('../../../Controllers/employee/employee-profile');
 
-
 const { EmployeeProfile } = require('../../../Utils/validators/employee-profile');
 
 const appRoute = express.Router();
@@ -29,7 +28,7 @@ appRoute.post(
   EmployeeProfile.validateProfile,
 );
 // Get Profile By Username -- No Page, use AXIOS then render data
-appRoute.get('/employee/:username', employeeController.getProfileByUsername);
+appRoute.get('/:username', employeeController.getProfileByUsername);
 // Employee Support
 appRoute.get('/employee/support', employeeViewController.getEmployeeSupport);
 // Employee Settings
