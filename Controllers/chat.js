@@ -14,14 +14,25 @@ const {
 exports.chatUsers = async (req, res) => {
   try {
     const employer = await model.Employer.findAll({
-      attributes: ['user_id', 'employer_name']
+      attributes: ['user_id', 'employer_name', 'employer_photo'],
+      include: [{
+        model: model.User,
+        attributes: ['role_id']
+      }]
     });
     const employee = await model.Employee.findAll({
-      attributes: ['user_id', 'first_name', 'last_name']
-
+      attributes: ['user_id', 'first_name', 'last_name', 'image'],
+      include: [{
+        model: model.User,
+        attributes: ['role_id']
+      }]
     });
     const admin = await model.Admin.findAll({
-      attributes: ['user_id', 'first_name', 'last_name']
+      attributes: ['user_id', 'first_name', 'last_name'],
+      include: [{
+        model: model.User,
+        attributes: ['role_id']
+      }]
     });
     const data = {
       data: [...employer, ...employee, ...admin]

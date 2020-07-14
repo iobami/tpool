@@ -9,47 +9,36 @@
     <%- include('../Templates/header') %>
 
     <main class="container-fluid content-container">
-      <div class="row">
-        <div class="col-lg-5 d-none d-lg-block signIn-img-div">
-          <!-- <img src="img/employee_signup_image.png" alt="employee sign up image"> -->
-        </div>
 
-        <div class="col-lg-7 px-4">
-          <div class="container pl-lg-5 pr-lg-3 pt-4" id="parent">
-            <div class="pt-5 pb-2">
-              <p class="bigTitle">Welcome Back</p>
-              <p class="smallTitle">Get the right talent for that job now.</p>
+        <div class="row">
+            <div class="col-lg-5 d-none d-lg-block signIn-img-div">
+                <!-- <img src="img/employee_signup_image.png" alt="employee sign up image"> -->
             </div>
-            <% if (errorMessage) { %>
-            <div
-              role="alert"
-              class="alert alert-danger user-message user-message--error"
-            >
-              <%= errorMessage %>
-            </div>
-            <% } if (success && success.length > 0) { %>
-            <div role="alert" class="alert alert-success user-message">
-              <%= success %>
-            </div>
-            <% } %>
-            <form
-              class="needs-validation"
-              method="POST"
-              action="/employer/login"
-              novalidate
-              id="form"
-            >
-              <div class="col-md mb-3 px-0">
-                <label for="email">Email</label>
-                <input
-                  class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid-value' : '' %>"
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="abc@gmail.com"
-                  value="<%= oldInput.email %>"
-                />
-                <!-- <input type="email" class="form-control" id="email" placeholder="example@gmail.com"
+
+            <div class=" col-lg-7 px-4">
+                <div class="container pl-lg-5 pr-lg-3 pt-4" id="parent">
+                    <div class="pt-5 pb-2">
+                        <p class="bigTitle">Welcome Back</p>
+                        <p class="smallTitle">Get the right talent for that job now.</p>
+                    </div>
+                    <% if (errorMessage) { %>
+                        <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+                    <% }if (success && success.length > 0) { %>
+                        <div role="alert" class="alert alert-success user-message"><%= success %></div>
+                    <% } %>
+                    <form class="needs-validation" method="POST" action="/employer/login" novalidate id="form">
+
+                        <div class="col-md mb-3 px-0">
+                            <label for="email">Email</label>
+                            <input 
+                            class="form-control invalid <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                            type="email" 
+                            name="email" 
+                            id="email" 
+                            placeholder="abc@gmail.com"
+                            value="<%= oldInput.email %>">
+                            <!-- <input type="email" class="form-control" id="email" placeholder="example@gmail.com"
+
                                 required>
                             <div class="invalid-feedback">
                                 Your valid email address is required.
