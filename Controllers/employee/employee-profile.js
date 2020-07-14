@@ -6,6 +6,12 @@ const { uuid } = require('uuidv4');
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 
+// eslint-disable-next-line operator-linebreak
+const URL =
+  process.env.NODE_ENV === 'development'
+    ? process.env.TALENT_POOL_DEV_URL
+    : process.env.TALENT_POOL_FRONT_END_URL;
+
 // eslint-disable-next-line no-unused-vars
 const upload = multer({ dest: `${__dirname}../../public/employeeimages` });
 
@@ -38,91 +44,110 @@ const attributes = [
 let image;
 
 const uploadImageFunction = async (req, res) => {
-  await cloudinary.uploader.upload(
-    req.files.image.tempFilePath,
-    (error, result) => {
-      if (result) {
-        image = result.secure_url;
-        return image;
-      }
-      return errorResMsg(res, 400, 'Image Upload Failed!, Kindly retry');
-    },
-  );
-  return image;
+  try {
+    await cloudinary.uploader.upload(
+      req.files.image.tempFilePath,
+      (error, result) => {
+        if (result) {
+          image = result.secure_url;
+          return image;
+        }
+        // return errorResMsg(res, 400, 'Image Upload Failed!, Kindly retry');
+        req.flash('error', 'Image Upload Failed!, Kindly retry');
+        return res.redirect('/employee/profile/create');
+      },
+    );
+    return image;
+  } catch (err) {
+    req.flash('error', err.message);
+    return errorResMsg(res, 500, err.message);
+  }
 };
 
 // CREATE A PROFILE -- To be consumed with axios
 exports.createProfile = async (req, res) => {
-  const employeeId = uuid();
-  const imageUrl = await uploadImageFunction(req, res);
-  console.log('url to image', imageUrl);
-
-  const {
-    firstName,
-    lastName,
-    userType,
-    hngId,
-    userName,
-    location,
-    track,
-    phoneNo,
-    availability,
-    dateOfBirth,
-    employeeCv,
-    userId,
-  } = req.body;
-  const newBody = {
-    first_name: firstName,
-    last_name: lastName,
-    user_type: userType,
-    phone_no: phoneNo,
-    hng_id: hngId,
-    username: userName,
-    image: imageUrl,
-    location,
-    track,
-    availability,
-    dob: dateOfBirth,
-    employee_id: employeeId,
-    views: '0',
-    employee_cv: employeeCv,
-    user_id: userId,
-  };
-
   try {
+    const employeeId = uuid();
+    const imageUrl = await uploadImageFunction(req, res);
+    const { userId } = req.session;
+    const {
+      firstName,
+      lastName,
+      userType,
+      hngId,
+      userName,
+      location,
+      track,
+      phoneNo,
+      availability,
+      dateOfBirth,
+      employeeCv,
+    } = req.body;
+    const newBody = {
+      first_name: firstName,
+      last_name: lastName,
+      user_type: userType,
+      phone_no: phoneNo,
+      hng_id: hngId,
+      username: userName,
+      image: imageUrl,
+      location,
+      track,
+      availability,
+      dob: dateOfBirth,
+      employee_id: employeeId,
+      views: '0',
+      employee_cv: employeeCv,
+      user_id: userId,
+    };
+
     // eslint-disable-next-line camelcase
-    const { user_id } = newBody;
-    const userQuery = await models.User.findOne({ where: { user_id } });
+    // const { user_id: } = req.session;
+    const userQuery = await models.User.findOne({ where: { user_id: userId } });
     if (!userQuery) {
-      return errorResMsg(res, 400, 'Invalid user id');
+      // return errorResMsg(res, 400, 'Invalid user id');
+      req.flash('error', 'Invalid user id');
+      return res.redirect('/employee/profile/create');
     }
 
     // Check if user has a PROFILE
-    const query = await models.Employee.findOne({ where: { user_id } });
+    const query = await models.Employee.findOne({ where: { user_id: userId } });
 
     const userProfile = await query;
     // Check if profile does not already exist
-    if (!userProfile) {
-      // Create new profile
-      const data = await models.Employee.create(newBody);
-
-      return successResMsg(res, 201, data);
+    if (userProfile) {
+      req.flash(
+        'error',
+        'User already has a profile. Please, update existing profile',
+      );
+      return res.redirect(`/employee/dashboard/${employeeId}`);
     }
-    // Check if profile already exist
-    return errorResMsg(
-      res,
-      400,
-      'User already has a profile. Please, update existing profile',
-    );
+    // Create new profile
+    await models.Employee.create(newBody);
+
+    // return successResMsg(res, 201, data);
+    req.flash('success', 'Profile Created Succesfully!');
+    req.session.isProfileCreated = true;
+    req.session.profileId = employeeId;
+    return res.redirect(`/employee/dashboard/${employeeId}`);
   } catch (err) {
+    req.flash('error', err.message);
     return errorResMsg(res, 500, err.message);
+    // return res.redirect('/employee/profile/create');
   }
 };
 
 // GET AN EMPLOYEE PROFILE -- Renders a page
 exports.getDashboard = async (req, res) => {
   try {
-    const { employee_id: employeeId } = req.params;
+    let employeeId;
+    const { isLoggedIn, userTypeId } = req.session;
+
+    if (req.params.employee_id) {
+      employeeId = req.params.employee_id;
+    } else if (isLoggedIn && userTypeId) {
+      employeeId = req.session.employeeId;
+    }
 
     const query = await models.Employee.findOne({
       where: { employee_id: employeeId },
@@ -144,11 +169,11 @@ exports.getDashboard = async (req, res) => {
     const data = { employee, skills, portfolios };
 
     if (!employee) {
-      return errorResMsg(res, 404, 'Profile not found');
+      return req.flash('error', 'Profile not found');
     }
     return res.status(200).render('Pages/employee-dashboard', {
       pageTitle: 'Talent Pool | Dashboard',
-      path: 'employee-dashboard',
+      path: `${URL}employee/dashboard/${employeeId}`,
       data,
     });
   } catch (err) {
@@ -188,7 +213,12 @@ exports.getProfileByUsername = async (req, res) => {
       return errorResMsg(res, 404, 'Profile not found');
     }
 
-    return successResMsg(res, 200, data);
+    return res.status(200).render('no page yet', {
+      // TODO create a page for get profile by username
+      pageTitle: `Talent Pool | ${username}'s Profile`,
+      path: `/${username}`,
+      data,
+    });
   } catch (err) {
     return errorResMsg(res, 500, err.message);
   }
@@ -205,7 +235,6 @@ exports.updateProfile = async (req, res) => {
       if (req.files) {
         const imageUrl = await uploadImageFunction(req, res);
         reqBody = { image: imageUrl, ...req.body };
-        console.log(reqBody);
       }
 
       await models.Employee.update(reqBody, {
@@ -234,8 +263,6 @@ exports.updateProfile = async (req, res) => {
       'Bad Request! Please, try again with accepted entries!!!',
     );
   } catch (err) {
-    console.log(err);
-
     return errorResMsg(res, 500, err.message);
   }
 };

@@ -11,18 +11,18 @@ const {
   adminLogin,
 } = require('../../../Controllers/views/admin/auth');
 
-appRoute.get('/admin-signup', adminSignUp);
-appRoute.get('/admin-login', adminLogin);
+appRoute.get('/admin/signup', adminSignUp);
+appRoute.get('/admin/login', adminLogin);
 appRoute.post(
-  '/admin-login',
+  '/admin/login',
   [
     body('email')
       .isEmail()
       .withMessage('Please enter a valid email address.')
       .normalizeEmail(),
     body('password', 'Password has to be valid.')
-      .isLength({ min: 5 })
-      .isAlphanumeric()
+      .isLength({ min: 8 })
+      // .isAlphanumeric()
       .trim(),
   ],
   authController.adminLogin,

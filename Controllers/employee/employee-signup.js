@@ -55,7 +55,7 @@ exports.create = async (req, res) => {
     // create new user and send verification mail
     try {
       await model.User.create(userSave);
-      const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
+      const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
 
       const message = `<p> Hi, thanks for registering, kindly verify your email </p><a href ='${verificationUrl}'>link</a>`;
       await sendEmail({
@@ -101,9 +101,9 @@ exports.verifyEmail = async (req, res) => {
       }
       // return errorResMsg(res, 404, 'Email has not been registerd');
       if (user.status === '1') {
-        if (user.role === 'ROL-EMPLOYER') {
+        if (user.role_id === 'ROL-EMPLOYER') {
           req.flash('success', 'This email has been verified');
-          return res.redirect('/employer-sign-in');
+          return res.redirect('/employer/login');
         }
         req.flash('success', 'This email has been verified');
         return res.redirect('/employee/login');
@@ -121,9 +121,9 @@ exports.verifyEmail = async (req, res) => {
 
       const data = await updateUser;
       if (data[0] === 1) {
-        if (user.role === 'ROL-EMPLOYER') {
+        if (user.role_id === 'ROL-EMPLOYER') {
           req.flash('success', 'Email verification successful');
-          return res.redirect('/employer-sign-in');
+          return res.redirect('/employer/login');
         }
         req.flash('success', 'Email verification successful');
         return res.redirect('/employee/login');

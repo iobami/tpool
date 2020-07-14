@@ -5,6 +5,6 @@ const {
   employerRecommendation,
 } = require('../../../Controllers/views/employer/recommendation');
 
-appRoute.get('/employer-recommendation', employerRecommendation);
+appRoute.get('/employer/recommendation', employerRecommendation);
 
 module.exports = appRoute;
