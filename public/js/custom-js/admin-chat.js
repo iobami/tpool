@@ -114,7 +114,7 @@ const getUsers = () => {
     }
 }
 
-getUsers();
+/* getUsers(); */
 
 function getAllMessages() {
     let chatlist = document.querySelectorAll(".chat-info");
