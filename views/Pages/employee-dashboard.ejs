@@ -33,17 +33,17 @@
           <div class="job-filter">
             <div class="row align-items-center">
               <div class="col-md d-flex flex-column job-card ">
-                  <span class="job-card__top-text text-center text-white pt-4"><%= jobs.available %></span>
+                  <span class="job-card__top-text text-center text-white pt-4"></span>
                   <span class="job-card__next-text text-center text-white ">JOBS</span>
                   <span class="job-card__next-text text-center text-white pb-3">AVAILABLE</span>
               </div>
               <div class="col-md d-flex flex-column job-card job-card--second ">
-                  <span class="job-card__top-text text-center text-white pt-4"><%= jobs.appliedFor %></span>
+                  <span class="job-card__top-text text-center text-white pt-4"></span>
                   <span class="job-card__next-text text-center text-white ">JOBS</span>
                   <span class="job-card__next-text text-center text-white pb-3">APPLIED FOR</span>
               </div>
               <div class="col-md d-flex flex-column job-card job-card--third ">
-                  <span class="job-card__top-text text-center text-white pt-4"><%= applications.pending %></span>
+                  <span class="job-card__top-text text-center text-white pt-4"></span>
                   <span class="job-card__next-text text-center text-white ">PENDING</span>
                   <span class="job-card__next-text text-center text-white pb-3">APPLICATIONS</span>
               </div>
@@ -55,23 +55,23 @@
                     <div class="bg-white d-flex align-items-center profile-info--details">
                         <div class="profile-info__img-cont d-flex flex-column align-items-center">
                             <div class="">
-                                <%= employeeProfile.picture_url %></p>
+                                <</p>
                             </div>
-                            <p class="pt-3 m-0 text-center profile-info__name" id="full-name"><%= employeeProfile.first_name %><%= employeeProfile.last_name %></p>
-                            <!-- <span class="text-center profile-info--norm-text"><%= employeeProfile.stack %></span> -->
+                            <p class="pt-3 m-0 text-center profile-info__name" id="full-name"></p>
+                           
                         </div>
                         <div class="profile-info__contact">
                              <div class="d-flex">
-                                <img class="mr-2" src="../../img/cil_location-pin.svg" alt="location">
-                                <p class="profile-info--norm-text"><%= employeeProfile.location %></p> 
+                                <img class="mr-2" src="/img/cil_location-pin.svg" alt="location">
+                                <p class="profile-info--norm-text"></p> 
                             </div> 
                             <div class="d-flex">
-                                <img class="mr-2" src="../../img/carbon_email.svg" alt="email">
-                                <p class="profile-info--norm-text"><%= employeeProfile.email %></p>
+                                <img class="mr-2" src="/img/carbon_email.svg" alt="email">
+                                <p class="profile-info--norm-text"></p>
                             </div>
                             <div class="d-flex ">
-                                <img class="mr-2" src="../../img/bx_bx-phone.svg" alt="phone">
-                                <p class="profile-info--norm-text" id="phone"><%= employeeProfile.phone_no %></p>
+                                <img class="mr-2" src="/img/bx_bx-phone.svg" alt="phone">
+                                <p class="profile-info--norm-text" id="phone"></p>
                             </div>
                             <!-- <div class="">
                                 <img class="" src="../../img/bx_bx-phone.svg" alt="phone">
@@ -79,27 +79,27 @@
                             </div> -->
                             <p class="profile-info--norm-text mt-5">Portfolio</p>
                              <div class="d-flex ">
-                                <img class="mr-2" src="../../img/il_twitter.svg" alt="twitter-icon">
-                                <a href="" class="profile-info--norm-text profile-info--link"><%= user.socials.twitter %></a>
+                                <img class="mr-2" src="/img/il_twitter.svg" alt="twitter-icon">
+                                <a href="" class="profile-info--norm-text profile-info--link"><</a>
                             </div>
                             <div class="d-flex ">
-                                <img class="mr-2" src="../../img/topcoat_dribble.svg" alt="dribble-icon">
-                                <a href="" class="profile-info--norm-text profile-info--link"><%= user.socials.dribble %></a>
+                                <img class="mr-2" src="/img/topcoat_dribble.svg" alt="dribble-icon">
+                                <a href="" class="profile-info--norm-text profile-info--link"></a>
                             </div>
                             <div class="d-flex ">
-                                <img class="mr-2" src="../../img/jam_behance-square.svg" alt="behance-icon">
-                                <a href="" class="profile-info--norm-text profile-info--link"><%= user.socials.behance %></a>
+                                <img class="mr-2" src="/img/jam_behance-square.svg" alt="behance-icon">
+                                <a href="" class="profile-info--norm-text profile-info--link"></a>
                             </div>
                         </div>   
                     </div>
                 </div>
                 <div class="skill-cont">
                     <p class="profile-info__title my-4">Software Assessment</p>
-                    <% if (employeeSkill.length > 0) { %>
+                    
                     <div class="bg-white skill__flex py-4">
-                        <% for (let tool of employeeSkill) { %>
+                        
                         <div class="pl-4 py-2">
-                            <p class="profile-info--norm-text"><%= tool%></p>
+                            <p class="profile-info--norm-text"></p>
                             <div class="skill__wrap">
                                 <div class="skill"><i class="skill-stop"></i></div>
                             </div>
@@ -128,11 +128,11 @@
                                 <div class="skill"><i class="skill-stop"></i></div>
                             </div>
                         </div> -->
-                        <% } %>
+                        
                     </div>
-                    <% } else { %>
+                   
                         <h1>No Employee Tools Found!</h1>
-                        <% } %>
+                        
                 </div>
             </div>
             </div>
@@ -141,13 +141,12 @@
     </div>
 
     <!-- Optional JavaScript -->
-    <script src="../js/custom-js/side-nav.js"></script>
+    <script src="/js/custom-js/side-nav.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="../js/bootstrap-js/popper.js"></script>
-    <script src="../js/bootstrap-js/jquery.js"></script>
-    <script src="../js/bootstrap-js/bootstrap.js"></script>
-    <script src="../js/custom-js/employee-dashboard.js"></script>
+    <script src="/js/bootstrap-js/popper.js"></script>
+    <script src="/js/bootstrap-js/jquery.js"></script>
+    <script src="/js/bootstrap-js/bootstrap.js"></script>
   </body>
 
 </html>
