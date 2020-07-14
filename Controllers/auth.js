@@ -243,7 +243,6 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
-
       let userTypeId = null;
       let verificationStatus = null;
 
@@ -267,7 +266,6 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
-
       if (user.block) {
         return res.status(422).render('Pages/employer-signin', {
           path: '/employer/login',
