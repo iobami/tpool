@@ -104,171 +104,104 @@ exports.registerEmployer = (req, res) => {
   })();
 };
 
-exports.postEmployeeLogin = (req, res, next) => {
+exports.postEmployeeLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
-
+  let currentUser;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('Pages/employee-sign-in', {
-      path: '/employee-sign-in',
-      pageName: 'Employee Sign In',
-      errorMessage: errors.array()[0].msg,
-      oldInput: {
-        email,
-        password
-      },
-      validationErrors: errors.array()
-    });
-  }
-
-  model.User.findOne({ where: { email }, role_id: 'ROL-EMPLOYEE' })
-    .then((user) => {
-      if (!user) {
-        return res.status(422).render('Pages/employee-sign-in', {
-          path: '/employee-sign-in',
-          pageName: 'Employee Sign In',
-          errorMessage: 'Incorrect login details',
-          oldInput: {
-            email,
-            password
-          },
-          validationErrors: []
-        });
-      }
-      if (user.status === '0') {
-        return res.status(422).render('Pages/employee-sign-in', {
-          path: '/employee-sign-in',
-          pageName: 'Employee Sign In',
-          errorMessage: 'User is not verified',
-          oldInput: {
-            email,
-            password
-          },
-          validationErrors: []
-        });
-      }
-
-      if (user.block) {
-        return res.status(422).render('Pages/employee-sign-in', {
-          path: '/employee-sign-in',
-          pageName: 'Employee Sign In',
-          errorMessage: 'User is blocked.',
-          oldInput: {
-            email,
-            password
-          },
-          validationErrors: []
-        });
-      }
-      bcrypt
-        .compare(password, user.password)
-        .then((valid) => {
-          if (valid) {
-            req.session.isLoggedIn = true;
-            req.session.userId = user.user_id;
-            res.redirect('/employee/dashboard');
-          }
-          return res.status(422).render('Pages/employee-sign-in', {
-            path: '/employee-sign-in',
-            pageName: 'Employee Sign In',
-            errorMessage: 'Invalid email or password.',
-            oldInput: {
-              email,
-              password
-            },
-            validationErrors: []
-          });
-        })
-        .catch(() => {
-          res.redirect('/employee-sign-in');
-        });
-    })
-    .catch((err) => {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(error);
-    });
-};
-
-exports.postEmployerLogin = (req, res, next) => {
-  const { email } = req.body;
-  const { password } = req.body;
-
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(401).render('Pages/employer-signin', {
-      path: '/employer-sign-in',
+      path: '/employee/login',
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email,
-        password
+        password,
       },
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
     });
   }
 
-  model.User.findOne({ where: { email }, role_id: 'ROL-EMPLOYER' })
-    .then((user) => {
+  model.User.findOne({ where: { email, role_id: 'ROL-EMPLOYEE' } })
+    .then(async (user) => {
       if (!user) {
-        return res.status(401).render('Pages/employer-signin', {
-          path: '/employer-sign-in',
-          pageName: 'Employer Login',
-          errorMessage: 'Invalid email or password.',
+        return res.status(422).render('Pages/employee-sign-in', {
+          path: '/employee/login',
+          pageName: 'Employee Login',
+          errorMessage: 'Incorrect login details',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
+
+      let userTypeId = null;
+
+      const employee = await model.Employee.findOne({
+        where: { user_id: user.user_id },
+      });
+      if (employee) {
+        userTypeId = employee.employee_id;
+      }
+
       if (user.status === '0') {
-        return res.status(422).render('Pages/employer-signin', {
-          path: '/employer-sign-in',
-          pageName: 'Employer Sign In',
+        return res.status(422).render('Pages/employee-sign-in', {
+          path: '/employee/login',
+          pageName: 'Employee Login',
           errorMessage: 'User is not verified',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
 
       if (user.block) {
-        return res.status(422).render('Pages/employer-signin', {
-          path: '/employer-sign-in',
-          pageName: 'Employer Login',
+        return res.status(422).render('Pages/employee-sign-in', {
+          path: '/employee/login',
+          pageName: 'Employee Login',
           errorMessage: 'User is blocked.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
+      currentUser = user;
       bcrypt
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
+            const data = {
+              email: currentUser.email,
+              userRole: currentUser.role_id,
+              userTypeId,
+            };
+            req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            res.redirect('/employer-dashboard');
+            if (!user.employee_id) {
+              res.redirect('/employee/profile/create');
+            }
+            res.redirect(`/employee/dashboard/${user.employee_id}`);
           }
-          return res.status(422).render('Pages/employer-signin', {
-            path: '/employer-sign-in',
-            pageName: 'Employer Login',
+          return res.status(422).render('Pages/employee-sign-in', {
+            path: '/employee/login',
+            pageName: 'Employee Login',
             errorMessage: 'Invalid email or password.',
             oldInput: {
               email,
-              password
+              password,
             },
-            validationErrors: []
+            validationErrors: [],
           });
         })
         .catch(() => {
-          res.redirect('/employer-signin');
+          res.redirect('/employee/login');
         });
     })
     .catch((err) => {
@@ -278,171 +211,283 @@ exports.postEmployerLogin = (req, res, next) => {
     });
 };
 
-exports.userLogin = (req, res, next) => {
+exports.postEmployerLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
   let currentUser;
-  model.User.findOne({ where: { email } })
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(401).render('Pages/employer-signin', {
+      path: '/employer/login',
+      pageName: 'Employer Login',
+      errorMessage: errors.array()[0].msg,
+      oldInput: {
+        email,
+        password,
+      },
+      validationErrors: errors.array(),
+    });
+  }
+
+  model.User.findOne({ where: { email, role_id: 'ROL-EMPLOYER' } })
     .then(async (user) => {
       if (!user) {
-        return errorResMsg(
-          res,
-          404,
-          'Incorrect login details, user does not exist',
-        );
+        return res.status(401).render('Pages/employer-signin', {
+          path: '/employer/login',
+          pageName: 'Employer Login',
+          errorMessage: 'Invalid email or password.',
+          oldInput: {
+            email,
+            password,
+          },
+          validationErrors: [],
+        });
       }
 
-      // Getting the user type ID
       let userTypeId = null;
       let verificationStatus = null;
-      let isEmployer = false;
-      if (user.role_id === 'ROL-EMPLOYEE') {
-        const employee = await model.Employee.findOne({
-          where: { user_id: user.user_id },
-        });
-        if (employee) {
-          userTypeId = employee.employee_id;
-        }
-      } else if (user.role_id === 'ROL-EMPLOYER') {
-        isEmployer = true;
-        const employer = await model.Employer.findOne({
-          where: { user_id: user.user_id },
-        });
-        if (employer) {
-          userTypeId = employer.employer_id;
-          verificationStatus = employer.verification_status;
-        }
+
+      const employer = await model.Employer.findOne({
+        where: { user_id: user.user_id },
+      });
+      if (employer) {
+        userTypeId = employer.employer_id;
+        verificationStatus = employer.verification_status;
       }
 
       if (user.status === '0') {
-        return errorResMsg(res, 401, 'User is not verified');
+        return res.status(422).render('Pages/employer-signin', {
+          path: '/employer/login',
+          pageName: 'Employer Sign In',
+          errorMessage: 'User is not verified',
+          oldInput: {
+            email,
+            password,
+          },
+          validationErrors: [],
+        });
       }
 
       if (user.block) {
-        return errorResMsg(res, 401, 'User Blocked!');
+        return res.status(422).render('Pages/employer-signin', {
+          path: '/employer/login',
+          pageName: 'Employer Login',
+          errorMessage: 'User is blocked.',
+          oldInput: {
+            email,
+            password,
+          },
+          validationErrors: [],
+        });
       }
-
       currentUser = user;
-      bcrypt.compare(password, user.password).then((valid) => {
-        if (!valid) {
-          return errorResMsg(res, 401, 'Incorrect login details');
-        }
-
-        let data = {
-          email: currentUser.email,
-          userId: currentUser.user_id.toString(),
-          userRole: currentUser.role_id,
-          userTypeId,
-        };
-
-        if (isEmployer) data = { ...data, verificationStatus };
-
-        const token = jsonWT.signJWT(data);
-
-        sessionSuccessResMsg(
-          res,
-          'login successful',
-          200,
-          token,
-          currentUser.user_id.toString(),
-        );
-      });
+      bcrypt
+        .compare(password, user.password)
+        .then((valid) => {
+          if (valid) {
+            const data = {
+              email: currentUser.email,
+              userRole: currentUser.role_id,
+              userTypeId,
+              verificationStatus
+            };
+            req.session.data = data;
+            req.session.isLoggedIn = true;
+            req.session.userId = user.user_id;
+            if (!user.employer_id) {
+              res.redirect('/employer/profile/create');
+            }
+            res.redirect(`/employer/dashboard/${user.employer_id}`);
+          }
+          return res.status(422).render('Pages/employer-signin', {
+            path: '/employer/login',
+            pageName: 'Employer Login',
+            errorMessage: 'Invalid email or password.',
+            oldInput: {
+              email,
+              password,
+            },
+            validationErrors: [],
+          });
+        })
+        .catch(() => {
+          res.redirect('/employer/login');
+        });
     })
     .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-
-      next(err);
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
     });
 };
 
-exports.adminLogin = (req, res, next) => {
+// exports.userLogin = (req, res, next) => {
+//   const { email } = req.body;
+//   const { password } = req.body;
+//   let currentUser;
+//   model.User.findOne({ where: { email } })
+//     .then(async (user) => {
+//       if (!user) {
+//         return errorResMsg(
+//           res,
+//           404,
+//           'Incorrect login details, user does not exist',
+//         );
+//       }
+
+//       // Getting the user type ID
+//       let userTypeId = null;
+//       let verificationStatus = null;
+//       let isEmployer = false;
+//       if (user.role_id === 'ROL-EMPLOYEE') {
+//         const employee = await model.Employee.findOne({
+//           where: { user_id: user.user_id },
+//         });
+//         if (employee) {
+//           userTypeId = employee.employee_id;
+//         }
+//       } else if (user.role_id === 'ROL-EMPLOYER') {
+//         isEmployer = true;
+//         const employer = await model.Employer.findOne({
+//           where: { user_id: user.user_id },
+//         });
+//         if (employer) {
+//           userTypeId = employer.employer_id;
+//           verificationStatus = employer.verification_status;
+//         }
+//       }
+
+//       if (user.status === '0') {
+//         return errorResMsg(res, 401, 'User is not verified');
+//       }
+
+//       if (user.block) {
+//         return errorResMsg(res, 401, 'User Blocked!');
+//       }
+
+//       currentUser = user;
+//       bcrypt.compare(password, user.password).then((valid) => {
+//         if (!valid) {
+//           return errorResMsg(res, 401, 'Incorrect login details');
+//         }
+
+//         let data = {
+//           email: currentUser.email,
+//           userId: currentUser.user_id.toString(),
+//           userRole: currentUser.role_id,
+//           userTypeId,
+//         };
+
+//         if (isEmployer) data = { ...data, verificationStatus };
+
+//         const token = jsonWT.signJWT(data);
+
+//         sessionSuccessResMsg(
+//           res,
+//           'login successful',
+//           200,
+//           token,
+//           currentUser.user_id.toString(),
+//         );
+//       });
+//     })
+//     .catch((err) => {
+//       if (!err.statusCode) {
+//         err.statusCode = 500;
+//       }
+
+//       next(err);
+//     });
+// };
+
+exports.adminLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('Pages/admin-login', {
-      path: '/admin-login',
+      path: '/admin/login',
       pageName: 'Admin login',
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email,
-        password
+        password,
       },
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
     });
   }
-  model.User.findOne({ where: { email } })
+  await model.User.findOne({ where: { email } })
     .then((user) => {
       if (!user) {
         return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
+          path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'Incorrect login details,user does not exist.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       if (user.role_id !== 'ROL-ADMIN' && user.role_id !== 'ROL-SUPERADMIN') {
         return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
+          path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not an admin.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       if (user.status === '0') {
         return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
+          path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not verified.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       if (user.block) {
         return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
+          path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is blocked.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
-      bcrypt.compare(password, user.password).then((valid) => {
-        if (valid) {
-          req.session.isLoggedIn = true;
-          req.session.userId = user.user_id;
-          res.redirect('/admin-dashboard');
-        }
-        return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
-          pageName: 'Admin Login',
-          errorMessage: 'Incorrect login details.',
-          oldInput: {
-            email,
-            password
-          },
-          validationErrors: []
-        });
-      })
+      bcrypt
+        .compare(password, user.password)
+        .then((valid) => {
+          if (valid) {
+            req.session.isLoggedIn = true;
+            req.session.userId = user.user_id;
+            res.redirect('/admin/dashboard');
+          }
+          return res.status(422).render('Pages/admin-login', {
+            path: '/admin/login',
+            pageName: 'Admin Login',
+            errorMessage: 'Incorrect login details.',
+            oldInput: {
+              email,
+              password,
+            },
+            validationErrors: [],
+          });
+        })
         .catch(() => {
-          res.redirect('/admin-login');
+          res.redirect('/admin/login');
         });
     })
     .catch((err) => {

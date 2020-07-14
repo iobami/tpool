@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <%- include('../Templates/head') %>
-    <link rel="stylesheet" href="styles/custom-css/employee-signUp-signIn.css">
+    <link rel="stylesheet" href="/styles/custom-css/employee-signUp-signIn.css">
     <!-- BEGIN Pre-requisites -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id"
@@ -31,7 +31,7 @@
                     <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
                 <% } %>
 
-                <form class="needs-validation" novalidate id="form" action="/employee-sign-in" method="POST">
+                <form class="needs-validation" novalidate id="form" action="/employee/login" method="POST">
 
                     <div class="col-md mb-3 px-0">
                         <label for="email">Email</label>
@@ -77,9 +77,16 @@
                     </div>
 
 
-                    <div class="row" >
+                    <!-- <div class="row" >
                         <div class="col d-flex align-items-center justify-content-center" id="button-div">
                             <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit">Sign In</button>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white"
+                                id="signup-btn" type="submit" data-toggle=""
+                                data-target="#exampleModal">Sign In</button>
                         </div>
                     </div>
                 </form>
@@ -97,18 +104,24 @@
                 </div>
 
                 <div class="row mt-2 justify-content-center">
-                    <!-- <div class="col-md">
+                    <div class="col-md">
                         <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
                                 class="fab fa-github pr-2"></i>Login with Github</button>
-                    </div> -->
+                    </div>
+
+                    <div class="col-md">
+                        <button type="button" id="googleBtn" class="btn btn-block  google-btn py-3 my-1" data-user="ROL-EMPLOYEE" data-longtitle="true"
+                        data-onsuccess="onSignIn"><i
+                                class="fab fa-google pr-2"></i>Login with Google</button>
+                    </div>
                  
 
-                        <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
+                        <!-- <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
                             data-onsuccess="onSignIn">
-                        </div>
+                        </div> -->
                 </div>
 
-                <p class="text-center py-2 mt-3 mb-4">Don't have an account with us? <a href="/employee-sign-up" class="login-link">Sign Up.</a></p>
+                <p class="text-center py-2 mt-3 mb-4">Don't have an account with us? <a href="/employee/signup" class="login-link">Sign Up.</a></p>
             </div>
         </div>
         </div>
