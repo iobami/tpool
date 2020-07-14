@@ -11,10 +11,10 @@ const {
   adminLogin,
 } = require('../../../Controllers/views/admin/auth');
 
-appRoute.get('/admin-signup', adminSignUp);
-appRoute.get('/admin-login', adminLogin);
+appRoute.get('/admin/signup', adminSignUp);
+appRoute.get('/admin/login', adminLogin);
 appRoute.post(
-  '/admin-login',
+  '/admin/login',
   [
     body('email')
       .isEmail()
