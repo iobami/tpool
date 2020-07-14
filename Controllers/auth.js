@@ -36,7 +36,7 @@ exports.registerEmployer = (req, res) => {
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
         req.flash('errors', errResponse);
-        res.redirect('/employer/register');
+        return res.redirect('/employer/register');
       }
       // encrypt password
       const salt = bcrypt.genSaltSync(10);
@@ -67,7 +67,7 @@ exports.registerEmployer = (req, res) => {
         try {
           await model.User.create(userData);
           // mail verification code to the user
-          const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
+          const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
           const message = `<p> Hi, thanks for registering, kindly verify your email using this <a href ='${verificationUrl}'>link</a></p>`;
 
           await sendEmail({
@@ -78,11 +78,11 @@ exports.registerEmployer = (req, res) => {
 
           // return successResMsg(res, 201, data);
           req.flash('success', 'Verification email sent!');
-          res.redirect('/employer/register');
+          return res.redirect('/employer/register');
         } catch (err) {
           req.flash('error', 'An error Occoured');
-          res.redirect('/employer/register');
-          return errorResMsg(res, 500, err);
+          return res.redirect('/employer/register');
+          // return errorResMsg(res, 500, err);
         }
       } else {
         // return errorResMsg(
@@ -91,7 +91,7 @@ exports.registerEmployer = (req, res) => {
         //   'Someone has already registered this email',
         // );
         req.flash('error', 'Someone has already registered this email');
-        res.redirect('/employer/register');
+        return res.redirect('/employer/register');
       }
     } catch (err) {
       if (!err.statusCode) {
@@ -99,7 +99,7 @@ exports.registerEmployer = (req, res) => {
       }
       // return errorResMsg(res, 500, 'An error occurred');
       req.flash('error', 'An error Occoured');
-      res.redirect('/employer/register');
+      return res.redirect('/employer/register');
     }
   })();
 };
@@ -186,8 +186,10 @@ exports.postEmployeeLogin = async (req, res, next) => {
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;
             if (!data.userTypeId) {
+              req.flash('success', 'Login Successful');
               return res.redirect('/employee/profile/create');
             }
+            req.flash('success', 'Login Successful');
             return res.redirect(`/employee/dashboard/${data.userTypeId}`);
           }
           return res.status(422).render('Pages/employee-sign-in', {
@@ -201,9 +203,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
             validationErrors: [],
           });
         })
-        .catch(() => {
-          res.redirect('/employee/login');
-        });
+        .catch(() => res.redirect('/employee/login'));
     })
     .catch((err) => {
       const error = new Error(err);
@@ -244,6 +244,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
+
       let userTypeId = null;
       let verificationStatus = null;
 
@@ -267,6 +268,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
+
       if (user.block) {
         return res.status(422).render('Pages/employer-signin', {
           path: '/employer/login',
@@ -288,13 +290,13 @@ exports.postEmployerLogin = async (req, res, next) => {
               email: currentUser.email,
               userRole: currentUser.role_id,
               userTypeId,
-              verificationStatus
+              verificationStatus,
             };
             req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             if (!user.employer_id) {
-              res.redirect('/employer/create/profile');
+              res.redirect('/employer/profile/create');
             }
             res.redirect(`/employer/dashboard/${user.employer_id}`);
           }
@@ -472,7 +474,6 @@ exports.adminLogin = async (req, res, next) => {
           if (valid) {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            req.session.userRole = user.role_id;
             res.redirect('/admin/dashboard');
           }
           return res.status(422).render('Pages/admin-login', {
@@ -565,7 +566,6 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
     const data = { message: 'Reset password email sent' };
     return successResMsg(res, 201, data);
   } catch (err) {
-    //console.log(err);
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
     user.reset_password_expire = null;
@@ -647,7 +647,7 @@ exports.resendVerificationLink = async (req, res) => {
   checkUser.save();
 
   // mail verification code to the user
-  const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
+  const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
 
   const message = `<p> Hello, you requested for the resend of your verification link. 
         Kindly verify your email </p><a href ='${verificationUrl}'>link</a>`;
