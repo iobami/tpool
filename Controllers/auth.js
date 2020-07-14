@@ -36,7 +36,7 @@ exports.registerEmployer = (req, res) => {
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
         req.flash('errors', errResponse);
-        res.redirect('/employer/register');
+        res.redirect('/employer-sign-up');
       }
       // encrypt password
       const salt = bcrypt.genSaltSync(10);
@@ -78,7 +78,7 @@ exports.registerEmployer = (req, res) => {
 
           // return successResMsg(res, 201, data);
           req.flash('success', 'Verification email sent!');
-          res.redirect('/employer/register');
+          res.redirect('/employer-sign-up');
         } catch (err) {
           req.flash('error', 'An error Occoured');
           res.redirect('/employer-sign-up');
@@ -91,7 +91,7 @@ exports.registerEmployer = (req, res) => {
         //   'Someone has already registered this email',
         // );
         req.flash('error', 'Someone has already registered this email');
-        res.redirect('/employer/register');
+        res.redirect('/employer-sign-up');
       }
     } catch (err) {
       if (!err.statusCode) {
@@ -99,7 +99,7 @@ exports.registerEmployer = (req, res) => {
       }
       // return errorResMsg(res, 500, 'An error occurred');
       req.flash('error', 'An error Occoured');
-      res.redirect('/employer/register');
+      res.redirect('/employer-sign-up');
     }
   })();
 };
@@ -201,7 +201,9 @@ exports.postEmployeeLogin = async (req, res, next) => {
             validationErrors: [],
           });
         })
-        .catch(() => res.redirect('/employee/login'));
+        .catch(() => {
+          res.redirect('/employee/login');
+        });
     })
     .catch((err) => {
       const error = new Error(err);
@@ -242,7 +244,6 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
-
       let userTypeId = null;
       let verificationStatus = null;
 
@@ -266,7 +267,6 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
-
       if (user.block) {
         return res.status(422).render('Pages/employer-signin', {
           path: '/employer/login',
@@ -294,7 +294,7 @@ exports.postEmployerLogin = async (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             if (!user.employer_id) {
-              res.redirect('/employer/profile/create');
+              res.redirect('/employer/create/profile');
             }
             res.redirect(`/employer/dashboard/${user.employer_id}`);
           }
@@ -472,6 +472,7 @@ exports.adminLogin = async (req, res, next) => {
           if (valid) {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
+            req.session.userRole = user.role_id;
             res.redirect('/admin/dashboard');
           }
           return res.status(422).render('Pages/admin-login', {
@@ -564,6 +565,7 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
     const data = { message: 'Reset password email sent' };
     return successResMsg(res, 201, data);
   } catch (err) {
+    //console.log(err);
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
     user.reset_password_expire = null;

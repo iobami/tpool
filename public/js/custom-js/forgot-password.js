@@ -36,10 +36,10 @@ forgotPasswordForm.addEventListener('submit', (e) => {
   const email = forgotPasswordForm.querySelector('input').value;
 
   axios
-    .post('https://api.lancers.app/v1/auth/forgot-password', {
+    .post('/auth/forgot-password', {
       email: email,
     })
-    .then((res) => responseHandler(res))
-    .catch((err) => errorHandler(err));
+    .then((res))
+    .catch((err));
   document.getElementById('forgot-password').reset();
 });

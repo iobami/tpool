@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
 
       verification_status: {
         type: DataTypes.ENUM,
-        values: ['Approved', 'Disapproved', 'Pending'],
+        values: ['Approved', 'Disapproved', 'Pending', 'Uploaded'],
         allowNull: false,
         defaultValue: 'Pending',
       },
@@ -85,13 +85,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(255),
         allowNull: true,
       },
+      package_status: {
+        type: DataTypes.ENUM,
+        values: ['Running', 'Expired'],
+        defaultValue: 'Expired',
+      },
       user_id: {
         type: DataTypes.STRING(255),
         allowNull: false,
       },
     },
     {
-      paranoid: true,
+      //paranoid: true,
       underscored: true,
     },
   );
