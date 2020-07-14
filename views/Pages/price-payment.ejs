@@ -64,11 +64,20 @@
                                             <div class="form-group">
                                                 <label for="card-number">CARD NUMBER*</label>
                                                 <input 
-                                                    type="text" name="card-number" inputmode="numeric" id="card-number" 
+                                                    type="text" name="card-number" 
+                                                    inputmode="numeric" 
+                                                    id="card-number" 
                                                     onkeypress="return cardNumberKey(event);"
                                                     maxlength="19"
                                                     onkeyup="addHyphen(this);"
-                                                    placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control" id="card-number1" pattern="[0-9]*">
+                                                    placeholder="XXXX-XXXX-XXXX-XXXX" 
+                                                    class="form-control" 
+                                                    id="card-number1" 
+                                                    maxlength="19"
+                                                    minlength="19"
+                                                    title="Minumum of 16 digits allowed"
+
+                                                    >
                                             </div>
                                         </div>
                                     </div>
@@ -90,7 +99,11 @@
                                                 onkeypress="return cardNumberKey(event);"
                                                 maxlength="2"
                                                 id="expiration-date__month"
-                                                pattern="[0-9]*">
+                                                pattern="[0-9]*"
+                                                maxlength="2"
+                                                minlength="2"
+                                                title="Minumum of 2 digits allowed"
+                                                >
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
@@ -101,8 +114,14 @@
                                                 class="form-control"
                                                 onkeypress="return cardNumberKey(event);"
                                                 maxlength="4"
-                                                placeholder="-- Year --" id="expiration-date__year"
-                                                pattern="[0-9]*">
+                                                placeholder="-- Year --" 
+                                                id="expiration-date__year"
+                                                pattern="[0-9]*"
+                                                maxlength="4"
+                                                minlength="4"
+                                                title="Minumum of 4 digits allowed"
+
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +135,12 @@
                                                 onkeypress="return cardNumberKey(event);"
                                                 maxlength="3"
                                                 class="form-control" id="cvv"
-                                                pattern="[0-9]*">
+                                                pattern="[0-9]*"
+                                                maxlength="3"
+                                                minlength="3"
+                                                title="Minumum of 3 digits allowed"
+
+                                                >
                                             </div>
                                         </div>
                                     </div>
