@@ -131,7 +131,7 @@ app.use(flash());
 // });
 
 app.use(fileupload({ useTempFiles: true }));
-db.sequelize.sync().then(() => {
+db.sequelize.sync({}).then(() => {
   seedSuperAdmin();
 });
 
@@ -139,7 +139,7 @@ app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     name: 'session',
-    sameSite: true,
+    // sameSite: true,
     keys: [process.env.TALENT_POOL_SESSION_COOKIEKEY],
   }),
 );
@@ -188,7 +188,7 @@ app.use('/v1/employee', employeeSkillsRoutes);
 app.use('/v1/employee', employeeSearchRoutes);
 
 // employers route goes here
-app.use('/v1/employer', employerRoute);
+app.use('/employer', employerRoute);
 app.use('/v1/employer', employerUpgradeRoute);
 app.use('/v1/employer', employerReviews);
 app.use('/v1/employer', employerTransaction);
@@ -217,7 +217,7 @@ app.use('/v1/team', teamRoutes);
 
 // auth
 app.use('/v1/auth', googleAuth);
-app.use('/v1/auth', auth);
+app.use('/auth', auth);
 
 // app.use('/v1/admin', adminRoute); // admin
 app.use('/v1/admin', adminManagementRoute); // super admin
@@ -233,7 +233,7 @@ app.use(appRoute);
 // app.use(adminRoute);
 app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
-app.use(employerAuthRoute);
+app.use(employerAuthRoute); //mark this
 app.use(employerDashboardRoute);
 app.use(adminDashRoute);
 app.use(topTalentsRoute);
@@ -245,6 +245,10 @@ app.use(adminAuthRoute);
 app.use(employerMetrics);
 app.use(employerRecommendation);
 app.use(verifyModal);
+<<<<<<< HEAD
 app.use(teamRoute);
+=======
+app.use(googleAuth);
+>>>>>>> develop-ejs
 
 module.exports = app;

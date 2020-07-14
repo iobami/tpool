@@ -4,12 +4,6 @@
 <head>
     <%- include('../Templates/head') %>
     <link rel="stylesheet" href="../styles/custom-css/employer-sign-in.css">
-    <!-- BEGIN Pre-requisites -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id"
-        content="1044934768285-u3jh3gs8dv4u21uie9o32cbu0gv2erh4.apps.googleusercontent.com">
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- END Pre-requisites -->
 </head>
 
 <body>
@@ -114,9 +108,11 @@
                         </div>
     
                         <div class="col-md">
-                            <button type="button" id="googleBtn" class="btn btn-block  google-btn py-3 my-1" data-user="ROL-EMPLOYEE" data-longtitle="true"
-                            data-onsuccess="onSignIn"><i
-                                    class="fab fa-google pr-2"></i>Login with Google</button>
+                            <a href="/auth/employer/google">
+                                <button type="button" id="googleBtn" class="btn btn-block  google-btn py-3 my-1" data-user="ROL-EMPLOYEE" data-longtitle="true"
+                                data-onsuccess="onSignIn"><i
+                                class="fab fa-google pr-2"></i>Login with Google</button>
+                            </a>
                         </div>
 
                         <!-- <div class="col-md">
@@ -139,38 +135,6 @@
     </main>
 
     <%- include('../Templates/footer') %>
-
-    <!-- <script>
-        async function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            const role_id = document.querySelector('.g-signin2').dataset.user;
-            var token = googleUser.getAuthResponse().id_token
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.disconnect();
-            const userData = {
-                role_id,
-                token: token
-            }
-            axios.post('https://api.lancers.app/v1/auth/google', userData)
-                .then(data => {
-                    let decodedData = JSON.parse(atob(data.data.data.token.split('.')[1]))
-                    const userData = {
-                        ...decodedData,
-                        token: data.data.data.token
-                    }
-                    localStorage.setItem("tpAuth", JSON.stringify(userData));
-                    if (decodedData.userTypeId == null) {
-                        window.location.replace('/employer-create-profile')
-                    } else {
-                        window.location.replace('/employee-dashboard')
-                    }
-                }).catch(function (error) {
-                    console.log(error);
-                    window.location.replace('/')
-                });
-        }
-        
-      </script> -->
 
     <!-- <script src="../js/bootstrap-js/popper.js"></script>
     <script src="../js/bootstrap-js/jquery.js"></script>

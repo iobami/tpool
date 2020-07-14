@@ -1,6 +1,15 @@
+/* eslint-disable consistent-return */
 module.exports = {
   employeeSignup: (req, res) => {
-    res.render('Pages/employee-sign-up', {
+    const { isLoggedIn, employeeId } = req.session;
+
+    if (isLoggedIn && employeeId) {
+      res.redirect(`/employee/dashboard/${req.session.employeeId}`);
+    } else if (isLoggedIn && !employeeId) {
+      return res.redirect('/employee/profile/create');
+    }
+
+    return res.render('Pages/employee-sign-up', {
       path: '/employee/register',
       pageName: 'Employee Signup',
       error: req.flash('error'),
@@ -10,8 +19,12 @@ module.exports = {
   },
 
   employeeSignIn: (req, res) => {
-    if (req.session.isLoggedIn) {
-      res.redirect('/employee/dashboard');
+    const { isLoggedIn, employeeId } = req.session;
+
+    if (isLoggedIn && employeeId) {
+      res.redirect(`/employee/dashboard/${req.session.employeeId}`);
+    } else if (isLoggedIn && !employeeId) {
+      return res.redirect('/employee/profile/create');
     }
 
     let message = req.flash('error');
@@ -20,7 +33,7 @@ module.exports = {
     } else {
       message = null;
     }
-    res.render('Pages/employee-sign-in', {
+    return res.render('Pages/employee-sign-in', {
       path: '/employee/login',
       pageName: 'Employee Login',
       errorMessage: message,
