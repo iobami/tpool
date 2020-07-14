@@ -4,12 +4,6 @@
 <head>
     <%- include('../Templates/head') %>
     <link rel="stylesheet" href="../styles/custom-css/employer-sign-in.css">
-    <!-- BEGIN Pre-requisites -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id"
-        content="1044934768285-u3jh3gs8dv4u21uie9o32cbu0gv2erh4.apps.googleusercontent.com">
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- END Pre-requisites -->
 </head>
 
 <body>
@@ -29,13 +23,15 @@
                     </div>
                     <% if (errorMessage) { %>
                         <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
-                    <% } %>
+                    <% }if (success && success.length > 0) { %>
+                        <div role="alert" class="alert alert-success user-message"><%= success %></div>
+                    <% } }%>
                     <form class="needs-validation" method="POST" action="/employer/login" novalidate id="form">
 
                         <div class="col-md mb-3 px-0">
                             <label for="email">Email</label>
                             <input 
-                            class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                            class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid-value' : '' %>"
                             type="email" 
                             name="email" 
                             id="email" 
@@ -52,7 +48,7 @@
                         <div class="col-md mb-3 px-0">
                             <label for="password">Password</label>
                             <input 
-                            class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                            class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid-value' : '' %>"
                             type="password" 
                             name="password" 
                             id="password" 
@@ -109,25 +105,19 @@
 
                     <div class="row mt-2 justify-content-center">
                         <div class="col-md">
-                            <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
+                            <a href="/auth/employer/github">
+                                <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
                                     class="fab fa-github pr-2"></i>Login with Github</button>
+                                </a>
                         </div>
     
                         <div class="col-md">
-                            <button type="button" id="googleBtn" class="btn btn-block  google-btn py-3 my-1" data-user="ROL-EMPLOYEE" data-longtitle="true"
-                            data-onsuccess="onSignIn"><i
-                                    class="fab fa-google pr-2"></i>Login with Google</button>
+                            <a href="/auth/employer/google">
+                                <button type="button" id="googleBtn" class="btn btn-block  google-btn py-3 my-1" data-user="ROL-EMPLOYEE" data-longtitle="true"
+                                data-onsuccess="onSignIn"><i
+                                class="fab fa-google pr-2"></i>Login with Google</button>
+                            </a>
                         </div>
-
-                        <!-- <div class="col-md">
-                            <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
-                                    class="fab fa-github pr-2"></i>Login with Github</button>
-                        </div> -->
-                     
-    
-                            <!-- <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYER" data-longtitle="true"
-                                data-onsuccess="onSignIn">
-                            </div> -->
                     </div>
     
                     <p class="text-center py-2">Don't have an account with us? <a href="/employer/signup"
@@ -139,38 +129,6 @@
     </main>
 
     <%- include('../Templates/footer') %>
-
-    <!-- <script>
-        async function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            const role_id = document.querySelector('.g-signin2').dataset.user;
-            var token = googleUser.getAuthResponse().id_token
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.disconnect();
-            const userData = {
-                role_id,
-                token: token
-            }
-            axios.post('https://api.lancers.app/v1/auth/google', userData)
-                .then(data => {
-                    let decodedData = JSON.parse(atob(data.data.data.token.split('.')[1]))
-                    const userData = {
-                        ...decodedData,
-                        token: data.data.data.token
-                    }
-                    localStorage.setItem("tpAuth", JSON.stringify(userData));
-                    if (decodedData.userTypeId == null) {
-                        window.location.replace('/employer-create-profile')
-                    } else {
-                        window.location.replace('/employee-dashboard')
-                    }
-                }).catch(function (error) {
-                    console.log(error);
-                    window.location.replace('/')
-                });
-        }
-        
-      </script> -->
 
     <!-- <script src="../js/bootstrap-js/popper.js"></script>
     <script src="../js/bootstrap-js/jquery.js"></script>
