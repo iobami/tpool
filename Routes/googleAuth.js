@@ -21,7 +21,7 @@ router.get('/auth/employer/google/callback',
     // Successful authentication,
     const { user } = req;
     if ((!user.userTypeId) || user.userTypeId == null) {
-      req.session.isLoggedIn = true;
+      req.session.isLoggedIn = false;
       req.session.userId = user.user_id;
       return res.redirect('/employer-create-profile');
     }
@@ -37,7 +37,7 @@ router.get('/auth/employee/google/callback',
   // Successful authentication,
     const { user } = req;
     if ((!user.userTypeId) || user.userTypeId == null) {
-      req.session.isLoggedIn = true;
+      req.session.isLoggedIn = false;
       req.session.userId = user.user_id;
       return res.redirect('/employee/profile');
     }
