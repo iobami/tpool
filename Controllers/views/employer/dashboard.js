@@ -70,6 +70,13 @@ getActive.then(getCookie);*/
     });
   },
 
+  employerProfile: (req, res) => {
+    res.render('Pages/employer-profile-page', {
+      pageName: 'Profile',
+      EmployerInfo: req.session.details,
+    });
+  },
+
   employerDashboardSettings: (req, res) => {
     res.render('Pages/employer-dash-settings.ejs', {
       pageName: 'Employer Dashboard - Settings',

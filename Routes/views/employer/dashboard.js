@@ -12,6 +12,7 @@ const {
   employerCertificate,
   uploaddocsuccess,
   uploaddocfailure,
+  employerProfile,
 } = require('../../../Controllers/views/employer/dashboard');
 //const componenreuse = require('../../../controllers/employer/employer-controller'); //set by kukere
 const {
@@ -36,11 +37,16 @@ appRoute.get(
   employerCompanyDashboard,
 ); //set by kukere
 
-<<<<<<< HEAD
 appRoute.get('/employer/profile', (req, res) => {
-  req.session.userId = 'd8bd7c2c-6722-406d-a30c-1cac4ac09b6a';
-  return res.redirect('/employer/login');
+  // req.session.userId = 'd8bd7c2c-6722-406d-a30c-1cac4ac09b6a';
+  // return res.redirect('/employer/login');
+  auth_main,
+    auth_validuser,
+    auth_valid_profile,
+    //the main controller
+    employerProfile;
 }); //there will be middlewarerlfkgfkh
+
 appRoute.get(
   '/employer/dasboard/success',
   auth_main,
@@ -133,24 +139,5 @@ appRoute.get(
   //the main controller
   employerCertificate,
 );
-=======
-appRoute.get('/employer/dashboard', employerDashboard);
-appRoute.get('/employer/profile', employerProfile);
-appRoute.get('/employer/messages', employerMessages);
-appRoute.get('/employer/create/profile', employerCreateProfile);
-appRoute.get('/employer/type', employerType);
-appRoute.get('/employer/company', employerCompany);
-appRoute.get('/employer/individual', employerIndividual);
-appRoute.get('/employer/dashboard/settings', employerDashboardSettings);
-appRoute.get('/employer/dashboard/support', employerDashboardSupport);
-appRoute.get('/employer/employees/gallery', employerEmployeeGallery);
-appRoute.get('/employer/add/team', employerAddTeam);
-appRoute.get('/employer/company/dashboard', employerCompanyDashboard);
-appRoute.get(
-  '/employer/individual/create/profile',
-  employerIndividualCreateProfile,
-);
-appRoute.get('/employer/certificate', employerCertificate);
->>>>>>> cd21d93397e8f81d51ac7ecd418a266177ab4246
 
 module.exports = appRoute;
