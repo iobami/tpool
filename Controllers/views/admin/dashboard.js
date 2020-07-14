@@ -1,3 +1,7 @@
+const moment = require('moment');
+const model = require('../../../Models/index');
+const { errorResMsg, successResMsg } = require('../../../Utils/response');
+
 module.exports = {
   faq: (req, res) => {
     res.render('Pages/admin-dash-faq', {
@@ -21,11 +25,41 @@ module.exports = {
   },
 
 
-  allEmployers: (req, res) => {
-    res.render('Pages/admin-dash-employers', {
-      pageName: 'Admin | All Employers',
-      path: "admin-all-employers"
-    })
+  allEmployers: async (req, res) => {
+    try {
+      const individuals_array = [];
+      const company_array = [];
+      const limit = Number(req.query.p) || 1000000000;
+      const employers = await model.Employer.findAll({
+        limit,
+        order: [
+          ['id', 'DESC'],
+        ],
+      });
+      const employersAll = await model.Employer.findAll({});
+      const data = { data: employers };
+      const totalEmployers = employersAll.length;
+      employersAll.forEach((employer) => {
+        if (employer.employer_type.toLowerCase() === 'individual') {
+          individuals_array.push(employer.employer_type);
+        }
+  
+        if (employer.employer_type.toLowerCase() === 'company') {
+          company_array.push(employer.employer_type);
+        }
+      });
+  
+      res.render('Pages/admin-dash-employers', {
+        pageName: 'Admin | All Employers',
+        path: 'admin-viewEmployer',
+        data,
+        totalCompany: company_array.length,
+        totalIndividual: individuals_array.length,
+        totalEmployers,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   },
 
   allEmployees: (req, res) => {
