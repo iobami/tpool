@@ -67,7 +67,7 @@ exports.registerEmployer = (req, res) => {
         try {
           await model.User.create(userData);
           // mail verification code to the user
-          const verificationUrl = `${URL}/verify-email?verification_code=${token}`;
+          const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
           const message = `<p> Hi, thanks for registering, kindly verify your email using this <a href ='${verificationUrl}'>link</a></p>`;
 
           await sendEmail({
@@ -104,61 +104,61 @@ exports.registerEmployer = (req, res) => {
   })();
 };
 
-exports.postEmployeeLogin = (req, res, next) => {
+exports.postEmployeeLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('Pages/employee-sign-in', {
-      path: '/employee-sign-in',
-      pageName: 'Employee Sign In',
+      path: '/employee/login',
+      pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email,
-        password
+        password,
       },
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
     });
   }
 
-  model.User.findOne({ where: { email }, role_id: 'ROL-EMPLOYEE' })
+  await model.User.findOne({ where: { email }, role_id: 'ROL-EMPLOYEE' })
     .then((user) => {
       if (!user) {
         return res.status(422).render('Pages/employee-sign-in', {
-          path: '/employee-sign-in',
-          pageName: 'Employee Sign In',
+          path: '/employee/login',
+          pageName: 'Employee Login',
           errorMessage: 'Incorrect login details',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       if (user.status === '0') {
         return res.status(422).render('Pages/employee-sign-in', {
-          path: '/employee-sign-in',
-          pageName: 'Employee Sign In',
+          path: '/employee/login',
+          pageName: 'Employee Login',
           errorMessage: 'User is not verified',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
 
       if (user.block) {
         return res.status(422).render('Pages/employee-sign-in', {
-          path: '/employee-sign-in',
-          pageName: 'Employee Sign In',
+          path: '/employee/login',
+          pageName: 'Employee Login',
           errorMessage: 'User is blocked.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       bcrypt
@@ -167,21 +167,24 @@ exports.postEmployeeLogin = (req, res, next) => {
           if (valid) {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            res.redirect('/employee-dashboard');
+            if (!user.employee_id) {
+              res.redirect('/employee/profile/create');
+            }
+            res.redirect(`/employee/dashboard/${user.employee_id}`);
           }
           return res.status(422).render('Pages/employee-sign-in', {
-            path: '/employee-sign-in',
-            pageName: 'Employee Sign In',
+            path: '/employee/login',
+            pageName: 'Employee Login',
             errorMessage: 'Invalid email or password.',
             oldInput: {
               email,
-              password
+              password,
             },
-            validationErrors: []
+            validationErrors: [],
           });
         })
         .catch(() => {
-          res.redirect('/employee-sign-in');
+          res.redirect('/employee/login');
         });
     })
     .catch((err) => {
@@ -203,9 +206,9 @@ exports.postEmployerLogin = (req, res, next) => {
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email,
-        password
+        password,
       },
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
     });
   }
 
@@ -218,9 +221,9 @@ exports.postEmployerLogin = (req, res, next) => {
           errorMessage: 'Invalid email or password.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       if (user.status === '0') {
@@ -230,9 +233,9 @@ exports.postEmployerLogin = (req, res, next) => {
           errorMessage: 'User is not verified',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
 
@@ -243,9 +246,9 @@ exports.postEmployerLogin = (req, res, next) => {
           errorMessage: 'User is blocked.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       bcrypt
@@ -262,9 +265,9 @@ exports.postEmployerLogin = (req, res, next) => {
             errorMessage: 'Invalid email or password.',
             oldInput: {
               email,
-              password
+              password,
             },
-            validationErrors: []
+            validationErrors: [],
           });
         })
         .catch(() => {
@@ -369,9 +372,9 @@ exports.adminLogin = (req, res, next) => {
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email,
-        password
+        password,
       },
-      validationErrors: errors.array()
+      validationErrors: errors.array(),
     });
   }
   model.User.findOne({ where: { email } })
@@ -383,9 +386,9 @@ exports.adminLogin = (req, res, next) => {
           errorMessage: 'Incorrect login details,user does not exist.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       if (user.role_id !== 'ROL-ADMIN' && user.role_id !== 'ROL-SUPERADMIN') {
@@ -395,9 +398,9 @@ exports.adminLogin = (req, res, next) => {
           errorMessage: 'User is not an admin.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       if (user.status === '0') {
@@ -407,9 +410,9 @@ exports.adminLogin = (req, res, next) => {
           errorMessage: 'User is not verified.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
       if (user.block) {
@@ -419,28 +422,30 @@ exports.adminLogin = (req, res, next) => {
           errorMessage: 'User is blocked.',
           oldInput: {
             email,
-            password
+            password,
           },
-          validationErrors: []
+          validationErrors: [],
         });
       }
-      bcrypt.compare(password, user.password).then((valid) => {
-        if (valid) {
-          req.session.isLoggedIn = true;
-          req.session.userId = user.user_id;
-          res.redirect('/admin-dashboard');
-        }
-        return res.status(422).render('Pages/admin-login', {
-          path: '/admin-login',
-          pageName: 'Admin Login',
-          errorMessage: 'Incorrect login details.',
-          oldInput: {
-            email,
-            password
-          },
-          validationErrors: []
-        });
-      })
+      bcrypt
+        .compare(password, user.password)
+        .then((valid) => {
+          if (valid) {
+            req.session.isLoggedIn = true;
+            req.session.userId = user.user_id;
+            res.redirect('/admin-dashboard');
+          }
+          return res.status(422).render('Pages/admin-login', {
+            path: '/admin-login',
+            pageName: 'Admin Login',
+            errorMessage: 'Incorrect login details.',
+            oldInput: {
+              email,
+              password,
+            },
+            validationErrors: [],
+          });
+        })
         .catch(() => {
           res.redirect('/admin-login');
         });
@@ -453,9 +458,8 @@ exports.adminLogin = (req, res, next) => {
 };
 
 exports.postLogout = (req, res) => {
-  req.session.destroy(() => {
-    res.redirect('/');
-  });
+  req.session = null;
+  res.redirect('/');
 };
 
 const getResetPasswordToken = () => {
@@ -569,16 +573,27 @@ exports.resetPassword = asyncHandler(async (req, res) => {
 });
 
 exports.resendVerificationLink = async (req, res) => {
+  // Validate input
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const errResponse = errors.array({ onlyFirstError: true });
+    req.flash('error', errResponse[0].msg);
+    return res.redirect('/verify-email');
+  }
   // check if user exist
   const checkUser = await model.User.findOne({
     where: { email: req.body.email },
   });
   if (!checkUser) {
-    return errorResMsg(res, 403, 'Invalid email');
+    // return errorResMsg(res, 403, 'Invalid email');
+    req.flash('error', 'Invalid email');
+    return res.redirect('/verify-email');
   }
 
   if (checkUser.status === '1') {
-    return errorResMsg(res, 401, 'This email has been verified');
+    // return errorResMsg(res, 401, 'This email has been verified');
+    req.flash('error', 'This email has been verified');
+    return res.redirect('/verify-email');
   }
 
   const basicInfo = {
@@ -591,7 +606,7 @@ exports.resendVerificationLink = async (req, res) => {
   checkUser.save();
 
   // mail verification code to the user
-  const verificationUrl = `${URL}/verify-email?verification_code=${token}`;
+  const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
 
   const message = `<p> Hello, you requested for the resend of your verification link. 
         Kindly verify your email </p><a href ='${verificationUrl}'>link</a>`;
@@ -601,12 +616,15 @@ exports.resendVerificationLink = async (req, res) => {
       subject: 'Email verification',
       message,
     });
-    const data = { message: 'Verification email re-sent!' };
-    successResMsg(res, 201, data);
+    // const data = { message: 'Verification email re-sent!' };
+    // successResMsg(res, 201, data);
+    req.flash('error', 'Verification email re-sent!');
+    return res.redirect('/verify-email');
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
+    res.render('Pages/verify-email', { PageName: 'Verify Email' });
   }
 };
 

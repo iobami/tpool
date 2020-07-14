@@ -1,10 +1,5 @@
-exports.getEmployeeDash = (req, res) => {
-  res.render('Pages/employee-dashboard', {
-    pageTitle: 'Talent Pool | Dashboard',
-    path: 'employee-dashboard',
-    employee: {},
-  });
-};
+// const employeeController = require('../../employee/employee-profile');
+
 exports.getEmployeeMessages = (req, res) => {
   res.render('Pages/employee-messages', {
     pageTitle: 'Talent Pool | Messages',
