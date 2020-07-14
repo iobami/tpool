@@ -471,14 +471,6 @@ exports.adminLogin = async (req, res, next) => {
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
-            // const data = {
-            //   email: user.email,
-            //   userId: user.user_id.toString(),
-            //   userRole: user.role_id,
-            //   userTypeId: user.admin_id
-            // };
-            // console.log(data.userTypeId);
-            req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             res.redirect('/admin/dashboard');
