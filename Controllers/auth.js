@@ -36,7 +36,7 @@ exports.registerEmployer = (req, res) => {
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
         req.flash('errors', errResponse);
-        res.redirect('/employer/register');
+        return res.redirect('/employer/register');
       }
       // encrypt password
       const salt = bcrypt.genSaltSync(10);
@@ -67,7 +67,7 @@ exports.registerEmployer = (req, res) => {
         try {
           await model.User.create(userData);
           // mail verification code to the user
-          const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
+          const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
           const message = `<p> Hi, thanks for registering, kindly verify your email using this <a href ='${verificationUrl}'>link</a></p>`;
 
           await sendEmail({
@@ -78,11 +78,11 @@ exports.registerEmployer = (req, res) => {
 
           // return successResMsg(res, 201, data);
           req.flash('success', 'Verification email sent!');
-          res.redirect('/employer/register');
+          return res.redirect('/employer/register');
         } catch (err) {
           req.flash('error', 'An error Occoured');
-          res.redirect('/employer-sign-up');
-          return errorResMsg(res, 500, err);
+          return res.redirect('/employer/register');
+          // return errorResMsg(res, 500, err);
         }
       } else {
         // return errorResMsg(
@@ -91,7 +91,7 @@ exports.registerEmployer = (req, res) => {
         //   'Someone has already registered this email',
         // );
         req.flash('error', 'Someone has already registered this email');
-        res.redirect('/employer/register');
+        return res.redirect('/employer/register');
       }
     } catch (err) {
       if (!err.statusCode) {
@@ -99,7 +99,7 @@ exports.registerEmployer = (req, res) => {
       }
       // return errorResMsg(res, 500, 'An error occurred');
       req.flash('error', 'An error Occoured');
-      res.redirect('/employer/register');
+      return res.redirect('/employer/register');
     }
   })();
 };
@@ -114,6 +114,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       path: '/employee/login',
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
+      success ,
       oldInput: {
         email,
         password,
@@ -129,6 +130,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           path: '/employee/login',
           pageName: 'Employee Login',
           errorMessage: 'Incorrect login details',
+          success:req.flash('success'),
           oldInput: {
             email,
             password,
@@ -151,6 +153,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           path: '/employee/login',
           pageName: 'Employee Login',
           errorMessage: 'User is not verified',
+          success:req.flash('success'),
           oldInput: {
             email,
             password,
@@ -164,6 +167,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           path: '/employee/login',
           pageName: 'Employee Login',
           errorMessage: 'User is blocked.',
+          success:req.flash('success'),
           oldInput: {
             email,
             password,
@@ -196,6 +200,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
             path: '/employee/login',
             pageName: 'Employee Login',
             errorMessage: 'Invalid email or password.',
+            success:req.flash('success'),
             oldInput: {
               email,
               password,
@@ -222,6 +227,7 @@ exports.postEmployerLogin = async (req, res, next) => {
       path: '/employer/login',
       pageName: 'Employer Login',
       errorMessage: errors.array()[0].msg,
+      success:req.flash('success'),
       oldInput: {
         email,
         password,
@@ -237,6 +243,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'Invalid email or password.',
+          success:req.flash('success') ,
           oldInput: {
             email,
             password,
@@ -261,6 +268,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Sign In',
           errorMessage: 'User is not verified',
+          success:req.flash('success'),
           oldInput: {
             email,
             password,
@@ -274,6 +282,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'User is blocked.',
+          success:req.flash('success') ,
           oldInput: {
             email,
             password,
@@ -303,7 +312,9 @@ exports.postEmployerLogin = async (req, res, next) => {
           return res.status(422).render('Pages/employer-signin', {
             path: '/employer/login',
             pageName: 'Employer Login',
+            
             errorMessage: 'Invalid email or password.',
+            success ,
             oldInput: {
               email,
               password,
@@ -647,7 +658,7 @@ exports.resendVerificationLink = async (req, res) => {
   checkUser.save();
 
   // mail verification code to the user
-  const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
+  const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
 
   const message = `<p> Hello, you requested for the resend of your verification link. 
         Kindly verify your email </p><a href ='${verificationUrl}'>link</a>`;
