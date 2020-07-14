@@ -566,6 +566,7 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
     const data = { message: 'Reset password email sent' };
     return successResMsg(res, 201, data);
   } catch (err) {
+    //console.log(err);
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
     user.reset_password_expire = null;
