@@ -170,6 +170,7 @@ app.use(csrfProtection);
 app.use((req, res, next) => {
   const token = req.csrfToken();
   // console.log(token);
+  // TODO: ask why this is here
   res.cookie('csrf-token', token);
   res.locals.csrfToken = req.csrfToken();
   next();
