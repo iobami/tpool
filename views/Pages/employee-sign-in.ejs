@@ -24,14 +24,16 @@
 
                 <% if (errorMessage) { %>
                     <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
-                <% } %>
+                <% }if (success && success.length > 0) { %>
+                    <div role="alert" class="alert alert-success user-message"><%= success %></div>
+                <% } }%>
 
                 <form class="needs-validation" novalidate id="form" action="/employee/login" method="POST">
 
                     <div class="col-md mb-3 px-0">
                         <label for="email">Email</label>
                         <input 
-                        class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                        class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid-value' : '' %>"
                         type="email" 
                         name="email" 
                         id="email" 
@@ -47,7 +49,7 @@
                     <div class="col-md mb-3 px-0">
                         <label for="password">Password</label>
                         <input 
-                        class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                        class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid-value' : '' %>"
                         type="password" 
                         name="password" 
                         id="password" 
