@@ -35,15 +35,15 @@ appRoute.post(
   registerEmployer,
 );
 appRoute.post(
-  '/employer-sign-in',
+  '/employer/login',
   [
     body('email')
       .isEmail()
       .withMessage('Please enter a valid email address.')
       .normalizeEmail(),
     body('password', 'Password has to be valid.')
-      .isLength({ min: 5 })
-      .isAlphanumeric()
+      .isLength({ min: 8 })
+      // .isAlphanumeric()
       .trim(),
   ],
   authController.postEmployerLogin,

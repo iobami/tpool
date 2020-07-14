@@ -20,10 +20,10 @@ const { verifyEmail } = require('../Controllers/employee/employee-signup');
 const router = express.Router();
 
 // Admin Login
-router.post('/admin-login', UserValidation.validateLogin, adminLogin);
-router.post('/employer-login', UserValidation.validateLogin, postEmployerLogin);
-// Employee Login
-router.post('/employee/login', UserValidation.validateLogin, postEmployeeLogin);
+// router.post('/admin-login', UserValidation.validateLogin, adminLogin);
+// router.post('/employer-login', UserValidation.validateLogin, postEmployerLogin);
+// // Employee Login
+// router.post('/employee/login', UserValidation.validateLogin, postEmployeeLogin);
 router.post(
   '/forgot-password',
   UserValidation.resendVerificationLink,
