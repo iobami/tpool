@@ -6,6 +6,12 @@ const { uuid } = require('uuidv4');
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 
+// eslint-disable-next-line operator-linebreak
+const URL =
+  process.env.NODE_ENV === 'development'
+    ? process.env.TALENT_POOL_DEV_URL
+    : process.env.TALENT_POOL_FRONT_END_URL;
+
 // eslint-disable-next-line no-unused-vars
 const upload = multer({ dest: `${__dirname}../../public/employeeimages` });
 
@@ -134,6 +140,8 @@ exports.getDashboard = async (req, res) => {
       employeeId = req.params.employee_id;
     }
 
+    employeeId = req.session.employeeId;
+
     const query = await models.Employee.findOne({
       where: { employee_id: employeeId },
       attributes,
@@ -158,7 +166,7 @@ exports.getDashboard = async (req, res) => {
     }
     return res.status(200).render('Pages/employee-dashboard', {
       pageTitle: 'Talent Pool | Dashboard',
-      path: '/employee/dashboard',
+      path: `${URL}employee/dashboard/${employeeId}`,
       data,
     });
   } catch (err) {
