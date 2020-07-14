@@ -84,6 +84,8 @@ const getAllEmployees = require('./Routes/employer/get-employees');
 const employerDashboard = require('./Routes/employer/employer-dashboard');
 
 // IMPORT THE VIEWS ROUTES
+const adminPackages = require('./Routes/views/payment/admin_package')
+const employerPackages = require('./Routes/views/payment/employer_package')
 const appRoute = require('./Routes/views');
 const adminDashRoute = require('./Routes/views/admin/dashboard');
 const employeeAuthRoute = require('./Routes/views/employee/auth');
@@ -245,5 +247,7 @@ app.use(adminAuthRoute);
 app.use(employerMetrics);
 app.use(employerRecommendation);
 app.use(verifyModal);
+app.use(adminPackages);
+app.use(employerPackages);
 
 module.exports = app;
