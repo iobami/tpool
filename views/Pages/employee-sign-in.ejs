@@ -24,7 +24,9 @@
 
                 <% if (errorMessage) { %>
                     <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
-                <% } %>
+                <% }if (success && success.length > 0) { %>
+                    <div role="alert" class="alert alert-success user-message"><%= success %></div>
+                <% } }%>
 
                 <form class="needs-validation" novalidate id="form" action="/employee/login" method="POST">
 
