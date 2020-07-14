@@ -5,7 +5,6 @@ const { authorize } = require('../Middleware/index');
 const { UserValidation } = require('../Utils/validators/user-validator-new');
 
 const {
-  registerEmployer,
   adminLogin,
   postEmployeeLogin,
   postEmployerLogin,
@@ -16,57 +15,10 @@ const {
   superAdminLogin,
 } = require('../Controllers/auth');
 
-const {
-  create,
-  verifyEmail,
-} = require('../Controllers/employee/employee-signup');
-const { post } = require('./views/employee/auth');
+const { verifyEmail } = require('../Controllers/employee/employee-signup');
 
 const router = express.Router();
-// Employee Register
-router.post(
-  '/employee/register',
-  [
-    body('email')
-      .isEmail()
-      .withMessage('Please enter a valid email address')
-      .normalizeEmail(),
-    body('password')
-      .isLength({ min: 8 })
-      .withMessage(
-        'Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)',
-      )
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_`,/@#\-"=:;~<>'\$%\^&\*\?\|\+\(\)\[\]\{}\.])(?=.{8,})/,
-      )
-      .withMessage(
-        'Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)',
-      ),
-  ],
-  create,
-);
-// Employer Register
-router.post(
-  '/employer-signup',
-  [
-    body('email')
-      .isEmail()
-      .withMessage('Please enter a valid email address')
-      .normalizeEmail(),
-    body('password')
-      .isLength({ min: 8 })
-      .withMessage(
-        'Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)',
-      )
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_`,/@#\-"=:;~<>'\$%\^&\*\?\|\+\(\)\[\]\{}\.])(?=.{8,})/,
-      )
-      .withMessage(
-        'Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)',
-      ),
-  ],
-  registerEmployer,
-);
+
 // Admin Login
 router.post('/admin-login', UserValidation.validateLogin, adminLogin);
 router.post('/employer-login', UserValidation.validateLogin, postEmployerLogin);

@@ -14,7 +14,7 @@
     <!-- Employer sign up additional styles -->
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel="stylesheet" href="styles/custom-css/employer-sign-up.css">
+    <link rel="stylesheet" href="/styles/custom-css/employer-sign-up.css">
 </head>
 
 <body>
@@ -70,7 +70,7 @@
                       <% } } %>
                       <div class="tab-pane fade show active" id="individual" role="tabpanel"
                         aria-labelledby="individual-tab">
-                        <form action="v1/auth/employer-signup" method="POST" class="needs-validation" id="individualForm" novalidate>
+                        <form action="/employer/register" method="POST" class="needs-validation" id="individualForm" novalidate>
                           <div class="row">
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <!-- <div class="col-md-12 my-3 form-group">
@@ -178,13 +178,13 @@
                                 </div>
                         </div>
                           <div class="text-center acct mt-3 mb-5">Have an account with us? <a
-                              href="/employer-sign-in">Sign In</a>
+                              href="/employer/login">Sign In</a>
                           </div>
                         </form>
                       </div>
     
                       <div class="tab-pane fade" id="company" role="tabpanel" aria-labelledby="company-tab">
-                        <form action="v1/auth/employer-signup" method="POST" class="needs-validation" id="orgForm" novalidate>
+                        <form action="/employer/register" method="POST" class="needs-validation" id="orgForm" novalidate>
                           <div class="row">
                             <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                             <div class="col-md-12 my-3 form-group">
@@ -268,7 +268,7 @@
 
                           </div>
                           <div class="text-center acct mt-3 mb-5">Have an account with us? <a
-                              href="/employer-sign-in">Sign In</a>
+                              href="/employer/login">Sign In</a>
                           </div>
                         </form>
                       </div>
@@ -302,7 +302,7 @@
                   check your mail and click to verify your account.</p>
     
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                  onclick="location.assign('/employer-sign-in')">Sign in</button>
+                  onclick="location.assign('/employer/login')">Sign in</button>
               </div>
             </div>
           </div>
