@@ -1,8 +1,8 @@
 const express = require('express');
 const appRoute = express.Router();
 const {
-     create, getAll, packageGet, packageUpdate, softDeletePackage, createFeature, addAFeature, removeAFeature 
-} = require('../../../Controllers/views/payment/admin-package');
+     create, getAll, packageGet,  
+} = require('../../../Controllers/views/payment/employer-package');
 
 
 //get package detail routes
