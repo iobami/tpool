@@ -4,18 +4,13 @@
 
 <head>
     <%- include('../Templates/head') %>
-     <!-- BEGIN Pre-requisites -->
-     <script src="https://apis.google.com/js/platform.js" async defer></script>
-     <meta name="google-signin-client_id"
-         content="1044934768285-u3jh3gs8dv4u21uie9o32cbu0gv2erh4.apps.googleusercontent.com">
-     <!-- END Pre-requisites -->
+
     <link rel="stylesheet" href="/styles/custom-css/employee-signUp.css">
     <link rel="stylesheet" href="/styles/custom-css/employee-signUp-signIn.css">
-        <!-- BEGIN Pre-requisites -->
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id"
-            content="1044934768285-u3jh3gs8dv4u21uie9o32cbu0gv2erh4.apps.googleusercontent.com">
-        <!-- END Pre-requisites -->
+
+    <link rel="stylesheet" href="/styles/custom-css/employee-signUp.css">
+    <link rel="stylesheet" href="/styles/custom-css/employee-signUp-signIn.css">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -191,23 +186,24 @@
                             </div>
                         </div>
         
-                        <div class="row mt-2 justify-content-center">
-                            <!-- <div class="col-md">
-                                <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
-                                        class="fab fa-github pr-2"></i>Login with Github</button>
-                            </div> -->
-                         
-
-                            <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
-                            data-onsuccess="onSignIn">
+                        <div class="row mt-2">
+                            <div class="col-md">
+                                <a href="/auth/employee/github">
+                                    <button type="button" class="btn  btn-block  facebook-btn py-3 my-1"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>sign up with Github</button>
+                                </a>
+                            </div>
+        
+                            <div class="col-md">
+                                <a href="/auth/employee/google">
+                                    <button type="button" class="btn btn-block  google-btn py-3 my-1"><i class="fab fa-google pr-2" aria-hidden="true"></i>sign up with Google</button>
+                                </a>
                             </div>
                         </div>
         
-                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee-sign-in" class="login-link">Sign In.</a></p>
                     </div>
 
                     <div class="tab-pane fade" id="new-user" role="tabpanel" aria-labelledby="new-user-tab">
-                        <form action="v1/auth/employee-signup" method="POST" class="needs-validation" novalidate>
+                        <form action="/employee/register" method="POST" class="needs-validation" novalidate>
                             <div class="row">
                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <div class="col-md mb-3">
@@ -333,20 +329,23 @@
                             </div>
                         </div>
         
-                        <div class="row mt-2 justify-content-center">
-                            <!-- <div class="col-md">
-                                <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
-                                        class="fab fa-github pr-2"></i>Login with Github</button>
-                            </div> -->
-                         
-
-                            <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
-                            data-onsuccess="onSignIn">
+                        <div class="row mt-2">
+                            <div class="col-md">
+                                <a href="/auth/employee/github">
+                                    <button type="button" class="btn  btn-block  facebook-btn py-3 my-1"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>sign up with Github</button>
+                                </a>
+                            </div>
+        
+                            <div class="col-md">
+                                <a href="/auth/employee/google">
+                                    <button type="button" class="btn btn-block  google-btn py-3 my-1"><i class="fab fa-google pr-2" aria-hidden="true"></i>sign up with Google</button>
+                                </a>
+                                </div>
                         </div>
                         </div>
                        
         
-                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee-sign-in" class="login-link">Sign In.</a></p>
+                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee/login" class="login-link">Sign In.</a></p>
                     </div>
                 </div>
             </section>
@@ -356,43 +355,7 @@
 </main>
 
 <%- include('../Templates/footer') %>
-<script>
-    // Getting verify status to know if registration is successful or not
-    const verifyStatus = `<%- success %>`;
-      if (verifyStatus == 'Verification email sent!') {
-          // Displaying the modal
-        $('#exampleModal').modal();
-      }
-    async function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        const role_id = document.querySelector('.g-signin2').dataset.user;
-        var token = googleUser.getAuthResponse().id_token
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.disconnect();
-        const userData = {
-            role_id,
-            token: token
-        }
-        axios.post('https://api.lancers.app/v1/auth/google', userData)
-            .then(data => {
-                let decodedData = JSON.parse(atob(data.data.data.token.split('.')[1]))
-                const userData = {
-                    ...decodedData,
-                    token: data.data.data.token
-                }
-                localStorage.setItem("tpAuth", JSON.stringify(userData));
-                if (decodedData.userTypeId == null) {
-                    window.location.replace('/employee-profileCreation')
-                } else {
-                    window.location.replace('/employee-dashboard')
-                }
-            }).catch(function (error) {
-                console.log(error);
-                window.location.replace('/')
-            });
-    }
-    
-  </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 <!-- <script type="module" src="js/custom-js/employee-signUp.js"></script> -->
 <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>

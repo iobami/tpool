@@ -1,6 +1,6 @@
 // IDs of the three methods of payment buttons
 let formIDs = ['visa-card__form', 'master-card__form', 'paypal__form'];
-
+let cardNumber = document.getElementById("card-number1");
 //  Toggle betyween forms
 function toggleForm(form){
     let getForm = document.getElementById(form);
@@ -70,3 +70,21 @@ getForm.addEventListener('submit', function(e){
     // alert('got here');
 })
 
+// This is to prevent any input that is not a number 
+// from being inputed to the form
+const cardNumberKey = ((evt)=>{
+    // Only ASCII charactar in that range allowed 
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+        return false; 
+    return true; 
+})
+
+// This is to add hyphen for the card number
+function addHyphen (element) {
+    let ele = document.getElementById(element.id);
+    ele = ele.value.split('-').join('');    // Remove dash (-) if mistakenly entered.
+
+    let finalVal = ele.match(/.{1,4}/g).join('-');
+    document.getElementById(element.id).value = finalVal;
+}

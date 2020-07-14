@@ -184,10 +184,11 @@ exports.postEmployeeLogin = async (req, res, next) => {
             req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            if (!user.employee_id) {
-              res.redirect('/employee/profile/create');
+            req.session.employeeId = data.userTypeId;
+            if (!data.userTypeId) {
+              return res.redirect('/employee/profile/create');
             }
-            res.redirect(`/employee/dashboard/${user.employee_id}`);
+            return res.redirect(`/employee/dashboard/${data.userTypeId}`);
           }
           return res.status(422).render('Pages/employee-sign-in', {
             path: '/employee/login',
@@ -243,7 +244,6 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
-
       let userTypeId = null;
       let verificationStatus = null;
 
@@ -267,7 +267,6 @@ exports.postEmployerLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
-
       if (user.block) {
         return res.status(422).render('Pages/employer-signin', {
           path: '/employer/login',
@@ -295,7 +294,7 @@ exports.postEmployerLogin = async (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             if (!user.employer_id) {
-              res.redirect('/employer/profile/create');
+              res.redirect('/employer/create/profile');
             }
             res.redirect(`/employer/dashboard/${user.employer_id}`);
           }
@@ -473,6 +472,7 @@ exports.adminLogin = async (req, res, next) => {
           if (valid) {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
+            req.session.userRole = user.role_id;
             res.redirect('/admin/dashboard');
           }
           return res.status(422).render('Pages/admin-login', {
@@ -565,6 +565,7 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
     const data = { message: 'Reset password email sent' };
     return successResMsg(res, 201, data);
   } catch (err) {
+    //console.log(err);
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
     user.reset_password_expire = null;
