@@ -255,9 +255,7 @@ exports.postEmployerLogin = async (req, res, next) => {
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
-        model.Employee.findOne({
-              where: { user_id: user.user_id },
-            });
+       
            
             // const data = {
             //   email: user.email,
