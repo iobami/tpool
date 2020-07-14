@@ -1,4 +1,5 @@
 module.exports = {
+
   employerSignup: (req, res) => {
     res.render('Pages/employer-sign-up', {
       pageName: 'Employer Registration',
@@ -12,7 +13,7 @@ module.exports = {
     if (req.session.isLoggedIn) {
       res.redirect('/employee/dashboard');
     }
-
+    const success = req.flash('success');
     let message = req.flash('error');
     if (message.length > 0) {
       [message] = message;
@@ -23,6 +24,7 @@ module.exports = {
       path: '/employer/login',
       pageName: 'Employer Login',
       errorMessage: message,
+      success,
       oldInput: {
         email: '',
         password: '',

@@ -1,6 +1,13 @@
 module.exports = {
   employerDashboard: (req, res) => {
     res.render('Pages/employer-dashboard', {
+      success: req.flash('success'),
+      pageName: 'Employer Dashboard',
+    });
+  },
+
+  employerProfile: (req, res) => {
+    res.render('Pages/employer-profile-page', {
       pageName: 'Employer Dashboard',
     });
   },
@@ -45,6 +52,7 @@ getActive.then(getCookie);*/
 
   employerCreateProfile: (req, res) => {
     res.render('Pages/employer-profile-creation', {
+      success: req.flash('success'),
       pageName: 'Create Profile',
     });
   },
