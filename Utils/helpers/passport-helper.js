@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const jsonWT = require('../auth-token');
 const model = require('../../Models');
 
-exports.getUserData = async (profile, user, done) => {
+exports.getUserData = async (req, profile, user, done) => {
   try {
     let userTypeId = null;
     let verificationStatus = null;
@@ -25,11 +25,11 @@ exports.getUserData = async (profile, user, done) => {
     }
 
     if (user.status === '0') {
-      return done(null, false, { errorMessage: 'User is not verified' });
+      return done(null, false, req.flash('error', 'User is not verified'));
     }
 
     if (user.block) {
-      return done(null, false, { errorMessage: 'User is blocked' });
+      return done(null, false, req.flash('error', 'User is blocked, please contact an Admin'));
     }
     let data = {
       email: user.email,
