@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../../Templates/head') %>
+  <link href="/styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
+  <link href="/styles/custom-css/employer-top-nav.css" rel="stylesheet" />
+  <link href="/styles/custom-css/side-nav.css" rel="stylesheet" />
+  <link href="/styles/custom-css/admin-dash.css" rel="stylesheet" />
+</head>
+
+<body>
+  <%- include('../../Templates/admin-header') %>
+  <%- include('../../Templates/admin-sidebar') %>
+
+  <section class="admin__dashboard p-4">
+    <h2 class="dashboard__heading text-center">Manage Packages</h2>
+
+    <div class="container-fluid">
+      <!-- create packages -->
+        <h6 class="text-center">Create Package</h6>
+        <form action="/admin/packages/create" method="post" class="p-3 m-3 mx-auto mw-75">
+          <div class="form-group mb-3 mx-auto">
+            <label for="package_name">Package Name</label>
+            <input class="form-control-lg" type="text" name="package_name" id="package_name"
+              placeholder="Write a Package Name." />
+          </div>
+
+          <div class="form-group mb-3 mx-auto">
+            <label for="price">Monthly Price</label>
+            <input class="form-control-lg" type="number" id="price" name="price" placeholder="Enter Price" />
+          </div>
+
+          <div class="form-group mb-3 mx-auto">
+            <label for="description">Package Description</label>
+            <textarea class="form-control-lg" name="description" id="description"
+              placeholder="Write a Package Description."></textarea>
+          </div>
+
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button type="submit" class="btn btn-block btn-primary mt-3">
+            Create Package
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+  <div id="body__click"></div>
+  <style>
+    form {
+      max-width: 100%;
+      width: max-content;
+    }
+
+    form .form-group,
+    .form-control-lg {
+      width: 100% !important;
+    }
+
+    textarea {
+      height: 10rem !important;
+    }
+
+    .card-body {
+      min-height: 19rem !important;
+      max-height: max-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    button.hire-btn {
+      background-color: #00aeff;
+    }
+  </style>
+  <script src="/js/bootstrap-js/popper.js"></script>
+  <script src="/js/bootstrap-js/jquery.js"></script>
+  <script src="/js/bootstrap-js/bootstrap.js"></script>
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus');
+    });
+  </script>
+  <script src="/js/custom-js/side-nav.js"></script>
+</body>
+
+</html>
