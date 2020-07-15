@@ -164,11 +164,22 @@ exports.getDashboard = async (req, res) => {
       where: { employee_id: employeeId },
     });
 
+    const teamQuery = await models.Team.findOne({
+      where: { employee_id: employeeId },
+      include: models.Employer,
+    });
+
     const employee = await query;
     const skills = await skillQuery;
     const portfolios = await portfolioQuery;
+    const team = await teamQuery;
 
-    const data = { employee, skills, portfolios };
+    const data = {
+      employee,
+      skills,
+      portfolios,
+      team,
+    };
 
     if (!employee) {
       return req.flash('error', 'Profile not found');
