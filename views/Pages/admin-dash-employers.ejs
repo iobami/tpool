@@ -1,366 +1,282 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <%- include('../Templates/admin-head') %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-    <link
-      href="../styles/custom-css/adminDashViewEmployers.css"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <!-- Header/Navbar Here -->
+<head>
+    <!-- Required meta tags -->
+    <%- include('../Templates/head') %>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/styles/bootstrap-css/bootstrap.css" crossorigin="anonymous">
+
+    <link href="/styles/custom-css/employee-dash-main.css" rel="stylesheet" />
+
+    <link href="/styles/custom-css/employer-top-nav.css" rel="stylesheet" />
+
+    <link href="/styles/custom-css/side-nav.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="/img/favicon.svg" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/../styles/custom-css/view-employee.css">
+
+</head>
+
+<body>
+
+    <!-- Top-Nav -->
     <%- include('../Templates/admin-header') %>
+    <!-- Top-Nav End -->
+    <div class="container-fluid mt-4">
 
-    <main>
-      <!-- SideNav Here -->
-      <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
-        <%- include('../Templates/admin-sidebar') %>
-
-        <div id="body__click"></div>
-      </div>
-
-      <!-- Main Content Here -->
-      <section class="container-fluid main-content px-3 px-md-4 px-lg-5">
-        <header class="title">
-          <h4 class="py-4">Employers</h4>
-        </header>
-
-        <div
-          class="talent-cards mb-4 mb-sm-5 d-flex flex-column justify-content-start flex-sm-row flex-sm-nowrap"
-        >
-          <div
-            class="talent-card bg-white text-center rounded mb-3 mb-sm-0 py-5 mr-sm-4"
-          >
-            <h3 id="individuals_count"></h3>
-            <small>INDIVIDUALS</small>
-          </div>
-          <div class="talent-card bg-white text-center rounded py-5">
-            <h3 id="company_count"></h3>
-            <small>COMPANIES</small>
-          </div>
-        </div>
-
-        <div
-          class="d-flex justify-content-between align-items-baseline flex-sm-row mb-4 display-none"
-        >
-          <h6>Employers list</h6>
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btm-sm dropdown-toggle btn-select-border bg-white"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              All
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <button
-                class="dropdown-item talent-btn-dropdown-item"
-                type="button"
-              >
-                <small>Option 1</small>
-              </button>
-              <button
-                class="dropdown-item talent-btn-dropdown-item"
-                type="button"
-              >
-                <small>Option 2</small>
-              </button>
-              <button
-                class="dropdown-item talent-btn-dropdown-item"
-                type="button"
-              >
-                <small>Option 3 </small>
-              </button>
+        <div class="row">
+            <!-- SideBar -->
+            <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
+                <%- include('../Templates/admin-sidebar') %>
+                ​
+                <div id="body__click"></div>
             </div>
-          </div>
-        </div>
+            <!-- SideBar End-->
 
-        <div class="table-container pb-4">
-          <div class="table-form-container py-2">
-            <form class="form-inline col-12 pl-sm-4 ml-sm-2">
-              <label class="sr-only" for="search-input-employer"
-                >Search for employers</label
-              >
-              <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
-                  <div
-                    class="input-group-text bg-white border-right-0 form-control-outline"
-                  >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M19.3187 18.0273L13.232 11.9406C14.1766 10.7195 14.6875 9.22656 14.6875 7.65625C14.6875 5.77656 13.9539 4.01406 12.6273 2.68516C11.3008 1.35625 9.53359 0.625 7.65625 0.625C5.77891 0.625 4.01172 1.35859 2.68516 2.68516C1.35625 4.01172 0.625 5.77656 0.625 7.65625C0.625 9.53359 1.35859 11.3008 2.68516 12.6273C4.01172 13.9562 5.77656 14.6875 7.65625 14.6875C9.22656 14.6875 10.7172 14.1766 11.9383 13.2344L18.025 19.3187C18.0428 19.3366 18.064 19.3508 18.0874 19.3604C18.1107 19.3701 18.1357 19.3751 18.1609 19.3751C18.1862 19.3751 18.2112 19.3701 18.2345 19.3604C18.2578 19.3508 18.279 19.3366 18.2969 19.3187L19.3187 18.2992C19.3366 18.2814 19.3508 18.2602 19.3604 18.2369C19.3701 18.2135 19.3751 18.1885 19.3751 18.1633C19.3751 18.138 19.3701 18.113 19.3604 18.0897C19.3508 18.0664 19.3366 18.0452 19.3187 18.0273ZM11.3688 11.3688C10.375 12.3602 9.05781 12.9062 7.65625 12.9062C6.25469 12.9062 4.9375 12.3602 3.94375 11.3688C2.95234 10.375 2.40625 9.05781 2.40625 7.65625C2.40625 6.25469 2.95234 4.93516 3.94375 3.94375C4.9375 2.95234 6.25469 2.40625 7.65625 2.40625C9.05781 2.40625 10.3773 2.95 11.3688 3.94375C12.3602 4.9375 12.9062 6.25469 12.9062 7.65625C12.9062 9.05781 12.3602 10.3773 11.3688 11.3688Z"
-                        fill="#000"
-                      />
-                    </svg>
+            <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5 table-body">
+
+                <!-- Employee Hires -->
+                <h1 class="ml-3 mt-3 view-emp">Employers</h1>
+
+                <div class="row">
+
+                    <!-- Employees one -->
+                    <div class="col-xl-4 col-md-12 card-cont">
+                        <div class="card border-left-primary shadow h-100 crd">
+                            <div class="card-body card-2">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs text-uppercase mb-1 text-edit" id="all_employees"><%= totalEmployers %>
+                                        </div>
+                                        <div class="h5 mb-0  text-gray ">Total Employers</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Employees two-->
+                    <div class="col-xl-4 col-md-12 card-cont">
+                        <div class="card border-left-primary shadow h-100 crd">
+                            <div class="card-body card-2">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs  text-edit text-uppercase mb-1"><%= totalIndividual %>
+                                        </div>
+                                        <div class="h5 mb-0  text-gray ">Individual</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Employees three-->
+                    <div class="col-xl-4 col-md-12 card-cont">
+                        <div class="card border-left-primary shadow h-100 crd">
+                            <div class="card-body card-2">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs  text-edit text-uppercase mb-1" id="available_employees_count"><%= totalCompany %>
+                                        </div>
+                                        <div class="h5 mb-0  text-gray ">Company</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Employee Hires End -->
+
+                <!-- Employee List -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4-justify">
+                    <h2 class="h3 mb-0  dash-list">Employer's List</h2>
+                    <div class="container-drop">
+                      <div class="dropdown filter-btn">
+                          <button type="button" class="btn drop-btn dropdown-toggle" data-toggle="dropdown">
+                              <span>All</span>
+                          </button>
+                          <div class="dropdown-menu">
+                              <a class="dropdown-item" href="/admin/employers?p=20">20</a>
+                              <a class="dropdown-item" href="/admin/employers?p=50">50</a>
+                              <a class="dropdown-item" href="/admin/employers?p=100">100</a>
+                              <a class="dropdown-item" href="/admin/employers?p=200">200</a>
+                          </div>
+                      </div>
                   </div>
                 </div>
-                <input
-                  type="search"
-                  class="form-control border-left-0 pl-1 form-control-outline"
-                  id="search-input-employer"
-                  placeholder="Search for employer"
-                />
-              </div>
-            </form>
-          </div>
-          <div class="table-responsive custom-scroll-bar">
-            <table class="table bg-white">
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    class="text-start py-4 pl-4 pr-5 hide_content"
-                  >
-                    User ID
-                  </th>
-                  <th scope="col" class="text-start py-4 pr-4">
-                    Employer's name
-                  </th>
-                  <th scope="col" class="text-start py-4 pr-3 hide_content">
-                    Employer type
-                  </th>
-                  <th scope="col" class="text-start py-4 hide_content">
-                    Date joined
-                  </th>
-                  <th scope="col" class="text-start py-4">Status</th>
-                  <th scope="col" class="py-4"></th>
-                </tr>
-              </thead>
-              <tbody id="table-body-data">
-                <!-- <tr>
-                  <td
-                    id="employer_id"
-                    class="align-middle pl-4 pr-5 hide_content"
-                  >
-                    HNG02E
-                  </td>
-                  <td
-                    class="d-flex justify-content-start align-items-center align-middle"
-                  >
-                    <img
-                      class="img-fluid rounded"
-                      id="employer_photo"
-                      src="../img/user.png"
-                      alt="employer logo"
-                    />
-                    <span
-                      class="d-inline-block align-middle w-max-content pl-3"
-                      id="employer_name"
-                      >Dealgo Inc
-                      <p class="sub-text" id="employer_date_joined">
-                        Feb 12,2018
-                      </p></span
-                    >
-                  </td>
-                  <td
-                    class="align-middle talent-text-muted hide_content"
-                    id="employer_type"
-                  >
-                    Individual
-                  </td>
-                  <td
-                    class="align-middle talent-text-muted hide_content"
-                    id="employer_date_joined2"
-                  >
-                    Feb 12,2018
-                  </td>
-                  <td class="align-middle">
-                    <button class="btn talent-btn-dark" id="employer_verified">
-                      Verified
-                    </button>
-                  </td>
-                  <td class="align-middle">
-                    <button class="btn l-padding r-padding">
-                      <svg
-                        width="4"
-                        height="14"
-                        viewBox="0 0 4 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <circle cx="2" cy="12" r="2" fill="#353A45" />
-                        <circle cx="2" cy="12" r="2" fill="#353A45" />
-                        <circle cx="2" cy="12" r="2" fill="#353A45" />
-                        <circle cx="2" cy="7" r="2" fill="#353A45" />
-                        <circle cx="2" cy="7" r="2" fill="#353A45" />
-                        <circle cx="2" cy="7" r="2" fill="#353A45" />
-                        <circle cx="2" cy="2" r="2" fill="#353A45" />
-                        <circle cx="2" cy="2" r="2" fill="#353A45" />
-                        <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr> -->
-                <!-- <tr>
-                <td class="align-middle pl-4 pr-5 hide_content hide_content">HNG02E</td>
-                <td
-                  class=" d-flex justify-content-start align-items-center align-middle">
-                  <img class=" img-fluid rounded" src="../img/user.png"
-                    alt="employer logo">
-                  <span
-                    class="d-inline-block align-middle w-max-content pl-3">Dealgo
-                    Inc<p class="sub-text">Feb 12,2018</p></span>
-                </td>
-                <td class="align-middle talent-text-muted hide_content">Individual
-                </td>
-                <td class="align-middle talent-text-muted hide_content">
-                  Feb 12,2018
-                </td>
-                <td class="align-middle">
-                  <button class="btn talent-btn-dark">Verified</button>
-                </td>
-                <td class="align-middle">
-                  <button class="btn l-padding r-padding">
-                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                    </svg>
+                <!-- Employee List End -->
+            </div>
 
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
-                <td
-                  class=" d-flex justify-content-start align-items-center align-middle">
-                  <img class=" img-fluid rounded" src="../img/user.png"
-                    alt="employer logo">
-                  <span
-                    class="d-inline-block align-middle w-max-content pl-3">Dealgo
-                    Inc<p class="sub-text">Feb 12,2018</p></span>
-                </td>
-                <td class="align-middle talent-text-muted hide_content">Company
-                </td>
-                <td class="align-middle talent-text-muted hide_content">
-                  Feb 12,2018
-                </td>
-                <td class="align-middle">
-                  <button class="btn talent-btn-dark">Verified</button>
-                </td>
-                <td class="align-middle">
-                  <button class="btn l-padding r-padding">
-                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                    </svg>
+            <!-- Tables -->
+            <div class="table-responsive col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5 table-body">
+                <div class="table-top">
+                    <div class="search-container search-table">
+                        <form action="#">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <input type="text" id="search" placeholder="Search employer" name="search">
+                        </form>
 
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
-                <td
-                  class=" d-flex justify-content-start align-items-center align-middle">
-                  <img class=" img-fluid rounded" src="../img/user.png"
-                    alt="employer logo">
-                  <span
-                    class="d-inline-block align-middle w-max-content pl-3">Dealgo
-                    Inc<p class="sub-text">Feb 12,2018</p></span>
-                </td>
-                <td class="align-middle talent-text-muted hide_content">Individual
-                </td>
-                <td class="align-middle talent-text-muted hide_content">
-                  Feb 12,2018
-                </td>
-                <td class="align-middle">
-                  <button class="btn talent-btn-dark">Verified</button>
-                </td>
-                <td class="align-middle">
-                  <button class="btn l-padding r-padding">
-                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                    </svg>
+                        <!-- <form _lpchecked="1">
+                            <input class="form-control mr-sm-2 p-2 search-input" type="text"
+                                placeholder="Search Employer" aria-label="Search">
+                        </form> -->
+                    </div>
+                </div>
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table mb-0" id="table">
+                        <thead class="head-txt">
+                            <tr>
+                                <th class="th-head">Employer’s name</th>
+                                <th class="th-head">Employer’s Phone</th>
+                                <th class="th-head">Employer’s Email</th>
+                                <th class="th-head">Employer Type</th>
+                                <th class="th-head">Date Joined</th>
+                                <th class="th-head">Status</th>
+                            </tr>
+                        </thead>
 
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle pl-4 pr-5 hide_content">HNG02E</td>
-                <td
-                  class=" d-flex justify-content-start align-items-center align-middle  l-padding r-padding">
-                  <img class=" img-fluid rounded" src="../img/user.png"
-                    alt="employer logo">
-                  <span
-                    class="d-inline-block align-middle w-max-content pl-3">Dealgo
-                    Inc<p class="sub-text">Feb 12,2018</p></span>
-                </td>
-                <td class="align-middle talent-text-muted hide_content">Company
-                </td>
-                <td class="align-middle talent-text-muted hide_content">
-                  Feb 12,2018
-                </td>
-                <td class="align-middle">
-                  <button class="btn talent-btn-dark">Verified</button>
-                </td>
-                <td class="align-middle">
-                  <button class="btn l-padding r-padding">
-                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="12" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="7" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      <circle cx="2" cy="2" r="2" fill="#353A45" />
-                    </svg>
+                        <!-- Tabe body -->
+                        <!-- <tbody class="body-table" id="table-body-data"> -->
+                        <% data.data.forEach(function(employer) { %>
+                            <tr id="table-row">
+                                <td class="align-middle user-name">
+                                    <% if (employer.employer_type === 'Individual'){%>
+                                        <i class="fa fa-user" style =" font-size: xx-large; padding-right: 1.5rem" aria-hidden="true"></i> <%= employer.employer_name %>
+                                    <% } %>
+                                    <% if (employer.employer_type === 'Company'){%>
+                                        <i class="fa fa-home" style =" font-size: xx-large; padding-right: 1.5rem " aria-hidden="true"></i><%= employer.employer_name %>
+                                    <% } %> 
+                                </td>
+                                <td class="align-middle dt-table"><%= employer.employer_phone %></td>
+                                <td class="align-middle dt-table"><%= employer.employer_email %></td>
+                                <td class="align-middle ui-table"><%= employer.employer_type %></td>
+                                <td class="align-middle dt-table"><%= moment(employer.createdAt).format('MMMM Do YYYY') %></td>
+                               
+                                <td class="">
+                                <% if (employer.verification_status === 'Pending'){%>
+                                    <span class="btn btn-warning btn-block"><%= employer.verification_status %></span>
+                                <% } %>
+                                <% if (employer.verification_status === 'Approved'){%>
+                                    <span class="btn btn-success btn-block"><%= employer.verification_status %></span>
+                                <% } %>
+                                <% if (employer.verification_status === 'Disapproved'){%>
+                                    <span class="btn btn-danger btn-block"><%= employer.verification_status %></span>
+                                <% } %> 
+                                </td>
+                                <td>    
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" href="#" data-toggle="modal" 
+                                            data-target="#<%= employer.employer_name %><%= employer.employer_phone %>" ><i style= "color: white" class="fa fa-user fa-fw"></i> Info</a>
+                                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a onclick= 'toApprove("<%= employer.employer_id %>", "<%= employer.employer_name %>", "<%=csrf%>","<%=session%>")' href="#"><i class="fa fa-check" style= "color: green; padding: 10px;" aria-hidden="true"></i>Approve</a></li>
+                                            <li><a onclick = 'toDisapprove("<%= employer.employer_id %>", "<%= employer.employer_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-times" style= "color: red ; padding: 10px;" aria-hidden="true"></i> Disapprove</a></li>
+                                            <li><a onclick = 'toBlock("<%= employer.user_id %>", "<%= employer.employer_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-lock" style= "color: black ; padding: 10px;"></i> Block </a></li>
+                                            <li><a onclick = 'toUnblock("<%= employer.user_id %>", "<%= employer.employer_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i> Unblock</a></li>
+                                          <li class="divider"></li>
+                                        </ul>
+                                      </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade p-0" id="<%= employer.employer_name %><%= employer.employer_phone %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content p-3">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Employer information</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action=""  >
+                                            <div class="row">
+                                                <div class="col-md form-group">
+                                                    <label >Organisation name: </label>
+                                                    <input type="text" class="form-control" disabled value="<%= employer.employer_name %>">
+                                                </div>
+                                                <div class="col-md form-group">
+                                                    <label >Email address: </label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employer.employer_email %>">
+                                                </div>
+                                            </div>
+                                            <div class= "row">
+                                                <div class="col-md form-group ">
+                                                    <label >Verification status: </label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employer.verification_status %>">
+                                                </div>
+                                                <div class="col-md form-group ">
+                                                    <label >Controlled by: </label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employer.employer_type %>">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md form-group">
+                                                    <label>Phone number :</label>
+                                                    <input type="text" class="form-control" disabled = true value = "<%= employer.employer_phone%>">
+                                                </div>
+                                                <div class="col-md form-group">
+                                                    <label>Country :</label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employer.employer_country %>">
+                                                </div>
+                                            </div>
+                                            <div class="row ">
+                                                <div class="col-md form-group">
+                                                    <label>Linkedin :</label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employer.linkedin %>">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        <% }) %>
+                            
 
-                  </button>
-                </td>
-              </tr> -->
-              </tbody>
-            </table>
-          </div>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex">
+                    <div class="ml-auto p-2">
+                        <a href="" style="padding: 10px;"><i class="fa fa-chevron-left" aria-hidden="true" style="padding: 10px;"></i>Prev</a>
+                        <a href="" style="padding: 10px;">Next<i class="fa fa-chevron-right" aria-hidden="true" style="padding: 10px;"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tables end -->
         </div>
-      </section>
-    </main>
+        <script>console.log(document.cookies)</script>
+        <!-- Optional JavaScript -->
+        <script src="/js/bootstrap-js/jquery.js"></script>
+        <script src="/js/bootstrap-js/bootstrap.js"></script>
+        <script src="/js/bootstrap-js/popper.js"></script>
+        <script>
+        $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+        })
+        </script>
+        <!-- <script src="../js/custom-js/admin-viewEmployee.js"></script> -->
+        <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+        <script src="/js/custom-js/admin-all-employers.js"></script>
+        <script src="/js/custom-js/side-nav.js"></script>
 
-    <script src="../js/bootstrap-js/popper.js"></script>
-    <script src="../js/bootstrap-js/jquery.js"></script>
-    <script src="../js/bootstrap-js/bootstrap.js"></script>
-    <script src="../js/custom-js/admin-all-employers.js"></script>
-    <script>
-      $("#myModal").on("shown.bs.modal", function () {
-        $("#myInput").trigger("focus");
-      });
-    </script>
-    <script src="../js/custom-js/side-nav.js"></script>
-  </body>
+        
+</body>
+
 </html>
