@@ -8,23 +8,22 @@
   <ul class="sidenav_links d-sm">
     <li>
       <a
-        class="<%= path === '/employee/dashboard' ? 'active' : '' %>"
-        href="<%= path %>"
+        class="<%= dashboardPath === '/employee/dashboard' ? 'active' : '' %>"
+        href="<%= dashboardPath %>"
         >Dashboard</a
       >
     </li>
     <li>
       <a
-        class="<%= path === '/employee/profile' ? 'active' : '' %>"
-        href="/employee/profile"
-
+        class="<%= profilePath === '/employee/profile' ? 'active' : '' %>"
+        href="<%= profilePath %>"
         >Profile</a
       >
     </li>
     <li>
       <a
-        class="<%= path === '/employee/portfolio' ? 'active' : '' %>"
-        href="/employee/portfolio"
+        class="<%= portfolioPath === '/employee/portfolio' ? 'active' : '' %>"
+        href="<%= portfolioPath %>"
         >Portfolio</a
       >
     </li>
@@ -39,15 +38,7 @@
       <a
         class="<%= path === '/employee/employers' ? 'active' : '' %>"
         href="/employee/employers"
-
         >Employers</a
-      >
-    </li>
-    <li>
-      <a
-        class="<%= path === '/employee/team' ? 'active' : '' %>"
-        href="/employee/employers"
-        >Team</a
       >
     </li>
     <li>

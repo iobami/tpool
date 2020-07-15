@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable comma-dangle */
@@ -52,9 +53,9 @@ const uploadImageFunction = async (req, res) => {
           image = result.secure_url;
           return image;
         }
-        // return errorResMsg(res, 400, 'Image Upload Failed!, Kindly retry');
-        req.flash('error', 'Image Upload Failed!, Kindly retry');
-        return res.redirect('/employee/profile/create');
+        return res.redirect(
+          '/employee/create/profile?error_message=Image Upload Failed, Kindly retry',
+        );
       },
     );
     return image;
@@ -64,7 +65,7 @@ const uploadImageFunction = async (req, res) => {
   }
 };
 
-// CREATE A PROFILE -- To be consumed with axios
+// CREATE A PROFILE -- Consumed directly.
 exports.createProfile = async (req, res) => {
   try {
     const employeeId = uuid();
@@ -107,7 +108,7 @@ exports.createProfile = async (req, res) => {
     if (!userQuery) {
       // return errorResMsg(res, 400, 'Invalid user id');
       req.flash('error', 'Invalid user id');
-      return res.redirect('/employee/profile/create');
+      return res.redirect('/employee/create/profile');
     }
 
     // Check if user has a PROFILE
@@ -120,7 +121,9 @@ exports.createProfile = async (req, res) => {
         'error',
         'User already has a profile. Please, update existing profile',
       );
-      return res.redirect(`/employee/dashboard/${employeeId}`);
+      return res.redirect(
+        `/employee/dashboard/${employeeId}?success_message=User already has a profile. Please, update existing profile`,
+      );
     }
     // Create new profile
     await models.Employee.create(newBody);
@@ -129,7 +132,9 @@ exports.createProfile = async (req, res) => {
     req.flash('success', 'Profile Created Succesfully!');
     req.session.isProfileCreated = true;
     req.session.profileId = employeeId;
-    return res.redirect(`/employee/dashboard/${employeeId}`);
+    return res.redirect(
+      `/employee/dashboard/${employeeId}?success_message=Profile created successfully`,
+    );
   } catch (err) {
     req.flash('error', err.message);
     return errorResMsg(res, 500, err.message);
@@ -137,9 +142,10 @@ exports.createProfile = async (req, res) => {
   }
 };
 
-// GET AN EMPLOYEE PROFILE -- Renders a page
+// GET AN EMPLOYEE DASHBOARD DATA -- Renders a page
 exports.getDashboard = async (req, res) => {
   try {
+    const { success_message } = req.query;
     let employeeId;
     const { isLoggedIn, userTypeId } = req.session;
 
@@ -148,6 +154,8 @@ exports.getDashboard = async (req, res) => {
     } else if (isLoggedIn && userTypeId) {
       employeeId = req.session.employeeId;
     }
+
+    const errorMessage = req.query.error_status;
 
     const query = await models.Employee.findOne({
       where: { employee_id: employeeId },
@@ -162,18 +170,95 @@ exports.getDashboard = async (req, res) => {
       where: { employee_id: employeeId },
     });
 
+    const teamQuery = await models.Team.findOne({
+      where: { employee_id: employeeId },
+    });
+
     const employee = await query;
     const skills = await skillQuery;
     const portfolios = await portfolioQuery;
 
-    const data = { employee, skills, portfolios };
+    const team = await teamQuery;
 
-    if (!employee) {
-      return req.flash('error', 'Profile not found');
+    // Set employee data to session
+    req.session.firstName = employee.username;
+
+    if (team) {
+      const { employer_id, Team_name, status } = team;
+      const employerQuery = await models.Employer.findOne({
+        where: { employer_id },
+      });
+
+      const {
+        employer_name,
+        employer_phone,
+        employer_email,
+        employer_country,
+        employer_photo,
+        website,
+        facebook,
+        twitter,
+        instagram,
+        linkedin,
+      } = await employerQuery;
+
+      const data = {
+        employee,
+        skills,
+        portfolios,
+        team: {
+          name: Team_name,
+          status,
+          employer: {
+            name: employer_name,
+            phone: employer_phone,
+            email: employer_email,
+            country: employer_country,
+            photo: employer_photo,
+            website,
+            social: {
+              facebook,
+              twitter,
+              instagram,
+              linkedin,
+            },
+          },
+        },
+      };
+
+      // if (!employee) {
+      //   req.flash('error', 'Profile not found');
+      // }
+      return res.status(200).render('Pages/employee-dashboard', {
+        pageTitle: 'Talent Pool | Dashboard',
+        success: success_message,
+        dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+        profilePath: `${URL}employee/profile/${employeeId}`,
+        portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+        path: '',
+        errorMessage,
+        data,
+      });
     }
+
+    const data = {
+      employee,
+      skills,
+      portfolios,
+      team,
+    };
+
+    req.session.flash.error = null;
+    req.session.flash.success = null;
+
     return res.status(200).render('Pages/employee-dashboard', {
       pageTitle: 'Talent Pool | Dashboard',
-      path: `${URL}employee/dashboard/${employeeId}`,
+      success: success_message,
+      dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+      profilePath: `${URL}employee/profile/${employeeId}`,
+      portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+      path: '',
+      errorMessage,
       data,
     });
   } catch (err) {
@@ -181,7 +266,77 @@ exports.getDashboard = async (req, res) => {
   }
 };
 
-// GET AN EMPLOYEE PROFILE BY USERNAME -- Directory (ALL ACCESS) -- consumed with axios
+// GET AN EMPLOYEE PROFILE -- Renders a page
+exports.getProfile = async (req, res) => {
+  try {
+    let employeeId;
+    const { userTypeId } = req.session;
+
+    if (req.params.employee_id) {
+      employeeId = req.params.employee_id;
+    } else if (userTypeId) {
+      employeeId = req.session.employeeId;
+    }
+
+    const query = await models.Employee.findOne({
+      where: { employee_id: employeeId },
+      attributes,
+    });
+
+    const profile = await query;
+
+    const data = { ...profile, email: req.session.data.email };
+
+    return res.status(200).render('Pages/employeeProfile', {
+      pageTitle: 'Talent Pool | Profile',
+      dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+      profilePath: `${URL}employee/profile/${employeeId}`,
+      portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+      path: '',
+      data,
+    });
+  } catch (err) {
+    req.flash('error', 'Something went wrong. Try again');
+    return errorResMsg(res, 500, err.message);
+  }
+};
+
+// GET AEMPLOAYEE PORTFOLIOS -- Renders a page
+exports.getPortfolio = async (req, res) => {
+  try {
+    let employeeId;
+    employeeId = req.session.employeeId;
+
+    if (req.params.employee_id) {
+      employeeId = req.params.employee_id;
+    } else if (employeeId) {
+      employeeId = req.session.employeeId;
+    }
+
+    const query = await models.Portfolio.findOne({
+      where: { employee_id: employeeId },
+      attributes: ['title', 'description', 'link'],
+    });
+
+    const data = await query;
+
+    return res.status(200).render('Pages/employee-portfolio', {
+      pageTitle: `Talent Pool | ${
+        req.session.firstName ? req.session.firstName : ''
+      }'s Portfolio`,
+      dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+      profilePath: `${URL}employee/profile/${employeeId}`,
+      portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+      path: '',
+      data,
+    });
+  } catch (err) {
+    req.flash('error', 'Something went wrong. Try again');
+    return errorResMsg(res, 500, err.message);
+  }
+};
+
+// GET AN EMPLOYEE PROFILE BY USERNAME -- Directory (ALL ACCESS) -- // TODO  Render on a page
 // eslint-disable-next-line consistent-return
 exports.getProfileByUsername = async (req, res) => {
   try {
@@ -210,7 +365,8 @@ exports.getProfileByUsername = async (req, res) => {
     const data = { employee, skills, portfolios };
 
     if (!employee) {
-      return errorResMsg(res, 404, 'Profile not found');
+      req.flash('error', 'Profile not found');
+      res.redirect('back');
     }
 
     return res.status(200).render('no page yet', {
