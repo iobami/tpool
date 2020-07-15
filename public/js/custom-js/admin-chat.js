@@ -191,7 +191,7 @@ const sendMessage = () => {
         let img = document.createElement("img");
 
         time.classList.add("time");
-        span.textContent = "11:46 AM";
+        span.textContent = new Date().getHours() + ":" + new Date().getMinutes();
         time.appendChild(span);
         img.src = "img/admin-dash-messages/sent.svg";
         img.alt = "delivered";
@@ -247,7 +247,7 @@ socket.on("new_message", function (data) {
     realchat = document.querySelector(".realchat");
     chatmessages = document.querySelector(".chat-messages");
 
-    span.textContent = "11:46 AM";
+    span.textContent = new Date().getHours() + ":" + new Date().getMinutes();
     time.classList.add("time");
     time.appendChild(span);
     chatmsg.classList.add("chatmsg");
