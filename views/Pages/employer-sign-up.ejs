@@ -133,6 +133,7 @@
                             <label for="firstName">First Name</label>
                             <input
                               type="text"
+                              name="firstname"
                               id="firstName"
                               class="form-control form-control-lg form__input"
                               placeholder="Enter first name"
@@ -147,6 +148,7 @@
                             <input
                               type="text"
                               id="lastName"
+                              name="lastname"
                               class="form-control form-control-lg form__input"
                               placeholder="Enter last name"
                               required
@@ -179,6 +181,7 @@
                               type="tel"
                               maxlength="15"
                               inputmode="tel"
+                              name="phone" 
                               class="form-control form-control-lg form__input"
                               id="phoneNo"
                               placeholder="e.g. 08012345678"
@@ -219,6 +222,7 @@
                               class="form-control form-control-lg form__input"
                               inputmode="alpha-numeric"
                               minlength="8"
+                              name="confirm_password"
                               id="confirmPassword"
                               required
                             />
@@ -251,6 +255,7 @@
                             <input
                               type="checkbox"
                               class="custom-control-input"
+                              name="terms"
                               id="termsPolicy"
                             />
                             <label
@@ -322,7 +327,7 @@
                       aria-labelledby="company-tab"
                     >
                       <form
-                        action="/employer/register"
+                        action="/employer/registerOrganization"
                         method="POST"
                         class="needs-validation"
                         id="orgForm"
@@ -340,6 +345,7 @@
                               type="text"
                               class="form-control form-control-lg form__input"
                               id="orgName"
+                              name="orgname"
                               placeholder="Enter organization name"
                               required
                             />
@@ -395,6 +401,7 @@
                               class="form-control form-control-lg form__input"
                               inputmode="alpha-numeric"
                               id="confirmOrgPassword"
+                              name="confirm_password"
                               required
                             />
                             <div class="invalid-feedback">
@@ -432,6 +439,7 @@
                               type="checkbox"
                               class="custom-control-input"
                               id="orgTerms"
+                              name="terms"
                             />
                             <label
                               class="custom-control-label"
