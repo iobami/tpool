@@ -18,8 +18,12 @@ module.exports = {
   },
 
   employerSignIn: (req, res) => {
-    if (req.session.isLoggedIn) {
-      res.redirect('/employer/dashboard');
+    const { isLoggedIn, employerId } = req.session;
+
+    if (isLoggedIn && employerId) {
+      res.redirect('/employer/dashboard/');
+    } else if (isLoggedIn && !employerId) {
+      return res.redirect('/employer/profile/create');
     }
     const success = req.flash('success');
     let message = req.flash('error');
