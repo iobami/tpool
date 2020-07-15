@@ -12,7 +12,7 @@ module.exports = {
     //   res.redirect('/admin/dashboard');
     // }
     if (req.session.isLoggedIn) {
-      res.redirect('/admin-dashboard');
+      res.redirect('/admin/dashboard');
     }
 
     let message = req.flash('error');

@@ -14,7 +14,6 @@ const csrf = require('csurf');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
 // eslint-disable-next-line no-unused-vars
-const { errorResMsg } = require('./Utils/response');
 
 dotenv.config();
 // eslint-disable-next-line import/order
@@ -101,6 +100,7 @@ const adminAuthRoute = require('./Routes/views/admin/auth');
 const employerMetrics = require('./Routes/views/employer/metrics');
 const employerRecommendation = require('./Routes/views/employer/recommendation');
 const verifyModal = require('./Routes/views/admin/verifyModal');
+const messageRoute = require('./Routes/views/message/message');
 
 const app = express();
 
@@ -109,7 +109,11 @@ app.use(cors());
 const csrfProtection = csrf();
 // Set Security HTTP Headers
 app.use(helmet());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  }),
+);
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -163,13 +167,18 @@ app.use(csrfProtection);
 app.use((req, res, next) => {
   const token = req.csrfToken();
   // console.log(token);
+  // TODO: ask why this is here
   res.cookie('csrf-token', token);
   res.locals.csrfToken = req.csrfToken();
   next();
 });
 // express body parser
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(
+  express.urlencoded({
+    extended: false,
+  }),
+);
 // Cookie Parser
 app.use(cookieParser());
 // Serving static files
@@ -250,5 +259,6 @@ app.use(verifyModal);
 app.use(adminPackages);
 app.use(employerPackages);
 app.use(googleAuth);
+app.use(messageRoute);
 
 module.exports = app;
