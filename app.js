@@ -14,17 +14,12 @@ const csrf = require('csurf');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
 // eslint-disable-next-line no-unused-vars
-const {
-  errorResMsg
-} = require('./Utils/response');
 
 dotenv.config();
 // eslint-disable-next-line import/order
 const morgan = require('morgan');
 const db = require('./Models');
-const {
-  seedSuperAdmin
-} = require('./seed');
+const { seedSuperAdmin } = require('./seed');
 const googleAuth = require('./Routes/googleAuth'); // require google auth route to test endpoint
 
 require('./config/passport.setup');
@@ -114,9 +109,11 @@ app.use(cors());
 const csrfProtection = csrf();
 // Set Security HTTP Headers
 app.use(helmet());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  }),
+);
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -177,9 +174,11 @@ app.use((req, res, next) => {
 });
 // express body parser
 app.use(express.json());
-app.use(express.urlencoded({
-  extended: false
-}));
+app.use(
+  express.urlencoded({
+    extended: false,
+  }),
+);
 // Cookie Parser
 app.use(cookieParser());
 // Serving static files
