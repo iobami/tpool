@@ -45,60 +45,89 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-7">
-                        <div class="card px-4 py-5 bio">
-                            <div class="profile-container">
-                                <img src="/img/Tobi.jpg" alt="" id="employee-img" class="img-fluid">
+                        <div class="card px-4 py-5 mb-3 bio">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="profile-container">
+                                        <img src="<%= data.image %>" alt="" id="employee-img" class="img-fluid">
+                                    </div>
+                                    <div class="intern-main text-center mt-4">
+                                        <h3 class="employeeName"><%= data.last_name %> <%= data.first_name%>
+                                            <span>
+                                                <img src="/img/iprofile/ic_sharp-verified.svg" alt="">
+                                            </span>
+                                        </h3>
+                                        <p class="employeeSkill"><%= data.track %></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="intern-other">
+                                        <p class="employeeUsername">
+                                            <span><i class="pr-2 fa fa-user-circle" aria-hidden="true"></i></span>
+                                            <%= data.username %>
+                                        </p>
+                                        <p class="employeeId">
+                                            <span><i class="pr-2 fa fa-id-card" aria-hidden="true"></i></i></span>
+                                            <%= data.hng_id %>
+                                        </p>
+                                        <p class="employeePhonenumber">
+                                            <span><i class="pr-2 fa fa-phone" aria-hidden="true"></i></i></span>
+                                            <%= data.phone_no %>
+                                        </p>
+                                        <p class="employeeEmail">
+                                            <span><i class="pr-2 fa fa-envelope" aria-hidden="true"></i></span>
+                                            <%= data.email %>
+                                        </p>
+                                        <p class="employeeDOB">
+                                            <span><i class="pr-2 fa fa-calendar" aria-hidden="true"></i></i></span>
+                                            <%= data.dob %>
+                                        </p>
+                                        <p class="employeeLocation">
+                                            <span><i class="pr-2 fa fa-map-marker" aria-hidden="true"></i></span>
+                                            <%= data.location %>
+                                        </p>
+                                        <p id="intern-id" class="ml-4"></p>
+                                        <p id="availability" class="ml-4"></p>
+                                        <p id="phone" class="ml-4"></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="intern-main text-center mt-4">
-                                <h3 class="employeeName">Osimosu Oluwatobi James
-                                    <span>
-                                        <img src="../img/iprofile/ic_sharp-verified.svg" alt="">
-                                    </span>
-                                </h3>
-                                <p class="employeeSkill">Frontend Developer</p>
-                            </div>
-                            <hr>
-                            <div class="intern-other">
-                                <p class="employeeUsername">
-                                    <span><i class="pr-2 fa fa-user-circle" aria-hidden="true"></i></span>
-                                    Tobiie
-                                </p>
-                                <p class="employeePhonenumber">
-                                    <span><i class="pr-2 fa fa-phone" aria-hidden="true"></i></i></span>
-                                    08085508712
-                                </p>
-                                <p class="employeeEmail">
-                                    <span><i class="pr-2 fa fa-envelope" aria-hidden="true"></i></span>
-                                    osimosutobi@gmail.com
-                                </p>
-                                <p class="employeeLocation">
-                                    <span><i class="pr-2 fa fa-map-marker" aria-hidden="true"></i></span>
-                                    Lagos, Nigeria
-                                </p>
-                                <p id="intern-id" class="ml-4"></p>
-                                <p id="availability" class="ml-4"></p>
-                                <p id="phone" class="ml-4"></p>
-                            </div>
-                            <hr>
+
+                            <hr class="mb-4">
+
                             <div class="text-center">
                                 <a href="#" type="button" class="btn btn-lg btn-primary call-modal" title="Edit profile"
                                     data-modal-size="lg"><span id="edit_text">Edit Profile</span>
                                     <div class="hidden-content">
-                                        <!-- <div class="container"> -->
                                         <form action="" id="edit-profile">
                                             <p id="error-message"></p>
                                             <p id="success-message"></p>
+
+                                            <div
+                                                class="d-flex flex-column align-items-center text-center col-md-12 pb-3">
+                                                <div class="form-group">
+                                                    <label for="file"
+                                                        class="d-flex align-items-center justify-content-center btn btn-primary btn-lg">Upload
+                                                        profile
+                                                        Picture</label>
+                                                    <input type="file" id="file"
+                                                        class="profile-picture-file form-control inputfile" name="image"
+                                                        required />
+                                                </div>
+                                                <small>Recommended dimensions: 200 x 200px. <br> Maximum file
+                                                    size: 500kb.</small>
+                                            </div>
 
                                             <div class="row">
                                                 <div class="col-md-6 formCol">
                                                     <div class="form-group">
                                                         <label for="first name" class="super-label">
-                                                            First name
+                                                            First Name
                                                         </label>
                                                         <div style="position: relative;">
-                                                            <input type="text" placeholder="Genesis"
+                                                            <input type="text" value="<%= data.first_name %>"
                                                                 class="form-control" id="first-name"
-                                                                aria-describedby="nameHelp">
+                                                                aria-describedby="nameHelp" name="firstName">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -106,11 +135,23 @@
                                                     <div class="form-group">
                                                         <div style="position: relative;">
                                                             <label for="lastname" class="super-label">
-                                                                Last name
+                                                                Last Name
                                                             </label>
-                                                            <input type="text" placeholder="Anosike"
+                                                            <input type="text" value="<%= data.last_name %>"
                                                                 class="form-control" id="last-name"
-                                                                aria-describedby="nameHelp">
+                                                                aria-describedby="nameHelp" name="lastName">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="username" class="super-label">
+                                                                Username
+                                                            </label>
+                                                            <input type="text" value="<%= data.username %>"
+                                                                class="form-control" id="last-name"
+                                                                aria-describedby="nameHelp" name="userName">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,9 +161,21 @@
                                                             <label for="email" class="super-label">
                                                                 Email
                                                             </label>
-                                                            <input type="email" placeholder="anosikegenesis@gmail.com"
+                                                            <input type="email" value="<%= data.email %>"
                                                                 class="form-control" id="email"
-                                                                aria-describedby="emailHelp">
+                                                                aria-describedby="emailHelp" name="email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="dob" class="super-label">
+                                                                Date of Birth
+                                                            </label>
+                                                            <input type="date" value="<%= data.dob %>"
+                                                                class="form-control" id="dob" aria-describedby="dobHelp"
+                                                                name="dateOfBirth">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -132,104 +185,37 @@
                                                             <label for="location" class="super-label">
                                                                 Location
                                                             </label>
-                                                            <input type="text" placeholder="Ibadan, Nigeria"
+                                                            <input type="text" value="<%= data.location %>"
                                                                 class="form-control" id="location"
-                                                                aria-describedby="locationHelp">
+                                                                aria-describedby="locationHelp" name="location">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <hr>
-
-                                            <div class="skills-choice">
-                                                <div class="row">
-                                                    <div class="col-md-6 tracks formCol">
-                                                        <label class="super-label"
-                                                            for="exampleFormControl">Track(s)</label>
-
-                                                        <div class="form-group form-check">
-                                                            <input type="checkbox" class="form-check-input noHover"
-                                                                id="Backend" value="Backend Development">
-                                                            <label class="form-check-label" for="exampleCheck1">Backend
-                                                                Development</label>
-                                                        </div>
-                                                        <div class="form-group form-check">
-                                                            <input type="checkbox" class="form-check-input noHover"
-                                                                id="design" value="UI/UX Design">
-                                                            <label class="form-check-label" for="exampleCheck1">UI/UX
-                                                                Design</label>
-                                                        </div>
-                                                        <div class="form-group form-check">
-                                                            <input type="checkbox" class="form-check-input noHover"
-                                                                id="frontend" value="frontend">
-                                                            <label class="form-check-label" for="exampleCheck1">Frontend
-                                                                Development</label>
-                                                        </div>
-                                                        <div class="form-group form-check">
-                                                            <input type="checkbox" class="form-check-input noHover"
-                                                                id="mobile" value="Mobile Development">
-                                                            <label class="form-check-label" for="exampleCheck1">Mobile
-                                                                Development</label>
-                                                        </div>
-
-                                                        <!-- <label class="form-group form-check">
-                                                            <input type="checkbox" id="Backend"
-                                                                value="Backend Development">
-                                                            <label class="form-check-label" for="exampleCheck1">
-                                                                Backend Development
-                                                            </label>
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <label class="form-group form-check">
-                                                            <input type="checkbox" checked="checked" id="design"
-                                                                value="UI/UX Design">
-                                                            <label class="form-check-label" for="exampleCheck1">
-                                                                UI/UX Design
-                                                            </label>
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <label class="form-group form-check">
-                                                            <input type="checkbox" id="frontend" value="frontend">
-                                                            <label class="form-check-label" for="exampleCheck1">
-                                                                Frontend Development
-                                                            </label>
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <label class="form-group form-check">
-                                                            <input type="checkbox" id="mobile"
-                                                                value="Mobile Development">
-                                                            <label class="form-check-label" for="exampleCheck1">
-                                                                Mobile Development
-                                                            </label>
-                                                            <span class="checkmark"></span>
-                                                        </label> -->
-
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlFile1"
-                                                                class="super-label">Profile photo</label>
-                                                            <div class="file-box">
-                                                                <span id="placeholder">profile-pic.png</span>
-                                                                <!-- <label for="file" class="btn btn-primary">Browse</label> -->
-                                                                <input type="file" class="" placeholder="profile.png"
-                                                                    id="file" onchange="Filevalidation()">
-                                                                <button type="button" name="button" class="btn"
-                                                                    id="file-btn">Browse</button>
-
-
-                                                            </div>
-                                                            <p id="size"> </p>
-                                                            <p id="file-message"></p>
-                                                        </div>
-                                                        <p id="p-text">Recommended dimensions: 200 x 200px
-                                                            Maximum file size: 500kb.
-                                                            Please add only a professional looking headshot
-                                                        </p>
-                                                    </div>
+                                            <div class="row">
+                                                <div class="col-md-6 tracks formCol">
+                                                    <label class="super-label">Track</label>
+                                                    <select class="form-control" name="track" required>
+                                                        <option value="">Select Track</option>
+                                                        <option value="frontend">Frontend</option>
+                                                        <option value="backend">Backend</option>
+                                                        <option value="design">Design</option>
+                                                        <option value="devops">Devops</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Availability</label>
+                                                    <select class="form-control" name="availability" required>
+                                                        <option value="not-available">Not Available</option>
+                                                        <option value="on-site">On-Site</option>
+                                                        <option value="remote">Remote</option>
+                                                    </select>
                                                 </div>
                                             </div>
+
+                                            <hr>
 
                                             <div class="text-center save_profile">
                                                 <button type="submit" class="btn btn-lg btn-primary">Save
@@ -322,172 +308,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12">
-                                    <div id="skills" class="mb-3">
-                                        <div class="card p-3">
-                                            <div class="section-title py-2">
-                                                <div class="section-name">
-                                                    <h4>Skillsets</h4>
-                                                </div>
-                                                <div class="section-icon call-modal" title="Add skill"
-                                                    data-modal-size="md" id="call_modalx">
-                                                    <!-- <img src="../img/iprofile/carbon_add.svg" alt=""> -->
 
-                                                    <div data-toggle="modal" data-target="#exampleModal">
-                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z" fill="#084482" />
-                                                        </svg>
-                                                    </div>
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                    <form id="add-skills">
-                                                                        <input class="form-control form-control-lg"
-                                                                            type="text" placeholder="User">
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary">Add Skill</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <ul class='lists'>
-                                                <p id="skill-message"></p>
-                                                <!-- Dynamic Content Goes Here -->
-
-                                                <li>
-                                                    <div class="list-item">
-                                                        <span class="mr-2">
-                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
-                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
-                                                        </span>
-                                                        HTML 5
-                                                    </div>
-                                                    <div class="list-trash">
-                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
-                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path
-                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
-                                                                fill="#084482" />
-                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
-                                                                fill="#084482" />
-                                                        </svg>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="list-item">
-                                                        <span class="mr-2">
-                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
-                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
-                                                        </span>
-                                                        CSS 3
-                                                    </div>
-                                                    <div class="list-trash">
-                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
-                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path
-                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
-                                                                fill="#084482" />
-                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
-                                                                fill="#084482" />
-                                                        </svg>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="list-item">
-                                                        <span class="mr-2">
-                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
-                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
-                                                        </span>
-                                                        JavaScript
-                                                    </div>
-                                                    <div class="list-trash">
-                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
-                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path
-                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
-                                                                fill="#084482" />
-                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
-                                                                fill="#084482" />
-                                                        </svg>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="list-item">
-                                                        <span class="mr-2">
-                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
-                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
-                                                        </span>
-                                                        Bootstrap 4
-                                                    </div>
-                                                    <div class="list-trash">
-                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
-                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path
-                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
-                                                                fill="#084482" />
-                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
-                                                                fill="#084482" />
-                                                        </svg>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="list-item">
-                                                        <span class="mr-2">
-                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
-                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
-                                                        </span>
-                                                        Angular
-                                                    </div>
-                                                    <div class="list-trash">
-                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
-                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
-                                                                fill="#084482" />
-                                                            <path
-                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
-                                                                fill="#084482" />
-                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
-                                                                fill="#084482" />
-                                                        </svg>
-                                                    </div>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
