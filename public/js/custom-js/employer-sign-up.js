@@ -18,7 +18,10 @@ const orgForm = document.getElementById("orgForm"),
   alertMessage = document.getElementById("alertMessage");
 
 //Define github and google variable for individual and organization
-
+const githubSubmit = document.getElementById("githubID");
+const googleSubmit = document.getElementById("googleID");
+const githubSubmitOrg = document.getElementById("githubIdOrg");
+const googleSubmitOrg = document.getElementById("googleIdOrg");
 
 // object for storing validation status (variable)
 let validated = {};
