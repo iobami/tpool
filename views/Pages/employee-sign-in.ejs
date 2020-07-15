@@ -28,12 +28,21 @@
             <% if (errorMessage) { %>
             <div
               role="alert"
-              class="alert alert-danger user-message user-message--error"
+              class="alert alert-danger alert-dismissible fade show user-message user-message--error"
             >
+              <button type="button" class="close" data-dismiss="alert">
+                &times;
+              </button>
               <%= errorMessage %>
             </div>
-            <% }if (success.length > 0) { %>
-            <div role="alert" class="alert alert-success user-message">
+            <% }if (success && success.length > 0) { %>
+            <div
+              role="alert"
+              class="alert alert-success alert-dismissible fade show user-message"
+            >
+              <button type="button" class="close" data-dismiss="alert">
+                &times;
+              </button>
               <%= success %>
             </div>
             <% } %>
@@ -136,14 +145,12 @@
 
             <div class="row mt-2 justify-content-center">
               <div class="col-md">
-                <a href="/auth/employee/github">
-                  <button
-                    type="button"
-                    class="btn btn-block github-btn py-3 my-1"
-                  >
-                    <i class="fab fa-github pr-2"></i>Login with Github
-                  </button>
-                </a>
+                <button
+                  type="button"
+                  class="btn btn-block github-btn py-3 my-1"
+                >
+                  <i class="fab fa-github pr-2"></i>Login with Github
+                </button>
               </div>
 
               <div class="col-md">

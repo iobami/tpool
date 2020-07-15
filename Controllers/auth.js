@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable operator-linebreak */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
@@ -114,6 +115,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       path: '/employee/login',
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
+      success,
       oldInput: {
         email,
         password,
@@ -129,6 +131,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           path: '/employee/login',
           pageName: 'Employee Login',
           errorMessage: 'Incorrect login details',
+          success: req.flash('success'),
           oldInput: {
             email,
             password,
@@ -151,6 +154,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           path: '/employee/login',
           pageName: 'Employee Login',
           errorMessage: 'User is not verified',
+          success: req.flash('success'),
           oldInput: {
             email,
             password,
@@ -164,6 +168,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           path: '/employee/login',
           pageName: 'Employee Login',
           errorMessage: 'User is blocked.',
+          success: req.flash('success'),
           oldInput: {
             email,
             password,
@@ -196,6 +201,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
             path: '/employee/login',
             pageName: 'Employee Login',
             errorMessage: 'Invalid email or password.',
+            success: req.flash('success'),
             oldInput: {
               email,
               password,
@@ -222,6 +228,7 @@ exports.postEmployerLogin = async (req, res, next) => {
       path: '/employer/login',
       pageName: 'Employer Login',
       errorMessage: errors.array()[0].msg,
+      success: req.flash('success'),
       oldInput: {
         email,
         password,
@@ -237,6 +244,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'Invalid email or password.',
+          success: req.flash('success'),
           oldInput: {
             email,
             password,
@@ -261,6 +269,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Sign In',
           errorMessage: 'User is not verified',
+          success: req.flash('success'),
           oldInput: {
             email,
             password,
@@ -274,6 +283,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'User is blocked.',
+          success: req.flash('success'),
           oldInput: {
             email,
             password,
@@ -304,6 +314,7 @@ exports.postEmployerLogin = async (req, res, next) => {
             path: '/employer/login',
             pageName: 'Employer Login',
             errorMessage: 'Invalid email or password.',
+            success,
             oldInput: {
               email,
               password,

@@ -23,12 +23,21 @@
             <% if (errorMessage) { %>
             <div
               role="alert"
-              class="alert alert-danger user-message user-message--error"
+              class="alert alert-danger alert-dismissible fade show user-message user-message--error"
             >
+              <button type="button" class="close" data-dismiss="alert">
+                &times;
+              </button>
               <%= errorMessage %>
             </div>
-            <% } if (success && success.length > 0) { %>
-            <div role="alert" class="alert alert-success user-message">
+            <% }if (success && success.length > 0) { %>
+            <div
+              role="alert"
+              class="alert alert-success alert-dismissible fade show user-message"
+            >
+              <button type="button" class="close" data-dismiss="alert">
+                &times;
+              </button>
               <%= success %>
             </div>
             <% } %>
@@ -42,7 +51,7 @@
               <div class="col-md mb-3 px-0">
                 <label for="email">Email</label>
                 <input
-                  class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid-value' : '' %>"
+                  class="form-control invalid <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
                   type="email"
                   name="email"
                   id="email"
@@ -50,6 +59,7 @@
                   value="<%= oldInput.email %>"
                 />
                 <!-- <input type="email" class="form-control" id="email" placeholder="example@gmail.com"
+
                                 required>
                             <div class="invalid-feedback">
                                 Your valid email address is required.
