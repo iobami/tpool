@@ -179,10 +179,10 @@
                                           <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                                         </a>
                                         <ul class="dropdown-menu">
-                                          <li><a onclick= 'toApprove("<%= employee.employee_id %>", "<%= employee.first_name %> <%= employee.last_name %>")' href="#"><i class="fa fa-check" style= "color: green; padding: 10px;" aria-hidden="true"></i>Approve</a></li>
-                                          <li><a onclick = 'toDisapprove("<%= employee.employee_id %>", "<%= employee.first_name %> <%= employee.last_name %>")' href="#"><i class="fa fa-times" style= "color: red ; padding: 10px;" aria-hidden="true"></i> Disapprove</a></li>
-                                          <li><a onclick = 'toBlock("<%= employee.user_id %>", "<%= employee.first_name %> <%= employee.last_name %>")' href="#"><i class="fa fa-lock" style= "color: black ; padding: 10px;"></i> Block</a></li>
-                                          <li><a onclick = 'toUnblock("<%= employee.user_id %>", "<%= employee.first_name %> <%= employee.last_name %>")' href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i> Unblock</a></li>
+                                          <li><a onclick= 'toApprove("<%= employee.employee_id %>", "<%= employee.first_name %> <%= employee.last_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-check" style= "color: green; padding: 10px;" aria-hidden="true"></i>Approve</a></li>
+                                          <li><a onclick = 'toDisapprove("<%= employee.employee_id %>", "<%= employee.first_name %> <%= employee.last_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-times" style= "color: red ; padding: 10px;" aria-hidden="true"></i> Disapprove</a></li>
+                                          <li><a onclick = 'toBlock("<%= employee.user_id %>", "<%= employee.first_name %> <%= employee.last_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-lock" style= "color: black ; padding: 10px;"></i> Block</a></li>
+                                          <li><a onclick = 'toUnblock("<%= employee.user_id %>", "<%= employee.first_name %> <%= employee.last_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i> Unblock</a></li>
                                           <li class="divider"></li>
                                         </ul>
                                       </div>
@@ -268,7 +268,7 @@
             </div>
             <!-- Tables end -->
         </div>
-
+<script>console.log('<%= session%>' )</script>
         <!-- Optional JavaScript -->
         <script src="/js/bootstrap-js/jquery.js"></script>
         <script src="/js/bootstrap-js/bootstrap.js"></script>

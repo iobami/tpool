@@ -8,7 +8,7 @@ $('#search').keyup(function () {
   }).hide();
 });
 
-function toApprove(employeeId, employeeName) {
+function toApprove(employeeId, employeeName, csrf, token) {
   swal({
     title: `Are you sure you want to approve ${employeeName}?`,
     type: 'warning',
@@ -18,10 +18,11 @@ function toApprove(employeeId, employeeName) {
     cancelButtonText: 'No.',
   }).then(async (result) => {
     if (result.value) {
-      await fetch(`/admin/verify/employee/${employeeId}`, {
+      await fetch(`/v1/admin/verify/employee/${employeeId}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
@@ -30,13 +31,13 @@ function toApprove(employeeId, employeeName) {
         text: `You successfully approved ${employeeName}!`,
         type: 'success',
       }).then(() => {
-        window.location = '/admin/employees';
+        window.location = '/admin/all/employees';
       });
     }
   });
 }
 
-function toDisapprove(employeeId, employeeName) {
+function toDisapprove(employeeId, employeeName, csrf, token) {
   swal({
     title: `Are you sure you want to disapprove ${employeeName}?`,
     type: 'warning',
@@ -46,10 +47,11 @@ function toDisapprove(employeeId, employeeName) {
     cancelButtonText: 'No.',
   }).then(async (result) => {
     if (result.value) {
-      await fetch(`/admin/unverify/employee/${employeeId}`, {
+      await fetch(`/v1/admin/unverify/employee/${employeeId}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
@@ -58,13 +60,14 @@ function toDisapprove(employeeId, employeeName) {
         text: `You have successfully disapproved ${employeeName}!`,
         type: 'success',
       }).then(() => {
-        window.location = '/admin/employees';
+        window.location = '/admin/all/employees';
       });
     }
   });
 }
 
-function toBlock(userId, employeeName) {
+function toBlock(userId, employeeName, csrf, token) {
+  console.log(token);
   swal({
     title: `Are you sure you want to block ${employeeName}?`,
     type: 'error',
@@ -74,10 +77,11 @@ function toBlock(userId, employeeName) {
     cancelButtonText: 'No.',
   }).then(async (result) => {
     if (result.value) {
-      await fetch(`/admin/block/employee/${userId}`, {
+      await fetch(`/v1/admin/block/employee/${userId}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
@@ -86,13 +90,13 @@ function toBlock(userId, employeeName) {
         text: `You have successfully blocked ${employeeName}`,
         type: 'success',
       }).then(() => {
-        window.location = '/admin/employees';
+        window.location = '/admin/all/employees';
       });
     }
   });
 }
 
-function toUnblock(userId, employeeName) {
+function toUnblock(userId, employeeName, csrf, token) {
   swal({
     title: `Are you sure you want to Unblock ${employeeName}?`,
     type: 'warning',
@@ -102,10 +106,11 @@ function toUnblock(userId, employeeName) {
     cancelButtonText: 'No.',
   }).then(async (result) => {
     if (result.value) {
-      await fetch(`/admin/unblock/employee/${userId}`, {
+      await fetch(`/v1/admin/unblock/employee/${userId}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
@@ -114,7 +119,7 @@ function toUnblock(userId, employeeName) {
         text: `You have successfully Unblocked ${employeeName}`,
         type: 'success',
       }).then(() => {
-        window.location = '/admin/employees';
+        window.location = '/admin/all/employees';
       });
     }
   });

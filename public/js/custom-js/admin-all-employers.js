@@ -8,7 +8,8 @@ $('#search').keyup(function() {
   }).hide();
 });
 
-function toApprove(employerId, employerName) {
+function toApprove(employerId, employerName, csrf, token) {
+  console.log(csrf);
   swal({
     title: `Are you sure you want to disapprove ${employerName}?`,
     type: 'warning',
@@ -21,7 +22,8 @@ function toApprove(employerId, employerName) {
       await fetch(`/v1/admin/verify/employer/${employerId}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
@@ -30,13 +32,13 @@ function toApprove(employerId, employerName) {
         text: `${employerName} successfully approved!`,
         type: 'success',
       }).then(() => {
-        window.location = '/admin/employers';
+        window.location = '/admin/all/employers';
       });
     }
   });
 }
 
-function toDisapprove(employerId, employerName) {
+function toDisapprove(employerId, employerName, csrf, token) {
   swal({
     title: `Are you sure you want to disapprove ${employerName}?`,
     type: 'warning',
@@ -49,7 +51,8 @@ function toDisapprove(employerId, employerName) {
       await fetch(`/v1/admin/unverify/employer/${employerId}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
@@ -58,13 +61,13 @@ function toDisapprove(employerId, employerName) {
         text: `${employerName} successfully disapproved!`,
         type: 'success',
       }).then(() => {
-        window.location = '/admin/employers';
+        window.location = '/admin/all/employers';
       });
     }
   });
 }
 
-function toBlock(userId, employerName) {
+function toBlock(userId, employerName, csrf, token) {
   swal({
     title: `Are you sure you want to block ${employerName}?`,
     type: 'error',
@@ -77,7 +80,8 @@ function toBlock(userId, employerName) {
       await fetch(`/v1/admin/block/employer/${userId}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
@@ -86,13 +90,13 @@ function toBlock(userId, employerName) {
         text: `You have successfully blocked ${employerName}`,
         type: 'success',
       }).then(() => {
-        window.location = '/admin/employers';
+        window.location = '/admin/all/employers';
       });
     }
   });
 }
 
-function toUnblock(userId, employeeName) {
+function toUnblock(userId, employeeName, csrf, token) {
   swal({
     title: `Are you sure you want to Unblock ${employeeName}?`,
     type: 'warning',
@@ -105,7 +109,8 @@ function toUnblock(userId, employeeName) {
       await fetch(`/v1/admin/unblock/employer/${userId}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
@@ -114,7 +119,7 @@ function toUnblock(userId, employeeName) {
         text: `You have successfully unblocked ${employeeName}`,
         type: 'success',
       }).then(() => {
-        window.location = '/admin/employers';
+        window.location = '/admin/all/employers';
       });
     }
   });

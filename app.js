@@ -204,7 +204,7 @@ app.use('/v1/employer', getAllEmployees);
 // admin routes goes here
 app.use('/admin', adminHelpRoute);
 // app.use('/admin', faqRoutes);
-app.use('/admin', adminBaseFunction);
+app.use('/v1/admin', adminBaseFunction);
 // get general FAQ routes
 app.use('/v1', faqGeneralRoutes);
 

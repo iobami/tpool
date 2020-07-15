@@ -34,6 +34,8 @@ module.exports = {
 
 
   allEmployers: async (req, res) => {
+    const csrf = req.csrfToken();
+    const { session } = req.cookies;
     try {
       const individuals_array = [];
       const company_array = [];
@@ -64,6 +66,8 @@ module.exports = {
         totalCompany: company_array.length,
         totalIndividual: individuals_array.length,
         totalEmployers,
+        csrf,
+        session,
       });
     } catch (err) {
       console.log(err);
@@ -71,6 +75,7 @@ module.exports = {
   },
 
   allEmployees: async (req, res) => {
+    const { session } = req.cookies;
     try {
       const limit = Number(req.query.p) || 1000000000;
       const employeesTotal = await model.Employee.findAll({});
@@ -133,6 +138,8 @@ module.exports = {
         hiredEmployees: hired_employees_count.length,
         data: data.all_employee_data,
         moment,
+        csrf: req.csrfToken(),
+        session,
       });
     } catch (err) {
       // eslint-disable-next-line no-console
