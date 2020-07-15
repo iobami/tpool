@@ -150,6 +150,9 @@
     border-radius: 5px;
     color: white;
 }
+p span.naira:before {
+    content:'\20A6';
+}
 
 @media(min-width: 992px){
     .price-payment .container .plan {
