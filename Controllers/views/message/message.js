@@ -2,9 +2,14 @@
 /* eslint-disable no-undef */
 const Sequelize = require('sequelize');
 const model = require('../../../Models/index');
-const { errorResMsg, successResMsg } = require('../../../Utils/response');
+const {
+    errorResMsg,
+    successResMsg
+} = require('../../../Utils/response');
 
-const { Op } = Sequelize;
+const {
+    Op
+} = Sequelize;
 
 module.exports = {
     adminMessagePage: async (req, res) => {
@@ -57,14 +62,14 @@ module.exports = {
     employeeMessagePage: async (req, res) => {
         try {
             //Get employee chat users
-            const employeeChatUsers = await model.Employee.findAll({
+            /* const employeeChatUsers = await model.Employee.findAll({
                 attributes: ['user_id', 'first_name', 'last_name', 'image']
 
-            });
+            }); */
             res.status(200).render('Pages/employee-messages', {
                 pageName: 'Employer Messages',
                 pageTitle: 'TalentPool | Employee Message',
-                employeeChatUsers,
+                // employeeChatUsers,
                 path: '/employee/message',
                 error: req.flash('error'),
                 errors: req.flash('errors'),
