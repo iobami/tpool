@@ -27,6 +27,16 @@ exports.create = async (req, res) => {
       req.flash('errors', errResponse);
       return res.redirect('/employee/register');
     }
+
+    // Saving other user details in employee session
+    const employeeUserData = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      phone: req.body.phone
+    };
+    req.session.employeeuserData = employeeUserData;
+
     const user = req.body;
     const { email } = user;
     const userExists = await model.User.findOne({ where: { email } });
@@ -55,7 +65,7 @@ exports.create = async (req, res) => {
     // create new user and send verification mail
     try {
       await model.User.create(userSave);
-      const verificationUrl = `${URL}/v1/auth/email/verify?verification_code=${token}`;
+      const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
 
       const message = `<p> Hi, thanks for registering, kindly verify your email </p><a href ='${verificationUrl}'>link</a>`;
       await sendEmail({

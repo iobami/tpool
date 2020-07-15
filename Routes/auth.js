@@ -5,15 +5,15 @@ const { authorize } = require('../Middleware/index');
 const { UserValidation } = require('../Utils/validators/user-validator-new');
 
 const {
-  adminLogin,
-  postEmployeeLogin,
-  postEmployerLogin,
+  // adminLogin,
+  // postEmployeeLogin,
+  // postEmployerLogin,
   forgotPassword,
   resetPassword,
   resendVerificationLink,
   updatePassword,
   superAdminLogin,
-} = require('../controllers/auth');
+} = require('../Controllers/auth');
 
 const { verifyEmail } = require('../Controllers/employee/employee-signup');
 
@@ -26,7 +26,7 @@ const router = express.Router();
 // router.post('/employee/login', UserValidation.validateLogin, postEmployeeLogin);
 router.post(
   '/forgot-password',
-  //UserValidation.resendVerificationLink,
+  // UserValidation.resendVerificationLink,
   forgotPassword,
 );
 
