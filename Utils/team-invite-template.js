@@ -2,7 +2,7 @@ exports.message = async (url) => {
   const html = `<table width="100%" max-width="500px"style="padding: 0 40px 0 40px; background-color:#ffffff; margin: 100px auto;">
   <tr>
     <td align="center" style="background-color:#ffffff; margin: 0 50px 0 50px;">
-      <a><img src=${process.env.TALENT_POOL_APP_LOGO} alt="Logo" width="120" height="100" style="display: block;"></a>
+      <a><img src="https://res.cloudinary.com/lolamedina/image/upload/v1593451396/talentpool_header_logo_hyd9sg.svg" alt="Logo" width="120" height="100" style="display: block;"></a>
     </td>
   </tr>
   <tr>

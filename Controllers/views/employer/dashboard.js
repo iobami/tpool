@@ -1,6 +1,13 @@
 module.exports = {
   employerDashboard: (req, res) => {
     res.render('Pages/employer-dashboard', {
+      success: req.flash('success'),
+      pageName: 'Employer Dashboard',
+    });
+  },
+
+  employerProfile: (req, res) => {
+    res.render('Pages/employer-profile-page', {
       pageName: 'Employer Dashboard',
     });
   },
@@ -45,8 +52,13 @@ getActive.then(getCookie);*/
 
   employerCreateProfile: (req, res) => {
     res.render('Pages/employer-profile-creation', {
+      success: req.flash('success'),
       pageName: 'Create Profile',
+<<<<<<< HEAD
       data: req.session.companycat,
+=======
+      errorMessage: req.flash('error')
+>>>>>>> 300ea9281d23bc5b8d1bba7346ffe96cc8ae3000
     });
   },
 

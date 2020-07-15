@@ -24,9 +24,11 @@ module.exports = {
     if (isLoggedIn && employeeId) {
       res.redirect(`/employee/dashboard/${req.session.employeeId}`);
     } else if (isLoggedIn && !employeeId) {
-      return res.redirect('/employee/profile/create');
+      return res.redirect(
+        '/employee/create/profile?success_message=Please create a profile to continue',
+      );
     }
-
+    const success = req.flash('success');
     let message = req.flash('error');
     if (message.length > 0) {
       [message] = message;
@@ -36,6 +38,7 @@ module.exports = {
     return res.render('Pages/employee-sign-in', {
       path: '/employee/login',
       pageName: 'Employee Login',
+      success,
       errorMessage: message,
       oldInput: {
         email: '',
