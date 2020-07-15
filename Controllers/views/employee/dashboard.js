@@ -47,6 +47,8 @@ exports.getEmployeeProfileCreation = (req, res) => {
     res.redirect(`/employee/dashboard/${req.session.profileId}`);
   } else {
     return res.render('Pages/employee-profile-creation', {
+      success: req.flash('success'),
+      errorMessage: req.flash('error'),
       pageTitle: 'TalentPool | Create Profile',
       path: '/employee/profile/create',
     });
