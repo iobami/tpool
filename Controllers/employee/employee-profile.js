@@ -174,6 +174,9 @@ exports.getDashboard = async (req, res) => {
 
     const team = await teamQuery;
 
+    // Set employee data to session
+    req.session.firstName = employee.username;
+
     if (!employee) {
       return req.flash('error', 'Profile not found');
     }
@@ -281,6 +284,45 @@ exports.getProfile = async (req, res) => {
     }
     return res.status(200).render('Pages/employeeProfile', {
       pageTitle: `Talent Pool | ${data.first_name}'s Profile`,
+      dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+      profilePath: `${URL}employee/profile/${employeeId}`,
+      portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+      path: '',
+      data,
+    });
+  } catch (err) {
+    req.flash('error', 'Something went wrong. Try again');
+    return errorResMsg(res, 500, err.message);
+  }
+};
+
+// GET AEMPLOAYEE PORTFOLIOS -- Renders a page
+exports.getPortfolio = async (req, res) => {
+  try {
+    let employeeId;
+    const { userTypeId } = req.session;
+
+    if (req.params.employee_id) {
+      employeeId = req.params.employee_id;
+    } else if (userTypeId) {
+      employeeId = req.session.employeeId;
+    }
+
+    const query = await models.Portfolio.findOne({
+      where: { employee_id: employeeId },
+      attributes: ['title', 'description', 'link'],
+    });
+
+    const data = await query;
+
+    if (!data) {
+      req.flash('error', 'Portfolio not found');
+      return res.redirect(`${req.originalUrl}`);
+    }
+    return res.status(200).render('Pages/employee-portfolio', {
+      pageTitle: `Talent Pool | ${
+        req.session.firstName ? req.session.firstName : ''
+      }'s Portfolio`,
       dashboardPath: `${URL}employee/dashboard/${employeeId}`,
       profilePath: `${URL}employee/profile/${employeeId}`,
       portfolioPath: `${URL}employee/portfolio/${employeeId}`,
