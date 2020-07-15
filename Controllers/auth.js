@@ -401,8 +401,8 @@ exports.postEmployerLogin = async (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             if (!user.employer_id) {
-              
-              req.flash('error', 'User does not have a profile');
+              req.flash('success', 'Login Successful');
+              // req.flash('error', 'You need to create a profile before you proceed');
               res.redirect('/employer/profile/create');
             }
             res.redirect(`/employer/dashboard/${user.employer_id}`);
