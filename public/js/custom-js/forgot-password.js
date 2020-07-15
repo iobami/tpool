@@ -39,7 +39,7 @@ forgotPasswordForm.addEventListener('submit', (e) => {
     .post('/auth/forgot-password', {
       email: email,
     })
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .then((res))
+    .catch((err));
   document.getElementById('forgot-password').reset();
 });
