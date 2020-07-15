@@ -166,13 +166,74 @@ exports.getDashboard = async (req, res) => {
 
     const teamQuery = await models.Team.findOne({
       where: { employee_id: employeeId },
-      include: models.Employer,
     });
 
     const employee = await query;
     const skills = await skillQuery;
     const portfolios = await portfolioQuery;
+
     const team = await teamQuery;
+
+    if (!employee) {
+      return req.flash('error', 'Profile not found');
+    }
+
+    if (team) {
+      const { employer_id, Team_name, status } = team;
+      const employerQuery = await models.Employer.findOne({
+        where: { employer_id },
+      });
+
+      const {
+        employer_name,
+        employer_phone,
+        employer_email,
+        employer_country,
+        employer_photo,
+        website,
+        facebook,
+        twitter,
+        instagram,
+        linkedin,
+      } = await employerQuery;
+
+      const data = {
+        employee,
+        skills,
+        portfolios,
+        team: {
+          name: Team_name,
+          status,
+          employer: {
+            name: employer_name,
+            phone: employer_phone,
+            email: employer_email,
+            country: employer_country,
+            photo: employer_photo,
+            website,
+            social: {
+              facebook,
+              twitter,
+              instagram,
+              linkedin,
+            },
+          },
+        },
+      };
+
+      if (!employee) {
+        return req.flash('error', 'Profile not found');
+      }
+      return res.status(200).render('Pages/employee-dashboard', {
+        pageTitle: 'Talent Pool | Dashboard',
+        success: success_message,
+        dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+        profilePath: `${URL}employee/profile/${employeeId}`,
+        portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+        path: '',
+        data,
+      });
+    }
 
     const data = {
       employee,
@@ -181,9 +242,6 @@ exports.getDashboard = async (req, res) => {
       team,
     };
 
-    if (!employee) {
-      return req.flash('error', 'Profile not found');
-    }
     return res.status(200).render('Pages/employee-dashboard', {
       pageTitle: 'Talent Pool | Dashboard',
       success: success_message,
