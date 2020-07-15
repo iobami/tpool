@@ -309,7 +309,7 @@ input[type='file'] {
 }
 
 .sidenav {
-  z-index: 99999;
+  z-index: 100;
 }
 
 .skills-choice {
