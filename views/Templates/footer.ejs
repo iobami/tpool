@@ -81,3 +81,22 @@
   src="https://kit.fontawesome.com/5f006efe51.js"
   crossorigin="anonymous"
 ></script>
+<script>
+  $('.alert-success')
+    .fadeTo(2000, 500)
+    .slideUp(500, function () {
+      $('.alert-success').slideUp(500);
+    });
+</script>
+
+<!-- // <% if (success) { %>
+  <div
+    role="alert"
+    class="alert alert-success alert-dismissible fade show user-message"
+  >
+    <button type="button" class="close" data-dismiss="alert">
+      &times;
+    </button>
+    // <%= success %>
+  </div>
+  // <% } %>  -->

@@ -14,7 +14,7 @@ appRoute.get(
   employeeViewController.getEmployeePortfolio,
 );
 // Profile Page
-appRoute.get('/employee/profile', employeeViewController.getEmployeeProfile);
+appRoute.get('/employee/profile/:employee_id', employeeController.getProfile);
 // Get Employee Messages
 appRoute.get('/employee/messages', employeeViewController.getEmployeeMessages);
 

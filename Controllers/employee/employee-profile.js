@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable comma-dangle */
@@ -64,7 +65,7 @@ const uploadImageFunction = async (req, res) => {
   }
 };
 
-// CREATE A PROFILE -- To be consumed with axios
+// CREATE A PROFILE -- Consumed directly.
 exports.createProfile = async (req, res) => {
   try {
     const employeeId = uuid();
@@ -137,9 +138,10 @@ exports.createProfile = async (req, res) => {
   }
 };
 
-// GET AN EMPLOYEE PROFILE -- Renders a page
+// GET AN EMPLOYEE DASHBOARD DATA -- Renders a page
 exports.getDashboard = async (req, res) => {
   try {
+    const { success_message } = req.query;
     let employeeId;
     const { isLoggedIn, userTypeId } = req.session;
 
@@ -173,7 +175,11 @@ exports.getDashboard = async (req, res) => {
     }
     return res.status(200).render('Pages/employee-dashboard', {
       pageTitle: 'Talent Pool | Dashboard',
-      path: `${URL}employee/dashboard/${employeeId}`,
+      success: success_message,
+      dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+      profilePath: `${URL}employee/profile/${employeeId}`,
+      portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+      path: '',
       data,
     });
   } catch (err) {
@@ -181,7 +187,44 @@ exports.getDashboard = async (req, res) => {
   }
 };
 
-// GET AN EMPLOYEE PROFILE BY USERNAME -- Directory (ALL ACCESS) -- consumed with axios
+// GET AN EMPLOYEE PROFILE -- Renders a page
+exports.getProfile = async (req, res) => {
+  try {
+    let employeeId;
+    const { userTypeId } = req.session;
+
+    if (req.params.employee_id) {
+      employeeId = req.params.employee_id;
+    } else if (userTypeId) {
+      employeeId = req.session.employeeId;
+    }
+
+    const query = await models.Employee.findOne({
+      where: { employee_id: employeeId },
+      attributes,
+    });
+
+    const data = await query;
+
+    if (!data) {
+      req.flash('error', 'Profile not found');
+      return res.redirect(`${req.originalUrl}`);
+    }
+    return res.status(200).render('Pages/employeeProfile', {
+      pageTitle: `Talent Pool | ${data.first_name}'s Profile`,
+      dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+      profilePath: `${URL}employee/profile/${employeeId}`,
+      portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+      path: '',
+      data,
+    });
+  } catch (err) {
+    req.flash('error', 'Something went wrong. Try again');
+    return errorResMsg(res, 500, err.message);
+  }
+};
+
+// GET AN EMPLOYEE PROFILE BY USERNAME -- Directory (ALL ACCESS) -- // TODO  Render on a page
 // eslint-disable-next-line consistent-return
 exports.getProfileByUsername = async (req, res) => {
   try {
