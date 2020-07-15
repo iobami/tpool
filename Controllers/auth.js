@@ -39,6 +39,101 @@ exports.registerEmployer = (req, res) => {
         req.flash('errors', errResponse);
         return res.redirect('/employer/register');
       }
+
+      // Saving other user details in employer session
+      const employerUserData = {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        phone: req.body.phone
+      };
+      req.session.employeruserData = employerUserData;
+
+      // encrypt password
+      const salt = bcrypt.genSaltSync(10);
+      const hashPassword = bcrypt.hashSync(req.body.password, salt);
+
+      const userId = uuid();
+      const userEmail = req.body.email;
+
+      const basicInfo = {
+        email: userEmail,
+      };
+
+      const token = jsonWT.signJWT(basicInfo);
+
+      // check if email exist and create user
+      const user = await model.User.findOne({
+        where: { email: userEmail },
+      });
+      if (!user) {
+        const userData = {
+          email: userEmail,
+          password: hashPassword,
+          verification_token: token,
+          role_id: 'ROL-EMPLOYER',
+          user_id: userId,
+        };
+        // create new user and send verification mail
+        try {
+          await model.User.create(userData);
+          // mail verification code to the user
+          const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
+          const message = `<p> Hi, thanks for registering, kindly verify your email using this <a href ='${verificationUrl}'>link</a></p>`;
+
+          await sendEmail({
+            email: req.body.email,
+            subject: 'Email verification',
+            message,
+          });
+
+          // return successResMsg(res, 201, data);
+          req.flash('success', 'Verification email sent!');
+          return res.redirect('/employer/register');
+        } catch (err) {
+          req.flash('error', 'An error Occoured');
+          return res.redirect('/employer/register');
+          // return errorResMsg(res, 500, err);
+        }
+      } else {
+        // return errorResMsg(
+        //   res,
+        //   403,
+        //   'Someone has already registered this email',
+        // );
+        req.flash('error', 'Someone has already registered this email');
+        return res.redirect('/employer/register');
+      }
+    } catch (err) {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      // return errorResMsg(res, 500, 'An error occurred');
+      req.flash('error', 'An error Occoured');
+      return res.redirect('/employer/register');
+    }
+  })();
+};
+
+exports.registerEmployerOrg = (req, res) => {
+  (async () => {
+    try {
+      // eslint-disable-next-line camelcase
+      // Validate input
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        const errResponse = errors.array({ onlyFirstError: true });
+        req.flash('errors', errResponse);
+        return res.redirect('/employer/register');
+      }
+
+      // Saving other user details in employer session
+      const employerUserData = {
+        organizationName: req.body.firstname,
+        email: req.body.email,
+      };
+      req.session.employeruserData = employerUserData;
+
       // encrypt password
       const salt = bcrypt.genSaltSync(10);
       const hashPassword = bcrypt.hashSync(req.body.password, salt);
@@ -670,7 +765,7 @@ exports.resendVerificationLink = async (req, res) => {
     });
     // const data = { message: 'Verification email re-sent!' };
     // successResMsg(res, 201, data);
-    req.flash('error', 'Verification email re-sent!');
+    req.flash('success', 'Please check your email. Verification link has been sent.');
     return res.redirect('/verify-email');
   } catch (err) {
     if (!err.statusCode) {

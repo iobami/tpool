@@ -1,7 +1,15 @@
 module.exports = {
 
   employerSignup: (req, res) => {
-    res.render('Pages/employer-sign-up', {
+    const { isLoggedIn, employerId } = req.session;
+
+    if (isLoggedIn && employerId) {
+      res.redirect(`/employer/dashboard/${req.session.employeeId}`);
+    } else if (isLoggedIn && !employerId) {
+      return res.redirect('/employer/profile/create');
+    }
+
+    return res.render('Pages/employer-sign-up', {
       pageName: 'Employer Registration',
       error: req.flash('error'),
       errors: req.flash('errors'),
