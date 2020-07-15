@@ -210,11 +210,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       path: '/employee/login',
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
-<<<<<<< HEAD
-      success: req.flash('success'),
-=======
       success,
->>>>>>> c5833d77cde7d043c368eee1ecade63acc7c5004
       oldInput: {
         email,
         password,
@@ -534,13 +530,8 @@ exports.adminLogin = async (req, res, next) => {
       validationErrors: errors.array(),
     });
   }
-<<<<<<< HEAD
-  model.User.findOne({ where: { email } })
-    .then(async (user) => {
-=======
   await model.User.findOne({ where: { email } })
     .then((user) => {
->>>>>>> c5833d77cde7d043c368eee1ecade63acc7c5004
       if (!user) {
         return res.status(422).render('Pages/admin-login', {
           path: '/admin/login',
