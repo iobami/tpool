@@ -27,6 +27,16 @@ exports.create = async (req, res) => {
       req.flash('errors', errResponse);
       return res.redirect('/employee/register');
     }
+
+    // Saving other user details in employee session
+    const employeeUserData = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      phone: req.body.phone
+    };
+    req.session.employeeuserData = employeeUserData;
+
     const user = req.body;
     const { email } = user;
     const userExists = await model.User.findOne({ where: { email } });
