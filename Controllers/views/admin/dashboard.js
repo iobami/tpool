@@ -76,7 +76,7 @@ module.exports = {
     });
   },
   managePackages: (req, res) => {
-    res.render('Pages/admin/manage-packages', {
+    res.render('Pages/admin/getAllpackages', {
       pageName: 'Manage Packages',
       path: 'manage-packages',
       data: packages,

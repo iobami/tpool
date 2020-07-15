@@ -16,8 +16,6 @@
       <h2 class="dashboard__heading text-center">Manage Packages</h2>
 
       <div class="container-fluid">
-        <!-- Unable to include this package -->
-        <%- // include('../includes/packages') %>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
           <li class="nav-item m-2">
@@ -82,13 +80,14 @@
 
             <div class="container">
               <div class="row">
-                <% data.forEach(function(package) { %>
+                <% if (data || data.length >= 1) { %> <%
+                data.forEach(function(package) { %>
                 <div class="col-sm-6 col-md-4">
                   <div class="card-deck mb-3 text-center">
                     <div class="card mb-4 box-shadow">
                       <div class="card-header">
                         <h4 class="my-0 font-weight-normal">
-                          <%- package.package.split(' ') .map(w =>
+                          <%- package.package_name.split(' ') .map(w =>
                           w[0].toUpperCase() + w.substr(1).toLowerCase())
                           .join(' ') %>
                         </h4>
@@ -98,31 +97,28 @@
                           <%= package.price %>
                           <small class="text-muted">/ mo</small>
                         </h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                          <p class="card-description" style="min-height: 81px;">
-                            <%= package.description %>
-                          </p>
-                        </ul>
                         <a
-                          href="/price-payment?id=<%= package.id %>"
+                          href="/admin/packages/<%= package.package_id %>"
                           class="text-white"
                         >
                           <button
                             type="button"
                             class="btn hire-btn btn-lg btn-block text-white"
                           >
-                            Get started
+                            View Package
                           </button>
                         </a>
                       </div>
                     </div>
                   </div>
                 </div>
-                <% }); %>
+                <% }); %> <% } else { %>
+                <h3>No package</h3>
+                <% } %>
               </div>
             </div>
           </div>
-          <!-- create packages -->
+          <!-- // create packages -->
           <div
             class="tab-pane fade"
             id="createPackage"
@@ -282,7 +278,7 @@
       }
 
       .card-body {
-        min-height: 19rem !important;
+        min-height: 3rem !important;
         max-height: max-content;
         display: flex;
         flex-direction: column;
