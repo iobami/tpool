@@ -23,19 +23,7 @@ appRoute.post(
       .normalizeEmail(),
     body('password', 'Password has to be valid.')
       .isLength({ min: 8 })
-      // .isAlphanumeric()
       .trim(),
-    // body('password')
-    //   .isLength({ min: 8 })
-    //   .withMessage(
-    //     'Password Incorrect)',
-    //   )
-    //   .matches(
-    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_`,/@#\-"=:;~<>'\$%\^&\*\?\|\+\(\)\[\]\{}\.])(?=.{8,})/,
-    //   )
-    //   .withMessage(
-    //     'Password does not match required pattern',
-    //   ),
   ],
   authController.postEmployeeLogin,
 );
