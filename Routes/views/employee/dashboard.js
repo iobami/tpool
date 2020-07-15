@@ -10,17 +10,17 @@ appRoute.get(
 );
 // Portfolio Page
 appRoute.get(
-  '/employee/portfolio',
-  employeeViewController.getEmployeePortfolio,
+  '/employee/portfolio/:employee_id',
+  employeeController.getPortfolio,
 );
 // Profile Page
-appRoute.get('/employee/profile', employeeViewController.getEmployeeProfile);
+appRoute.get('/employee/profile/:employee_id', employeeController.getProfile);
 // Get Employee Messages
 appRoute.get('/employee/messages', employeeViewController.getEmployeeMessages);
 
 // Create Profile
 appRoute.get(
-  '/employee/profile/create',
+  '/employee/create/profile',
   employeeViewController.getEmployeeProfileCreation,
 );
 appRoute.post('/employee/profile/create', employeeController.createProfile);

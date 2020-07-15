@@ -6,6 +6,11 @@
       rel="stylesheet"
       href="/styles/custom-css/employee-signUp-signIn.css"
     />
+    <style>
+      form .invalid {
+        border: 2px solid palevioletred !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -28,7 +33,7 @@
             <% if (errorMessage) { %>
             <div
               role="alert"
-              class="alert alert-danger alert-dismissible fade show user-message user-message--error"
+              class="alert alert-danger fade show alert-dismissible user-message user-message--error"
             >
               <button type="button" class="close" data-dismiss="alert">
                 &times;
@@ -38,7 +43,7 @@
             <% }if (success && success.length > 0) { %>
             <div
               role="alert"
-              class="alert alert-success alert-dismissible fade show user-message"
+              class="alert alert-success fade show alert-dismissible user-message"
             >
               <button type="button" class="close" data-dismiss="alert">
                 &times;
@@ -57,7 +62,7 @@
               <div class="col-md mb-3 px-0">
                 <label for="email">Email</label>
                 <input
-                  class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid-value' : '' %>"
+                  class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
                   type="email"
                   name="email"
                   id="email"
@@ -73,7 +78,7 @@
               <div class="col-md mb-3 px-0">
                 <label for="password">Password</label>
                 <input
-                  class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid-value' : '' %>"
+                  class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
                   type="password"
                   name="password"
                   id="password"

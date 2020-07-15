@@ -7,16 +7,14 @@ exports.getEmployeeMessages = (req, res) => {
     path: '/employee/messages',
   });
 };
-exports.getEmployeeProfile = (req, res) => {
-  res.render('Pages/employeeProfile', {
-    pageTitle: 'Talent Pool | Profile',
-    path: '/employee/profile',
-  });
-};
 exports.getEmployeePortfolio = (req, res) => {
+  const { employeeId } = req.session;
   res.render('Pages/employee-portfolio', {
     pageTitle: 'Talent Pool | Portfolio',
-    path: '/employee/portfolio',
+    dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+    profilePath: `${URL}employee/profile/${employeeId}`,
+    portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+    path: '',
   });
 };
 
@@ -47,8 +45,8 @@ exports.getEmployeeProfileCreation = (req, res) => {
     res.redirect(`/employee/dashboard/${req.session.profileId}`);
   } else {
     return res.render('Pages/employee-profile-creation', {
-      success: req.flash('success'),
-      errorMessage: req.flash('error'),
+      success: req.query.success_message,
+      errorMessage: req.query.error_message,
       pageTitle: 'TalentPool | Create Profile',
       path: '/employee/profile/create',
     });
