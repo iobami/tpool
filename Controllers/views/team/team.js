@@ -7,21 +7,16 @@ const URL =
 
 const sendEmail = require('../../..//Utils/sendEmail');
 const { message } = require('../../../Utils/team-invite-template');
-const {
-  successResMsg,
-  errorResMsg,
-  sessionSuccessResMsg,
-} = require('../../../Utils/response');
 
 module.exports = {
   sendInvite: async (req, res, next) => {
     const { userId } = req.session;
-    // const { userId, userTypeId } = req.session;
-    const userTypeId = '902abb61-c387-4e15-834e-ea9d38dfc6cb';
+    const { userTypeId } = req.session.data;
+
     const { email } = req.body;
     if (!userTypeId) {
       return res.status(400).render('Pages/employer-add-a-team', {
-        path: 'employer/add/team',
+        path: 'employer/add-team',
         pageName: 'Team',
         errorMessage: 'Your profile must be created!',
         oldInput: {
@@ -34,12 +29,11 @@ module.exports = {
     try {
       // Check if user exists and is an employee
       const user = await model.User.findOne({
-        where: { email, role_id: 'ROL-EMPLOYEE' },
+        where: { email: email, role_id: 'ROL-EMPLOYEE' },
       });
-
       if (!user) {
         return res.status(404).render('Pages/employer-add-a-team', {
-          path: 'employer/add/team',
+          path: 'employer/add-team',
           pageName: 'Team',
           errorMessage: 'User does not exist or is not an employee!',
           oldInput: {
@@ -48,11 +42,20 @@ module.exports = {
           validationErrors: [],
         });
       }
-
       const employee = await model.Employee.findOne({
         where: { user_id: user.user_id },
       });
-
+      if (!employee) {
+        return res.status(404).render('Pages/employer-add-a-team', {
+          path: 'employer/add-team',
+          pageName: 'Team',
+          errorMessage: 'User profile is not set-up',
+          oldInput: {
+            email,
+          },
+          validationErrors: [],
+        });
+      }
       // Get employer details
       const employer = await model.Employer.findOne({
         where: { user_id: userId },
@@ -74,7 +77,7 @@ module.exports = {
       });
       const teamResult = isInTeam
         ? res.status(409).render('Pages/employer-add-a-team', {
-            path: 'employer/add/team',
+            path: 'employer/add-team',
             pageName: 'Team',
             errorMessage: 'User is already in or has been invited to this team',
             oldInput: {
@@ -85,7 +88,7 @@ module.exports = {
         : await model.Team.create(teamData);
 
       // Send email to user
-      const inviteLink = `${URL}/team/confirm/?referralCode=${userTypeId}&employee=${employee.employee_id}`;
+      const inviteLink = `${URL}/team/verify-invite/?referralCode=${userTypeId}&employee=${employee.employee_id}`;
       try {
         await sendEmail({
           email,
@@ -94,14 +97,14 @@ module.exports = {
         });
       } catch (err) {
         return res.status(200).render('Pages/employer-add-a-team', {
-          path: 'employer/add/team',
+          path: 'employer/add-team',
           pageName: 'Team',
           inviteStatus: 'Invite link not sent. Please retry',
         });
       }
 
       return res.status(200).render('Pages/employer-add-a-team', {
-        path: 'employer/add/team',
+        path: 'employer/add-team',
         pageName: 'Team',
         inviteStatus: 'Invite link sent',
       });
@@ -114,26 +117,28 @@ module.exports = {
 
   verifyInvite: async (req, res, next) => {
     const { referralCode, employee } = req.query;
+    const { isLoggedIn, employeeId } = req.session;
     try {
       const doesExist = await model.Team.findOne({
         where: { employee_id: employee, employer_id: referralCode },
       });
       if (!doesExist) {
-        return res.status(400).render('Pages/team-invite', {
+        return res.status(400).render('Pages/verify-team-invite', {
           pageName: 'Team Invite',
-          error: req.flash(
-            "Employee has not been invited to team or team doesn't exist",
-          ),
+          result: 'Employer or employee does not exist',
         });
       }
       await model.Team.update(
         { status: 'Accepted' },
         { where: { employee_id: employee, employer_id: referralCode } },
       );
-      return res.status(200).render('Pages/team-invite', {
+      if (isLoggedIn && employeeId) {
+        res.redirect(`/employee/dashboard/${req.session.employeeId}`);
+      }
+      return res.status(200).render('Pages/verify-team-invite', {
         path: 'team-invite',
         pageName: 'Team Invite',
-        inviteStatus: 'Accepted',
+        result: 'Congratulations! You have successfully joined a team',
       });
     } catch (err) {
       const error = new Error(err);

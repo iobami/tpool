@@ -245,10 +245,7 @@ app.use(adminAuthRoute);
 app.use(employerMetrics);
 app.use(employerRecommendation);
 app.use(verifyModal);
-<<<<<<< HEAD
 app.use(teamRoute);
-=======
 app.use(googleAuth);
->>>>>>> develop-ejs
 
 module.exports = app;

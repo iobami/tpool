@@ -4,13 +4,11 @@ const appRoute = express.Router();
 const {
   sendInvite,
   verifyInvite,
-  viewMembers,
+  confirmInvite,
 } = require('../../../Controllers/views/team/team');
 
-appRoute.post('/employer/add/team', sendInvite);
-// appRoute.get('/employer/add/team', viewMembers);
-
-// teamRoute.get('/employer/add/team', sendInvite);
-// appRoute.get('/team/verify-invite', verifyInvite);
+appRoute.post('/employer/add-team', sendInvite);
+appRoute.get('/team/verify-invite', verifyInvite);
+// appRoute.get('/team/verify-invite', confirmInvite);
 
 module.exports = appRoute;
