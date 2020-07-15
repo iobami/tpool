@@ -7,87 +7,132 @@
 </head>
 
 <body>
-  <style>
+  <%- include('../includes/employeeHeader') %>
+  <%- include('../includes/employeeSideNav') %>
+
+  <main>
+
+    <div class="container-fluid mt-3 pb-5">
+      </h1>
+      <div class="row mt-3 justify-content-center justify-content-md-around">
+        <div class=" col-11 col-md-6">
+          <h4 class="py-3 mb-0">Welcome <%= data.employee.username %>! </h4>
+          <div
+            class="tp-card d-flex flex-column justify-content-between p-3 bg-dark-blue text-white">
+            <div>
+              <p class="mb-2 mb-0"> <%= data.employee.track %>
+              </p>
+              <p class="mb-2"> <%= data.employee.user_type %> </p>
+              <p class="mb-2">Availability:
+                <%= data.employee.availability.replace('-', " ") %>
+              </p>
+              <p class="mb-2">Verification status:
+                <%= data.employee.verification_status %> </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-11 col-md-6 mt-5 mt-md-0">
+          <h4 class="py-3 mb-0">Portfolio </h4>
+          <div
+            class="tp-card d-flex flex-column justify-content-between p-3 bg-light-blue text-white">
+            <div>
+              <% if (data.portfolios) { %>
+              <ul class="list-unstyled">
+                <% data.portfolios.forEach(function(item){ %>
+                <li class="d-flex mb-3">
+                  <a href=<%= item.link %> class="portfolio-link">
+                    <%= item.title %>
+                  </a>
+                </li>
+                <% }); %>
+              </ul>
+              <%} else { %>
+              <p>Nothing added to portfolio yet</p>
+              <% } %>
+            </div>
+            <div class="text-right mt-3">
+              <button class="btn-sm btn tp-btn-outline-primary">Add
+                portfolio</button>
+            </div>
+          </div>
+        </div>
+        <div class=" col-11 col-md-6 mt-5">
+          <h4>Team </h4>
+          <div
+            class="tp-card d-flex flex-column justify-content-between p-3 bg-light-blue text-white">
+            <div>
+              <% if (data.employee.team_name) { %>
+              <p class="mb-0">You are a member of team
+                <%= data.employee.team_name %> </p>
+              <% } %>
+              <% if (data.employee.employer_name) { %>
+              <p class="mb-0">Employer:
+                <%= data.employee.employer_name %> </p>
+              <% } else { %>
+              <p class="mb-0">You are not in any team yet</p>
+              <% } %>
+            </div>
+            <% if (data.employee.team_name) { %>
+            <div class="text-right mt-3">
+              <button class="btn-sm btn tp-btn-outline-primary">
+                Go to team
+              </button>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div class=" col-11 col-md-6 mt-5">
+          <h4>Skills </h4>
+          <div
+            class="tp-card d-flex flex-column justify-content-between p-3 bg-dark-blue text-white ">
+            <div>
+              <% if (data.skills) { %>
+              <ul class="list-unstyled">
+                <% data.skills.forEach(function(skill){ %>
+                <li class="d-flex pb-3">
+                  <img class="img-fluid mr-3" src="/img/verified-icon.svg"
+                    alt="portfolio verified">
+                  <span class="d-inline-block"><%= skill.skill_description %>
+                  </span>
+                </li>
+                <% }); %>
+              </ul>
+              <%} else { %>
+              <h5>Nothing skills added yet</h5>
+              <% } %>
+            </div>
+            <div class="text-right mt-3">
+              <button class="btn-sm btn tp-btn-outline-primary">Add
+                skill</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- <pre>
+      <%= JSON.stringify(data, "", 2) %> 
+    </pre> -->
+  </main>
+  <!-- <style>
     .toast-body,
     .close {
       display: none;
     }
-  </style>
+  </style> -->
 
 
-  <%- include('../includes/employeeHeader') %>
 
-  <div class="container-fluid mt-4">
 
-    <div class="row">
 
-      <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
-        <%- include('../includes/employeeSideNav') %>
-      </div>
 
-      <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5">
-
-        <header class="mx-3 mt-3">
-          <h1 class="display-5 text-left">
-            Welcome <%= data.employee.username %>
-          </h1>
-        </header>
-        <div class="user row mx-1 mt-5">
-          <div class="user__profile col-12 col-md-6">
-            <div class="d-flex flex-column align-items-center">
-              <img src=<%= data.employee.image %> alt="employee profile image"
-                class="img-fluid employee-img">
-              <h5 class="text-center">
-                <%= data.employee.first_name.charAt(0).toUpperCase()+data.employee.first_name.slice(1).toLowerCase()  %>
-                <%= data.employee.last_name.charAt(0).toUpperCase()+data.employee.last_name.slice(1).toLowerCase()  %>
-              </h5>
-              <h6><%= data.employee.track %> </h6>
-            </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <section>
-              <header>
-                <h3>Skills</h3>
-              </header>
-              <ul class="list-unstyled">
-                <% if (data.employee.skills) { %>
-                <% data.employee.skills.forEach(function(skill){ %>
-                <li><%= skill %></li>
-                <% }); %>
-                <% } else { %>
-                <li>No skill added yet. Please add one in portfolio</li>
-                <% } %>
-              </ul>
-            </section>
-            <section>
-              <header>
-                <h3>Portfolio</h3>
-              </header>
-              <ul class="list-unstyled">
-                <% if (data.employee.portfolios) { %>
-                <% data.employee.portfolios.forEach(function(item){ %>
-                <li><%= item %></li>
-                <% }); %>
-                <% } else { %>
-                <li>No item in portfolio ye. Please add one in portfolio </li>
-                <% } %>
-              </ul>
-            </section>
-          </div>
-        </div>
-        <code>
-          <%- JSON.stringify(data) %>
-        </code>
-      </div>
-    </div>
-
-    <!-- Optional JavaScript -->
-    <script src="/js/custom-js/side-nav.js"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/bootstrap-js/popper.js"></script>
-    <script src="/js/bootstrap-js/jquery.js"></script>
-    <script src="/js/bootstrap-js/bootstrap.js"></script>
+  <!-- Optional JavaScript -->
+  <script src="/js/custom-js/side-nav.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/js/bootstrap-js/popper.js"></script>
+  <script src="/js/bootstrap-js/jquery.js"></script>
+  <script src="/js/bootstrap-js/bootstrap.js"></script>
 </body>
 
 </html>
