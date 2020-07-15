@@ -41,6 +41,7 @@ module.exports = {
             res.status(200).render('Pages/employer-messages', {
                 pageName: 'Employer Messages',
                 pageTitle: 'TalentPool | Employer Message',
+                path: '/employer/message',
                 employerChatUsers,
                 error: req.flash('error'),
                 errors: req.flash('errors'),
