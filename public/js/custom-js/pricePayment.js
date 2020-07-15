@@ -1,6 +1,7 @@
 // IDs of the three methods of payment buttons
 let formIDs = ['visa-card__form', 'master-card__form', 'paypal__form'];
-let cardNumber = document.getElementById("card-number1");
+let priceTotal = parseFloat(document.getElementById("total").innerText);
+
 //  Toggle betyween forms
 function toggleForm(form){
     let getForm = document.getElementById(form);
@@ -87,4 +88,24 @@ function addHyphen (element) {
 
     let finalVal = ele.match(/.{1,4}/g).join('-');
     document.getElementById(element.id).value = finalVal;
+}
+const handleSummary = (e) =>{
+    // Get the number of months and 
+    // update the price summary
+
+    let {value} = e.target;
+    value = parseFloat(value);
+    document.getElementById("total").innerText = (priceTotal * value);
+
+
+}
+const handleSubmit = ()=>{
+    // Summary of all the data to be returned for payment
+    const noOfMonths = document.getElementById("numMonths").value;
+    const cardNum = document.getElementById("card-number").value;
+    const expMonth = document.getElementById("expiration-date__month").value;
+    const expYear = document.getElementById("expiration-date__year").value;
+    const cvv = document.getElementById("cvv").value;
+    const priceTotal = document.getElementById("total").innerText;
+    console.log(noOfMonths, cardNum, expMonth, expYear, cvv, priceTotal)
 }

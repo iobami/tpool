@@ -1,99 +1,126 @@
-$(document).ready(function () {
+var $rows = $('#table #table-row');
+$('#search').keyup(function() {
+  var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
-  const token = localStorage.getItem("tpAuth");
-  // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluNkBnbWFpbC5jb20iLCJ1c2VySWQiOiJiZWVjYThiYi01NzJiLTRiNzgtYjE0ZS1jOGY2Yjk4ODcwOTYiLCJ1c2VyUm9sZSI6IlJPTC1BRE1JTiIsInVzZXJUeXBlSWQiOm51bGwsImlhdCI6MTU5NDMyNTE0MSwiZXhwIjoxNTk0NDExNTQxfQ.T6LUrZMsedVVk0Az_FluYppQsXwmaUoxpBJ5cbWDKSU";
-
-  var individuals_array = [];
-  var company_array = [];
-
-  axios
-    .get("https://api.lancers.app/v1/employer/all", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    })
-    .then(({data}) => {
-      data.data.data.forEach((data) => {
-        if (data.employer_type.toLowerCase() == "individual") {
-          individuals_array.push(data.employer_type);
-        }
-
-        if (data.employer_type.toLowerCase() == "company") {
-          company_array.push(data.employer_type);
-        }
-
-        document.querySelector("#table-body-data").innerHTML += `
-        <tr>
-        <td
-        id="employer_id"
-        class="align-middle pl-4 pr-5 hide_content"
-      >
-        ${data.id}
-      </td>
-      <td
-        class="d-flex justify-content-start align-items-center align-middle"
-      >
-        <img
-          class="img-fluid rounded"
-          id="employer_photo"
-          width="60px"
-          height="60px"
-          src="${data.employer_photo}"
-          alt="employer logo"
-        />
-        <span
-          class="d-inline-block align-middle w-max-content pl-3"
-          id="employer_name"
-          >${data.employer_name}
-          <p class="sub-text" id="employer_date_joined">
-            ${data.createdAt.split("T")[0]}
-          </p></span>
-      </td>
-      <td class="align-middle talent-text-muted hide_content"
-                    id="employer_type"
-                  >
-                    ${data.employer_type}
-                  </td>
-                  <td
-                    class="align-middle talent-text-muted hide_content"
-                    id="employer_date_joined2"
-                  >
-                  ${data.createdAt.split("T")[0]}
-                  </td>
-                  <td class="align-middle">
-                    <button class="btn talent-btn-dark" id="employer_verified">
-                      ${data.verification_status}
-                    </button>
-                  </td>
-                  <td class="align-middle">
-                    <button class="btn l-padding r-padding">
-                      <svg
-                        width="4"
-                        height="14"
-                        viewBox="0 0 4 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <circle cx="2" cy="12" r="2" fill="#353A45" />
-                        <circle cx="2" cy="12" r="2" fill="#353A45" />
-                        <circle cx="2" cy="12" r="2" fill="#353A45" />
-                        <circle cx="2" cy="7" r="2" fill="#353A45" />
-                        <circle cx="2" cy="7" r="2" fill="#353A45" />
-                        <circle cx="2" cy="7" r="2" fill="#353A45" />
-                        <circle cx="2" cy="2" r="2" fill="#353A45" />
-                        <circle cx="2" cy="2" r="2" fill="#353A45" />
-                        <circle cx="2" cy="2" r="2" fill="#353A45" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-        `;
-      });
-      $("#individuals_count").html(individuals_array.length)
-      $("#company_count").html(company_array.length)
-    })
-    .catch((err) => {
-      console.log(err)
-      throw new Error(err)
-    });
+  $rows.show().filter(function() {
+      var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+      return !~text.indexOf(val);
+  }).hide();
 });
+
+function toApprove(employerId, employerName, csrf, token) {
+  console.log(csrf);
+  swal({
+    title: `Are you sure you want to disapprove ${employerName}?`,
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes!',
+    cancelButtonText: 'No.',
+  }).then(async (result) => {
+    if (result.value) {
+      await fetch(`/v1/admin/verify/employer/${employerId}`, {
+        method: 'PATCH',
+        headers: {
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      swal({
+        title: 'Approved!',
+        text: `${employerName} successfully approved!`,
+        type: 'success',
+      }).then(() => {
+        window.location = '/admin/all/employers';
+      });
+    }
+  });
+}
+
+function toDisapprove(employerId, employerName, csrf, token) {
+  swal({
+    title: `Are you sure you want to disapprove ${employerName}?`,
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes!',
+    cancelButtonText: 'No.',
+  }).then(async (result) => {
+    if (result.value) {
+      await fetch(`/v1/admin/unverify/employer/${employerId}`, {
+        method: 'PATCH',
+        headers: {
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      swal({
+        title: 'Disapproved!',
+        text: `${employerName} successfully disapproved!`,
+        type: 'success',
+      }).then(() => {
+        window.location = '/admin/all/employers';
+      });
+    }
+  });
+}
+
+function toBlock(userId, employerName, csrf, token) {
+  swal({
+    title: `Are you sure you want to block ${employerName}?`,
+    type: 'error',
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes!',
+    cancelButtonText: 'No.',
+  }).then(async (result) => {
+    if (result.value) {
+      await fetch(`/v1/admin/block/employer/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      swal({
+        title: 'Blocked!',
+        text: `You have successfully blocked ${employerName}`,
+        type: 'success',
+      }).then(() => {
+        window.location = '/admin/all/employers';
+      });
+    }
+  });
+}
+
+function toUnblock(userId, employeeName, csrf, token) {
+  swal({
+    title: `Are you sure you want to Unblock ${employeeName}?`,
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes!',
+    cancelButtonText: 'No.',
+  }).then(async (result) => {
+    if (result.value) {
+      await fetch(`/v1/admin/unblock/employer/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'X-CSRF-TOKEN': csrf,
+          Authorization: token,
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      swal({
+        title: 'Unblocked!',
+        text: `You have successfully unblocked ${employeeName}`,
+        type: 'success',
+      }).then(() => {
+        window.location = '/admin/all/employers';
+      });
+    }
+  });
+}

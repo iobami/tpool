@@ -46,8 +46,20 @@
 
         <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5 a-m">
           <h4 class="invite-header">Invite a team member</h4>
-
-          <form class="bg-white p-4 rounded">
+          <!-- if (errorMessage) { 
+          <div
+            role="alert"
+            class="alert alert-danger user-message user-message--error"
+          >
+             errorMessage 
+          </div>
+           }  -->
+          <form
+            class="bg-white p-4 rounded"
+            action="/employer/add-team"
+            method="POST"
+          >
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <div class="row d-flex align-items-center justify-content-center">
               <div class="form-group email mr-lg-3 position-relative">
                 <img
@@ -59,28 +71,9 @@
                   type="text"
                   class="form-control p-4 pl-5"
                   placeholder="email address"
+                  id="email"
+                  name="email"
                 />
-              </div>
-              <div class="form-group mr-lg-3 full-name position-relative">
-                <img
-                  src="../img/profile.svg"
-                  class="profile-icon position-absolute"
-                  alt="Profile icon"
-                />
-                <input
-                  type="text"
-                  class="form-control p-4 pl-5"
-                  placeholder="Full name"
-                />
-              </div>
-
-              <div class="form-group mr-lg-3">
-                <label for="Role"></label>
-                <select class="p-2">
-                  <option value="role" selected>Role</option>
-                  <option value="HR manager">HR Personnel</option>
-                  <option value="Business manager">Member</option>
-                </select>
               </div>
 
               <div class="form-group">
