@@ -70,7 +70,7 @@ router.get('/auth/employer/github',
 // receive process details from passport.setup
 router.get('/auth/github/callback',
   passport.authenticate('github-employer', {
-    failureRedirect: '/employer-sign-in',
+    failureRedirect: '/employer/login',
     failureFlash: true,
   }),
   (req, res) => {

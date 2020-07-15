@@ -13,6 +13,7 @@ const {
   allEmployees,
   employeeReview,
   adminsList,
+  managePackages,
 } = require('../../../Controllers/views/admin/dashboard');
 
 appRoute.get('/admin/faq', authorizeAdmin, faq);
@@ -26,5 +27,6 @@ appRoute.get('/admin/all/employees', authorizeAdmin, allEmployees);
 appRoute.get('/employee/review', authorizeAdmin, employeeReview);
 appRoute.get('/admin/viewEmployee', authorizeAdmin, adminEmployee);
 appRoute.get('/admins/list', authorizeAdmin, adminsList);
+appRoute.get('/admin/manage-packages', managePackages);
 
 module.exports = appRoute;

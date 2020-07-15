@@ -3,6 +3,8 @@
 
 <head>
     <%- include('../Templates/admin-head') %>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="../styles/custom-css/admin-dash-messages.css">
 </head>
 
@@ -23,11 +25,11 @@
                     <div class="col-lg-8 col-6">
                         <h1 class="main-heading d-lg-block d-none">Messages</h1>
                         <p class="d-lg-none" style="color:  #084482; font-weight: 500;"><img
-                                src="img/admin-dash-messages/Vector.png" alt="icon"><span>Inbox</span></p>
+                                src="../img/admin-dash-messages/Vector.png" alt="icon"><span>Inbox</span></p>
                     </div>
                     <div class="col-lg-4 col-6 d-flex justify-content-end">
                         <div id="talent-offers">
-                            <img src="img/admin-dash-messages/Vector.svg" alt="">
+                            <img src="../img/admin-dash-messages/Vector.svg" alt="">
                             <!-- <img src="../img/admin-dash-messages/Vector (2).svg" alt="" class="d-lg-none d-block"> -->
                             <span>Talent Offers</span>
                         </div>
@@ -35,7 +37,7 @@
                 </div>
                 <div class=" mt-0 p-lg-0 p-3" id="inbox-top">
                     <p class="m-0"><button class="chat-btn" onclick="toggleBack()"><img
-                                src="img/admin-dash-messages/back-arrow.svg" alt=""
+                                src="../img/admin-dash-messages/back-arrow.svg" alt=""
                                 class="d-lg-none pr-2"></button><span>Inbox</span>
                     </p>
                 </div>
@@ -65,7 +67,7 @@
                     <!-- right section -->
                     <div class="col-lg-7 right-side p-0" id="right-side">
                         <div class="top-tab d-flex align-items-center p-2">
-                            <p class="m-0 pl-4"><img src="img/admin-dash-messages/dp-image.png" alt="profile-img"
+                            <p class="m-0 pl-4"><img src="../img/admin-dash-messages/dp-image.png" alt="profile-img"
                                     id="dp">
                                 <span class="pl-3"><b>Adeleke Oluwakemi</b></span></p>
                         </div>
@@ -89,12 +91,12 @@
                                         <input type="text" placeholder="Type something..." id="type-msg">
                                     </div>
                                     <div class="emojipack d-flex">
-                                        <button class="chat-btn p-0"><img src="img/admin-dash-messages/Emoji.svg" alt=""
-                                                class="px-2 bottom-icon"></button>
-                                        <button class="chat-btn p-0"><img src="img/admin-dash-messages/pin.svg" alt=""
-                                                class="px-2 bottom-icon"></button>
-                                        <button class="chat-btn p-0"><img src="img/admin-dash-messages/dots.svg" alt=""
-                                                class="px-2 bottom-icon"></button>
+                                        <button class="chat-btn p-0"><img src="../img/admin-dash-messages/Emoji.svg"
+                                                alt="" class="px-2 bottom-icon"></button>
+                                        <button class="chat-btn p-0"><img src="../img/admin-dash-messages/pin.svg"
+                                                alt="" class="px-2 bottom-icon"></button>
+                                        <button class="chat-btn p-0"><img src="../img/admin-dash-messages/dots.svg"
+                                                alt="" class="px-2 bottom-icon"></button>
                                     </div>
                                 </div>
                             </div>
@@ -107,9 +109,9 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-    <script src="js/custom-js/side-nav.js"></script>
-    <script src="js/custom-js/admin-chat.js"></script>
-    <script src="js/custom-js/admin-dash-messages.js"></script>
+    <script src="../js/custom-js/side-nav.js"></script>
+    <script src="../js/custom-js/admin-chat.js"></script>
+    <script src="../js/custom-js/admin-dash-messages.js"></script>
 
 </body>
 
