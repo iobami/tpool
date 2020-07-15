@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
+
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const csrf = require('csurf');
@@ -70,9 +71,6 @@ const adminExportEmployee = require('./Routes/admin/export-verified-employee');
 const adminVerifyEmployer = require('./Routes/admin/verify-employer');
 const adminVerifyEmployee = require('./Routes/admin/verify-employee');
 
-// IMPORT ALL GET EMPLOYERS AND EMPLOYEES ROUTE --ADMIN
-const listAll = require('./Routes/list/list-all');
-
 // IMPORT TRANSACTION ROUTES
 const employerTransaction = require('./Routes/employer/employer-transaction');
 
@@ -102,11 +100,15 @@ const employerRecommendation = require('./Routes/views/employer/recommendation')
 const verifyModal = require('./Routes/views/admin/verifyModal');
 const messageRoute = require('./Routes/views/message/message');
 
+const csrfProtection = csrf();
+
 const app = express();
+
+app.locals.moment = require('moment');
 
 app.use(morgan('tiny'));
 app.use(cors());
-const csrfProtection = csrf();
+
 // Set Security HTTP Headers
 app.use(helmet());
 app.use(
@@ -167,7 +169,6 @@ app.use(csrfProtection);
 app.use((req, res, next) => {
   const token = req.csrfToken();
   // console.log(token);
-  // TODO: ask why this is here
   res.cookie('csrf-token', token);
   res.locals.csrfToken = req.csrfToken();
   next();
@@ -209,10 +210,9 @@ app.use('/v1/employer', employerDashboard);
 app.use('/v1/employer', getAllEmployees);
 
 // admin routes goes here
-app.use('/v1/admin', adminHelpRoute);
-app.use('/v1/admin', faqRoutes);
+app.use('/admin', adminHelpRoute);
+// app.use('/admin', faqRoutes);
 app.use('/v1/admin', adminBaseFunction);
-
 // get general FAQ routes
 app.use('/v1', faqGeneralRoutes);
 
@@ -221,7 +221,6 @@ app.use('/v1/admin', adminExportEmployer);
 app.use('/v1/admin', adminExportEmployee);
 app.use('/v1/admin', adminVerifyEmployer);
 app.use('/v1/admin', adminVerifyEmployee);
-app.use('/v1', listAll); // Get ALL Employees and Employers
 
 // team route goes here
 app.use('/v1/team', teamRoutes);
