@@ -3,17 +3,18 @@
 
 <head>
     <!-- Required meta tags -->
-    <%- include('../Templates/head.ejs') %>
-    <link rel="stylesheet" href="/styles/custom-css/pricePayment.css">
+    <%- include('../../Templates/head.ejs') %>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     />
+    <link rel="stylesheet" href="/styles/custom-css/pricePayment.css">
+
   </head>
   
   <body> 
-    <%- include('../Templates/header.ejs') %>
+    <%- include('../../Templates/header.ejs') %>
 
 <!-- Page Content -->
 <div class="price-payment">
@@ -24,11 +25,11 @@
                     <div class="content">
                         <div class="text-center">
                             <h3>Basic</h3>
-                            <p><span>$20</span>/month</p>
+                            <p><span class="naira">849</span>/month</p>
                         </div>
                         <div class="form-group">
                                 <label for="numMonths" class="subscription" style="text-align: center;">Number of months you want to subscribe for</label>
-                                    <select class="form-control" id="numMonths">
+                                    <select class="form-control" id="numMonths" onchange="handleSummary(event);">
                                       <option>1</option>
                                       <option>2</option>
                                       <option>3</option>
@@ -56,25 +57,27 @@
                     <div class="content">
                         <div class="top-bar__content">
                             <h4>Summary</h4>
-                            <p class="space-between"><span>Subtotal</span><span>$849</span></p>
-                            <p class="space-between"><span>Service Fee</span><span>$20</span></p>
-                            <p class="space-between"><span>Total</span><span id="total">$869</span></p>
+                            <p class="space-between"><span>Subtotal</span><span class="naira">849</span></p>
+                            <p class="space-between"><span>Service Fee</span><span class="naira">20</span></p>
+                            <p class="space-between"><span>Total</span><span id="total" class="naira">869</span></p>
                         </div>
                         <div class="bottom-bar__content">
                             <h4>Payment Methods</h4>
                             <div class="payment-cards">
                                 <div class="img-container">
-                                    <img src="img/visa-cropped__image.png" />
+                                    <img src="/img/visa-cropped__image.png" />
                                 </div>
                                 <div class="img-container">
-                                    <img src="img/mastercard-image.png" />
+                                    <img src="/img/mastercard-image.png" />
                                 </div>
                                 <div class="img-container">
-                                    <img src="img/paypal-image.png" />
+                                    <img src="/img/paypal-image.png" />
                                 </div>
                             </div>
                             <div id="visa-card__form" class="form animate__animated animate__fadeIn show-form">
-                                <form id="devugo-form" action="/action_page.php" onsubmit="handleSubmit();">
+                                <form id="devugo-form" 
+                                action="" 
+                                onsubmit="handleSubmit();">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12">
                                             <div class="form-group">
@@ -179,7 +182,7 @@
   <!-- /.container -->
 
   <br><br>
-  <%- include('../Templates/footer.ejs') %>
+  <%- include('../../Templates/footer.ejs') %>
   
 
     <!-- Optional JavaScript -->
