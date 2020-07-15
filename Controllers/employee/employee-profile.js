@@ -283,7 +283,9 @@ exports.getProfile = async (req, res) => {
       attributes,
     });
 
-    const data = await query;
+    const profile = await query;
+
+    const data = { ...profile, email: req.session.data.email };
 
     return res.status(200).render('Pages/employeeProfile', {
       pageTitle: 'Talent Pool | Profile',
@@ -318,15 +320,6 @@ exports.getPortfolio = async (req, res) => {
 
     const data = await query;
 
-    if (!data) {
-      req.flash('error', 'Portfolio not found');
-      const {
-        flash: { error },
-      } = req.session;
-      return res.redirect(
-        `/employee/dashboard/${employeeId}?error_status=${error[0]}`,
-      );
-    }
     return res.status(200).render('Pages/employee-portfolio', {
       pageTitle: `Talent Pool | ${
         req.session.firstName ? req.session.firstName : ''
