@@ -1,0 +1,145 @@
+/* Modals */
+<!-- Buttons trigger modals -->
+<button
+  type="button"
+  class="btn btn-lg button"
+  data-toggle="modal"
+  data-target="#paymentSuccessModal"
+>
+  Success
+</button>
+
+<button
+  type="button"
+  class="btn btn-lg button"
+  data-toggle="modal"
+  data-target="#paymentFailedModal"
+>
+  Failed
+</button>
+
+<!-- Modal -->
+<!-- Start of Payment Success Modal -->
+<div
+  class="modal fade"
+  id="paymentSuccessModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div
+      class="modal-content payment-modal mx-auto d-flex flex-column justify-content-center align-items-center p-4"
+    >
+      <!-- <div class="modal-header"> -->
+      <svg
+        width="150px"
+        height="150px"
+        viewBox="0 0 16 16"
+        fill="green"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+        />
+        <path
+          fill-rule="evenodd"
+          d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"
+        />
+      </svg>
+      <h5 class="custom-lead" style="font-weight: 600;">Payment Successful</h5>
+      <!-- </div> -->
+      <!-- <div class="modal-body"> -->
+      <p
+        class="text-center mt-3 text-muted"
+        style="font-weight: 500; font-size: 1rem;"
+      >
+        Transaction ID: <br />
+        <span id="transactionID" class="mt-2">123456</span>
+      </p>
+      <!-- </div> -->
+
+      <button
+        type="button"
+        class="btn hire-btn btn-lg text-white mt-3"
+        style="font-weight: 500; font-size: 0.75rem;"
+        data-dismiss="modal"
+      >
+        Back To Dashboard
+      </button>
+    </div>
+  </div>
+</div>
+<!-- End of Payment Success Modal -->
+
+<!-- Start of Payment Failed Modal -->
+<div
+  class="modal fade"
+  id="paymentFailedModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="Payment Failed"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div
+      class="modal-content payment-modal mx-auto d-flex flex-column justify-content-center align-items-center p-4"
+    >
+      <svg
+        width="150"
+        height="150"
+        viewBox="0 0 223 223"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M111.111 0C89.1355 0 67.6533 6.51655 49.3811 18.7256C31.109 30.9346 16.8676 48.2878 8.45788 68.5907C0.0481423 88.8936 -2.15223 111.234 2.13502 132.788C6.42227 154.341 17.0046 174.139 32.5437 189.679C48.0829 205.218 67.881 215.8 89.4345 220.087C110.988 224.375 133.329 222.174 153.632 213.764C173.934 205.355 191.288 191.113 203.497 172.841C215.706 154.569 222.222 133.087 222.222 111.111C222.222 81.6426 210.516 53.3811 189.679 32.5437C168.841 11.7063 140.58 0 111.111 0V0ZM111.111 208.333C91.8824 208.333 73.0855 202.631 57.0974 191.948C41.1093 181.266 28.6481 166.081 21.2895 148.316C13.931 130.551 12.0057 111.003 15.757 92.144C19.5084 73.2847 28.7679 55.9614 42.3647 42.3646C55.9614 28.7678 73.2848 19.5083 92.144 15.757C111.003 12.0056 130.551 13.931 148.316 21.2895C166.082 28.648 181.266 41.1092 191.948 57.0973C202.631 73.0854 208.333 91.8824 208.333 111.111C208.333 136.896 198.09 161.625 179.858 179.858C161.625 198.09 136.896 208.333 111.111 208.333Z"
+          fill="#DF3429"
+        />
+        <rect
+          x="57.2344"
+          y="68.5776"
+          width="16.0426"
+          height="136.362"
+          rx="5"
+          transform="rotate(-45 57.2344 68.5776)"
+          fill="#DF3429"
+        />
+        <rect
+          x="67.6465"
+          y="164.071"
+          width="16.0426"
+          height="136.362"
+          rx="5"
+          transform="rotate(-135 67.6465 164.071)"
+          fill="#DF3429"
+        />
+      </svg>
+      <h5 class="custom-lead" style="font-weight: 600;">Transaction Failed</h5>
+      <!-- </div> -->
+      <!-- <div class="modal-body"> -->
+      <p
+        class="text-center mt-3 text-muted"
+        style="font-weight: 500; font-size: 1rem;"
+      ></p>
+      <!-- </div> -->
+
+      <button
+        type="button"
+        class="btn hire-btn btn-lg text-white mt-3"
+        style="font-weight: 500; font-size: 0.75rem;"
+        data-dismiss="modal"
+      >
+        Retry
+      </button>
+    </div>
+  </div>
+</div>
+<!-- End of Payment Failed Modal -->
+
+/* Modal Styling */ .payment-modal { /* display: flex; flex-direction: column;
+align-items: center; justify-content: center; */ width: max-content; max-width:
+350px !important; border-radius: 10px; } .payment-modal svg { margin-bottom:
+2rem; }

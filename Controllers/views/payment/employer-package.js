@@ -16,9 +16,139 @@ exports.getAll = async (req, res) => {
 
     //Success Response
     const data = await packages;
-    res.render('pages/eemployer/getAllpackages', {
+    res.render('pages/employer/getAllpackages', {
       pageName: 'Packages',
-      data
+      // data
+      packages: [
+       {
+          id: 1,
+          package_name: "Gold",
+          description: "Yes, this is it, this is the one. Don't overthink it, just click subscribe",
+          price: "50000",
+          package_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+          created_at: null,
+          updated_at: null,
+          features: [
+            {
+               id: 1,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            },
+            {
+               id: 2,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            },
+            {
+               id: 3,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            }
+         ]
+       },
+       {
+          id: 1,
+          package_name: "Gold",
+          description: "Yes, this is it, this is the one. Don't overthink it, just click subscribe",
+          price: "50000",
+          package_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+          created_at: null,
+          updated_at: null,
+          features: [
+            {
+               id: 1,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            },
+            {
+               id: 2,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            },
+            {
+               id: 3,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            }
+         ]
+       },
+       {
+          id: 1,
+          package_name: "Gold",
+          description: "Yes, this is it, this is the one. Don't overthink it, just click subscribe",
+          price: "50000",
+          package_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+          created_at: null,
+          updated_at: null,
+          features: [
+            {
+               id: 1,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            },
+            {
+               id: 2,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            },
+            {
+               id: 3,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            }
+         ]
+       },
+       {
+          id: 1,
+          package_name: "Gold",
+          description: "Yes, this is it, this is the one. Don't overthink it, just click subscribe",
+          price: "50000",
+          package_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+          created_at: null,
+          updated_at: null,
+          features: [
+            {
+               id: 1,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            },
+            {
+               id: 2,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            },
+            {
+               id: 3,
+               description: "Search from System verified Talents",
+               feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
+               created_at: null,
+               updated_at: null,
+            }
+         ]
+       },
+      ]
     })
 
   } catch (error) {
@@ -29,27 +159,28 @@ exports.getAll = async (req, res) => {
 
 exports.packageGet = async (req, res) => {
   try {
-    const { package_id } = req.params;
+    // const { package_id } = req.params;
 
-    const query = await Package.findOne({
-      where: {
-        package_id,
-      },
-      include: {
-        model: Feature,
-        as: 'features'
-      }
-    });
-    if (!query) {
-      req.flash( 'error', 'Package Not Found' )
-      return res.redirect('back')
-    }
+    // const query = await Package.findOne({
+    //   where: {
+    //     package_id,
+    //   },
+    //   include: {
+    //     model: Feature,
+    //     as: 'features'
+    //   }
+    // });
+    // if (!query) {
+    //   req.flash( 'error', 'Package Not Found' )
+    //   return res.redirect('back')
+    // }
 
-    //Success Response
-    const data = await query;
+    // //Success Response
+    // const data = await query;
     res.render('pages/employer/package-detail', {
-      pageName: `${data.package_name} Package`,
-      data
+      pageName: `Package`,
+      // data
+     
     })
   } catch (err) {
       req.flash( 'Error', 'Something went wrong' )
