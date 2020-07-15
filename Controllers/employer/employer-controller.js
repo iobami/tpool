@@ -26,6 +26,7 @@ class Employers {
   // create a static method
   static async create(req, res) {
     // validate the file first
+    let user_id = req.session.userId;
     if (!req.files) {
       return res.status(400).json({
         status: 'error',
@@ -38,6 +39,7 @@ class Employers {
     // validate image function below
     validateimage(file, req, res, 1000000);
     // check for individual information
+
     const {
       employer_name,
       company_category_id,
@@ -48,7 +50,6 @@ class Employers {
       employer_address,
       employer_country,
       website,
-      user_id,
       sex,
       facebook,
       twitter,
@@ -126,9 +127,10 @@ class Employers {
     }
   }
 
-  // update employers profile
+  // update employers profile photo
   static async updateemployer(req, res) {
-    // validate the file files
+    // validate the file
+    let employer_id = req.session.employerId;
     if (!req.files) {
       return res.status(400).json({
         status: 'error',
@@ -138,69 +140,29 @@ class Employers {
     // validation functionction should be he
     const file = req.files.photo;
     validateimage(file, req, res, 1000000);
-    const {
-      // eslint-disable-next-line camelcase
-      employer_name,
-      company_category_id,
-      employer_type,
-      employer_id,
-      description,
-      employer_phone,
-      employer_email,
-      employer_address,
-      employer_country,
-      website,
-      sex,
-      facebook,
-      twitter,
-      linkedin,
-      instagram,
-    } = req.body;
-    const employersInfoUpdate = {
-      employer_name,
-      company_category_id,
-      employer_type,
-      description,
-      employer_phone,
-      employer_email,
-      employer_address,
-      employer_country,
-      employer_photo: 'No image yet',
-      website,
-      sex,
-      facebook,
-      twitter,
-      linkedin,
-      instagram,
-    };
+
     try {
-      const result = await employerss.update(employersInfoUpdate, {
-        where: { employer_id },
-        returning: true,
-        plain: true,
-      });
-      if (result[1] === 1) {
-        // do the file upload and update
-        const result = await cloud.uploader.upload(file.tempFilePath);
-        const { secure_url } = result;
-        // update the image
-        await employerss.update(
-          { employer_photo: secure_url },
-          {
-            where: { employer_id },
-            returning: true,
-            plain: true,
-            force: true,
-          },
-        );
+      const result = await cloud.uploader.upload(file.tempFilePath);
+      const { secure_url } = result;
+      // update the image
+      const photoupdate = await employerss.update(
+        { employer_photo: secure_url },
+        {
+          where: { employer_id },
+          returning: true,
+          plain: true,
+          force: true,
+        },
+      );
+      if (photoupdate[1] === 1) {
         return res.status(200).send({
           status: 'success',
-          message: 'Profile updated',
+          message: 'Profile logo updated successfully',
         });
       }
       return res.status(400).send({
         status: 'error',
-        message: 'An error occured updating profile info',
+        message: 'An error occured updating profile logo',
       });
     } catch (err) {
       res.status(500).send({
@@ -222,7 +184,6 @@ class Employers {
         return res.send('404 error');
       }
       req.user = employerinformation;
-
       // return employerinformation;
     } catch (err) {
       res.status(500).send({
@@ -233,7 +194,8 @@ class Employers {
   }
   static async documentupload(req, res) {
     // upload document
-    const { employer_id, document_name, document_number } = req.body;
+    let employer_id = req.session.employerId;
+    const { document_name, document_number } = req.body;
     if (!req.files) {
       return res.status(400).json({
         status: 'error',
@@ -271,6 +233,16 @@ class Employers {
           message: 'document not uploaded',
         });
       }
+
+      await employerss.update(
+        { verification_status: 'Uploaded' },
+        {
+          where: { employer_id },
+          returning: true,
+          plain: true,
+          force: true,
+        },
+      );
       return res.status(200).json({
         status: 'success',
         message: 'Document successfully uploaded',
@@ -279,6 +251,71 @@ class Employers {
       return res.status(500).json({
         status: 'error',
         message: 'An error has occured,contact administrator',
+      });
+    }
+  }
+
+  static async updateindividual(req, res) {
+    // validate the file files
+    let employer_id = '1490acfe-be96-47cd-8af2-23020d329575';
+    const {
+      employer_name,
+      company_category_id,
+      employer_type,
+      description,
+      employer_phone,
+      employer_email,
+      employer_address,
+      employer_country,
+      website,
+      sex,
+      facebook,
+      twitter,
+      linkedin,
+      instagram,
+    } = req.body;
+    const employersInfoUpdate = {
+      description,
+      website,
+      facebook,
+      twitter,
+      linkedin,
+      instagram,
+      employer_name,
+      company_category_id,
+      employer_type,
+      description,
+      employer_phone,
+      employer_email,
+      employer_address,
+      employer_country,
+      website,
+      sex,
+      facebook,
+      twitter,
+      linkedin,
+      instagram,
+    };
+    try {
+      const result = await employerss.update(employersInfoUpdate, {
+        where: { employer_id },
+        returning: true,
+        plain: true,
+      });
+      if (result[1] === 1) {
+        return res.status(200).send({
+          status: 'success',
+          message: 'Profile updated',
+        });
+      }
+      return res.status(400).send({
+        status: 'error',
+        message: result,
+      });
+    } catch (err) {
+      res.status(500).send({
+        status: 'error',
+        message: 'An error occured updating profile info',
       });
     }
   }

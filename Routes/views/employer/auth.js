@@ -12,10 +12,7 @@ const { registerEmployer } = require('../../../Controllers/auth');
 
 appRoute.get('/employer/login', employerSignIn);
 appRoute.get('/employer/register', employerSignup);
-<<<<<<< HEAD
-=======
 // Employer Register
->>>>>>> cd21d93397e8f81d51ac7ecd418a266177ab4246
 appRoute.post(
   '/employer/register',
   [

@@ -8,6 +8,9 @@ module.exports = {
     //get this token to check for the employer id
     req.session.userId;
     if (!req.session.userId) return res.redirect('/employer/login');
+    //load the company category
+    const compayCat = await company_type.findAll();
+    req.session.companycat = compayCat;
     next();
   },
   auth_validuser: async (req, res, next) => {
@@ -17,8 +20,10 @@ module.exports = {
         where: {
           user_id: req.session.userId,
         },
+        include: [employerss],
       });
       //set the user type session
+      console.log(getuser.dataValues);
       req.session.usertype = getuser.dataValues.role_id;
       req.session.block = getuser.dataValues.role_id;
       if (
@@ -45,12 +50,8 @@ module.exports = {
       if (!getemployer) return res.redirect('/employer/profile/create');
       req.session.employerId = getemployer.dataValues.employer_id;
       req.session.status = getemployer.dataValues.verification_status;
-      // const myobj = {
-      //   Name:getemployer.dataValues.employer_name
-
-      // }
-      // const dta = getemployer.dataValues;
       //actually i can use foreach here or map but guy man don tire
+      //this is not dry at all but we move
       var {
         id,
         CompanyCategoryCategoryId,

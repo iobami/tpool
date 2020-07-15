@@ -46,6 +46,7 @@ getActive.then(getCookie);*/
   employerCreateProfile: (req, res) => {
     res.render('Pages/employer-profile-creation', {
       pageName: 'Create Profile',
+      data: req.session.companycat,
     });
   },
 
