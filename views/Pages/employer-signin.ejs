@@ -43,13 +43,8 @@
                             id="email" 
                             placeholder="abc@gmail.com"
                             value="<%= oldInput.email %>">
-                            <!-- <input type="email" class="form-control" id="email" placeholder="example@gmail.com"
+                          
 
-                                required>
-                            <div class="invalid-feedback">
-                                Your valid email address is required.
-                            </div> -->
-<<<<<<< HEAD
                         </div>
 
 
@@ -62,27 +57,7 @@
                             id="password" 
                             minlength="8" placeholder="at least 8 characters"
                             value="<%= oldInput.password %>">
-                            <!-- <input type="password" class="form-control" id="password" minlength="8"
-=======
-              </div>
-
-              <div class="col-md mb-3 px-0">
-                <label for="password">Password</label>
-                <input
-                  class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid-value' : '' %>"
-                  type="password"
-                  name="password"
-                  id="password"
-                  minlength="8"
-                  placeholder="at least 8 characters"
-                  value="<%= oldInput.password %>"
-                />
-                <!-- <input type="password" class="form-control" id="password" minlength="8"
->>>>>>> 53f465b7ee1775e3bbf1f1f28c75e38e00ac456f
-                                placeholder="at least 8 characters" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Your have not entered a correct password.
-                            </div> -->
+                 
               </div>
               <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
