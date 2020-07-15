@@ -12,6 +12,11 @@
 
     <main>
         <div class="container my-5 shadow py-5">
+            <% if (errorMessage.length > 0) { %>
+                <div role="alert" class="alert alert-danger text-center user-message user-message--error"><%= errorMessage %></div>
+            <% }if (success && success.length > 0) { %>
+                <div role="alert" class="alert alert-success text-center user-message user-message--error"><%= success %></div>
+            <% } %>
             <p class="start-text text-center">Let’s get started with a few details about you</p>
 
             <!-- progress bar starts -->
@@ -37,7 +42,7 @@
 
             <!-- progress bar ends -->
 
-            <form id="employeeProfileCreation" action="/employee/profile/create" method="POST" class="">
+            <form id="employeeProfileCreation" action="/employee/profile/create" method="POST" enctype="multipart/form-data" class="">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <h4 class="form-title mb-4">Personal Information</h4>
                 <div class="form-row">
@@ -64,7 +69,7 @@
                     </div>
                     <div id="HNGID" class="form-group col-md-6">
                         <label class="hngIdLabel">HNG ID</label>
-                        <input type="number" class="HNGID form-control" disabled placeholder="" name="hngId" required>
+                        <input type="text" class="HNGID form-control" disabled placeholder="" name="hngId" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -95,7 +100,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>Phone Number</label>
-                        <input type="number" class="form-control" placeholder="" name="phoneNo" required>
+                        <input type="phone" class="form-control" placeholder="" name="phoneNo" required>
                     </div>
                 </div>
                 <div class="form-row">

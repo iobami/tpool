@@ -14,7 +14,6 @@ const csrf = require('csurf');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
 // eslint-disable-next-line no-unused-vars
-const { errorResMsg } = require('./Utils/response');
 
 dotenv.config();
 // eslint-disable-next-line import/order
@@ -84,6 +83,8 @@ const getAllEmployees = require('./Routes/employer/get-employees');
 const employerDashboard = require('./Routes/employer/employer-dashboard');
 
 // IMPORT THE VIEWS ROUTES
+const adminPackages = require('./Routes/views/payment/admin_package');
+const employerPackages = require('./Routes/views/payment/employer_package');
 const appRoute = require('./Routes/views');
 const adminDashRoute = require('./Routes/views/admin/dashboard');
 const employeeAuthRoute = require('./Routes/views/employee/auth');
@@ -99,6 +100,7 @@ const adminAuthRoute = require('./Routes/views/admin/auth');
 const employerMetrics = require('./Routes/views/employer/metrics');
 const employerRecommendation = require('./Routes/views/employer/recommendation');
 const verifyModal = require('./Routes/views/admin/verifyModal');
+const messageRoute = require('./Routes/views/message/message');
 
 const app = express();
 
@@ -107,7 +109,11 @@ app.use(cors());
 const csrfProtection = csrf();
 // Set Security HTTP Headers
 app.use(helmet());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  }),
+);
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -131,7 +137,7 @@ app.use(flash());
 // });
 
 app.use(fileupload({ useTempFiles: true }));
-db.sequelize.sync().then(() => {
+db.sequelize.sync({}).then(() => {
   seedSuperAdmin();
 });
 
@@ -161,13 +167,18 @@ app.use(csrfProtection);
 app.use((req, res, next) => {
   const token = req.csrfToken();
   // console.log(token);
+  // TODO: ask why this is here
   res.cookie('csrf-token', token);
   res.locals.csrfToken = req.csrfToken();
   next();
 });
 // express body parser
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(
+  express.urlencoded({
+    extended: false,
+  }),
+);
 // Cookie Parser
 app.use(cookieParser());
 // Serving static files
@@ -188,7 +199,7 @@ app.use('/v1/employee', employeeSkillsRoutes);
 app.use('/v1/employee', employeeSearchRoutes);
 
 // employers route goes here
-app.use('/v1/employer', employerRoute);
+app.use('/employer', employerRoute);
 app.use('/v1/employer', employerUpgradeRoute);
 app.use('/v1/employer', employerReviews);
 app.use('/v1/employer', employerTransaction);
@@ -217,7 +228,7 @@ app.use('/v1/team', teamRoutes);
 
 // auth
 app.use('/v1/auth', googleAuth);
-app.use('/v1/auth', auth);
+app.use('/auth', auth);
 
 // app.use('/v1/admin', adminRoute); // admin
 app.use('/v1/admin', adminManagementRoute); // super admin
@@ -233,7 +244,7 @@ app.use(appRoute);
 // app.use(adminRoute);
 app.use(employeeAuthRoute);
 app.use(employeeDashboardRoute);
-app.use(employerAuthRoute);
+app.use(employerAuthRoute); // mark this
 app.use(employerDashboardRoute);
 app.use(adminDashRoute);
 app.use(topTalentsRoute);
@@ -245,6 +256,9 @@ app.use(adminAuthRoute);
 app.use(employerMetrics);
 app.use(employerRecommendation);
 app.use(verifyModal);
+app.use(adminPackages);
+app.use(employerPackages);
 app.use(googleAuth);
+app.use(messageRoute);
 
 module.exports = app;

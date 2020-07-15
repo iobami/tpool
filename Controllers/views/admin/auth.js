@@ -8,8 +8,11 @@ module.exports = {
   // },
 
   adminLogin: (req, res) => {
+    // if (req.session.userRole === 'ROL-ROL-ADMIN' && req.session.userRole === 'SUPERADMIN') {
+    //   res.redirect('/admin/dashboard');
+    // }
     if (req.session.isLoggedIn) {
-      res.redirect('/admin-dashboard');
+      res.redirect('/admin/dashboard');
     }
 
     let message = req.flash('error');

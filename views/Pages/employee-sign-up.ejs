@@ -5,8 +5,8 @@
 <head>
     <%- include('../Templates/head') %>
 
-    <link rel="stylesheet" href="../styles/custom-css/employee-signUp.css">
-    <link rel="stylesheet" href="styles/custom-css/employee-signUp-signIn.css">
+    <link rel="stylesheet" href="/styles/custom-css/employee-signUp.css">
+    <link rel="stylesheet" href="/styles/custom-css/employee-signUp-signIn.css">
 
     <link rel="stylesheet" href="/styles/custom-css/employee-signUp.css">
     <link rel="stylesheet" href="/styles/custom-css/employee-signUp-signIn.css">
@@ -46,14 +46,20 @@
 
                 <div class="tab-content" id="nav-tabContent">
                     <% if(error && error.length > 0) { %>
-                        <div class="alert alert-danger alert-dismissible deposit-alert" role="alert">
+                        <div class="alert alert-danger alert-dismissible fade show deposit-alert" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">
+                                &times;
+                            </button>
                             <div class="container">
                               <%- error %> 
                             </div>
                         </div>
                     <% }if(errors && errors.length > 0){ %>
                       <% for(var i=0; i < errors.length; i++) { %>
-                        <div class="alert alert-danger alert-dismissible deposit-alert" role="alert">
+                        <div class="alert alert-danger alert-dismissible fade show deposit-alert" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">
+                                &times;
+                            </button>
                           <div class="container">
                             <%- errors[i].msg %> 
                           </div>
@@ -157,7 +163,7 @@
                                         <div class="modal-content">
                                         <div class="modal-body d-flex flex-column align-items-center">
                                             <div>
-                                                <img src="../img/logo.svg" alt="logo" />
+                                                <img src="/img/logo.svg" alt="logo" />
                                             </div>
                                             <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z" fill="#337AB7"/>
@@ -188,7 +194,9 @@
         
                         <div class="row mt-2">
                             <div class="col-md">
-                                <button type="button" class="btn  btn-block  facebook-btn py-3 my-1"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>sign up with Github</button>
+                                <a href="/auth/employee/github">
+                                    <button type="button" class="btn  btn-block  facebook-btn py-3 my-1"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>sign up with Github</button>
+                                </a>
                             </div>
         
                             <div class="col-md">
@@ -198,7 +206,6 @@
                             </div>
                         </div>
         
-                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee-sign-in" class="login-link">Sign In.</a></p>
                     </div>
 
                     <div class="tab-pane fade" id="new-user" role="tabpanel" aria-labelledby="new-user-tab">
@@ -299,7 +306,7 @@
                                         <div class="modal-content">
                                         <div class="modal-body d-flex flex-column align-items-center">
                                             <div>
-                                                <img src="../img/logo.svg" alt="logo" />
+                                                <img src="/img/logo.svg" alt="logo" />
                                             </div>
                                             <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z" fill="#337AB7"/>
@@ -330,7 +337,9 @@
         
                         <div class="row mt-2">
                             <div class="col-md">
-                                <button type="button" class="btn  btn-block  facebook-btn py-3 my-1"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>sign up with Github</button>
+                                <a href="/auth/employee/github">
+                                    <button type="button" class="btn  btn-block  facebook-btn py-3 my-1"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>sign up with Github</button>
+                                </a>
                             </div>
         
                             <div class="col-md">
@@ -342,7 +351,7 @@
                         </div>
                        
         
-                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee-sign-in" class="login-link">Sign In.</a></p>
+                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee/login" class="login-link">Sign In.</a></p>
                     </div>
                 </div>
             </section>
@@ -352,6 +361,15 @@
 </main>
 
 <%- include('../Templates/footer') %>
+<%- include('../Templates/script') %>
+<script>
+    // Getting verify status to know if registration is successful or not
+    const verifyStatus = `<%- success %>`;
+    if (verifyStatus == 'Verification email sent!') {
+        // Displaying the modal
+      $('#exampleModal').modal();
+    }
+  </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 <!-- <script type="module" src="js/custom-js/employee-signUp.js"></script> -->
