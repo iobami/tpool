@@ -98,14 +98,11 @@ const adminAuthRoute = require('./Routes/views/admin/auth');
 const employerMetrics = require('./Routes/views/employer/metrics');
 const employerRecommendation = require('./Routes/views/employer/recommendation');
 const verifyModal = require('./Routes/views/admin/verifyModal');
-<<<<<<< HEAD
 const teamRoute = require('./Routes/views/team/index');
-=======
 const messageRoute = require('./Routes/views/message/message');
 
 const csrfProtection = csrf();
 
->>>>>>> develop-ejs
 const app = express();
 
 app.locals.moment = require('moment');
