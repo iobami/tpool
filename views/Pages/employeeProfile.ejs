@@ -3,6 +3,14 @@
 
 <head>
     <%- include('../includes/employeeProfileHead') %>
+    <style>
+        .mr-2 img {
+            vertical-align: middle;
+            border-style: none;
+            max-width: 60px;
+            max-height: 60px;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,18 +46,35 @@
                 <div class="row">
                     <div class="col-md-7">
                         <div class="card px-4 py-5 bio">
-                            <img src="" alt="" id="employee-img">
+                            <div class="profile-container">
+                                <!-- <img src="/img/Tobi.jpg" alt="" id="employee-img" class="img-fluid"> -->
+                                <img src="<%= data.image %>" alt="" id="employee-img" class="img-fluid">
+                            </div>
                             <div class="intern-main text-center mt-4">
-                                <h3 class="employeeName"></h3>
-                                <p class="employeeSkill"></p>
+                                <h3 class="employeeName"><%= data.last_name %> <%= data.first_name %>
+                                    <span>
+                                        <img src="../img/iprofile/ic_sharp-verified.svg" alt="">
+                                    </span>
+                                </h3>
+                                <p class="employeeSkill"><%= data.track %></p>
                             </div>
                             <hr>
                             <div class="intern-other">
-                                <p class="employeeLocation">
-                                    <span><img src="/img/iprofile/carbon_location.svg" alt=""></span>
+                                <p class="employeeUsername">
+                                    <span><i class="pr-2 fa fa-user-circle" aria-hidden="true"></i></span>
+                                    <%= data.username %>
+                                </p>
+                                <p class="employeePhonenumber">
+                                    <span><i class="pr-2 fa fa-phone" aria-hidden="true"></i></i></span>
+                                    <%= data.phone_no %>
                                 </p>
                                 <p class="employeeEmail">
-                                    <span><img src="/img/iprofile/carbon_email.svg" alt=""></span>
+                                    <span><i class="pr-2 fa fa-envelope" aria-hidden="true"></i></span>
+                                    <%= data.email %>
+                                </p>
+                                <p class="employeeLocation">
+                                    <span><i class="pr-2 fa fa-map-marker" aria-hidden="true"></i></span>
+                                    <%= data.location %>
                                 </p>
                                 <p id="intern-id" class="ml-4"></p>
                                 <p id="availability" class="ml-4"></p>
@@ -69,10 +94,10 @@
                                                 <div class="col-md-6 formCol">
                                                     <div class="form-group">
                                                         <label for="first name" class="super-label">
-                                                            First name
+                                                            Firstname
                                                         </label>
                                                         <div style="position: relative;">
-                                                            <input type="text" placeholder="Genesis"
+                                                            <input type="text" placeholder="<%= data.first_name %>"
                                                                 class="form-control" id="first-name"
                                                                 aria-describedby="nameHelp">
                                                         </div>
@@ -82,9 +107,9 @@
                                                     <div class="form-group">
                                                         <div style="position: relative;">
                                                             <label for="lastname" class="super-label">
-                                                                Last name
+                                                                Lastname
                                                             </label>
-                                                            <input type="text" placeholder="Anosike"
+                                                            <input type="text" placeholder="<%= data.last_name %>"
                                                                 class="form-control" id="last-name"
                                                                 aria-describedby="nameHelp">
                                                         </div>
@@ -96,7 +121,7 @@
                                                             <label for="email" class="super-label">
                                                                 Email
                                                             </label>
-                                                            <input type="email" placeholder="anosikegenesis@gmail.com"
+                                                            <input type="email" placeholder="<%= data.email %>"
                                                                 class="form-control" id="email"
                                                                 aria-describedby="emailHelp">
                                                         </div>
@@ -108,7 +133,7 @@
                                                             <label for="location" class="super-label">
                                                                 Location
                                                             </label>
-                                                            <input type="text" placeholder="Ibadan, Nigeria"
+                                                            <input type="text" placeholder="<%= data.location %>"
                                                                 class="form-control" id="location"
                                                                 aria-describedby="locationHelp">
                                                         </div>
@@ -148,7 +173,7 @@
                                                             <label class="form-check-label" for="exampleCheck1">Mobile
                                                                 Development</label>
                                                         </div>
-
+<!-- 
                                                         <label class="form-group form-check">
                                                             <input type="checkbox" id="Backend"
                                                                 value="Backend Development">
@@ -179,7 +204,7 @@
                                                                 Mobile Development
                                                             </label>
                                                             <span class="checkmark"></span>
-                                                        </label>
+                                                        </label> -->
 
                                                     </div>
                                                     <div class="col-md-6">
@@ -231,15 +256,70 @@
                         <div class="upload-section">
                             <div class="row d-flex flex-column">
                                 <div class="col-md-12 mb-5">
-                                    <div class="card p-3 curriculum">
+                                    <div id="portfolio" class="card p-3 curriculum">
                                         <div class="section-title py-2">
                                             <div class="section-name">
                                                 <h4>Portfolio</h4>
                                             </div>
-                                            <ul class='portfolios'>
-                                                <!-- Dynamic Content Goes Here -->
-                                            </ul>
                                         </div>
+                                        <ul class='portfolios'>
+                                            <!-- Dynamic Content Goes Here -->
+
+                                            <li>
+                                                <div class="list-item">
+                                                    Fund My Laptop
+                                                </div>
+                                                <div class="list-trash">
+                                                    <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
+                                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13 12.8789H14.5V21.2886H13V12.8789Z" fill="#084482" />
+                                                        <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
+                                                            fill="#084482" />
+                                                        <path
+                                                            d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
+                                                            fill="#084482" />
+                                                        <path d="M13 5.87109H19V7.27271H13V5.87109Z" fill="#084482" />
+                                                    </svg>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-item">
+                                                    TalentPool
+                                                </div>
+                                                <div class="list-trash">
+                                                    <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
+                                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13 12.8789H14.5V21.2886H13V12.8789Z" fill="#084482" />
+                                                        <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
+                                                            fill="#084482" />
+                                                        <path
+                                                            d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
+                                                            fill="#084482" />
+                                                        <path d="M13 5.87109H19V7.27271H13V5.87109Z" fill="#084482" />
+                                                    </svg>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="list-item">
+                                                    MedBuzz
+                                                </div>
+                                                <div class="list-trash">
+                                                    <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
+                                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13 12.8789H14.5V21.2886H13V12.8789Z" fill="#084482" />
+                                                        <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
+                                                            fill="#084482" />
+                                                        <path
+                                                            d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
+                                                            fill="#084482" />
+                                                        <path d="M13 5.87109H19V7.27271H13V5.87109Z" fill="#084482" />
+                                                    </svg>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
 
@@ -283,6 +363,128 @@
                                             <ul class='lists'>
                                                 <p id="skill-message"></p>
                                                 <!-- Dynamic Content Goes Here -->
+
+                                                <li>
+                                                    <div class="list-item">
+                                                        <span class="mr-2">
+                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
+                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
+                                                        </span>
+                                                        HTML 5
+                                                    </div>
+                                                    <div class="list-trash">
+                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
+                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path
+                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
+                                                                fill="#084482" />
+                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
+                                                                fill="#084482" />
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="list-item">
+                                                        <span class="mr-2">
+                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
+                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
+                                                        </span>
+                                                        CSS 3
+                                                    </div>
+                                                    <div class="list-trash">
+                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
+                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path
+                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
+                                                                fill="#084482" />
+                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
+                                                                fill="#084482" />
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="list-item">
+                                                        <span class="mr-2">
+                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
+                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
+                                                        </span>
+                                                        JavaScript
+                                                    </div>
+                                                    <div class="list-trash">
+                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
+                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path
+                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
+                                                                fill="#084482" />
+                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
+                                                                fill="#084482" />
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="list-item">
+                                                        <span class="mr-2">
+                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
+                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
+                                                        </span>
+                                                        Bootstrap 4
+                                                    </div>
+                                                    <div class="list-trash">
+                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
+                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path
+                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
+                                                                fill="#084482" />
+                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
+                                                                fill="#084482" />
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="list-item">
+                                                        <span class="mr-2">
+                                                            <!-- <img src="../img/iprofile/ic_sharp-verified.svg" alt=""> -->
+                                                            <i class="fa fa-code-fork" aria-hidden="true"></i>
+                                                        </span>
+                                                        Angular
+                                                    </div>
+                                                    <div class="list-trash">
+                                                        <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
+                                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M13 12.8789H14.5V21.2886H13V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
+                                                                fill="#084482" />
+                                                            <path
+                                                                d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
+                                                                fill="#084482" />
+                                                            <path d="M13 5.87109H19V7.27271H13V5.87109Z"
+                                                                fill="#084482" />
+                                                        </svg>
+                                                    </div>
+                                                </li>
+
                                             </ul>
                                         </div>
                                     </div>
@@ -299,12 +501,12 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/bootstrap-js/jquery.js"></script>
     <script src="/js/bootstrap-js/popper.js"></script>
-    <script src="/js/custom-js/employees-profile.js"></script>
+    <!-- <script src="/js/custom-js/employees-profile.js"></script> -->
     <script src="/js/custom-js/modal.js"></script>
     <script src="/js/bootstrap-js/bootstrap.js"></script>
     <script src="/js/custom-js/side-nav.js"></script>
-    <script src="/js/custom-js/eprofile.js"></script>
-    <script src="/js/custom-js/employee-portfolio.js"></script>
+    <!-- <script src="/js/custom-js/eprofile.js"></script> -->
+    <!-- <script src="/js/custom-js/employee-portfolio.js"></script> -->
 </body>
 
 </html>
