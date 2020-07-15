@@ -17,21 +17,35 @@
     <div
       class="container d-flex flex-column align-items-center justify-content-center bt-"
     >
-      <div class="links d-flex align-items-center justify-content-between my-4">
-        <a href="../packages" class="btn btn-outline-primary">
-          Return to All Packages</a
+      <div class="links d-flex align-items-center justify-content-between my-3">
+        <a href="../packages" class="btn btn-sm btn-outline-primary">
+          Back to All Packages</a
         >
 
         <!-- Update Package Button -->
-        <a href="" class="btn btn-info mx-2"> Edit Package</a>
+        <button
+          type="button"
+          class="btn btn-sm btn-info mx-2"
+          data-toggle="modal"
+          data-target="#updatePackageModal"
+        >
+          Update Package
+        </button>
 
         <!-- Delete Package Button -->
-        <a href="" class="btn btn-danger mx-2">Delete Package</a>
+        <button
+          type="button"
+          class="btn btn-sm btn-danger"
+          data-toggle="modal"
+          data-target="#deletePackageModal"
+        >
+          Delete Package
+        </button>
       </div>
-      <div class="package-details mt-5">
-        <h2 class="text-center">
+      <div class="package-details mt-4">
+        <h4 class="text-center">
           Package Details: <%- data.package.package_name %>
-        </h2>
+        </h4>
 
         <div class="container-fluid">
           <p class="details">
@@ -47,6 +61,127 @@
       </div>
     </div>
     <div id="body__click"></div>
+
+    <!-- Update Package Modal -->
+    <div
+      class="modal fade"
+      id="updatePackageModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title">
+              Update "<%- data.package.package_name %>"
+            </h5>
+            <button
+              type="button"
+              class="close ml-0"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form
+              action="/admin/packages/<%- data.package.package_id %>/update"
+              method="post"
+              class="p-3 m-3 mx-auto mw-75"
+            >
+              <div class="form-group mb-3 mx-auto">
+                <label for="package_name">Package Name</label>
+                <input
+                  class="form-control-lg"
+                  type="text"
+                  name="package_name"
+                  id="package_name"
+                  value="<%- data.package.package_name %>"
+                  placeholder="Write a Package Name."
+                />
+              </div>
+              <div class="form-group mb-3 mx-auto">
+                <label for="price">Monthly Price</label>
+                <input
+                  class="form-control-lg"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  id="price"
+                  name="price"
+                  value="<%- data.package.price %>"
+                  placeholder="Enter Price"
+                />
+              </div>
+              <div class="form-group mb-3 mx-auto">
+                <label for="description">Package Description</label>
+                <textarea
+                  class="form-control-lg"
+                  name="description"
+                  id="description"
+                  placeholder="Write a Package Description."
+                >
+<%- data.package.description %></textarea
+                >
+              </div>
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+              <button type="submit" class="btn btn-block btn-primary mt-3">
+                Update Package
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Update Package Modal -->
+
+    <!-- Delete Package Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="deletePackageModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title text-danger" id="deleteModalLabel">
+              Delete "<%- data.package.package_name %>"?
+            </h5>
+            <button
+              type="button"
+              class="close ml-0"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body my-2">
+            <h6 class="text-center">This cannot be undone.</h6>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <a
+              href="/admin/packages/<%- data.package.package_id %>/delete"
+              class="btn btn-danger mx-2"
+              >Delete Package</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
     <style>
       form {
         max-width: 100%;
@@ -66,15 +201,6 @@
 
       textarea {
         height: 10rem !important;
-      }
-
-      .card-body {
-        min-height: 3rem !important;
-        max-height: max-content;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
       }
 
       button.hire-btn {

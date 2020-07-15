@@ -17,8 +17,12 @@
 
       <div class="container-fluid">
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-          <li class="nav-item m-2">
+        <ul
+          class="nav nav-tabs mb-4 d-flex justify-content-center"
+          id="myTab"
+          role="tablist"
+        >
+          <li class="nav-item m-2 mx-4">
             <a
               class="nav-link active"
               id="view-packages-tab"
@@ -30,7 +34,7 @@
               >View Packages</a
             >
           </li>
-          <li class="nav-item m-2">
+          <li class="nav-item m-2 mx-4">
             <a
               class="nav-link"
               id="create-package-tab"
@@ -76,11 +80,9 @@
             role="tabpanel"
             aria-labelledby="view-packages-tab"
           >
-            <h6 class="text-center">View Packages</h6>
-
             <div class="container">
               <div class="row">
-                <% if (data || data.length >= 1) { %> <%
+                <% if (data && data.length >= 1) { %> <%
                 data.forEach(function(package) { %>
                 <div class="col-sm-6 col-md-4">
                   <div class="card-deck mb-3 text-center">
@@ -113,7 +115,9 @@
                   </div>
                 </div>
                 <% }); %> <% } else { %>
-                <h3>No package</h3>
+                <h4 class="my-4 text-muted text-center">
+                  No packages found, <br /><br />Create a Package.
+                </h4>
                 <% } %>
               </div>
             </div>
@@ -125,7 +129,6 @@
             role="tabpanel"
             aria-labelledby="create-package-tab"
           >
-            <h6 class="text-center">Create Package</h6>
             <form
               action="/admin/packages/create"
               method="post"
