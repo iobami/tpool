@@ -30,7 +30,7 @@ let imageData;
                 } else if (form.checkValidity()) {
                     event.preventDefault();
 
-                    if (documentsArray.length === 5) {
+                    if (documentsArray.length === 3) {
                         fileCountError.style.visibility = 'visible';
                         return event.preventDefault();
                     }
