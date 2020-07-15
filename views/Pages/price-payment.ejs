@@ -4,7 +4,7 @@
 <head>
     <!-- Required meta tags -->
     <%- include('../Templates/head.ejs') %>
-    <link rel="stylesheet" href="styles/custom-css/pricePayment.css">
+    <link rel="stylesheet" href="/styles/custom-css/pricePayment.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link
         rel="stylesheet"
@@ -24,9 +24,25 @@
                     <div class="content">
                         <div class="text-center">
                             <h3>Basic</h3>
-                            <p><span>$849</span>/month</p>
+                            <p><span>$20</span>/month</p>
                         </div>
-
+                        <div class="form-group">
+                                <label for="numMonths" class="subscription" style="text-align: center;">Number of months you want to subscribe for</label>
+                                    <select class="form-control" id="numMonths">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                      <option>10</option>
+                                      <option>11</option>
+                                      <option>12</option>
+                                    </select>
+                                  </div>
                         <ul>
                             <li><i class="fa fa-check"></i> Internal assistant to help you find talent faster</li>
                             <li><i class="fa fa-check"></i> Free access to our collaboration tool for your team.</li>
@@ -42,28 +58,42 @@
                             <h4>Summary</h4>
                             <p class="space-between"><span>Subtotal</span><span>$849</span></p>
                             <p class="space-between"><span>Service Fee</span><span>$20</span></p>
-                            <p class="space-between"><span>Total</span><span>$869</span></p>
+                            <p class="space-between"><span>Total</span><span id="total">$869</span></p>
                         </div>
                         <div class="bottom-bar__content">
                             <h4>Payment Methods</h4>
                             <div class="payment-cards">
-                                <div class="img-container" onclick="toggleForm('visa-card__form')">
+                                <div class="img-container">
                                     <img src="img/visa-cropped__image.png" />
                                 </div>
-                                <div class="img-container" onclick="toggleForm('master-card__form')">
+                                <div class="img-container">
                                     <img src="img/mastercard-image.png" />
                                 </div>
-                                <div class="img-container" onclick="toggleForm('paypal__form')">
+                                <div class="img-container">
                                     <img src="img/paypal-image.png" />
                                 </div>
                             </div>
                             <div id="visa-card__form" class="form animate__animated animate__fadeIn show-form">
-                                <form id="devugo-form" action="/action_page.php">
+                                <form id="devugo-form" action="/action_page.php" onsubmit="handleSubmit();">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="card-number">CARD NUMBER*</label>
-                                                <input type="number" name="card-number" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control" id="card-number">
+                                                <input 
+                                                    type="text" name="card-number" 
+                                                    inputmode="numeric" 
+                                                    id="card-number" 
+                                                    onkeypress="return cardNumberKey(event);"
+                                                    maxlength="19"
+                                                    onkeyup="addHyphen(this);"
+                                                    placeholder="XXXX-XXXX-XXXX-XXXX" 
+                                                    class="form-control" 
+                                                    id="card-number1" 
+                                                    maxlength="19"
+                                                    minlength="19"
+                                                    title="Minumum of 16 digits allowed"
+
+                                                    >
                                             </div>
                                         </div>
                                     </div>
@@ -77,12 +107,37 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="number" placeholder="03" class="form-control" id="expiration-date__month">
+                                                <input 
+                                                type="text"
+                                                min="0"
+                                                placeholder="Month (e.g. 03)" 
+                                                class="form-control"
+                                                onkeypress="return cardNumberKey(event);"
+                                                maxlength="2"
+                                                id="expiration-date__month"
+                                                pattern="[0-9]*"
+                                                maxlength="2"
+                                                minlength="2"
+                                                title="Minumum of 2 digits allowed"
+                                                >
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="number" min="2020" class="form-control" placeholder="-- Year --" id="expiration-date__year">
+                                                <input 
+                                                type="text" 
+                                                min="2020"
+                                                class="form-control"
+                                                onkeypress="return cardNumberKey(event);"
+                                                maxlength="4"
+                                                placeholder="-- Year --" 
+                                                id="expiration-date__year"
+                                                pattern="[0-9]*"
+                                                maxlength="4"
+                                                minlength="4"
+                                                title="Minumum of 4 digits allowed"
+
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -90,99 +145,18 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
                                                 <label for="cvv">CVV*</label>
-                                                <input placeholder="039" type="number" class="form-control" id="cvv">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-default">Pay Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div id="master-card__form" class="form animate__animated animate__fadeIn">
-                                <form action="/action_page.php">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <label for="card-number">CARD NUMBER*</label>
-                                                <input type="text" name="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control" id="card-number">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="">
-                                                <label for="expiration-date">EXPIRATION DATE*</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" placeholder="03" class="form-control" id="expiration-date__month">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="number" min="2020" class="form-control" placeholder="-- Year --" id="expiration-date__year">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="cvc">CVC*</label>
-                                                <input placeholder="039" type="text" class="form-control" id="cvc">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-default">Pay Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div id="paypal__form" class="form animate__animated animate__fadeIn">
-                                <form action="/action_page.php">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <label for="card-number">CARD NUMBER*</label>
-                                                <input type="text" name="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control" id="card-number">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="">
-                                                <label for="expiration-date">EXPIRATION DATE*</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" placeholder="03" class="form-control" id="expiration-date__month">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="number" min="2020" class="form-control" placeholder="-- Year --" id="expiration-date__year">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <label for="cvc">CVC*</label>
-                                                <input placeholder="039" type="text" class="form-control" id="cvc">
+                                                <input placeholder="039"
+                                                min="0"
+                                                type="text" 
+                                                onkeypress="return cardNumberKey(event);"
+                                                maxlength="3"
+                                                class="form-control" id="cvv"
+                                                pattern="[0-9]*"
+                                                maxlength="3"
+                                                minlength="3"
+                                                title="Minumum of 3 digits allowed"
+
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -218,6 +192,6 @@
     <script>
         AOS.init();
     </script>
-    <script src="js/custom-js/pricePayment.js"></script>
+    <script src="/js/custom-js/pricePayment.js"></script>
   </body>
 </html>

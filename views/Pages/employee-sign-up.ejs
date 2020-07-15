@@ -4,18 +4,13 @@
 
 <head>
     <%- include('../Templates/head') %>
-     <!-- BEGIN Pre-requisites -->
-     <script src="https://apis.google.com/js/platform.js" async defer></script>
-     <meta name="google-signin-client_id"
-         content="1044934768285-u3jh3gs8dv4u21uie9o32cbu0gv2erh4.apps.googleusercontent.com">
-     <!-- END Pre-requisites -->
-    <link rel="stylesheet" href="../styles/custom-css/employee-signUp.css">
-    <link rel="stylesheet" href="styles/custom-css/employee-signUp-signIn.css">
-        <!-- BEGIN Pre-requisites -->
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id"
-            content="1044934768285-u3jh3gs8dv4u21uie9o32cbu0gv2erh4.apps.googleusercontent.com">
-        <!-- END Pre-requisites -->
+
+    <link rel="stylesheet" href="/styles/custom-css/employee-signUp.css">
+    <link rel="stylesheet" href="/styles/custom-css/employee-signUp-signIn.css">
+
+    <link rel="stylesheet" href="/styles/custom-css/employee-signUp.css">
+    <link rel="stylesheet" href="/styles/custom-css/employee-signUp-signIn.css">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -50,13 +45,34 @@
                 </div>
 
                 <div class="tab-content" id="nav-tabContent">
+                    <% if(error && error.length > 0) { %>
+                        <div class="alert alert-danger alert-dismissible fade show deposit-alert" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">
+                                &times;
+                            </button>
+                            <div class="container">
+                              <%- error %> 
+                            </div>
+                        </div>
+                    <% }if(errors && errors.length > 0){ %>
+                      <% for(var i=0; i < errors.length; i++) { %>
+                        <div class="alert alert-danger alert-dismissible fade show deposit-alert" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">
+                                &times;
+                            </button>
+                          <div class="container">
+                            <%- errors[i].msg %> 
+                          </div>
+                      </div>
+                      <% } } %>
                     <div class="tab-pane fade show active" id="intern" role="tabpanel" aria-labelledby="intern-tab">
-                        <form class="needs-validation" novalidate>
+                        <form class="needs-validation" action="/employee/register" method="POST" novalidate>
                             <div class="row">
+                                <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                                 <div class="col-md mb-3">
                                     <label for="fname">First Name</label>
                                     <div class="input-group">
-                                        <input name="fname" type="text" class="form-control w-100" id="fname" placeholder="e.g. John" required>
+                                        <input name="fname" type="text" name="firstname" class="form-control w-100" id="fname" placeholder="e.g. John" required>
                                         <div id="invalid">
                                         </div>
                                     </div>
@@ -64,7 +80,7 @@
                                 <div class="col-md mb-3">
                                     <label for="lname">Last Name</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control w-100" id="lname" placeholder="e.g. Doe" required>
+                                        <input type="text" name="lastname" class="form-control w-100" id="lname" placeholder="e.g. Doe" required>
                                         <div id="invalidL">
                                         </div>
                                     </div>
@@ -91,13 +107,13 @@
                             <div class="row">
                                 <div class="col-md mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com" required>
                                     <div id="invalidE">
                                     </div>
                                 </div>
                                 <div class="col-md mb-3">
                                     <label for="phone">Phone number</label>
-                                    <input type="phone" class="form-control" id="phone" maxlength="16" placeholder="e.g. 08023414785" required>
+                                    <input type="phone" name="phone" class="form-control" id="phone" maxlength="16" placeholder="e.g. 08023414785" required>
                                     <div id="invalidP">
                                     </div>
                                 </div>
@@ -113,13 +129,13 @@
                             <div class="row">
                                 <div class="col-md mb-3">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
+                                    <input type="password" name="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
                                     <div id="invalidPass">
                                     </div>
                                 </div>
                                 <div class="col-md mb-3">
                                     <label for="confirmPassword">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirmPassword" minlength="8" placeholder="at least 8 characters" required>
+                                    <input type="password" name="confirm_password" class="form-control" id="confirmPassword" minlength="8" placeholder="at least 8 characters" required>
                                     <div id="invalidPass2">
                                     </div>
                                 </div>
@@ -128,7 +144,7 @@
                             <div class="row">
                                 <div class="col my-1">
                                     <div class="custom-control custom-checkbox mr-sm-2" >
-                                        <input type="checkbox" class="custom-control-input" id="terms-policy">
+                                        <input type="checkbox" name="terms" class="custom-control-input" id="terms-policy">
                                         <label class="custom-control-label" for="terms-policy">I agree to the <a href="#" class="login-link">Terms and Conditions</a></label>
                                         <div id="invalidCheck">
                                         </div>
@@ -147,7 +163,7 @@
                                         <div class="modal-content">
                                         <div class="modal-body d-flex flex-column align-items-center">
                                             <div>
-                                                <img src="../img/logo.svg" alt="logo" />
+                                                <img src="/img/logo.svg" alt="logo" />
                                             </div>
                                             <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z" fill="#337AB7"/>
@@ -176,28 +192,30 @@
                             </div>
                         </div>
         
-                        <div class="row mt-2 justify-content-center">
-                            <!-- <div class="col-md">
-                                <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
-                                        class="fab fa-github pr-2"></i>Login with Github</button>
-                            </div> -->
-                         
-
-                            <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
-                            data-onsuccess="onSignIn">
+                        <div class="row mt-2">
+                            <div class="col-md">
+                                <a href="/auth/employee/github">
+                                    <button type="button" class="btn  btn-block  facebook-btn py-3 my-1"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>sign up with Github</button>
+                                </a>
+                            </div>
+        
+                            <div class="col-md">
+                                <a href="/auth/employee/google">
+                                    <button type="button" class="btn btn-block  google-btn py-3 my-1"><i class="fab fa-google pr-2" aria-hidden="true"></i>sign up with Google</button>
+                                </a>
                             </div>
                         </div>
         
-                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee-sign-in" class="login-link">Sign In.</a></p>
                     </div>
 
                     <div class="tab-pane fade" id="new-user" role="tabpanel" aria-labelledby="new-user-tab">
-                        <form class="needs-validation" novalidate>
+                        <form action="/employee/register" method="POST" class="needs-validation" novalidate>
                             <div class="row">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <div class="col-md mb-3">
                                     <label for="fname">First Name</label>
                                     <div class="input-group">
-                                        <input name="fname" type="text" class="form-control w-100" id="fnameV2" placeholder="e.g. John" required>
+                                        <input name="fname" name="firstname" type="text" class="form-control w-100" id="fnameV2" placeholder="e.g. John" required>
                                         <div id="invalidV2">
                                         </div>
                                     </div>
@@ -205,7 +223,7 @@
                                 <div class="col-md mb-3">
                                     <label for="lname">Last Name</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control w-100" id="lnameV2" placeholder="e.g. Doe" required>
+                                        <input type="text" name="lastname" class="form-control w-100" id="lnameV2" placeholder="e.g. Doe" required>
                                         <div id="invalidLV2">
                                         </div>
                                     </div>
@@ -232,13 +250,13 @@
                             <div class="row">
                                 <div class="col-md mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="emailV2" placeholder="example@gmail.com" required>
+                                    <input type="email" name="email" class="form-control" id="emailV2" placeholder="example@gmail.com" required>
                                     <div id="invalidEV2">
                                     </div>
                                 </div>
                                 <div class="col-md mb-3">
                                     <label for="phone">Phone number</label>
-                                    <input type="phone" class="form-control" id="phoneV2" maxlength="11" placeholder="e.g. 08023414785" required>
+                                    <input type="phone" name="phone" class="form-control" id="phoneV2" maxlength="11" placeholder="e.g. 08023414785" required>
                                     <div id="invalidPV2">
                                     </div>
                                 </div>
@@ -254,13 +272,13 @@
                             <div class="row">
                                 <div class="col-md mb-3">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="passwordV2" minlength="8" placeholder="at least 8 characters" required>
+                                    <input type="password" name="password" class="form-control" id="passwordV2" minlength="8" placeholder="at least 8 characters" required>
                                     <div id="invalidPassV2">
                                     </div>
                                 </div>
                                 <div class="col-md mb-3">
                                     <label for="confirmPassword">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirmPasswordV2" minlength="8" placeholder="at least 8 characters" required>
+                                    <input type="password" name="confirm_password" class="form-control" id="confirmPasswordV2" minlength="8" placeholder="at least 8 characters" required>
                                     <div id="invalidPass2V2">
                                     </div>
                                 </div>
@@ -269,7 +287,7 @@
                             <div class="row">
                                 <div class="col my-1">
                                     <div class="custom-control custom-checkbox mr-sm-2" >
-                                        <input type="checkbox" class="custom-control-input" id="terms-policyV2">
+                                        <input type="checkbox" name="terms" class="custom-control-input" id="terms-policyV2">
                                         <label class="custom-control-label" for="terms-policyV2">I agree to the <a href="#" class="login-link">Terms and Conditions</a></label>
                                         <div id="invalidCheckV2">
                                         </div>
@@ -288,7 +306,7 @@
                                         <div class="modal-content">
                                         <div class="modal-body d-flex flex-column align-items-center">
                                             <div>
-                                                <img src="../img/logo.svg" alt="logo" />
+                                                <img src="/img/logo.svg" alt="logo" />
                                             </div>
                                             <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z" fill="#337AB7"/>
@@ -317,20 +335,23 @@
                             </div>
                         </div>
         
-                        <div class="row mt-2 justify-content-center">
-                            <!-- <div class="col-md">
-                                <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
-                                        class="fab fa-github pr-2"></i>Login with Github</button>
-                            </div> -->
-                         
-
-                            <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
-                            data-onsuccess="onSignIn">
+                        <div class="row mt-2">
+                            <div class="col-md">
+                                <a href="/auth/employee/github">
+                                    <button type="button" class="btn  btn-block  facebook-btn py-3 my-1"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>sign up with Github</button>
+                                </a>
+                            </div>
+        
+                            <div class="col-md">
+                                <a href="/auth/employee/google">
+                                    <button type="button" class="btn btn-block  google-btn py-3 my-1"><i class="fab fa-google pr-2" aria-hidden="true"></i>sign up with Google</button>
+                                </a>
+                                </div>
                         </div>
                         </div>
                        
         
-                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee-sign-in" class="login-link">Sign In.</a></p>
+                        <p class="text-center py-2 mt-3 mb-4">Already have an account with us? <a href="/employee/login" class="login-link">Sign In.</a></p>
                     </div>
                 </div>
             </section>
@@ -339,41 +360,19 @@
     </div>
 </main>
 
+<%- include('../Templates/footer') %>
+<%- include('../Templates/script') %>
 <script>
-    async function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        const role_id = document.querySelector('.g-signin2').dataset.user;
-        var token = googleUser.getAuthResponse().id_token
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.disconnect();
-        const userData = {
-            role_id,
-            token: token
-        }
-        axios.post('https://api.lancers.app/v1/auth/google', userData)
-            .then(data => {
-                let decodedData = JSON.parse(atob(data.data.data.token.split('.')[1]))
-                const userData = {
-                    ...decodedData,
-                    token: data.data.data.token
-                }
-                localStorage.setItem("tpAuth", JSON.stringify(userData));
-                if (decodedData.userTypeId == null) {
-                    window.location.replace('/employee-profileCreation')
-                } else {
-                    window.location.replace('/employee-dashboard')
-                }
-            }).catch(function (error) {
-                console.log(error);
-                window.location.replace('/')
-            });
+    // Getting verify status to know if registration is successful or not
+    const verifyStatus = `<%- success %>`;
+    if (verifyStatus == 'Verification email sent!') {
+        // Displaying the modal
+      $('#exampleModal').modal();
     }
-    
   </script>
 
-<%- include('../Templates/footer') %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-<script type="module" src="js/custom-js/employee-signUp.js"></script>
+<!-- <script type="module" src="js/custom-js/employee-signUp.js"></script> -->
 <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
 
 </body>
