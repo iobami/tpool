@@ -37,15 +37,14 @@ appRoute.get(
   employerCompanyDashboard,
 ); //set by kukere
 
-appRoute.get('/employer/profile', (req, res) => {
-  // req.session.userId = 'd8bd7c2c-6722-406d-a30c-1cac4ac09b6a';
-  // return res.redirect('/employer/login');
+appRoute.get(
+  '/employer/profile',
   auth_main,
-    auth_validuser,
-    auth_valid_profile,
-    //the main controller
-    employerProfile;
-}); //there will be middlewarerlfkgfkh
+  auth_validuser,
+  auth_valid_profile,
+  //the main controller
+  employerProfile,
+);
 
 appRoute.get(
   '/employer/dasboard/success',

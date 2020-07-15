@@ -2,9 +2,9 @@
 <html>
   <head>
     <%- include('../Templates/dashboard-head') %>
-    <link rel="stylesheet" href="/../styles/custom-css/employer-top-nav.css">
-    <link rel="stylesheet" href="/../styles/custom-css/side-nav.css">
-    <link rel="stylesheet" href="/../styles/custom-css/employer-profile-page.css">
+    <link rel="stylesheet" href="/styles/custom-css/employer-top-nav.css">
+    <link rel="stylesheet" href="/styles/custom-css/side-nav.css">
+    <link rel="stylesheet" href="/styles/custom-css/employer-profile-page.css">
 
     <style>
       .mr-2 img {
@@ -35,15 +35,20 @@
                  <div class="col-md-5 mb-4">
                    <div class="card profile-card box-shadow">
                         <div class="logo-container  mx-auto d-flex align-items-center">
-                           <span class="mx-auto">Logo</span>
-                            <img src="" alt="" class="img-fluid">
+                           <!-- <span class="mx-auto">Logo</span> -->
+                            <img src="<%= EmployerInfo.employerInfo.employer_photo %>" alt="" class="img-fluid">
                         </div>
-                              <h3 class="text-center mt-5 mb-3">PiggyVest</h3>
-                              <p class="text-center">E-Commerce Industry</p>
+                              <h3 class="text-center mt-5 mb-3"><%= EmployerInfo.employerInfo.employer_name %></h3>
+                              <p class="text-center"><%= EmployerInfo.userIndustry.category_name %></p>
                               <hr class="w-75 mx-auto">
                          <div  class="w-75 profile-card-info mx-auto ">
-                             <p class=" py-2 ml-4 my-3"><i class="fas fa-map-marker-alt mr-3"></i> Ibadan, Nigeria</p>
-                             <p class=" py-2 ml-4 my-3"><i class="far fa-envelope mr-3"></i>piggyvest@gmail.com</p>
+                             <p class=" py-2 ml-4 my-3">
+                               <i class="fas fa-map-marker-alt mr-3"></i>
+                               <%= EmployerInfo.employerInfo.employer_address %> <%=  EmployerInfo.employerInfo.employer_country %></p>
+                             <p class=" py-2 ml-4 my-3">
+                               <i class="far fa-envelope mr-3"></i>
+                               <%= EmployerInfo.employerInfo.employer_email %>
+                              </p>
                          </div>
                          <hr class="w-75 mx-auto">
                          <button type='button' class="btn mx-auto mt-4 mb-5" data-toggle="modal" data-target="#profilepopup">Edit profile</button>
@@ -72,13 +77,13 @@
              
               <div class="d-flex justify-content-around mobileContainer">
                 <div class=" col1 colMobile">
-                  <label class="companyNameLabel" for="">Company Name</label><br>
-                  <input type="text" name="" placeholder="Genesis" id="">
+                  <label class="companyNameLabel" for="">Employer Name</label><br>
+                  <input type="text" name="" value="<%= EmployerInfo.employerInfo.employer_name %>" placeholder="Genesis" id="">
   
                 </div>
                 <div class="col2">
                   <label for="" class="tagLabel">Tag Line</label><br>
-                  <input type="text" placeholder="Anosike">
+                  <input type="text" value="<%= EmployerInfo.employerInfo.category_name %>" placeholder="Anosike">
                 </div>
   
               </div>
@@ -86,12 +91,12 @@
               <div class="d-flex justify-content-around mobileContainer">
                 <div class=" col3">
                   <label for="" class="emailLabel">Email Address</label><br>
-                  <input type="email" placeholder="anosikegenesis@gmail.com">
+                  <input type="email" value="<%= EmployerInfo.employerInfo.employer_email %>" placeholder="anosikegenesis@gmail.com">
      
                 </div>
                 <div class=" col4">
                   <label for="" class="locationLabel">Location</label><br>
-                  <input type="text" placeholder="Ibadan, Nigeria">
+                  <input type="text" value="<%= EmployerInfo.employerInfo.employer_address %> <%=  EmployerInfo.employerInfo.employer_country %>" placeholder="Ibadan, Nigeria">
                 </div>
   
               </div>
@@ -156,10 +161,7 @@
   
                           </div>
                           <p class=" desc-text mt-3">
-                              Multionational company with
-                               the aim to make savings culture 
-                               easy for every individual in the world. 
-                               our sole aim is making live easier
+                              <%= EmployerInfo.userIndustry.description %>
                           </p>
                       </div>
                       <!-- Social accounts card -->
@@ -167,30 +169,44 @@
                           <div class=" desc-card-header ">
                       
                               <h3 class="d-flex justify-content-between align-items-center"
-                               >Social accounts <img src="/../img/plus-blue.png" alt="" class="plus-social"> </h3>
+                               >Social accounts 
+                               <!-- <img src="/../img/plus-blue.png" alt="" class="plus-social"> </h3> -->
                           </div>
                       
                            <div class="social-accounts mt-4">
                                       <div class=" account py-4 pl-1">
                                                <i class="fab fa-twitter "></i>
-                                               <span class="ml-3">Twitter</span>
+                                               <span class="ml-3">Twitter: <%= EmployerInfo.employerInfo.twitter %></span>
                                                <img src="/../img/Pen.png" class="pen-modif float-right">
+                                      </div>
+
+                                      <div class=" account py-4 pl-1">
+                                                <i class="fab fa-facebook "></i>
+                                                <span class="ml-3">Facebook: <%= EmployerInfo.employerInfo.facebook %></span>
+                                                <img src="/../img/Pen.png" class="pen-modif float-right">
                                       </div>
                       
                                       <div class=" account py-4 pl-1">
                       
                                           <i class="fab fa-linkedin"></i>
-                                          <span class="ml-3">LinkedIn</span>
+                                          <span class="ml-3">LinkedIn: <%= EmployerInfo.employerInfo.linkedin %></span>
                                           <img src="/../img/Pen.png" class="pen-modif float-right">                              
                       
                                       </div>
                                       <div class=" account py-4 pl-1">
                       
+                                          <i class="fab fa-instagram"></i>
+                                          <span class="ml-3">Instagram: <%= EmployerInfo.employerInfo.instagram %></span>
+                                          <img src="/../img/Pen.png" class="pen-modif float-right">                              
+                      
+                                      </div>
+                                      <!-- <div class=" account py-4 pl-1">
+                      
                                           <i class="fab fa-dribbble"></i>
                                           <span class="ml-3">Dribbble</span>
                                           <img src="/../img/Pen.png" class="pen-modif float-right">                             
-                                      </div>
-                                      <div class=" account py-4 pl-1">
+                                      </div> -->
+                                      <!-- <div class=" account py-4 pl-1">
   
                                           <i class="fab fa-behance"></i>
                                           <span class="ml-3">Behance</span>
@@ -202,12 +218,7 @@
                                           <i class="fab fa-github"></i>
                                           <span class="ml-3">GitHub</span>
                                           <img src="/../img/Pen.png" class="pen-modif float-right">                            
-                                       </div>
-                                       <div class=" account py-4 pl-1">
-                                          <i class="fa fa-hashnode" aria-hidden="true"></i>
-                                          <span class="ml-3">Hashnode</span>
-                                          <img src="/../img/Pen.png" class="pen-modif float-right">                            
-                                       </div>
+                                       </div> -->
                                        
                           </div>
                                       
@@ -225,18 +236,26 @@
                                <div class="company mt-2">
                                       <div class=" company-info py-4 pl-1">
                                           <img src="/../img/verified.png" alt="">
-                                          <span class="ml-3">E-Commerce Industry</span>
+                                          <span class="ml-3">
+                                              <%= EmployerInfo.userIndustry.category_name %>                                            
+                                          </span>
   
                                       </div>
                                       <div class=" company-info py-4 pl-1">
                                           <img src="/../img/verified.png" alt="">
-                                          <span class="ml-3">7-20 Employees</span>
+                                          <span class="ml-3">
+                                              <% if(EmployerInfo.employerInfo.website){ %>
+                                              <%= EmployerInfo.employerInfo.website %>
+                                              <% } else{ %>  
+                                                No website link
+                                             <% } %>
+                                          </span>
   
                                  </div>
                                  <div class=" company-info py-4 pl-1">
   
                                   <img src="/../img/verified.png" alt="">
-                                  <span class="ml-3">08185956620</span>
+                                  <span class="ml-3"><%= EmployerInfo.employerInfo.employer_phone %></span>
   
                                  </div>
                                </div>
