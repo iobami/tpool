@@ -210,7 +210,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       path: '/employee/login',
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
-      success: req.flash('success'),
+      success,
       oldInput: {
         email,
         password,
@@ -400,13 +400,12 @@ exports.postEmployerLogin = async (req, res, next) => {
             req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            req.session.employerId = data.userTypeId;
             if (!user.employer_id) {
               
               req.flash('error', 'User does not have a profile');
               res.redirect('/employer/profile/create');
             }
-            res.redirect('/employer/dashboard/');
+            res.redirect(`/employer/dashboard/${user.employer_id}`);
           }
           return res.status(422).render('Pages/employer-signin', {
             path: '/employer/login',
@@ -513,7 +512,7 @@ exports.postEmployerLogin = async (req, res, next) => {
 exports.adminLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
-  let currentUser;
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('Pages/admin-login', {
@@ -527,8 +526,8 @@ exports.adminLogin = async (req, res, next) => {
       validationErrors: errors.array(),
     });
   }
-   model.User.findOne({ where: { email } })
-    .then(async (user) => {
+  await model.User.findOne({ where: { email } })
+    .then((user) => {
       if (!user) {
         return res.status(422).render('Pages/admin-login', {
           path: '/admin/login',
@@ -552,14 +551,6 @@ exports.adminLogin = async (req, res, next) => {
           },
           validationErrors: [],
         });
-      }
-      let userTypeId = null;
-
-      const admin = await model.Admin.findOne({
-        where: { user_id: user.user_id },
-      });
-      if (admin) {
-        userTypeId = admin.admin_id;
       }
       if (user.status === '0') {
         return res.status(422).render('Pages/admin-login', {
@@ -585,19 +576,12 @@ exports.adminLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
-      currentUser = user;
       bcrypt
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
-            const data = {
-              email: currentUser.email,
-              userRole: currentUser.role_id,
-              userTypeId,
-            };
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            req.session.adminId = data.userTypeId;
             res.redirect('/admin/dashboard');
           }
           return res.status(422).render('Pages/admin-login', {

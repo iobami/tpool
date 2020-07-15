@@ -6,13 +6,13 @@
     <%- include('../Templates/head') %>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../styles/bootstrap-css/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/bootstrap-css/bootstrap.css" crossorigin="anonymous">
 
-    <link href="../styles/custom-css/employee-dash-main.css" rel="stylesheet" />
+    <link href="/styles/custom-css/employee-dash-main.css" rel="stylesheet" />
 
-    <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
+    <link href="/styles/custom-css/employer-top-nav.css" rel="stylesheet" />
 
-    <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
+    <link href="/styles/custom-css/side-nav.css" rel="stylesheet" />
 
     <link rel="shortcut icon" href="../img/favicon.svg" type="image/x-icon">
 
@@ -20,10 +20,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./../styles/custom-css/view-employee.css">
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/../styles/custom-css/view-employee.css">
 
 </head>
 
@@ -56,7 +56,7 @@
                             <div class="card-body card-2">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs text-uppercase mb-1 text-edit" id="all_employees">0
+                                        <div class="text-xs text-uppercase mb-1 text-edit" id="all_employees"><%= totalEmployees %> 
                                         </div>
                                         <div class="h5 mb-0  text-gray ">EMPLOYEES</div>
                                     </div>
@@ -71,7 +71,7 @@
                             <div class="card-body card-2">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs  text-edit text-uppercase mb-1" id="hired_employees_count">0
+                                        <div class="text-xs  text-edit text-uppercase mb-1" id="hired_employees_count"><%= hiredEmployees %>
                                         </div>
                                         <div class="h5 mb-0  text-gray ">HIRED</div>
                                     </div>
@@ -86,7 +86,7 @@
                             <div class="card-body card-2">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs  text-edit text-uppercase mb-1" id="available_employees_count">0
+                                        <div class="text-xs  text-edit text-uppercase mb-1" id="available_employees_count"><%= availableEmployees %>
                                         </div>
                                         <div class="h5 mb-0  text-gray ">AVAILABLE</div>
                                     </div>
@@ -106,11 +106,10 @@
                                 <span>All</span>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Link 1</a>
-                                <a class="dropdown-item" href="#">Link 2</a>
-                                <a class="dropdown-item" href="#">Link 3</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Another link</a>
+                                <a class="dropdown-item" href="/admin/employees?p=20">20</a>
+                                <a class="dropdown-item" href="/admin/employees?p=50">50</a>
+                                <a class="dropdown-item" href="/admin/employees?p=100">100</a>
+                                <a class="dropdown-item" href="/admin/employees?p=200">200</a>
                             </div>
                         </div>
                     </div>
@@ -124,7 +123,7 @@
                     <div class="search-container search-table">
                         <form action="#">
                             <button type="submit"><i class="fa fa-search"></i></button>
-                            <input type="text" placeholder="Search employee" name="search">
+                            <input type="text" id="search" placeholder="Search employee" name="search">
                         </form>
 
                         <!-- <form _lpchecked="1">
@@ -134,223 +133,154 @@
                     </div>
                 </div>
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                    <table class="table mb-0">
+                    <table class="table mb-0" id="table">
                         <thead class="head-txt">
                             <tr>
                                 <th class="th-head">User ID</th>
                                 <th class="th-head">Employee’s name</th>
-                                <th class="th-head">Availabile for</th>
-                                <th class="th-head">Availabile for</th>
+                                <th class="th-head">Phone</th>
+                                <th class="th-head">Availability</th>
                                 <th class="th-head">Date joined</th>
                                 <th class="th-head">Status</th>
                             </tr>
                         </thead>
 
-                        <!-- Tabe body -->
-                        <tbody class="body-table" id="table-body-data">
-
-                            <!-- <tr>
-                                <td class="align-middle user-id">HNG02E</td>
+                        <% data.forEach(function(employee) { %>
+                            <tr id="table-row">
+                                <% if (employee.hng_id){%>
+                                    <td class="align-middle user-id"><%= employee.hng_id %></td>
+                                <% } %>   
+                                <% if (!employee.hng_id){%>
+                                    <td class="align-middle user-id">NHNG-<%= employee.id %></td>
+                                <% } %>   
                                 <td class="align-middle user-name">
-                                    <img src="./../img/user.png" alt="" class="mr-1 table-img" /> Delgo inc
+                                    <img src="<%= employee.image %>" style = "max-height: 80px; max-width: 80px;" alt="" class="mr-1 table-img" /> <%= employee.first_name %> <%= employee.last_name %>
                                 </td>
-                                <td class="align-middle ui-table">UI/UX Designer</td>
-                                <td class="align-middle re-table">Remote</td>
-                                <td class="align-middle dt-table">Feb 12, 2018</td>
-                                <td class="align-middle img-edit">
-                                    <span class="stats-btn p-2 mr-md-3 available-txt rounded">Availabile</span>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="12" cy="5" r="1"></circle>
-                                            <circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
-                                    </button>
+                                <td class="align-middle dt-table"><%= employee.phone_no %></td>
+                                <td class="align-middle ui-table"><%= employee.availability %></td>
+                                <td class="align-middle dt-table"><%= moment(employee.createdAt).format('MMMM Do YYYY') %></script></td>
+                               
+                                <td class="">
+                                <% if (employee.verification_status === 'Pending'){%>
+                                    <span class="btn btn-warning btn-block"><%= employee.verification_status %></span>
+                                <% } %>
+                                <% if (employee.verification_status === 'Approved'){%>
+                                    <span class="btn btn-success btn-block"><%= employee.verification_status %></span>
+                                <% } %>
+                                <% if (employee.verification_status === 'Disapproved'){%>
+                                    <span class="btn btn-danger btn-block"><%= employee.verification_status %></span>
+                                <% } %>   
                                 </td>
-                            </tr> -->
-
-                            <!-- <tr>
-                                <td class="align-middle user-id">HNG02E</td>
-                                <td class="align-middle user-name">
-                                    <img src="./../img/user.png" alt="" class="mr-1 table-img" /> Delgo inc
-                                </td>
-                                <td class="align-middle ui-table">UI/UX Designer</td>
-                                <td class="align-middle re-table">Remote</td>
-                                <td class="align-middle dt-table">Feb 12, 2018</td>
-                                <td class="align-middle img-edit">
-                                    <span class="stats-btn p-2 mr-md-3 hired-txt rounded">Hired</span>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="12" cy="5" r="1"></circle>
-                                            <circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
-                                    </button>
+                                <td>    
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" href="#" data-toggle="modal" 
+                                            data-target="#<%= employee.first_name %><%= employee.last_name %><%= employee.phone_no%>" ><i style= "color: white" class="fa fa-user fa-fw"></i> Info</a>
+                                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                          <li><a onclick= 'toApprove("<%= employee.employee_id %>", "<%= employee.first_name %> <%= employee.last_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-check" style= "color: green; padding: 10px;" aria-hidden="true"></i>Approve</a></li>
+                                          <li><a onclick = 'toDisapprove("<%= employee.employee_id %>", "<%= employee.first_name %> <%= employee.last_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-times" style= "color: red ; padding: 10px;" aria-hidden="true"></i> Disapprove</a></li>
+                                          <li><a onclick = 'toBlock("<%= employee.user_id %>", "<%= employee.first_name %> <%= employee.last_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-lock" style= "color: black ; padding: 10px;"></i> Block</a></li>
+                                          <li><a onclick = 'toUnblock("<%= employee.user_id %>", "<%= employee.first_name %> <%= employee.last_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i> Unblock</a></li>
+                                          <li class="divider"></li>
+                                        </ul>
+                                      </div>
                                 </td>
                             </tr>
-
-                            <tr>
-                                <td class="align-middle user-id">HNG02E</td>
-                                <td class="align-middle user-name">
-                                    <img src="./../img/user.png" alt="" class="mr-1 table-img" /> Delgo inc
-                                </td>
-                                <td class="align-middle ui-table">UI/UX Designer</td>
-                                <td class="align-middle re-table">Remote</td>
-                                <td class="align-middle dt-table">Feb 12, 2018</td>
-                                <td class="align-middle img-edit">
-                                    <span class="stats-btn p-2 mr-md-3 hired-txt rounded">Hired</span>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="12" cy="5" r="1"></circle>
-                                            <circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
+                             <!-- Modal -->
+                            <div class="modal fade p-0" id="<%= employee.first_name %><%= employee.last_name %><%= employee.phone_no%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content p-3">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Employee information</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
                                     </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="align-middle user-id">HNG02E</td>
-                                <td class="align-middle user-name">
-                                    <img src="./../img/user.png" alt="" class="mr-1 table-img" /> Delgo inc
-                                </td>
-                                <td class="align-middle ui-table">UI/UX Designer</td>
-                                <td class="align-middle re-table">Remote</td>
-                                <td class="align-middle dt-table">Feb 12, 2018</td>
-                                <td class="align-middle img-edit">
-                                    <span class="stats-btn p-2 mr-md-3 hired-txt rounded">Hired</span>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="12" cy="5" r="1"></circle>
-                                            <circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="align-middle user-id">HNG02E</td>
-                                <td class="align-middle user-name">
-                                    <img src="./../img/user.png" alt="" class="mr-1 table-img" /> Delgo inc
-                                </td>
-                                <td class="align-middle ui-table">UI/UX Designer</td>
-                                <td class="align-middle re-table">Remote</td>
-                                <td class="align-middle dt-table">Feb 12, 2018</td>
-                                <td class="align-middle img-edit">
-                                    <span class="stats-btn p-2 mr-md-3 hired-txt rounded">Hired</span>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="12" cy="5" r="1"></circle>
-                                            <circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="align-middle user-id">HNG02E</td>
-                                <td class="align-middle user-name">
-                                    <img src="./../img/user.png" alt="" class="mr-1 table-img" /> Delgo inc
-                                </td>
-                                <td class="align-middle ui-table">UI/UX Designer</td>
-                                <td class="align-middle re-table">Remote</td>
-                                <td class="align-middle dt-table">Feb 12, 2018</td>
-                                <td class="align-middle img-edit">
-                                    <span class="stats-btn p-2 mr-md-3 hired-txt rounded">Hired</span>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="12" cy="5" r="1"></circle>
-                                            <circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="align-middle user-id">HNG02E</td>
-                                <td class="align-middle user-name">
-                                    <img src="./../img/user.png" alt="" class="mr-1 table-img" /> Delgo inc
-                                </td>
-                                <td class="align-middle ui-table">UI/UX Designer</td>
-                                <td class="align-middle re-table">Remote</td>
-                                <td class="align-middle dt-table">Feb 12, 2018</td>
-                                <td class="align-middle img-edit">
-                                    <span class="stats-btn p-2 mr-md-3 hired-txt rounded">Hired</span>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="12" cy="5" r="1"></circle>
-                                            <circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="align-middle user-id">HNG02E</td>
-                                <td class="align-middle user-name">
-                                    <img src="./../img/user.png" alt="" class="mr-1 table-img" /> Delgo inc
-                                </td>
-                                <td class="align-middle ui-table">UI/UX Designer</td>
-                                <td class="align-middle re-table">Remote</td>
-                                <td class="align-middle dt-table">Feb 12, 2018</td>
-                                <td class="align-middle img-edit">
-                                    <span class="stats-btn p-2 mr-md-3 hired-txt rounded">Hired</span>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="12" cy="5" r="1"></circle>
-                                            <circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr> -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action=""  >
+                                            <div class="row">
+                                                <div class="col-md form-group">
+                                                    <label >First name: </label>
+                                                    <input type="text" class="form-control" disabled value="<%= employee.first_name %>">
+                                                </div>
+                                                <div class="col-md form-group">
+                                                    <label >Last name: </label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employee.last_name %>">
+                                                </div>
+                                            </div>
+                                            <div class= "row">
+                                                <div class="col-md form-group ">
+                                                    <label >Gender :</label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employee.gender %>">
+                                                </div>
+                                                <div class="col-md form-group ">
+                                                    <label >Date of birth :</label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employee.dob %>">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md form-group">
+                                                    <label>Phone number :</label>
+                                                    <input type="text" class="form-control" disabled = true value = "<%= employee.phone_no%>">
+                                                </div>
+                                                <div class="col-md form-group">
+                                                    <label>Availability :</label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employee.availability %>">
+                                                </div>
+                                            </div>
+                                            <div class="row ">
+                                                <div class="col-md form-group">
+                                                    <label>Number of views :</label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employee.views%>">
+                                                </div>
+                                                <div class="col-md form-group">
+                                                    <label>Employee ID :</label>
+                                                    <% if (employee.hng_id){%>
+                                                        <input type="text" class="form-control" disabled value = "<%= employee.hng_id %>">
+                                                    <% } %>   
+                                                    <% if (!employee.hng_id){%>
+                                                        <input type="text" class="form-control" disable value ="NHNG-<%= employee.id %>">
+                                                    <% } %> 
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        <% }) %>
 
                         </tbody>
                     </table>
                 </div>
+                <div class="d-flex">
+                    <div class="ml-auto p-2">
+                        <a href="" style="padding: 10px;"><i class="fa fa-chevron-left" aria-hidden="true" style="padding: 10px;"></i>Prev</a>
+                        <a href="" style="padding: 10px;">Next<i class="fa fa-chevron-right" aria-hidden="true" style="padding: 10px;"></i></a>
+                    </div>
+                </div>
             </div>
             <!-- Tables end -->
         </div>
-
+        
         <!-- Optional JavaScript -->
-        <script src="../js/bootstrap-js/jquery.js"></script>
-        <script src="../js/bootstrap-js/bootstrap.js"></script>
-        <script src="../js/bootstrap-js/popper.js"></script>
+        <script src="/js/bootstrap-js/jquery.js"></script>
+        <script src="/js/bootstrap-js/bootstrap.js"></script>
+        <script src="/js/bootstrap-js/popper.js"></script>
         <script>
         $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
         })
         </script>
-        <script src="../js/custom-js/admin-viewEmployee.js"></script>
-        <script src="../js/custom-js/side-nav.js"></script>
+        <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+        <script src="/js/custom-js/admin-viewEmployee.js"></script>
+        <script src="/js/custom-js/side-nav.js"></script>
         
 </body>
 
