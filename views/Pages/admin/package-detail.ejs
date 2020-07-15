@@ -3,224 +3,49 @@
   <head>
     <%- include('../../Templates/head') %>
     <link href="../../styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
-    <link href="../../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
+    <link
+      href="../../styles/custom-css/employer-top-nav.css"
+      rel="stylesheet"
+    />
     <link href="../../styles/custom-css/side-nav.css" rel="stylesheet" />
     <link href="../../styles/custom-css/admin-dash.css" rel="stylesheet" />
   </head>
 
-  <body>
-    <%- include('../../Templates/admin-header') %> <%-
-    include('../../Templates/admin-sidebar') %>
+  <body class="d-flex flex-column">
+    <%- //include('../../Templates/admin-header') %>
 
-    <section class="admin__dashboard p-4">
-      <h2 class="dashboard__heading text-center">Manage Packages</h2>
+    <div
+      class="container d-flex flex-column align-items-center justify-content-center bt-"
+    >
+      <div class="links d-flex align-items-center justify-content-between my-4">
+        <a href="../packages" class="btn btn-outline-primary">
+          Return to All Packages</a
+        >
 
-      <div class="container-fluid">
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-          <li class="nav-item m-2">
-            <a
-              class="nav-link active"
-              id="view-packages-tab"
-              data-toggle="tab"
-              href="#viewPackages"
-              role="tab"
-              aria-controls="home"
-              aria-selected="true"
-              >View Packages</a
-            >
-          </li>
-          <li class="nav-item m-2">
-            <a
-              class="nav-link"
-              id="create-package-tab"
-              data-toggle="tab"
-              href="#createPackage"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
-              >Create Package</a
-            >
-          </li>
-          <!-- <li class="nav-item m-2">
-            <a
-              class="nav-link"
-              id="update-package-tab"
-              data-toggle="tab"
-              href="#updatePackage"
-              role="tab"
-              aria-controls="messages"
-              aria-selected="false"
-              >Update Package</a
-            >
-          </li> -->
-          <!-- <li class="nav-item m-2">
-            <a
-              class="nav-link text-danger"
-              id="delete-package-tab"
-              data-toggle="tab"
-              href="#deletePackage"
-              role="tab"
-              aria-controls="settings"
-              aria-selected="false"
-              >Delete Package</a
-            >
-          </li> -->
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <!-- view packages -->
-          <div
-            class="tab-pane fade show active"
-            id="viewPackages"
-            role="tabpanel"
-            aria-labelledby="view-packages-tab"
-          >
-            <h6 class="text-center">View Packages</h6>
+        <!-- Update Package Button -->
+        <a href="" class="btn btn-info mx-2"> Edit Package</a>
 
-            <div class="container">
-              <div class="row">
-                Text 
-              </div>
-            </div>
-          </div>
-          <!-- // create packages -->
-          <div
-            class="tab-pane fade"
-            id="createPackage"
-            role="tabpanel"
-            aria-labelledby="create-package-tab"
-          >
-            <h6 class="text-center">Create Package</h6>
-            <form
-              action="/admin/packages/create"
-              method="post"
-              class="p-3 m-3 mx-auto mw-75"
-            >
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_name">Package Name</label>
-                <input
-                  class="form-control-lg"
-                  type="text"
-                  name="package_name"
-                  id="package_name"
-                  placeholder="Write a Package Name."
-                />
-              </div>
+        <!-- Delete Package Button -->
+        <a href="" class="btn btn-danger mx-2">Delete Package</a>
+      </div>
+      <div class="package-details mt-5">
+        <h2 class="text-center">
+          Package Details: <%- data.package.package_name %>
+        </h2>
 
-              <div class="form-group mb-3 mx-auto">
-                <label for="price">Monthly Price</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  id="price"
-                  name="price"
-                  placeholder="Enter Price"
-                />
-              </div>
-
-              <div class="form-group mb-3 mx-auto">
-                <label for="description">Package Description</label>
-                <textarea
-                  class="form-control-lg"
-                  name="description"
-                  id="description"
-                  placeholder="Write a Package Description."
-                ></textarea>
-              </div>
-
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-              <button type="submit" class="btn btn-block btn-primary mt-3">
-                Create Package
-              </button>
-            </form>
-          </div>
-          <!-- <div
-            class="tab-pane fade"
-            id="updatePackage"
-            role="tabpanel"
-            aria-labelledby="update-package-tab"
-          >
-            <h6 class="text-center">Update Package</h6>
-            <form action="" method="post" class="p-3 m-3 mx-auto mw-75">
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_id">Package ID</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  id="package_id"
-                  name="package_id"
-                  placeholder="Enter Package ID"
-                />
-              </div>
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_name">Package Name</label>
-                <input
-                  class="form-control-lg"
-                  type="text"
-                  name="package_name"
-                  id="package_name"
-                  placeholder="Write a Package Name."
-                />
-              </div>
-              <div class="form-group mb-3 mx-auto">
-                <label for="price">Monthly Price</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  id="price"
-                  name="price"
-                  placeholder="Enter Price"
-                />
-              </div>
-              <div class="form-group mb-3 mx-auto">
-                <label for="description">Package Description</label>
-                <textarea
-                  class="form-control-lg"
-                  name="description"
-                  id="description"
-                  placeholder="Write a Package Description."
-                ></textarea>
-              </div>
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-              <button type="submit" class="btn btn-block btn-primary mt-3">
-                Update Package
-              </button>
-            </form>
-          </div> -->
-          <!-- <div
-            class="tab-pane fade"
-            id="deletePackage"
-            role="tabpanel"
-            aria-labelledby="delete-package-tab"
-          >
-            <h6 class="text-center">Delete Package</h6>
-            <form action="" method="post" class="p-3 m-3 mx-auto mw-75">
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_id">Package ID</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  id="package_id"
-                  name="package_id"
-                  placeholder="Enter Package ID"
-                />
-              </div>
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-              <button type="submit" class="btn btn-block btn-danger mt-3">
-                Delete Package
-              </button>
-            </form>
-          </div> -->
+        <div class="container-fluid">
+          <p class="details">
+            <strong>Package Name:</strong> <%- data.package.package_name %>
+          </p>
+          <p class="details">
+            <strong>Price:</strong> <%- data.package.price %>
+          </p>
+          <p class="details">
+            <strong>Description:</strong> <%- data.package.description %>
+          </p>
         </div>
       </div>
-    </section>
+    </div>
     <div id="body__click"></div>
     <style>
       form {
