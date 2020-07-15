@@ -2,6 +2,14 @@ const moment = require('moment');
 const model = require('../../../Models/index');
 const { errorResMsg, successResMsg } = require('../../../Utils/response');
 
+const keysOfArray = (modelResult, arrayObj) => {
+  modelResult.map((x) => {
+    if (arrayObj.hasOwnProperty(x.dataValues.employee_id)) arrayObj[x.dataValues.employee_id].push(x.dataValues);
+    else arrayObj[x.dataValues.employee_id] = [x.dataValues];
+  });
+  return arrayObj;
+};
+
 module.exports = {
   faq: (req, res) => {
     res.render('Pages/admin-dash-faq', {
@@ -43,12 +51,12 @@ module.exports = {
         if (employer.employer_type.toLowerCase() === 'individual') {
           individuals_array.push(employer.employer_type);
         }
-  
+
         if (employer.employer_type.toLowerCase() === 'company') {
           company_array.push(employer.employer_type);
         }
       });
-  
+
       res.render('Pages/admin-dash-employers', {
         pageName: 'Admin | All Employers',
         path: 'admin-viewEmployer',
@@ -62,11 +70,74 @@ module.exports = {
     }
   },
 
-  allEmployees: (req, res) => {
-    res.render('Pages/view-employee-dashboard', {
-      pageName: 'View Employee',
-      path: "admin-viewEmployee"
-    });
+  allEmployees: async (req, res) => {
+    try {
+      const limit = Number(req.query.p) || 1000000000;
+      const employeesTotal = await model.Employee.findAll({});
+      const employees = await model.Employee.findAll({
+        limit,
+        order: [
+          ['id', 'DESC'],
+        ],
+      });
+      const skill = await model.Skill.findAll({ limit });
+      const portfolio = await model.Portfolio.findAll({ limit });
+
+      const hashMap = {};
+      let skillHashMap = {};
+      let portfolioHashMap = {};
+      const results = [];
+  
+      const employees_count = [];
+      const available_employees_count = [];
+      const hired_employees_count = [];
+  
+      skillHashMap = keysOfArray(skill, skillHashMap);
+  
+      portfolioHashMap = keysOfArray(portfolio, portfolioHashMap);
+  
+      employees.map((x) => {
+        hashMap[x.dataValues.employee_id] = x.dataValues;
+      });
+  
+      Object.keys(hashMap).forEach((key) => {
+        if (!skillHashMap.hasOwnProperty(key) && !portfolioHashMap.hasOwnProperty(key)) {
+          hashMap[key] = { ...hashMap[key], skills: [], portfolios: [] };
+        } else if (skillHashMap.hasOwnProperty(key) && !portfolioHashMap.hasOwnProperty(key)) {
+          hashMap[key] = { ...hashMap[key], skills: JSON.parse(JSON.stringify(skillHashMap[key])), portfolios: [] };
+        } else if (!skillHashMap.hasOwnProperty(key) && portfolioHashMap.hasOwnProperty(key)) {
+          hashMap[key] = { ...hashMap[key], skills: [], portfolios: JSON.parse(JSON.stringify(portfolioHashMap[key])) };
+        } else if (skillHashMap.hasOwnProperty(key) && portfolioHashMap.hasOwnProperty(key)) {
+          hashMap[key] = { ...hashMap[key], skills: JSON.parse(JSON.stringify(skillHashMap[key])), portfolios: JSON.parse(JSON.stringify(portfolioHashMap[key])) };
+        }
+        results.push(hashMap[key]);
+      });
+  
+      const data = { all_employee_data: results };
+      // console.log(data);
+      // eslint-disable-next-line no-shadow
+      employeesTotal.forEach((data) => {
+        employees_count.push(data);
+        if (data.availability.toLowerCase() === 'not-available') {
+          hired_employees_count.push(data);
+        }
+        if (data.availability.toLowerCase() === 'available') {
+          available_employees_count.push(data);
+        }
+      });
+      res.render('Pages/admin-viewEmployee', {
+        pageName: 'View Employee',
+        path: 'admin-viewEmployee',
+        totalEmployees: employees_count.length,
+        availableEmployees: available_employees_count.length,
+        hiredEmployees: hired_employees_count.length,
+        data: data.all_employee_data,
+        moment,
+      });
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    }
   },
 
   dashboard: (req, res) => {

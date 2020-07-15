@@ -71,10 +71,6 @@ const adminExportEmployer = require('./Routes/admin/export-employer');
 const adminExportEmployee = require('./Routes/admin/export-verified-employee');
 const adminVerifyEmployer = require('./Routes/admin/verify-employer');
 const adminVerifyEmployee = require('./Routes/admin/verify-employee');
-const adminIndex = require('./Routes/admin/index');
-
-// IMPORT ALL GET EMPLOYERS AND EMPLOYEES ROUTE --ADMIN
-const listAll = require('./Routes/admin/viewAllUsers');
 
 // IMPORT TRANSACTION ROUTES
 const employerTransaction = require('./Routes/employer/employer-transaction');
@@ -217,8 +213,6 @@ app.use('/v1/admin', adminExportEmployer);
 app.use('/v1/admin', adminExportEmployee);
 app.use('/v1/admin', adminVerifyEmployer);
 app.use('/v1/admin', adminVerifyEmployee);
-app.use('/v1/admin', listAll); // Get ALL Employees and Employers
-app.use('/v1/admin', adminIndex);
 
 // team route goes here
 app.use('/v1/team', teamRoutes);
