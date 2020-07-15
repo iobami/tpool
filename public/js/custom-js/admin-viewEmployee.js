@@ -80,7 +80,7 @@ function toBlock(userId, employeeName, csrf, token) {
         method: 'PATCH',
         headers: {
           'X-CSRF-TOKEN': csrf,
-          Authorization: `Bearer ${token}`,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
@@ -109,7 +109,7 @@ function toUnblock(userId, employeeName, csrf, token) {
         method: 'PATCH',
         headers: {
           'X-CSRF-TOKEN': csrf,
-          Authorization: `Bearer ${token}`,
+          Authorization: token,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });

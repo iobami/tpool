@@ -16,8 +16,12 @@ const router = express.Router();
 router.route('/users-csv', authorize(Role.Admin)).get(getUsers);
 
 // Admin block employee route
-router.patch('/block/employee/:user_id', authorize([Role.Admin, Role.SuperAdmin]), blockEmployee);
-router.patch('/unblock/employee/:user_id', authorize([Role.Admin, Role.SuperAdmin]), unblockEmployee);
+router
+  .route('/block/employee/:user_id', authorize([Role.Admin, Role.SuperAdmin]))
+  .patch(blockEmployee);
+router
+  .route('/unblock/employee/:user_id', authorize([Role.Admin, Role.SuperAdmin]))
+  .patch(unblockEmployee);
 
 // Admin block employer route
 router

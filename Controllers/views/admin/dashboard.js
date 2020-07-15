@@ -37,16 +37,17 @@ module.exports = {
     const csrf = req.csrfToken();
     const { session } = req.cookies;
     try {
+      const employersAll = await model.Employer.findAll({});
       const individuals_array = [];
       const company_array = [];
-      const limit = Number(req.query.p) || 1000000000;
+      const limit = Number(req.query.p) || Number(employersAll.length);
       const employers = await model.Employer.findAll({
         limit,
         order: [
           ['id', 'DESC'],
         ],
       });
-      const employersAll = await model.Employer.findAll({});
+
       const data = { data: employers };
       const totalEmployers = employersAll.length;
       employersAll.forEach((employer) => {
@@ -61,7 +62,7 @@ module.exports = {
 
       res.render('Pages/admin-dash-employers', {
         pageName: 'Admin | All Employers',
-        path: 'admin-viewEmployer',
+        path: 'admin-all-employers',
         data,
         totalCompany: company_array.length,
         totalIndividual: individuals_array.length,
@@ -147,10 +148,38 @@ module.exports = {
     }
   },
 
-  dashboard: (req, res) => {
+  dashboard: async (req, res) => {
+    const employers = await model.Employer.findAll({});
+    const employees = await model.Employee.findAll({});
+
+    const allTransactions = await model.Transaction.findAndCountAll({
+      order: [
+        ['id', 'DESC'],
+      ],
+    });
+    const latestEmployers = await model.Employer.findAll({
+      limit: 10,
+      order: [
+        ['id', 'DESC'],
+      ],
+    });
+    const Transactions = await model.Transaction.findAll({
+      where: {
+        active: 1,
+      },
+    });
+
+    const latestTransactions = allTransactions.rows.slice(0, 5);
+
     res.render('Pages/admin-dashboard', {
       pageName: 'Admin dashboard',
-      path: "admin-dashboard"
+      path: "admin-dashboard",
+      totalEmployer: employers.length,
+      totalEmployee: employees.length,
+      allTransactions: allTransactions.count,
+      latestEmployers,
+      latestTransactions,
+      activeSubscribers: Transactions.length,
     });
   },
 
