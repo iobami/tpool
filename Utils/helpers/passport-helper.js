@@ -25,11 +25,11 @@ exports.getUserData = async (req, profile, user, done) => {
     }
 
     if (user.status === '0') {
-      return done(null, false, req.flash('errorMessage', 'User is not verified'));
+      return done(null, false, req.flash('error', 'User is not verified'));
     }
 
     if (user.block) {
-      return done(null, false, req.flash('errorMessage', 'User is blocked, please contact an Admin'));
+      return done(null, false, req.flash('error', 'User is blocked, please contact an Admin'));
     }
     let data = {
       email: user.email,

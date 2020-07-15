@@ -52,7 +52,7 @@ passport.use('google-employer',
           return done(null, userData);
         }
       } catch (error) {
-        return done(null, false, req.flash('errorMessage', 'Authentication error'));
+        return done(null, false, req.flash('error', 'Authentication error'));
       }
     },
   ));
@@ -86,7 +86,7 @@ passport.use('google-employee',
           return done(null, userData);
         }
       } catch (error) {
-        return done(null, false, req.flash('errorMessage', 'Authentication error'));
+        return done(null, false, req.flash('error', 'Authentication error'));
       }
     },
   ));
@@ -120,7 +120,7 @@ passport.use('github-employer',
           return done(null, userData);
         }
       } catch (error) {
-        return done(null, false, req.flash('errorMessage', 'Authentication error'));
+        return done(null, false, req.flash('error', 'Authentication error'));
       }
     },
   ));
@@ -154,7 +154,7 @@ passport.use('github-employee',
           return done(null, userData);
         }
       } catch (error) {
-        return done(null, false, req.flash('errorMessage', 'Authentication error'));
+        return done(null, false, req.flash('error', 'Authentication error'));
       }
     },
   ));
