@@ -1,5 +1,4 @@
 module.exports = {
-
   employerSignup: (req, res) => {
     const { isLoggedIn, employerId } = req.session;
 

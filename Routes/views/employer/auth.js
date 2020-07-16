@@ -12,6 +12,7 @@ const { registerEmployer, registerEmployerOrg } = require('../../../Controllers/
 
 appRoute.get('/employer/login', employerSignIn);
 appRoute.get('/employer/register', employerSignup);
+// Employer Register
 appRoute.post(
   '/employer/register',
   [

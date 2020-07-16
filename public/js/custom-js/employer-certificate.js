@@ -1,14 +1,9 @@
 
-const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
-const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
-
-if (!userInformation) {
-    alert('Error! User Information not found, please sign in again.');
-    location.href = '/employer-sign-in';
-  }
+let docId = 123;
 
 // store all added documents and display in table
 let documentsArray = [];
+let imageData;
 
 (function() {
     'use strict';
@@ -18,31 +13,50 @@ let documentsArray = [];
         // Loop over them and prevent submission
         const validation = Array.prototype.filter.call(forms, function(form) {
             form.addEventListener('submit', async function(event) {
-                const [name, number, file] = document.querySelectorAll('form input');
+                const [name, number, file] = document.querySelectorAll('#docUpload input');
                 let addValidation = true;
+                const [fileCountError] = document.getElementsByClassName('file-upload-count-error');
+                const upload = document.getElementById('upload');
+                const dropArea = document.getElementById('drop-area');
+                dropArea.style.border = '2px dashed #ccc';
+
+                if (!imageData) {
+                    dropArea.style.border = '2px dashed #dc3545';
+                }
 
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
                 } else if (form.checkValidity()) {
+                    event.preventDefault();
+
+                    if (documentsArray.length === 3) {
+                        fileCountError.style.visibility = 'visible';
+                        return event.preventDefault();
+                    }
 
                     // add to array
-                    const imageData = readImage();
+                    // const imageData = readImage();
                     if (imageData) {
+                        docId += 1;
                         documentsArray.push({
                             file: imageData,
                             name: name.value,
                             number: number.value,
+                            id: `${number.value}${docId}`,
                         });
 
+                        upload.style.display = 'block';
+
                         const tbody = document.querySelector('tbody');
-                        newTableRow(tbody, { name: name.value, number: number.value });
+                        newTableRow(tbody, { name: name.value, number: number.value, id: `${number.value}${docId}` });
                         const clearForm = document.querySelector('form');
                         clearForm.className = 'needs-validation';
                         addValidation = false;
                         name.value = '';
                         number.value = '';
-                        labelText('');
+                        labelText('Upload Image');
+                        $('#image-preview').attr('src', '/img/attach_file.svg');
                         clearFileInput(file);
                     }
 
@@ -60,14 +74,16 @@ let documentsArray = [];
 const newTableRow = (container, data) => {
 
     const tr = document.createElement('tr');
-    tr.setAttribute('id', `id${data.number}`);
+    tr.setAttribute('id', `id${data.id}`);
     let td = document.createElement('td');
+    td.setAttribute('class', 'align-middle');
 
     let textNode = document.createTextNode(data.name);
     td.appendChild(textNode);
     tr.appendChild(td);
 
     td = document.createElement('td');
+    td.setAttribute('class', 'align-middle');
 
     textNode = document.createTextNode(data.number);
     td.appendChild(textNode);
@@ -75,7 +91,7 @@ const newTableRow = (container, data) => {
 
     const button = document.createElement('button');
     button.setAttribute('class', 'btn btn-danger');
-    const buttonEventValue = `id${data.number}`;
+    const buttonEventValue = `id${data.id}`;
     button.setAttribute('onclick', `removeTableRow('${buttonEventValue}')`);
 
     textNode = document.createTextNode('Remove');
@@ -95,13 +111,21 @@ const removeTableRow = async (rowId) => {
     // filter array to remove document object
 
     const checkDocumentId = (data) => {
-        return `id${data.number}` != rowId;
+        return `id${data.id}` != rowId;
     };
 
     documentsArray = await documentsArray.filter(checkDocumentId);
 
     const rowTarget = document.getElementById(rowId);
     rowTarget.style.display = 'none';
+
+    if (documentsArray.length <= 0) {
+        const upload = document.getElementById('upload');
+        upload.style.display = 'none';
+    }
+
+    const [fileCountError] = document.getElementsByClassName('file-upload-count-error');
+    fileCountError.style.visibility = 'hidden';
 };
 
 const clearFileInput = (ctrl) => {
@@ -113,32 +137,54 @@ const clearFileInput = (ctrl) => {
     }
 };
 
-const readImage = () => {
-    const imageData = document.getElementById("customFile");
-    const files = imageData.files;
+// const readImage = () => {
+//     const imageData = document.getElementById("customFile");
+//     const files = imageData.files;
 
-    if (!files.length) return;
+//     if (!files.length) return;
 
-    const [imageFile] = files;
-    const fileNameArray = imageFile.name.split('.');
-    const fileExtension = fileNameArray[fileNameArray.length - 1].toLowerCase();
-    if (['jpg', 'jpeg', 'png'].includes(fileExtension) === false) {
-        alert('This file is not in a JPG, JPEG or PNG format.');
-        return;
+//     const [imageFile] = files;
+//     const fileNameArray = imageFile.name.split('.');
+//     const fileExtension = fileNameArray[fileNameArray.length - 1].toLowerCase();
+//     if (['jpg', 'jpeg', 'png'].includes(fileExtension) === false) {
+//         alert('This file is not in a JPG, JPEG or PNG format.');
+//         return;
+//     }
+
+//     if (files.length) {
+//         // const [labelText] = document.getElementsByClassName('custom-file-label');
+//         // labelText.innerText = imageFile.name
+//         labelText(imageFile.name);
+//     }
+
+//     return imageFile;
+// };
+
+const truncateString = (str, num) => {
+
+    if (str.length <= num) {
+        return str
     }
 
-    if (files.length) {
-        // const [labelText] = document.getElementsByClassName('custom-file-label');
-        // labelText.innerText = imageFile.name
-        labelText(imageFile.name);
-    }
-
-    return imageFile;
+    return `${str.slice(0, num)}...`;
 };
 
 const labelText = (value) => {
-    const [labelText] = document.getElementsByClassName('custom-file-label');
-    labelText.innerText = value
+    const [labelText] = document.getElementsByClassName('upload-label-button');
+    let newValue;
+
+    if ((window.innerWidth >= 366) && (window.innerWidth <= 450)) {
+        newValue = truncateString(value, 14);
+        labelText.innerText = newValue;
+    } else if (window.innerWidth <= 365) {
+        newValue = truncateString(value, 10);
+        labelText.innerText = newValue;
+    } else {
+        newValue = truncateString(value, 21);
+        labelText.innerText = newValue;
+    }
+
+    // labelText.innerText = value
 };
 
 const uploadSingleImage = async (imageData, data) => {
@@ -147,12 +193,14 @@ const uploadSingleImage = async (imageData, data) => {
 
         reader.readAsDataURL(imageData);
 
-        const documentUploadUrl = 'https://api.lancers.app/v1/employer/uploaddocument';
+        const documentUploadUrl = '/employer/uploaddocument';
         const fileUploadData = new FormData();
         fileUploadData.append('image_document', imageData);
         fileUploadData.append('document_name', data.name);
         fileUploadData.append('document_number', data.number);
-        fileUploadData.append('employer_id', data.userTypeId);
+        // fileUploadData.append('employer_id', data.userTypeId);
+
+        const [csrf] = document.getElementsByName('_csrf');
 
         return await axios({
             method: 'POST',
@@ -160,13 +208,14 @@ const uploadSingleImage = async (imageData, data) => {
             headers: {
             accept: 'application/json',
             // 'content-type': 'application/json',
-            'Authorization': `Bearer ${data.token}`,
+            'csrf-token': csrf.value,
             },
             data: fileUploadData,
         });
 
     } catch (e) {
-        return e;
+        console.log(e.response.data);
+        return e.response.data;
     }
 };
 
@@ -176,30 +225,116 @@ const batchUpload = async () => {
     upload.style.display = 'none';
     loader.style.display = 'block';
 
-    // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5b2JhbWlhbGFkZW5veWVAeWFob28uY29tIiwidXNlcklkIjoiMTljNzNmNDYtMWRhNy00NDVhLWFhZmEtODExYTc3ZTRmNWQwIiwidXNlclJvbGUiOiJST0wtRU1QTE9ZRUUiLCJ1c2VyVHlwZUlkIjoiN2EyZWQ4MTQtZDc4Mi00ODZlLTlmYzQtMTk3ZTA2ZDBhZTg4IiwiaWF0IjoxNTk0MzExOTkxLCJleHAiOjE1OTQzOTgzOTF9.sxHq3-mMQAnjDbL4fe_ktIxq_f3OIYDfqXt5FOqF_2k';
-    // const userTypeId = 'bf160643-3ea7-4b93-8532-33df5248972d';
-
+    let success = 0;
+    let error = 0;
      for (const documentObject of documentsArray) {
 
         const payload = {
-            userTypeId: userInfo.userTypeId,
-            token: userInformation.token,
             name: documentObject.name,
             number: documentObject.number,
         };
 
         try {
 
-            const { data } = await uploadSingleImage(documentObject.file, payload);
-            console.log(data.message);
+            const { data } = await uploadSingleImage(documentObject.file, payload);         
+            if (data.status === 'success') {
+                success += 1;
+                removeTableRow(`id${documentObject.id}`);
+            } else {
+                error += 1;
+            }
 
         } catch (e) {
-            console.log(e);
+            error += 1;
         }
 
      }
+
+     if (success > 0) {
+        const message = (success === 1) ? `${success} file uploaded`  : `${success} files uploaded`;
+        toaster(message, 'success');
+        const redirect = () => {
+            window.location.replace('/employer/dashboard');
+        };
+        setTimeout(redirect, 6000);
+     }
+     if (error > 0) {
+        const message = (error === 1) ? `${error} upload failed`  : `${error} uploads failed`;
+        toaster(message, 'error');
+     }
+     removeToaster(4000);
 
      loader.style.display = 'none';
      upload.style.display = 'block';
 
 };
+
+// DRAG AND DROP SECT
+const dropArea = document.getElementById("drop-area");
+
+const preventDefaults = e => {
+    e.preventDefault();
+    e.stopPropagation();
+};
+
+const highlight = e => {
+    dropArea.classList.add("highlight");
+};
+
+const unhighlight = e => {
+    dropArea.classList.remove("highlight");
+};
+
+["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
+    dropArea.addEventListener(eventName, preventDefaults, false);
+});
+["dragenter", "dragover"].forEach(eventName => {
+    dropArea.addEventListener(eventName, highlight, false);
+});
+["dragleave", "drop"].forEach(eventName => {
+    dropArea.addEventListener(eventName, unhighlight, false);
+});
+
+const handleDrop = e => {
+    // shorthand version
+    // ([...e.dataTransfer.files]).forEach((file)=>{console.log("file...",file)});
+
+    const dt = e.dataTransfer;
+    const files = dt.files;
+  
+    readImage(files);
+  };
+  
+const readImage = files => {
+    const filesArray = [...files];
+
+    if (!files.length) return;
+
+    const [imageFile] = filesArray;
+    const fileNameArray = imageFile.name.split('.');
+    const fileExtension = fileNameArray[fileNameArray.length - 1].toLowerCase();
+    if (['jpg', 'jpeg', 'png'].includes(fileExtension) === false) {
+        toaster('! Only JPGs and PNG files supported', 'error');
+        return;
+    }
+
+    if (files.length) {
+        labelText(imageFile.name);
+
+        const reader = new FileReader();
+
+        reader.onload = function changeFile(e) {
+            $('#image-preview')
+                .attr('src', reader.result);
+        };
+
+        reader.readAsDataURL(imageFile);
+
+        const dropArea = document.getElementById('drop-area');
+        dropArea.style.border = '2px dashed #ccc';
+    }
+
+    imageData = imageFile;
+};
+
+dropArea.addEventListener("drop", handleDrop, false);

@@ -38,6 +38,7 @@ const attributes = [
   'employee_id',
   'user_id',
   'referredBy',
+  'hasTeam',
   'user_type',
   'verification_status',
 ];
@@ -285,7 +286,7 @@ exports.getProfile = async (req, res) => {
 
     const profile = await query;
 
-    const data = { ...profile, email: req.session.data.email };
+    const data = { ...profile.dataValues, email: req.session.data.email };
 
     return res.status(200).render('Pages/employeeProfile', {
       pageTitle: 'Talent Pool | Profile',
