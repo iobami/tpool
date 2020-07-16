@@ -77,7 +77,6 @@ module.exports = {
 
   allEmployees: async (req, res) => {
     const { session } = req.cookies;
-    console.log(session);
     try {
       const limit = Number(req.query.p) || 1000000000;
       const employeesTotal = await model.Employee.findAll({});
