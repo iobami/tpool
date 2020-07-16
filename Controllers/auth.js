@@ -756,31 +756,10 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   await user.save();
 
   req.flash('success', 'Password changed successfully');
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5914a43c74b8b40a2a2d2a3b01c216d5cfac3b6f
-  if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
-  if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
-=======
+
   if (user.role_id === 'ROL-EMPLOYER') return res.redirect('/employer/login');
   if (user.role_id === 'ROL-EMPLOYEE') return res.redirect('/employee/login');
->>>>>>> c1d84ced30459f39b90b00ba616d7bb87aaabcba
-=======
 
-  if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
-  if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
-
->>>>>>> ed84bcf35a90b1d775d0bea5860f91326411e943
-<<<<<<< HEAD
-=======
-  if (user.role_id === 'ROL-EMPLOYER') return res.redirect('/employer/login');
-  if (user.role_id === 'ROL-EMPLOYEE') return res.redirect('/employee/login');
->>>>>>> bb3e8353d4bbc8e6cd3e4303552bb82b8f2e320a
-=======
->>>>>>> 5914a43c74b8b40a2a2d2a3b01c216d5cfac3b6f
 });
 
 exports.resendVerificationLink = async (req, res) => {

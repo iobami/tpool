@@ -268,17 +268,11 @@ exports.getDashboard = async (req, res) => {
 // GET AN EMPLOYEE PROFILE -- Renders a page
 exports.getProfile = async (req, res) => {
   try {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    const { passport: { user } } = req.session;
-=======
+    const errorMessage = req.query.error_status;
+    const success = req.query.success_message;
     const {
       passport: { user },
     } = req.session;
->>>>>>> bb3e8353d4bbc8e6cd3e4303552bb82b8f2e320a
-=======
-    const { passport: { user } } = req.session;
->>>>>>> 5914a43c74b8b40a2a2d2a3b01c216d5cfac3b6f
     const { userTypeId } = user;
 
     let employeeId;
@@ -305,6 +299,8 @@ exports.getProfile = async (req, res) => {
       profilePath: `${URL}employee/profile/${employeeId}`,
       portfolioPath: `${URL}employee/portfolio/${employeeId}`,
       path: '',
+      errorMessage,
+      success,
       data,
     });
   } catch (err) {
@@ -316,17 +312,11 @@ exports.getProfile = async (req, res) => {
 // GET AEMPLOAYEE PORTFOLIOS -- Renders a page
 exports.getPortfolio = async (req, res) => {
   try {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    const { passport: { user } } = req.session;
-=======
+    const errorMessage = req.query.error_status;
+    const success = req.query.success_message;
     const {
       passport: { user },
     } = req.session;
->>>>>>> bb3e8353d4bbc8e6cd3e4303552bb82b8f2e320a
-=======
-    const { passport: { user } } = req.session;
->>>>>>> 5914a43c74b8b40a2a2d2a3b01c216d5cfac3b6f
     const { userTypeId } = user;
 
     let employeeId;
@@ -350,6 +340,8 @@ exports.getPortfolio = async (req, res) => {
       profilePath: `${URL}employee/profile/${employeeId}`,
       portfolioPath: `${URL}employee/portfolio/${employeeId}`,
       path: '',
+      errorMessage,
+      success,
       data,
     });
   } catch (err) {
@@ -359,17 +351,9 @@ exports.getPortfolio = async (req, res) => {
 
 exports.createPortfolio = async (req, res) => {
   try {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    const { passport: { user } } = req.session;
-=======
     const {
       passport: { user },
     } = req.session;
->>>>>>> bb3e8353d4bbc8e6cd3e4303552bb82b8f2e320a
-=======
-    const { passport: { user } } = req.session;
->>>>>>> 5914a43c74b8b40a2a2d2a3b01c216d5cfac3b6f
     const { userTypeId } = user;
 
     const employeeId = req.session.employeeId || userTypeId;
@@ -392,17 +376,9 @@ exports.createPortfolio = async (req, res) => {
 
 exports.deletePortfolio = async (req, res) => {
   try {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    const { passport: { user } } = req.session;
-=======
     const {
       passport: { user },
     } = req.session;
->>>>>>> bb3e8353d4bbc8e6cd3e4303552bb82b8f2e320a
-=======
-    const { passport: { user } } = req.session;
->>>>>>> 5914a43c74b8b40a2a2d2a3b01c216d5cfac3b6f
     const { userTypeId } = user;
 
     const employeeId = req.session.userTypeId || userTypeId;
