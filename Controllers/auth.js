@@ -617,8 +617,6 @@ exports.postLogout = (req, res) => {
   res.redirect('/');
 };
 
-
-
 const getResetPasswordToken = () => {
   // Generate token
   const resetToken = crypto.randomBytes(20).toString('hex');
@@ -645,7 +643,7 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
 
   if (!user) {
     req.flash('error', 'User with this email is not found');
-     return res.redirect('/recover/password');
+    return res.redirect('/recover/password');
   }
 
   // Get reset token
@@ -681,7 +679,7 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
     });
 
     req.flash('success', 'Reset password link has been sent to your mail');
-     return res.redirect('/recover/password');
+    return res.redirect('/recover/password');
   } catch (err) {
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
@@ -689,8 +687,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
 
     await user.save({ validateBeforeSave: false });
 
-     req.flash('error', 'An error occured, please try again!');
-     return res.redirect('/recover/password');
+    req.flash('error', 'An error occured, please try again!');
+    return res.redirect('/recover/password');
   }
 });
 
@@ -712,7 +710,7 @@ exports.resetPassword = asyncHandler(async (req, res) => {
 
   if (!user) {
     req.flash('error', 'Invalid token');
-     return res.redirect('/recover/password');
+    return res.redirect('/recover/password');
   }
 
   if (user.dataValues.resetPasswordExpire < Date.now()) {
@@ -730,9 +728,8 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   await user.save();
 
   req.flash('success', 'Password changed successfully');
-  if(user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
-  if(user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
-  
+  if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
+  if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
 });
 
 exports.resendVerificationLink = async (req, res) => {
