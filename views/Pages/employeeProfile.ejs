@@ -44,7 +44,7 @@
         <section id="portfolio" class="mt-4">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         <div class="card px-4 py-5 mb-3 bio">
                             <div class="row">
                                 <div class="col-md-6">
@@ -183,6 +183,18 @@
                                                 <div class="col-md-6 formCol">
                                                     <div class="form-group">
                                                         <div style="position: relative;">
+                                                            <label for="dob" class="super-label">
+                                                                Phone Number
+                                                            </label>
+                                                            <input type="number" value="<%= data.phone_no %>"
+                                                                class="form-control" id="phone-number"
+                                                                aria-describedby="phoneNoHelp" name="phoneNo">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
                                                             <label for="location" class="super-label">
                                                                 Location
                                                             </label>
@@ -192,8 +204,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-md-6 tracks formCol">
                                                     <label class="super-label">Track</label>
                                                     <select class="form-control" name="track" required>
@@ -212,6 +222,18 @@
                                                         <option value="remote">Remote</option>
                                                     </select>
                                                 </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="dob" class="super-label">
+                                                                Resume (CV)
+                                                            </label>
+                                                            <input type="url" class="form-control"
+                                                                placeholder="Link to your CV (URL)" name="employeeCv"
+                                                                required value="<%= data.employee_cv %>" />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <hr>
@@ -223,34 +245,6 @@
                                         </form>
                                     </div>
                                 </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="upload-section">
-                            <div class="row d-flex flex-column">
-                                <div class="col-md-12 mb-5">
-                                    <div id="portfolio" class="card p-3 curriculum">
-                                        <div class="section-title py-2">
-                                            <div class="section-name">
-                                                <h4>Portfolio</h4>
-                                            </div>
-                                        </div>
-                                        <ul class='portfolios list-group list-group-flush'>
-                                            <!-- Dynamic Content Goes Here -->
-
-                                            <li class="list-group-item">
-                                                Fund My Laptop
-                                            </li>
-                                            <li class="list-group-item">
-                                                TalentPool
-                                            </li>
-                                            <li class="list-group-item">
-                                                MedBuzz
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
