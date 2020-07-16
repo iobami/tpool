@@ -184,13 +184,12 @@ hr {
   color: white;
 }
 
-.google-btn {
-  background: #db4a39;
-}
-
 .github-btn:hover {
   background: #000;
   color: white;
+}
+.google-btn {
+  background: #db4a39;
 }
 
 .google-btn:hover {

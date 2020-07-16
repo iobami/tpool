@@ -133,6 +133,7 @@
                             <label for="firstName">First Name</label>
                             <input
                               type="text"
+                              name="firstname"
                               id="firstName"
                               class="form-control form-control-lg form__input"
                               placeholder="Enter first name"
@@ -147,6 +148,7 @@
                             <input
                               type="text"
                               id="lastName"
+                              name="lastname"
                               class="form-control form-control-lg form__input"
                               placeholder="Enter last name"
                               required
@@ -179,6 +181,7 @@
                               type="tel"
                               maxlength="15"
                               inputmode="tel"
+                              name="phone" 
                               class="form-control form-control-lg form__input"
                               id="phoneNo"
                               placeholder="e.g. 08012345678"
@@ -219,6 +222,7 @@
                               class="form-control form-control-lg form__input"
                               inputmode="alpha-numeric"
                               minlength="8"
+                              name="confirm_password"
                               id="confirmPassword"
                               required
                             />
@@ -251,6 +255,7 @@
                             <input
                               type="checkbox"
                               class="custom-control-input"
+                              name="terms"
                               id="termsPolicy"
                             />
                             <label
@@ -263,51 +268,59 @@
                           </div>
                         </div>
 
-                        <div class="form-group my-3 pt-2">
-                          <button
-                            class="btn btn-block form__button py-3"
-                            type="submit"
-                            id="submitBtn"
-                          >
-                            Sign Up
-                          </button>
-                        </div>
+                        <div class="loader"></div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white" id="signup-btn" type="submit" data-toggle="" data-target="#exampleModal">Sign Up</button>
+                                </div>
+            
+                                 <!-- Modal -->
+                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                        <div class="modal-body d-flex flex-column align-items-center">
+                                            <div>
+                                                <img src="/img/logo.svg" alt="logo" />
+                                            </div>
+                                            <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z" fill="#337AB7"/>
+                                            </svg>
+            
+                                            <h2>Registration Successful !</h2>
+                                            <p class="text-center"> A verification link has been sent to your email address, kindly check your mail and click to verify your account.</p>
+                                                
+                                            <button id="login-btn" type="button" class="btn btn-secondary" data-dismiss="modal">Sign In</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="form-group my-4 text-center">
-                          <span class="text-muted wor">OR</span>
-                        </div>
-
-                        <div class="row mt-2">
-                          <div class="col-md">
-                            <a href="/auth/employer/github">
-                              <button
-                                type="button"
-                                class="btn btn-block facebook-btn py-3 my-1"
-                              >
-                                <i
-                                  class="fab fa-facebook-f pr-2"
-                                  aria-hidden="true"
-                                ></i
-                                >sign up with Github
-                              </button>
-                            </a>
+                        <div class="row">
+                          <div class="col-md-5 d-none d-md-block">
+                              <hr>
                           </div>
-
-                          <div class="col-md">
-                            <a href="/auth/employer/google">
-                              <button
-                                type="button"
-                                class="btn btn-block google-btn py-3 my-1"
-                              >
-                                <i
-                                  class="fab fa-google pr-2"
-                                  aria-hidden="true"
-                                ></i
-                                >sign up with Google
-                              </button>
-                            </a>
+                          <div class="col-md-2">
+                              <p class="text-center">OR</p>
                           </div>
-                        </div>
+                          <div class="col-md-5 d-none d-md-block">
+                              <hr>
+                          </div>
+                      </div>
+      
+                      <div class="row mt-2">
+                          <div class="col-md">
+                              <a class="social-sign-in" href="/auth/employer/github">
+                                  <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i class="fab fa-github pr-2" aria-hidden="true"></i>sign up with Github</button>
+                              </a>
+                          </div>
+      
+                          <div class="col-md">
+                              <a class="social-sign-in" href="/auth/employer/google">
+                                  <button type="button" class="btn btn-block  google-btn py-3 my-1"><i class="fab fa-google pr-2" aria-hidden="true"></i>sign up with Google</button>
+                              </a>
+                          </div>
+                      </div>
                         <div class="text-center acct mt-3 mb-5">
                           Have an account with us?
                           <a href="/employer/login">Sign In</a>
@@ -322,7 +335,7 @@
                       aria-labelledby="company-tab"
                     >
                       <form
-                        action="/employer/register"
+                        action="/employer/registerOrganization"
                         method="POST"
                         class="needs-validation"
                         id="orgForm"
@@ -340,6 +353,7 @@
                               type="text"
                               class="form-control form-control-lg form__input"
                               id="orgName"
+                              name="orgname"
                               placeholder="Enter organization name"
                               required
                             />
@@ -395,6 +409,7 @@
                               class="form-control form-control-lg form__input"
                               inputmode="alpha-numeric"
                               id="confirmOrgPassword"
+                              name="confirm_password"
                               required
                             />
                             <div class="invalid-feedback">
@@ -432,6 +447,7 @@
                               type="checkbox"
                               class="custom-control-input"
                               id="orgTerms"
+                              name="terms"
                             />
                             <label
                               class="custom-control-label"
@@ -443,29 +459,55 @@
                           </div>
                         </div>
 
-                        <div class="form-group my-3 pt-2">
-                          <button
-                            class="btn btn-block form__button py-3"
-                            type="submit"
-                            id="orgSubmitBtn"
-                          >
-                            Sign Up
-                          </button>
-                        </div>
+                        <div class="loader"></div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white" id="signup-btn" type="submit" data-toggle="" data-target="#exampleModal">Sign Up</button>
+                                </div>
+            
+                                 <!-- Modal -->
+                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                        <div class="modal-body d-flex flex-column align-items-center">
+                                            <div>
+                                                <img src="/img/logo.svg" alt="logo" />
+                                            </div>
+                                            <svg width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 18.4L25 30.9L45 18.4L25 5.9L5 18.4ZM50 18.4V43.4C50 44.7261 49.4732 45.9979 48.5355 46.9355C47.5979 47.8732 46.3261 48.4 45 48.4H5C3.67392 48.4 2.40215 47.8732 1.46447 46.9355C0.526784 45.9979 0 44.7261 0 43.4V18.4C0 16.575 0.975 15 2.425 14.125L25 0L47.575 14.125C49.025 15 50 16.575 50 18.4Z" fill="#337AB7"/>
+                                            </svg>
+            
+                                            <h2>Registration Successful !</h2>
+                                            <p class="text-center"> A verification link has been sent to your email address, kindly check your mail and click to verify your account.</p>
+                                                
+                                            <button id="login-btn" type="button" class="btn btn-secondary" data-dismiss="modal">Sign In</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="form-group my-4 text-center">
-                          <span class="text-muted wor">OR</span>
-                        </div>
+                        <div class="row">
+                          <div class="col-md-5 d-none d-md-block">
+                              <hr>
+                          </div>
+                          <div class="col-md-2">
+                              <p class="text-center">OR</p>
+                          </div>
+                          <div class="col-md-5 d-none d-md-block">
+                              <hr>
+                          </div>
+                      </div>
 
                         <div class="row mt-2">
                           <div class="col-md">
-                            <a href="/auth/employer/github">
+                            <a class="social-sign-in" href="/auth/employer/github">
                               <button
                                 type="button"
-                                class="btn btn-block facebook-btn py-3 my-1"
+                                class="btn btn-block github-btn py-3 my-1"
                               >
                                 <i
-                                  class="fab fa-facebook-f pr-2"
+                                  class="fab fa-github pr-2"
                                   aria-hidden="true"
                                 ></i
                                 >sign up with Github
@@ -474,7 +516,7 @@
                           </div>
 
                           <div class="col-md">
-                            <a href="/auth/employer/google">
+                            <a class="social-sign-in" href="/auth/employer/google">
                               <button
                                 type="button"
                                 class="btn btn-block google-btn py-3 my-1"
