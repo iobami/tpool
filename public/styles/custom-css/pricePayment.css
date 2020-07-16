@@ -150,6 +150,9 @@
     border-radius: 5px;
     color: white;
 }
+p span.naira:before {
+    content:'\0024';
+}
 
 @media(min-width: 992px){
     .price-payment .container .plan {

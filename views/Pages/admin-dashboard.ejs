@@ -6,6 +6,8 @@
         <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
         <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
         <link href="../styles/custom-css/admin-dash.css" rel="stylesheet" />
+
+        <script src="../js/custom-js/admin-dashboard.js"></script>
     </head>
     <body>
 
@@ -13,7 +15,7 @@
 
           <%- include('../Templates/admin-sidebar') %>
 
-        <section class="admin__dashboard">
+        <section class="admin__dashboard" style="margin-top: -100px;">
             <h2 class="dashboard__heading">Dashboard</h2>
 
             <div class="container-fluid">
@@ -23,8 +25,7 @@
                             <div class="card-body">
                                 <div class="card__text">
                                     <p>total employees</p>
-                                    <h2>15,000</h2>
-                                    <p><span>21%</span> Increase this month</p>
+                                    <h1><%- totalEmployee.length %></h1>
                                 </div>
 
                                 <div class="card__img">
@@ -41,8 +42,7 @@
                             <div class="card-body">
                                 <div class="card__text">
                                     <p>total employers</p>
-                                    <h2>5,060</h2>
-                                    <p><span>21%</span> Increase this month</p>
+                                    <h1><%- totalEmployer.length %></h1>
                                 </div>
 
                                 <div class="card__img">
@@ -58,9 +58,9 @@
                         <div class="card top__card profit__card">
                             <div class="card-body">
                                 <div class="card__text">
-                                    <p>total profit</p>
-                                    <h2>15,000,000</h2>
-                                    <p><span>5%</span> Less profit</p>
+                                    <p>active transactions</p>
+                                    <h1><%= activeTransactions %></h1>
+                                    <p><span><%= allTransactions %></span> Total transactions </p>
                                 </div>
 
                                 <div class="card__img">
@@ -78,7 +78,7 @@
                 <div class="row">
                     <div class="col-lg-6 statistics__wrapper">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <h3>Monthly Statistics</h3>
+                            <h3>Statistics</h3>
                             <select class="statistics__date">
                                 <option>This month</option>
                             </select>
@@ -86,7 +86,9 @@
 
                         <div class="card-container ">
                             <div class="card mb-sm-4 mb-lg-0">
-                                <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
+
+                                <div id="chartContainer" style="height: 300px; width: 100%; padding-top: 10px;margin-bottom: 50px;"></div>
+                                <div  style="" class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
                                     <p class="m-0">New Employee's</p>
                                     <h4 class="m-0">2300</h4>
                                 </div>
@@ -102,12 +104,8 @@
                                 </div>
 
                                 <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
-                                    <p class="m-0">Profit</p>
+                                    <p class="m-0">Total amount subscribed</p>
                                     <h4 class="m-0">N1,234,000</h4>
-                                </div>
-
-                                <div class="text-center">
-                                    <a class="btn export__btn" href="#">Export Data</a>
                                 </div>
                             </div>
                         </div>
@@ -115,72 +113,46 @@
 
                     <div class="col-lg-6">
                         <div class="mb-4">
-                            <h3>Recent Activity</h3>
+                            <h3>Recent transactions</h3>
                         </div>
-
-                        <div class="card-container">
+                        <div class="card-container" style="max-height: 500px;">
+                            <div class="card activity__card">
+                                <div class="card-body pb-0">
+                                    <table class="table table-borderless table-wrapper-scroll-x" >
+                                    <% latestTransactions.forEach(function(transaction) { %>
+                                        <tbody>
+                                          <tr class="d-flex justify-content-between align-items-center mb-4">
+                                            <td class="name"><i class="fa fa-briefcase" style="font-size: xx-large; margin-right: 10px;" aria-hidden="true"></i><%= transaction.package_id %></td>
+                                            <td class="join"><%= transaction.amount %> <%= transaction.currency %></td>
+                                            <td class="time">Subscribed <%= moment(transaction.createdAt).startOf('hour').fromNow() %></td>
+                                          </tr>
+                                        </tbody>
+                                    <% }) %> 
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4" style="margin-top: 30px;">
+                            <h3>Recent activities</h3>
+                        </div>
+                        <div class="card-container" style="margin-top: 20px;">
                             <div class="card activity__card">
                                 <div class="card-body pb-0">
                                     <table class="table table-borderless">
+                                    <% latestEmployers.forEach(function(employer) { %>
                                         <tbody>
                                           <tr class="d-flex justify-content-between align-items-center mb-4">
                                             <th scope="row">
                                                 <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
                                             </th>
-                                            <td class="name">Adelanke Adelanke</td>
+                                            <td class="name"><%=employer.employer_name %></td>
                                             <td class="join">Joined</td>
-                                            <td class="time">5 mins ago</td>
+                                            <td class="time"><%= moment(employer.createdAt).startOf('hour').fromNow() %></td>
                                           </tr>
                                         </tbody>
-                                        <tbody>
-                                            <tr class="d-flex justify-content-between align-items-center mb-4">
-                                              <th scope="row">
-                                                  <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
-                                              </th>
-                                              <td class="name">Adelanke Adelanke</td>
-                                              <td class="join">Joined</td>
-                                              <td class="time">5 mins ago</td>
-                                            </tr>
-                                        </tbody>
-                                        <tbody>
-                                        <tr class="d-flex justify-content-between align-items-center mb-4">
-                                            <th scope="row">
-                                                <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
-                                            </th>
-                                            <td class="name">Adelanke Adelanke</td>
-                                            <td class="join">Joined</td>
-                                            <td class="time">5 mins ago</td>
-                                        </tr>
-                                        </tbody>
-                                        <tbody>
-                                        <tr class="d-flex justify-content-between align-items-center mb-4">
-                                            <th scope="row">
-                                                <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
-                                            </th>
-                                            <td class="name">Adelanke Adelanke</td>
-                                            <td class="join">Joined</td>
-                                            <td class="time">5 mins ago</td>
-                                        </tr>
-                                        </tbody>
-                                        <tbody>
-                                        <tr class="d-flex justify-content-between align-items-center mb-4">
-                                            <th scope="row">
-                                                <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
-                                            </th>
-                                            <td class="name">Adelanke Adelanke</td>
-                                            <td class="join">Joined</td>
-                                            <td class="time">5 mins ago</td>
-                                        </tr>
-                                        </tbody>
-                                        <tbody>
-                                        <tr class="d-flex justify-content-between align-items-center mb-4">
-                                            <th scope="row">
-                                                <img src="https://pbs.twimg.com/profile_images/1095180025668743168/LgPx_hOQ.jpg" alt="" />
-                                            </th>
-                                            <td class="name">Adelanke Adelanke</td>
-                                            <td class="join">Joined</td>
-                                            <td class="time">5 mins ago</td>
-                                        </tr>
+                                    <% }) %> 
                                         </tbody>
                                     </table>
                                 </div>
@@ -193,6 +165,7 @@
 
         <div id="body__click"></div>
         
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="../js/bootstrap-js/popper.js"></script>
         <script src="../js/bootstrap-js/jquery.js"></script>
         <script src="../js/bootstrap-js/bootstrap.js"></script>

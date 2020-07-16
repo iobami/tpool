@@ -35,7 +35,7 @@
 
                 <form class="needs-validation" novalidate id="form" action="/employee/login" method="POST">
 
-                    <div class="col-md mb-3 px-0">
+                    <div class="col-md mb-3 px-0 email-phone">
                         <label for="email">Email</label>
                         <input 
                         class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
@@ -51,7 +51,7 @@
                     </div>
 
 
-                    <div class="col-md mb-3 px-0">
+                    <div class="col-md mb-3 px-0 password-area">
                         <label for="password">Password</label>
                         <input 
                         class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
@@ -66,7 +66,7 @@
                         </div> -->
                     </div>
                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                    <div class="row px-3" >
+                    <div class="row px-3 checkboxes" >
                         <div class="col my-1 px-0">
                             <div class="custom-control custom-checkbox mr-sm-2" >
                                 <input type="checkbox" class="custom-control-input" id="remember-me">
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="col text-right px-0">
-                            <p> <a href="/recover-password" class="login-link">Forgot Password?</a></p>
+                            <p> <a href="/recover/password" class="login-link">Forgot Password?</a></p>
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@
                             <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit">Sign In</button>
                         </div>
                     </div> -->
-                    <div class="row">
+                    <div class="row form-button">
                         <div class="col">
                             <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white"
                                 id="signup-btn" type="submit" data-toggle=""
@@ -93,7 +93,7 @@
                     </div>
                 </form>
 
-                <div class="row">
+                <div class="row social-buttons">
                     <div class="col-md-5 d-none d-md-block">
                         <hr>
                     </div>
@@ -106,7 +106,7 @@
                 </div>
 
 
-                <div class="row mt-2 justify-content-center">
+                <div class="row mt-2 justify-content-center social-buttons">
                     <div class="col-md">
                         <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
                                 class="fab fa-github pr-2"></i>Login with Github</button>

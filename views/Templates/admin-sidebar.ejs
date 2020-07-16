@@ -6,57 +6,14 @@
   </div>
 
   <ul class="sidenav_links">
-    <li>
-      <a class="<%= path === 'dashboard' ? 'active' : '' %>" href="./dashboard"
-        >Dashboard</a
-      >
-    </li>
-    <li class="<%= path === 'verification' ? 'active' : '' %>">
-      <a href="./verification">Verification</a>
-    </li>
-    <li>
-      <a class="<%= path === 'admins-list' ? 'active' : '' %>" href="./list"
-        >Admins List</a
-      >
-    </li>
-    <li>
-      <a
-        class="<%= path === 'admin/all/employers' ? 'active' : '' %>"
-        href="/admin/all/employers"
-        >Employers</a
-      >
-    </li>
-    <li>
-      <a
-        class="<%= path === 'admin/all/employees' ? 'active' : '' %>"
-        href="/admin/all/employees"
-        >Employees</a
-      >
-    </li>
-    <li>
-      <a
-        class="<%= path === 'admin/messages' ? 'active' : '' %>"
-        href="/admin/messages"
-        >Messages</a
-      >
-    </li>
-    <li>
-      <a
-        class="<%= path === 'packages' ? 'active' : '' %>"
-        href="./packages"
-        >Packages</a
-      >
-    </li>
-    <li><a href="#">Support</a></li>
-    <li>
-      <a class="<%= path === 'admin/faq' ? 'active' : '' %>" href="/admin/faq"
-        >FAQs</a
-      >
-    </li>
-    <li>
-      <a class="<%= path === 'settings' ? 'active' : '' %>" href="./settings"
-        >Settings</a
-      >
-    </li>
+    <li><a class="<%= path === 'admin-dashboard' ? 'active' : '' %>" href="/admin/dashboard" >Dashboard</a></li>
+    <li><a class="<%= path === 'admins-verification' ? 'active' : '' %>" href="/admin/verification">Verification</a></li>
+    <li><a class="<%= path === 'admins-list' ? 'active' : '' %>" href="/admin/lists" >Admins List <span class="badge badge-warning">Superadmin</span></a></li>
+    <li><a class="<%= path === 'admin-all-employers' ? 'active' : '' %>" href="/admin/all/employers">Employers</a></li>
+    <li><a  class="<%= path === 'admin-viewEmployee' ? 'active' : '' %>" href="/admin/all/employees">Employees</a></li>
+    <li><a class="<%= path === 'admin-messages' ? 'active' : '' %>" href="/admin/messages">Messages</a></li>
+    <li><a class="<%= path === 'packages' ? 'active' : '' %>" href="/admin/packages">Packages</a></li>
+    <li><a class="<%= path === 'admin-faq' ? 'active' : '' %>" href="/admin/faq">FAQs</a></li>
+    <li><a class="<%= path === 'admin-settings' ? 'active' : '' %>" href="/admin/settings">Settings</a></li>
   </ul>
 </div>

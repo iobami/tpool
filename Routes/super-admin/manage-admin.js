@@ -1,7 +1,8 @@
 const express = require('express');
 const { authorize } = require('../../Middleware/index');
+const { authorizeSuperAdmin } = require('../../Middleware/admin-auth');
 const Role = require('../../Middleware/role');
-const { UserValidation } = require('../../Utils/validators/user-validator-new');
+// const { UserValidation } = require('../../Utils/validators/user-validator-new');
 const {
   addAdminUser,
   deleteAdminUser,
@@ -15,12 +16,11 @@ const router = express.Router();
 
 router.post(
   '/create',
-  [authorize(Role.SuperAdmin), UserValidation.validateAdmin],
   addAdminUser,
 );
-router.delete('/:id', authorize(Role.SuperAdmin), deleteAdminUser);
-router.patch('/:id/block', authorize(Role.SuperAdmin), blockAdminUser);
-router.patch('/:id/unblock', authorize(Role.SuperAdmin), unBlockAdminUser);
+router.delete('/:id/delete', authorizeSuperAdmin, deleteAdminUser);
+router.patch('/:id/block', authorizeSuperAdmin, blockAdminUser);
+router.patch('/:id/unblock', authorizeSuperAdmin, unBlockAdminUser);
 router.get('/all', authorize(Role.SuperAdmin), getAllAdminUsers);
 router.get('/:id', authorize(Role.SuperAdmin), getAdminUser);
 

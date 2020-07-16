@@ -60,6 +60,10 @@ color: rgba(178, 178, 178, 0.58);
 line-height: 50px;
 }
 
+.social-sign-in{
+  text-decoration: none !important;
+}
+
 #signup-btn{
     color: #ffffff;
     /* width: 572px;
@@ -99,37 +103,23 @@ hr {
   text-decoration: none;
 }
 
-.github-btn:hover {
+.github-btn {
+  background: #000000d2;
   color: white;
-  background-color: #384050;
+}
+
+.github-btn:hover {
+  background: #000;
+  color: white;
+}
+.google-btn {
+  background: #db4a39;
 }
 
 .google-btn:hover {
   color: white;
   background: #f7220b;
 }
-
-
-  .github-btn {
-    color: #ffffff;
-    /* width: 264px;
-    height: 63px; */
-    background: #3B5998;
-    box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
-    border-radius: 5px;
-    padding: 15px;
-}
-
-.google-btn {
-    color: #ffffff;
-    /* width: 264px;
-    height: 63px; */
-    background: #DB4A39;
-    box-shadow: 0px 4px 10px rgba(98, 102, 110, 0.1);
-    border-radius: 5px;
-    padding: 15px;
-} 
-
 
 .modal-content {
   max-width: 540px;
@@ -236,4 +226,69 @@ hr {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.first-last--name {
+  animation-name: come-in;
+  animation-duration: 1s;
+}
+.email-phone {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+.password-area {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1.3s;
+  animation-fill-mode: forwards;
+}
+.checkboxes {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1.4s;
+  animation-fill-mode: forwards;
+}
+.form-button {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+.social-buttons {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1.6s;
+  animation-fill-mode: forwards;
+}
+.signUp-img-div {
+  opacity: 0.2;
+  animation-name: fader;
+  animation-duration: 1.6s;
+  animation-fill-mode: forwards;
+}
+@keyframes come-in {
+  from {
+    transform: translateX(500px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes come-in-2 {
+  from {
+    transform: translateX(700px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fader {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
 }

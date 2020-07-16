@@ -2,224 +2,241 @@
 <html lang="en">
 
 <head>
-    <%- include('../includes/employeeprofilecreationHead') %>
+  <%- include('../includes/employeeprofilecreationHead') %>
 </head>
 
 <body>
-    <!-- NAV-BAR -->
-    <%- include('../Templates/employeeHeaderLogin', { route: '/employee/dashboard' }) %>
-    <!-- Navbar ends here -->
+  <!-- NAV-BAR -->
+  <%- include('../Templates/employeeHeaderLogin', { route:
+    '/employee/dashboard' }) %>
+  <!-- Navbar ends here -->
 
-    <main>
-        <div class="container my-5 shadow py-5">
-            <% if (errorMessage.length > 0) { %>
-                <div role="alert" class="alert alert-danger text-center user-message user-message--error"><%= errorMessage %></div>
-            <% }if (success && success.length > 0) { %>
-                <div role="alert" class="alert alert-success text-center user-message user-message--error"><%= success %></div>
-            <% } %>
-            <p class="start-text text-center">Let’s get started with a few details about you</p>
+  <main>
+    <div class="container my-5 shadow py-5">
+      <% if (errorMessage) { %>
+      <div role="alert" class="alert alert-danger fade show alert-dismissible user-message user-message--error">
+        <button type="button" class="close" data-dismiss="alert">
+          &times;
+        </button>
+        <%= errorMessage %>
+      </div>
+      <% } if (success && success.length > 0) { %>
+      <div role="alert" class="alert alert-success fade show alert-dismissible user-message">
+        <button type="button" class="close" data-dismiss="alert">
+          &times;
+        </button>
+        <%= success %>
+      </div>
+      <% } %>
+      <p class="start-text text-center">
+        Let’s get started with a few details about you
+      </p>
 
-            <!-- progress bar starts -->
+      <!-- progress bar starts -->
 
-            <div class="container py-5 center">
-                <div class="row ">
-                    <div class="col-12">
-                        <div class="form-progress ">
-                            <div class="center">
-                                <progress class="form-progress-bar" min="0" max="33" value="0" step="33"
-                                    aria-labelledby="form-progress-completion"></progress>
-                                <div class="form-progress-indicator one active">
-                                    <i class="text-default mb-2 fa-2x fa fa-check-circle" aria-hidden="true"></i>
-                                </div>
-                                <div class="form-progress-indicator two">
-                                    <i class="text-default mb-2 fa-2x fa fa-circle-thin" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container py-5 center">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-progress">
+              <div class="center">
+                <progress class="form-progress-bar" min="0" max="33" value="0" step="33"
+                  aria-labelledby="form-progress-completion"></progress>
+                <div class="form-progress-indicator one active">
+                  <i class="text-default mb-2 fa-2x fa fa-check-circle" aria-hidden="true"></i>
                 </div>
+                <div class="form-progress-indicator two">
+                  <i class="text-default mb-2 fa-2x fa fa-circle-thin" aria-hidden="true"></i>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <!-- progress bar ends -->
+      <!-- progress bar ends -->
 
-            <form id="employeeProfileCreation" action="/employee/profile/create" method="POST" enctype="multipart/form-data" class="">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                <h4 class="form-title mb-4">Personal Information</h4>
-                <div class="form-row">
-                    <!-- <div class="form-group col-12 col-md-6 d-flex justify-content-center">
+      <form id="employeeProfileCreation" action="/employee/profile/create" method="POST" enctype="multipart/form-data"
+        class="">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <h4 class="form-title mb-4">Personal Information</h4>
+        <div class="form-row">
+          <!-- <div class="form-group col-12 col-md-6 d-flex justify-content-center">
                         Profile picture
                         <img src="" alt="" class="profile-picture img-fluid" style="width: 200px; height: 200px;">
                     </div> -->
-                    <div class="form-group col-12 col-md-6 d-flex flex-column justify-content-md-center">
-                        <label for="file" class="d-block btn btn-primary">Upload profile Picture</label>
-                        <input type="file" id="file" class="profile-picture-file form-control inputfile" name="image"
-                            required>
-                        <!-- <button type="file" class="btn btn-primary"></button> -->
-                        <small>300 x 360px recommended. JPGs and PNG suppported</small>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>User Type</label>
-                        <select class="userTypee form-control" name="userType" required>
-                            <option value="">Select User Type</option>
-                            <option value="non-hng">NON HNG</option>
-                            <option value="hng">HNG</option>
-                        </select>
-                    </div>
-                    <div id="HNGID" class="form-group col-md-6">
-                        <label class="hngIdLabel">HNG ID</label>
-                        <input type="text" class="HNGID form-control" disabled placeholder="" name="hngId" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Firstname</label>
-                        <input type="text" class="form-control" placeholder="John" name="firstName" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>lastname</label>
-                        <input type="text" class="form-control" placeholder="Doe" name="lastName" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Username</label>
-                        <input type="text" class="form-control" placeholder="e.g Tobiie" name="userName" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Email</label>
-                        <input type="email" class="form-control" placeholder="example@example.com" name="email"
-                            required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Date of Birth</label>
-                        <input type="date" class="form-control" placeholder="" name="dateOfBirth" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Phone Number</label>
-                        <input type="phone" class="form-control" placeholder="" name="phoneNo" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Location</label>
-                        <input type="text" class="form-control" placeholder="e.g Lagos, Nigeria" name="location"
-                            required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Availability</label>
-                        <select class="form-control" name="availability" required>
-                            <option value="not-available">Not Available</option>
-                            <option value="on-site">On-Site</option>
-                            <option value="remote">Remote</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Track</label>
-                        <select class="form-control" name="track" required>
-                            <option value="">Select Track</option>
-                            <option value="frontend">Frontend</option>
-                            <option value="backend">Backend</option>
-                            <option value="design">design</option>
-                            <option value="devops">Devops</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>CV</label>
-                        <input type="url" class="form-control" placeholder="Link to your CV (URL)" name="employeeCv"
-                            required>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center justify-content-md-end mt-3">
-                    <button type="submit" class="btn btn-primary btn-lg">Create</button>
-                </div>
-            </form>
+          <div class="form-group col-12 col-md-6 d-flex flex-column justify-content-md-center">
+            <label for="file" class="d-block btn btn-primary">Upload profile Picture</label>
+            <input type="file" id="file" class="profile-picture-file form-control inputfile" name="image" required />
+            <!-- <button type="file" class="btn btn-primary"></button> -->
+            <small>300 x 360px recommended. JPGs and PNG suppported</small>
+          </div>
         </div>
-    </main>
-
-
-    <footer class="footer">
-        <div class="container-fluid custom-container">
-            <div class="row top justify-content-between">
-                <div class="col-md-3">
-                    <a href="/index.html">
-                        <div class="py-3">
-                            <img src="/img/talentpool footer logo.svg" alt="talent pool logo">
-                        </div>
-                    </a>
-                    <p class="py-2">
-                        We are known for
-                        connecting top talents with top companies. We
-                        make great possibilities
-                        happen.
-                    </p>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Explore</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Home</a></li>
-                        <li class="py-1"><a href="/aboutUsl">About Us</a></li>
-                        <li class="py-1"><a href="/directory">Directories</a></li>
-                        <li class="py-1"><a href="/faq">FAQ</a></li>
-                        <li class="py-1"><a href="/contactUs">Contact Us</a></li>
-                        <li class="py-1"><a href="">Top Talent</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h5 class="py-3">Visit</h5>
-                    <p>
-                        Lagos NG, 17 Akinsanya St, Ojodu 100213, Ikeja
-                    </p>
-                    <div class="d-none d-md-block">
-                        <h5 class="py-3">Get in touch</h5>
-                        <p>hello@hng.tech</p>
-                        <p>+234 (0) 812 345 6789</p>
-                    </div>
-                </div>
-                <div class="col-6 d-md-none">
-                    <h5 class="py-3">Get in touch</h5>
-                    <p>hello@hng.tech</p>
-                    <p>+234 (0) 812 345 6789</p>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Follow</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Facebook</a></li>
-                        <li class="py-1"><a href="">LinkedIn</a></li>
-                        <li class="py-1"><a href="">Twitter</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5 class="py-3">Legal</h5>
-                    <ul class="pl-0">
-                        <li><a href="">Terms</a></li>
-                        <li class="py-1"><a href="">Privacy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col py-2">
-                    <p class="copyright">
-                        TalentPool. All Rights Reserved.
-                    </p>
-                </div>
-            </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>User Type</label>
+            <select class="userTypee form-control" name="userType" required>
+              <option value="">Select User Type</option>
+              <option value="non-hng">NON HNG</option>
+              <option value="hng">HNG</option>
+            </select>
+          </div>
+          <div id="HNGID" class="form-group col-md-6">
+            <label class="hngIdLabel">HNG ID</label>
+            <input type="text" class="HNGID form-control" disabled placeholder="" name="hngId" required />
+          </div>
         </div>
-    </footer>
-    <!-- footer ends -->
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Firstname</label>
+            <input type="text" class="form-control" placeholder="John" name="firstName" required />
+          </div>
+          <div class="form-group col-md-6">
+            <label>lastname</label>
+            <input type="text" class="form-control" placeholder="Doe" name="lastName" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="e.g Tobiie" name="userName" required />
+          </div>
+          <div class="form-group col-md-6">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="example@example.com" name="email" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Date of Birth</label>
+            <input type="date" class="form-control" placeholder="" name="dateOfBirth" required />
+          </div>
+          <div class="form-group col-md-6">
+            <label>Phone Number</label>
+            <input type="phone" class="form-control" placeholder="" name="phoneNo" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Location</label>
+            <input type="text" class="form-control" placeholder="e.g Lagos, Nigeria" name="location" required />
+          </div>
+          <div class="form-group col-md-6">
+            <label>Availability</label>
+            <select class="form-control" name="availability" required>
+              <option value="not-available">Not Available</option>
+              <option value="on-site">On-Site</option>
+              <option value="remote">Remote</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Track</label>
+            <select class="form-control" name="track" required>
+              <option value="">Select Track</option>
+              <option value="frontend">Frontend</option>
+              <option value="backend">Backend</option>
+              <option value="design">design</option>
+              <option value="devops">Devops</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>CV</label>
+            <input type="url" class="form-control" placeholder="Link to your CV (URL)" name="employeeCv" required />
+          </div>
+        </div>
+        <div class="d-flex justify-content-center justify-content-md-end mt-3">
+          <button type="submit" class="btn btn-primary btn-lg">Create</button>
+        </div>
+      </form>
+    </div>
+  </main>
 
+  <footer class="footer">
+    <div class="container-fluid custom-container">
+      <div class="row top justify-content-between">
+        <div class="col-md-3">
+          <a href="/index.html">
+            <div class="py-3">
+              <img src="/img/talentpool footer logo.svg" alt="talent pool logo" />
+            </div>
+          </a>
+          <p class="py-2">
+            We are known for connecting top talents with top companies. We
+            make great possibilities happen.
+          </p>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5 class="py-3">Explore</h5>
+          <ul class="pl-0">
+            <li><a href="">Home</a></li>
+            <li class="py-1"><a href="/aboutUsl">About Us</a></li>
+            <li class="py-1"><a href="/directory">Directories</a></li>
+            <li class="py-1"><a href="/faq">FAQ</a></li>
+            <li class="py-1"><a href="/contactUs">Contact Us</a></li>
+            <li class="py-1"><a href="">Top Talent</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3">
+          <h5 class="py-3">Visit</h5>
+          <p>
+            Lagos NG, 17 Akinsanya St, Ojodu 100213, Ikeja
+          </p>
+          <div class="d-none d-md-block">
+            <h5 class="py-3">Get in touch</h5>
+            <p>hello@hng.tech</p>
+            <p>+234 (0) 812 345 6789</p>
+          </div>
+        </div>
+        <div class="col-6 d-md-none">
+          <h5 class="py-3">Get in touch</h5>
+          <p>hello@hng.tech</p>
+          <p>+234 (0) 812 345 6789</p>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5 class="py-3">Follow</h5>
+          <ul class="pl-0">
+            <li><a href="">Facebook</a></li>
+            <li class="py-1"><a href="">LinkedIn</a></li>
+            <li class="py-1"><a href="">Twitter</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5 class="py-3">Legal</h5>
+          <ul class="pl-0">
+            <li><a href="">Terms</a></li>
+            <li class="py-1"><a href="">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col py-2">
+          <p class="copyright">
+            TalentPool. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- footer ends -->
 
-
-    <script src="/js/bootstrap-js/jquery.js"></script>
-    <script src="/js/bootstrap-js/popper.js"></script>
-    <script src="/js/bootstrap-js/bootstrap.js"></script>
-    <script src="/js/custom-js/employee-profile-creation.js"></script>
+  <script src="/js/bootstrap-js/jquery.js"></script>
+  <script src="/js/bootstrap-js/popper.js"></script>
+  <script src="/js/bootstrap-js/bootstrap.js"></script>
+  <script src="/js/custom-js/employee-profile-creation.js"></script>
+  <script>
+    $('.alert-success')
+      .fadeTo(2000, 500)
+      .slideUp(500, function () {
+        $('.alert-success').slideUp(500);
+      });
+    $('.alert-danger')
+      .fadeTo(2000, 500)
+      .slideUp(500, function () {
+        $('.alert-danger').slideUp(500);
+      });
+  </script>
 </body>
 
 </html>

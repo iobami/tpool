@@ -11,6 +11,43 @@ exports.verifyEmployee = (req, res) => {
   (async () => {
     // fetch a user id from the url parameters
     const { employee_id: employeeId } = req.params;
+    console.log(employeeId);
+    // find a user with the user id and whose role id is an employee
+    const user = await model.Employee.findOne({
+      where: { employee_id: employeeId },
+    });
+    if (user == null) {
+      return errorResMsg(
+        res,
+        404,
+        `Employee with id: ${employeeId}, does not exist`,
+      );
+    }
+
+    // eslint-disable-next-line camelcase
+    // const { verification_status: verificationStatus } = req.body;
+
+    const verify = {
+      verification_status: 'Approved',
+    };
+
+    const result = await model.Employee.update(verify, {
+      where: { employee_id: employeeId },
+      returning: true,
+      plain: true,
+    });
+
+    if (result) {
+      res.redirect('back');
+    }
+    // await user.save(); // save recent changes
+  })();
+};
+
+exports.disapproveEmployee = (req, res) => {
+  (async () => {
+    // fetch a user id from the url parameters
+    const { employee_id: employeeId } = req.params;
 
     // find a user with the user id and whose role id is an employee
     const user = await model.Employee.findOne({
@@ -25,10 +62,10 @@ exports.verifyEmployee = (req, res) => {
     }
 
     // eslint-disable-next-line camelcase
-    const { verification_status: verificationStatus } = req.body;
+    // const { verification_status: verificationStatus } = req.body;
 
     const verify = {
-      verification_status: verificationStatus,
+      verification_status: 'Disapproved',
     };
 
     //    console.log(verify);
@@ -37,15 +74,10 @@ exports.verifyEmployee = (req, res) => {
       returning: true,
       plain: true,
     });
-    if (!result) {
-      return errorResMsg(res, 404, {
-        message: 'employee verification status not updated',
-      });
-    }
 
-    await user.save(); // save recent changes
-    return successResMsg(res, 200, {
-      message: `employee with id: ${employeeId}, is ${verificationStatus} `,
-    }); // return success message
+    if (result) {
+      res.redirect('back');
+    }
+    // await user.save(); // save recent changes
   })();
 };

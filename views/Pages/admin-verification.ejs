@@ -63,28 +63,14 @@
 
     <div class="container-fluid pt-3 px-md-4 px-xl-0 main">
         <div class="row">
+            <!-- SideBar -->
             <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
-                <!-- side navbar -->
-                <div class="sidenav" id="sideNav">
-                    <div class="logo__wrapper">
-                        <div class="d-flex justify-content-center align-items-center logo__image">
-                            <img src="../img/navLogo.svg" alt="" />
-                        </div>
-                    </div>
-
-                    <ul class="sidenav_links">
-                        <li><a href="./admin-dashboard.html">Dashboard</a></li>
-                        <li><a href="./admin-verification.html" class="active">Verification</a></li>
-                        <li><a href="./adminDashViewEmployers.html">Employers</a></li>
-                        <li><a href="./view-employee-dashboard.html">Employees</a></li>
-                        <li><a href="#">Messages</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
-                        <li><a href="#">Settings</a></li>
-                    </ul>
-                </div>
+                <%- include('../Templates/admin-sidebar') %>
+                ​
                 <div id="body__click"></div>
             </div>
+            <!-- SideBar End-->
+            
             <!-- main content -->
             <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-3 pr-lg-4 px-xl-5">
                 <h3 class="text-capitalize font-weight-normal text-dark">verification</h3>

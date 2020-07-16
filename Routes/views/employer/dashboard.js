@@ -23,6 +23,7 @@ const {
   auth_uploaded,
   auth_disapproved,
   auth_approved,
+  auth_firstLogin,
 } = require('../../../Middleware/employerAuth');
 //employer dashboard
 appRoute.get(
@@ -37,15 +38,14 @@ appRoute.get(
   employerCompanyDashboard,
 ); //set by kukere
 
-appRoute.get('/employer/profile', (req, res) => {
-  // req.session.userId = 'd8bd7c2c-6722-406d-a30c-1cac4ac09b6a';
-  // return res.redirect('/employer/login');
+appRoute.get(
+  '/employer/profile',
   auth_main,
-    auth_validuser,
-    auth_valid_profile,
-    //the main controller
-    employerProfile;
-}); //there will be middlewarerlfkgfkh
+  auth_validuser,
+  auth_valid_profile,
+  //the main controller
+  employerProfile,
+);
 
 appRoute.get(
   '/employer/dasboard/success',
@@ -84,10 +84,7 @@ appRoute.get(
   '/employer/profile/create',
   auth_main,
   auth_validuser,
-  auth_pending,
-  auth_uploaded,
-  auth_disapproved,
-  auth_approved,
+  auth_firstLogin,
   //the main contoller
   employerCreateProfile,
 ); //there will be a middleware
@@ -136,7 +133,7 @@ appRoute.get(
   auth_uploaded,
   auth_disapproved,
   auth_approved,
-  //the main controller
+  //the main controllerclear
   employerCertificate,
 );
 

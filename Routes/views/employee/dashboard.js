@@ -10,17 +10,28 @@ appRoute.get(
 );
 // Portfolio Page
 appRoute.get(
-  '/employee/portfolio',
-  employeeViewController.getEmployeePortfolio,
+  '/employee/portfolio/:employee_id',
+  employeeController.getPortfolio,
 );
+// Create Portfolio
+appRoute.post(
+  '/employee/create/portfolio',
+  employeeController.createPortfolio,
+);
+// delete Portfolio
+appRoute.delete(
+  '/employee/delete/portfolio',
+  employeeController.deletePortfolio,
+);
+
 // Profile Page
-appRoute.get('/employee/profile', employeeViewController.getEmployeeProfile);
+appRoute.get('/employee/profile/:employee_id', employeeController.getProfile);
 // Get Employee Messages
 appRoute.get('/employee/messages', employeeViewController.getEmployeeMessages);
 
 // Create Profile
 appRoute.get(
-  '/employee/profile/create',
+  '/employee/create/profile',
   employeeViewController.getEmployeeProfileCreation,
 );
 appRoute.post('/employee/profile/create', employeeController.createProfile);

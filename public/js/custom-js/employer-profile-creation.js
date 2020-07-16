@@ -1,129 +1,364 @@
-const employerProfileCreationForm = document.querySelector('#employerProfileCreation');
-const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
+// store data after image is read
+let logoData;
 
-const userInfo1 = JSON.parse(atob(userInformation.token.split('.')[1]));
-const { userTypeId, userRole } = userInfo1;
+const inputSize = () => {
+  const individualNameContainer = document.getElementById(
+    'individualNameContainer',
+  );
+  const organizationNameContainer = document.getElementById(
+    'organizationNameContainer',
+  );
+  const genderContainer = document.getElementById('genderContainer');
+  const countryContainer = document.getElementById('countryContainer');
+  const orgPhoneContainer = document.getElementById('orgPhoneContainer');
 
-const [navBar] = document.getElementsByClassName('navbar-brand');
+  if (
+    window.innerWidth < 576 &&
+    individualNameContainer.style.display === 'block'
+  ) {
+    genderContainer.className = 'col-sm-6 col-6';
+    countryContainer.className = 'col-sm-6 col-6';
+    orgPhoneContainer.className = 'col-sm-12 col-12';
+  }
 
-if (userRole === 'ROL-EMPLOYEE') {
-    if (userTypeId)  {
-        navBar.href = '/employee-dashboard';
-    } else {
-        navBar.href = '/employee-profileCreation';
-    }
-}
+  if (
+    window.innerWidth < 576 &&
+    organizationNameContainer.style.display === 'block'
+  ) {
+    countryContainer.className = 'col-sm-3 col-3';
+    orgPhoneContainer.className = 'col-sm-9 col-9';
+  }
 
-if (userRole === 'ROL-EMPLOYER') {
-  if (userTypeId)  {
-      navBar.href = '/employer-dashboard';
+  if (
+    window.innerWidth >= 576 &&
+    individualNameContainer.style.display === 'block'
+  ) {
+    genderContainer.className = 'col-sm-4 col-4';
+    countryContainer.className = 'col-sm-3 col-3';
+    countryContainer.style.paddingLeft = '0';
+    orgPhoneContainer.className = 'col-sm-5 col-5';
+    orgPhoneContainer.style.paddingLeft = '0';
+  }
+
+  if (
+    window.innerWidth >= 576 &&
+    organizationNameContainer.style.display === 'block'
+  ) {
+    countryContainer.className = 'col-sm-4 col-4';
+    orgPhoneContainer.className = 'col-sm-8 col-8';
+  }
+};
+
+const getEmployerType = () => {
+  const employerType = document.getElementById('employer_type').value;
+  const organizationNameContainer = document.getElementById(
+    'organizationNameContainer',
+  );
+  const individualNameContainer = document.getElementById(
+    'individualNameContainer',
+  );
+  const genderContainer = document.getElementById('genderContainer');
+  const countryContainer = document.getElementById('countryContainer');
+  const orgPhoneContainer = document.getElementById('orgPhoneContainer');
+
+  const [firstName, lastName] = individualNameContainer.querySelectorAll(
+    'input',
+  );
+  const [orgName] = organizationNameContainer.querySelectorAll('input');
+
+  if (employerType.toLowerCase() === 'individual') {
+    organizationNameContainer.style.display = 'none';
+    individualNameContainer.style.display = 'block';
+    genderContainer.style.display = 'block';
+    countryContainer.style.paddingLeft = '0';
+    orgPhoneContainer.style.paddingLeft = '';
+    orgPhoneContainer.className = 'col-sm-6';
+    firstName.setAttribute('required', true);
+    lastName.setAttribute('required', true);
+    orgName.removeAttribute('required');
+
+    inputSize();
   } else {
-      navBar.href = '/employer-create-profile';
+    organizationNameContainer.style.display = 'block';
+    individualNameContainer.style.display = 'none';
+    genderContainer.style.display = 'none';
+    countryContainer.style.paddingLeft = '';
+    orgPhoneContainer.className = 'col-sm-8';
+    orgName.setAttribute('required', true);
+    firstName.removeAttribute('required');
+    lastName.removeAttribute('required');
+
+    inputSize();
   }
-} 
-// getdata();
-// Get data for the company types
-// const requestOptions = {
-//   headers: {
-//     "Content-Type": "application/json; charset=UTF-8",
-//     "User-Agent": "Developers Lancers",
-//     Authorization: `Bearer ${userInformation.token}`,
-//   }
-// }
-// const url = 'https://api.lancers.app/v1/company/category';
-// async function getdata(){
-//   try {
-//     const companyTypes = await fetch(url , requestOptions);
-//     const companyData = await companyTypes.json();
+};
 
-//     let dropdown = document.getElementById('company_category');
-//     let option;
-//     for (let i = 0; i < companyData.length; i++) {
-//       option = document.createElement('option');
-//       option.text = companyData[i].name;
-//       option.value = companyData[i].abbreviation;
-//       dropdown.add(option);
-//     }
-    
-//   } catch (error) {
-//     // Display error
-//     showAlert(error)
-//   }
-// }
+(function () {
+  'use strict';
+  window.addEventListener(
+    'load',
+    function () {
+      // Get the forms we want to add validation styles to
+      const forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener(
+          'submit',
+          async function (event) {
+            const [empType, gender, , industryType] = document.querySelectorAll(
+              'form select',
+            );
+            const [formData] = document.querySelectorAll(
+              '#employerProfileForm',
+            );
+            const uploadBtn = document.getElementById('uploadProfile');
+            const loader = document.getElementById('loader');
 
+            const imageError = document.getElementById('noImage');
+            imageError.style.display = 'none';
 
-employerProfileCreationForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
-  const organizationLogo = document.querySelector('#organization_logo').value
-  const employerType = document.querySelector('#employer_type').value
-  const organizationCategory = document.querySelector("#company_category").value
-  const organizationName = document.querySelector("#organization_name").value
-  const organizationPhone = document.querySelector('#organization_phone').value
-  const organizationEmail = document.querySelector('#organization_email').value
-  const description = document.querySelector("#description").value
-  const organizationAddress = document.querySelector('#organization_address').value
-  const organizationWebsite = document.querySelector("#website_url").value
-  const userId = userInfo.userId;
+            let addValidation = true;
 
-  if (organizationLogo && employerType && organizationCategory && 
-    organizationName && organizationPhone && organizationEmail && 
-    description && organizationAddress && organizationWebsite ) {
-      employerProfile();
-    async function employerProfile(){
-      const requestOptions = {
-        method: "POST",
-        body: {
-          "photo": organizationLogo,
-          "organizationName": organizationName,
-          "companyCategoryId": organizationCategory,
-          "employerType": employerType,
-          "description": description,
-          "companyPhone": organizationPhone,
-          "companyEmail": organizationEmail,
-          "companyAddress": organizationAddress,
-          "website": organizationWebsite,
-          "userId": userId
-        },
-        headers: {
-          "Content-Type": "application/json; charset=UTF-8",
-          "User-Agent": "Developers Lancers",
-          Authorization: `Bearer ${userInformation.token}`,
-        }
-      }
-      const url = 'https://api.lancers.app/v1/employer/create';
-      try {
-        const createEmp = await fetch(url , requestOptions);
-        const resp = await createEmp.json();
-        let i = 'success'
-        if (resp.status === i) {
-          // Redirect to dashboard
-          window.location.replace('/employer-dashboard')
-        }else{
-          showAlert(resp.message)
-        }
-      } catch (error) {
-        // Display error
-        showAlert(error)
-      }
-    }
-  }else{
-    showAlert('Fill in all Fields.')
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            } else if (form.checkValidity()) {
+              event.preventDefault();
+
+              if (checkUploadedImage()) {
+                imageError.style.display = 'block';
+                return;
+              }
+
+              uploadBtn.style.display = 'none';
+              loader.style.display = 'inline-block';
+
+              try {
+                const details = await getUserDetails(
+                  empType.value,
+                  gender.value,
+                  industryType.value,
+                  formData,
+                );
+                const response = await createProfile(details);
+                formData.className = 'needs-validation';
+                addValidation = false;
+
+                if (response.status === 'success') {
+                  toaster(`! ${response.message}`, 'success');
+                  removeToaster(2000);
+                  const redirect = () => {
+                    window.location.replace('/employer/dashboard');
+                    loader.style.display = 'none';
+                    uploadBtn.style.display = 'inline-block';
+                  };
+                  setTimeout(redirect, 2000);
+                } else {
+                  console.log(response.message);
+                  toaster(`! ${response.message}`, 'error');
+                  removeToaster(4000);
+                  loader.style.display = 'none';
+                  uploadBtn.style.display = 'inline-block';
+                }
+              } catch (e) {
+                console.log(e.message);
+                toaster(`! ${e.message}`, 'error');
+                removeToaster(4000);
+              } finally {
+                loader.style.display = 'none';
+                uploadBtn.style.display = 'inline-block';
+                formData.className = 'needs-validation';
+                addValidation = false;
+              }
+            }
+
+            if (addValidation) {
+              form.classList.add('was-validated');
+            }
+            event.preventDefault();
+          },
+          false,
+        );
+      });
+    },
+    false,
+  );
+})();
+
+const createProfile = async (userData) => {
+  const profileUrl = '/employer/create';
+  const [csrf] = document.getElementsByName('_csrf');
+
+  try {
+    axios.defaults.xsrfCookieName = 'csrftoken';
+    axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+
+    const { data } = await axios({
+      method: 'POST',
+      url: profileUrl,
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'csrf-token': csrf.value,
+      },
+      data: userData,
+    });
+
+    return data;
+  } catch (e) {
+    return e.response.data;
   }
-})
+};
 
-// show alert message on page
-function showAlert(message) {
-  const alert = document.getElementById('alert');
-  const alertMessage = document.getElementById('alertMessage');
+const getCountryName = (countryObject, countryCode) => {
+  for (const [key, value] of Object.entries(countryObject)) {
+    if (countryCode === key) return value;
+  }
+};
 
-  alert.classList.remove('d-none');
-  alertMessage.innerText = message;
-  setTimeout(() => {
-    hideAlert()
-  }, 6000);
-}
+const getUserDetails = (empType, gender, industryType, formData) => {
+  const inputTags = formData.querySelectorAll('#employerProfileForm input');
+  const [description] = formData.querySelectorAll('textarea');
 
-function hideAlert() {
-  document.getElementById('alert').classList.add('d-none');
-}
+  const [
+    ,
+    ,
+    orgName,
+    ,
+    ,
+    orgEmail,
+    orgPhone,
+    orgWebsite,
+    orgAddress,
+  ] = inputTags;
+  const [btn] = document.querySelectorAll('.flagstrap button');
+  const [selectedLeft] = btn.querySelectorAll('span');
+  const country = getCountryName(countries, selectedLeft.innerText.trim());
+  console.log(country);
+
+  if (empType.toLowerCase() === 'company') {
+    return getFormData({
+      photo: logoData,
+      employerType: empType,
+      employerName: orgName.value,
+      companyCategoryId: industryType,
+      description: description.value,
+      gender: null,
+      companyCountry: country,
+      companyPhone: orgPhone.value,
+      companyEmail: orgEmail.value,
+      companyAddress: orgAddress.value,
+      website: orgWebsite.value,
+    });
+  } else {
+    // return employer data
+    const [
+      ,
+      ,
+      ,
+      firstName,
+      lastName,
+      orgEmail,
+      orgPhone,
+      orgWebsite,
+      orgAddress,
+    ] = inputTags;
+
+    return getFormData({
+      photo: logoData,
+      employerType: empType,
+      organizationName: null,
+      employerName: `${firstName.value} ${lastName.value}`,
+      companyCategoryId: industryType,
+      description: description.value,
+      gender: gender,
+      companyCountry: country,
+      companyPhone: orgPhone.value,
+      companyEmail: orgEmail.value,
+      companyAddress: orgAddress.value,
+      website: orgWebsite.value,
+    });
+  }
+};
+
+const getFormData = ({
+  photo,
+  employerType,
+  organizationName,
+  employerName,
+  companyCategoryId,
+  description,
+  gender,
+  companyCountry,
+  companyPhone,
+  companyEmail,
+  companyAddress,
+  website,
+}) => {
+  const fileUploadData = new FormData();
+  fileUploadData.append('photo', photo);
+  fileUploadData.append('employer_type', employerType);
+  fileUploadData.append('employer_name', employerName);
+  fileUploadData.append('company_category_id', companyCategoryId);
+  fileUploadData.append('description', description);
+  fileUploadData.append('sex', gender);
+  fileUploadData.append('employer_country', companyCountry);
+  fileUploadData.append('employer_phone', companyPhone);
+  fileUploadData.append('employer_email', companyEmail);
+  fileUploadData.append('employer_address', companyAddress);
+  fileUploadData.append('website', website);
+
+  return fileUploadData;
+};
+
+const checkUploadedImage = () => {
+  const imageData = document.getElementById('organization_logo');
+  const files = imageData.files;
+
+  if (!files.length) return true;
+};
+
+const readImage = () => {
+  const imageData = document.getElementById('organization_logo');
+  const files = imageData.files;
+
+  if (!files.length) return;
+
+  const [desc] = document.querySelectorAll('#profile .small');
+  desc.style.color = '#A0A0A0';
+
+  const [imageFile] = files;
+  const fileNameArray = imageFile.name.split('.');
+  const fileExtension = fileNameArray[fileNameArray.length - 1].toLowerCase();
+  if (['jpg', 'jpeg', 'png'].includes(fileExtension) === false) {
+    desc.style.color = '#dc3545';
+    labelText('! File not supported', 'error');
+    $('#profile-image-preview').attr('src', '/img/profile-image.jpeg');
+    return;
+  }
+
+  if (files.length) {
+    labelText(imageFile.name);
+
+    const reader = new FileReader();
+
+    reader.onload = function changeFile(e) {
+      $('#profile-image-preview').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(imageFile);
+  }
+
+  const imageError = document.getElementById('noImage');
+  imageError.style.display = 'none';
+
+  logoData = imageFile;
+};
+
+const labelText = (value, error) => {
+  const labelText = document.getElementById('logo');
+  labelText.value = value;
+  if (error) {
+    labelText.style.color = '#dc3545';
+  } else {
+    labelText.style.color = '#383838';
+  }
+};

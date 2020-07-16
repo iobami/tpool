@@ -2,16 +2,18 @@
 <html>
   <head>
     <%- include('../Templates/dashboard-head') %>
-    <link rel="stylesheet" href="/../styles/custom-css/employer-top-nav.css">
-    <link rel="stylesheet" href="/../styles/custom-css/side-nav.css">
-    <link rel="stylesheet" href="/../styles/custom-css/employer-profile-page.css">
+    <link href="/styles/custom-css/flags.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles/custom-css/employer-top-nav.css">
+    <link rel="stylesheet" href="/styles/custom-css/side-nav.css">
+    <link rel="stylesheet" href="/styles/custom-css/employer-profile-page.css">
 
     <style>
-      .mr-2 img {
-        max-width: 60px;
-        max-height: 60px;
+      #basic button {
+        height: 45px;
       }
     </style>
+
     <!-- <script src="../js/custom-js/employer-authUP.js"></script> -->
   </head>
   <body>
@@ -28,22 +30,45 @@
           <div id="body__click" style="height: 100%;">
           </div>
         </div>
+
+        <!--NOTIFICATION TOAST-->
+        <div class="slide-in from-right">
+            <div class="slide-in-content">
+                <div class="row">
+                    <span class="col-10" style="padding-top: 4px">Success Message oei </span>
+                    <span class="col-2" style="padding-top: 2px"><span class="lds-hourglass"></span></span>
+                </div>
+            </div>
+        </div>
+
         <!-- Main Content Here -->
         <section class=" col-lg container-fluid profile mt-5 ml-lg-3">
             <div class="row">
                 <!-- Profile Row + card -->
                  <div class="col-md-5 mb-4">
                    <div class="card profile-card box-shadow">
-                        <div class="logo-container  mx-auto d-flex align-items-center">
-                           <span class="mx-auto">Logo</span>
-                            <img src="" alt="" class="img-fluid">
+                        <!-- <div class="logo-container  mx-auto d-flex align-items-center">
+                            
+                        </div> -->
+                        <div class="employer__image mx-auto d-flex align-items-center">
+                            <img src="<%= EmployerInfo.employerInfo.employer_photo %>" alt="" class="img-fluid">
                         </div>
-                              <h3 class="text-center mt-5 mb-3">PiggyVest</h3>
-                              <p class="text-center">E-Commerce Industry</p>
+                              <div class="row justify-content-center">
+                                <span onclick="showImageModal()" class="edit-image-icon">
+                                  <i class="fa fa-camera" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                              <h3 class="text-center mt-5 mb-3"><%= EmployerInfo.employerInfo.employer_name %></h3>
+                              <p class="text-center"><%= EmployerInfo.userIndustry.category_name %></p>
                               <hr class="w-75 mx-auto">
                          <div  class="w-75 profile-card-info mx-auto ">
-                             <p class=" py-2 ml-4 my-3"><i class="fas fa-map-marker-alt mr-3"></i> Ibadan, Nigeria</p>
-                             <p class=" py-2 ml-4 my-3"><i class="far fa-envelope mr-3"></i>piggyvest@gmail.com</p>
+                             <p class=" py-2 ml-4 my-3">
+                               <i class="fas fa-map-marker-alt mr-3"></i>
+                               <%= EmployerInfo.employerInfo.employer_address %>, <%=  EmployerInfo.employerInfo.employer_country %></p>
+                             <p class=" py-2 ml-4 my-3">
+                               <i class="far fa-envelope mr-3"></i>
+                               <%= EmployerInfo.employerInfo.employer_email %>
+                              </p>
                          </div>
                          <hr class="w-75 mx-auto">
                          <button type='button' class="btn mx-auto mt-4 mb-5" data-toggle="modal" data-target="#profilepopup">Edit profile</button>
@@ -55,9 +80,9 @@
   
   <!-- Modal -->
   <div class="modal fade" id="profilepopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-box " >
-      <div class="modal-content content-wrapper" >
-        <div class="modal-header ">
+    <div class="modal-dialog" >
+      <div class="modal-content" >
+        <!-- <div class="modal-header ">
           <h5 class="modal-title title-text" id="modal-header">Edit Profile</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span class="close-btn1" aria-hidden="true">&times;</span>
@@ -66,34 +91,56 @@
               </svg> 
               
           </button>
+        </div> -->
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body myModal-body">
-           <div class="container">
-             
-              <div class="d-flex justify-content-around mobileContainer">
-                <div class=" col1 colMobile">
-                  <label class="companyNameLabel" for="">Company Name</label><br>
-                  <input type="text" name="" placeholder="Genesis" id="">
-  
+           <div class="container" id="updateProfile">
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="">Employer Name</label>
+                  <input type="text" class="form-control" name="" value="<%= EmployerInfo.employerInfo.employer_name %>" placeholder="Genesis" id="">
                 </div>
-                <div class="col2">
-                  <label for="" class="tagLabel">Tag Line</label><br>
-                  <input type="text" placeholder="Anosike">
+                <div class="form-group col-md-6">
+                  <label for="">Phone No.</label>
+                  <input type="text" class="form-control" value="<%= EmployerInfo.employerInfo.employer_phone %>" placeholder="Enter phone">
                 </div>
-  
               </div>
-              
-              <div class="d-flex justify-content-around mobileContainer">
-                <div class=" col3">
-                  <label for="" class="emailLabel">Email Address</label><br>
-                  <input type="email" placeholder="anosikegenesis@gmail.com">
-     
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="">Country</label>
+                  <input type="text" class="form-control" name="" value="<%= EmployerInfo.employerInfo.employer_country %>" placeholder="Enter country" id="">
                 </div>
-                <div class=" col4">
-                  <label for="" class="locationLabel">Location</label><br>
-                  <input type="text" placeholder="Ibadan, Nigeria">
+                <!-- <div class="form-group col-md-6">
+                    <label>Country</label>
+                    <div id="basic" data-input-name="country"></div>
+                </div> -->
+                <div class="form-group col-md-6">
+                  <label for="">Location</label>
+                  <input type="text" class="form-control" value="<%= EmployerInfo.employerInfo.employer_address %>" placeholder="Enter phone">
                 </div>
-  
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="">Industry Type</label>
+                  <select required class="form-control em-input select" name="industry" id="company_category">
+                      <option disabled selected value="">Select Industry</option>
+                      <% data.forEach(function(category){ %>
+                        <% if(EmployerInfo.userIndustry.category_name === category.category_name){ %>
+                          <option selected value="<%= category.category_id %>"><%= category.category_name %></option>
+                          <% } else{ %>
+                          <option value="<%= category.category_id %>"><%= category.category_name %></option>
+                         <% } %>
+                      <% }); %>
+                  </select>
+                </div>
               </div>
   
               <div class="d-flex justify-content-around mobileContainer">
@@ -111,7 +158,7 @@
                   </div>
                 </div> -->
   
-                <div class="browseCheck">
+                <!-- <div class="browseCheck">
                   <label for="" class="companyLogoLabel">Company Logo</label>
                   <div class="input-group">
                     <div class="custom-file">
@@ -125,19 +172,29 @@
                   Maximum file size: 500Kb <br>
                   Please add only professional looking logo </p>
   
-                </div>
-  
-              </div>
+                </div> -->
+                
            </div>
+
+          </div>
   
   
   
   
   
         </div>
-        <div class="modal-footer  d-flex justify-content-around mobileFooter">
-          
-          <button  type="button" class="btn mx-auto " onclick="saveProfile()">Save Profile</button>
+        <div class="modal-footer  row justify-content-center update-profile">
+          <button  type="button" id="updateProfileButton" class="btn mx-auto " onclick="saveProfile()">Save Profile</button>
+          <button class="btn mx-auto lds-ellipsis" id="profileLoader" type="button"
+                  disabled style="display: none; cursor: wait"
+          >
+              <span>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+              </span>
+          </button>
         </div>
       </div>
     </div>
@@ -151,15 +208,15 @@
                       <div  class="card desc-card px-4 py-5 box-shadow">
                           <div class=" desc-card-header ">
   
-                              <h3>Description <img src="/../img/Pen.png"  class=' pen-modif float-right'alt=""></h3>
+                              <h3>Description
+                                 <img onclick="showDescModal('<%= EmployerInfo.employerInfo.description %>')"
+                                  src="/img/Pen.png"  class=' pen-modif float-right'alt="">
+                                </h3>
                               
   
                           </div>
                           <p class=" desc-text mt-3">
-                              Multionational company with
-                               the aim to make savings culture 
-                               easy for every individual in the world. 
-                               our sole aim is making live easier
+                              <%= EmployerInfo.employerInfo.description %>
                           </p>
                       </div>
                       <!-- Social accounts card -->
@@ -167,30 +224,49 @@
                           <div class=" desc-card-header ">
                       
                               <h3 class="d-flex justify-content-between align-items-center"
-                               >Social accounts <img src="/../img/plus-blue.png" alt="" class="plus-social"> </h3>
+                               >Social accounts 
+                               <!-- <img src="/../img/plus-blue.png" alt="" class="plus-social"> </h3> -->
                           </div>
                       
                            <div class="social-accounts mt-4">
                                       <div class=" account py-4 pl-1">
                                                <i class="fab fa-twitter "></i>
-                                               <span class="ml-3">Twitter</span>
-                                               <img src="/../img/Pen.png" class="pen-modif float-right">
+                                               <span class="ml-3">Twitter: <%= EmployerInfo.employerInfo.twitter %></span>
+                                               <img src="/../img/Pen.png" class="pen-modif float-right"
+                                               onclick="updateSocial('Twitter', '<%= EmployerInfo.employerInfo.twitter %>')"
+                                               >
+                                      </div>
+
+                                      <div class=" account py-4 pl-1">
+                                                <i class="fab fa-facebook "></i>
+                                                <span class="ml-3">Facebook: <%= EmployerInfo.employerInfo.facebook %></span>
+                                                <img src="/../img/Pen.png" class="pen-modif float-right"
+                                                onclick="updateSocial('Facebook', '<%= EmployerInfo.employerInfo.facebook %>')">
                                       </div>
                       
                                       <div class=" account py-4 pl-1">
                       
                                           <i class="fab fa-linkedin"></i>
-                                          <span class="ml-3">LinkedIn</span>
-                                          <img src="/../img/Pen.png" class="pen-modif float-right">                              
+                                          <span class="ml-3">LinkedIn: <%= EmployerInfo.employerInfo.linkedin %></span>
+                                          <img src="/../img/Pen.png" class="pen-modif float-right"
+                                          onclick="updateSocial('LinkedIn', '<%= EmployerInfo.employerInfo.linkedin %>')">                              
                       
                                       </div>
                                       <div class=" account py-4 pl-1">
+                      
+                                          <i class="fab fa-instagram"></i>
+                                          <span class="ml-3">Instagram: <%= EmployerInfo.employerInfo.instagram %></span>
+                                          <img src="/../img/Pen.png" class="pen-modif float-right"
+                                          onclick="updateSocial('Instagram', '<%= EmployerInfo.employerInfo.instagram %>')">                              
+                      
+                                      </div>
+                                      <!-- <div class=" account py-4 pl-1">
                       
                                           <i class="fab fa-dribbble"></i>
                                           <span class="ml-3">Dribbble</span>
                                           <img src="/../img/Pen.png" class="pen-modif float-right">                             
-                                      </div>
-                                      <div class=" account py-4 pl-1">
+                                      </div> -->
+                                      <!-- <div class=" account py-4 pl-1">
   
                                           <i class="fab fa-behance"></i>
                                           <span class="ml-3">Behance</span>
@@ -202,12 +278,7 @@
                                           <i class="fab fa-github"></i>
                                           <span class="ml-3">GitHub</span>
                                           <img src="/../img/Pen.png" class="pen-modif float-right">                            
-                                       </div>
-                                       <div class=" account py-4 pl-1">
-                                          <i class="fa fa-hashnode" aria-hidden="true"></i>
-                                          <span class="ml-3">Hashnode</span>
-                                          <img src="/../img/Pen.png" class="pen-modif float-right">                            
-                                       </div>
+                                       </div> -->
                                        
                           </div>
                                       
@@ -220,23 +291,31 @@
   
                               <h3 class="" >
                                   Company Info 
-                               <img src="/../img/Pen.png" class="pen-modif float-right">                              </div>
+                               <!-- <img onclick="showCompanyInfoModal()" src="/../img/Pen.png" class="pen-modif float-right">                              </div> -->
                               </h3>
                                <div class="company mt-2">
                                       <div class=" company-info py-4 pl-1">
                                           <img src="/../img/verified.png" alt="">
-                                          <span class="ml-3">E-Commerce Industry</span>
+                                          <span class="ml-3">
+                                              <%= EmployerInfo.userIndustry.category_name %>                                            
+                                          </span>
   
                                       </div>
                                       <div class=" company-info py-4 pl-1">
                                           <img src="/../img/verified.png" alt="">
-                                          <span class="ml-3">7-20 Employees</span>
+                                          <span class="ml-3">
+                                              <% if(EmployerInfo.employerInfo.website){ %>
+                                              <%= EmployerInfo.employerInfo.website %>
+                                              <% } else{ %>  
+                                                No website link
+                                             <% } %>
+                                          </span>
   
                                  </div>
                                  <div class=" company-info py-4 pl-1">
   
                                   <img src="/../img/verified.png" alt="">
-                                  <span class="ml-3">08185956620</span>
+                                  <span class="ml-3"><%= EmployerInfo.employerInfo.employer_phone %></span>
   
                                  </div>
                                </div>
@@ -244,7 +323,158 @@
                        </div>
                   
                   </div>
-            </div>        
+            </div> 
+            
+            <!-- Button trigger modal -->
+              
+              <!-- Modal -->
+              <div class="modal fade bd-example-modal-sm" id="socialAccount" tabindex="-1"
+               role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="#">
+                          <input type="text" class="form-control" id="updateInput"
+                          value="" placeholder="Update link">
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <!-- <button type="button" class="btn btn-sm__custom" data-dismiss="modal">Close</button> -->
+                      <button type="button" id="updateSocials" class="btn btn-sm__custom" onclick="saveSocials()" >Save</button>
+                      <button class="btn btn-sm__custom lds-ellipsis" id="updateLoader" type="button"
+                              disabled style="display: none; cursor: wait"
+                      >
+                          <span>
+                              <div></div>
+                              <div></div>
+                              <div></div>
+                              <div></div>
+                          </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Edit Image Modal -->
+              <div class="modal fade" id="editImageModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Edit Image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <label for="" class="companyLogoLabel">Company Logo</label>
+                          <div class="form-row">
+
+                            <div class="form-group col-md-4 col-sm-5 col-5 company__logo">
+                              <label for="profileUpdateImage">
+                                  <img id="img-preview" src="<%= EmployerInfo.employerInfo.employer_photo %>" alt="" class="img-fluid">
+                              </label>
+                            </div>
+                            <div class="form-group col-md-8 col-sm-7 col-7">
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" onchange="readImage()"
+                                    id="profileUpdateImage" aria-describedby="inputGroupFileAddon04">
+                                  <label class="custom-file-label" for="profileUpdateImage">Logo.png</label>
+                                </div>
+                
+                                <p class="image__spec">Recommended dimension: 200 <span>&#xd7;</span> 200px <br>
+                                  Maximum file size: 500Kb <br>
+                                  Please add only professional looking logo 
+                                </p>
+                            </div>
+            
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-sm__custom" id="saveImageButton"
+                         onclick="saveImage()">Save</button>
+                        <button class="btn btn-sm__custom lds-ellipsis" id="saveImageLoader" type="button"
+                                disabled style="display: none; cursor: wait"
+                        >
+                            <span>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" id="companyInfoModal"
+                 role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                      <div class="modal-content">
+                          <div class="form-row">
+                            <div class="form-group col-md-12">
+                              <label for="">Industry</label>
+                              <input type="text" class="form-control" name="" value="<%= EmployerInfo.employerInfo.employer_country %>" placeholder="Enter country" id="">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="">Website</label>
+                                <input type="text" class="form-control" value="<%= EmployerInfo.employerInfo.employer_address %>" placeholder="Enter phone">
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                  <div class="modal fade bd-example-modal-sm" tabindex="-1" id="descModal"
+                    role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-sm modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Description</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="form-row">
+                                  <textarea style="resize: none;" name="" class="form-control"
+                                   id="descText" cols="5" rows="3"><%= EmployerInfo.employerInfo.description %></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-sm__custom" id="updateDesc"
+                                  onclick="saveDescription()">Save</button>
+                                <button class="btn btn-sm__custom lds-ellipsis" id="descLoader" type="button"
+                                        disabled style="display: none; cursor: wait"
+                                >
+                                    <span>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </span>
+                                </button>
+
+                            </div>
+                            
+                        </div>
+                      </div>
+                    </div>
+
         </section>
       </div>
      
@@ -255,6 +485,17 @@
     <script src="/./js/bootstrap-js/bootstrap.js"></script>
     <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
     <script src="/../js/custom-js/side-nav.js"></script>
+   <script src="/js/custom-js/toast.js"></script>
     <script src="/../js/custom-js/employer-profile.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-1.11.2.js"></script> -->
+   <script src="/js/bootstrap-js/jquery.flagstrap.js"></script>
+   <!-- <script>
+       $('#basic').flagStrap();
+       const [btn] = document.querySelectorAll('.flagstrap button');
+       btn.className = 'btn-default btn-md dropdown-toggle form-control';
+       const selected = btn.querySelectorAll('span');
+       console.log(selected);
+   </script> -->
   </body>
 </html>

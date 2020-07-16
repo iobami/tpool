@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <%- include('../../Templates/head.ejs') %>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
+    <link rel="stylesheet" href="/styles/custom-css/pricePayment.css">
+
+  </head>
+  
+  <body> 
+    <%- include('../../Templates/header.ejs') %>
+
+<!-- Page Content -->
+<div class="price-payment">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="plan">
+                    <div class="content">
+                        <div class="text-center">
+            <h3><%= data.dataValues.package_name %></h3>
+                            <p><span class="naira"><%= data.dataValues.price %></span>/month</p>
+                        </div>
+                        <div class="form-group">
+                                <label for="numMonths" class="subscription" style="text-align: center;">Number of months you want to subscribe for</label>
+                                    <select class="form-control" id="numMonths" onchange="handleSummary(event);">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                      <option>10</option>
+                                      <option>11</option>
+                                      <option>12</option>
+                                    </select>
+                                  </div>
+                        <ul>
+                            <li><i class="fa fa-check"></i> Internal assistant to help you find talent faster</li>
+                            <li><i class="fa fa-check"></i> Free access to our collaboration tool for your team.</li>
+                            <li><i class="fa fa-check"></i> Interact with our top most talent only</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="pay-now__form">
+                    <div class="content">
+                        <div class="top-bar__content">
+                            <h4>Summary</h4>
+                            <p class="space-between"><span>Package Price</span><span class="naira"><%= data.dataValues.price %></span></p>
+                            <!-- <p class="space-between"><span>Service Fee</span><span class="naira">0</span></p> -->
+                            <p class="space-between"><span>Total</span><span id="total" class="naira"><%= data.dataValues.price %></span></p>
+                        </div>
+                        <div class="bottom-bar__content">
+                            <h4>Payment Methods</h4>
+                            <div class="payment-cards">
+                                <div class="img-container">
+                                    <img src="/img/visa-cropped__image.png" />
+                                </div>
+                                <div class="img-container">
+                                    <img src="/img/mastercard-image.png" />
+                                </div>
+                                <div class="img-container">
+                                    <img src="/img/verve-image.png" />
+                                </div>
+                            </div>
+                            <div id="visa-card__form" class="form animate__animated animate__fadeIn show-form">
+                                <form id="devugo-form" 
+                                action="" 
+                                onsubmit="handleSubmit();">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <label for="card-number">CARD NUMBER*</label>
+                                                <input 
+                                                    type="text" name="card-number" 
+                                                    inputmode="numeric" 
+                                                    id="card-number" 
+                                                    onkeypress="return cardNumberKey(event);"
+                                                    maxlength="19"
+                                                    onkeyup="addHyphen(this);"
+                                                    placeholder="XXXX-XXXX-XXXX-XXXX" 
+                                                    class="form-control" 
+                                                    id="card-number1" 
+                                                    maxlength="19"
+                                                    minlength="19"
+                                                    title="Minumum of 16 digits allowed"
+
+                                                    >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="">
+                                                <label for="expiration-date">EXPIRATION DATE*</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input 
+                                                type="text"
+                                                min="0"
+                                                placeholder="Month (e.g. 03)" 
+                                                class="form-control"
+                                                onkeypress="return cardNumberKey(event);"
+                                                maxlength="2"
+                                                id="expiration-date__month"
+                                                pattern="[0-9]*"
+                                                maxlength="2"
+                                                minlength="2"
+                                                title="Minumum of 2 digits allowed"
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input 
+                                                type="text" 
+                                                min="2020"
+                                                class="form-control"
+                                                onkeypress="return cardNumberKey(event);"
+                                                maxlength="4"
+                                                placeholder="-- Year --" 
+                                                id="expiration-date__year"
+                                                pattern="[0-9]*"
+                                                maxlength="4"
+                                                minlength="4"
+                                                title="Minumum of 4 digits allowed"
+
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <label for="cvv">CVV*</label>
+                                                <input placeholder="039"
+                                                min="0"
+                                                type="text" 
+                                                onkeypress="return cardNumberKey(event);"
+                                                maxlength="3"
+                                                class="form-control" id="cvv"
+                                                pattern="[0-9]*"
+                                                maxlength="3"
+                                                minlength="3"
+                                                title="Minumum of 3 digits allowed"
+
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-default">Pay Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- /.container -->
+
+  <br><br>
+  <%- include('../../Templates/footer.ejs') %>
+  
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+    <script src="/js/custom-js/pricePayment.js"></script>
+  </body>
+</html>
