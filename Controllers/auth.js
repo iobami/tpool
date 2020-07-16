@@ -211,6 +211,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
       success,
+      isLoggedIn:req.session.isLoggedIn,
       oldInput: {
         email,
         password,
@@ -227,6 +228,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'Incorrect login details',
           success: req.flash('success'),
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -250,6 +252,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'User is not verified',
           success: req.flash('success'),
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -264,6 +267,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'User is blocked.',
           success: req.flash('success'),
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -303,6 +307,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
             pageName: 'Employee Login',
             errorMessage: 'Invalid email or password.',
             success: req.flash('success'),
+            isLoggedIn:req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -329,6 +334,7 @@ exports.postEmployerLogin = async (req, res, next) => {
       path: '/employer/login',
       pageName: 'Employer Login',
       errorMessage: errors.array()[0].msg,
+      isLoggedIn:req.session.isLoggedIn,
       success: req.flash('success'),
       oldInput: {
         email,
@@ -345,6 +351,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'Invalid email or password.',
+          isLoggedIn:req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -370,6 +377,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Sign In',
           errorMessage: 'User is not verified',
+          isLoggedIn:req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -384,6 +392,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'User is blocked.',
+          isLoggedIn:req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -406,6 +415,7 @@ exports.postEmployerLogin = async (req, res, next) => {
             req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
+            req.session.employerId = data.userTypeId;
             if (!user.employer_id) {
               req.flash('success', 'Login Successful');
               // req.flash('error', 'You need to create a profile before you proceed');
@@ -418,6 +428,7 @@ exports.postEmployerLogin = async (req, res, next) => {
             pageName: 'Employer Login',
             errorMessage: 'Invalid email or password.',
             success,
+            isLoggedIn:req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -525,6 +536,7 @@ exports.adminLogin = async (req, res, next) => {
       path: '/admin/login',
       pageName: 'Admin login',
       errorMessage: errors.array()[0].msg,
+      isLoggedIn:req.session.isLoggedIn,
       oldInput: {
         email,
         password,
@@ -532,13 +544,14 @@ exports.adminLogin = async (req, res, next) => {
       validationErrors: errors.array(),
     });
   }
-  await model.User.findOne({ where: { email } })
-    .then((user) => {
+  model.User.findOne({ where: { email } })
+    .then(async (user) => {
       if (!user) {
         return res.status(422).render('Pages/admin-login', {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'Incorrect login details,user does not exist.',
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -551,6 +564,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not an admin.',
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -558,11 +572,21 @@ exports.adminLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
+      let userTypeId = null;
+
+      const admin = await model.Admin.findOne({
+        where: { user_id: user.user_id },
+      });
+      if (admin) {
+        userTypeId = admin.admin_id;
+      }
+
       if (user.status === '0') {
         return res.status(422).render('Pages/admin-login', {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not verified.',
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -575,6 +599,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is blocked.',
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -588,12 +613,14 @@ exports.adminLogin = async (req, res, next) => {
           if (valid) {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
+            req.session.adminId = userTypeId;
             res.redirect('/admin/dashboard');
           }
           return res.status(422).render('Pages/admin-login', {
             path: '/admin/login',
             pageName: 'Admin Login',
             errorMessage: 'Incorrect login details.',
+            isLoggedIn:req.session.isLoggedIn,
             oldInput: {
               email,
               password,
