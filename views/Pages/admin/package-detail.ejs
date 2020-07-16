@@ -12,49 +12,109 @@
   </head>
 
   <body class="d-flex flex-column">
-    <%- //include('../../Templates/admin-header') %>
+    <div class="container-fluid w-100 top__nav__wrapper sticky-top">
+      <div class="top__nav__contents py-4">
+        <div
+          class="d-flex justify-content-between justify-content-lg-end align-items-center text-center top__nav"
+        >
+          <h4 class="mx-auto">Package Details</h4>
 
+          <div class="d-flex align-items-center top__nav__links">
+            <div class="d-flex align-items-center top__nav__user">
+              <div class="dropdown">
+                <div
+                  class="dropdown-toggle"
+                  href="#"
+                  role="button"
+                  id="navMenuLink"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <svg
+                    width="10"
+                    height="6"
+                    viewBox="0 0 10 6"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 1L5 5L9 1"
+                      stroke="#084482"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+
+                <div
+                  class="dropdown-menu dropdown-menu-right"
+                  aria-labelledby="navMenuLink"
+                >
+                  <form action="/loggedout" method="POST">
+                    <input
+                      type="hidden"
+                      name="_csrf"
+                      value="<%= csrfToken %>"
+                    />
+                    <button type="submit">Logout</button>
+                  </form>
+                  <!-- <a class="dropdown-item" href="/loggedout">Sign Out</a> -->
+                  <!-- <a class="dropdown-item" actio onclick="logoutFunction()">Sign Out</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div
-      class="container d-flex flex-column align-items-center justify-content-center bt-"
+      class="main h-100 d-flex flex-column align-items-center justify-content-start"
     >
-      <div class="links d-flex align-items-center justify-content-between my-3">
-        <a href="../packages" class="btn btn-sm btn-outline-primary">
+      <div
+        class="top-bar d-flex align-items-center justify-content-between my-3 w-100"
+      >
+        <a href="../packages" class="btn btn-outline-primary">
           Back to All Packages</a
         >
 
-        <!-- Update Package Button -->
-        <button
-          type="button"
-          class="btn btn-sm btn-info mx-2"
-          data-toggle="modal"
-          data-target="#updatePackageModal"
-        >
-          Update Package
-        </button>
+        <div class="package-buttons">
+          <!-- Update Package Button -->
+          <button
+            type="button"
+            class="btn btn-primary mx-2"
+            data-toggle="modal"
+            data-target="#updatePackageModal"
+          >
+            Update Package
+          </button>
 
-        <!-- Delete Package Button -->
-        <button
-          type="button"
-          class="btn btn-sm btn-danger"
-          data-toggle="modal"
-          data-target="#deletePackageModal"
-        >
-          Delete Package
-        </button>
+          <!-- Delete Package Button -->
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-toggle="modal"
+            data-target="#deletePackageModal"
+          >
+            Delete Package
+          </button>
+        </div>
       </div>
-      <div class="package-details mt-4">
-        <h4 class="text-center">
-          Package Details: <%- data.package.package_name %>
-        </h4>
+      <div class="package-details my-4">
+        <h5 class="text-center font-weight-bold text-">
+          <%- data.package.package_name %>
+        </h5>
+      </div>
 
         <div class="container-fluid">
-          <p class="details">
+          <p class="details my-3">
             <strong>Package Name:</strong> <%- data.package.package_name %>
           </p>
-          <p class="details">
-            <strong>Price:</strong> <%- data.package.price %>
+          <p class="details my-3">
+            <strong>Price: &#36;</strong> <%- data.package.price %>
           </p>
-          <p class="details">
+          <p class="details my-3">
             <strong>Description:</strong> <%- data.package.description %>
           </p>
         </div>
@@ -74,7 +134,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header text-center">
-            <h5 class="modal-title">
+            <h5 class="modal-title mx-auto">
               Update "<%- data.package.package_name %>"
             </h5>
             <button
@@ -90,7 +150,7 @@
             <form
               action="/admin/packages/<%- data.package.package_id %>/update"
               method="post"
-              class="p-3 m-3 mx-auto mw-75"
+              class="p-3 mb-3 mx-auto mw-75"
             >
               <div class="form-group mb-3 mx-auto">
                 <label for="package_name">Package Name</label>
@@ -150,7 +210,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header text-center">
-            <h5 class="modal-title text-danger" id="deleteModalLabel">
+            <h5 class="modal-title text-danger mx-auto" id="deleteModalLabel">
               Delete "<%- data.package.package_name %>"?
             </h5>
             <button
@@ -165,7 +225,7 @@
           <div class="modal-body my-2">
             <h6 class="text-center">This cannot be undone.</h6>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer d-flex justify-content-between">
             <button
               type="button"
               class="btn btn-outline-primary"
@@ -183,6 +243,38 @@
       </div>
     </div>
     <style>
+      body {
+        background-color: #ededed;
+        min-height: 100vh !important;
+        /* max-height: 100% !important; */
+      }
+
+      div.main {
+        width: 100%;
+        padding: 0 1rem;
+        background-color: #fff;
+        position: relative;
+        padding-bottom: 3rem;
+        /* max-width: 500px; */
+      }
+
+      .modal-content {
+        padding: 0.5rem;
+        border-radius: 10px;
+        position: relative;
+        width: 80%;
+        max-width: 25rem;
+        margin:auto;
+      }
+
+      .modal-content button.close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        height: max-content;
+        width: max-content;
+      }
+
       form {
         max-width: 100%;
         width: max-content;
@@ -200,7 +292,7 @@
       }
 
       textarea {
-        height: 10rem !important;
+        height: 7rem !important;
       }
 
       button.hire-btn {
