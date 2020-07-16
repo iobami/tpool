@@ -1,30 +1,5 @@
 module.exports = {
-  home: (req, res) => {
-    const {
-      isLoggedIn, employeeId, employerId, adminId,
-    } = req.session;
-
-    // if (!isLoggedIn) {
-
-    // }
-    if (isLoggedIn && employeeId) {
-      res.redirect(`/employee/dashboard/${req.session.employeeId}`);
-    } else if (isLoggedIn && !employeeId && employerId && adminId) {
-      return res.redirect(
-        '/employee/create/profile?success_message=Please create a profile to continue',
-      );
-    }
-    if (isLoggedIn && employerId) {
-      res.redirect(`/employer/dashboard/${employerId}`);
-    } else if (isLoggedIn && employeeId && !employerId && adminId) {
-      return res.redirect('/employer/profile/create');
-    }
-    if (isLoggedIn && adminId) {
-      res.redirect('/admin/dashboard/');
-    } else if (!isLoggedIn) {
-      return res.render('index', { pageName: 'Home', isLoggedIn: req.session.isLoggedIn });
-    }
-  },
+  home: (req, res) => res.render('index', { pageName: 'Home', isLoggedIn: req.session.isLoggedIn }),
   about: (req, res) => {
     res.render('Pages/aboutUs', { pageName: 'About', isLoggedIn: req.session.isLoggedIn });
   },
