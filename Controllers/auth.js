@@ -3,6 +3,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
+// eslint-disable-next-line linebreak-style
 /* eslint-disable prefer-destructuring */
 /* eslint-disable operator-linebreak */
 const crypto = require('crypto');

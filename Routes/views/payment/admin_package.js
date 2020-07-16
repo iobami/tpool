@@ -31,7 +31,7 @@ appRoute.post('/admin/features/create', createFeature);
 appRoute.post('/admin/packages/:package_id/add', addAFeature);
 
 //remove feature from a package
-appRoute.get('/admin/packages/:package_id/remove', removeAFeature);
+appRoute.post('/admin/packages/:package_id/remove', removeAFeature);
 
 
 module.exports = appRoute;
