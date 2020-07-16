@@ -9,7 +9,23 @@ const confirmPasswordInput = async (input) => {
   if (input.length < 8) {
     return 'Password must be at least 8 characters long';
   }
+
   return true;
+};
+
+const generateData = () => {
+  const result = [];
+  const categories = ['Graphics & Design', 'Programming & Technology',
+    'Marketing', 'Health',
+    'Agriculture', 'Finance',
+    'Video & Animation',
+  ];
+  for (let i = 0; i < categories.length; i += 1) {
+    const id = uuid();
+    result.push({ category_id: id, category_name: categories[i] });
+  }
+
+  return result;
 };
 
 const seedSuperAdmin = async () => {
@@ -30,6 +46,9 @@ const seedSuperAdmin = async () => {
     { role_name: 'employer', role_id: 'ROL-EMPLOYER' },
     { role_name: 'employee', role_id: 'ROL-EMPLOYEE' },
   ]);
+
+  await model.Company_category.bulkCreate(generateData());
+
   if (rolesCreated) {
     const userExists = await model.User.findOne({ where: { role_id: 'ROL-SUPERADMIN' } });
     if (userExists) return;
@@ -39,7 +58,7 @@ const seedSuperAdmin = async () => {
         {
           type: 'password',
           name: 'password',
-          message: 'password',
+          message: 'password:',
           mask: '*',
           validate: confirmPasswordInput,
         },
