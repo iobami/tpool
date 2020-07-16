@@ -8,6 +8,9 @@ module.exports = {
     //get this token to check for the employer id
     req.session.userId;
     if (!req.session.userId) return res.redirect('/employer/login');
+    //load the company category
+    const compayCat = await company_type.findAll();
+    req.session.companycat = compayCat;
     next();
   },
   auth_validuser: async (req, res, next) => {
@@ -20,13 +23,30 @@ module.exports = {
       });
       //set the user type session
       req.session.usertype = getuser.dataValues.role_id;
-      req.session.block = getuser.dataValues.role_id;
+      req.session.block = getuser.dataValues.block;
       if (
         !getuser ||
         req.session.usertype != 'ROL-EMPLOYER' ||
-        req.session.block === 'block'
+        req.session.block === 1
       )
         return res.redirect('/employer/login');
+      next();
+    } catch (error) {
+      res.send(error);
+    }
+  },
+  auth_firstLogin: async (req, res, next) => {
+    try {
+      //check if user has created profile
+      const getemployer = await employerss.findOne({
+        where: {
+          user_id: req.session.userId,
+        },
+        include: [mainuser, company_type],
+      });
+      //go back to file creation page
+      if (getemployer) return res.redirect('/employer/dashboard');
+
       next();
     } catch (error) {
       res.send(error);
@@ -45,12 +65,8 @@ module.exports = {
       if (!getemployer) return res.redirect('/employer/profile/create');
       req.session.employerId = getemployer.dataValues.employer_id;
       req.session.status = getemployer.dataValues.verification_status;
-      // const myobj = {
-      //   Name:getemployer.dataValues.employer_name
-
-      // }
-      // const dta = getemployer.dataValues;
       //actually i can use foreach here or map but guy man don tire
+      //this is not dry at all but we move
       var {
         id,
         CompanyCategoryCategoryId,

@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable max-len */
 const express = require('express');
 
 const { body } = require('express-validator');

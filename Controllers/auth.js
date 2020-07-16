@@ -45,7 +45,7 @@ exports.registerEmployer = (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-        phone: req.body.phone
+        phone: req.body.phone,
       };
       req.session.employeruserData = employerUserData;
 
@@ -285,12 +285,18 @@ exports.postEmployeeLogin = async (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;
+
             if (!data.userTypeId) {
-              req.flash('success', 'Login Successful');
-              return res.redirect('/employee/profile/create');
+              // req.flash('success', 'Login Successful!');
+              res.redirect(
+                '/employee/create/profile?success_message=Login Successful! Please create a profile to continue',
+              );
+            } else {
+              // req.flash('success', 'Login Successful');
+              return res.redirect(
+                `/employee/dashboard/${data.userTypeId}?success_message=Login Successful`,
+              );
             }
-            req.flash('success', 'Login Successful');
-            return res.redirect(`/employee/dashboard/${data.userTypeId}`);
           }
           return res.status(422).render('Pages/employee-sign-in', {
             path: '/employee/login',
@@ -775,7 +781,10 @@ exports.resendVerificationLink = async (req, res) => {
     });
     // const data = { message: 'Verification email re-sent!' };
     // successResMsg(res, 201, data);
-    req.flash('success', 'Please check your email. Verification link has been sent.');
+    req.flash(
+      'success',
+      'Please check your email. Verification link has been sent.',
+    );
     return res.redirect('/verify-email');
   } catch (err) {
     if (!err.statusCode) {
