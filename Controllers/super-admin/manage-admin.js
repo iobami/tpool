@@ -6,6 +6,11 @@ const sendEmail = require('../../Utils/sendEmail');
 const jsonWT = require('../../Utils/auth-token');
 const { successResMsg, errorResMsg } = require('../../Utils/response');
 
+// Dev_tools
+const URL = process.env.NODE_ENV === 'development'
+  ? process.env.TALENT_POOL_DEV_URL
+  : process.env.TALENT_POOL_FRONT_END_URL;
+
 module.exports = {
   addAdminUser: (req, res) => {
     (async () => {
@@ -14,45 +19,37 @@ module.exports = {
       } = req.body;
       const userExists = await model.User.findOne({ where: { email } });
       if (userExists !== null) {
-        return errorResMsg(res, 403, 'Email already exist');
+        req.flash('error', 'Email already exist');
+        return res.redirect('back');
       }
-
       const userData = {
         email,
       };
       const token = jsonWT.signJWT(userData);
-
       // hash password
       const salt = bcrypt.genSaltSync(10);
       const hashPassword = await bcrypt.hashSync(password, salt);
-
       const userId = uuid();
-
       const adminUser = {
         email,
         status: '1',
         password: hashPassword,
         verification_token: token,
         user_id: userId,
-        role_id: 'ROL-ADMIN',
-        Admin: {
-          firstName,
-          lastName,
-          phoneNumber,
-          user_id: userId,
-        },
+        role_id: 'ROL-ADMIN'
       };
-
+      const admin = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phoneNumber: req.body.phoneNumber,
+        user_id: userId,
+      };
       // create user if not exist
-      const user = await model.User.create(
-        adminUser,
-        {
-          include: [model.Admin],
-        }
-      );
+      const user = await model.User.create(adminUser);
+      const createdAdmin = await model.Admin.create(admin);
 
       // send login details to admin
-      const link = `${req.protocol}://${req.get('host')}/v1/auth/admin-login`;
+      const link = `${URL}/admin/login`;
       const options = {
         email,
         subject: 'New Staff Account Created',
@@ -62,15 +59,13 @@ module.exports = {
                   Click <a href=${link}>here</a> to login`,
       };
 
-      const result = {
-        message: 'Admin created, e-mail sent!',
-        user,
-      };
       try {
         await sendEmail(options);
-        return successResMsg(res, 201, result);
+        req.flash('success', 'Verification email sent!');
+        return res.redirect('back');
       } catch (err) {
-        return errorResMsg(res, 500, 'Internal error');
+        req.flash('error', 'An Error occoured');
+        return res.redirect('back');
       }
     })();
   },
@@ -105,13 +100,15 @@ module.exports = {
       const user = await model.User.findOne({ where: { user_id: id } });
 
       if (user === null) {
-        return errorResMsg(res, 404, `Admin with a user id: ${id}, does not exist`);
+        req.flash('Admin does not exist');
+        return res.redirect('back');
       }
 
       // block user
       user.block = 1;
       await user.save();
-      return successResMsg(res, 200, `Admin with id: ${id}, blocked successfully`);
+      req.flash('Admin blocked successfully');
+      return res.redirect('back');
     })();
   },
 

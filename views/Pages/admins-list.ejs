@@ -14,7 +14,7 @@
 
           <%- include('../Templates/admin-sidebar') %>
 
-        <section class="admin__dashboard">
+        <section class="admin__dashboard" style="margin-top: -70px;">
             <h2 class="dashboard__heading">Admins List </h2>
 
             <div class="page-content mt-5  py-0">
@@ -23,7 +23,7 @@
                      <div class="row  justify-content-between">
                         <div class="   col-md-5  col-lg-4" >
                             <div class="form-group">
-                                <input type="search" class="form-control" id="search-admin" placeholder="type admin name">
+                                <input type="search" class="form-control" id="search" placeholder="Search Admin">
                             </div>
                          </div>
                         <div class="  col-md-4 col-lg-3">
@@ -35,34 +35,47 @@
     
                 <div class="container px-3 pt-sm-0 ">
                      <div class="table-responsive">
-                        <table class="table table-striped  ">
+                        <table class="table table-striped" id="table">
                             <thead class="">
                               <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Phone Number</th>
                                 <th scope="col">Role</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Created</th>
                                 <th scope="col">Action</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Random Shalaye</td>
-                                <td>Random@Shalaye.omo</td>
-                                <td>Random</td>
-                                <td>Active</td>
-                                <td class="px-0"> 
-                                    <i class="admin-action fas fa-ban"></i>
-                                    <i class="admin-action fas fa-pen"></i>
-                                    <i class="admin-action fas fa-trash-alt"></i>
-                                </td>
-                              </tr>
+                            <% allAdmins.forEach(function(admin) { %>
+                        
+                              <% if (admin.id != 1) {%>
+                                <tr id="table-row">
+                                  <th scope="row"><%= admin.id %></th>
+                                  <td><%= admin.firstName %></td>
+                                  <td><%= admin.lastName %></td>
+                                  <td><%= admin.phoneNumber %></td>
+                                  <td>Admin</td>
+                                  <td><%= moment(admin.createdAt).format('MMMM Do YYYY') %></td>
+                                  <td class="px-0"> 
+                                      <a onclick= 'toBlock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>",  "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-ban" style= "color:orange;"></i></a>
+                                      <a onclick= 'toUnblock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>" )'href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i></a>
+                                      <a onclick= 'toDelete("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-trash-alt" style= "color: red ; padding: 10px;"></i></a>
+                                  </td>
+                                </tr>
+                              <% } %>
+                            <% }) %>
                         
                             </tbody>
                           </table>
                      </div>
+                     <div class="d-flex">
+                      <div class="ml-auto p-2">
+                          <a href="" style="padding: 10px;"><i class="fa fa-chevron-left" aria-hidden="true" style="padding: 10px;"></i>Prev</a>
+                          <a href="" style="padding: 10px;">Next<i class="fa fa-chevron-right" aria-hidden="true" style="padding: 10px;"></i></a>
+                      </div>
+                  </div>
                 </div>
                 <!-- Modal -->
     <div class="modal fade p-0" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -75,37 +88,42 @@
               </button>
             </div>
             <div class="modal-body">
-                <form action=""  >
+                <form class="needs-validation" id="adminForm" action="/v1/admin/create" method="POST" novalidate>
+                  <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                     <div class="row">
                         <div class="col-md form-group">
                             <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                            <input type="text" class="form-control" id="fnameV2" placeholder="First Name" name="firstName" required>
+                    
                         </div>
                         <div class="col-md form-group">
                             <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" id="lasttName" placeholder="Last Name">
+                            <input type="text" class="form-control" id="lnameV2" placeholder="Last Name" name="lastName" required>
+                    
                         </div>
                     </div>
                     <div class="form-group ">
-                        <label for="Email">Email :</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <label for="email">Email :</label>
+                        <input type="email" class="form-control" id="emailV2" placeholder="Email" name="email" required>
                     </div>
                     <div class="row">
                         <div class="col-md form-group">
-                            <label for="Password">Password :</label>
-                            <input type="password" class="form-control" id="password1" placeholder="Password">
-    
+                            <label for="password">Password :</label>
+                            <input type="password" class="form-control" id="passwordV2" placeholder="Password" name="password" required>
+                           
                           </div>
                           <div class="col-md form-group">
                             <label for="confirm-password">Confirm Password :</label>
-                            <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password">
+                            <input type="password" class="form-control" id="confirmPasswordV2" placeholder="Confirm Password" name="confirm_password" required>
+                        
                           </div>
                     </div>
                     <div class="form-group ">
                         <label for="phone">Phone :</label>
-                        <input type="tel" class="form-control" id="phone" placeholder="Enter Phone number">
+                        <input type="tel" class="form-control" id="phoneV2" placeholder="Enter Phone number" name="phoneNumber" required>
+                     
                     </div>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button onclick='toAddAdmin()' type="button" class="btn btn-primary">Save</button>
     
                 </form>
             </div>
@@ -121,6 +139,7 @@
 
         <div id="body__click"></div>
         
+       
         <script src="../js/bootstrap-js/popper.js"></script>
         <script src="../js/bootstrap-js/jquery.js"></script>
         <script src="../js/bootstrap-js/bootstrap.js"></script>
@@ -129,6 +148,8 @@
         $('#myInput').trigger('focus')
         })
         </script>
+        <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
         <script src="../js/custom-js/side-nav.js"></script>
+        <script src="../js/custom-js/admin-list.js"></script>
     </body>
 </html>
