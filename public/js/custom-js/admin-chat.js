@@ -148,11 +148,11 @@ const sendMessage = () => {
 
         time.classList.add("time");
         span.textContent = new Date().getHours() + ":" + new Date().getMinutes();
-        time.appendChild(span);
+        //time.appendChild(span);
         img.src = 'img/admin-dash-messages/sent.svg';
         img.alt = 'delivered';
         sent.classList.add('sent');
-        sent.appendChild(img);
+        //sent.appendChild(img);
         time.appendChild(sent);
         flipod.classList.add('flippd');
         chatmsg.classList.add('chatmsg');
