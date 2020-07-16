@@ -54,7 +54,7 @@ getActive.then(getCookie);*/
     res.render('Pages/employer-profile-creation', {
       success: req.flash('success'),
       pageName: 'Create Profile',
-      errorMessage: req.flash('error')
+      data: req.session.companycat,
     });
   },
 
@@ -83,6 +83,7 @@ getActive.then(getCookie);*/
     res.render('Pages/employer-profile-page', {
       pageName: 'Profile',
       EmployerInfo: req.session.details,
+      data: req.session.companycat,
     });
   },
 
