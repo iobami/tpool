@@ -74,7 +74,6 @@
                       >
                     </div>
                   </div>
-
                   <div class="tab-content" id="nav-tabContent">
                     <% if(error && error.length > 0) { %>
                     <div
@@ -138,11 +137,13 @@
                               class="form-control form-control-lg form__input"
                               placeholder="Enter first name"
                               required
+                              value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].firstname%> <%} %>"
                             />
                             <div class="invalid-feedback">
                               Enter your first name
                             </div>
                           </div>
+
                           <div class="col-md my-3 form-group">
                             <label for="lastName">Last Name</label>
                             <input
@@ -151,6 +152,7 @@
                               name="lastname"
                               class="form-control form-control-lg form__input"
                               placeholder="Enter last name"
+                              value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].lastname %> <%} %>"
                               required
                             />
                             <div class="invalid-feedback">
@@ -169,6 +171,7 @@
                               id="email"
                               placeholder="john@email.com"
                               name="email"
+                              value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].email %> <%} %>"
                               required
                             />
                             <div class="invalid-feedback">
@@ -184,6 +187,7 @@
                               name="phone" 
                               class="form-control form-control-lg form__input"
                               id="phoneNo"
+                              value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].phone %> <%} %>"
                               placeholder="e.g. 08012345678"
                             />
                             <!-- <label for="employerType">Sign up as</label>
@@ -353,8 +357,9 @@
                               type="text"
                               class="form-control form-control-lg form__input"
                               id="orgName"
-                              name="orgname"
+                              name="orgName"
                               placeholder="Enter organization name"
+                              value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].organizationName %> <%} %>"
                               required
                             />
                             <div class="invalid-feedback">
@@ -374,6 +379,7 @@
                               class="form-control form-control-lg form__input"
                               id="orgEmail"
                               placeholder="john@email.com"
+                              value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].email %> <%} %>"
                               required
                             />
                             <div class="invalid-feedback">
@@ -594,6 +600,11 @@
 
     <%- include('../Templates/footer') %> <%- include('../Templates/script') %>
     <script>
+      $(document).ready(function(){
+        var hash = window.location.hash;
+        hash && $('div.nav a[href="' + hash + '"]').tab('show');
+        $(window).scrollTop();
+      });
       // Getting verify status to know if registration is successful or not
       const verifyStatus = `<%- success %>`;
       if (verifyStatus == 'Verification email sent!') {
