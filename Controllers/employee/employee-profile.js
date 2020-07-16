@@ -268,7 +268,9 @@ exports.getDashboard = async (req, res) => {
 // GET AN EMPLOYEE PROFILE -- Renders a page
 exports.getProfile = async (req, res) => {
   try {
-    const { passport: { user } } = req.session;
+    const {
+      passport: { user },
+    } = req.session;
     const { userTypeId } = user;
 
     let employeeId;
@@ -306,7 +308,9 @@ exports.getProfile = async (req, res) => {
 // GET AEMPLOAYEE PORTFOLIOS -- Renders a page
 exports.getPortfolio = async (req, res) => {
   try {
-    const { passport: { user } } = req.session;
+    const {
+      passport: { user },
+    } = req.session;
     const { userTypeId } = user;
 
     let employeeId;
@@ -339,7 +343,9 @@ exports.getPortfolio = async (req, res) => {
 
 exports.createPortfolio = async (req, res) => {
   try {
-    const { passport: { user } } = req.session;
+    const {
+      passport: { user },
+    } = req.session;
     const { userTypeId } = user;
 
     const employeeId = req.session.employeeId || userTypeId;
@@ -362,7 +368,9 @@ exports.createPortfolio = async (req, res) => {
 
 exports.deletePortfolio = async (req, res) => {
   try {
-    const { passport: { user } } = req.session;
+    const {
+      passport: { user },
+    } = req.session;
     const { userTypeId } = user;
 
     const employeeId = req.session.userTypeId || userTypeId;

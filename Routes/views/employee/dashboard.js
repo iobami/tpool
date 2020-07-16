@@ -14,10 +14,7 @@ appRoute.get(
   employeeController.getPortfolio,
 );
 // Create Portfolio
-appRoute.post(
-  '/employee/create/portfolio',
-  employeeController.createPortfolio,
-);
+appRoute.post('/employee/create/portfolio', employeeController.createPortfolio);
 // delete Portfolio
 appRoute.delete(
   '/employee/delete/portfolio',
