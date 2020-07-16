@@ -35,7 +35,7 @@
 
                 <form class="needs-validation" novalidate id="form" action="/employee/login" method="POST">
 
-                    <div class="col-md mb-3 px-0">
+                    <div class="col-md mb-3 px-0 email-phone">
                         <label for="email">Email</label>
                         <input 
                         class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
@@ -51,7 +51,7 @@
                     </div>
 
 
-                    <div class="col-md mb-3 px-0">
+                    <div class="col-md mb-3 px-0 password-area">
                         <label for="password">Password</label>
                         <input 
                         class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
@@ -66,7 +66,7 @@
                         </div> -->
                     </div>
                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                    <div class="row px-3" >
+                    <div class="row px-3 checkboxes" >
                         <div class="col my-1 px-0">
                             <div class="custom-control custom-checkbox mr-sm-2" >
                                 <input type="checkbox" class="custom-control-input" id="remember-me">
@@ -84,7 +84,7 @@
                             <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btn" type="submit">Sign In</button>
                         </div>
                     </div> -->
-                    <div class="row">
+                    <div class="row form-button">
                         <div class="col">
                             <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white"
                                 id="signup-btn" type="submit" data-toggle=""
@@ -93,7 +93,7 @@
                     </div>
                 </form>
 
-                <div class="row">
+                <div class="row social-buttons">
                     <div class="col-md-5 d-none d-md-block">
                         <hr>
                     </div>
@@ -105,25 +105,30 @@
                     </div>
                 </div>
 
+            <div class="row mt-2 justify-content-center">
+              <div class="col-md">
+                <a href="/auth/employee/github">
+                  <button
+                  type="button"
+                  class="btn btn-block github-btn py-3 my-1"
+                  >
+                  <i class="fab fa-github pr-2"></i>Login with Github
+                </button>
+              </a>
+              </div>
 
-                <div class="row mt-2 justify-content-center">
-                    <div class="col-md">
-                        <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i
-                                class="fab fa-github pr-2"></i>Login with Github</button>
-                    </div>
+              <div class="col-md">
+                <a href="/auth/employee/google">
+                  <button
+                    type="button"
+                    id="googleBtn"
+                    class="btn btn-block google-btn py-3 my-1"
+                  >
+                    <i class="fab fa-google pr-2"></i>Login with Google
+                  </button>
+                </a>
+              </div>
 
-                    <div class="col-md">
-                        <a href="/auth/employee/google">
-                            <button type="button" id="googleBtn" class="btn btn-block  google-btn py-3 my-1" data-user="ROL-EMPLOYEE" data-longtitle="true"
-                            data-onsuccess="onSignIn"><i
-                            class="fab fa-google pr-2"></i>Login with Google</button>
-                        </a>
-                    </div>
-                 
-
-                        <!-- <div  class="g-signin2" data-height="50" data-width="300" data-theme="dark" data-user="ROL-EMPLOYEE" data-longtitle="true"
-                            data-onsuccess="onSignIn">
-                        </div> -->
                 </div>
                 <p class="text-center py-2 mt-3 mb-4">Don't have an account with us? <a href="/employee/register" class="login-link">Sign Up.</a></p>
             </div>
