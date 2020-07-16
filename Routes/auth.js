@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable comma-dangle */
 const express = require('express');
 const { body } = require('express-validator');
@@ -32,26 +33,26 @@ router.post(
 
 router.post('/superadmin-login', UserValidation.validateLogin, superAdminLogin);
 
-
 router.post(
   '/reset/password',
   [
     body('password')
-    .isLength({ min: 8 })
-    .withMessage(
-      'Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)',
-    )
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_`,/@#\-"=:;~<>'\$%\^&\*\?\|\+\(\)\[\]\{}\.])(?=.{8,})/,
-    )
-    .withMessage(
-      'Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)',
+      .isLength({ min: 8 })
+      .withMessage(
+        'Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)',
+      )
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_`,/@#\-"=:;~<>'\$%\^&\*\?\|\+\(\)\[\]\{}\.])(?=.{8,})/,
+      )
+      .withMessage(
+        'Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)',
+      ),
+    body('confirmPassword', 'Passwords did not match').custom(
+      (value, { req }) => value === req.body.password,
     ),
-  body('confirmPassword', 'Passwords did not match').custom((value, { req }) => (value === req.body.password)),
-],
+  ],
   resetPassword,
 );
-
 
 router.post(
   '/email/verify/resend',

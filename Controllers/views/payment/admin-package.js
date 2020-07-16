@@ -62,7 +62,9 @@ exports.get_create = async (req, res) => {
     const features = await Feature.findAll();
 
     const data = await features;
-    res.render('Pages/admin/package-create', {
+    console.log("here")
+    console.log(data)
+    res.render('Pages/admin/package-detail', {
       pageName: 'Package Create Form',
       path: 'packages',
       data,

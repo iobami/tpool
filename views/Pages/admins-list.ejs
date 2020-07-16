@@ -14,7 +14,7 @@
 
           <%- include('../Templates/admin-sidebar') %>
 
-        <section class="admin__dashboard">
+        <section class="admin__dashboard" style="margin-top: -70px;">
             <h2 class="dashboard__heading">Admins List </h2>
 
             <div class="page-content mt-5  py-0">
@@ -49,24 +49,33 @@
                             </thead>
                             <tbody>
                             <% allAdmins.forEach(function(admin) { %>
-                              <tr id="table-row">
-                                <th scope="row"><%= admin.id %></th>
-                                <td><%= admin.firstName %></td>
-                                <td><%= admin.lastName %></td>
-                                <td><%= admin.phoneNumber %></td>
-                                <td>Admin</td>
-                                <td><%= moment(admin.createdAt).format('MMMM Do YYYY') %></td>
-                                <td class="px-0"> 
-                                   <a onclick= 'toBlock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>",  "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-ban" style= "color:orange;"></i></a>
-                                    <a onclick= 'toUnblock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>" )'href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i></a>
-                                    <a onclick= 'toDelete("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-trash-alt" style= "color: red ; padding: 10px;"></i></a>
-                                </td>
-                              </tr>
+                        
+                              <% if (admin.id != 1) {%>
+                                <tr id="table-row">
+                                  <th scope="row"><%= admin.id %></th>
+                                  <td><%= admin.firstName %></td>
+                                  <td><%= admin.lastName %></td>
+                                  <td><%= admin.phoneNumber %></td>
+                                  <td>Admin</td>
+                                  <td><%= moment(admin.createdAt).format('MMMM Do YYYY') %></td>
+                                  <td class="px-0"> 
+                                      <a onclick= 'toBlock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>",  "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-ban" style= "color:orange;"></i></a>
+                                      <a onclick= 'toUnblock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>" )'href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i></a>
+                                      <a onclick= 'toDelete("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-trash-alt" style= "color: red ; padding: 10px;"></i></a>
+                                  </td>
+                                </tr>
+                              <% } %>
                             <% }) %>
                         
                             </tbody>
                           </table>
                      </div>
+                     <div class="d-flex">
+                      <div class="ml-auto p-2">
+                          <a href="" style="padding: 10px;"><i class="fa fa-chevron-left" aria-hidden="true" style="padding: 10px;"></i>Prev</a>
+                          <a href="" style="padding: 10px;">Next<i class="fa fa-chevron-right" aria-hidden="true" style="padding: 10px;"></i></a>
+                      </div>
+                  </div>
                 </div>
                 <!-- Modal -->
     <div class="modal fade p-0" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
