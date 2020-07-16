@@ -1,0 +1,8 @@
+{
+    "emmet.includeLanguages": {
+        "ejs": "html",
+    },
+    "eslint.options": {
+    
+    }
+}

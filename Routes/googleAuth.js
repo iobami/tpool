@@ -54,7 +54,8 @@ router.get(
       // Successful authentication,
       const { user } = req;
       req.session.isLoggedIn = true;
-      req.session.data = user;
+      // req.session.data = user.email;
+      req.session.email = user.email;
       req.session.userId = user.user_id;
       if (!user.userTypeId || user.userTypeId == null) {
         req.flash('success', 'Authentication successful!');
@@ -144,16 +145,18 @@ router.get(
         req.flash('success', 'Login successful!');
         return res.redirect('/employer-dashboard');
       }
+
+      req.session.isLoggedIn = true;
+      // req.session.data = user.email;
+      req.session.email = user.email;
+      req.session.userId = user.user_id;
+
       if (!user.userTypeId || user.userTypeId == null) {
-        req.session.isLoggedIn = false;
-        req.session.userId = user.user_id;
         req.flash('success', 'Authentication successful!');
         return res.redirect(
           '/employee/create/profile?success_message=Authentication successful!',
         );
       }
-      req.session.isLoggedIn = true;
-      req.session.userId = user.user_id;
       req.flash('success', 'Login successful!');
       return res.redirect(
         `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
