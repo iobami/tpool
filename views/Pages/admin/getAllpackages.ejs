@@ -56,7 +56,7 @@
                         <small class="text-muted">/ mo</small>
                       </h1>
                       <a href="/admin/packages/<%= package.package_id %>" class="text-white">
-                        <button type="button" class="btn hire-btn btn-lg btn-block text-white">
+                        <button type="button" class="btn btn-sm hire-btn btn-lg btn-block text-white">
                           View Package
                         </button>
                       </a>
@@ -75,27 +75,28 @@
 
         <!-- create packages -->
         <div class="tab-pane fade" id="createPackage" role="tabpanel" aria-labelledby="create-package-tab">
-          <form action="/admin/packages/create" method="post" class="p-3 m-3 mx-auto mw-75">
+          <form action="/admin/packages/create" method="post"
+            class="p-3 m-3 mx-auto mw-75 d-flex flex-column justify-content-center">
             <div class="form-group mb-3 mx-auto">
               <label for="package_name">Package Name</label>
-              <input class="form-control-lg" type="text" name="package_name" id="package_name"
+              <input required class="form-control-lg" type="text" name="package_name" id="package_name"
                 placeholder="Write a Package Name." />
             </div>
 
             <div class="form-group mb-3 mx-auto">
               <label for="price">Monthly Price</label>
-              <input class="form-control-lg" type="number" min="0" step="0.01" id="price" name="price"
+              <input required class="form-control-lg" type="number" min="0" step="0.01" id="price" name="price"
                 placeholder="Enter Price" />
             </div>
 
             <div class="form-group mb-3 mx-auto">
               <label for="description">Package Description</label>
-              <textarea class="form-control-lg" name="description" id="description"
+              <textarea required class="form-control" name="description" id="description"
                 placeholder="Write a Package Description."></textarea>
             </div>
 
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-            <button type="submit" class="btn btn-block btn-primary mt-3">
+            <button type="submit" class="btn btn-sm btn-primary mt-3 mx-auto">
               Create Package
             </button>
           </form>
@@ -104,8 +105,8 @@
         <!-- View All Features -->
         <div class="tab-pane fade" id="viewFeatures" role="tabpanel" aria-labelledby="view-features-tab">
           <% if (data.allFeatures && data.allFeatures.length > 0) {%>
-          <ul class="list-group list-group-flush features-list">
-            <% data.allFeatures.forEach(feat => { %>
+          <ul class="list-group list-group-flush features-list px-4 mx-auto">
+            <% data.allFeatures.sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1).forEach(feat => { %>
             <li class="list-group-item"> <%- feat.description %>
               <!-- <form action="/admin/features/remove" method="POST"
                 class="btn btn-sm m-0 p-0">
@@ -124,8 +125,16 @@
           <% } %>
           <form class="my-4 mx-auto" action="/admin/features/create" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-            <div class="input-group">
-              <input type="text" placeholder="Enter feature description" name="description" class="form-control">
+            <div class="input-group d-sm-none d-md-flex">
+              <input required type="text" placeholder="Enter feature description" name="description"
+                class="form-control">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-success">Create Feature</button>
+              </div>
+            </div>
+            <div class="input-group input-group-sm d-md-none">
+              <input required type="text" placeholder="Enter feature description" name="description"
+                class="form-control">
               <div class="input-group-append">
                 <button type="submit" class="btn btn-outline-success">Create Feature</button>
               </div>
@@ -140,8 +149,9 @@
 
   <style>
     form {
-      max-width: 100%;
-      width: max-content;
+      max-width: 30rem;
+      width: 80%;
+      /* width: max-content; */
     }
 
     input[type='number']::-webkit-inner-spin-button,
@@ -170,6 +180,10 @@
 
     button.hire-btn {
       background-color: #00aeff;
+    }
+
+    ul.features-list {
+      max-width: 400px;
     }
 
     ul.features-list li {

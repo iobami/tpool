@@ -14,6 +14,10 @@
   <div class="container-fluid w-100 top__nav__wrapper sticky-top">
     <div class="top__nav__contents py-4">
       <div class="d-flex justify-content-between justify-content-lg-end align-items-center text-center top__nav">
+        <a href="../packages" class="btn btn-sm btn-outline-info d-none d-md-block">
+          Back to All Packages</a>
+        <a href="../packages" class="btn btn-sm btn-outline-info d-md-none d-sm-block">
+          Back</a>
         <h4 class="mx-auto">Package Details</h4>
 
         <div class="d-flex align-items-center top__nav__links">
@@ -42,24 +46,19 @@
     </div>
   </div>
   <!-- Content -->
-  <div class="main h-100 d-flex flex-column align-items-center justify-content-start">
+  <div class="main h-100 d-flex flex-column align-items-center justify-content-center">
     <!-- buttons div -->
-    <div class="top-bar d-flex align-items-center justify-content-between my-3 w-100">
-      <a href="../packages" class="btn btn-outline-secondary">
-        Back to All Packages</a>
-
-      <div class="package-buttons d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-around my-3 w-100">
         <!-- Update Package Button -->
-        <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#updatePackageModal">
+        <button type="button" class="btn btn-sm btn-primary m-2" data-toggle="modal" data-target="#updatePackageModal">
           Update Package
         </button>
 
         <!-- Delete Package Button -->
-        <button type="button" class="btn btn-danger m-2" data-toggle="modal" data-target="#deletePackageModal">
+        <button type="button" class="btn btn-sm btn-danger m-2" data-toggle="modal" data-target="#deletePackageModal">
           Delete Package
         </button>
       </div>
-    </div>
     <!-- package body -->
     <div class="my-4">
       <h5 class="text-center font-weight-bold text-capitalize">
@@ -71,27 +70,27 @@
       <!-- Packages & features row -->
       <div class="row">
         <!-- Package Details -->
-        <div class="col-6 col-md-4">
+        <div class="col-md-4">
           <h6 class="text-center text-primary font-weight-bold">Package</h6>
-          <p class="details my-3 text-capitalize">
+          <p class="details my-3 text-capitalize text-center">
             <strong>Package Name:</strong> <br /><%- data.package.package_name %>
           </p>
-          <p class="details my-3">
+          <p class="details my-3 text-center">
             <strong>Price: </strong> <br />&#36;<%- data.package.price %>
           </p>
-          <p class="details my-3">
+          <p class="details my-3 px-4 text-center">
             <strong>Description:</strong><br /> <%- data.package.description %>
           </p>
         </div>
 
         <!-- Package Features -->
-        <div class="col-6 col-md-4 d-flex flex-column align-items-center">
+        <div class="col-md-4 d-flex flex-column align-items-center">
           <h6 class="text-center text-primary font-weight-bold">Features</h6>
           <!-- todo edit this line below -->
           <% if (data.package.features && data.package.features.length > 0) {%>
-          <ul class="list-group list-group-flush features-list w-100">
-            <% data.package.features.forEach(feat => { %>
-            <li class="list-group-item"> <%- feat.description %>
+          <ul class="list-group list-group-flush features-list px-4 my-2 w-100">
+            <% data.package.features.sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1).forEach(feat => { %>
+            <li class="list-group-item"> <span class="mx-auto text-center"><%- feat.description %></span>
               <form action="/admin/packages/<%= data.package.package_id %>/remove" method="POST"
                 class="btn btn-sm btn-danger delete-btn m-0 p-0">
                 <input type="hidden" name="feature_id" value="<%= feat.feature_id %>">
@@ -107,7 +106,7 @@
             No features found.
           </h6>
           <% } %>
-          <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#addFeatureModal">Add
+          <button type="button" class="btn btn-sm btn-primary m-2" data-toggle="modal" data-target="#addFeatureModal">Add
             Feature</button>
         </div>
       </div>
@@ -185,17 +184,17 @@
             class="p-3 mb-3 mx-auto mw-75">
             <div class="form-group mb-3 mx-auto">
               <label for="package_name">Package Name</label>
-              <input class="form-control-lg" type="text" name="package_name" id="package_name"
+              <input required class="form-control-lg" type="text" name="package_name" id="package_name"
                 value="<%- data.package.package_name %>" placeholder="Write a Package Name." />
             </div>
             <div class="form-group mb-3 mx-auto">
               <label for="price">Monthly Price</label>
-              <input class="form-control-lg" type="number" min="0" step="0.01" id="price" name="price"
+              <input required class="form-control-lg" type="number" min="0" step="0.01" id="price" name="price"
                 value="<%- data.package.price %>" placeholder="Enter Price" />
             </div>
             <div class="form-group mb-3 mx-auto">
               <label for="description">Package Description</label>
-              <textarea class="form-control-lg" name="description" id="description"
+              <textarea required class="form-control" name="description" id="description"
                 placeholder="Write a Package Description.">
 <%- data.package.description %></textarea>
             </div>
