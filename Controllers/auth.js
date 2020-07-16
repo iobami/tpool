@@ -642,7 +642,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    return errorResMsg(res, 404, 'User not found!');
+    req.flash('error', 'User with this email is not found');
+    return res.redirect('/recover/password');
   }
 
   // Get reset token
@@ -665,9 +666,9 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
   );
 
   // Create reset url
-  const resetUrl = `${URL}/password-reset?${resetToken}`;
-  const message = `You are receiving this email because you (or someone else) has requested 
-  the reset of your password. Please click this link to proceed: \n\n <a href=${resetUrl}>link</a> or 
+  const resetUrl = `${URL}/password/reset/${resetToken}`;
+  const message = `You are receiving this email because a password reset has been requested 
+  with your email. Please click this link to proceed: \n\n <a href=${resetUrl}>link</a> or 
   ignore if you are unaware of this action.`;
 
   try {
@@ -677,8 +678,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
       message,
     });
 
-    const data = { message: 'Reset password email sent' };
-    return successResMsg(res, 201, data);
+    req.flash('success', 'Reset password link has been sent to your mail');
+    return res.redirect('/recover/password');
   } catch (err) {
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
@@ -686,7 +687,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
 
     await user.save({ validateBeforeSave: false });
 
-    return errorResMsg(res, 500, 'Email could not be sent');
+    req.flash('error', 'An error occured, please try again!');
+    return res.redirect('/recover/password');
   }
 });
 
@@ -697,7 +699,7 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   // Get hashed token
   const resetPasswordToken = crypto
     .createHash('sha256')
-    .update(req.params.resettoken, 'utf8')
+    .update(req.body.token, 'utf8')
     .digest('hex');
 
   const user = await model.User.findOne({
@@ -707,11 +709,13 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    return errorResMsg(res, 400, 'Invalid token');
+    req.flash('error', 'Invalid token');
+    return res.redirect('/recover/password');
   }
 
   if (user.dataValues.resetPasswordExpire < Date.now()) {
-    return errorResMsg(res, 400, 'Reset password token expired');
+    req.flash('error', 'Reset password token expired,please try again');
+    return res.redirect('/recover/password');
   }
 
   // hash password before saving
@@ -723,8 +727,9 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   user.reset_password_expire = null;
   await user.save();
 
-  const data = { message: 'Password changed successfully' };
-  return successResMsg(res, 200, data);
+  req.flash('success', 'Password changed successfully');
+  if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
+  if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
 });
 
 exports.resendVerificationLink = async (req, res) => {

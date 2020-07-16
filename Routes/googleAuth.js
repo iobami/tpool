@@ -4,15 +4,20 @@ const passport = require('passport');
 
 // <----------------------- GOOOGLE ROUTE AND CONTOLLERS ------------------------------>
 // get employer profile details from google
-router.get('/auth/employer/google',
-  passport.authenticate('google-employer', { scope: ['profile', 'email'] }));
+router.get(
+  '/auth/employer/google',
+  passport.authenticate('google-employer', { scope: ['profile', 'email'] }),
+);
 
 // get employee profile details from google
-router.get('/auth/employee/google',
-  passport.authenticate('google-employee', { scope: ['profile', 'email'] }));
+router.get(
+  '/auth/employee/google',
+  passport.authenticate('google-employee', { scope: ['profile', 'email'] }),
+);
 
 // receive process details from passport.setup
-router.get('/auth/employer/google/callback',
+router.get(
+  '/auth/employer/google/callback',
   passport.authenticate('google-employer', {
     failureRedirect: '/employer/login',
     failureFlash: true,
@@ -39,10 +44,12 @@ router.get('/auth/employer/google/callback',
     } catch (error) {
       res.redirect('/employer/login');
     }
-  });
+  },
+);
 
 // receive process details from passport.setup
-router.get('/auth/employee/google/callback',
+router.get(
+  '/auth/employee/google/callback',
   passport.authenticate('google-employee', {
     failureRedirect: '/employee/login',
     failureFlash: true,
@@ -62,23 +69,26 @@ router.get('/auth/employee/google/callback',
       req.session.userId = user.userId;
       if ((!user.userTypeId) || user.userTypeId == null) {
         req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/create/profile');
+        return res.redirect('/employee/create/profile?success_message=Authentication successful!');
       }
       req.flash('success', 'Login successful!');
-      return res.redirect(`/employee/dashboard/${user.userTypeId}`);
+      return res.redirect(
+        `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
+      );
     } catch (error) {
       res.redirect('/employee/login');
     }
-  });
+  },
+);
 // <===================== END GOOGLE ===================>
 
 // ------------------------- GITHUB ROUTES AND CONTROLLERS ---------------------->
 // get employer profile details from github
-router.get('/auth/employer/github',
-  passport.authenticate('github-employer'));
+router.get('/auth/employer/github', passport.authenticate('github-employer'));
 
 // receive process details from passport.setup
-router.get('/auth/github/callback',
+router.get(
+  '/auth/github/callback',
   passport.authenticate('github-employer', {
     failureRedirect: '/employer/login',
     failureFlash: true,
@@ -105,21 +115,24 @@ router.get('/auth/github/callback',
       }
       if ((!user.userTypeId) || user.userTypeId == null) {
         req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/create/profile');
+        return res.redirect( '/employee/create/profile?success_message=Authentication successful!');
       }
       req.flash('success', 'Login successful!');
-      return res.redirect(`/employee/dashboard/${user.userTypeId}`);
+      return res.redirect(
+        `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
+      );
     } catch (error) {
       res.redirect('/employer/login');
     }
-  });
+  },
+);
 
 // get employee profile details from github
-router.get('/auth/employee/github',
-  passport.authenticate('github-employee'));
+router.get('/auth/employee/github', passport.authenticate('github-employee'));
 
 // receive process details from passport.setup
-router.get('/auth/github/callback',
+router.get(
+  '/auth/github/callback',
   passport.authenticate('github-employee', {
     failureRedirect: '/employee/login',
     failureFlash: true,
@@ -146,14 +159,17 @@ router.get('/auth/github/callback',
       }
       if ((!user.userTypeId) || user.userTypeId == null) {
         req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/create/profile');
+        return res.redirect('/employee/create/profile?success_message=Authentication successful!');
       }
       req.flash('success', 'Login successful!');
-      return res.redirect(`/employee/dashboard/${user.userTypeId}`);
+      return res.redirect(
+        `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
+      );
     } catch (error) {
       res.redirect('/employee/login');
     }
-  });
+  },
+);
 
 // <======================== END GITHUB =========================>
 module.exports = router;
