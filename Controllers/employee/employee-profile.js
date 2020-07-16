@@ -289,9 +289,11 @@ exports.getProfile = async (req, res) => {
       attributes,
     });
 
+    const { data: { email } } = req.session;
+
     const profile = await query;
 
-    const data = { ...profile.dataValues, email: req.session.email };
+    const data = { ...profile.dataValues, email };
 
     return res.status(200).render('Pages/employeeProfile', {
       pageTitle: 'Talent Pool | Profile',
