@@ -293,6 +293,7 @@ const readImage = () => {
 const labelText = (value, error) => {
     const labelText = document.getElementById('logo');
     labelText.value = value
+    
     if (error) {
         labelText.style.color = '#dc3545';
     } else {
