@@ -1,12 +1,16 @@
 /* eslint-disable consistent-return */
 module.exports = {
   employeeSignup: (req, res) => {
-    const { isLoggedIn, employeeId } = req.session;
+    const {
+      isLoggedIn, employeeId, employerId, adminId,
+    } = req.session;
 
     if (isLoggedIn && employeeId) {
       res.redirect(`/employee/dashboard/${req.session.employeeId}`);
-    } else if (isLoggedIn && !employeeId) {
-      return res.redirect('/employee/profile/create');
+    } else if (isLoggedIn && !employeeId && employerId && adminId) {
+      return res.redirect(
+        '/employee/create/profile?success_message=Please create a profile to continue',
+      );
     }
 
     return res.render('Pages/employee-sign-up', {
@@ -20,11 +24,13 @@ module.exports = {
   },
 
   employeeSignIn: (req, res) => {
-    const { isLoggedIn, employeeId } = req.session;
+    const {
+      isLoggedIn, employeeId, employerId, adminId,
+    } = req.session;
 
     if (isLoggedIn && employeeId) {
       res.redirect(`/employee/dashboard/${req.session.employeeId}`);
-    } else if (isLoggedIn && !employeeId) {
+    } else if (isLoggedIn && !employeeId && employerId && adminId) {
       return res.redirect(
         '/employee/create/profile?success_message=Please create a profile to continue',
       );

@@ -1,10 +1,12 @@
 module.exports = {
   employerSignup: (req, res) => {
-    const { isLoggedIn, employerId } = req.session;
+    const {
+      isLoggedIn, employeeId, employerId, adminId,
+    } = req.session;
 
     if (isLoggedIn && employerId) {
       res.redirect(`/employer/dashboard/${req.session.employerId}`);
-    } else if (isLoggedIn && !employerId) {
+    } else if (isLoggedIn && employeeId && !employerId && adminId) {
       return res.redirect('/employer/profile/create');
     }
 
@@ -18,11 +20,13 @@ module.exports = {
   },
 
   employerSignIn: (req, res) => {
-    const { isLoggedIn, employerId } = req.session;
+    const {
+      isLoggedIn, employeeId, employerId, adminId,
+    } = req.session;
 
     if (isLoggedIn && employerId) {
       res.redirect(`/employer/dashboard/${employerId}`);
-    } else if (isLoggedIn && !employerId) {
+    } else if (isLoggedIn && employeeId && !employerId && adminId) {
       return res.redirect('/employer/profile/create');
     }
     const success = req.flash('success');
