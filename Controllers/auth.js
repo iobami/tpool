@@ -210,11 +210,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       path: '/employee/login',
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
-<<<<<<< HEAD
-      success: req.flash('success'),
-=======
       success,
->>>>>>> 58346829b96c94c0f6e98e54b4680bdd56881aca
       oldInput: {
         email,
         password,

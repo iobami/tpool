@@ -24,8 +24,8 @@
                 <div class="plan">
                     <div class="content">
                         <div class="text-center">
-                            <h3>Basic</h3>
-                            <p><span class="naira">849</span>/month</p>
+            <h3><%= data.dataValues.package_name %></h3>
+                            <p><span class="naira"><%= data.dataValues.price %></span>/month</p>
                         </div>
                         <div class="form-group">
                                 <label for="numMonths" class="subscription" style="text-align: center;">Number of months you want to subscribe for</label>
@@ -57,9 +57,9 @@
                     <div class="content">
                         <div class="top-bar__content">
                             <h4>Summary</h4>
-                            <p class="space-between"><span>Package Price</span><span class="naira">849</span></p>
-                            <p class="space-between"><span>Service Fee</span><span class="naira">0</span></p>
-                            <p class="space-between"><span>Total</span><span id="total" class="naira">849</span></p>
+                            <p class="space-between"><span>Package Price</span><span class="naira"><%= data.dataValues.price %></span></p>
+                            <!-- <p class="space-between"><span>Service Fee</span><span class="naira">0</span></p> -->
+                            <p class="space-between"><span>Total</span><span id="total" class="naira"><%= data.dataValues.price %></span></p>
                         </div>
                         <div class="bottom-bar__content">
                             <h4>Payment Methods</h4>
