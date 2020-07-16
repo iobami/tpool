@@ -45,7 +45,7 @@
               novalidate
               id="form"
             >
-              <div class="col-md mb-3 px-0">
+              <div class="col-md mb-3 px-0 email-phone">
                 <label for="email">Email</label>
                 <input
                   class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
@@ -57,7 +57,7 @@
                 />
               </div>
 
-              <div class="col-md mb-3 px-0">
+              <div class="col-md mb-3 px-0 password-area">
                 <label for="password">Password</label>
                 <input
                   class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
@@ -71,7 +71,7 @@
               </div>
               <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
-              <div class="row px-3">
+              <div class="row px-3 checkboxes">
                 <div class="col my-1 px-0">
                   <div class="custom-control custom-checkbox mr-sm-2">
                     <input
@@ -101,7 +101,7 @@
                                     type="submit">Sign In</button>
                             </div>
                         </div> -->
-              <div class="row">
+              <div class="row form-button">
                 <div class="col">
                   <button
                     class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white"
@@ -116,7 +116,7 @@
               </div>
             </form>
 
-            <div class="row">
+            <div class="row social-buttons">
               <div class="col-md-5 d-none d-md-block">
                 <hr />
               </div>
@@ -128,7 +128,7 @@
               </div>
             </div>
 
-            <div class="row mt-2 justify-content-center">
+            <div class="row mt-2 justify-content-center social-buttons">
               <div class="col-md">
                 <a href="/auth/employer/github">
                   <button
