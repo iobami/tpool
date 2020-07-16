@@ -114,7 +114,8 @@ const getEmployerType = () => {
         // Loop over them and prevent submission
         Array.prototype.filter.call(forms, function(form) {
             form.addEventListener('submit', async function(event) {
-                const [empType, gender, industryType] = document.querySelectorAll('form select');
+                const [empType, gender, , industryType] = document.querySelectorAll('form select');
+                console.log(industryType);
                 const [formData] = document.querySelectorAll('form');
                 const uploadBtn = document.getElementById('uploadProfile');
                 const loader = document.getElementById('loader');
@@ -206,13 +207,23 @@ const createProfile = async (userData) => {
     }
 };
 
+const getCountryName = (countryObject, countryCode) => {
+    for (const [key, value] of Object.entries(countryObject)) {
+        if (countryCode === key) return value;
+    }
+};
+
 const getUserDetails = (empType, gender, industryType, formData) => {
     const inputTags = formData.querySelectorAll('input');
     const [description] = formData.querySelectorAll('textarea');
 
-    if (empType.toLowerCase() === 'company') {
+    const [ , , orgName, , , orgEmail, orgPhone, orgWebsite, orgAddress] = inputTags;
+    const [btn] = document.querySelectorAll('.flagstrap button');
+    const [selectedLeft] = btn.querySelectorAll('span');
+    const country = getCountryName(countries, selectedLeft.innerText.trim());
+    console.log(country);
 
-      const [ , , orgName, , , orgEmail, orgCountry, orgPhone, orgWebsite, orgAddress] = inputTags;
+    if (empType.toLowerCase() === 'company') {
 
         return getFormData({
             photo: logoData,
@@ -221,7 +232,7 @@ const getUserDetails = (empType, gender, industryType, formData) => {
             companyCategoryId: industryType,
             description: description.value,
             gender: null,
-            companyCountry: orgCountry.value,
+            companyCountry: country,
             companyPhone: orgPhone.value,
             companyEmail: orgEmail.value,
             companyAddress: orgAddress.value,
@@ -231,7 +242,7 @@ const getUserDetails = (empType, gender, industryType, formData) => {
 
     } else {
       // return employer data
-        const [ , , , firstName, lastName, orgEmail, orgCountry, orgPhone, orgWebsite, orgAddress] = inputTags;
+        const [ , , , firstName, lastName, orgEmail, orgPhone, orgWebsite, orgAddress] = inputTags;
 
         return getFormData({
             photo: logoData,
@@ -241,7 +252,7 @@ const getUserDetails = (empType, gender, industryType, formData) => {
             companyCategoryId: industryType,
             description: description.value,
             gender: gender,
-            companyCountry: orgCountry.value,
+            companyCountry: country,
             companyPhone: orgPhone.value,
             companyEmail: orgEmail.value,
             companyAddress: orgAddress.value,
