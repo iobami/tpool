@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: 'Individual',
       },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       sex: {
         type: DataTypes.ENUM,
         values: ['Male', 'Female', 'Organization'],

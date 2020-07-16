@@ -8,6 +8,8 @@ module.exports = {
     //get this token to check for the employer id
     req.session.userId;
     if (!req.session.userId) return res.redirect('/employer/login');
+    const compayCat = await company_type.findAll();
+    req.session.companycat = compayCat;
     next();
   },
   auth_validuser: async (req, res, next) => {
