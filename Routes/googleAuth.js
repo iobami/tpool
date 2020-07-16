@@ -21,18 +21,23 @@ router.get('/auth/employer/google/callback',
     try {
       // Successful authentication,
       const { user } = req;
-      if ((!user.userTypeId) || user.userTypeId == null) {
-        req.session.isLoggedIn = false;
-        req.session.userId = user.user_id;
-        req.flash('success', 'Authentication successful!');
-        return res.redirect('/employer-create-profile');
-      }
+      const data = {
+        email: user.email,
+        userRole: user.userRole,
+        userTypeId: user.userTypeId,
+        verificationStatus: user.verificationStatus,
+      };
+      req.session.data = data;
       req.session.isLoggedIn = true;
-      req.session.userId = user.user_id;
+      req.session.userId = user.userId;
+      if ((!user.userTypeId) || user.userTypeId == null) {
+        req.flash('success', 'Authentication successful!');
+        return res.redirect('/employer/profile/create');
+      }
       req.flash('success', 'Login successful!');
-      return res.redirect('/employer-dashboard');
+      return res.redirect(`/employer/dashboard/${user.userTypeId}`);
     } catch (error) {
-      res.redirect('/employer-sign-in');
+      res.redirect('/employer/login');
     }
   });
 
@@ -46,14 +51,19 @@ router.get('/auth/employee/google/callback',
     try {
       // Successful authentication,
       const { user } = req;
-      if ((!user.userTypeId) || user.userTypeId == null) {
-        req.session.isLoggedIn = false;
-        req.session.userId = user.user_id;
-        req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/profile/create');
-      }
+      const data = {
+        email: user.email,
+        userRole: user.userRole,
+        userTypeId: user.userTypeId,
+        verificationStatus: user.verificationStatus,
+      };
+      req.session.data = data;
       req.session.isLoggedIn = true;
-      req.session.userId = user.user_id;
+      req.session.userId = user.userId;
+      if ((!user.userTypeId) || user.userTypeId == null) {
+        req.flash('success', 'Authentication successful!');
+        return res.redirect('/employee/create/profile');
+      }
       req.flash('success', 'Login successful!');
       return res.redirect(`/employee/dashboard/${user.userTypeId}`);
     } catch (error) {
@@ -76,30 +86,31 @@ router.get('/auth/github/callback',
   (req, res) => {
     try {
       const { user } = req;
+      const data = {
+        email: user.email,
+        userRole: user.userRole,
+        userTypeId: user.userTypeId,
+        verificationStatus: user.verificationStatus,
+      };
+      req.session.data = data;
+      req.session.isLoggedIn = true;
+      req.session.userId = user.userId;
       if (user.userRole === 'ROL-EMPLOYER') {
         if ((!user.userTypeId) || user.userTypeId == null) {
-          req.session.isLoggedIn = false;
-          req.session.userId = user.user_id;
           req.flash('success', 'Authentication successful!');
-          return res.redirect('/employer-create-profile');
+          return res.redirect('/employer/profile/create');
         }
-        req.session.isLoggedIn = true;
-        req.session.userId = user.user_id;
         req.flash('success', 'Login successful!');
-        return res.redirect('/employer-dashboard');
+        return res.redirect(`/employer/dashboard/${user.userTypeId}`);
       }
       if ((!user.userTypeId) || user.userTypeId == null) {
-        req.session.isLoggedIn = false;
-        req.session.userId = user.user_id;
         req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/profile/create');
+        return res.redirect('/employee/create/profile');
       }
-      req.session.isLoggedIn = true;
-      req.session.userId = user.user_id;
       req.flash('success', 'Login successful!');
       return res.redirect(`/employee/dashboard/${user.userTypeId}`);
     } catch (error) {
-      res.redirect('/employer-sign-in');
+      res.redirect('/employer/login');
     }
   });
 
@@ -116,26 +127,27 @@ router.get('/auth/github/callback',
   (req, res) => {
     try {
       const { user } = req;
+      const data = {
+        email: user.email,
+        userRole: user.userRole,
+        userTypeId: user.userTypeId,
+        verificationStatus: user.verificationStatus,
+      };
+      req.session.data = data;
+      req.session.isLoggedIn = true;
+      req.session.userId = user.userId;
       if (user.userRole === 'ROL-EMPLOYER') {
         if ((!user.userTypeId) || user.userTypeId == null) {
-          req.session.isLoggedIn = false;
-          req.session.userId = user.user_id;
           req.flash('success', 'Authentication successful!');
-          return res.redirect('/employer-create-profile');
+          return res.redirect('/employer/profile/create');
         }
-        req.session.isLoggedIn = true;
-        req.session.userId = user.user_id;
         req.flash('success', 'Login successful!');
-        return res.redirect('/employer-dashboard');
+        return res.redirect(`/employer/dashboard/${user.userTypeId}`);
       }
       if ((!user.userTypeId) || user.userTypeId == null) {
-        req.session.isLoggedIn = false;
-        req.session.userId = user.user_id;
         req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/profile/create');
+        return res.redirect('/employee/create/profile');
       }
-      req.session.isLoggedIn = true;
-      req.session.userId = user.user_id;
       req.flash('success', 'Login successful!');
       return res.redirect(`/employee/dashboard/${user.userTypeId}`);
     } catch (error) {
