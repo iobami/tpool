@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable max-len */
 const express = require('express');
 
 const { body } = require('express-validator');
@@ -23,19 +25,7 @@ appRoute.post(
       .normalizeEmail(),
     body('password', 'Password has to be valid.')
       .isLength({ min: 8 })
-      // .isAlphanumeric()
       .trim(),
-    // body('password')
-    //   .isLength({ min: 8 })
-    //   .withMessage(
-    //     'Password Incorrect)',
-    //   )
-    //   .matches(
-    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_`,/@#\-"=:;~<>'\$%\^&\*\?\|\+\(\)\[\]\{}\.])(?=.{8,})/,
-    //   )
-    //   .withMessage(
-    //     'Password does not match required pattern',
-    //   ),
   ],
   authController.postEmployeeLogin,
 );
@@ -44,6 +34,9 @@ appRoute.post(
 appRoute.post(
   '/employee/register',
   [
+    body('firstname', 'Firstname cannot be empty').notEmpty(),
+    body('lastname', 'Lastname cannot be empty').notEmpty(),
+    body('phone', 'Phone cannot be empty').notEmpty(),
     body('email')
       .isEmail()
       .withMessage('Please enter a valid email address')
@@ -59,6 +52,8 @@ appRoute.post(
       .withMessage(
         'Password should contain a minimum of 8 characters (upper and lowercase letters, numbers and at least one special character)',
       ),
+    body('confirm_password', 'Passwords did not match').custom((value, { req }) => (value === req.body.password)),
+    body('terms', 'Accept terms and condition to continue').equals('on'),
   ],
   signAuthController.create,
 );

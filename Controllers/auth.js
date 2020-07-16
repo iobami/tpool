@@ -39,6 +39,101 @@ exports.registerEmployer = (req, res) => {
         req.flash('errors', errResponse);
         return res.redirect('/employer/register');
       }
+
+      // Saving other user details in employer session
+      const employerUserData = {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        phone: req.body.phone,
+      };
+      req.session.employeruserData = employerUserData;
+
+      // encrypt password
+      const salt = bcrypt.genSaltSync(10);
+      const hashPassword = bcrypt.hashSync(req.body.password, salt);
+
+      const userId = uuid();
+      const userEmail = req.body.email;
+
+      const basicInfo = {
+        email: userEmail,
+      };
+
+      const token = jsonWT.signJWT(basicInfo);
+
+      // check if email exist and create user
+      const user = await model.User.findOne({
+        where: { email: userEmail },
+      });
+      if (!user) {
+        const userData = {
+          email: userEmail,
+          password: hashPassword,
+          verification_token: token,
+          role_id: 'ROL-EMPLOYER',
+          user_id: userId,
+        };
+        // create new user and send verification mail
+        try {
+          await model.User.create(userData);
+          // mail verification code to the user
+          const verificationUrl = `${URL}/auth/email/verify?verification_code=${token}`;
+          const message = `<p> Hi, thanks for registering, kindly verify your email using this <a href ='${verificationUrl}'>link</a></p>`;
+
+          await sendEmail({
+            email: req.body.email,
+            subject: 'Email verification',
+            message,
+          });
+
+          // return successResMsg(res, 201, data);
+          req.flash('success', 'Verification email sent!');
+          return res.redirect('/employer/register');
+        } catch (err) {
+          req.flash('error', 'An error Occoured');
+          return res.redirect('/employer/register');
+          // return errorResMsg(res, 500, err);
+        }
+      } else {
+        // return errorResMsg(
+        //   res,
+        //   403,
+        //   'Someone has already registered this email',
+        // );
+        req.flash('error', 'Someone has already registered this email');
+        return res.redirect('/employer/register');
+      }
+    } catch (err) {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      // return errorResMsg(res, 500, 'An error occurred');
+      req.flash('error', 'An error Occoured');
+      return res.redirect('/employer/register');
+    }
+  })();
+};
+
+exports.registerEmployerOrg = (req, res) => {
+  (async () => {
+    try {
+      // eslint-disable-next-line camelcase
+      // Validate input
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        const errResponse = errors.array({ onlyFirstError: true });
+        req.flash('errors', errResponse);
+        return res.redirect('/employer/register');
+      }
+
+      // Saving other user details in employer session
+      const employerUserData = {
+        organizationName: req.body.firstname,
+        email: req.body.email,
+      };
+      req.session.employeruserData = employerUserData;
+
       // encrypt password
       const salt = bcrypt.genSaltSync(10);
       const hashPassword = bcrypt.hashSync(req.body.password, salt);
@@ -190,12 +285,18 @@ exports.postEmployeeLogin = async (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;
+
             if (!data.userTypeId) {
-              req.flash('success', 'Login Successful');
-              return res.redirect('/employee/profile/create');
+              // req.flash('success', 'Login Successful!');
+              res.redirect(
+                '/employee/create/profile?success_message=Login Successful! Please create a profile to continue',
+              );
+            } else {
+              // req.flash('success', 'Login Successful');
+              return res.redirect(
+                `/employee/dashboard/${data.userTypeId}?success_message=Login Successful`,
+              );
             }
-            req.flash('success', 'Login Successful');
-            return res.redirect(`/employee/dashboard/${data.userTypeId}`);
           }
           return res.status(422).render('Pages/employee-sign-in', {
             path: '/employee/login',
@@ -306,6 +407,8 @@ exports.postEmployerLogin = async (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             if (!user.employer_id) {
+              req.flash('success', 'Login Successful');
+              // req.flash('error', 'You need to create a profile before you proceed');
               res.redirect('/employer/profile/create');
             }
             res.redirect(`/employer/dashboard/${user.employer_id}`);
@@ -539,7 +642,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    return errorResMsg(res, 404, 'User not found!');
+    req.flash('error', 'User with this email is not found');
+    return res.redirect('/recover/password');
   }
 
   // Get reset token
@@ -562,9 +666,9 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
   );
 
   // Create reset url
-  const resetUrl = `${URL}/password-reset?${resetToken}`;
-  const message = `You are receiving this email because you (or someone else) has requested 
-  the reset of your password. Please click this link to proceed: \n\n <a href=${resetUrl}>link</a> or 
+  const resetUrl = `${URL}/password/reset/${resetToken}`;
+  const message = `You are receiving this email because a password reset has been requested 
+  with your email. Please click this link to proceed: \n\n <a href=${resetUrl}>link</a> or 
   ignore if you are unaware of this action.`;
 
   try {
@@ -574,8 +678,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
       message,
     });
 
-    const data = { message: 'Reset password email sent' };
-    return successResMsg(res, 201, data);
+    req.flash('success', 'Reset password link has been sent to your mail');
+    return res.redirect('/recover/password');
   } catch (err) {
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
@@ -583,7 +687,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
 
     await user.save({ validateBeforeSave: false });
 
-    return errorResMsg(res, 500, 'Email could not be sent');
+    req.flash('error', 'An error occured, please try again!');
+    return res.redirect('/recover/password');
   }
 });
 
@@ -594,7 +699,7 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   // Get hashed token
   const resetPasswordToken = crypto
     .createHash('sha256')
-    .update(req.params.resettoken, 'utf8')
+    .update(req.body.token, 'utf8')
     .digest('hex');
 
   const user = await model.User.findOne({
@@ -604,11 +709,13 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    return errorResMsg(res, 400, 'Invalid token');
+    req.flash('error', 'Invalid token');
+    return res.redirect('/recover/password');
   }
 
   if (user.dataValues.resetPasswordExpire < Date.now()) {
-    return errorResMsg(res, 400, 'Reset password token expired');
+    req.flash('error', 'Reset password token expired,please try again');
+    return res.redirect('/recover/password');
   }
 
   // hash password before saving
@@ -620,8 +727,9 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   user.reset_password_expire = null;
   await user.save();
 
-  const data = { message: 'Password changed successfully' };
-  return successResMsg(res, 200, data);
+  req.flash('success', 'Password changed successfully');
+  if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
+  if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
 });
 
 exports.resendVerificationLink = async (req, res) => {
@@ -670,7 +778,10 @@ exports.resendVerificationLink = async (req, res) => {
     });
     // const data = { message: 'Verification email re-sent!' };
     // successResMsg(res, 201, data);
-    req.flash('error', 'Verification email re-sent!');
+    req.flash(
+      'success',
+      'Please check your email. Verification link has been sent.',
+    );
     return res.redirect('/verify-email');
   } catch (err) {
     if (!err.statusCode) {

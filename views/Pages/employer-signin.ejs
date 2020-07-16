@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <%- include('../Templates/head') %>
+
     <link rel="stylesheet" href="../styles/custom-css/employer-sign-in.css" />
+    <style>
+      form .invalid {
+        border: 2px solid palevioletred !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -23,21 +29,12 @@
             <% if (errorMessage) { %>
             <div
               role="alert"
-              class="alert alert-danger alert-dismissible fade show user-message user-message--error"
+              class="alert alert-danger user-message user-message--error"
             >
-              <button type="button" class="close" data-dismiss="alert">
-                &times;
-              </button>
               <%= errorMessage %>
             </div>
             <% }if (success && success.length > 0) { %>
-            <div
-              role="alert"
-              class="alert alert-success alert-dismissible fade show user-message"
-            >
-              <button type="button" class="close" data-dismiss="alert">
-                &times;
-              </button>
+            <div role="alert" class="alert alert-success user-message">
               <%= success %>
             </div>
             <% } %>
@@ -51,25 +48,19 @@
               <div class="col-md mb-3 px-0">
                 <label for="email">Email</label>
                 <input
-                  class="form-control invalid <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                  class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
                   type="email"
                   name="email"
                   id="email"
                   placeholder="abc@gmail.com"
                   value="<%= oldInput.email %>"
                 />
-                <!-- <input type="email" class="form-control" id="email" placeholder="example@gmail.com"
-
-                                required>
-                            <div class="invalid-feedback">
-                                Your valid email address is required.
-                            </div> -->
               </div>
 
               <div class="col-md mb-3 px-0">
                 <label for="password">Password</label>
                 <input
-                  class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid-value' : '' %>"
+                  class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
                   type="password"
                   name="password"
                   id="password"
@@ -77,11 +68,6 @@
                   placeholder="at least 8 characters"
                   value="<%= oldInput.password %>"
                 />
-                <!-- <input type="password" class="form-control" id="password" minlength="8"
-                                placeholder="at least 8 characters" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Your have not entered a correct password.
-                            </div> -->
               </div>
               <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
@@ -102,7 +88,7 @@
                 </div>
                 <div class="col text-right px-0">
                   <p>
-                    <a href="./recover/password" class="login-link"
+                    <a href="/recover/password" class="login-link"
                       >Forgot Password?</a
                     >
                   </p>
@@ -144,7 +130,7 @@
 
             <div class="row mt-2 justify-content-center">
               <div class="col-md">
-                <a class="social-sign-in" href="/auth/employer/github">
+                <a href="/auth/employer/github">
                   <button
                     type="button"
                     class="btn btn-block github-btn py-3 my-1"
@@ -155,7 +141,7 @@
               </div>
 
               <div class="col-md">
-                <a class="social-sign-in" href="/auth/employer/google">
+                <a href="/auth/employer/google">
                   <button
                     type="button"
                     id="googleBtn"

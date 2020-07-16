@@ -280,16 +280,32 @@ exports.createFeature = async (req, res) => {
     });
     if (checkFeature) {
       req.flash('error', 'This Feature already exists');
-      res.redirect('back');
+      res.redirect('/admin/packages');
     } else {
       await Feature.create({ description, feature_id });
 
       req.flash('success', 'Feature created successfully');
-      res.redirect('back');
+      res.redirect('/admin/packages');
     }
   } catch (error) {
     console.log(error);
     req.flash('error', 'Something went wrong');
     return res.redirect('back');
+  }
+};
+
+exports.deleteFeature = async (req, res) => {
+  try {
+    await Feature.destroy({
+      where: { feature_id: req.params.feature_id }
+    })
+
+    //Success Response
+    req.flash('success', 'Feature deleted successfully.');
+    res.redirect('back')
+    
+  } catch (error) {
+    req.flash('Error', 'Something went wrong');
+    res.redirect('/admin/packages')
   }
 };

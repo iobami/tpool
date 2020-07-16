@@ -94,9 +94,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(255),
         allowNull: true,
       },
+      hasTeam: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
     },
     {
-      //paranoid: true,
+      // paranoid: true,
       underscored: true,
     },
   );
