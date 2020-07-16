@@ -14,9 +14,9 @@
   <div class="container-fluid w-100 top__nav__wrapper sticky-top">
     <div class="top__nav__contents py-4">
       <div class="d-flex justify-content-between justify-content-lg-end align-items-center text-center top__nav">
-        <a href="../packages" class="btn btn-sm btn-outline-info d-none d-md-block">
+        <a href="../packages" class="btn btn-sm btn-outline-primary d-none d-md-block">
           Back to All Packages</a>
-        <a href="../packages" class="btn btn-sm btn-outline-info d-md-none d-sm-block">
+        <a href="../packages" class="btn btn-sm btn-outline-primary d-md-none d-sm-block">
           Back</a>
         <h4 class="mx-auto">Package Details</h4>
 
@@ -48,17 +48,19 @@
   <!-- Content -->
   <div class="main h-100 d-flex flex-column align-items-center justify-content-center">
     <!-- buttons div -->
-    <div class="container d-flex align-items-center justify-content-around my-3 w-100">
-        <!-- Update Package Button -->
-        <button type="button" class="btn btn-sm btn-primary m-2" data-toggle="modal" data-target="#updatePackageModal">
-          Update Package
-        </button>
+    <div class="container d-flex align-items-center justify-content-center my-3 w-100">
+      <!-- Update Package Button -->
+      <button type="button" class="btn btn-sm btn-outline-primary m-2 mx-4" data-toggle="modal"
+        data-target="#updatePackageModal">
+        Update Package
+      </button>
 
-        <!-- Delete Package Button -->
-        <button type="button" class="btn btn-sm btn-danger m-2" data-toggle="modal" data-target="#deletePackageModal">
-          Delete Package
-        </button>
-      </div>
+      <!-- Delete Package Button -->
+      <button type="button" class="btn btn-sm btn-outline-danger m-2 mx-4" data-toggle="modal"
+        data-target="#deletePackageModal">
+        Delete Package
+      </button>
+    </div>
     <!-- package body -->
     <div class="my-4">
       <h5 class="text-center font-weight-bold text-capitalize">
@@ -70,7 +72,7 @@
       <!-- Packages & features row -->
       <div class="row">
         <!-- Package Details -->
-        <div class="col-md-4">
+        <div class="col-md-4 my-3 py-3 shadow-sm rounded">
           <h6 class="text-center text-primary font-weight-bold">Package</h6>
           <p class="details my-3 text-capitalize text-center">
             <strong>Package Name:</strong> <br /><%- data.package.package_name %>
@@ -84,18 +86,17 @@
         </div>
 
         <!-- Package Features -->
-        <div class="col-md-4 d-flex flex-column align-items-center">
+        <div class="col-md-4 my-3 py-3 shadow-sm rounded d-flex flex-column align-items-center">
           <h6 class="text-center text-primary font-weight-bold">Features</h6>
           <!-- todo edit this line below -->
           <% if (data.package.features && data.package.features.length > 0) {%>
           <ul class="list-group list-group-flush features-list px-4 my-2 w-100">
             <% data.package.features.sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1).forEach(feat => { %>
             <li class="list-group-item"> <span class="mx-auto text-center"><%- feat.description %></span>
-              <form action="/admin/packages/<%= data.package.package_id %>/remove" method="POST"
-                class="btn btn-sm btn-danger delete-btn m-0 p-0">
+              <form action="/admin/packages/<%= data.package.package_id %>/remove" method="POST" class="m-0 p-0">
                 <input type="hidden" name="feature_id" value="<%= feat.feature_id %>">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-                <button type="submit" class="btn btn-sm btn-danger">
+                <button type="submit" class="btn btn-sm btn-outline-danger">
                   Remove
                 </button></form>
             </li>
@@ -106,7 +107,8 @@
             No features found.
           </h6>
           <% } %>
-          <button type="button" class="btn btn-sm btn-primary m-2" data-toggle="modal" data-target="#addFeatureModal">Add
+          <button type="button" class="btn btn-sm btn-outline-primary m-2" data-toggle="modal"
+            data-target="#addFeatureModal">Add
             Feature</button>
         </div>
       </div>
@@ -135,13 +137,12 @@
             <% const filteredFeatures = []; 
                 data.features.forEach(element => {
                   data.package.features.some(obj => obj.description === element.description)? false: filteredFeatures.push(element)
-                });
-                ;
-                // sort the array then populate modal
-              const sorted = filteredFeatures
-              .sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1);
-              
-              sorted.forEach(feat => { %>
+                }); %>
+
+            <!-- sort the array then populate modal -->
+            <% const sorted = filteredFeatures.sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1); %>
+
+            <% sorted.forEach(feat => { %>
             <li class="list-group-item"> <%= feat.description %>
               <form action="/admin/packages/<%-data.package.package_id%>/add" method="post" class="p-0 m-0 mx-auto">
                 <input type="hidden" name="feature_id" value="<%= feat.feature_id %>">
@@ -238,6 +239,11 @@
 
 
   <style>
+    :root {
+      /* --primary-color: #084482; */
+      --primary-color: #00aeff;
+    }
+
     body {
       background-color: #ededed;
       min-height: 100vh !important;
@@ -330,8 +336,35 @@
       opacity: 1;
     }
 
-    /* #addFeatureModal form {
-    } */
+    .btn-primary {
+      color: white;
+      background-color: var(--primary-color);
+    }
+
+    .btn-outline-primary {
+      border-width: 1px !important;
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .btn-outline-primary:hover {
+      color: #fff;
+      background-color: var(--primary-color);
+    }
+
+    button.close,
+    button.close:active {
+      border: 0;
+      outline: 0;
+    }
+
+    button.close:hover {
+      transform: scale(1.3);
+    }
+
+    h6.text-primary {
+      color: #00aeff !important;
+    }
   </style>
   <script src="../../js/bootstrap-js/popper.js"></script>
   <script src="../../js/bootstrap-js/jquery.js"></script>
