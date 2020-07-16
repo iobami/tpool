@@ -19,13 +19,15 @@
           <div
             class="tp-card d-flex flex-column justify-content-between p-3 bg-dark-blue text-white">
             <div>
-              <p class="mb-2 mb-0"> <%= data.employee.track %>
+              <p class="mb-3">Track <%= data.employee.track %>
               </p>
-              <p class="mb-2"> <%= data.employee.user_type %> </p>
-              <p class="mb-2">Availability:
+              <p class="mb-3">Talent type: <%= data.employee.user_type %> </p>
+              <p class="mb-3">Availability:
                 <%= data.employee.availability.replace('-', " ") %>
               </p>
-              <p class="mb-2">Verification status:
+              <p class="mb-3">Profile views:
+                <%= data.employee.views %> </p>
+              <p class="mb-3">Verification status:
                 <%= data.employee.verification_status %> </p>
             </div>
           </div>
@@ -61,23 +63,23 @@
           <div
             class="tp-card d-flex flex-column justify-content-between p-3 bg-light-blue text-white">
             <div>
-              <%# if (data.team) { %>
-              <p class="mb-3">You are a member of team Phoenix
-                <%#= data.team.name %> </p>
-              <p class="mb-0">Employer: Phoenix Inc.
-                <%#= data.team.employer.name %> </p>
-              <%# } else { %>
-              <!-- <p class="mb-0">You are currently not in any team yet</p> -->
-              <%# } %>
+              <% if (data.team) { %>
+              <p class="mb-3">You are a member of team
+                <%= data.team.name %> </p>
+              <p class="mb-0">
+                <%= data.team.employer.employer_name %> </p>
+              <% } else { %>
+              <p class="mb-0">You are currently not in any team yet</p>
+              <% } %>
             </div>
-            <%# if (data.team) { %>
+            <% if (data.team) { %>
             <div class="text-right mt-3">
               <button class="btn-sm btn tp-btn-outline-primary"
                 data-toggle="modal" data-target="#teamModal">
                 View team info
               </button>
             </div>
-            <%# } %>
+            <% } %>
           </div>
         </div>
         <div class=" col-11 col-md-6 mt-5">
@@ -118,7 +120,7 @@
       </div>
     </div>
     <!-- <pre>
-      <%= JSON.stringify(data, "", 2) %> 
+      <%#= JSON.stringify(data, "", 2) %> 
     </pre> -->
   </main>
 
@@ -128,8 +130,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Team Phoenix
-            (Pending)
+          <h5 class="modal-title"><%= data.team.name %>
+            (<%= data.team.status %> )
           </h5>
           <button type="button" class="close" data-dismiss="modal"
             aria-label="Close">
@@ -137,31 +139,48 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="img-comtainer">
-            <img src=<%= data.employee.image %> alt="employer image"
-              class="img-fluid rounded">
+          <div class="img-container">
+            <img src=<%= data.team.employer.photo %> alt="employer photo"
+              class="img-fluid rounded mx-auto">
           </div>
           <div class="mt-4">
             <div class="mb-3 d-flex align-items-center">
               <h6 class="mb-0 mr-2">Employer: </h6>
               <p class="mb-0">
-                Phoenix Inc.</p>
+                <%= data.team.employer.employer_name %> </p>
             </div>
             <div class="mb-3 d-flex align-items-center">
               <h6 class="mb-0 mr-2">Contact: </h6>
-              <p class="mb-0"><a href="tel:08022458845">08022458845</a>,
+              <p class="mb-0"><a
+                  href=<%= 'tel:'+data.team.employer.phone %>><%= data.team.employer.phone %>
+                </a>,
                 <a
-                  href="mailto:phoenixinc@phoenix.com">phoenixinc@phoenix.com</a>
+                  href=<%= 'mailto:'+data.team.employer.email %>><%= data.team.employer.email %></a>
               </p>
             </div>
             <div class="mb-3 d-flex align-items-center">
               <h6 class="mb-0 mr-2">Socials: </h6>
               <div class="d-flex justify-content-between">
-                <p class="mb-0 mr-2"><a href="#">Twitter</a></p>
-                <p class="mb-0 mr-2"><a href="#">Facebook</a></p>
-                <p class="mb-0 mr-2"><a href="#">Instagram</a></p>
-                <p class="mb-0"><a href="#">LinkedIn</a></p>
-
+                <% if (data.team.employer.social.twitter) { %>
+                <p class="mb-0 mr-2"><a
+                    href=<%= data.team.employer.social.twitter %>>Twitter</a>
+                </p>
+                <% } %>
+                <% if (data.team.employer.social.facebook) { %>
+                <p class="mb-0 mr-2"><a
+                    href=<%= data.team.employer.social.facebook %>>Facebook</a>
+                </p>
+                <% } %>
+                <% if (data.team.employer.social.instagram) { %>
+                <p class="mb-0 mr-2"><a
+                    href=<%= data.team.employer.social.instagram %>>Instagram</a>
+                </p>
+                <% } %>
+                <% if (data.team.employer.social.linkedin) { %>
+                <p class="mb-0 mr-2"><a
+                    href=<%= data.team.employer.social.linkedin %>>LinkedIn</a>
+                </p>
+                <% } %>
               </div>
             </div>
           </div>
@@ -180,11 +199,6 @@
   <script src="/js/bootstrap-js/popper.js"></script>
   <script src="/js/bootstrap-js/jquery.js"></script>
   <script src="/js/bootstrap-js/bootstrap.js"></script>
-  <script>
-    var data = JSON.parse('<%- JSON.stringify(data) %>');
-    console.log(data)
-  </script>
-
 </body>
 
 </html>
