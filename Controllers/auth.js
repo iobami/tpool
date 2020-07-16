@@ -211,7 +211,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
       success,
-      isLoggedIn:req.session.isLoggedIn,
+      isLoggedIn: req.session.isLoggedIn,
       oldInput: {
         email,
         password,
@@ -228,7 +228,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'Incorrect login details',
           success: req.flash('success'),
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -252,7 +252,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'User is not verified',
           success: req.flash('success'),
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -267,7 +267,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'User is blocked.',
           success: req.flash('success'),
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -308,7 +308,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
             pageName: 'Employee Login',
             errorMessage: 'Invalid email or password.',
             success: req.flash('success'),
-            isLoggedIn:req.session.isLoggedIn,
+            isLoggedIn: req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -335,7 +335,7 @@ exports.postEmployerLogin = async (req, res, next) => {
       path: '/employer/login',
       pageName: 'Employer Login',
       errorMessage: errors.array()[0].msg,
-      isLoggedIn:req.session.isLoggedIn,
+      isLoggedIn: req.session.isLoggedIn,
       success: req.flash('success'),
       oldInput: {
         email,
@@ -352,7 +352,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'Invalid email or password.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -378,7 +378,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Sign In',
           errorMessage: 'User is not verified',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -393,7 +393,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'User is blocked.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -429,7 +429,7 @@ exports.postEmployerLogin = async (req, res, next) => {
             pageName: 'Employer Login',
             errorMessage: 'Invalid email or password.',
             success,
-            isLoggedIn:req.session.isLoggedIn,
+            isLoggedIn: req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -537,7 +537,7 @@ exports.adminLogin = async (req, res, next) => {
       path: '/admin/login',
       pageName: 'Admin login',
       errorMessage: errors.array()[0].msg,
-      isLoggedIn:req.session.isLoggedIn,
+      isLoggedIn: req.session.isLoggedIn,
       oldInput: {
         email,
         password,
@@ -552,7 +552,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'Incorrect login details,user does not exist.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -565,7 +565,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not an admin.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -587,7 +587,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not verified.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -600,7 +600,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is blocked.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -621,7 +621,7 @@ exports.adminLogin = async (req, res, next) => {
             path: '/admin/login',
             pageName: 'Admin Login',
             errorMessage: 'Incorrect login details.',
-            isLoggedIn:req.session.isLoggedIn,
+            isLoggedIn: req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -656,7 +656,7 @@ const getResetPasswordToken = () => {
     .digest('hex');
 
   // Set expire
-  const resetPasswordExpire = Date.now() + + 3600000;
+  const resetPasswordExpire = Date.now() + +3600000;
 
   return { resetToken, resetPasswordToken, resetPasswordExpire };
 };
@@ -756,8 +756,8 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   await user.save();
 
   req.flash('success', 'Password changed successfully');
-  if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
-  if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
+  if (user.role_id === 'ROL-EMPLOYER') return res.redirect('/employer/login');
+  if (user.role_id === 'ROL-EMPLOYEE') return res.redirect('/employee/login');
 });
 
 exports.resendVerificationLink = async (req, res) => {
