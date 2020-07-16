@@ -45,7 +45,7 @@ exports.registerEmployer = (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-        phone: req.body.phone
+        phone: req.body.phone,
       };
       req.session.employeruserData = employerUserData;
 
@@ -210,7 +210,11 @@ exports.postEmployeeLogin = async (req, res, next) => {
       path: '/employee/login',
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
+<<<<<<< HEAD
       success: req.flash('success'),
+=======
+      success,
+>>>>>>> 58346829b96c94c0f6e98e54b4680bdd56881aca
       oldInput: {
         email,
         password,
@@ -285,12 +289,18 @@ exports.postEmployeeLogin = async (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;
+
             if (!data.userTypeId) {
-              req.flash('success', 'Login Successful');
-              return res.redirect('/employee/profile/create');
+              // req.flash('success', 'Login Successful!');
+              res.redirect(
+                '/employee/create/profile?success_message=Login Successful! Please create a profile to continue',
+              );
+            } else {
+              // req.flash('success', 'Login Successful');
+              return res.redirect(
+                `/employee/dashboard/${data.userTypeId}?success_message=Login Successful`,
+              );
             }
-            req.flash('success', 'Login Successful');
-            return res.redirect(`/employee/dashboard/${data.userTypeId}`);
           }
           return res.status(422).render('Pages/employee-sign-in', {
             path: '/employee/login',
@@ -400,11 +410,12 @@ exports.postEmployerLogin = async (req, res, next) => {
             req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            req.session.employerId = data.userTypeId;
             if (!user.employer_id) {
+              req.flash('success', 'Login Successful');
+              // req.flash('error', 'You need to create a profile before you proceed');
               res.redirect('/employer/profile/create');
             }
-            res.redirect('/employer/dashboard/');
+            res.redirect(`/employer/dashboard/${user.employer_id}`);
           }
           return res.status(422).render('Pages/employer-signin', {
             path: '/employer/login',
@@ -511,7 +522,7 @@ exports.postEmployerLogin = async (req, res, next) => {
 exports.adminLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
-  let currentUser;
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('Pages/admin-login', {
@@ -525,8 +536,8 @@ exports.adminLogin = async (req, res, next) => {
       validationErrors: errors.array(),
     });
   }
-   model.User.findOne({ where: { email } })
-    .then(async (user) => {
+  await model.User.findOne({ where: { email } })
+    .then((user) => {
       if (!user) {
         return res.status(422).render('Pages/admin-login', {
           path: '/admin/login',
@@ -550,14 +561,6 @@ exports.adminLogin = async (req, res, next) => {
           },
           validationErrors: [],
         });
-      }
-      let userTypeId = null;
-
-      const admin = await model.Admin.findOne({
-        where: { user_id: user.user_id },
-      });
-      if (admin) {
-        userTypeId = admin.admin_id;
       }
       if (user.status === '0') {
         return res.status(422).render('Pages/admin-login', {
@@ -583,19 +586,12 @@ exports.adminLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
-      currentUser = user;
       bcrypt
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
-            const data = {
-              email: currentUser.email,
-              userRole: currentUser.role_id,
-              userTypeId,
-            };
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            req.session.adminId = data.userTypeId;
             res.redirect('/admin/dashboard');
           }
           return res.status(422).render('Pages/admin-login', {
@@ -781,7 +777,10 @@ exports.resendVerificationLink = async (req, res) => {
     });
     // const data = { message: 'Verification email re-sent!' };
     // successResMsg(res, 201, data);
-    req.flash('success', 'Please check your email. Verification link has been sent.');
+    req.flash(
+      'success',
+      'Please check your email. Verification link has been sent.',
+    );
     return res.redirect('/verify-email');
   } catch (err) {
     if (!err.statusCode) {

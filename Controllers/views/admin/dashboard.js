@@ -179,7 +179,7 @@ module.exports = {
       allTransactions: allTransactions.count,
       latestEmployers,
       latestTransactions,
-      activeSubscribers: Transactions.length,
+      activeTransactions: Transactions.length,
     });
   },
 
