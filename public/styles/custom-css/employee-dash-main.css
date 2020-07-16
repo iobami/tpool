@@ -50,6 +50,10 @@ body {
   text-decoration: underline;
   color: var(--dark-blue);
 }
+
+.portfolio-card {
+  max-height: 400px;
+}
 .img-container {
   max-width: 70%;
 }
