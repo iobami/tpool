@@ -141,9 +141,9 @@ module.exports = {
 
       const data = { all_employee_data: results };
       // accessing the include
-      data.all_employee_data.forEach((user) => {
-        console.log(user.User.block);
-      });
+      // data.all_employee_data.forEach((user) => {
+      //   console.log(user.User.block);
+      // });
 
       // eslint-disable-next-line no-shadow
       employeesTotal.forEach((data) => {
