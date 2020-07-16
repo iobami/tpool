@@ -7,6 +7,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      feature_id: {
+        type: DataTypes.STRING(255),
+        primaryKey: true,
+        allowNull: false,
+      },
     },
     {
       underscored: true,
