@@ -10,8 +10,8 @@
 </head>
 
 <body>
-  <%- include('../../Templates/admin-header') %> <%-
-    include('../../Templates/admin-sidebar') %>
+  <%- include('../../Templates/admin-header') %>
+  <%- include('../../Templates/admin-sidebar') %>
 
   <section class="admin__dashboard p-4">
     <h2 class="dashboard__heading text-center">Manage Packages</h2>
@@ -28,30 +28,9 @@
             aria-controls="profile" aria-selected="false">Create Package</a>
         </li>
         <li class="nav-item m-2">
-            <a
-              class="nav-link"
-              id="update-package-tab"
-              data-toggle="tab"
-              href="#viewFeatures"
-              role="tab"
-              aria-controls="messages"
-              aria-selected="false"
-              >View Features</a
-            >
-          </li>
-
-        <!-- <li class="nav-item m-2">
-            <a
-              class="nav-link text-danger"
-              id="delete-package-tab"
-              data-toggle="tab"
-              href="#deletePackage"
-              role="tab"
-              aria-controls="settings"
-              aria-selected="false"
-              >Delete Package</a
-            >
-          </li> -->
+          <a class="nav-link" id="update-package-tab" data-toggle="tab" href="#viewFeatures" role="tab"
+            aria-controls="messages" aria-selected="false">View Features</a>
+        </li>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
@@ -59,16 +38,16 @@
         <div class="tab-pane fade show active" id="viewPackages" role="tabpanel" aria-labelledby="view-packages-tab">
           <div class="container">
             <div class="row">
-              <% if (data.packages && data.packages.length >= 1) { 
-                data.packages.forEach(function(package) { %>
+              <% if (data.packages && data.packages.length >= 1) { %>
+              <% data.packages.forEach(function(package) { %>
               <div class="col-sm-6 col-md-4">
                 <div class="card-deck mb-3 text-center">
                   <div class="card mb-4 box-shadow">
                     <div class="card-header">
                       <h4 class="my-0 font-weight-normal">
                         <%- package.package_name.split(' ') .map(w =>
-                          w[0].toUpperCase() + w.substr(1).toLowerCase())
-                          .join(' ') %>
+                                w[0].toUpperCase() + w.substr(1).toLowerCase())
+                                .join(' ') %>
                       </h4>
                     </div>
                     <div class="card-body">
@@ -85,16 +64,16 @@
                   </div>
                 </div>
               </div>
-              <% }); } else { %>
+              <% }) } else { %>
               <h4 class="my-4 text-muted text-center">
-                No packages found, <br/><br/>Create a Package.
+                No packages found, <br /><br />Create a Package.
               </h4>
               <% } %>
             </div>
           </div>
         </div>
-        
-        <!-- // create packages -->
+
+        <!-- create packages -->
         <div class="tab-pane fade" id="createPackage" role="tabpanel" aria-labelledby="create-package-tab">
           <form action="/admin/packages/create" method="post" class="p-3 m-3 mx-auto mw-75">
             <div class="form-group mb-3 mx-auto">
@@ -121,49 +100,44 @@
             </button>
           </form>
         </div>
-        <div class="tab-pane fade" id="viewFeatures" role="tabpanel" aria-labelledby="update-package-tab">
-          <% // console.log(data.allFeatures) %>
-          <% data.allFeatures.forEach(element => { %>
-            <li><%= element.description %></li>
-          <%  }); %>
 
-          
-          <form action="/admin/features/create" method="POST">
-            <input type="text" name="description">
+        <!-- View All Features -->
+        <div class="tab-pane fade" id="viewFeatures" role="tabpanel" aria-labelledby="view-features-tab">
+          <% if (data.allFeatures && data.allFeatures.length > 0) {%>
+          <ul class="list-group list-group-flush features-list">
+            <% // console.log(data.features) %>
+            <% data.allFeatures.forEach(feat => { %>
+            <li class="list-group-item"> <%- feat.description %> <form action="/admin/features/remove" method="POST"
+                class="btn btn-sm m-0 p-0">
+                <input type="hidden" name="feature_id" value="<%= feat.feature_id %> ">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                <button type="submit" class="btn btn-sm btn-danger">
+                  Remove
+                </button></form>
+            </li>
+            <% }) %>
+          </ul>
+          <% } else { %>
+          <h6 class="my-5 mx-auto text-muted text-center">
+            No features found.
+          </h6>
+          <% } %>
+          <form class="my-4 mx-auto" action="/admin/features/create" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-            <button type="submit">Create Feature</button>
+            <div class="input-group">
+              <input type="text" placeholder="Enter feature description" name="description" class="form-control">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-success">Create Feature</button>
+              </div>
+            </div>
+
           </form>
         </div>
-
-        <!-- <div
-            class="tab-pane fade"
-            id="deletePackage"
-            role="tabpanel"
-            aria-labelledby="delete-package-tab"
-          >
-            <h6 class="text-center">Delete Package</h6>
-            <form action="" method="post" class="p-3 m-3 mx-auto mw-75">
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_id">Package ID</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  id="package_id"
-                  name="package_id"
-                  placeholder="Enter Package ID"
-                />
-              </div>
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-              <button type="submit" class="btn btn-block btn-danger mt-3">
-                Delete Package
-              </button>
-            </form>
-          </div> -->
       </div>
     </div>
   </section>
   <div id="body__click"></div>
+
   <style>
     form {
       max-width: 100%;
@@ -196,6 +170,31 @@
 
     button.hire-btn {
       background-color: #00aeff;
+    }
+
+    ul.features-list li {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+
+    ul.features-list button {
+      padding: 2px 5px;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      width: max-content;
+      right: 0.5rem;
+      transform: translate(0, -50%);
+      transition: opacity 0.3s ease;
+    }
+
+    ul.features-list li:hover button {
+      opacity: 1;
     }
   </style>
   <script src="../js/bootstrap-js/popper.js"></script>
