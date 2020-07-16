@@ -286,6 +286,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
               userTypeId,
             };
             req.session.data = data;
+            req.session.email = user.email;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;
@@ -755,8 +756,10 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   await user.save();
 
   req.flash('success', 'Password changed successfully');
+
   if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
   if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
+
 });
 
 exports.resendVerificationLink = async (req, res) => {
