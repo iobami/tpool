@@ -211,6 +211,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
       success,
+      isLoggedIn:req.session.isLoggedIn,
       oldInput: {
         email,
         password,
@@ -227,6 +228,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'Incorrect login details',
           success: req.flash('success'),
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -250,6 +252,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'User is not verified',
           success: req.flash('success'),
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -264,6 +267,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'User is blocked.',
           success: req.flash('success'),
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -303,6 +307,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
             pageName: 'Employee Login',
             errorMessage: 'Invalid email or password.',
             success: req.flash('success'),
+            isLoggedIn:req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -329,6 +334,7 @@ exports.postEmployerLogin = async (req, res, next) => {
       path: '/employer/login',
       pageName: 'Employer Login',
       errorMessage: errors.array()[0].msg,
+      isLoggedIn:req.session.isLoggedIn,
       success: req.flash('success'),
       oldInput: {
         email,
@@ -345,6 +351,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'Invalid email or password.',
+          isLoggedIn:req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -370,6 +377,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Sign In',
           errorMessage: 'User is not verified',
+          isLoggedIn:req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -384,6 +392,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'User is blocked.',
+          isLoggedIn:req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -406,6 +415,7 @@ exports.postEmployerLogin = async (req, res, next) => {
             req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
+            req.session.employerId = data.userTypeId;
             if (!user.employer_id) {
               req.flash('success', 'Login Successful');
               // req.flash('error', 'You need to create a profile before you proceed');
@@ -418,6 +428,7 @@ exports.postEmployerLogin = async (req, res, next) => {
             pageName: 'Employer Login',
             errorMessage: 'Invalid email or password.',
             success,
+            isLoggedIn:req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -525,6 +536,7 @@ exports.adminLogin = async (req, res, next) => {
       path: '/admin/login',
       pageName: 'Admin login',
       errorMessage: errors.array()[0].msg,
+      isLoggedIn:req.session.isLoggedIn,
       oldInput: {
         email,
         password,
@@ -532,13 +544,14 @@ exports.adminLogin = async (req, res, next) => {
       validationErrors: errors.array(),
     });
   }
-  await model.User.findOne({ where: { email } })
-    .then((user) => {
+  model.User.findOne({ where: { email } })
+    .then(async (user) => {
       if (!user) {
         return res.status(422).render('Pages/admin-login', {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'Incorrect login details,user does not exist.',
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -551,6 +564,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not an admin.',
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -558,11 +572,21 @@ exports.adminLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
+      let userTypeId = null;
+
+      const admin = await model.Admin.findOne({
+        where: { user_id: user.user_id },
+      });
+      if (admin) {
+        userTypeId = admin.admin_id;
+      }
+
       if (user.status === '0') {
         return res.status(422).render('Pages/admin-login', {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not verified.',
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -575,6 +599,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is blocked.',
+          isLoggedIn:req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -588,12 +613,14 @@ exports.adminLogin = async (req, res, next) => {
           if (valid) {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
+            req.session.adminId = userTypeId;
             res.redirect('/admin/dashboard');
           }
           return res.status(422).render('Pages/admin-login', {
             path: '/admin/login',
             pageName: 'Admin Login',
             errorMessage: 'Incorrect login details.',
+            isLoggedIn:req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -628,7 +655,7 @@ const getResetPasswordToken = () => {
     .digest('hex');
 
   // Set expire
-  const resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+  const resetPasswordExpire = Date.now() + + 3600000;
 
   return { resetToken, resetPasswordToken, resetPasswordExpire };
 };
@@ -642,7 +669,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    return errorResMsg(res, 404, 'User not found!');
+    req.flash('error', 'User with this email is not found');
+    return res.redirect('/recover/password');
   }
 
   // Get reset token
@@ -665,9 +693,9 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
   );
 
   // Create reset url
-  const resetUrl = `${URL}/password-reset?${resetToken}`;
-  const message = `You are receiving this email because you (or someone else) has requested 
-  the reset of your password. Please click this link to proceed: \n\n <a href=${resetUrl}>link</a> or 
+  const resetUrl = `${URL}/password/reset/${resetToken}`;
+  const message = `You are receiving this email because a password reset has been requested 
+  with your email. Please click this link to proceed: \n\n <a href=${resetUrl}>link</a> or 
   ignore if you are unaware of this action.`;
 
   try {
@@ -677,8 +705,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
       message,
     });
 
-    const data = { message: 'Reset password email sent' };
-    return successResMsg(res, 201, data);
+    req.flash('success', 'Reset password link has been sent to your mail');
+    return res.redirect('/recover/password');
   } catch (err) {
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
@@ -686,7 +714,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
 
     await user.save({ validateBeforeSave: false });
 
-    return errorResMsg(res, 500, 'Email could not be sent');
+    req.flash('error', 'An error occured, please try again!');
+    return res.redirect('/recover/password');
   }
 });
 
@@ -697,7 +726,7 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   // Get hashed token
   const resetPasswordToken = crypto
     .createHash('sha256')
-    .update(req.params.resettoken, 'utf8')
+    .update(req.body.token, 'utf8')
     .digest('hex');
 
   const user = await model.User.findOne({
@@ -707,11 +736,13 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    return errorResMsg(res, 400, 'Invalid token');
+    req.flash('error', 'Invalid token');
+    return res.redirect('/recover/password');
   }
 
   if (user.dataValues.resetPasswordExpire < Date.now()) {
-    return errorResMsg(res, 400, 'Reset password token expired');
+    req.flash('error', 'Reset password token expired,please try again');
+    return res.redirect('/recover/password');
   }
 
   // hash password before saving
@@ -723,8 +754,9 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   user.reset_password_expire = null;
   await user.save();
 
-  const data = { message: 'Password changed successfully' };
-  return successResMsg(res, 200, data);
+  req.flash('success', 'Password changed successfully');
+  if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
+  if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
 });
 
 exports.resendVerificationLink = async (req, res) => {
