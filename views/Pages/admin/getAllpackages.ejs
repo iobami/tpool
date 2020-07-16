@@ -105,15 +105,15 @@
         <div class="tab-pane fade" id="viewFeatures" role="tabpanel" aria-labelledby="view-features-tab">
           <% if (data.allFeatures && data.allFeatures.length > 0) {%>
           <ul class="list-group list-group-flush features-list">
-            <% // console.log(data.features) %>
             <% data.allFeatures.forEach(feat => { %>
-            <li class="list-group-item"> <%- feat.description %> <form action="/admin/features/remove" method="POST"
+            <li class="list-group-item"> <%- feat.description %>
+              <!-- <form action="/admin/features/remove" method="POST"
                 class="btn btn-sm m-0 p-0">
                 <input type="hidden" name="feature_id" value="<%= feat.feature_id %> ">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                 <button type="submit" class="btn btn-sm btn-danger">
                   Remove
-                </button></form>
+                </button></form> -->
             </li>
             <% }) %>
           </ul>

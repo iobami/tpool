@@ -90,10 +90,11 @@
           <!-- todo edit this line below -->
           <% if (data.package.features && data.package.features.length > 0) {%>
           <ul class="list-group list-group-flush features-list w-100">
-            <% // console.log(data.features) %>
             <% data.package.features.forEach(feat => { %>
-            <li class="list-group-item"> <%- feat.description %> <form action="" method="POST"
-                class="btn btn-sm btn-danger delete-btn"><input type="hidden" name="" value="">
+            <li class="list-group-item"> <%- feat.description %>
+              <form action="/admin/packages/<%= data.package.package_id %>/remove" method="POST"
+                class="btn btn-sm btn-danger delete-btn m-0 p-0">
+                <input type="hidden" name="feature_id" value="<%= feat.feature_id %>">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                 <button type="submit" class="btn btn-sm btn-danger">
                   Remove
@@ -129,13 +130,12 @@
           </button>
         </div>
         <div class="modal-body">
-          <% if (data.package.features && data.features.length > 0) {%>
+          <% if (data.features && data.features.length > 0) {%>
           <ul class="list-group list-group-flush features-list w-100">
-            <% // console.log(data.features) %>
             <% data.features.forEach(feat => { %>
-            <li class="list-group-item"> <%- feat.description %> <form
-                action="/admin/packages/<%- data.package.package_id %>/update" method="post" class="p-0 m-0 mx-auto">
-                <input type="hidden" name="" value="">
+            <li class="list-group-item"> <%= feat.description %>
+              <form action="/admin/packages/<%-data.package.package_id%>/add" method="post" class="p-0 m-0 mx-auto">
+                <input type="hidden" name="feature_id" value="<%= feat.feature_id %>">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                 <button type="submit" class="btn btn-sm btn-primary">
                   Add
