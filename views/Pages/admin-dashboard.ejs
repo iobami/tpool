@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <div class="card__text">
                                     <p>total employees</p>
-                                    <h1><%= totalEmployee %></h1>
+                                    <h1><%- totalEmployee.length %></h1>
                                 </div>
 
                                 <div class="card__img">
@@ -42,7 +42,7 @@
                             <div class="card-body">
                                 <div class="card__text">
                                     <p>total employers</p>
-                                    <h1><%= totalEmployer %></h1>
+                                    <h1><%- totalEmployer.length %></h1>
                                 </div>
 
                                 <div class="card__img">
@@ -58,9 +58,9 @@
                         <div class="card top__card profit__card">
                             <div class="card-body">
                                 <div class="card__text">
-                                    <p>active subscribers</p>
-                                    <h1><%= activeSubscribers %></h1>
-                                    <p><span><%= allTransactions %></span> Total subscribers </p>
+                                    <p>active transactions</p>
+                                    <h1><%= activeTransactions %></h1>
+                                    <p><span><%= allTransactions %></span> Total transactions </p>
                                 </div>
 
                                 <div class="card__img">

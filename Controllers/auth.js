@@ -45,7 +45,7 @@ exports.registerEmployer = (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-        phone: req.body.phone
+        phone: req.body.phone,
       };
       req.session.employeruserData = employerUserData;
 
@@ -210,7 +210,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       path: '/employee/login',
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
-      success: req.flash('success'),
+      success,
       oldInput: {
         email,
         password,
@@ -285,12 +285,18 @@ exports.postEmployeeLogin = async (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;
+
             if (!data.userTypeId) {
-              req.flash('success', 'Login Successful');
-              return res.redirect('/employee/profile/create');
+              // req.flash('success', 'Login Successful!');
+              res.redirect(
+                '/employee/create/profile?success_message=Login Successful! Please create a profile to continue',
+              );
+            } else {
+              // req.flash('success', 'Login Successful');
+              return res.redirect(
+                `/employee/dashboard/${data.userTypeId}?success_message=Login Successful`,
+              );
             }
-            req.flash('success', 'Login Successful');
-            return res.redirect(`/employee/dashboard/${data.userTypeId}`);
           }
           return res.status(422).render('Pages/employee-sign-in', {
             path: '/employee/login',
@@ -400,11 +406,12 @@ exports.postEmployerLogin = async (req, res, next) => {
             req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            req.session.employerId = data.userTypeId;
             if (!user.employer_id) {
+              req.flash('success', 'Login Successful');
+              // req.flash('error', 'You need to create a profile before you proceed');
               res.redirect('/employer/profile/create');
             }
-            res.redirect('/employer/dashboard/');
+            res.redirect(`/employer/dashboard/${user.employer_id}`);
           }
           return res.status(422).render('Pages/employer-signin', {
             path: '/employer/login',
@@ -511,7 +518,7 @@ exports.postEmployerLogin = async (req, res, next) => {
 exports.adminLogin = async (req, res, next) => {
   const { email } = req.body;
   const { password } = req.body;
-  let currentUser;
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('Pages/admin-login', {
@@ -525,8 +532,8 @@ exports.adminLogin = async (req, res, next) => {
       validationErrors: errors.array(),
     });
   }
-   model.User.findOne({ where: { email } })
-    .then(async (user) => {
+  await model.User.findOne({ where: { email } })
+    .then((user) => {
       if (!user) {
         return res.status(422).render('Pages/admin-login', {
           path: '/admin/login',
@@ -550,14 +557,6 @@ exports.adminLogin = async (req, res, next) => {
           },
           validationErrors: [],
         });
-      }
-      let userTypeId = null;
-
-      const admin = await model.Admin.findOne({
-        where: { user_id: user.user_id },
-      });
-      if (admin) {
-        userTypeId = admin.admin_id;
       }
       if (user.status === '0') {
         return res.status(422).render('Pages/admin-login', {
@@ -583,19 +582,12 @@ exports.adminLogin = async (req, res, next) => {
           validationErrors: [],
         });
       }
-      currentUser = user;
       bcrypt
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
-            const data = {
-              email: currentUser.email,
-              userRole: currentUser.role_id,
-              userTypeId,
-            };
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
-            req.session.adminId = data.userTypeId;
             res.redirect('/admin/dashboard');
           }
           return res.status(422).render('Pages/admin-login', {
@@ -650,7 +642,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    return errorResMsg(res, 404, 'User not found!');
+    req.flash('error', 'User with this email is not found');
+    return res.redirect('/recover/password');
   }
 
   // Get reset token
@@ -673,9 +666,9 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
   );
 
   // Create reset url
-  const resetUrl = `${URL}/password-reset?${resetToken}`;
-  const message = `You are receiving this email because you (or someone else) has requested 
-  the reset of your password. Please click this link to proceed: \n\n <a href=${resetUrl}>link</a> or 
+  const resetUrl = `${URL}/password/reset/${resetToken}`;
+  const message = `You are receiving this email because a password reset has been requested 
+  with your email. Please click this link to proceed: \n\n <a href=${resetUrl}>link</a> or 
   ignore if you are unaware of this action.`;
 
   try {
@@ -685,8 +678,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
       message,
     });
 
-    const data = { message: 'Reset password email sent' };
-    return successResMsg(res, 201, data);
+    req.flash('success', 'Reset password link has been sent to your mail');
+    return res.redirect('/recover/password');
   } catch (err) {
     // eslint-disable-next-line no-console
     user.reset_password_token = null;
@@ -694,7 +687,8 @@ exports.forgotPassword = asyncHandler(async (req, res) => {
 
     await user.save({ validateBeforeSave: false });
 
-    return errorResMsg(res, 500, 'Email could not be sent');
+    req.flash('error', 'An error occured, please try again!');
+    return res.redirect('/recover/password');
   }
 });
 
@@ -705,7 +699,7 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   // Get hashed token
   const resetPasswordToken = crypto
     .createHash('sha256')
-    .update(req.params.resettoken, 'utf8')
+    .update(req.body.token, 'utf8')
     .digest('hex');
 
   const user = await model.User.findOne({
@@ -715,11 +709,13 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    return errorResMsg(res, 400, 'Invalid token');
+    req.flash('error', 'Invalid token');
+    return res.redirect('/recover/password');
   }
 
   if (user.dataValues.resetPasswordExpire < Date.now()) {
-    return errorResMsg(res, 400, 'Reset password token expired');
+    req.flash('error', 'Reset password token expired,please try again');
+    return res.redirect('/recover/password');
   }
 
   // hash password before saving
@@ -731,8 +727,9 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   user.reset_password_expire = null;
   await user.save();
 
-  const data = { message: 'Password changed successfully' };
-  return successResMsg(res, 200, data);
+  req.flash('success', 'Password changed successfully');
+  if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
+  if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
 });
 
 exports.resendVerificationLink = async (req, res) => {
@@ -781,7 +778,10 @@ exports.resendVerificationLink = async (req, res) => {
     });
     // const data = { message: 'Verification email re-sent!' };
     // successResMsg(res, 201, data);
-    req.flash('success', 'Please check your email. Verification link has been sent.');
+    req.flash(
+      'success',
+      'Please check your email. Verification link has been sent.',
+    );
     return res.redirect('/verify-email');
   } catch (err) {
     if (!err.statusCode) {

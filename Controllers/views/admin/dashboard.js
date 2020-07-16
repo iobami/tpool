@@ -9,7 +9,7 @@ const keysOfArray = (modelResult, arrayObj) => {
   });
   return arrayObj;
 };
-const { packages } = require('../../../Controllers/views/payment/packagesObj');
+const { packages } = require('../payment/packagesObj');
 
 module.exports = {
   faq: (req, res) => {
@@ -29,7 +29,7 @@ module.exports = {
   messages: (req, res) => {
     res.render('Pages/admin-dash-messages', {
       pageName: 'Admin Messages',
-      path: 'messages',
+      path: 'admin-messages',
     });
   },
 
@@ -93,19 +93,19 @@ module.exports = {
       let skillHashMap = {};
       let portfolioHashMap = {};
       const results = [];
-  
+
       const employees_count = [];
       const available_employees_count = [];
       const hired_employees_count = [];
-  
+
       skillHashMap = keysOfArray(skill, skillHashMap);
-  
+
       portfolioHashMap = keysOfArray(portfolio, portfolioHashMap);
-  
+
       employees.map((x) => {
         hashMap[x.dataValues.employee_id] = x.dataValues;
       });
-  
+
       Object.keys(hashMap).forEach((key) => {
         if (!skillHashMap.hasOwnProperty(key) && !portfolioHashMap.hasOwnProperty(key)) {
           hashMap[key] = { ...hashMap[key], skills: [], portfolios: [] };
@@ -118,9 +118,9 @@ module.exports = {
         }
         results.push(hashMap[key]);
       });
-  
+
       const data = { all_employee_data: results };
-      // console.log(data);
+
       // eslint-disable-next-line no-shadow
       employeesTotal.forEach((data) => {
         employees_count.push(data);
@@ -173,20 +173,20 @@ module.exports = {
 
     res.render('Pages/admin-dashboard', {
       pageName: 'Admin dashboard',
-      path: "admin-dashboard",
-      totalEmployer: employers.length,
-      totalEmployee: employees.length,
+      path: 'admin-dashboard',
+      totalEmployer: employers,
+      totalEmployee: employees,
       allTransactions: allTransactions.count,
       latestEmployers,
       latestTransactions,
-      activeSubscribers: Transactions.length,
+      activeTransactions: Transactions.length,
     });
   },
 
   adminVerification: (req, res) => {
     res.render('Pages/admin-verification', {
       pageName: 'Admin Verification',
-      path: 'verification',
+      path: 'admins-verification',
     });
   },
 
@@ -199,7 +199,7 @@ module.exports = {
   adminSettings: (req, res) => {
     res.render('Pages/admin-settings', {
       pageName: 'Admin Settings',
-      path: 'settings',
+      path: 'admin-settings',
     });
   },
 
@@ -209,12 +209,21 @@ module.exports = {
       path: 'admin-viewEmployee',
     });
   },
-  adminsList: (req, res) => {
+
+  adminsList: async (req, res) => {
+    const allAdmins = await model.Admin.findAll({
+      order: [
+        ['id', 'DESC'],
+      ],
+    });
+
     res.render('Pages/admins-list', {
-      pageName: 'Talent Pool | View Employee',
+      pageName: 'Talent Pool | View Admins',
       path: 'admins-list',
+      allAdmins,
     });
   },
+
   managePackages: (req, res) => {
     res.render('Pages/admin/getAllpackages', {
       pageName: 'Manage Packages',
