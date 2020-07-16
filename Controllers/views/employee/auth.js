@@ -51,7 +51,7 @@ module.exports = {
         validationErrors: [],
       });
     }
-
+    const { isLoggedIn } = req.session;
     return res.render('Pages/employee-sign-up', {
       path: '/employee/register',
       pageName: 'Employee Signup',
@@ -120,6 +120,7 @@ module.exports = {
       });
     }
 
+    const { isLoggedIn } = req.session;
     return res.render('Pages/employee-sign-in', {
       path: '/employee/login',
       pageName: 'Employee Login',
