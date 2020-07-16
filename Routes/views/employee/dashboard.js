@@ -13,6 +13,21 @@ appRoute.get(
   '/employee/portfolio/:employee_id',
   employeeController.getPortfolio,
 );
+// Create Portfolio
+<<<<<<< HEAD
+appRoute.post(
+  '/employee/create/portfolio',
+  employeeController.createPortfolio,
+);
+=======
+appRoute.post('/employee/create/portfolio', employeeController.createPortfolio);
+>>>>>>> bb3e8353d4bbc8e6cd3e4303552bb82b8f2e320a
+// delete Portfolio
+appRoute.delete(
+  '/employee/delete/portfolio',
+  employeeController.deletePortfolio,
+);
+
 // Profile Page
 appRoute.get('/employee/profile/:employee_id', employeeController.getProfile);
 // Get Employee Messages

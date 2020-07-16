@@ -1,6 +1,8 @@
 module.exports = {
   employerSignup: (req, res) => {
-    const { isLoggedIn, employerId } = req.session;
+    const {
+      isLoggedIn, employerId,
+    } = req.session;
 
     if (isLoggedIn && employerId) {
       res.redirect(`/employer/dashboard/${req.session.employerId}`);
@@ -18,7 +20,9 @@ module.exports = {
   },
 
   employerSignIn: (req, res) => {
-    const { isLoggedIn, employerId } = req.session;
+    const {
+      isLoggedIn, employerId,
+    } = req.session;
 
     if (isLoggedIn && employerId) {
       res.redirect(`/employer/dashboard/${employerId}`);

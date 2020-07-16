@@ -59,13 +59,15 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            <form role="form" action="">
+                            <form action="/employee/create/portfolio" method="POST">
+                              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                               <div class="form-group">
                                 <label for="title">Title</label>
                                 <input
                                   type="text"
                                   class="form-control px-4 mt-2 mb-4 shadow p-3 bg-white rounded"
                                   placeholder="Portfolio title"
+                                  name="title"
                                   required="required"
                                   id="portfolio-title"
                                 />
@@ -77,6 +79,7 @@
                                   class="form-control px-4 mt-2 mb-4 shadow p-3 bg-white rounded"
                                   placeholder="Description"
                                   required="required"
+                                  name="description"
                                   id="portfolio-description"
                                 />
                               </div>
@@ -87,21 +90,21 @@
                                   class="form-control text-muted shadow p-3 bg-white rounded"
                                   id="portfolio-link"
                                   placeholder="Put a valid portfolio link here"
+                                  name="link"
                                   required="required"
                                 />
                               </div>
+                              <div class="modal-footer border-0 mx-auto">
+                                <button
+                                  type="submit"
+                                  class="btn btn-primary btn-lg mb-3" 
+                                >
+                                  Add Portfolio
+                                </button>
+                              </div>
                             </form>
                           </div>
-                          <div class="modal-footer border-0 mx-auto">
-                            <button
-                              type="submit"
-                              class="btn btn-primary btn-lg mb-3"
-                              data-dismiss="modal"
-                            <%#    onclick="createPortfolio()" %> 
-                            >
-                              Add Portfolio
-                            </button>
-                          </div>
+                          
                         </div>
                       </div>
                     </div>
@@ -114,62 +117,35 @@
           <section  class="mb-3">
 
             <div class="row">
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Portfolio title</h5>
-                      <p class="card-text">Portfolio Description</p>
-                    
-                      <div class="d-flex justify-content-end">
-                        <img
-                          src="../img/iprofile/edit.svg"
-                          alt=""
-                          class="mr-2"
-                          id="edit-portfolio"
-                          data-toggle="modal"
-                        data-target="#portfolioPopup"
-                        />
-      
-                        <img
-                          src="../img/iprofile/carbon_trash-can.svg"
-                          alt=""
-                          class="mr-2"
-                          id="del-portfolio"
-                           <%# onclick="deletePortfolio()" %> 
-                        />
-                    </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Portfolio title</h5>
-                        <p class="card-text">Portfolio Description</p>
-                   
+                <% for( let index = 0; index < data.length; index++ ) { %>
+                  <div class="col-sm-6">
+                    <div class="card mb-3" data-id="<%= data[index].id %> ">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= data[index].title %> </h5>
+                        <p class="card-text"><%= data[index].description %> </p>
+                        <p class="card-text"><%= data[index].link %> </p>
                         <div class="d-flex justify-content-end">
-                            <img
-                              src="../img/iprofile/edit.svg"
-                              alt=""
-                              class="mr-2"
-                              id="edit-portfolio"
-                              data-toggle="modal"
-                            data-target="#portfolioPopup"
-                            />
-          
-                            <img
-                              src="../img/iprofile/carbon_trash-can.svg"
-                              alt=""
-                              class="mr-2"
-                              id="del-portfolio"
-                            <%# onclick="deletePortfolio()" %> 
-
-                            />
-                        </div>
+                          <img
+                            src="/img/iprofile/edit.svg"
+                            alt=""
+                            class="mr-2"
+                            id="edit-portfolio"
+                            data-toggle="modal"
+                          data-target="#portfolioPopup"
+                          />
+        
+                          <img
+                            src="/img/iprofile/carbon_trash-can.svg"
+                            alt=""
+                            class="mr-2"
+                            id="del-portfolio"
+                          />
                       </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                <% } %>
+            </div>
               
           </section>
       </div> 

@@ -24,13 +24,15 @@ module.exports = {
       //set the user type session
       req.session.usertype = getuser.dataValues.role_id;
       req.session.block = getuser.dataValues.block;
-      if (
-        !getuser ||
-        req.session.usertype != 'ROL-EMPLOYER' ||
-        req.session.block === 1
-      )
+      if (!getuser) {
         return res.redirect('/employer/login');
-      next();
+      } else if (req.session.usertype != 'ROL-EMPLOYER') {
+        return res.redirect('/employer/login');
+      } else if (req.session.block === 1) {
+        return res.redirect('/employer/login');
+      } else {
+        next();
+      }
     } catch (error) {
       res.send(error);
     }

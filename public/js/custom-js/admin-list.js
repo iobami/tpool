@@ -24,13 +24,14 @@ function toBlock(userId, adminName, csrf) {
           'X-CSRF-TOKEN': csrf,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
-      });
-      swal({
-        title: 'Blocked!',
-        text: `You have successfully blocked ${adminName}`,
-        type: 'success',
       }).then(() => {
-        window.location = '/admins/list';
+        swal({
+          title: 'Blocked!',
+          text: `You have successfully blocked ${adminName}`,
+          type: 'success',
+        }).then(() => {
+          window.location = '/admin/lists';
+        });
       });
     }
   });
@@ -58,15 +59,18 @@ function toUnblock(userId, adminName, csrf) {
         text: `You have successfully Unblocked ${adminName}`,
         type: 'success',
       }).then(() => {
-        window.location = '/admins/list';
+        window.location = '/admin/lists';
       });
     }
   });
 }
 
 function toAddAdmin() {
+  const fname = document.getElementById('fnameV2').value;
+  const lname = document.getElementById('lnameV2').value;
   swal({
-    title: 'Are you sure you want to make an admin?',
+    title: 'Are you sure?',
+    text: `Do you want to make ${fname} ${lname} an admin ?`,
     type: 'warning',
     showCancelButton: true,
     confirmButtonText: 'Yes!',
@@ -100,7 +104,7 @@ function toDelete(userId, adminName, csrf) {
         text: `You have successfully deleted ${adminName} from TalentPool platform`,
         type: 'success',
       }).then(() => {
-        window.location = '/admins/list';
+        window.location = '/admin/lists';
       });
     }
   });
