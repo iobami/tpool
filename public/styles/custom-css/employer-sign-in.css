@@ -206,3 +206,64 @@ input .invalid{
 input #email .form-control{
   background: red;
 }
+
+.email-phone {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+.password-area {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1.3s;
+  animation-fill-mode: forwards;
+}
+.checkboxes {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1.4s;
+  animation-fill-mode: forwards;
+}
+.form-button {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+.social-buttons {
+  transform: translateX(700px);
+  animation-name: come-in-2;
+  animation-duration: 1.6s;
+  animation-fill-mode: forwards;
+}
+.signIn-img-div {
+  opacity: 0.2;
+  animation-name: fader;
+  animation-duration: 1.6s;
+  animation-fill-mode: forwards;
+}
+@keyframes come-in {
+  from {
+    transform: translateX(500px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes come-in-2 {
+  from {
+    transform: translateX(700px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fader {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
