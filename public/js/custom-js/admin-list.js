@@ -8,38 +8,9 @@ $('#search').keyup(function () {
   }).hide();
 });
 
-function toBlock(userId, employeeName, csrf, token) {
+function toBlock(userId, adminName, csrf) {
   swal({
-    title: `Are you sure you want to block ${employeeName}?`,
-    type: 'error',
-    showCancelButton: true,
-    confirmButtonColor: '#DD6B55',
-    confirmButtonText: 'Yes!',
-    cancelButtonText: 'No.',
-  }).then(async (result) => {
-    if (result.value) {
-      await fetch(`/v1/admin/block/employee/${userId}`, {
-        method: 'PATCH',
-        headers: {
-          'X-CSRF-TOKEN': csrf,
-          Authorization: token,
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      });
-      swal({
-        title: 'Blocked!',
-        text: `You have successfully blocked ${employeeName}`,
-        type: 'success',
-      }).then(() => {
-        window.location = '/admin/all/employees';
-      });
-    }
-  });
-}
-
-function toUnblock(userId, employeeName, csrf, token) {
-  swal({
-    title: `Are you sure you want to Unblock ${employeeName}?`,
+    title: `Are you sure you want to block ${adminName}?`,
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#DD6B55',
@@ -47,20 +18,47 @@ function toUnblock(userId, employeeName, csrf, token) {
     cancelButtonText: 'No.',
   }).then(async (result) => {
     if (result.value) {
-      await fetch(`/v1/admin/unblock/employee/${userId}`, {
+      await fetch(`/v1/superadmin/${userId}/block`, {
         method: 'PATCH',
         headers: {
           'X-CSRF-TOKEN': csrf,
-          Authorization: token,
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      swal({
+        title: 'Blocked!',
+        text: `You have successfully blocked ${adminName}`,
+        type: 'success',
+      }).then(() => {
+        window.location = '/admins/list';
+      });
+    }
+  });
+}
+
+function toUnblock(userId, adminName, csrf) {
+  swal({
+    title: `Are you sure you want to Unblock ${adminName}?`,
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes!',
+    cancelButtonText: 'No.',
+  }).then(async (result) => {
+    if (result.value) {
+      await fetch(`/v1/superadmin/${userId}/unblock`, {
+        method: 'PATCH',
+        headers: {
+          'X-CSRF-TOKEN': csrf,
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
       swal({
         title: 'Unblocked!',
-        text: `You have successfully Unblocked ${employeeName}`,
+        text: `You have successfully Unblocked ${adminName}`,
         type: 'success',
       }).then(() => {
-        window.location = '/admin/all/employees';
+        window.location = '/admins/list';
       });
     }
   });
@@ -80,17 +78,30 @@ function toAddAdmin() {
   });
 }
 
-function toAddAdmin() {
-    swal({
-      title: 'Are you sure you want to make an admin?',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes!',
-      cancelButtonText: 'No.',
-    }).then(async (result) => {
-      if (result.value) {
-        document.getElementById('adminForm').submit();
-      }
-    });
+function toDelete(userId, adminName, csrf) {
+  swal({
+    title: `Are you sure you want to delete ${adminName}?`,
+    type: 'error',
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes!',
+    cancelButtonText: 'No.',
+  }).then(async (result) => {
+    if (result.value) {
+      await fetch(`/v1/superadmin/${userId}/delete`, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-TOKEN': csrf,
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      swal({
+        title: 'Deleted!',
+        text: `You have successfully deleted ${adminName} from TalentPool platform`,
+        type: 'success',
+      }).then(() => {
+        window.location = '/admins/list';
+      });
+    }
+  });
 }
-  

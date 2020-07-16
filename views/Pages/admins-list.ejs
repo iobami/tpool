@@ -57,9 +57,9 @@
                                 <td>Admin</td>
                                 <td><%= moment(admin.createdAt).format('MMMM Do YYYY') %></td>
                                 <td class="px-0"> 
-                                   <a onclick= 'toBlock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>",  "<%= csrfToken %>" )'href="#"><i class="admin-action fas fa-ban" style= "color:orange;"></i></a>
-                                    <a onclick= 'toUnblock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>")'href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i></i></a>
-                                    <a onclick= 'toDelete("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>")'href="#"></a><i class="admin-action fas fa-trash-alt" style= "color: red ; padding: 10px;" ></i></a>
+                                   <a onclick= 'toBlock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>",  "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-ban" style= "color:orange;"></i></a>
+                                    <a onclick= 'toUnblock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>" )'href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i></a>
+                                    <a onclick= 'toDelete("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-trash-alt" style= "color: red ; padding: 10px;"></i></a>
                                 </td>
                               </tr>
                             <% }) %>

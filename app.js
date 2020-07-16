@@ -99,6 +99,7 @@ const employerMetrics = require('./Routes/views/employer/metrics');
 const employerRecommendation = require('./Routes/views/employer/recommendation');
 const verifyModal = require('./Routes/views/admin/verifyModal');
 const messageRoute = require('./Routes/views/message/message');
+const superAdmin = require('./Routes/super-admin/manage-admin');
 
 const csrfProtection = csrf();
 
@@ -221,6 +222,9 @@ app.use('/v1/admin', adminExportEmployer);
 app.use('/v1/admin', adminExportEmployee);
 app.use('/v1/admin', adminVerifyEmployer);
 app.use('/v1/admin', adminVerifyEmployee);
+
+// super admin route
+app.use('/v1/superadmin', superAdmin);
 
 // team route goes here
 app.use('/v1/team', teamRoutes);

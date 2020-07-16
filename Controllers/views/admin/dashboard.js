@@ -120,7 +120,7 @@ module.exports = {
       });
 
       const data = { all_employee_data: results };
-      // console.log(data);
+
       // eslint-disable-next-line no-shadow
       employeesTotal.forEach((data) => {
         employees_count.push(data);

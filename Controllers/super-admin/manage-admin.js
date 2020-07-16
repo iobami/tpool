@@ -100,13 +100,15 @@ module.exports = {
       const user = await model.User.findOne({ where: { user_id: id } });
 
       if (user === null) {
-        return errorResMsg(res, 404, `Admin with a user id: ${id}, does not exist`);
+        req.flash('Admin does not exist');
+        return res.redirect('back');
       }
 
       // block user
       user.block = 1;
       await user.save();
-      return successResMsg(res, 200, `Admin with id: ${id}, blocked successfully`);
+      req.flash('Admin blocked successfully');
+      return res.redirect('back');
     })();
   },
 
