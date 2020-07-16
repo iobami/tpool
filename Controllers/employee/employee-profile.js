@@ -282,7 +282,7 @@ exports.getProfile = async (req, res) => {
       employeeId = userTypeId;
     }
 
-    employeeId = req.session.userTypeId;
+    employeeId = req.session.employeeId;
 
     if (req.params.employee_id) {
       employeeId = req.params.employee_id;
