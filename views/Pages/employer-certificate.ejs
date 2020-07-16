@@ -15,146 +15,178 @@
   <body>
     <div id="body__click"></div>
 
-    <!-- Dashboard nav -->
-    <%- include('../Templates/dashboard-header') %>
+		<!-- Dashboard nav -->
+		<%- include('../Templates/dashboard-header') %>
+		<div class="container-fluid mt-4">
+			<div class="row">
+				<div class="col-auto d-md-block sticky-top remove-block">
+					<!-- Dashboard sidebar -->
+					<%- include('../Templates/dashboard-sidebar') %> ​
+				</div>
 
-    <div class="container-fluid mt-4">
-      <div class="row">
-        <div class="col-auto d-md-block sticky-top remove-block">
-          <!-- Dashboard sidebar -->
-          <%- include('../Templates/dashboard-sidebar') %> ​
-        </div>
-
-        <div class="col ml-sm-auto pl-0 pr-0 pl-lg-0 sidebar-margin">
-          <!-- Content Begins Here -->
-
-          <section class="container employer-certificate-upload-main">
-            <div class="employer-certificate-upload">
-              <div class="">
-                <h3 style="text-align: left;">Upload Certificate</h3>
-              </div>
-
-              <form action="#" class="needs-validation" novalidate>
-                <div class="form-row">
-                  <div class="col-md-6 col-sm-6 col-12">
-                    <label for="name">Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      placeholder="Name *"
-                      required
-                    />
-                    <div class="valid-feedback">
-                      Looks good!
+				<div class="col ml-sm-auto pl-0 pr-0 pl-lg-0 sidebar-margin">
+                    <!-- Content Begins Here -->
+                    <!--NOTIFICATION TOAST-->
+                    <div class="slide-in from-right">
+                        <div class="slide-in-content">
+                            <div class="row">
+                                <span class="col-10" style="padding-top: 3px">Success Message oei </span>
+                                <span class="col-2" style="padding-top: 2px"><span class="lds-hourglass"></span></span>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6 col-12">
-                    <label for="number">Document No.</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="number"
-                      placeholder=" Document No. *"
-                      required
-                    />
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-                  </div>
-                </div>
 
-                <div class="form-row custom-file">
-                  <input
-                    onchange="readImage()"
-                    type="file"
-                    class="custom-file-input"
-                    id="customFile"
-                    required
-                  />
-                  <label class="custom-file-label" for="customFile"
-                    >Choose file</label
-                  >
-                </div>
+					<section class="container employer-certificate-upload-main">
+						<div class="employer-certificate-upload">
+							<div class="">
+                                <h3 style="text-align: left;">Upload Certificate</h3>
+                                <small class="certificate-upload-descrption">Kindly upload front and back images of your certificate for verificstion. Maximum upload of 5 files.</small>                                
+							</div>
 
-                <div class="form-row justify-content-end">
-                  <button type="submit" class="btn btn-lg">Add</button>
-                </div>
-                <div class="form-row justify-content-end">
-                  <button
-                    class="btn btn-lg lds-ellipsis"
-                    style="display: none;"
-                  >
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </button>
-                </div>
-              </form>
-            </div>
+                            <form action="#" class="needs-validation" novalidate
+                             enctype="multipart/form-data">
+								<div class="form-row">
+									<div class="col-md-6 col-sm-6 col-12">
+										<label for="name">Name</label>
+										<input type="text" class="form-control" id="name" placeholder="Name *" required />
+										<!-- <div class="valid-feedback">
+											Looks good!
+										</div> -->
+									</div>
+									<div class="col-md-6 col-sm-6 col-12">
+										<label for="number">Document No.</label>
+										<input type="text" class="form-control" id="number" placeholder=" Document No. *" required />
+										<!-- <div class="valid-feedback">
+											Looks good!
+										</div> -->
+									</div>
+								</div>
 
-            <br />
-            <br />
-            <div class="row">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Document Name</th>
-                    <th scope="col">No.</th>
-                    <th scope="col" style="text-align: center;">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr id="row1">
-                    <td>Image name here</td>
-                    <td>number here</td>
-                    <td style="text-align: center;">
-                      <button
-                        class="btn btn-danger"
-                        onclick="removeTableRow('row1')"
-                      >
-                        Remove
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td class="row justify-content-end">
-                      <button
-                        class="btn btn-lg"
-                        onclick="alert('API not available yet.')"
-                      >
-                        Finish
-                      </button>
-                      <button
-                        class="btn btn-lg lds-ellipsis"
-                        style="display: none;"
-                      >
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                      </button>
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
+								<!-- <div class="form-row custom-file">
+									<input onchange="readImage()" type="file" class="custom-file-input" id="customFile" required />
+									<label class="custom-file-label" for="customFile">Choose file</label>
+                                </div> -->
 
-    <!-- Optional JavaScript -->
-    <script>
-      const profileBtn = document.querySelector('#profile-btn');
-      const loginBtn = document.querySelector('#login-btn');
-      const accountBtn = document.querySelector('#account-btn');
-      const accessibilityBtn = document.querySelector('#accessibility-btn');
+								<div class="form-row d-flex justify-content-start" style="padding-top: 10px">
+                                    <div class="col-10">
+                                        <div id="drop-area">
+                                            <div class="my-form">
+                                                <div class="d-flex justify-content-around">
+                                                    <div class="col-sm-3 col-3 align-self-center image-preview-sect">
+                                                        <label for="fileElem">
+                                                            <img id="image-preview" src="/img/attach_file.svg" alt="">
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-sm-9 col-9 align-self-center">
+                                                        <input type="file" id="fileElem" accept="image/*"
+                                                         onchange="readImage(this.files)">
+                                                        <label for="fileElem" class="upload-label-button">
+                                                            Upload image
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 align-self-end add___btn">
+                                        <button type="submit" class="btn">Add</button>
+                                    </div>
+                                </div>
+                                <div class="form-row justify-content-end">
+                                    <small class="file-upload-count-error">! Max upload is 5</small>
+                                </div>
+								<div class="form-row justify-content-end">
+									<button class="btn btn-lg lds-ellipsis" style="display: none;">
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+									</button>
+								</div>
+							</form>
+						</div>
+
+						<div class="row">
+							<table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Document Name</th>
+                                    <th scope="col">No.</th>
+                                    <th scope="col" style="text-align: right; padding-right: 33px">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td class="row justify-content-end">
+                                        <button id="upload" style="display: none;" class="btn" onclick="batchUpload()">
+                                            Upload
+                                        </button>
+                                        <button class="btn lds-ellipsis" id="loader"
+                                         disabled style="display: none; cursor: wait">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+  <script>
+        const profileBtn = document.querySelector('#profile-btn');
+        const loginBtn = document.querySelector('#login-btn');
+        const accountBtn = document.querySelector('#account-btn');
+        const accessibilityBtn = document.querySelector('#accessibility-btn');
+        const profileBtn = document.querySelector("#profile-btn");
+        const loginBtn = document.querySelector("#login-btn");
+        const accountBtn = document.querySelector("#account-btn");
+        const accessibilityBtn = document.querySelector("#accessibility-btn");
+
+        profileBtn.addEventListener("click", function (e) {
+        e.target.querySelector(".fa").classList.toggle("open");
+        loginBtn.querySelector(".fa").classList.remove("open");
+        accountBtn.querySelector(".fa").classList.remove("open");
+        accessibilityBtn.querySelector(".fa").classList.remove("open");
+        });
+        loginBtn.addEventListener("click", function (e) {
+        e.target.querySelector(".fa").classList.toggle("open");
+        profileBtn.querySelector(".fa").classList.remove("open");
+        accountBtn.querySelector(".fa").classList.remove("open");
+        accessibilityBtn.querySelector(".fa").classList.remove("open");
+        });
+        accountBtn.addEventListener("click", function (e) {
+        e.target.querySelector(".fa").classList.toggle("open");
+        loginBtn.querySelector(".fa").classList.remove("open");
+        profileBtn.querySelector(".fa").classList.remove("open");
+        accessibilityBtn.querySelector(".fa").classList.remove("open");
+        });
+        accessibilityBtn.addEventListener("click", function (e) {
+        e.target.querySelector(".fa").classList.toggle("open");
+        loginBtn.querySelector(".fa").classList.remove("open");
+        accountBtn.querySelector(".fa").classList.remove("open");
+        profileBtn.querySelector(".fa").classList.remove("open");
+        });
+  </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../js/custom-js/side-nav.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="../js/bootstrap-js/popper.js"></script>
+  <script src="../js/bootstrap-js/jquery.js"></script>
+  <script src="../js/bootstrap-js/bootstrap.js"></script>
+  <script src="../js/custom-js/toast.js"></script>
+  <script src="../js/custom-js/employer-certificate.js"></script>
+</body>
 
       profileBtn.addEventListener('click', function (e) {
         e.target.querySelector('.fa').classList.toggle('open');
