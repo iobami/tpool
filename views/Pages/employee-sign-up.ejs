@@ -67,7 +67,7 @@
                       <% } } %>
                     <div class="tab-pane fade show active" id="intern" role="tabpanel" aria-labelledby="intern-tab">
                         <form class="needs-validation" action="/employee/register" method="POST" novalidate>
-                            <div class="row">
+                            <div class="row first-last--name">
                                 <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                                 <div class="col-md mb-3">
                                     <label for="fname">First Name</label>
@@ -104,7 +104,7 @@
                                 </div>
                             </div>  -->
 
-                            <div class="row">
+                            <div class="row email-phone">
                                 <div class="col-md mb-3">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com" required>
@@ -126,7 +126,7 @@
                                 </div> -->
                             </div>
                             
-                            <div class="row">
+                            <div class="row password-area">
                                 <div class="col-md mb-3">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
@@ -141,7 +141,7 @@
                                 </div>
                             </div> 
         
-                            <div class="row">
+                            <div class="row checkboxes">
                                 <div class="col my-1">
                                     <div class="custom-control custom-checkbox mr-sm-2" >
                                         <input type="checkbox" name="terms" class="custom-control-input" id="terms-policy">
@@ -153,7 +153,7 @@
                             </div>
                             <div class="loader"></div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col form-button">
                                     <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white" id="signup-btn" type="submit" data-toggle="" data-target="#exampleModal">Sign Up</button>
                                 </div>
             
@@ -180,7 +180,7 @@
                             </div>
                         </form>
         
-                        <div class="row">
+                        <div class="row social-buttons">
                             <div class="col-md-5 d-none d-md-block">
                                 <hr>
                             </div>
@@ -192,7 +192,7 @@
                             </div>
                         </div>
         
-                        <div class="row mt-2">
+                        <div class="row mt-2 social-buttons">
                             <div class="col-md">
                                 <a class="social-sign-in" href="/auth/employee/github">
                                     <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i class="fab fa-github pr-2" aria-hidden="true"></i>sign up with Github</button>
@@ -210,7 +210,7 @@
 
                     <div class="tab-pane fade" id="new-user" role="tabpanel" aria-labelledby="new-user-tab">
                         <form action="/employee/register" method="POST" class="needs-validation" novalidate>
-                            <div class="row">
+                            <div class="row first-last--name">
                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <div class="col-md mb-3">
                                     <label for="fname">First Name</label>
@@ -247,7 +247,7 @@
                                 </div>
                             </div>  -->
 
-                            <div class="row">
+                            <div class="row email-phone">
                                 <div class="col-md mb-3">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" class="form-control" id="emailV2" placeholder="example@gmail.com" required>
@@ -269,7 +269,7 @@
                                 </div> -->
                             </div>
                             
-                            <div class="row">
+                            <div class="row password-area">
                                 <div class="col-md mb-3">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" id="passwordV2" minlength="8" placeholder="at least 8 characters" required>
@@ -284,7 +284,7 @@
                                 </div>
                             </div> 
         
-                            <div class="row">
+                            <div class="row checkboxes">
                                 <div class="col my-1">
                                     <div class="custom-control custom-checkbox mr-sm-2" >
                                         <input type="checkbox" name="terms" class="custom-control-input" id="terms-policyV2">
@@ -296,7 +296,7 @@
                             </div>
                             <div class="loaderV2"></div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col form-button">
                                     <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btnV2" type="submit" data-toggle="" data-target="#exampleModalV2">Sign Up</button>
                                 </div>
             
@@ -323,7 +323,7 @@
                             </div>
                         </form>
 
-                        <div class="row">
+                        <div class="row social-buttons">
                             <div class="col-md-5 d-none d-md-block">
                                 <hr>
                             </div>
@@ -335,7 +335,7 @@
                             </div>
                         </div>
         
-                        <div class="row mt-2">
+                        <div class="row mt-2 social-buttons">
                             <div class="col-md">
                                 <a class="social-sign-in" href="/auth/employee/github">
                                     <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i class="fab fa-github pr-2" aria-hidden="true"></i>sign up with Github</button>
