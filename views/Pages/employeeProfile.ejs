@@ -44,7 +44,7 @@
         <section id="portfolio" class="mt-4">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <div class="card px-4 py-5 mb-3 bio">
                             <div class="row">
                                 <div class="col-md-6">
@@ -128,7 +128,7 @@
                                                         <div style="position: relative;">
                                                             <input type="text" value="<%= data.first_name %>"
                                                                 class="form-control" id="first-name"
-                                                                aria-describedby="nameHelp" name="firstName">
+                                                                aria-describedby="nameHelp" name="firstName" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -140,7 +140,7 @@
                                                             </label>
                                                             <input type="text" value="<%= data.last_name %>"
                                                                 class="form-control" id="last-name"
-                                                                aria-describedby="nameHelp" name="lastName">
+                                                                aria-describedby="nameHelp" name="lastName" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,7 +152,7 @@
                                                             </label>
                                                             <input type="text" value="<%= data.username %>"
                                                                 class="form-control" id="last-name"
-                                                                aria-describedby="nameHelp" name="userName">
+                                                                aria-describedby="nameHelp" name="userName" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -164,7 +164,7 @@
                                                             </label>
                                                             <input type="email" value="<%= data.email %>"
                                                                 class="form-control" id="email"
-                                                                aria-describedby="emailHelp" name="email">
+                                                                aria-describedby="emailHelp" name="email" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -176,7 +176,7 @@
                                                             </label>
                                                             <input type="date" value="<%= data.dob %>"
                                                                 class="form-control" id="dob" aria-describedby="dobHelp"
-                                                                name="dateOfBirth">
+                                                                name="dateOfBirth" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -188,7 +188,7 @@
                                                             </label>
                                                             <input type="number" value="<%= data.phone_no %>"
                                                                 class="form-control" id="phone-number"
-                                                                aria-describedby="phoneNoHelp" name="phoneNo">
+                                                                aria-describedby="phoneNoHelp" name="phoneNo" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -200,7 +200,8 @@
                                                             </label>
                                                             <input type="text" value="<%= data.location %>"
                                                                 class="form-control" id="location"
-                                                                aria-describedby="locationHelp" name="location">
+                                                                aria-describedby="locationHelp" name="location"
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -230,7 +231,7 @@
                                                             </label>
                                                             <input type="url" class="form-control"
                                                                 placeholder="Link to your CV (URL)" name="employeeCv"
-                                                                required value="<%= data.employee_cv %>" />
+                                                                required value="<%= data.employee_cv %>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -257,10 +258,10 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/bootstrap-js/jquery.js"></script>
     <script src="/js/bootstrap-js/popper.js"></script>
-    <!-- <script src="/js/custom-js/employees-profile.js"></script> -->
     <script src="/js/custom-js/modal.js"></script>
     <script src="/js/bootstrap-js/bootstrap.js"></script>
     <script src="/js/custom-js/side-nav.js"></script>
+    <!-- <script src="/js/custom-js/employees-profile.js"></script> -->
     <!-- <script src="/js/custom-js/eprofile.js"></script> -->
     <!-- <script src="/js/custom-js/employee-portfolio.js"></script> -->
 </body>
