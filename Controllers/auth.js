@@ -282,6 +282,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
               userTypeId,
             };
             req.session.data = data;
+            req.session.email = user.email;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;

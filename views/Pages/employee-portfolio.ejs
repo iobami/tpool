@@ -118,8 +118,8 @@
 
             <div class="row">
                 <% for( let index = 0; index < data.length; index++ ) { %>
-                  <div class="col-sm-4">
-                    <div class="card mb-3">
+                  <div class="col-sm-6">
+                    <div class="card mb-3" data-id="<%= data[index].id %> ">
                       <div class="card-body">
                         <h5 class="card-title"><%= data[index].title %> </h5>
                         <p class="card-text"><%= data[index].description %> </p>

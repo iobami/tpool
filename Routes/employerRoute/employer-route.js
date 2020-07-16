@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 const express = require('express');
-const employer_controller = require('../../controllers/employer/employer-controller');
+const employer_controller = require('../../Controllers/employer/employer-controller');
 
 const route = express.Router();
 route.post('/create', employer_controller.create);
