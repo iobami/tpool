@@ -38,7 +38,7 @@
                         <table class="table table-striped" id="table">
                             <thead class="">
                               <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
                                 <th scope="col">Phone Number</th>
@@ -57,7 +57,7 @@
                                 <% } %>
                                 <% if (admin.User.block) { %>
                                   <tr id="table-row" style="background-color: lightcoral;">
-                                    <th scope="row"><i class="fa fa-lock" aria-hidden="true"></i></th>
+                                    <th scope="row"><i class="fa fa-lock" aria-hidden="true"></i><span class="badge badge-danger">BLOCKED</span></th>
                                 <% } %>
                                     <td><%= admin.firstName %></td>
                                     <td><%= admin.lastName %></td>

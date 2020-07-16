@@ -89,14 +89,23 @@ module.exports = {
   allEmployees: async (req, res) => {
     const { session } = req.cookies;
     try {
-      const limit = Number(req.query.p) || 1000000000;
       const employeesTotal = await model.Employee.findAll({});
+      const limit = Number(req.query.p) || Number(employeesTotal.length);
       const employees = await model.Employee.findAll({
+        include: [
+          {
+            model: model.User,
+            where: {
+              user_id: { [op.col]: 'Employee.user_id' },
+            },
+          },
+        ],
         limit,
         order: [
           ['id', 'DESC'],
         ],
       });
+
       const skill = await model.Skill.findAll({ limit });
       const portfolio = await model.Portfolio.findAll({ limit });
 
@@ -131,6 +140,10 @@ module.exports = {
       });
 
       const data = { all_employee_data: results };
+      // accessing the include
+      data.all_employee_data.forEach((user) => {
+        console.log(user.User.block);
+      });
 
       // eslint-disable-next-line no-shadow
       employeesTotal.forEach((data) => {
@@ -138,7 +151,8 @@ module.exports = {
         if (data.availability.toLowerCase() === 'not-available') {
           hired_employees_count.push(data);
         }
-        if (data.availability.toLowerCase() === 'available') {
+        // eslint-disable-next-line no-constant-condition
+        if (data.availability.toLowerCase() !== 'not-available') {
           available_employees_count.push(data);
         }
       });
