@@ -145,8 +145,9 @@ const sendMessage = () => {
         let sent = document.createElement('span');
         let img = document.createElement('img');
 
-        time.classList.add('time');
-        span.textContent = '11:46 AM';
+
+        time.classList.add("time");
+        span.textContent = new Date().getHours() + ":" + new Date().getMinutes();
         time.appendChild(span);
         img.src = 'img/admin-dash-messages/sent.svg';
         img.alt = 'delivered';
@@ -193,17 +194,19 @@ socket.on('new_message', function (data) {
     if (data.sender === sender || data.receiver !== sender) {
         return;
     }
-    let sender1 = document.createElement('div');
-    let chatcontainer = document.createElement('div');
-    let chatsender = document.createElement('div');
-    let chatmsg = document.createElement('div');
-    let time = document.createElement('div');
-    let span = document.createElement('span');
-    realchat = document.querySelector('.realchat');
-    chatmessages = document.querySelector('.chat-messages');
 
-    span.textContent = '11:46 AM';
-    time.classList.add('time');
+    let sender1 = document.createElement("div");
+    let chatcontainer = document.createElement("div");
+    let chatsender = document.createElement("div");
+    let chatmsg = document.createElement("div");
+    let time = document.createElement("div");
+    let span = document.createElement("span");
+    realchat = document.querySelector(".realchat");
+    chatmessages = document.querySelector(".chat-messages");
+
+    span.textContent = new Date().getHours() + ":" + new Date().getMinutes();
+    time.classList.add("time");
+
     time.appendChild(span);
     chatmsg.classList.add('chatmsg');
     chatmsg.textContent = data.message;
