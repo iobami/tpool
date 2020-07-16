@@ -8,9 +8,12 @@ module.exports = {
   // },
 
   adminLogin: (req, res) => {
-    if (req.session.isLoggedIn) {
-      res.redirect('/admin-dashboard');
+    const { isLoggedIn, adminId } = req.session;
+
+    if (isLoggedIn && adminId) {
+      res.redirect('/admin/dashboard/');
     }
+    
 
     let message = req.flash('error');
     if (message.length > 0) {

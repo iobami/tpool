@@ -1,12 +1,5 @@
 
-const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
-const userInfo = JSON.parse(atob(userInformation.token.split('.')[1]));
 let docId = 123;
-
-if (!userInformation) {
-    alert('Error! User Information not found, please sign in again.');
-    location.href = '/employer-sign-in';
-  }
 
 // store all added documents and display in table
 let documentsArray = [];
@@ -20,7 +13,7 @@ let imageData;
         // Loop over them and prevent submission
         const validation = Array.prototype.filter.call(forms, function(form) {
             form.addEventListener('submit', async function(event) {
-                const [name, number, file] = document.querySelectorAll('form input');
+                const [name, number, file] = document.querySelectorAll('#docUpload input');
                 let addValidation = true;
                 const [fileCountError] = document.getElementsByClassName('file-upload-count-error');
                 const upload = document.getElementById('upload');
@@ -37,7 +30,7 @@ let imageData;
                 } else if (form.checkValidity()) {
                     event.preventDefault();
 
-                    if (documentsArray.length === 5) {
+                    if (documentsArray.length === 3) {
                         fileCountError.style.visibility = 'visible';
                         return event.preventDefault();
                     }
@@ -200,12 +193,14 @@ const uploadSingleImage = async (imageData, data) => {
 
         reader.readAsDataURL(imageData);
 
-        const documentUploadUrl = 'https://api.lancers.app/v1/employer/uploaddocument';
+        const documentUploadUrl = '/employer/uploaddocument';
         const fileUploadData = new FormData();
         fileUploadData.append('image_document', imageData);
         fileUploadData.append('document_name', data.name);
         fileUploadData.append('document_number', data.number);
-        fileUploadData.append('employer_id', data.userTypeId);
+        // fileUploadData.append('employer_id', data.userTypeId);
+
+        const [csrf] = document.getElementsByName('_csrf');
 
         return await axios({
             method: 'POST',
@@ -213,13 +208,14 @@ const uploadSingleImage = async (imageData, data) => {
             headers: {
             accept: 'application/json',
             // 'content-type': 'application/json',
-            'Authorization': `Bearer ${data.token}`,
+            'csrf-token': csrf.value,
             },
             data: fileUploadData,
         });
 
     } catch (e) {
-        return e;
+        console.log(e.response.data);
+        return e.response.data;
     }
 };
 
@@ -234,24 +230,21 @@ const batchUpload = async () => {
      for (const documentObject of documentsArray) {
 
         const payload = {
-            userTypeId: userInfo.userTypeId,
-            token: userInformation.token,
             name: documentObject.name,
             number: documentObject.number,
         };
 
         try {
 
-            const { data } = await uploadSingleImage(documentObject.file, payload);
-            
-            if (data) {
+            const { data } = await uploadSingleImage(documentObject.file, payload);         
+            if (data.status === 'success') {
                 success += 1;
+                removeTableRow(`id${documentObject.id}`);
             } else {
                 error += 1;
             }
 
         } catch (e) {
-            console.log(e);
             error += 1;
         }
 
@@ -260,6 +253,10 @@ const batchUpload = async () => {
      if (success > 0) {
         const message = (success === 1) ? `${success} file uploaded`  : `${success} files uploaded`;
         toaster(message, 'success');
+        const redirect = () => {
+            window.location.replace('/employer/dashboard');
+        };
+        setTimeout(redirect, 6000);
      }
      if (error > 0) {
         const message = (error === 1) ? `${error} upload failed`  : `${error} uploads failed`;

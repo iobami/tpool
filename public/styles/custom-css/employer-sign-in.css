@@ -100,6 +100,10 @@ hr {
   text-decoration: none;
 }
 
+.social-sign-in{
+  text-decoration: none !important;
+}
+
 .facebook-btn {
   color: #ffffff;
   /* width: 264px;
@@ -192,4 +196,14 @@ hr {
 .google-btn:hover {
   color: white;
   background: #f7220b;
+}
+/* form input[type=email] .invalid-value {
+  border: 1px solid palevioletred;
+  color: red;
+} */
+input .invalid{
+  border: 2px solid palevioletred !important;
+}
+input #email .form-control{
+  background: red;
 }

@@ -115,15 +115,15 @@ exports.blockEmployee = (req, res) => {
   (async () => {
     // fetch a user id from the url parameters
     const { user_id: userId } = req.params;
-
+    console.log(userId);
     // find a user with the user id and whose role id is an employee
+
     const user = await model.User.findOne({
       where: { user_id: userId, role_id: 'ROL-EMPLOYEE' },
     });
-
     // return a 404 if a user isn't found
     if (user === null) {
-      return errorResMsg(res, 404, `User with id: ${userId}, does not exist`);
+      return errorResMsg(res, 404, 'User does not exist');
     }
 
     if (user.block) {
@@ -132,9 +132,37 @@ exports.blockEmployee = (req, res) => {
 
     user.block = 1; // block user
     await user.save(); // save recent changes to the database
-    return successResMsg(res, 200, {
-      message: `User with username: ${user.username}, blocked`,
-    }); // return a succesful response
+    res.redirect('back');
+    // return successResMsg(res, 200, {
+    //   message: `User with username: ${user.username}, blocked`,
+    // }); // return a succesful response
+  })();
+};
+
+// Admin unblock employee
+exports.unblockEmployee = (req, res) => {
+  (async () => {
+    // fetch a user id from the url parameters
+    const { user_id: userId } = req.params;
+
+    // find a user with the user id and whose role id is an employee
+
+    const user = await model.User.findOne({
+      where: { user_id: userId, role_id: 'ROL-EMPLOYEE' },
+    });
+    // return a 404 if a user isn't found
+    if (user === null) {
+      return errorResMsg(res, 404, 'User does not exist');
+    }
+
+    if (!user.block) {
+      return successResMsg(res, 200, { message: 'user is not blocked' });
+    }
+
+    user.block = 0; // block user
+    await user.save(); // save recent changes to the database
+    res.redirect('back');
+    // }); // return a succesful response
   })();
 };
 
@@ -159,8 +187,37 @@ exports.blockEmployer = (req, res) => {
     }
     user.block = 1; // block user
     await user.save(); // save recent changes to the database
-    return successResMsg(res, 200, {
-      message: `User with username: ${user.username}, blocked`,
-    }); // return a succesful response
+    res.redirect('back');
+    // return successResMsg(res, 200, {
+    //   message: `User with username: ${user.username}, blocked`,
+    // }); // return a succesful response
+  })();
+};
+
+// Admin unblock Employer
+exports.unblockEmployer = (req, res) => {
+  (async () => {
+    // fetch a user id from the url parameters
+    const { user_id: userId } = req.params;
+
+    // find a user with the user id and whose role id is an employee
+    const user = await model.User.findOne({
+      where: { user_id: userId, role_id: 'ROL-EMPLOYER' },
+    });
+
+    // return a 404 if a user isn't found
+    if (user === null) {
+      return errorResMsg(res, 404, `User with id: ${userId}, does not exist`);
+    }
+
+    if (!user.block) {
+      return successResMsg(res, 200, { message: 'user has been blocked' });
+    }
+    user.block = 0; // block user
+    await user.save(); // save recent changes to the database
+    res.redirect('back');
+    // return successResMsg(res, 200, {
+    //   message: `User with username: ${user.username}, blocked`,
+    // }); // return a succesful response
   })();
 };

@@ -2,7 +2,7 @@
 <html>
   <head>
     <%- include('../Templates/head') %>
-    <link rel="stylesheet" href="../styles/custom-css/employer-profile-page-creation1.css">
+    <link rel="stylesheet" href="/styles/custom-css/employer-profile-page-creation1.css">
   </head>
   <body onload="inputSize()" onresize="inputSize()">
    <!-- NAV-BAR -->
@@ -53,7 +53,7 @@
               <div class="alert alert-danger d-none" style="padding: 0.5rem 1rem;" id="alert" role="alert">
                 <p class="my-0" id="alertMessage"></p>
               </div>
-                <h5 class="heading-color">Company details</h5>
+                <h5 class="heading-color">Employer details</h5>
                 <div class="row">
                     <div id="profile" class="mt-5">
                         <div class="container">
@@ -160,6 +160,9 @@
                       <label for="industry">Industry</label>
                       <select required class="form-control em-input select" name="industry" id="company_category">
                           <option disabled selected value="">Select Industry</option>
+                          <% data.forEach(function(category){ %>
+                            <option value="<%= category.category_id %>"><%= category.category_name %></option>
+                          <% }); %>
                       </select>
                   </div>
 
@@ -203,6 +206,7 @@
                 <span class="small" id="noImage" style="display: none; color: #dc3545">! Please upload an image</span>
             </div>
         </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       </form>
     </main>
 

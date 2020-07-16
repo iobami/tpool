@@ -48,9 +48,9 @@
           <div class="alert alert-danger" style="padding: 0.5rem 1rem;" id="alert" role="alert">
             <p class="my-0"><%- error %> </p>
           </div>
-          <% } else if(success && success == 'Token sent'){ %>
+          <% } else if(success && success.length > 0){ %>
             <div class="alert alert-success" style="padding: 0.5rem 1rem;" id="alert" role="alert">
-              <p class="my-0"> Please check your email. Verification link has been sent.</p>
+              <p class="my-0"><%- success %> </p>
             </div>
           <% }  %>
         <svg class="my-3" width="50" height="49" viewBox="0 0 50 49" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +60,7 @@
           <div class="alert alert-danger d-none" style="padding: 0.5rem 1rem;" id="alert" role="alert">
             <p class="my-0" id="alertMessage"></p>
           </div>
-          <form method="POST" action="/v1/auth/email/verify/resend" class="resend-form">
+          <form method="POST" action="auth/email/verify/resend" class="resend-form">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <div class="form-group">
               <label for="email" class="">Please input your email to get a new verification link</label>
