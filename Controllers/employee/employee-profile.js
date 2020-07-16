@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
@@ -128,7 +129,6 @@ exports.createProfile = async (req, res) => {
     // Create new profile
     await models.Employee.create(newBody);
 
-    // return successResMsg(res, 201, data);
     req.flash('success', 'Profile Created Succesfully!');
     req.session.isProfileCreated = true;
     req.session.profileId = employeeId;
@@ -137,8 +137,6 @@ exports.createProfile = async (req, res) => {
     );
   } catch (err) {
     req.flash('error', err.message);
-    return errorResMsg(res, 500, err.message);
-    // return res.redirect('/employee/profile/create');
   }
 };
 
@@ -284,8 +282,11 @@ exports.getProfile = async (req, res) => {
     });
 
     const profile = await query;
+    const { email } = req.session.data;
 
-    const data = { ...profile, email: req.session.data.email };
+    const data = { ...profile, email };
+    console.log('ermi', data);
+    console.log('email', email);
 
     return res.status(200).render('Pages/employeeProfile', {
       pageTitle: 'Talent Pool | Profile',
@@ -313,9 +314,8 @@ exports.getPortfolio = async (req, res) => {
       employeeId = req.session.employeeId;
     }
 
-    const query = await models.Portfolio.findOne({
+    const query = await models.Portfolio.findAll({
       where: { employee_id: employeeId },
-      attributes: ['title', 'description', 'link'],
     });
 
     const data = await query;
@@ -332,7 +332,43 @@ exports.getPortfolio = async (req, res) => {
     });
   } catch (err) {
     req.flash('error', 'Something went wrong. Try again');
-    return errorResMsg(res, 500, err.message);
+  }
+};
+
+exports.createPortfolio = async (req, res) => {
+  try {
+    // CREATE A NEW PORTFOLIO
+    await models.Portfolio.create({
+      title: req.body.title,
+      description: req.body.description,
+      link: req.body.link,
+      employee_id: req.session.employeeId,
+    });
+
+    return res.redirect(
+      `/employee/portfolio/${req.session.employeeId}?success_message=Portfolio created successfully`,
+    );
+  } catch (err) {
+    req.flash('error', 'Something went wrong. Try again');
+  }
+};
+
+exports.deletePortfolio = async (req, res) => {
+  try {
+    let id;
+    await models.Portfolio.destroy({
+      where: {
+        id,
+        employee_id: req.session.employee_id,
+      },
+      force: true,
+    });
+
+    return res.redirect(
+      `/employee/portfolio/${req.session.employeeId}?success_message=Portfolio deleted successfully`,
+    );
+  } catch (err) {
+    req.flash('error', 'Something went wrong. Try again');
   }
 };
 
