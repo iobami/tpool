@@ -59,12 +59,12 @@ function getAllMessages() {
                             let img = document.createElement('img');
 
                             time.classList.add('time');
-                            span.textContent = '11:46 AM';
+                            span.textContent = '';
                             time.appendChild(span);
                             img.src = '../img/admin-dash-messages/sent.svg';
                             img.alt = 'delivered';
                             sent.classList.add('sent');
-                            sent.appendChild(img);
+                            //sent.appendChild(img);
                             time.appendChild(sent);
                             flipod.classList.add('flippd');
                             chatmsg.classList.add('chatmsg');
@@ -89,7 +89,7 @@ function getAllMessages() {
                             realchat = document.querySelector('.realchat');
                             chatmessages = document.querySelector('.chat-messages');
 
-                            span.textContent = '11:46 AM';
+                            span.textContent = '';
                             time.classList.add('time');
                             time.appendChild(span);
                             chatmsg.classList.add('chatmsg');
