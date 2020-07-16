@@ -271,17 +271,21 @@ exports.getProfile = async (req, res) => {
     const errorMessage = req.query.error_status;
     const success = req.query.success_message;
     const {
-      passport: { user },
+      passport
     } = req.session;
-    const { userTypeId } = user;
 
     let employeeId;
-    employeeId = req.session.userTypeId || userTypeId;
+
+    if (passport) {
+      const { passport: { user } } = req.session;
+      const { userTypeId } = user;
+      employeeId = userTypeId;
+    }
+
+    employeeId = req.session.userTypeId;
 
     if (req.params.employee_id) {
       employeeId = req.params.employee_id;
-    } else if (userTypeId) {
-      employeeId = req.session.employeeId;
     }
 
     const query = await models.Employee.findOne({
@@ -307,7 +311,6 @@ exports.getProfile = async (req, res) => {
     });
   } catch (err) {
     req.flash('error', 'Something went wrong. Try again');
-    return errorResMsg(res, 500, err.message);
   }
 };
 
@@ -317,12 +320,18 @@ exports.getPortfolio = async (req, res) => {
     const errorMessage = req.query.error_status;
     const success = req.query.success_message;
     const {
-      passport: { user },
+      passport
     } = req.session;
-    const { userTypeId } = user;
 
     let employeeId;
-    employeeId = req.session.employeeId || userTypeId;
+
+    if (passport) {
+      const { passport: { user } } = req.session;
+      const { userTypeId } = user;
+      employeeId = userTypeId;
+    }
+
+    employeeId = req.session.employeeId;
 
     if (req.params.employee_id) {
       employeeId = req.params.employee_id;
@@ -347,6 +356,7 @@ exports.getPortfolio = async (req, res) => {
       data,
     });
   } catch (err) {
+    console.log("i cant pass here because", err);
     req.flash('error', 'Something went wrong. Try again');
   }
 };
@@ -354,11 +364,18 @@ exports.getPortfolio = async (req, res) => {
 exports.createPortfolio = async (req, res) => {
   try {
     const {
-      passport: { user },
+      passport
     } = req.session;
-    const { userTypeId } = user;
 
-    const employeeId = req.session.employeeId || userTypeId;
+    let employeeId;
+
+    if (passport) {
+      const { passport: { user } } = req.session;
+      const { userTypeId } = user;
+      employeeId = userTypeId;
+    }
+
+    employeeId = req.session.employeeId;
 
     // CREATE A NEW PORTFOLIO
     await models.Portfolio.create({
@@ -372,6 +389,8 @@ exports.createPortfolio = async (req, res) => {
       `/employee/portfolio/${employeeId}?success_message=Portfolio created successfully`,
     );
   } catch (err) {
+    console.log("omor i don tire", err);
+    
     req.flash('error', 'Something went wrong. Try again');
   }
 };
@@ -379,11 +398,18 @@ exports.createPortfolio = async (req, res) => {
 exports.deletePortfolio = async (req, res) => {
   try {
     const {
-      passport: { user },
+      passport
     } = req.session;
-    const { userTypeId } = user;
 
-    const employeeId = req.session.userTypeId || userTypeId;
+    let employeeId;
+
+    if (passport) {
+      const { passport: { user } } = req.session;
+      const { userTypeId } = user;
+      employeeId = userTypeId;
+    }
+
+    employeeId = req.session.userTypeId;
     let id;
     await models.Portfolio.destroy({
       where: {
