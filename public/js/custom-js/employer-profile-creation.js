@@ -1,38 +1,3 @@
-// const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
-const userInformation = '';
-
-// window.onload = (event) => {
-//     if (userInformation === null) {
-//         toaster('Token not found, please sign in.', 'error');
-//         const redirect = () => {
-//             return window.location.replace('/');
-//         };
-//         setTimeout(redirect, 2000);
-//     }
-// };
-
-// const userInfo1 = JSON.parse(atob(userInformation.token.split('.')[1]));
-const userInfo1 = { userTypeId: '', userRole: '' };
-const { userTypeId, userRole } = userInfo1;
-
-const [navBar] = document.getElementsByClassName('navbar-brand');
-
-if (userRole === 'ROL-EMPLOYEE') {
-    if (userTypeId)  {
-        navBar.href = '/employee-dashboard';
-    } else {
-        navBar.href = '/employee-profileCreation';
-    }
-}
-
-if (userRole === 'ROL-EMPLOYER') {
-  if (userTypeId)  {
-      navBar.href = '/employer-dashboard';
-  } else {
-      navBar.href = '/employer-create-profile';
-  }
-}
-
 // store data after image is read
 let logoData;
 
@@ -115,7 +80,7 @@ const getEmployerType = () => {
         Array.prototype.filter.call(forms, function(form) {
             form.addEventListener('submit', async function(event) {
                 const [empType, gender, industryType] = document.querySelectorAll('form select');
-                const [formData] = document.querySelectorAll('form');
+                const [formData] = document.querySelectorAll('#employerProfileForm');
                 const uploadBtn = document.getElementById('uploadProfile');
                 const loader = document.getElementById('loader');
 
@@ -207,7 +172,7 @@ const createProfile = async (userData) => {
 };
 
 const getUserDetails = (empType, gender, industryType, formData) => {
-    const inputTags = formData.querySelectorAll('input');
+    const inputTags = formData.querySelectorAll('#employerProfileForm input');
     const [description] = formData.querySelectorAll('textarea');
 
     if (empType.toLowerCase() === 'company') {
@@ -226,7 +191,6 @@ const getUserDetails = (empType, gender, industryType, formData) => {
             companyEmail: orgEmail.value,
             companyAddress: orgAddress.value,
             website: orgWebsite.value,
-            userId: userInfo1.userId
         });
 
     } else {
@@ -246,14 +210,13 @@ const getUserDetails = (empType, gender, industryType, formData) => {
             companyEmail: orgEmail.value,
             companyAddress: orgAddress.value,
             website: orgWebsite.value,
-            userId: userInfo1.userId
         });
     }
 };
 
 const getFormData = ({ photo, employerType, organizationName, employerName, companyCategoryId,
                          description, gender, companyCountry, companyPhone, companyEmail,
-                         companyAddress, website, userId
+                         companyAddress, website
                     }) => {
 
     const fileUploadData = new FormData();
@@ -268,7 +231,6 @@ const getFormData = ({ photo, employerType, organizationName, employerName, comp
     fileUploadData.append('employer_email', companyEmail);
     fileUploadData.append('employer_address', companyAddress);
     fileUploadData.append('website', website);
-    fileUploadData.append('user_id', userId);
 
     return fileUploadData;
 };
