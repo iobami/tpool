@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <%- include('../../Templates/head') %>
-    <link rel="stylesheet" href="styles/custom-css/payment-method.css" />
+    <link rel="stylesheet" href="/styles/custom-css/payment-method.css" />
   </head>
 
   <body style="background-color: #fafafa;">
@@ -18,7 +18,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <% packages.forEach(function(package) { %>
+        <% data.forEach(function(package) { %>
         <div class="col-sm-10 col-md-6 col-lg-4">
         <div class="card-deck mb-3 text-center">
           <div class="card mb-4 box-shadow">
@@ -38,7 +38,6 @@
                 </p>
                 <% package.features.forEach(function(feature){ %>
                   <li>
-                    
                     <p style="font-size: 15px;">
                         <i class="fa fa-check"></i>&nbsp;&nbsp;
                       <%= feature.description %>
@@ -47,7 +46,7 @@
                 <% }); %>
                 
               </ul>
-              <a href="/price-payment?id=<%= package.package_id %>" class="text-white">
+              <a href="/employer/packages/<%= package.package_id %>" class="text-white">
                 <button
                   type="button"
                   class="btn hire-btn btn-lg btn-block text-white"
