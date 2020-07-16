@@ -2,12 +2,12 @@
 module.exports = {
   employeeSignup: (req, res) => {
     const {
-      isLoggedIn, employeeId, employerId, adminId,
+      isLoggedIn, employeeId,
     } = req.session;
 
     if (isLoggedIn && employeeId) {
       res.redirect(`/employee/dashboard/${req.session.employeeId}`);
-    } else if (isLoggedIn && !employeeId && employerId && adminId) {
+    } else if (isLoggedIn && !employeeId) {
       return res.redirect(
         '/employee/create/profile?success_message=Please create a profile to continue',
       );
@@ -25,12 +25,12 @@ module.exports = {
 
   employeeSignIn: (req, res) => {
     const {
-      isLoggedIn, employeeId, employerId, adminId,
+      isLoggedIn, employeeId,
     } = req.session;
 
     if (isLoggedIn && employeeId) {
       res.redirect(`/employee/dashboard/${req.session.employeeId}`);
-    } else if (isLoggedIn && !employeeId && employerId && adminId) {
+    } else if (isLoggedIn && !employeeId) {
       return res.redirect(
         '/employee/create/profile?success_message=Please create a profile to continue',
       );
