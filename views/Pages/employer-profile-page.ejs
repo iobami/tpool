@@ -2,9 +2,17 @@
 <html>
   <head>
     <%- include('../Templates/dashboard-head') %>
+    <link href="/styles/custom-css/flags.css" rel="stylesheet">
+
     <link rel="stylesheet" href="/styles/custom-css/employer-top-nav.css">
     <link rel="stylesheet" href="/styles/custom-css/side-nav.css">
     <link rel="stylesheet" href="/styles/custom-css/employer-profile-page.css">
+
+    <style>
+      #basic button {
+        height: 45px;
+      }
+    </style>
 
     <!-- <script src="../js/custom-js/employer-authUP.js"></script> -->
   </head>
@@ -109,6 +117,10 @@
                   <label for="">Country</label>
                   <input type="text" class="form-control" name="" value="<%= EmployerInfo.employerInfo.employer_country %>" placeholder="Enter country" id="">
                 </div>
+                <!-- <div class="form-group col-md-6">
+                    <label>Country</label>
+                    <div id="basic" data-input-name="country"></div>
+                </div> -->
                 <div class="form-group col-md-6">
                   <label for="">Location</label>
                   <input type="text" class="form-control" value="<%= EmployerInfo.employerInfo.employer_address %>" placeholder="Enter phone">
@@ -161,7 +173,6 @@
                   Please add only professional looking logo </p>
   
                 </div> -->
-
                 
            </div>
 
@@ -436,7 +447,6 @@
                             </div>
 
                             <div class="modal-body">
-
                                 <div class="form-row">
                                   <textarea style="resize: none;" name="" class="form-control"
                                    id="descText" cols="5" rows="3"><%= EmployerInfo.employerInfo.description %></textarea>
@@ -477,5 +487,15 @@
     <script src="/../js/custom-js/side-nav.js"></script>
    <script src="/js/custom-js/toast.js"></script>
     <script src="/../js/custom-js/employer-profile.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+   <script src="/js/bootstrap-js/jquery.flagstrap.js"></script>
+   <script>
+       $('#basic').flagStrap();
+       const [btn] = document.querySelectorAll('.flagstrap button');
+       btn.className = 'btn-default btn-md dropdown-toggle form-control';
+       const selected = btn.querySelectorAll('span');
+       console.log(selected);
+   </script>
   </body>
 </html>
