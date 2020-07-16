@@ -82,13 +82,14 @@
                                             <span><i class="pr-2 fa fa-calendar" aria-hidden="true"></i></i></span>
                                             <%= data.dob %>
                                         </p>
+                                        <p class="employeeAvailability">
+                                            <span><i class="pr-2 fa fa-wrench" aria-hidden="true"></i></span>
+                                            <%= data.availability %>
+                                        </p>
                                         <p class="employeeLocation">
                                             <span><i class="pr-2 fa fa-map-marker" aria-hidden="true"></i></span>
                                             <%= data.location %>
                                         </p>
-                                        <p id="intern-id" class="ml-4"></p>
-                                        <p id="availability" class="ml-4"></p>
-                                        <p id="phone" class="ml-4"></p>
                                     </div>
                                 </div>
                             </div>
@@ -192,8 +193,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <hr>
                                             <div class="row">
                                                 <div class="col-md-6 tracks formCol">
                                                     <label class="super-label">Track</label>
@@ -247,62 +246,17 @@
                                                 <h4>Portfolio</h4>
                                             </div>
                                         </div>
-                                        <ul class='portfolios'>
+                                        <ul class='portfolios list-group list-group-flush'>
                                             <!-- Dynamic Content Goes Here -->
 
-                                            <li>
-                                                <div class="list-item">
-                                                    Fund My Laptop
-                                                </div>
-                                                <div class="list-trash">
-                                                    <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
-                                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M13 12.8789H14.5V21.2886H13V12.8789Z" fill="#084482" />
-                                                        <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
-                                                            fill="#084482" />
-                                                        <path
-                                                            d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
-                                                            fill="#084482" />
-                                                        <path d="M13 5.87109H19V7.27271H13V5.87109Z" fill="#084482" />
-                                                    </svg>
-                                                </div>
+                                            <li class="list-group-item">
+                                                Fund My Laptop
                                             </li>
-                                            <li>
-                                                <div class="list-item">
-                                                    TalentPool
-                                                </div>
-                                                <div class="list-trash">
-                                                    <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
-                                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M13 12.8789H14.5V21.2886H13V12.8789Z" fill="#084482" />
-                                                        <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
-                                                            fill="#084482" />
-                                                        <path
-                                                            d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
-                                                            fill="#084482" />
-                                                        <path d="M13 5.87109H19V7.27271H13V5.87109Z" fill="#084482" />
-                                                    </svg>
-                                                </div>
+                                            <li class="list-group-item">
+                                                TalentPool
                                             </li>
-                                            <li>
-                                                <div class="list-item">
-                                                    MedBuzz
-                                                </div>
-                                                <div class="list-trash">
-                                                    <!-- <img src="../img/iprofile/carbon_trash-can.svg" alt=""> -->
-                                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M13 12.8789H14.5V21.2886H13V12.8789Z" fill="#084482" />
-                                                        <path d="M17.5 12.8789H19V21.2886H17.5V12.8789Z"
-                                                            fill="#084482" />
-                                                        <path
-                                                            d="M7 8.67432V10.0759H8.5V24.0921C8.5 24.4639 8.65804 24.8204 8.93934 25.0832C9.22064 25.3461 9.60218 25.4938 10 25.4938H22C22.3978 25.4938 22.7794 25.3461 23.0607 25.0832C23.342 24.8204 23.5 24.4639 23.5 24.0921V10.0759H25V8.67432H7ZM10 24.0921V10.0759H22V24.0921H10Z"
-                                                            fill="#084482" />
-                                                        <path d="M13 5.87109H19V7.27271H13V5.87109Z" fill="#084482" />
-                                                    </svg>
-                                                </div>
+                                            <li class="list-group-item">
+                                                MedBuzz
                                             </li>
                                         </ul>
                                     </div>
