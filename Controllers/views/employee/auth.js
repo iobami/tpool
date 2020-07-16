@@ -51,7 +51,7 @@ module.exports = {
     return res.render('Pages/employee-sign-up', {
       path: '/employee/register',
       pageName: 'Employee Signup',
-      isLoggedIn,
+      isLoggedIn: '',
       error: req.flash('error'),
       errors: req.flash('errors'),
       success: req.flash('success'),
@@ -117,7 +117,7 @@ module.exports = {
       path: '/employee/login',
       pageName: 'Employee Login',
       success,
-      isLoggedIn,
+      isLoggedIn: '',
       errorMessage: message,
       oldInput: {
         email: '',
