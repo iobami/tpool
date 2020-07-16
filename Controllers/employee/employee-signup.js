@@ -19,22 +19,34 @@ const URL =
 
 // eslint-disable-next-line consistent-return
 exports.create = async (req, res) => {
+  const employeeUserData = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+    phone: req.body.phone
+  };
+  const registrationType = req.body.regType;
   try {
     // Validate input
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const errResponse = errors.array({ onlyFirstError: true });
       req.flash('errors', errResponse);
-      return res.redirect('/employee/register');
+      if (registrationType === 'intern') {
+        req.flash('oldInput', employeeUserData);
+        return res.redirect('/employee/register');
+      }
+      const employeeUserData1 = {
+        firstname1: req.body.firstname,
+        lastname1: req.body.lastname,
+        email1: req.body.email,
+        phone1: req.body.phone
+      };
+      req.flash('oldInput', employeeUserData1);
+      return res.redirect('/employee/register#new-user');
     }
 
     // Saving other user details in employee session
-    const employeeUserData = {
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      phone: req.body.phone
-    };
     req.session.employeeuserData = employeeUserData;
 
     const user = req.body;
@@ -42,7 +54,18 @@ exports.create = async (req, res) => {
     const userExists = await model.User.findOne({ where: { email } });
     if (userExists !== null) {
       req.flash('error', 'Someone has already registered this email');
-      return res.redirect('/employee/register');
+      if (registrationType === 'intern') {
+        req.flash('oldInput', employeeUserData);
+        return res.redirect('/employee/register');
+      }
+      const employeeUserData1 = {
+        firstname1: req.body.firstname,
+        lastname1: req.body.lastname,
+        email1: req.body.email,
+        phone1: req.body.phone
+      };
+      req.flash('oldInput', employeeUserData1);
+      return res.redirect('/employee/register#new-user');
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -75,19 +98,29 @@ exports.create = async (req, res) => {
       });
       // return successResMsg(res, 201, data);
       req.flash('success', 'Verification email sent!');
-      return res.redirect('/employee/register');
+      if (registrationType === 'intern') {
+        return res.redirect('/employee/register');
+      }
+      return res.redirect('/employee/register#new-user');
     } catch (error) {
-      // return errorResMsg(
-      //   res,
-      //   500,
-      //   'An error occurred while creating user',
-      // );
-      req.flash('error', 'Someone has already registered this email');
-      return res.redirect('/employee/register');
+      req.flash('error', 'An Error occoured, try again.');
+      if (registrationType === 'intern') {
+        req.flash('oldInput', employeeUserData);
+        return res.redirect('/employee/register');
+      }
+      const employeeUserData1 = {
+        firstname1: req.body.firstname,
+        lastname1: req.body.lastname,
+        email1: req.body.email,
+        phone1: req.body.phone
+      };
+      req.flash('oldInput', employeeUserData1);
+      return res.redirect('/employee/register#new-user');
     }
   } catch (error) {
     // return errorResMsg(res, 500, 'An error occurred');
     req.flash('error', 'An Error occoured');
+    req.flash('oldInput', employeeUserData);
     return res.redirect('/employee/register');
   }
 };

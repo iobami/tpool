@@ -24,7 +24,6 @@
 
 .modal-dialog {
   z-index: 1;
-  /* width: 540px; */
 }
 
 .modal-content {
@@ -244,7 +243,6 @@ button {
 
   .modal-dialog {
     max-width: max-content;
-    width: 100vw;
   }
 }
 
