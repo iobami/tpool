@@ -20,6 +20,11 @@
         <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-4 px-xl-4">
            
           <section class="portfolio mb-4">
+            <% if (errorMessage) { %>
+              <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+          <% }if (success && success.length > 0) { %>
+              <div role="alert" class="alert alert-success user-message"><%= success %></div>
+          <% } %>
               <div class="px-3">
                 <div class="section-title d-flex align-items-center justify-content-between py-2">
                   <div class="section-name">
@@ -155,11 +160,7 @@
     <script src="/js/custom-js/side-nav.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/bootstrap-js/popper.js"></script>
-    <script src="/js/bootstrap-js/jquery.js"></script>
-    <script src="/js/bootstrap-js/bootstrap.js"></script>
-    <!-- <script src="/js/custom-js/modal.js"></script> -->
-    <!-- <script src="/js/custom-js/employee-portfolio.js"></script> -->
+    <%- include('../Templates/flashmessagesclear') %>  
   </body>
 
 </html>

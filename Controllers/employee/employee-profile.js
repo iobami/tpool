@@ -268,6 +268,8 @@ exports.getDashboard = async (req, res) => {
 // GET AN EMPLOYEE PROFILE -- Renders a page
 exports.getProfile = async (req, res) => {
   try {
+    const errorMessage = req.query.error_status;
+    const success = req.query.success_message;
     const {
       passport: { user },
     } = req.session;
@@ -297,6 +299,8 @@ exports.getProfile = async (req, res) => {
       profilePath: `${URL}employee/profile/${employeeId}`,
       portfolioPath: `${URL}employee/portfolio/${employeeId}`,
       path: '',
+      errorMessage,
+      success,
       data,
     });
   } catch (err) {
@@ -308,6 +312,8 @@ exports.getProfile = async (req, res) => {
 // GET AEMPLOAYEE PORTFOLIOS -- Renders a page
 exports.getPortfolio = async (req, res) => {
   try {
+    const errorMessage = req.query.error_status;
+    const success = req.query.success_message;
     const {
       passport: { user },
     } = req.session;
@@ -334,6 +340,8 @@ exports.getPortfolio = async (req, res) => {
       profilePath: `${URL}employee/profile/${employeeId}`,
       portfolioPath: `${URL}employee/portfolio/${employeeId}`,
       path: '',
+      errorMessage,
+      success,
       data,
     });
   } catch (err) {
