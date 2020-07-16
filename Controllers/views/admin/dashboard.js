@@ -1,6 +1,9 @@
 const moment = require('moment');
+const sequelize = require('sequelize');
 const model = require('../../../Models/index');
 const { errorResMsg, successResMsg } = require('../../../Utils/response');
+
+const op = sequelize.Op;
 
 const keysOfArray = (modelResult, arrayObj) => {
   modelResult.map((x) => {
@@ -42,6 +45,14 @@ module.exports = {
       const company_array = [];
       const limit = Number(req.query.p) || Number(employersAll.length);
       const employers = await model.Employer.findAll({
+        include: [
+          {
+            model: model.User,
+            where: {
+              user_id: { [op.col]: 'Employer.user_id' },
+            },
+          },
+        ],
         limit,
         order: [
           ['id', 'DESC'],
@@ -78,14 +89,23 @@ module.exports = {
   allEmployees: async (req, res) => {
     const { session } = req.cookies;
     try {
-      const limit = Number(req.query.p) || 1000000000;
       const employeesTotal = await model.Employee.findAll({});
+      const limit = Number(req.query.p) || Number(employeesTotal.length);
       const employees = await model.Employee.findAll({
+        include: [
+          {
+            model: model.User,
+            where: {
+              user_id: { [op.col]: 'Employee.user_id' },
+            },
+          },
+        ],
         limit,
         order: [
           ['id', 'DESC'],
         ],
       });
+
       const skill = await model.Skill.findAll({ limit });
       const portfolio = await model.Portfolio.findAll({ limit });
 
@@ -120,6 +140,10 @@ module.exports = {
       });
 
       const data = { all_employee_data: results };
+      // accessing the include
+      // data.all_employee_data.forEach((user) => {
+      //   console.log(user.User.block);
+      // });
 
       // eslint-disable-next-line no-shadow
       employeesTotal.forEach((data) => {
@@ -127,7 +151,8 @@ module.exports = {
         if (data.availability.toLowerCase() === 'not-available') {
           hired_employees_count.push(data);
         }
-        if (data.availability.toLowerCase() === 'available') {
+        // eslint-disable-next-line no-constant-condition
+        if (data.availability.toLowerCase() !== 'not-available') {
           available_employees_count.push(data);
         }
       });
@@ -168,7 +193,7 @@ module.exports = {
         active: 1,
       },
     });
-
+    const transactDetails = allTransactions.rows;
     const latestTransactions = allTransactions.rows.slice(0, 5);
 
     res.render('Pages/admin-dashboard', {
@@ -180,6 +205,7 @@ module.exports = {
       latestEmployers,
       latestTransactions,
       activeTransactions: Transactions.length,
+      transactDetails,
     });
   },
 
@@ -212,6 +238,14 @@ module.exports = {
 
   adminsList: async (req, res) => {
     const allAdmins = await model.Admin.findAll({
+      include: [
+        {
+          model: model.User,
+          where: {
+            user_id: { [op.col]: 'Admin.user_id' },
+          },
+        },
+      ],
       order: [
         ['id', 'DESC'],
       ],

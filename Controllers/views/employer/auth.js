@@ -12,6 +12,7 @@ module.exports = {
 
     return res.render('Pages/employer-sign-up', {
       pageName: 'Employer Registration',
+      oldInput: req.flash('oldInput'),
       error: req.flash('error'),
       isLoggedIn,
       errors: req.flash('errors'),
