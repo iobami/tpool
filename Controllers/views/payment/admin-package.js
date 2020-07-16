@@ -158,7 +158,7 @@ exports.packageUpdate = async (req, res) => {
 
       //Success Response
       req.flash('success', 'Update Successful');
-      return res.redirect('/admin/packages');
+      return res.redirect('back');
     }
   } catch (error) {
     req.flash('error', 'Something went wrong');
