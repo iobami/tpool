@@ -1,6 +1,9 @@
 const moment = require('moment');
+const sequelize = require('sequelize');
 const model = require('../../../Models/index');
 const { errorResMsg, successResMsg } = require('../../../Utils/response');
+
+const op = sequelize.Op;
 
 const keysOfArray = (modelResult, arrayObj) => {
   modelResult.map((x) => {
@@ -42,6 +45,14 @@ module.exports = {
       const company_array = [];
       const limit = Number(req.query.p) || Number(employersAll.length);
       const employers = await model.Employer.findAll({
+        include: [
+          {
+            model: model.User,
+            where: {
+              user_id: { [op.col]: 'Employer.user_id' },
+            },
+          },
+        ],
         limit,
         order: [
           ['id', 'DESC'],
@@ -168,7 +179,7 @@ module.exports = {
         active: 1,
       },
     });
-
+    const transactDetails = allTransactions.rows;
     const latestTransactions = allTransactions.rows.slice(0, 5);
 
     res.render('Pages/admin-dashboard', {
@@ -180,6 +191,7 @@ module.exports = {
       latestEmployers,
       latestTransactions,
       activeTransactions: Transactions.length,
+      transactDetails,
     });
   },
 
@@ -212,6 +224,14 @@ module.exports = {
 
   adminsList: async (req, res) => {
     const allAdmins = await model.Admin.findAll({
+      include: [
+        {
+          model: model.User,
+          where: {
+            user_id: { [op.col]: 'Admin.user_id' },
+          },
+        },
+      ],
       order: [
         ['id', 'DESC'],
       ],
