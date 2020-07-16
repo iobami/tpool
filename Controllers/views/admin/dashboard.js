@@ -29,7 +29,7 @@ module.exports = {
   messages: (req, res) => {
     res.render('Pages/admin-dash-messages', {
       pageName: 'Admin Messages',
-      path: 'messages',
+      path: 'admin-messages',
     });
   },
 
@@ -77,6 +77,7 @@ module.exports = {
 
   allEmployees: async (req, res) => {
     const { session } = req.cookies;
+    console.log(session);
     try {
       const limit = Number(req.query.p) || 1000000000;
       const employeesTotal = await model.Employee.findAll({});
@@ -174,8 +175,8 @@ module.exports = {
     res.render('Pages/admin-dashboard', {
       pageName: 'Admin dashboard',
       path: 'admin-dashboard',
-      totalEmployer: employers.length,
-      totalEmployee: employees.length,
+      totalEmployer: employers,
+      totalEmployee: employees,
       allTransactions: allTransactions.count,
       latestEmployers,
       latestTransactions,
@@ -186,7 +187,7 @@ module.exports = {
   adminVerification: (req, res) => {
     res.render('Pages/admin-verification', {
       pageName: 'Admin Verification',
-      path: 'verification',
+      path: 'admins-verification',
     });
   },
 
@@ -199,7 +200,7 @@ module.exports = {
   adminSettings: (req, res) => {
     res.render('Pages/admin-settings', {
       pageName: 'Admin Settings',
-      path: 'settings',
+      path: 'admin-settings',
     });
   },
 
