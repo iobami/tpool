@@ -54,11 +54,7 @@ getActive.then(getCookie);*/
     res.render('Pages/employer-profile-creation', {
       success: req.flash('success'),
       pageName: 'Create Profile',
-<<<<<<< HEAD
       data: req.session.companycat,
-=======
-      errorMessage: req.flash('error')
->>>>>>> 300ea9281d23bc5b8d1bba7346ffe96cc8ae3000
     });
   },
 

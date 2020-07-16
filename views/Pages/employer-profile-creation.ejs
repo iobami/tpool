@@ -9,11 +9,7 @@
   <%- include('../Templates/employeeHeaderLogin', { route: '/employer-dashboard' }) %>
 
     <main>
-        <% if (errorMessage.length > 0) { %>
-            <div role="alert" class="alert alert-danger text-center user-message user-message--error"><%= errorMessage %></div>
-        <% }if (success && success.length > 0) { %>
-            <div role="alert" class="alert alert-success text-center user-message user-message--error"><%= success %></div>
-        <% } %>
+
       <form id="employerProfileCreation">
       <div class="mt-5">
           <div class="container text-center">
