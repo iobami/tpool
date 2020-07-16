@@ -62,7 +62,7 @@
     </div>
     <!-- package body -->
     <div class="my-4">
-      <h5 class="text-center font-weight-bold text-">
+      <h5 class="text-center font-weight-bold text-capitalize">
         <%- data.package.package_name %>
       </h5>
     </div>
@@ -73,7 +73,7 @@
         <!-- Package Details -->
         <div class="col-6 col-md-4">
           <h6 class="text-center text-primary font-weight-bold">Package</h6>
-          <p class="details my-3">
+          <p class="details my-3 text-capitalize">
             <strong>Package Name:</strong> <br /><%- data.package.package_name %>
           </p>
           <p class="details my-3">
@@ -132,7 +132,17 @@
         <div class="modal-body">
           <% if (data.features && data.features.length > 0) {%>
           <ul class="list-group list-group-flush features-list w-100">
-            <% data.features.forEach(feat => { %>
+            <!-- filter the features not on the package -->
+            <% const filteredFeatures = []; 
+                data.features.forEach(element => {
+                  data.package.features.some(obj => obj.description === element.description)? false: filteredFeatures.push(element)
+                });
+                ;
+                // sort the array then populate modal
+              const sorted = filteredFeatures
+              .sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1);
+              
+              sorted.forEach(feat => { %>
             <li class="list-group-item"> <%= feat.description %>
               <form action="/admin/packages/<%-data.package.package_id%>/add" method="post" class="p-0 m-0 mx-auto">
                 <input type="hidden" name="feature_id" value="<%= feat.feature_id %>">
@@ -143,7 +153,6 @@
               </form>
             </li>
             <% }) %>
-            <!-- <li>feat<a href="" class="btn btn-sm btn-danger delete-btn">Remove</a></li> -->
           </ul>
           <% } else { %>
           <h6 class="my-5 mx-auto text-muted text-center">
