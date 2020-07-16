@@ -14,9 +14,13 @@ const csrf = require('csurf');
 // const rateLimit = require('express-rate-limit');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
+const { key } = require('./gen-key');
+
 // eslint-disable-next-line no-unused-vars
 
 dotenv.config();
+process.env.TALENT_POOL_JWT_SECRET = key(64);
+
 // eslint-disable-next-line import/order
 const morgan = require('morgan');
 const db = require('./Models');
