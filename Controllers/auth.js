@@ -624,7 +624,7 @@ const getResetPasswordToken = () => {
     .digest('hex');
 
   // Set expire
-  const resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+  const resetPasswordExpire = Date.now() + + 3600000;
 
   return { resetToken, resetPasswordToken, resetPasswordExpire };
 };
