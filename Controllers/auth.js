@@ -30,23 +30,23 @@ const URL =
 
 exports.registerEmployer = (req, res) => {
   (async () => {
+    const employerUserData = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      phone: req.body.phone
+    };
     try {
       // eslint-disable-next-line camelcase
       // Validate input
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
+        req.flash('oldInput', employerUserData);
         req.flash('errors', errResponse);
         return res.redirect('/employer/register');
       }
-
-      // Saving other user details in employer session
-      const employerUserData = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        phone: req.body.phone
-      };
+      // Saving user details in session
       req.session.employeruserData = employerUserData;
 
       // encrypt password
@@ -91,16 +91,13 @@ exports.registerEmployer = (req, res) => {
           req.flash('success', 'Verification email sent!');
           return res.redirect('/employer/register');
         } catch (err) {
+          req.flash('oldInput', employerUserData);
           req.flash('error', 'An error Occoured');
           return res.redirect('/employer/register');
           // return errorResMsg(res, 500, err);
         }
       } else {
-        // return errorResMsg(
-        //   res,
-        //   403,
-        //   'Someone has already registered this email',
-        // );
+        req.flash('oldInput', employerUserData);
         req.flash('error', 'Someone has already registered this email');
         return res.redirect('/employer/register');
       }
@@ -109,6 +106,7 @@ exports.registerEmployer = (req, res) => {
         err.statusCode = 500;
       }
       // return errorResMsg(res, 500, 'An error occurred');
+      req.flash('oldInput', employerUserData);
       req.flash('error', 'An error Occoured');
       return res.redirect('/employer/register');
     }
@@ -117,21 +115,22 @@ exports.registerEmployer = (req, res) => {
 
 exports.registerEmployerOrg = (req, res) => {
   (async () => {
+    const employerUserData = {
+      organizationName: req.body.orgName,
+      email: req.body.email,
+    };
     try {
       // eslint-disable-next-line camelcase
       // Validate input
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
+        req.flash('oldInput', employerUserData);
         req.flash('errors', errResponse);
-        return res.redirect('/employer/register');
+        return res.redirect('/employer/register#company');
       }
 
       // Saving other user details in employer session
-      const employerUserData = {
-        organizationName: req.body.firstname,
-        email: req.body.email,
-      };
       req.session.employeruserData = employerUserData;
 
       // encrypt password
@@ -174,28 +173,26 @@ exports.registerEmployerOrg = (req, res) => {
 
           // return successResMsg(res, 201, data);
           req.flash('success', 'Verification email sent!');
-          return res.redirect('/employer/register');
+          return res.redirect('/employer/register#company');
         } catch (err) {
-          req.flash('error', 'An error Occoured');
-          return res.redirect('/employer/register');
+          req.flash('oldInput', employerUserData);
+          req.flash('error', 'An Error occoured, try again.');
+          return res.redirect('/employer/register#company');
           // return errorResMsg(res, 500, err);
         }
       } else {
-        // return errorResMsg(
-        //   res,
-        //   403,
-        //   'Someone has already registered this email',
-        // );
+        req.flash('oldInput', employerUserData);
         req.flash('error', 'Someone has already registered this email');
-        return res.redirect('/employer/register');
+        return res.redirect('/employer/register#company');
       }
     } catch (err) {
       if (!err.statusCode) {
         err.statusCode = 500;
       }
       // return errorResMsg(res, 500, 'An error occurred');
-      req.flash('error', 'An error Occoured');
-      return res.redirect('/employer/register');
+      req.flash('oldInput', employerUserData);
+      req.flash('error', 'An Error occoured, try again.');
+      return res.redirect('/employer/register#company');
     }
   })();
 };
