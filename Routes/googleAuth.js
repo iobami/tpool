@@ -21,14 +21,22 @@ router.get('/auth/employer/google/callback',
     try {
       // Successful authentication,
       const { user } = req;
+      console.log(user);
+      const data = {
+        email: user.email,
+        userRole: user.userRole,
+        // userTypeId: user.userTypeId,
+        verificationStatus: user.verificationStatus,
+      };
+      req.session.data = data;
+      // req.session.isLoggedIn = true;
+      req.session.userId = user.user_id;
+
       if ((!user.userTypeId) || user.userTypeId == null) {
-        req.session.isLoggedIn = false;
-        req.session.userId = user.user_id;
         req.flash('success', 'Authentication successful!');
-        return res.redirect('/employer-create-profile');
+       return res.redirect('/employer/profile/create');
       }
       req.session.isLoggedIn = true;
-      req.session.userId = user.user_id;
       req.flash('success', 'Login successful!');
       return res.redirect('/employer-dashboard');
     } catch (error) {
@@ -50,7 +58,7 @@ router.get('/auth/employee/google/callback',
         req.session.isLoggedIn = false;
         req.session.userId = user.user_id;
         req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/profile/create');
+        return res.redirect('/employee/create/profile');
       }
       req.session.isLoggedIn = true;
       req.session.userId = user.user_id;
