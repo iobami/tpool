@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
@@ -38,6 +39,7 @@ const attributes = [
   'employee_id',
   'user_id',
   'referredBy',
+  'hasTeam',
   'user_type',
   'verification_status',
 ];
@@ -128,7 +130,6 @@ exports.createProfile = async (req, res) => {
     // Create new profile
     await models.Employee.create(newBody);
 
-    // return successResMsg(res, 201, data);
     req.flash('success', 'Profile Created Succesfully!');
     req.session.isProfileCreated = true;
     req.session.profileId = employeeId;
@@ -137,8 +138,6 @@ exports.createProfile = async (req, res) => {
     );
   } catch (err) {
     req.flash('error', err.message);
-    return errorResMsg(res, 500, err.message);
-    // return res.redirect('/employee/profile/create');
   }
 };
 
@@ -269,8 +268,11 @@ exports.getDashboard = async (req, res) => {
 // GET AN EMPLOYEE PROFILE -- Renders a page
 exports.getProfile = async (req, res) => {
   try {
+    const { passport: { user } } = req.session;
+    const { userTypeId } = user;
+
     let employeeId;
-    const { userTypeId } = req.session;
+    employeeId = req.session.userTypeId || userTypeId;
 
     if (req.params.employee_id) {
       employeeId = req.params.employee_id;
@@ -285,7 +287,7 @@ exports.getProfile = async (req, res) => {
 
     const profile = await query;
 
-    const data = { ...profile, email: req.session.data.email };
+    const data = { ...profile.dataValues, email: req.session.email };
 
     return res.status(200).render('Pages/employeeProfile', {
       pageTitle: 'Talent Pool | Profile',
@@ -304,18 +306,18 @@ exports.getProfile = async (req, res) => {
 // GET AEMPLOAYEE PORTFOLIOS -- Renders a page
 exports.getPortfolio = async (req, res) => {
   try {
+    const { passport: { user } } = req.session;
+    const { userTypeId } = user;
+
     let employeeId;
-    employeeId = req.session.employeeId;
+    employeeId = req.session.employeeId || userTypeId;
 
     if (req.params.employee_id) {
       employeeId = req.params.employee_id;
-    } else if (employeeId) {
-      employeeId = req.session.employeeId;
     }
 
-    const query = await models.Portfolio.findOne({
+    const query = await models.Portfolio.findAll({
       where: { employee_id: employeeId },
-      attributes: ['title', 'description', 'link'],
     });
 
     const data = await query;
@@ -332,7 +334,52 @@ exports.getPortfolio = async (req, res) => {
     });
   } catch (err) {
     req.flash('error', 'Something went wrong. Try again');
-    return errorResMsg(res, 500, err.message);
+  }
+};
+
+exports.createPortfolio = async (req, res) => {
+  try {
+    const { passport: { user } } = req.session;
+    const { userTypeId } = user;
+
+    const employeeId = req.session.employeeId || userTypeId;
+
+    // CREATE A NEW PORTFOLIO
+    await models.Portfolio.create({
+      title: req.body.title,
+      description: req.body.description,
+      link: req.body.link,
+      employee_id: employeeId,
+    });
+
+    return res.redirect(
+      `/employee/portfolio/${employeeId}?success_message=Portfolio created successfully`,
+    );
+  } catch (err) {
+    req.flash('error', 'Something went wrong. Try again');
+  }
+};
+
+exports.deletePortfolio = async (req, res) => {
+  try {
+    const { passport: { user } } = req.session;
+    const { userTypeId } = user;
+
+    const employeeId = req.session.userTypeId || userTypeId;
+    let id;
+    await models.Portfolio.destroy({
+      where: {
+        id,
+        employee_id: employeeId,
+      },
+      force: true,
+    });
+
+    return res.redirect(
+      `/employee/portfolio/${employeeId}?success_message=Portfolio deleted successfully`,
+    );
+  } catch (err) {
+    req.flash('error', 'Something went wrong. Try again');
   }
 };
 
