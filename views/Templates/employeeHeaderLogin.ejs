@@ -1,40 +1,63 @@
 <header class="header">
-    <div class="container-fluid">
-      <div class="container nav-container">
-        <nav class="navbar navbar-expand-lg navbar-light py-1">
-          <a class="navbar-brand" href="<%= route %>">
-            <img src="img/talentpool header logo.svg" alt="talent pool logo" />
-          </a>
+  <div class="container-fluid">
+    <div class="container nav-container">
+      <nav class="navbar navbar-expand-lg navbar-light py-1">
+        <a class="navbar-brand" href="<%= route %>">
+          <img src="/img/talentpool header logo.svg" alt="talent pool logo" />
+        </a>
+        <form action="/loggedout" method="POST" class="navbar-toggler">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <button
+            type="submit"
+            style="
+              padding: 0.5em 1em;
+              margin-top: 0.5em;
+              background: #33beff;
+              color: #fff;
+            "
+          >
+            Logout
+          </button>
+        </form>
+        <!-- <button
           class="navbar-toggler"
-          href="#" 
-          onclick="logoutFunction();"
+          href="/logout" 
           style="padding: .5em 1em;margin-top: .5em;background: #33BEFF; color: #fff;"
 				>
 					Sign out
-				</button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ml-auto">
-                      <a class="dropdown-item" href="#" 
-                      onclick="logoutFunction();"
+				</button> -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <form action="/loggedout" method="POST">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+              <button
+                type="submit"
+                style="
+                  padding: 0.5em 1em;
+                  margin-top: 0.5em;
+                  background: #33beff;
+                  color: #fff;
+                  border-radius: 5px;
+                "
+              >
+                Logout
+              </button>
+            </form>
+            <!-- <a class="dropdown-item" href="/logout" 
                     style="padding: .5em 1em;margin-top: .5em;background: #33BEFF; color: #fff;border-radius: 5px;"
                       
-                      >Sign Out</a>
-                  </ul>
-              </div>
-
-          
-        </nav>
-      </div>
+                      >Sign Out</a> -->
+          </ul>
+        </div>
+      </nav>
     </div>
-    <script>
+  </div>
+  <!-- <script>
       const logoutFunction = () => {
          localStorage.clear('tpAuth');
          setTimeout(()=>{
           window.location.replace("/");
          }, 3000)
       }
-    </script>
-  </header>
-
-  
+    </script> -->
+</header>

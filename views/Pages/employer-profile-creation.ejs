@@ -2,14 +2,29 @@
 <html>
   <head>
     <%- include('../Templates/head') %>
-    <link rel="stylesheet" href="../styles/custom-css/employer-profile-page-creation1.css">
+    <link href="/styles/custom-css/flags.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/custom-css/employer-profile-page-creation1.css">
   </head>
   <body onload="inputSize()" onresize="inputSize()">
    <!-- NAV-BAR -->
   <%- include('../Templates/employeeHeaderLogin', { route: '/employer-dashboard' }) %>
 
   <style>
-    
+    #basic button {
+        height: 56px;
+    }
+    #basic .dropdown-toggle::after {
+        content: none;
+    }
+    #basic .dropdown-toggle {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /* SVG background image */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23337AB7' viewBox='0 0 24 24'%3E%3Cpath d='M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z'/%3E%3C/svg%3E");
+        background-size: .6em;
+        background-position: calc(100% - .8em) center;
+        background-repeat: no-repeat;
+    }
   </style>
 
    <!--NOTIFICATION TOAST-->
@@ -47,13 +62,13 @@
             </div>
         </div>
 
-      <form action="#" method="post" class="needs-validation" novalidate>
+      <form action="#" method="post" id="employerProfileForm" class="needs-validation" novalidate>
         <div id="details" class="mt-5">
             <div class="container">
               <div class="alert alert-danger d-none" style="padding: 0.5rem 1rem;" id="alert" role="alert">
                 <p class="my-0" id="alertMessage"></p>
               </div>
-                <h5 class="heading-color">Company details</h5>
+                <h5 class="heading-color">Employer details</h5>
                 <div class="row">
                     <div id="profile" class="mt-5">
                         <div class="container">
@@ -98,6 +113,18 @@
                         </div>
                     </div>
 
+                <!-- <div class="col-xs-12 col-md-6">
+                    <h3>Result</h3>
+        
+                    <form>
+                        <div class="form-group">
+                            <label>Select Country</label><br>
+        
+                            <div id="basic" data-input-name="country"></div>
+                        </div>
+                    </form>
+                </div> -->
+
 
                 </div>
                 <div class="row mt-5 mobile-margin-fix1">
@@ -137,7 +164,7 @@
                           <div class="col-sm-3 col-3 left-div" id="genderContainer" style="display: none">
                               <label for="gender">Sex</label>
                               <select class="form-control em-input select" id="gender">
-                                  <option value=""></option>
+                                  <option selected disabled value="">Sex</option>
                                   <option value="male">Male</option>
                                   <option value="memale">Female</option>
                                   <option value="other">Other</option>
@@ -145,11 +172,12 @@
                           </div>
                           <div class="col-sm-4 col-4" id="countryContainer">
                               <label for="country_code">Country</label>
-                              <input required type="text" class="form-control wid em-input" id="country_code" placeholder="+234">
+                              <!-- <input required type="text" class="form-control wid em-input" id="country_code" placeholder="+234"> -->
+                              <div id="basic" data-input-name="country"></div>
                           </div>
                           <div class="col-sm-8 col-8" style="padding-left: 0" id="orgPhoneContainer">
                               <label for="phone">Phone No.</label>
-                              <input required type="text" class="form-control em-input" id="organization_phone" placeholder="">
+                              <input required type="text" class="form-control em-input" id="organization_phone" placeholder="Enter No.">
                           </div>
                       </div>
                   </div>
@@ -160,6 +188,9 @@
                       <label for="industry">Industry</label>
                       <select required class="form-control em-input select" name="industry" id="company_category">
                           <option disabled selected value="">Select Industry</option>
+                          <% data.forEach(function(category){ %>
+                            <option value="<%= category.category_id %>"><%= category.category_name %></option>
+                          <% }); %>
                       </select>
                   </div>
 
@@ -203,12 +234,45 @@
                 <span class="small" id="noImage" style="display: none; color: #dc3545">! Please upload an image</span>
             </div>
         </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       </form>
     </main>
 
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
    <script src="/js/custom-js/toast.js"></script>
-   <script src="/js/custom-js/employer-profile-creation.js"></script>
+
+   <!-- <script src="https://code.jquery.com/jquery-1.11.2.js"></script> -->
+   <script src="/./js/bootstrap-js/jquery.js"></script>
+   <script src="/js/bootstrap-js/jquery.flagstrap.js"></script>
+   <script>
+       $('#basic').flagStrap({
+            placeholder: {
+                value: "",
+                text: "N/A"
+            },
+            labelMargin: "4px",
+            onSelect: function (value, element) {
+                if (value.trim() === '') return;
+
+                const selected = () => {
+                    const [btn] = document.querySelectorAll('.flagstrap button');
+                    const [selectedLeft] = btn.querySelectorAll('span');
+                    [ , className, flagName, ] = selectedLeft.innerHTML.split(' ');
+                    newValue = `<i ${className} ${flagName} style='margin-right: 4px;'></i>${value}`;
+                    selectedLeft.innerHTML = newValue;
+                };
+                setTimeout(selected, 35);
+            }
+       });
+       const [btn] = document.querySelectorAll('.flagstrap button');
+       btn.className = 'btn-default btn-md dropdown-toggle form-control';
+       const [selectedLeft] = btn.querySelectorAll('span');
+       selectedLeft.style.fontSize = '14px';
+       selectedLeft.style.marginLeft = '-10px';
+       selectedLeft.style.color = '#A0A0A0';
+   </script>
+   <script src="/js/custom-js/countries.js"></script>    
+   <script src="/js/custom-js/employer-profile-creation.js"></script>    
   <%- include('../Templates/footer') %>
   </body>
 </html>

@@ -22,3 +22,35 @@ body h1 {
 a:hover {
   text-decoration: none;
 }
+
+.fa-check{
+color: #5AAEFF !important;
+}
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+  .card-description{
+    min-height: 81px;
+  }
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  .card-description{
+    min-height: 100px;
+  } 
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  .card-description{
+    min-height: 100px;
+
+  }
+ }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+  .card-description{
+    min-height: 81px;
+  }
+ }

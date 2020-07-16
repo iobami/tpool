@@ -1,5 +1,6 @@
 // IDs of the three methods of payment buttons
 let formIDs = ['visa-card__form', 'master-card__form', 'paypal__form'];
+let priceTotal = parseFloat(document.getElementById("total").innerText);
 
 //  Toggle betyween forms
 function toggleForm(form){
@@ -70,3 +71,41 @@ getForm.addEventListener('submit', function(e){
     // alert('got here');
 })
 
+// This is to prevent any input that is not a number 
+// from being inputed to the form
+const cardNumberKey = ((evt)=>{
+    // Only ASCII charactar in that range allowed 
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+        return false; 
+    return true; 
+})
+
+// This is to add hyphen for the card number
+function addHyphen (element) {
+    let ele = document.getElementById(element.id);
+    ele = ele.value.split('-').join('');    // Remove dash (-) if mistakenly entered.
+
+    let finalVal = ele.match(/.{1,4}/g).join('-');
+    document.getElementById(element.id).value = finalVal;
+}
+const handleSummary = (e) =>{
+    // Get the number of months and 
+    // update the price summary
+
+    let {value} = e.target;
+    value = parseFloat(value);
+    document.getElementById("total").innerText = (priceTotal * value);
+
+
+}
+const handleSubmit = ()=>{
+    // Summary of all the data to be returned for payment
+    const noOfMonths = document.getElementById("numMonths").value;
+    const cardNum = document.getElementById("card-number").value;
+    const expMonth = document.getElementById("expiration-date__month").value;
+    const expYear = document.getElementById("expiration-date__year").value;
+    const cvv = document.getElementById("cvv").value;
+    const priceTotal = document.getElementById("total").innerText;
+    console.log(noOfMonths, cardNum, expMonth, expYear, cvv, priceTotal)
+}

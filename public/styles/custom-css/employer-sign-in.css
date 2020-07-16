@@ -62,13 +62,9 @@ input::placeholder {
   line-height: 50px;
 }
 
-#signup-btn {
-  background: #ffffff;
-  /* width: 572px;
-    height: 68px; */
-  border: 2px solid #00aeff;
-  color: #00aeff;
-  font-weight: bolder;
+#signup-btn{
+  color: #ffffff;
+  border: 1px solid #00AEFF;
   box-sizing: border-box;
   border-radius: 5px;
 }
@@ -102,6 +98,10 @@ hr {
 .login-link:active {
   color: #084482;
   text-decoration: none;
+}
+
+.social-sign-in{
+  text-decoration: none !important;
 }
 
 .facebook-btn {
@@ -196,4 +196,14 @@ hr {
 .google-btn:hover {
   color: white;
   background: #f7220b;
+}
+/* form input[type=email] .invalid-value {
+  border: 1px solid palevioletred;
+  color: red;
+} */
+input .invalid{
+  border: 2px solid palevioletred !important;
+}
+input #email .form-control{
+  background: red;
 }

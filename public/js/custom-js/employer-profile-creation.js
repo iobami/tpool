@@ -1,36 +1,3 @@
-const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
-
-window.onload = (event) => {
-    if (userInformation === null) {
-        toaster('Token not found, please sign in.', 'error');
-        const redirect = () => {
-            return window.location.replace('/');
-        };
-        setTimeout(redirect, 2000);
-    }
-};
-
-const userInfo1 = JSON.parse(atob(userInformation.token.split('.')[1]));
-const { userTypeId, userRole } = userInfo1;
-
-const [navBar] = document.getElementsByClassName('navbar-brand');
-
-if (userRole === 'ROL-EMPLOYEE') {
-    if (userTypeId)  {
-        navBar.href = '/employee-dashboard';
-    } else {
-        navBar.href = '/employee-profileCreation';
-    }
-}
-
-if (userRole === 'ROL-EMPLOYER') {
-  if (userTypeId)  {
-      navBar.href = '/employer-dashboard';
-  } else {
-      navBar.href = '/employer-create-profile';
-  }
-}
-
 // store data after image is read
 let logoData;
 
@@ -104,47 +71,6 @@ const getEmployerType = () => {
   }
 };
 
-// Get data for the company types
-const requestOptions = {
-  headers: {
-    "Content-Type": "application/json; charset=UTF-8",
-    "User-Agent": "Developers Lancers",
-    Authorization: `Bearer ${userInformation.token}`,
-  }
-};
-const url = 'https://api.lancers.app/v1/company/category';
-async function getData(){
-  try {
-    const companyTypes = await fetch(url , requestOptions);
-    const response = await companyTypes.json();
-
-    if (response.data) {
-        let dropdown = document.getElementById('company_category');
-        let option;
-        response.data.forEach((data) => {
-            option = document.createElement('option');
-            option.innerHTML = data.category_name;
-            option.value = data.category_id;
-            dropdown.appendChild(option);
-        });
-    } else {
-        let dropdown = document.getElementById('company_category');
-        option = document.createElement('option');
-        option.innerHTML = 'N/A';
-        option.value = 'none';
-        dropdown.appendChild(option);
-        toaster(response.message, 'error');
-        removeToaster(4000);
-    }
-
-  } catch (error) {
-    // Display error
-    toaster(error.message, 'error');
-    removeToaster(4000);
-  }
-}
-getData().then();
-
 (function() {
     'use strict';
     window.addEventListener('load', function() {
@@ -153,8 +79,8 @@ getData().then();
         // Loop over them and prevent submission
         Array.prototype.filter.call(forms, function(form) {
             form.addEventListener('submit', async function(event) {
-                const [empType, gender, industryType] = document.querySelectorAll('form select');
-                const [formData] = document.querySelectorAll('form');
+                const [empType, gender, , industryType] = document.querySelectorAll('form select');
+                const [formData] = document.querySelectorAll('#employerProfileForm');
                 const uploadBtn = document.getElementById('uploadProfile');
                 const loader = document.getElementById('loader');
 
@@ -187,18 +113,20 @@ getData().then();
                             toaster(`! ${response.message}`, 'success');
                             removeToaster(2000);
                             const redirect = () => {
-                                window.location.replace('/employer-dashboard');
+                                window.location.replace('/employer/dashboard');
                                 loader.style.display = 'none';
                                 uploadBtn.style.display = 'inline-block';
                             };
                             setTimeout(redirect, 2000);
                         } else {
+                            console.log(response.message);
                             toaster(`! ${response.message}`, 'error');
-                            removeToaster(4000);
+                            removeToaster(4000);                    
                             loader.style.display = 'none';
                             uploadBtn.style.display = 'inline-block';
                         }
                     } catch (e) {
+                        console.log(e.message);
                         toaster(`! ${e.message}`, 'error');
                         removeToaster(4000);
                     } finally {
@@ -220,52 +148,64 @@ getData().then();
 })();
 
 const createProfile = async (userData) => {
-    const profileUrl = 'https://api.lancers.app/v1/employer/create';
+    const profileUrl = '/employer/create';
+    const [csrf] = document.getElementsByName('_csrf');
 
     try {
+        axios.defaults.xsrfCookieName = 'csrftoken';
+        axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+
         const { data } = await axios({
             method: 'POST',
             url: profileUrl,
             headers: {
                 "Content-Type": "application/json; charset=UTF-8",
-                Authorization: `Bearer ${userInformation.token}`,
+                'csrf-token': csrf.value,
             },
             data: userData
         });
 
         return data;
     } catch (e) {
-        return e;
+        return e.response.data;
+    }
+};
+
+const getCountryName = (countryObject, countryCode) => {
+    for (const [key, value] of Object.entries(countryObject)) {
+        if (countryCode === key) return value;
     }
 };
 
 const getUserDetails = (empType, gender, industryType, formData) => {
-    const inputTags = formData.querySelectorAll('input');
+    const inputTags = formData.querySelectorAll('#employerProfileForm input');
     const [description] = formData.querySelectorAll('textarea');
 
-    if (empType.toLowerCase() === 'company') {
+    const [ , , orgName, , , orgEmail, orgPhone, orgWebsite, orgAddress] = inputTags;
+    const [btn] = document.querySelectorAll('.flagstrap button');
+    const [selectedLeft] = btn.querySelectorAll('span');
+    const country = getCountryName(countries, selectedLeft.innerText.trim());
+    console.log(country);
 
-      const [ , , orgName, , , orgEmail, orgCountry, orgPhone, orgWebsite, orgAddress] = inputTags;
+    if (empType.toLowerCase() === 'company') {
 
         return getFormData({
             photo: logoData,
             employerType: empType,
-            organizationName: orgName.value,
-            employerName: null,
+            employerName: orgName.value,
             companyCategoryId: industryType,
             description: description.value,
             gender: null,
-            companyCountry: orgCountry.value,
+            companyCountry: country,
             companyPhone: orgPhone.value,
             companyEmail: orgEmail.value,
             companyAddress: orgAddress.value,
             website: orgWebsite.value,
-            userId: userInfo1.userId
         });
 
     } else {
       // return employer data
-        const [ , , , firstName, lastName, orgEmail, orgCountry, orgPhone, orgWebsite, orgAddress] = inputTags;
+        const [ , , , firstName, lastName, orgEmail, orgPhone, orgWebsite, orgAddress] = inputTags;
 
         return getFormData({
             photo: logoData,
@@ -275,34 +215,32 @@ const getUserDetails = (empType, gender, industryType, formData) => {
             companyCategoryId: industryType,
             description: description.value,
             gender: gender,
-            companyCountry: orgCountry.value,
+            companyCountry: country,
             companyPhone: orgPhone.value,
             companyEmail: orgEmail.value,
             companyAddress: orgAddress.value,
             website: orgWebsite.value,
-            userId: userInfo1.userId
         });
     }
 };
 
 const getFormData = ({ photo, employerType, organizationName, employerName, companyCategoryId,
                          description, gender, companyCountry, companyPhone, companyEmail,
-                         companyAddress, website, userId
+                         companyAddress, website
                     }) => {
 
     const fileUploadData = new FormData();
     fileUploadData.append('photo', photo);
-    fileUploadData.append('employerType', employerType);
-    fileUploadData.append('employerName', employerName);
-    fileUploadData.append('companyCategoryId', companyCategoryId);
+    fileUploadData.append('employer_type', employerType);
+    fileUploadData.append('employer_name', employerName);
+    fileUploadData.append('company_category_id', companyCategoryId);
     fileUploadData.append('description', description);
-    fileUploadData.append('gender', gender);
-    fileUploadData.append('companyCountry', companyCountry);
-    fileUploadData.append('companyPhone', companyPhone);
-    fileUploadData.append('companyEmail', companyEmail);
-    fileUploadData.append('companyAddress', companyAddress);
+    fileUploadData.append('sex', gender);
+    fileUploadData.append('employer_country', companyCountry);
+    fileUploadData.append('employer_phone', companyPhone);
+    fileUploadData.append('employer_email', companyEmail);
+    fileUploadData.append('employer_address', companyAddress);
     fileUploadData.append('website', website);
-    fileUploadData.append('userId', userId);
 
     return fileUploadData;
 };

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../../Templates/head') %>
+    <link href="../../styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
+    <link
+      href="../../styles/custom-css/employer-top-nav.css"
+      rel="stylesheet"
+    />
+    <link href="../../styles/custom-css/side-nav.css" rel="stylesheet" />
+    <link href="../../styles/custom-css/admin-dash.css" rel="stylesheet" />
+  </head>
+
+  <body class="d-flex flex-column">
+    <%- //include('../../Templates/admin-header') %>
+
+    <div
+      class="container d-flex flex-column align-items-center justify-content-center bt-"
+    >
+      <div class="links d-flex align-items-center justify-content-between my-4">
+        <a href="../packages" class="btn btn-outline-primary">
+          Return to All Packages</a
+        >
+
+        <!-- Update Package Button -->
+        <a href="" class="btn btn-info mx-2"> Edit Package</a>
+
+        <!-- Delete Package Button -->
+        <a href="" class="btn btn-danger mx-2">Delete Package</a>
+      </div>
+      <div class="package-details mt-5">
+        <h2 class="text-center">
+          Package Details: <%- data.package.package_name %>
+        </h2>
+
+        <div class="container-fluid">
+          <p class="details">
+            <strong>Package Name:</strong> <%- data.package.package_name %>
+          </p>
+          <p class="details">
+            <strong>Price:</strong> <%- data.package.price %>
+          </p>
+          <p class="details">
+            <strong>Description:</strong> <%- data.package.description %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="body__click"></div>
+    <style>
+      form {
+        max-width: 100%;
+        width: max-content;
+      }
+
+      input[type='number']::-webkit-inner-spin-button,
+      input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      form .form-group,
+      .form-control-lg {
+        width: 100% !important;
+      }
+
+      textarea {
+        height: 10rem !important;
+      }
+
+      .card-body {
+        min-height: 3rem !important;
+        max-height: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      button.hire-btn {
+        background-color: #00aeff;
+      }
+    </style>
+    <script src="../../js/bootstrap-js/popper.js"></script>
+    <script src="../../js/bootstrap-js/jquery.js"></script>
+    <script src="../../js/bootstrap-js/bootstrap.js"></script>
+    <script>
+      $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus');
+      });
+    </script>
+    <script src="../../js/custom-js/side-nav.js"></script>
+  </body>
+</html>
