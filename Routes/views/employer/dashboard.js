@@ -23,6 +23,7 @@ const {
   auth_uploaded,
   auth_disapproved,
   auth_approved,
+  auth_firstLogin,
 } = require('../../../Middleware/employerAuth');
 //employer dashboard
 appRoute.get(
@@ -83,10 +84,7 @@ appRoute.get(
   '/employer/profile/create',
   auth_main,
   auth_validuser,
-  auth_pending,
-  auth_uploaded,
-  auth_disapproved,
-  auth_approved,
+  auth_firstLogin,
   //the main contoller
   employerCreateProfile,
 ); //there will be a middleware

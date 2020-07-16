@@ -23,13 +23,30 @@ module.exports = {
       });
       //set the user type session
       req.session.usertype = getuser.dataValues.role_id;
-      req.session.block = getuser.dataValues.role_id;
+      req.session.block = getuser.dataValues.block;
       if (
         !getuser ||
         req.session.usertype != 'ROL-EMPLOYER' ||
-        req.session.block === 'block'
+        req.session.block === 1
       )
         return res.redirect('/employer/login');
+      next();
+    } catch (error) {
+      res.send(error);
+    }
+  },
+  auth_firstLogin: async (req, res, next) => {
+    try {
+      //check if user has created profile
+      const getemployer = await employerss.findOne({
+        where: {
+          user_id: req.session.userId,
+        },
+        include: [mainuser, company_type],
+      });
+      //go back to file creation page
+      if (getemployer) return res.redirect('/employer/dashboard');
+
       next();
     } catch (error) {
       res.send(error);
