@@ -82,9 +82,10 @@ exports.getAll = async (req, res) => {
         as: 'features',
       },
     });
+    const allFeatures = await Feature.findAll();
 
     //Success Response
-    const data = await packages;
+    const data = { packages, allFeatures };
     res.render('Pages/admin/getAllpackages', {
       pageName: 'Packages',
       path: 'packages',
@@ -292,12 +293,12 @@ exports.createFeature = async (req, res) => {
     });
     if (check) {
       req.flash('error', 'This Feature already exists');
-      res.redirect('/admin/features/create');
+      res.redirect('/admin/packages');
     } else {
       await Feature.create({ description, feature_id });
 
       req.flash('success', 'Feature created successfully');
-      res.redirect('admin/packages');
+      res.redirect('/admin/packages');
     }
   } catch (error) {
     console.log(error);
