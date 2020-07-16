@@ -8,7 +8,7 @@ const {
 
 
 // create package routes
-appRoute.get('/admin/packages/create', get_create);
+// appRoute.get('/admin/packages/create', get_create);
 appRoute.post('/admin/packages/create', create);
 
 //update package routes

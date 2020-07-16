@@ -16,7 +16,7 @@ exports.getAll = async (req, res) => {
 
     //Success Response
     const data = await packages;
-    res.render('pages/eemployer/getAllpackages', {
+    res.render('Pages/employer/getAllpackages', {
       pageName: 'Packages',
       data
     })
@@ -47,7 +47,7 @@ exports.packageGet = async (req, res) => {
 
     //Success Response
     const data = await query;
-    res.render('pages/employer/package-detail', {
+    res.render('Pages/employer/package-detail', {
       pageName: `${data.package_name} Package`,
       data
     })

@@ -14,7 +14,14 @@
 
     <section class="admin__dashboard p-4">
       <h2 class="dashboard__heading text-center">Manage Packages</h2>
-
+      <div>
+        <% if(error != '') { %>
+          <p><%= error%></p>
+        <% }
+        if(success != '') { %>
+          <p><%= success%></p>
+        <% } %>
+      </div>
       <div class="container-fluid">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
@@ -87,9 +94,11 @@
                     <div class="card mb-4 box-shadow">
                       <div class="card-header">
                         <h4 class="my-0 font-weight-normal">
-                          <%- package.package_name.split(' ') .map(w =>
-                          w[0].toUpperCase() + w.substr(1).toLowerCase())
-                          .join(' ') %>
+                          <%- package.package_name
+                          <!-- //.split(' ') .map(w =>
+                          //w[0].toUpperCase() + w.substr(1).toLowerCase())
+                          //.join(' ')  -->
+                          %>
                         </h4>
                       </div>
                       <div class="card-body">

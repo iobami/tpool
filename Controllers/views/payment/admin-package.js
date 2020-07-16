@@ -3,13 +3,23 @@
 /* eslint-disable camelcase */
 /* eslint-disable object-curly-newline */
 const { uuid } = require('uuidv4');
+const flash = require('connect-flash');
 
 const { Package, Feature } = require('../../../Models/index');
 
 exports.create = async (req, res) => {
   try {
     const package_id = uuid();
-    const { package_name, price, description, features } = req.body;
+    const { package_name, price, description } = req.body;
+
+    //check for empty fields...
+    if(
+      !package_name || !price || !description || 
+      package_name == '' || price == '' || description == '' 
+    ) {
+      req.flash('error', 'Ensure all fields are filled.')
+      res.redirect('back')
+    }
 
     // check if package name already exist
     const query = await Package.findOne({
@@ -18,7 +28,7 @@ exports.create = async (req, res) => {
 
     if (query) {
       req.flash('error', 'This Package already exists.');
-      return res.redirect('/admin/packages/create');
+      return res.redirect('/admin/packages');
     } else {
       const result = await Package.create({
         package_name,
@@ -26,27 +36,6 @@ exports.create = async (req, res) => {
         description,
         package_id,
       });
-
-      //now we add features
-      //first, check if one or more features were checked
-      //then add accordingly
-      if (features) {
-        if (features.length == 0) {
-          req.flash(
-            'error',
-            'Kindly select a supported Feature for this Package',
-          );
-          return res.redirect('/admin/packages/create');
-        } else if (features.length == 1) {
-          const feature = await Feature.findByPk(features);
-          await result.addFeature(feature);
-        } else {
-          features.forEach(async (id) => {
-            const feature = await Feature.findByPk(id);
-            await result.addFeature(feature);
-          });
-        }
-      }
       //Success Response
       req.flash('success', 'Package created Successfully');
       return res.redirect('./packages');
@@ -55,22 +44,6 @@ exports.create = async (req, res) => {
     console.log(error);
     req.flash('error', 'Something went wrong');
     return res.redirect('/admin/packages/create');
-  }
-};
-
-exports.get_create = async (req, res) => {
-  try {
-    const features = await Feature.findAll();
-
-    const data = await features;
-    res.render('Pages/admin/package-create', {
-      pageName: 'Package Create Form',
-      path: 'packages',
-      data,
-    });
-  } catch (error) {
-    req.flash('error', 'Something went wrong');
-    return res.redirect('back');
   }
 };
 
@@ -88,10 +61,13 @@ exports.getAll = async (req, res) => {
     res.render('Pages/admin/getAllpackages', {
       pageName: 'Packages',
       path: 'packages',
+      error: req.flash('error'),
+      success: req.flash('success'),
       data,
     });
   } catch (error) {
-    req.flash('error', 'Something went wrong');
+    console.log(error)
+    req.flash('error', '');
     return res.redirect('back');
   }
 };
@@ -119,6 +95,8 @@ exports.packageGet = async (req, res) => {
     res.render('Pages/admin/package-detail', {
       pageName: `${package.package_name} Package`,
       path: 'packages',
+      error: req.flash('error'),
+      success: req.flash('success'),
       data: {
         package,
         features,
@@ -133,7 +111,16 @@ exports.packageGet = async (req, res) => {
 
 exports.packageUpdate = async (req, res) => {
   try {
-    const { package_name, price, description, duration, features } = req.body;
+    const { package_name, price, description } = req.body;
+
+      //check for empty fields...
+      if(
+        !package_name || !price || !description || 
+        package_name == '' || price == '' || description == '' 
+      ) {
+        req.flash('error', 'Ensure all fields are filled.')
+        res.redirect('back')
+      }
 
     // check if package name already exist
     const query = await Package.findOne({
@@ -250,7 +237,7 @@ exports.addAFeature = async (req, res) => {
     return res.redirect('back');
   } catch (error) {
     req.flash('error', 'Something went wrong');
-    return res.redirect('/admin/packages');
+    return res.redirect('back');
   }
 };
 
@@ -274,10 +261,11 @@ exports.removeAFeature = async (req, res) => {
     //Success Response
     req.flash('success', 'Feature removed successfully');
     return res.redirect('back');
+
   } catch (error) {
     console.log(error);
     req.flash('error', 'Something went wrong');
-    return res.redirect('/admin/packages');
+    return res.redirect('back');
   }
 };
 
@@ -287,21 +275,21 @@ exports.createFeature = async (req, res) => {
     const { description } = req.body;
 
     //check for a duplicate
-    const check = await Feature.findOne({
+    const checkFeature = await Feature.findOne({
       where: { description },
     });
-    if (check) {
+    if (checkFeature) {
       req.flash('error', 'This Feature already exists');
-      res.redirect('/admin/features/create');
+      res.redirect('back');
     } else {
       await Feature.create({ description, feature_id });
 
       req.flash('success', 'Feature created successfully');
-      res.redirect('admin/packages');
+      res.redirect('back');
     }
   } catch (error) {
     console.log(error);
     req.flash('error', 'Something went wrong');
-    return res.redirect('/admin/packages');
+    return res.redirect('back');
   }
 };
