@@ -1,38 +1,3 @@
-// const userInformation = JSON.parse(localStorage.getItem("tpAuth"));
-const userInformation = '';
-
-// window.onload = (event) => {
-//     if (userInformation === null) {
-//         toaster('Token not found, please sign in.', 'error');
-//         const redirect = () => {
-//             return window.location.replace('/');
-//         };
-//         setTimeout(redirect, 2000);
-//     }
-// };
-
-// const userInfo1 = JSON.parse(atob(userInformation.token.split('.')[1]));
-const userInfo1 = { userTypeId: '', userRole: '' };
-const { userTypeId, userRole } = userInfo1;
-
-const [navBar] = document.getElementsByClassName('navbar-brand');
-
-if (userRole === 'ROL-EMPLOYEE') {
-    if (userTypeId)  {
-        navBar.href = '/employee-dashboard';
-    } else {
-        navBar.href = '/employee-profileCreation';
-    }
-}
-
-if (userRole === 'ROL-EMPLOYER') {
-  if (userTypeId)  {
-      navBar.href = '/employer-dashboard';
-  } else {
-      navBar.href = '/employer-create-profile';
-  }
-}
-
 // store data after image is read
 let logoData;
 
@@ -114,8 +79,8 @@ const getEmployerType = () => {
         // Loop over them and prevent submission
         Array.prototype.filter.call(forms, function(form) {
             form.addEventListener('submit', async function(event) {
-                const [empType, gender, industryType] = document.querySelectorAll('form select');
-                const [formData] = document.querySelectorAll('form');
+                const [empType, gender, , industryType] = document.querySelectorAll('form select');
+                const [formData] = document.querySelectorAll('#employerProfileForm');
                 const uploadBtn = document.getElementById('uploadProfile');
                 const loader = document.getElementById('loader');
 
@@ -206,13 +171,23 @@ const createProfile = async (userData) => {
     }
 };
 
+const getCountryName = (countryObject, countryCode) => {
+    for (const [key, value] of Object.entries(countryObject)) {
+        if (countryCode === key) return value;
+    }
+};
+
 const getUserDetails = (empType, gender, industryType, formData) => {
-    const inputTags = formData.querySelectorAll('input');
+    const inputTags = formData.querySelectorAll('#employerProfileForm input');
     const [description] = formData.querySelectorAll('textarea');
 
-    if (empType.toLowerCase() === 'company') {
+    const [ , , orgName, , , orgEmail, orgPhone, orgWebsite, orgAddress] = inputTags;
+    const [btn] = document.querySelectorAll('.flagstrap button');
+    const [selectedLeft] = btn.querySelectorAll('span');
+    const country = getCountryName(countries, selectedLeft.innerText.trim());
+    console.log(country);
 
-      const [ , , orgName, , , orgEmail, orgCountry, orgPhone, orgWebsite, orgAddress] = inputTags;
+    if (empType.toLowerCase() === 'company') {
 
         return getFormData({
             photo: logoData,
@@ -221,17 +196,16 @@ const getUserDetails = (empType, gender, industryType, formData) => {
             companyCategoryId: industryType,
             description: description.value,
             gender: null,
-            companyCountry: orgCountry.value,
+            companyCountry: country,
             companyPhone: orgPhone.value,
             companyEmail: orgEmail.value,
             companyAddress: orgAddress.value,
             website: orgWebsite.value,
-            userId: userInfo1.userId
         });
 
     } else {
       // return employer data
-        const [ , , , firstName, lastName, orgEmail, orgCountry, orgPhone, orgWebsite, orgAddress] = inputTags;
+        const [ , , , firstName, lastName, orgEmail, orgPhone, orgWebsite, orgAddress] = inputTags;
 
         return getFormData({
             photo: logoData,
@@ -241,19 +215,18 @@ const getUserDetails = (empType, gender, industryType, formData) => {
             companyCategoryId: industryType,
             description: description.value,
             gender: gender,
-            companyCountry: orgCountry.value,
+            companyCountry: country,
             companyPhone: orgPhone.value,
             companyEmail: orgEmail.value,
             companyAddress: orgAddress.value,
             website: orgWebsite.value,
-            userId: userInfo1.userId
         });
     }
 };
 
 const getFormData = ({ photo, employerType, organizationName, employerName, companyCategoryId,
                          description, gender, companyCountry, companyPhone, companyEmail,
-                         companyAddress, website, userId
+                         companyAddress, website
                     }) => {
 
     const fileUploadData = new FormData();
@@ -268,7 +241,6 @@ const getFormData = ({ photo, employerType, organizationName, employerName, comp
     fileUploadData.append('employer_email', companyEmail);
     fileUploadData.append('employer_address', companyAddress);
     fileUploadData.append('website', website);
-    fileUploadData.append('user_id', userId);
 
     return fileUploadData;
 };
@@ -321,6 +293,7 @@ const readImage = () => {
 const labelText = (value, error) => {
     const labelText = document.getElementById('logo');
     labelText.value = value
+    
     if (error) {
         labelText.style.color = '#dc3545';
     } else {
