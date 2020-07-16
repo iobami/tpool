@@ -92,75 +92,72 @@ const getEmployerType = () => {
   }
 };
 
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Get the forms we want to add validation styles to
-        const forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', async function(event) {
-                const [empType, gender, , industryType] = document.querySelectorAll('form select');
-                const [formData] = document.querySelectorAll('#employerProfileForm');
-                const uploadBtn = document.getElementById('uploadProfile');
-                const loader = document.getElementById('loader');
+(function () {
+  'use strict';
+  window.addEventListener(
+    'load',
+    function () {
+      // Get the forms we want to add validation styles to
+      const forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener(
+          'submit',
+          async function (event) {
+            const [empType, gender, , industryType] = document.querySelectorAll(
+              'form select',
+            );
+            const [formData] = document.querySelectorAll(
+              '#employerProfileForm',
+            );
+            const uploadBtn = document.getElementById('uploadProfile');
+            const loader = document.getElementById('loader');
 
-                const imageError = document.getElementById('noImage');
-                imageError.style.display = 'none';
+            const imageError = document.getElementById('noImage');
+            imageError.style.display = 'none';
 
-                let addValidation = true;
+            let addValidation = true;
 
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                } else if (form.checkValidity()) {
-                    event.preventDefault();
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            } else if (form.checkValidity()) {
+              event.preventDefault();
 
-                    if (checkUploadedImage()) {
-                        imageError.style.display = 'block';                        
-                        return;
-                    }
+              if (checkUploadedImage()) {
+                imageError.style.display = 'block';
+                return;
+              }
 
-                    uploadBtn.style.display = 'none';
-                    loader.style.display = 'inline-block';
+              uploadBtn.style.display = 'none';
+              loader.style.display = 'inline-block';
 
-                    try {
-                        const details = await getUserDetails(empType.value, gender.value, industryType.value, formData);
-                        const response = await createProfile(details);
-                        formData.className = 'needs-validation';
-                        addValidation = false;
+              try {
+                const details = await getUserDetails(
+                  empType.value,
+                  gender.value,
+                  industryType.value,
+                  formData,
+                );
+                const response = await createProfile(details);
+                formData.className = 'needs-validation';
+                addValidation = false;
 
-                        if (response.status === 'success') {
-                            toaster(`! ${response.message}`, 'success');
-                            removeToaster(2000);
-                            const redirect = () => {
-                                window.location.replace('/employer/dashboard');
-                                loader.style.display = 'none';
-                                uploadBtn.style.display = 'inline-block';
-                            };
-                            setTimeout(redirect, 2000);
-                        } else {
-                            console.log(response.message);
-                            toaster(`! ${response.message}`, 'error');
-                            removeToaster(4000);                    
-                            loader.style.display = 'none';
-                            uploadBtn.style.display = 'inline-block';
-                        }
-                    } catch (e) {
-                        console.log(e.message);
-                        toaster(`! ${e.message}`, 'error');
-                        removeToaster(4000);
-                    } finally {
-                        loader.style.display = 'none';
-                        uploadBtn.style.display = 'inline-block';
-                        formData.className = 'needs-validation';
-                        addValidation = false;
-                    }
-
-                }
-
-                if (addValidation) {
-                    form.classList.add('was-validated');
+                if (response.status === 'success') {
+                  toaster(`! ${response.message}`, 'success');
+                  removeToaster(2000);
+                  const redirect = () => {
+                    window.location.replace('/employer/dashboard');
+                    loader.style.display = 'none';
+                    uploadBtn.style.display = 'inline-block';
+                  };
+                  setTimeout(redirect, 2000);
+                } else {
+                  console.log(response.message);
+                  toaster(`! ${response.message}`, 'error');
+                  removeToaster(4000);
+                  loader.style.display = 'none';
+                  uploadBtn.style.display = 'inline-block';
                 }
               } catch (e) {
                 console.log(e.message);
@@ -212,77 +209,104 @@ const createProfile = async (userData) => {
 };
 
 const getCountryName = (countryObject, countryCode) => {
-    for (const [key, value] of Object.entries(countryObject)) {
-        if (countryCode === key) return value;
-    }
+  for (const [key, value] of Object.entries(countryObject)) {
+    if (countryCode === key) return value;
+  }
 };
 
 const getUserDetails = (empType, gender, industryType, formData) => {
-    const inputTags = formData.querySelectorAll('#employerProfileForm input');
-    const [description] = formData.querySelectorAll('textarea');
+  const inputTags = formData.querySelectorAll('#employerProfileForm input');
+  const [description] = formData.querySelectorAll('textarea');
 
-    const [ , , orgName, , , orgEmail, orgPhone, orgWebsite, orgAddress] = inputTags;
-    const [btn] = document.querySelectorAll('.flagstrap button');
-    const [selectedLeft] = btn.querySelectorAll('span');
-    const country = getCountryName(countries, selectedLeft.innerText.trim());
-    console.log(country);
+  const [
+    ,
+    ,
+    orgName,
+    ,
+    ,
+    orgEmail,
+    orgPhone,
+    orgWebsite,
+    orgAddress,
+  ] = inputTags;
+  const [btn] = document.querySelectorAll('.flagstrap button');
+  const [selectedLeft] = btn.querySelectorAll('span');
+  const country = getCountryName(countries, selectedLeft.innerText.trim());
+  console.log(country);
 
-    if (empType.toLowerCase() === 'company') {
+  if (empType.toLowerCase() === 'company') {
+    return getFormData({
+      photo: logoData,
+      employerType: empType,
+      employerName: orgName.value,
+      companyCategoryId: industryType,
+      description: description.value,
+      gender: null,
+      companyCountry: country,
+      companyPhone: orgPhone.value,
+      companyEmail: orgEmail.value,
+      companyAddress: orgAddress.value,
+      website: orgWebsite.value,
+    });
+  } else {
+    // return employer data
+    const [
+      ,
+      ,
+      ,
+      firstName,
+      lastName,
+      orgEmail,
+      orgPhone,
+      orgWebsite,
+      orgAddress,
+    ] = inputTags;
 
-        return getFormData({
-            photo: logoData,
-            employerType: empType,
-            employerName: orgName.value,
-            companyCategoryId: industryType,
-            description: description.value,
-            gender: null,
-            companyCountry: country,
-            companyPhone: orgPhone.value,
-            companyEmail: orgEmail.value,
-            companyAddress: orgAddress.value,
-            website: orgWebsite.value,
-        });
-
-    } else {
-      // return employer data
-        const [ , , , firstName, lastName, orgEmail, orgPhone, orgWebsite, orgAddress] = inputTags;
-
-        return getFormData({
-            photo: logoData,
-            employerType: empType,
-            organizationName: null,
-            employerName: `${firstName.value} ${lastName.value}`,
-            companyCategoryId: industryType,
-            description: description.value,
-            gender: gender,
-            companyCountry: country,
-            companyPhone: orgPhone.value,
-            companyEmail: orgEmail.value,
-            companyAddress: orgAddress.value,
-            website: orgWebsite.value,
-        });
-    }
+    return getFormData({
+      photo: logoData,
+      employerType: empType,
+      organizationName: null,
+      employerName: `${firstName.value} ${lastName.value}`,
+      companyCategoryId: industryType,
+      description: description.value,
+      gender: gender,
+      companyCountry: country,
+      companyPhone: orgPhone.value,
+      companyEmail: orgEmail.value,
+      companyAddress: orgAddress.value,
+      website: orgWebsite.value,
+    });
+  }
 };
 
-const getFormData = ({ photo, employerType, organizationName, employerName, companyCategoryId,
-                         description, gender, companyCountry, companyPhone, companyEmail,
-                         companyAddress, website
-                    }) => {
+const getFormData = ({
+  photo,
+  employerType,
+  organizationName,
+  employerName,
+  companyCategoryId,
+  description,
+  gender,
+  companyCountry,
+  companyPhone,
+  companyEmail,
+  companyAddress,
+  website,
+}) => {
+  const fileUploadData = new FormData();
+  fileUploadData.append('photo', photo);
+  fileUploadData.append('employer_type', employerType);
+  fileUploadData.append('employer_name', employerName);
+  fileUploadData.append('company_category_id', companyCategoryId);
+  fileUploadData.append('description', description);
+  fileUploadData.append('sex', gender);
+  fileUploadData.append('employer_country', companyCountry);
+  fileUploadData.append('employer_phone', companyPhone);
+  fileUploadData.append('employer_email', companyEmail);
+  fileUploadData.append('employer_address', companyAddress);
+  fileUploadData.append('website', website);
 
-    const fileUploadData = new FormData();
-    fileUploadData.append('photo', photo);
-    fileUploadData.append('employer_type', employerType);
-    fileUploadData.append('employer_name', employerName);
-    fileUploadData.append('company_category_id', companyCategoryId);
-    fileUploadData.append('description', description);
-    fileUploadData.append('sex', gender);
-    fileUploadData.append('employer_country', companyCountry);
-    fileUploadData.append('employer_phone', companyPhone);
-    fileUploadData.append('employer_email', companyEmail);
-    fileUploadData.append('employer_address', companyAddress);
-    fileUploadData.append('website', website);
-
-    return fileUploadData;
+  return fileUploadData;
 };
 
 const checkUploadedImage = () => {
