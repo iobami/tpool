@@ -756,8 +756,10 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   await user.save();
 
   req.flash('success', 'Password changed successfully');
+
   if (user.role_id === 'ROL-EMPLOYER') return res.redirect('/employer/login');
   if (user.role_id === 'ROL-EMPLOYEE') return res.redirect('/employee/login');
+
 });
 
 exports.resendVerificationLink = async (req, res) => {
