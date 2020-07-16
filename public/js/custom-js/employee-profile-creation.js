@@ -107,6 +107,7 @@ userTypee.addEventListener('change', () => {
   if (userTypee.value === 'non-hng') {
     HNGID.disabled = true;
     HNGID.classList.remove('visibility');
+    HNGID.setAttribute('value', '');
     // hngIdLabel.classList.remove('visibility');
   } else if (userTypee.value === 'hng') {
     HNGID.disabled = false;
@@ -115,6 +116,7 @@ userTypee.addEventListener('change', () => {
   } else {
     HNGID.disabled = true;
     HNGID.classList.remove('visibility');
+    HNGID.setAttribute('value', '');
     // hngIdLabel.classList.remove('visibility');
   }
 });

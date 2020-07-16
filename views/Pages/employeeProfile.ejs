@@ -54,7 +54,11 @@
                                     <div class="intern-main text-center mt-4">
                                         <h3 class="employeeName"><%= data.last_name %> <%= data.first_name%>
                                             <span>
+                                                <% if(data.verification_status === "Pending") { %>
+                                                <img src="" alt="">
+                                                <% } else { %>
                                                 <img src="/img/iprofile/ic_sharp-verified.svg" alt="">
+                                                <% } %>
                                             </span>
                                         </h3>
                                         <p class="employeeSkill"><%= data.track %></p>
