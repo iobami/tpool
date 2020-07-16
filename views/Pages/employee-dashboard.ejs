@@ -11,8 +11,15 @@
   <%- include('../includes/employeeHeader') %>
   <%- include('../includes/employeeSideNav') %>
 
+ 
+
   <main>
     <div class="container-fluid mt-3 pb-5">
+      <% if (errorMessage) { %>
+        <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+    <% }if (success && success.length > 0) { %>
+        <div role="alert" class="alert alert-success user-message"><%= success %></div>
+    <% } %>
       <div class="row mt-3 justify-content-center justify-content-md-start">
         <div class=" col-11 col-md-6">
           <h4 class="py-3 mb-0">Welcome <%= data.employee.username %>! </h4>
