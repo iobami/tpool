@@ -3,7 +3,7 @@ module.exports = {
     const { isLoggedIn, employerId } = req.session;
 
     if (isLoggedIn && employerId) {
-      res.redirect(`/employer/dashboard/${req.session.employeeId}`);
+      res.redirect(`/employer/dashboard/${req.session.employerId}`);
     } else if (isLoggedIn && !employerId) {
       return res.redirect('/employer/profile/create');
     }
@@ -11,6 +11,7 @@ module.exports = {
     return res.render('Pages/employer-sign-up', {
       pageName: 'Employer Registration',
       error: req.flash('error'),
+      isLoggedIn,
       errors: req.flash('errors'),
       success: req.flash('success'),
     });
@@ -20,7 +21,7 @@ module.exports = {
     const { isLoggedIn, employerId } = req.session;
 
     if (isLoggedIn && employerId) {
-      res.redirect('/employer/dashboard/');
+      res.redirect(`/employer/dashboard/${employerId}`);
     } else if (isLoggedIn && !employerId) {
       return res.redirect('/employer/profile/create');
     }
@@ -34,6 +35,7 @@ module.exports = {
     res.render('Pages/employer-signin', {
       path: '/employer/login',
       pageName: 'Employer Login',
+      isLoggedIn,
       errorMessage: message,
       success,
       oldInput: {
