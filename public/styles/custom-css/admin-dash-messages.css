@@ -1,9 +1,17 @@
+:root {
+  --m-blue: #084482;
+}
+
 body {
   background-color: #f8f8f8;
 }
 
 button:focus {
   outline: none;
+}
+
+#text-color {
+  color: var(--m-blue);
 }
 
 #main-content {
