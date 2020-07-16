@@ -20,10 +20,8 @@ module.exports = {
         where: {
           user_id: req.session.userId,
         },
-        include: [employerss],
       });
       //set the user type session
-      console.log(getuser.dataValues);
       req.session.usertype = getuser.dataValues.role_id;
       req.session.block = getuser.dataValues.role_id;
       if (

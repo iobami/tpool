@@ -9,4 +9,5 @@ route.put('/update/individual', employer_controller.updateindividual);
 route.get('/getemployer/:id', employer_controller.getemployerdetails);
 route.post('/uploaddocument', employer_controller.documentupload);
 route.get('/getdocument/:id', employer_controller.getemployersdocument);
+route.put('/update/individual', employer_controller.updateindividual);
 module.exports = route;

@@ -44,7 +44,7 @@ appRoute.get(
   auth_valid_profile,
   //the main controller
   employerProfile,
-); //there will be middlewarerlfkgfkh
+);
 
 appRoute.get(
   '/employer/dasboard/success',
@@ -135,7 +135,7 @@ appRoute.get(
   auth_uploaded,
   auth_disapproved,
   auth_approved,
-  //the main controller
+  //the main controllerclear
   employerCertificate,
 );
 

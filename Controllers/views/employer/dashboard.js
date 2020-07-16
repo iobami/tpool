@@ -83,6 +83,7 @@ getActive.then(getCookie);*/
     res.render('Pages/employer-profile-page', {
       pageName: 'Profile',
       EmployerInfo: req.session.details,
+      data: req.session.companycat,
     });
   },
 
