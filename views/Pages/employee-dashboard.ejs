@@ -4,6 +4,15 @@
 
 <head>
   <%- include('../includes/employeeHead') %>
+
+  <style>
+    .mr-2 img {
+      vertical-align: middle;
+      border-style: none;
+      max-width: 60px;
+      max-height: 60px;
+    }
+  </style>
 </head>
 
 <body>
@@ -11,119 +20,150 @@
   <%- include('../includes/employeeHeader') %>
   <%- include('../includes/employeeSideNav') %>
 
- 
+
 
   <main>
     <div class="container-fluid mt-3 pb-5">
+
       <% if (errorMessage) { %>
-        <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
-    <% }if (success && success.length > 0) { %>
-        <div role="alert" class="alert alert-success user-message"><%= success %></div>
-    <% } %>
-      <div class="row mt-3 justify-content-center justify-content-md-start">
-        <div class=" col-11 col-md-6">
-          <h4 class="py-3 mb-0">Welcome <%= data.employee.username %>! </h4>
-          <div
-            class="tp-card d-flex flex-column justify-content-between p-3 bg-dark-blue text-white">
-            <div>
-              <p class="mb-3">Track <%= data.employee.track %>
-              </p>
-              <p class="mb-3">Talent type: <%= data.employee.user_type %> </p>
-              <p class="mb-3">Availability:
-                <%= data.employee.availability.replace('-', " ") %>
-              </p>
-              <p class="mb-3">Profile views:
-                <%= data.employee.views %> </p>
-              <p class="mb-3">Verification status:
-                <%= data.employee.verification_status %> </p>
+      <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+      <% }if (success && success.length > 0) { %>
+      <div role="alert" class="alert alert-success user-message"><%= success %></div>
+      <% } %>
+
+      <div class="row mt-3 justify-content-center">
+
+        <div class="col-12 col-md-4 mb-5">
+          <div class="card card1">
+            <div class="row">
+              <div class="col p-3">
+                <p class="text-center font-weight-bold py-3 mb-0 pl-3 font-italic">TRACK</p>
+                <p class="text-center py-3 mb-0 pl-3"><%= data.employee.track %></p>
+              </div>
+              <div class="col p-3">
+                <p class="text-center font-weight-bold py-3 mb-0 pl-3 font-italic">TYPE</p>
+                <p class="text-center py-3 mb-0 pl-3"><%= data.employee.user_type %></p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-11 col-md-6 mt-5 mt-md-0">
-          <h4 class="py-3 mb-0">Portfolio </h4>
-          <div
-            class="tp-card d-flex flex-column justify-content-between p-3 bg-light-blue text-white">
-            <div>
-              <% if (data.portfolios) { %>
-              <ul class="list-unstyled">
-                <% data.portfolios.forEach(function(item){ %>
-                <li class="d-flex mb-3">
-                  <a href=<%= item.link %> class="portfolio-link">
-                    <%= item.title %>
-                  </a>
-                </li>
-                <% }); %>
-              </ul>
-              <%} else { %>
-              <p>Nothing added to portfolio yet</p>
-              <% } %>
-            </div>
-            <div class="text-right mt-3">
-              <a href="<%= portfolioPath %> "
-                class="btn-link btn-sm btn tp-btn-outline-primary">View
-                portfolio</a>
+
+        <div class="col-12 col-md-4 mb-5">
+          <div class="card card2">
+            <div class="row">
+              <div class="col p-3">
+                <p class="text-center font-weight-bold py-3 mb-0 pl-3 font-italic">AVAILABLE</p>
+                <p class="text-center py-3 mb-0 pl-3 text-uppercase"><%= data.employee.availability.replace('-', " ") %>
+                  %></p>
+              </div>
+              <div class="col p-3">
+                <p class="text-center font-weight-bold py-3 mb-0 pl-3 font-italic">STATUS</p>
+                <p class="text-center py-3 mb-0 pl-3"><%= data.employee.verification_status %> %></p>
+              </div>
             </div>
           </div>
         </div>
-        <div class=" col-11 col-md-6 mt-5">
-          <h4 class="py-3 mb-0">Team </h4>
-          <div
-            class="tp-card d-flex flex-column justify-content-between p-3 bg-light-blue text-white">
-            <div>
+
+        <div class="col-12 col-md-4 mb-5">
+          <div class="card card3 p-3">
+            <p class="py-3 mb-0 font-italic font-weight-bold">TEAM </p>
+            <div class="">
+              <div>
+                <% if (data.team) { %>
+                <p class="mb-3">You are a member of team
+                  <%= data.team.name %> </p>
+                <p class="mb-0">
+                  <%= data.team.employer.employer_name %> </p>
+                <% } else { %>
+                <p class="py-3 mb-0">You aren't in any team yet</p>
+                <% } %>
+              </div>
               <% if (data.team) { %>
-              <p class="mb-3">You are a member of team
-                <%= data.team.name %> </p>
-              <p class="mb-0">
-                <%= data.team.employer.employer_name %> </p>
-              <% } else { %>
-              <p class="mb-0">You are currently not in any team yet</p>
+              <div class="text-right mt-3">
+                <button class="btn btn-primary btn-white" data-toggle="modal" data-target="#teamModal">
+                  View team info
+                </button>
+              </div>
               <% } %>
             </div>
-            <% if (data.team) { %>
-            <div class="text-right mt-3">
-              <button class="btn-sm btn tp-btn-outline-primary"
-                data-toggle="modal" data-target="#teamModal">
-                View team info
-              </button>
-            </div>
-            <% } %>
           </div>
         </div>
-        <div class=" col-11 col-md-6 mt-5">
-          <h4 class="py-3 mb-0">Skills </h4>
-          <div
-            class="tp-card d-flex flex-column justify-content-between p-3 bg-dark-blue text-white ">
-            <div>
-              <% if (data.skills) { %>
-              <ul class="list-unstyled">
-                <% data.skills.forEach(function(skill){ %>
-                <li class="d-flex pb-3">
-                  <img class="img-fluid mr-3" src="/img/verified-icon.svg"
-                    alt="portfolio verified">
-                  <span class="d-inline-block"><%= skill.skill_description %>
-                  </span>
-                </li>
-                <% }); %>
-              </ul>
-              <%} else { %>
-              <h5>Nothing skills added yet</h5>
-              <% } %>
+
+        <div class="col-12 col-md-6 mb-5">
+          <div class="card p-3">
+            <h4 class="py-3 mb-0 font-weight-bold">Portfolio</h4>
+            <div class="">
+              <div>
+                <% if (data.portfolios.length) { %>
+                <ul class="list-group list-group-flush">
+                  <% data.portfolios.forEach(function(item) { %>
+                  <li class="list-group-item">
+                    <a href="<%= item.link %>" class="portfolio-link">
+                      <%= item.title %>
+                    </a>
+                  </li>
+                  <% }); %>
+                </ul>
+                <%} else { %>
+                <p class="">Nothing portfolio has been added yet</p>
+                <% } %>
+              </div>
+              <div class="text-right mt-3">
+                <a href="<%= portfolioPath %>" class="btn btn-primary">View
+                  portfolio</a>
+              </div>
             </div>
-            <% if (data.skills) { %>
-            <div class="text-right mt-3">
-              <a href="/employee/profile"
-                class="btn-link btn-sm btn tp-btn-outline-primary">View
-                skills</a>
-            </div>
-            <%} else { %>
-            <div class="text-right mt-3">
-              <a href="/employee/profile"
-                class="btn-link btn-sm btn tp-btn-outline-primary">Add
-                skills</a>
-            </div>
-            <% } %>
           </div>
         </div>
+
+        <div class="col-12 col-md-6 mb-5">
+          <div class="card p-3">
+            <h4 class="py-3 mb-0 font-weight-bold">Skills </h4>
+            <div class="">
+              <div>
+                <% if (data.skills > 0) { %>
+                <ul class="list-group list-group-flush">
+                  <% data.skills.forEach(function(skill){ %>
+                  <li class="list-group-item">
+                    <i class="fa fa-code-fork" aria-hidden="true"></i>
+                    <span class="d-inline-block"><%= skill.skill_description %>
+                    </span>
+                  </li>
+                  <% }); %>
+                </ul>
+                <%} else { %>
+                <p>No skill has been added yet</p>
+                <% } %>
+              </div>
+              <div class="text-right mt-3">
+                <a href="/employee/profile" data-toggle="modal" data-target="#addSkillModal" class="btn btn-primary">Add
+                  skills</a>
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="addSkillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered d-felx justify-content-center">
+                <div class="card">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form id="add-skills">
+                        <input class="form-control form-control-lg" type="text" name="skill_description"
+                          placeholder="e.g Bootstrap 4">
+                        <div class="d-flex justify-content-center">
+                          <button type="submit" class="btn btn-primary my-4">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
     <!-- <pre>
@@ -134,75 +174,67 @@
 
   <!-- Modal -->
   <% if (data.team) { %>
-    <div id="teamModal" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title"><%= data.team.name %>
-              (<%= data.team.status %> )
-            </h5>
-            <button type="button" class="close" data-dismiss="modal"
-              aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  <div id="teamModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><%= data.team.name %>
+            (<%= data.team.status %> )
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="img-container">
+            <img src=<%= data.team.employer.photo %> alt="employer photo" class="img-fluid rounded mx-auto">
           </div>
-          <div class="modal-body">
-            <div class="img-container">
-              <img src=<%= data.team.employer.photo %> alt="employer photo"
-                class="img-fluid rounded mx-auto">
+          <div class="mt-4">
+            <div class="mb-3 d-flex align-items-center">
+              <h6 class="mb-0 mr-2">Employer: </h6>
+              <p class="mb-0">
+                <%= data.team.employer.employer_name %> </p>
             </div>
-            <div class="mt-4">
-              <div class="mb-3 d-flex align-items-center">
-                <h6 class="mb-0 mr-2">Employer: </h6>
-                <p class="mb-0">
-                  <%= data.team.employer.employer_name %> </p>
-              </div>
-              <div class="mb-3 d-flex align-items-center">
-                <h6 class="mb-0 mr-2">Contact: </h6>
-                <p class="mb-0"><a
-                    href=<%= 'tel:'+data.team.employer.phone %>><%= data.team.employer.phone %>
-                  </a>,
-                  <a
-                    href=<%= 'mailto:'+data.team.employer.email %>><%= data.team.employer.email %></a>
+            <div class="mb-3 d-flex align-items-center">
+              <h6 class="mb-0 mr-2">Contact: </h6>
+              <p class="mb-0"><a href=<%= 'tel:'+data.team.employer.phone %>><%= data.team.employer.phone %>
+                </a>,
+                <a href=<%= 'mailto:'+data.team.employer.email %>><%= data.team.employer.email %></a>
+              </p>
+            </div>
+            <div class="mb-3 d-flex align-items-center">
+              <h6 class="mb-0 mr-2">Socials: </h6>
+              <div class="d-flex justify-content-between">
+                <% if (data.team.employer.social.twitter) { %>
+                <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.twitter %>>Twitter</a>
                 </p>
-              </div>
-              <div class="mb-3 d-flex align-items-center">
-                <h6 class="mb-0 mr-2">Socials: </h6>
-                <div class="d-flex justify-content-between">
-                  <% if (data.team.employer.social.twitter) { %>
-                  <p class="mb-0 mr-2"><a
-                      href=<%= data.team.employer.social.twitter %>>Twitter</a>
-                  </p>
-                  <% } %>
-                  <% if (data.team.employer.social.facebook) { %>
-                  <p class="mb-0 mr-2"><a
-                      href=<%= data.team.employer.social.facebook %>>Facebook</a>
-                  </p>
-                  <% } %>
-                  <% if (data.team.employer.social.instagram) { %>
-                  <p class="mb-0 mr-2"><a
-                      href=<%= data.team.employer.social.instagram %>>Instagram</a>
-                  </p>
-                  <% } %>
-                  <% if (data.team.employer.social.linkedin) { %>
-                  <p class="mb-0 mr-2"><a
-                      href=<%= data.team.employer.social.linkedin %>>LinkedIn</a>
-                  </p>
-                  <% } %>
-                </div>
+                <% } %>
+                <% if (data.team.employer.social.facebook) { %>
+                <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.facebook %>>Facebook</a>
+                </p>
+                <% } %>
+                <% if (data.team.employer.social.instagram) { %>
+                <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.instagram %>>Instagram</a>
+                </p>
+                <% } %>
+                <% if (data.team.employer.social.linkedin) { %>
+                <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.linkedin %>>LinkedIn</a>
+                </p>
+                <% } %>
               </div>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary"
-              data-dismiss="modal">Close</button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
+  </div>
   <% } %>
-  
-  
-  <%- include('../Templates/flashmessagesclear') %>  
+
+
+  <%- include('../Templates/flashmessagesclear') %>
 </body>
+
 </html>
