@@ -1,6 +1,6 @@
 const express = require('express');
 const appRoute = express.Router();
-const { authorizeAdmin } = require('../../../Middleware/admin-auth');
+const { authorizeAdmin, authorizeSuperAdmin } = require('../../../Middleware/admin-auth');
 const {
   faq,
   employerMessages,
@@ -26,7 +26,7 @@ appRoute.get('/admin/settings', authorizeAdmin, adminSettings);
 appRoute.get('/admin/all/employees', authorizeAdmin, allEmployees);
 appRoute.get('/employee/review', authorizeAdmin, employeeReview);
 appRoute.get('/admin/viewEmployee', authorizeAdmin, adminEmployee);
-appRoute.get('/admins/list', authorizeAdmin, adminsList);
+appRoute.get('/admin/lists', authorizeSuperAdmin, adminsList);
 appRoute.get('/admin/manage-packages', managePackages);
 
 module.exports = appRoute;
