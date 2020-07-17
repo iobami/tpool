@@ -1,3 +1,5 @@
+const model = require('../../Models/index');
+
 module.exports = {
   home: (req, res) => res.render('index', { pageName: 'Home', isLoggedIn: req.session.isLoggedIn }),
   about: (req, res) => {
@@ -21,5 +23,38 @@ module.exports = {
     res.render('Pages/verify-email', {
       pageName: 'Verify Email', error: req.flash('error'), errors: req.flash('errors'), success: req.flash('success'), isLoggedIn: req.session.isLoggedIn,
     });
+  },
+  returnToDashboard: async (req, res) => {
+    const {
+      isLoggedIn, userId, data,
+    } = req.session;
+
+    if (data.userRole === 'ROL-EMPLOYER') {
+      const employer = await model.Employer.findOne({
+        where: { user_id: userId },
+
+      });
+      if (isLoggedIn && employer) {
+        return res.redirect(`/employer/dashboard/${employer.employer_id}`);
+      }
+      if (isLoggedIn && !employer) {
+        return res.redirect('/employer/profile/create');
+      }
+    }
+
+    if (data.userRole === 'ROL-EMPLOYEE') {
+      const employee = await model.Employee.findOne({
+        where: { user_id: userId },
+
+      });
+      if (isLoggedIn && employee) {
+        return res.redirect(`/employee/dashboard/${employee.employee_id}`);
+      }
+      if (isLoggedIn && !employee) {
+        return res.redirect('/employee/create/profile');
+      }
+    }
+
+    return res.redirect('/admin/dashboard');
   },
 };
