@@ -148,7 +148,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-6 mb-5">
+        <div class="col-12 col-md-5 mb-5">
           <div class="card p-3">
             <h4 class="py-3 mb-0 font-weight-bold">Portfolio</h4>
             <div class="">
@@ -175,21 +175,23 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-6 mb-5">
+        <div class="col-12 col-md-7 mb-5">
           <div class="card p-3">
             <h4 class="py-3 mb-0 font-weight-bold">Skills </h4>
             <div class="">
               <% if (data.skills.length) { %>
               <ul class="list-group list-group-flush">
-                <% data.skills.forEach(function(skill){ %>
-                <li class="list-group-item">
-                  <!-- <div class=""> -->
-                  <i class="fa fa-code-fork pr-2" aria-hidden="true"></i>
-                  <span class="d-inline-block pr-5"><%=skill.skill_description %></span>
-                  <!-- </div> -->
-                  <button class="btn btn-primary" data-toggle="modal" data-target="#editSkillModal"
-                    onclick="editSkill(`<%=skill.skill_description %>`)">Edit</button>
-                  <button class="btn btn-danger">Delete</button>
+                <% data.skills.forEach(function(skill, index){ %>
+                <li class="list-group-item d-flex justify-content-between">
+                  <div class="">
+                    <i class="fa fa-code-fork pr-2" aria-hidden="true"></i>
+                    <span class="d-inline-block pr-5"><%=skill.skill_description %></span>
+                  </div>
+                  <div class="">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#editSkillModal"
+                      onclick="editSkill(`<%=skill.skill_description %>`)">Edit</button>
+                    <button class="btn btn-danger"  onclick="deleteSkill(`<%= skill.id %>`)">Delete</button>
+                  </div>
                 </li>
                 <% }); %>
               </ul>

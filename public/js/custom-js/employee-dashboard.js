@@ -48,3 +48,7 @@ let skill = document.querySelector(".editSkill")
 function editSkill(skilldesc) {
   skill.setAttribute("value", skilldesc);
 }
+
+function deleteSkill(index) {
+  console.log(index);
+}
