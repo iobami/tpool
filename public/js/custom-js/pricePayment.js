@@ -107,5 +107,6 @@ const handleSubmit = ()=>{
     const expYear = document.getElementById("expiration-date__year").value;
     const cvv = document.getElementById("cvv").value;
     const priceTotal = document.getElementById("total").innerText;
-    console.log(noOfMonths, cardNum, expMonth, expYear, cvv, priceTotal)
+    console.log(noOfMonths, cardNum, expMonth, expYear, cvv, priceTotal);
+    getForm.submit();
 }
