@@ -1,6 +1,6 @@
 const socket = io('/');
 const message = document.getElementById('type-msg');
-let sender_name, receiver, chatmessages, check, par, shouldScroll;
+let sender_name, receiver, chatmessages, check, par, shouldScroll, trackuser;
 let realchat = document.querySelector('.realchat');
 let chatname = document.querySelector('.chat-scroll-view');
 let sender = document.querySelector('.chat').dataset.user;
@@ -44,6 +44,7 @@ function getAllMessages() {
                 .then((res) => {
                     res.data.data.forEach((item) => {
                         console.log(item)
+
 
                         if (item.user_id === sender) {
                             chatmessages = document.querySelector('.chat-messages');
@@ -104,6 +105,15 @@ function getAllMessages() {
 
                             realchat.appendChild(sender1);
 
+                        }
+
+                        shouldScroll =
+                            chatmessages.scrollTop + chatmessages.clientHeight ===
+                            chatmessages.scrollHeight;
+                        console.log(chatmessages.scrollTop, shouldScroll);
+                        message.value = '';
+                        if (!shouldScroll) {
+                            chatmessages.scrollTop = chatmessages.scrollHeight;
                         }
 
 
@@ -218,11 +228,11 @@ socket.on('new_message', function (data) {
     sender1.appendChild(chatcontainer);
     sender1.appendChild(time);
     console.log(sender)
-    console.log(data.receiver)
-    if (!check) {
-        return;
+    console.log(data.receiver !== sender)
+    if (check && receiver === data.sender) {
+        realchat.appendChild(sender1);
     }
-    realchat.appendChild(sender1);
+
     shouldScroll =
         chatmessages.scrollTop + chatmessages.clientHeight ===
         chatmessages.scrollHeight;
