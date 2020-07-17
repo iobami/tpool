@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const csrf = require('csurf');
 // Requiring express rate limit
 // const rateLimit = require('express-rate-limit');
@@ -123,6 +124,7 @@ app.use(
     extended: false,
   }),
 );
+app.use(methodOverride('_method'));
 
 // View Engine
 app.set('view engine', 'ejs');
