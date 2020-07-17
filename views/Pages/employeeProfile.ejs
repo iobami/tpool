@@ -1,428 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../includes/employeeProfileHead') %>
-  </head>
 
-  <body>
+<head>
+    <%- include('../includes/employeeProfileHead') %>
+    <style>
+        .mr-2 img {
+            vertical-align: middle;
+            border-style: none;
+            max-width: 60px;
+            max-height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
     <%- include('../includes/employeeSideNav') %>
 
-    <div
-      class="modal fade modal-static"
-      tabindex="-1"
-      role="dialog"
-      id="global_modal"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="container">
-            <div class="modal-header formCol">
-              <h5 class="modal-title"></h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                onclick="close_modal()"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
+    <div class="modal fade modal-static" tabindex="-1" role="dialog" id="global_modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="modal-header formCol">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" onclick="close_modal()"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"></div>
+                </div>
             </div>
-            <div class="modal-body"></div>
-          </div>
         </div>
-      </div>
     </div>
     ​
 
     <main id="main-section">
-      <%- include('../includes/employeeHeader') %>
 
-      <section id="portfolio" class="mt-4">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-7">
-              <div class="card px-4 py-5 bio">
-                <img src="" alt="" id="employee-img" />
-                <div class="intern-main text-center mt-4">
-                  <h3 class="employeeName"></h3>
-                  <p class="employeeSkill"></p>
-                </div>
-                <hr />
-                <div class="intern-other">
-                  <p class="employeeLocation">
-                    <span
-                      ><img src="/img/iprofile/carbon_location.svg" alt=""
-                    /></span>
-                  </p>
-                  <p class="employeeEmail">
-                    <span
-                      ><img src="/img/iprofile/carbon_email.svg" alt=""
-                    /></span>
-                  </p>
-                  <p id="intern-id" class="ml-4"></p>
-                  <p id="availability" class="ml-4"></p>
-                  <p id="phone" class="ml-4"></p>
-                </div>
-                <hr />
-                <div class="text-center">
-                  <a
-                    href="#"
-                    type="button"
-                    class="btn btn-lg btn-primary call-modal"
-                    title="Edit profile"
-                    data-modal-size="lg"
-                    ><span id="edit_text">Edit Profile</span>
-                    <div class="hidden-content">
-                      <!-- <div class="container"> -->
-                      <form action="" id="edit-profile">
-                        <p id="error-message"></p>
-                        <p id="success-message"></p>
+        <%- include('../includes/employeeHeader') %>
 
-                        <div class="row">
-                          <div class="col-md-6 formCol">
-                            <div class="form-group">
-                              <label for="first name" class="super-label">
-                                First name
-                              </label>
-                              <div style="position: relative;">
-                                <input
-                                  type="text"
-                                  placeholder="Genesis"
-                                  class="form-control"
-                                  id="first-name"
-                                  aria-describedby="nameHelp"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-6 formCol">
-                            <div class="form-group">
-                              <div style="position: relative;">
-                                <label for="lastname" class="super-label">
-                                  Last name
-                                </label>
-                                <input
-                                  type="text"
-                                  placeholder="Anosike"
-                                  class="form-control"
-                                  id="last-name"
-                                  aria-describedby="nameHelp"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-6 formCol">
-                            <div class="form-group">
-                              <div style="position: relative;">
-                                <label for="email" class="super-label">
-                                  Email
-                                </label>
-                                <input
-                                  type="email"
-                                  placeholder="anosikegenesis@gmail.com"
-                                  class="form-control"
-                                  id="email"
-                                  aria-describedby="emailHelp"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-6 formCol">
-                            <div class="form-group">
-                              <div style="position: relative;">
-                                <label for="location" class="super-label">
-                                  Location
-                                </label>
-                                <input
-                                  type="text"
-                                  placeholder="Ibadan, Nigeria"
-                                  class="form-control"
-                                  id="location"
-                                  aria-describedby="locationHelp"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <hr />
-
-                        <div class="skills-choice">
-                          <div class="row">
-                            <div class="col-md-6 tracks formCol">
-                              <label
-                                class="super-label"
-                                for="exampleFormControl"
-                                >Track(s)</label
-                              >
-
-                              <div class="form-group form-check">
-                                <input
-                                  type="checkbox"
-                                  class="form-check-input noHover"
-                                  id="Backend"
-                                  value="Backend Development"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="exampleCheck1"
-                                  >Backend Development</label
-                                >
-                              </div>
-                              <div class="form-group form-check">
-                                <input
-                                  type="checkbox"
-                                  class="form-check-input noHover"
-                                  id="design"
-                                  value="UI/UX Design"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="exampleCheck1"
-                                  >UI/UX Design</label
-                                >
-                              </div>
-                              <div class="form-group form-check">
-                                <input
-                                  type="checkbox"
-                                  class="form-check-input noHover"
-                                  id="frontend"
-                                  value="frontend"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="exampleCheck1"
-                                  >Frontend Development</label
-                                >
-                              </div>
-                              <div class="form-group form-check">
-                                <input
-                                  type="checkbox"
-                                  class="form-check-input noHover"
-                                  id="mobile"
-                                  value="Mobile Development"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="exampleCheck1"
-                                  >Mobile Development</label
-                                >
-                              </div>
-
-                              <label class="form-group form-check">
-                                <input
-                                  type="checkbox"
-                                  id="Backend"
-                                  value="Backend Development"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="exampleCheck1"
-                                >
-                                  Backend Development
-                                </label>
-                                <span class="checkmark"></span>
-                              </label>
-                              <label class="form-group form-check">
-                                <input
-                                  type="checkbox"
-                                  checked="checked"
-                                  id="design"
-                                  value="UI/UX Design"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="exampleCheck1"
-                                >
-                                  UI/UX Design
-                                </label>
-                                <span class="checkmark"></span>
-                              </label>
-                              <label class="form-group form-check">
-                                <input
-                                  type="checkbox"
-                                  id="frontend"
-                                  value="frontend"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="exampleCheck1"
-                                >
-                                  Frontend Development
-                                </label>
-                                <span class="checkmark"></span>
-                              </label>
-                              <label class="form-group form-check">
-                                <input
-                                  type="checkbox"
-                                  id="mobile"
-                                  value="Mobile Development"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="exampleCheck1"
-                                >
-                                  Mobile Development
-                                </label>
-                                <span class="checkmark"></span>
-                              </label>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label
-                                  for="exampleFormControlFile1"
-                                  class="super-label"
-                                  >Profile photo</label
-                                >
-                                <div class="file-box">
-                                  <span id="placeholder">profile-pic.png</span>
-                                  <!-- <label for="file" class="btn btn-primary">Browse</label> -->
-                                  <input
-                                    type="file"
-                                    class=""
-                                    placeholder="profile.png"
-                                    id="file"
-                                    onchange="Filevalidation()"
-                                  />
-                                  <button
-                                    type="button"
-                                    name="button"
-                                    class="btn"
-                                    id="file-btn"
-                                  >
-                                    Browse
-                                  </button>
+        <section id="portfolio" class="mt-4">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="card px-4 py-5 mb-3 bio">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="profile-container">
+                                        <img src="<%= data.image %>" alt="" id="employee-img" class="img-fluid">
+                                    </div>
+                                    <div class="intern-main text-center mt-4">
+                                        <h3 class="employeeName"><%= data.last_name %> <%= data.first_name%>
+                                            <span>
+                                                <% if(data.verification_status === "Pending") { %>
+                                                <img src="" alt="">
+                                                <% } else { %>
+                                                <img src="/img/iprofile/ic_sharp-verified.svg" alt="">
+                                                <% } %>
+                                            </span>
+                                        </h3>
+                                        <p class="employeeSkill"><%= data.track %></p>
+                                    </div>
                                 </div>
-                                <p id="size"></p>
-                                <p id="file-message"></p>
-                              </div>
-                              <p id="p-text">
-                                Recommended dimensions: 200 x 200px Maximum file
-                                size: 500kb. Please add only a professional
-                                looking headshot
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="text-center save_profile">
-                          <button type="submit" class="btn btn-lg btn-primary">
-                            Save profile
-                          </button>
-                        </div>
-                      </form>
-                      <!-- </div> -->
-                    </div>
-                  </a>
-                </div>
-
-                <!-- Button trigger modal -->
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="upload-section">
-                <div class="row d-flex flex-column">
-                  <div class="col-md-12 mb-5">
-                    <div class="card p-3 curriculum">
-                      <div class="section-title py-2">
-                        <div class="section-name">
-                          <h4>Portfolio</h4>
-                        </div>
-                        <ul class="portfolios">
-                          <!-- Dynamic Content Goes Here -->
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-12">
-                    <div id="skills" class="mb-3">
-                      <div class="card p-3">
-                        <div class="section-title py-2">
-                          <div class="section-name">
-                            <h4>Skillsets</h4>
-                          </div>
-                          <div
-                            class="section-icon call-modal"
-                            title="Add skill"
-                            data-modal-size="md"
-                            id="call_modalx"
-                          >
-                            <!-- <img src="../img/iprofile/carbon_add.svg" alt=""> -->
-
-                            <div
-                              data-toggle="modal"
-                              data-target="#exampleModal"
-                            >
-                              <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 16 16"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z"
-                                  fill="#084482"
-                                />
-                              </svg>
-                            </div>
-
-                            <!-- Modal -->
-                            <div
-                              class="modal fade"
-                              id="exampleModal"
-                              tabindex="-1"
-                              role="dialog"
-                              aria-labelledby="exampleModalLabel"
-                              aria-hidden="true"
-                            >
-                              <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                  <div class="modal-body">
-                                    <form id="add-skills">
-                                      <input
-                                        class="form-control form-control-lg"
-                                        type="text"
-                                        placeholder="User"
-                                      />
-                                      <button
-                                        type="submit"
-                                        class="btn btn-primary"
-                                      >
-                                        Add Skill
-                                      </button>
-                                    </form>
-                                  </div>
+                                <div class="col-md-6">
+                                    <div class="intern-other">
+                                        <p class="employeeUsername">
+                                            <span><i class="pr-2 fa fa-user-circle" aria-hidden="true"></i></span>
+                                            <%= data.username %>
+                                        </p>
+                                        <p class="employeeId">
+                                            <span><i class="pr-2 fa fa-id-card" aria-hidden="true"></i></i></span>
+                                            <%= data.hng_id %>
+                                        </p>
+                                        <p class="employeePhonenumber">
+                                            <span><i class="pr-2 fa fa-phone" aria-hidden="true"></i></i></span>
+                                            <%= data.phone_no %>
+                                        </p>
+                                        <p class="employeeEmail">
+                                            <span><i class="pr-2 fa fa-envelope" aria-hidden="true"></i></span>
+                                            <%= data.email %>
+                                        </p>
+                                        <p class="employeeDOB">
+                                            <span><i class="pr-2 fa fa-calendar" aria-hidden="true"></i></i></span>
+                                            <%= data.dob %>
+                                        </p>
+                                        <p class="employeeAvailability">
+                                            <span><i class="pr-2 fa fa-wrench" aria-hidden="true"></i></span>
+                                            <%= data.availability %>
+                                        </p>
+                                        <p class="employeeLocation">
+                                            <span><i class="pr-2 fa fa-map-marker" aria-hidden="true"></i></span>
+                                            <%= data.location %>
+                                        </p>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-                          </div>
+
+                            <hr class="mb-4">
+
+                            <div class="text-center">
+                                <a href="#" type="button" class="btn btn-lg btn-primary call-modal" title="Edit profile"
+                                    data-modal-size="lg"><span id="edit_text">Edit Profile</span>
+                                    <div class="hidden-content">
+                                        <form action="" id="edit-profile">
+                                            <p id="error-message"></p>
+                                            <p id="success-message"></p>
+
+                                            <div
+                                                class="d-flex flex-column align-items-center text-center col-md-12 pb-3">
+                                                <div class="form-group">
+                                                    <label for="file"
+                                                        class="d-flex align-items-center justify-content-center btn btn-primary btn-lg">Upload
+                                                        profile
+                                                        Picture</label>
+                                                    <input type="file" id="file"
+                                                        class="profile-picture-file form-control inputfile" name="image"
+                                                        required />
+                                                </div>
+                                                <small>Recommended dimensions: 200 x 200px. <br> Maximum file
+                                                    size: 500kb.</small>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <label for="first name" class="super-label">
+                                                            First Name
+                                                        </label>
+                                                        <div style="position: relative;">
+                                                            <input type="text" value="<%= data.first_name %>"
+                                                                class="form-control" id="first-name"
+                                                                aria-describedby="nameHelp" name="firstName" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="lastname" class="super-label">
+                                                                Last Name
+                                                            </label>
+                                                            <input type="text" value="<%= data.last_name %>"
+                                                                class="form-control" id="last-name"
+                                                                aria-describedby="nameHelp" name="lastName" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="username" class="super-label">
+                                                                Username
+                                                            </label>
+                                                            <input type="text" value="<%= data.username %>"
+                                                                class="form-control" id="last-name"
+                                                                aria-describedby="nameHelp" name="userName" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="email" class="super-label">
+                                                                Email
+                                                            </label>
+                                                            <input type="email" value="<%= data.email %>"
+                                                                class="form-control" id="email"
+                                                                aria-describedby="emailHelp" name="email" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="dob" class="super-label">
+                                                                Date of Birth
+                                                            </label>
+                                                            <input type="date" value="<%= data.dob %>"
+                                                                class="form-control" id="dob" aria-describedby="dobHelp"
+                                                                name="dateOfBirth" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="dob" class="super-label">
+                                                                Phone Number
+                                                            </label>
+                                                            <input type="number" value="<%= data.phone_no %>"
+                                                                class="form-control" id="phone-number"
+                                                                aria-describedby="phoneNoHelp" name="phoneNo" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="location" class="super-label">
+                                                                Location
+                                                            </label>
+                                                            <input type="text" value="<%= data.location %>"
+                                                                class="form-control" id="location"
+                                                                aria-describedby="locationHelp" name="location"
+                                                                required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 tracks formCol">
+                                                    <label class="super-label">Track</label>
+                                                    <select class="form-control" name="track" required>
+                                                        <option value="">Select Track</option>
+                                                        <option value="frontend">Frontend</option>
+                                                        <option value="backend">Backend</option>
+                                                        <option value="design">Design</option>
+                                                        <option value="devops">Devops</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Availability</label>
+                                                    <select class="form-control" name="availability" required>
+                                                        <option value="not-available">Not Available</option>
+                                                        <option value="on-site">On-Site</option>
+                                                        <option value="remote">Remote</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 formCol">
+                                                    <div class="form-group">
+                                                        <div style="position: relative;">
+                                                            <label for="dob" class="super-label">
+                                                                Resume (CV)
+                                                            </label>
+                                                            <input type="url" class="form-control"
+                                                                placeholder="Link to your CV (URL)" name="employeeCv"
+                                                                required value="<%= data.employee_cv %>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="text-center save_profile">
+                                                <button type="submit" class="btn btn-lg btn-primary">Save
+                                                    profile</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <ul class="lists">
-                          <p id="skill-message"></p>
-                          <!-- Dynamic Content Goes Here -->
-                        </ul>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
+
     </main>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/bootstrap-js/jquery.js"></script>
     <script src="/js/bootstrap-js/popper.js"></script>
-    <!-- <script src="/js/custom-js/employees-profile.js"></script> -->
     <script src="/js/custom-js/modal.js"></script>
     <script src="/js/bootstrap-js/bootstrap.js"></script>
     <script src="/js/custom-js/side-nav.js"></script>
+    <!-- <script src="/js/custom-js/employees-profile.js"></script> -->
     <!-- <script src="/js/custom-js/eprofile.js"></script> -->
     <!-- <script src="/js/custom-js/employee-portfolio.js"></script> -->
-  </body>
+</body>
+
 </html>

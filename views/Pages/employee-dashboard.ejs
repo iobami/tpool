@@ -1,188 +1,204 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <%- include('../includes/employeeHead') %>
-    <style>
-      .mr-2 img {
-        vertical-align: middle;
-        border-style: none;
-        max-width: 60px;
-        max-height: 60px;
-      }
-    </style>
-  </head>
 
-  <body>
-    <%- include('../includes/employeeHeader') %>
+<head>
+  <%- include('../includes/employeeHead') %>
+</head>
 
-    <div class="container-fluid mt-4">
-      <div class="row">
-        <div class="col-lg-3 col-xl-2 d-md-block sticky-top">
-          <%- include('../includes/employeeSideNav') %>
-        </div>
+<body>
 
-        <% if (errorMessage) { %>
-        <div
-          role="alert"
-          class="alert alert-danger fade show alert-dismissible user-message user-message--error"
-        >
-          <button type="button" class="close" data-dismiss="alert">
-            &times;
-          </button>
-          <%= errorMessage %>
-        </div>
-        <% }if (success && success.length > 0) { %>
-        <div
-          role="alert"
-          class="alert alert-success fade show alert-dismissible user-message"
-        >
-          <button type="button" class="close" data-dismiss="alert">
-            &times;
-          </button>
-          <%= success %>
-        </div>
-        <% } %>
+  <%- include('../includes/employeeHeader') %>
+  <%- include('../includes/employeeSideNav') %>
 
-        <div class="col-lg-9 ml-sm-auto col-xl-10 pl-lg-0 pr-lg-5 px-xl-5">
-          <h1 class="ml-3 mt-3 dash-board">Dashboard</h1>
-          <div class="job-filter">
-            <div class="row align-items-center">
-              <div class="col-md d-flex flex-column job-card">
-                <span
-                  class="job-card__top-text text-center text-white pt-4"
-                ></span>
-                <span class="job-card__next-text text-center text-white"
-                  >JOBS</span
-                >
-                <span class="job-card__next-text text-center text-white pb-3"
-                  >AVAILABLE</span
-                >
-              </div>
-              <div class="col-md d-flex flex-column job-card job-card--second">
-                <span
-                  class="job-card__top-text text-center text-white pt-4"
-                ></span>
-                <span class="job-card__next-text text-center text-white"
-                  >JOBS</span
-                >
-                <span class="job-card__next-text text-center text-white pb-3"
-                  >APPLIED FOR</span
-                >
-              </div>
-              <div class="col-md d-flex flex-column job-card job-card--third">
-                <span
-                  class="job-card__top-text text-center text-white pt-4"
-                ></span>
-                <span class="job-card__next-text text-center text-white"
-                  >PENDING</span
-                >
-                <span class="job-card__next-text text-center text-white pb-3"
-                  >APPLICATIONS</span
-                >
-              </div>
+  <main>
+    <div class="container-fluid mt-3 pb-5">
+      <div class="row mt-3 justify-content-center justify-content-md-start">
+        <div class=" col-11 col-md-6">
+          <h4 class="py-3 mb-0">Welcome <%= data.employee.username %>! </h4>
+          <div
+            class="tp-card d-flex flex-column justify-content-between p-3 bg-dark-blue text-white">
+            <div>
+              <p class="mb-3">Track <%= data.employee.track %>
+              </p>
+              <p class="mb-3">Talent type: <%= data.employee.user_type %> </p>
+              <p class="mb-3">Availability:
+                <%= data.employee.availability.replace('-', " ") %>
+              </p>
+              <p class="mb-3">Profile views:
+                <%= data.employee.views %> </p>
+              <p class="mb-3">Verification status:
+                <%= data.employee.verification_status %> </p>
             </div>
-            <div class="profile-main--wrap">
-              <div class="profile-wrap mx-3">
-                <div class="profile-info">
-                  <p class="profile-info__title my-4">Contact Information</p>
-                  <div
-                    class="bg-white d-flex align-items-center profile-info--details"
-                  >
-                    <div
-                      class="profile-info__img-cont d-flex flex-column align-items-center"
-                    >
-                      <div class="">
-                        <!-- </p> -->
-                      </div>
-                      <p
-                        class="pt-3 m-0 text-center profile-info__name"
-                        id="full-name"
-                      ></p>
-                    </div>
-                    <div class="profile-info__contact">
-                      <div class="d-flex">
-                        <img
-                          class="mr-2"
-                          src="/img/cil_location-pin.svg"
-                          alt="location"
-                        />
-                        <p class="profile-info--norm-text"></p>
-                      </div>
-                      <div class="d-flex">
-                        <img
-                          class="mr-2"
-                          src="/img/carbon_email.svg"
-                          alt="email"
-                        />
-                        <p class="profile-info--norm-text"></p>
-                      </div>
-                      <div class="d-flex">
-                        <img
-                          class="mr-2"
-                          src="/img/bx_bx-phone.svg"
-                          alt="phone"
-                        />
-                        <p class="profile-info--norm-text" id="phone"></p>
-                      </div>
-                      <p class="profile-info--norm-text mt-5">Portfolio</p>
-                      <div class="d-flex">
-                        <img
-                          class="mr-2"
-                          src="/img/il_twitter.svg"
-                          alt="twitter-icon"
-                        />
-                        <a
-                          href=""
-                          class="profile-info--norm-text profile-info--link"
-                          ><</a
-                        >
-                      </div>
-                      <div class="d-flex">
-                        <img
-                          class="mr-2"
-                          src="/img/topcoat_dribble.svg"
-                          alt="dribble-icon"
-                        />
-                        <a
-                          href=""
-                          class="profile-info--norm-text profile-info--link"
-                        ></a>
-                      </div>
-                      <div class="d-flex">
-                        <img
-                          class="mr-2"
-                          src="/img/jam_behance-square.svg"
-                          alt="behance-icon"
-                        />
-                        <a
-                          href=""
-                          class="profile-info--norm-text profile-info--link"
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-cont">
-                  <p class="profile-info__title my-4">Software Assessment</p>
-
-                  <div class="bg-white skill__flex py-4">
-                    <div class="pl-4 py-2">
-                      <p class="profile-info--norm-text"></p>
-                      <div class="skill__wrap">
-                        <div class="skill"><i class="skill-stop"></i></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h1>No Employee Tools Found!</h1>
-                </div>
-              </div>
+          </div>
+        </div>
+        <div class="col-11 col-md-6 mt-5 mt-md-0">
+          <h4 class="py-3 mb-0">Portfolio </h4>
+          <div
+            class="tp-card d-flex flex-column justify-content-between p-3 bg-light-blue text-white">
+            <div>
+              <% if (data.portfolios) { %>
+              <ul class="list-unstyled">
+                <% data.portfolios.forEach(function(item){ %>
+                <li class="d-flex mb-3">
+                  <a href=<%= item.link %> class="portfolio-link">
+                    <%= item.title %>
+                  </a>
+                </li>
+                <% }); %>
+              </ul>
+              <%} else { %>
+              <p>Nothing added to portfolio yet</p>
+              <% } %>
             </div>
+            <div class="text-right mt-3">
+              <a href="/employee/portfolio"
+                class="btn-link btn-sm btn tp-btn-outline-primary">View
+                portfolio</a>
+            </div>
+          </div>
+        </div>
+        <div class=" col-11 col-md-6 mt-5">
+          <h4 class="py-3 mb-0">Team </h4>
+          <div
+            class="tp-card d-flex flex-column justify-content-between p-3 bg-light-blue text-white">
+            <div>
+              <% if (data.team) { %>
+              <p class="mb-3">You are a member of team
+                <%= data.team.name %> </p>
+              <p class="mb-0">
+                <%= data.team.employer.employer_name %> </p>
+              <% } else { %>
+              <p class="mb-0">You are currently not in any team yet</p>
+              <% } %>
+            </div>
+            <% if (data.team) { %>
+            <div class="text-right mt-3">
+              <button class="btn-sm btn tp-btn-outline-primary"
+                data-toggle="modal" data-target="#teamModal">
+                View team info
+              </button>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div class=" col-11 col-md-6 mt-5">
+          <h4 class="py-3 mb-0">Skills </h4>
+          <div
+            class="tp-card d-flex flex-column justify-content-between p-3 bg-dark-blue text-white ">
+            <div>
+              <% if (data.skills) { %>
+              <ul class="list-unstyled">
+                <% data.skills.forEach(function(skill){ %>
+                <li class="d-flex pb-3">
+                  <img class="img-fluid mr-3" src="/img/verified-icon.svg"
+                    alt="portfolio verified">
+                  <span class="d-inline-block"><%= skill.skill_description %>
+                  </span>
+                </li>
+                <% }); %>
+              </ul>
+              <%} else { %>
+              <h5>Nothing skills added yet</h5>
+              <% } %>
+            </div>
+            <% if (data.skills) { %>
+            <div class="text-right mt-3">
+              <a href="/employee/profile"
+                class="btn-link btn-sm btn tp-btn-outline-primary">View
+                skills</a>
+            </div>
+            <%} else { %>
+            <div class="text-right mt-3">
+              <a href="/employee/profile"
+                class="btn-link btn-sm btn tp-btn-outline-primary">Add
+                skills</a>
+            </div>
+            <% } %>
           </div>
         </div>
       </div>
     </div>
-    <%- include('../Templates/footer') %>
-  </body>
+    <!-- <pre>
+      <%#= JSON.stringify(data, "", 2) %> 
+    </pre> -->
+  </main>
+
+
+  <!-- Modal -->
+  <div id="teamModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><%= data.team.name %>
+            (<%= data.team.status %> )
+          </h5>
+          <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="img-container">
+            <img src=<%= data.team.employer.photo %> alt="employer photo"
+              class="img-fluid rounded mx-auto">
+          </div>
+          <div class="mt-4">
+            <div class="mb-3 d-flex align-items-center">
+              <h6 class="mb-0 mr-2">Employer: </h6>
+              <p class="mb-0">
+                <%= data.team.employer.employer_name %> </p>
+            </div>
+            <div class="mb-3 d-flex align-items-center">
+              <h6 class="mb-0 mr-2">Contact: </h6>
+              <p class="mb-0"><a
+                  href=<%= 'tel:'+data.team.employer.phone %>><%= data.team.employer.phone %>
+                </a>,
+                <a
+                  href=<%= 'mailto:'+data.team.employer.email %>><%= data.team.employer.email %></a>
+              </p>
+            </div>
+            <div class="mb-3 d-flex align-items-center">
+              <h6 class="mb-0 mr-2">Socials: </h6>
+              <div class="d-flex justify-content-between">
+                <% if (data.team.employer.social.twitter) { %>
+                <p class="mb-0 mr-2"><a
+                    href=<%= data.team.employer.social.twitter %>>Twitter</a>
+                </p>
+                <% } %>
+                <% if (data.team.employer.social.facebook) { %>
+                <p class="mb-0 mr-2"><a
+                    href=<%= data.team.employer.social.facebook %>>Facebook</a>
+                </p>
+                <% } %>
+                <% if (data.team.employer.social.instagram) { %>
+                <p class="mb-0 mr-2"><a
+                    href=<%= data.team.employer.social.instagram %>>Instagram</a>
+                </p>
+                <% } %>
+                <% if (data.team.employer.social.linkedin) { %>
+                <p class="mb-0 mr-2"><a
+                    href=<%= data.team.employer.social.linkedin %>>LinkedIn</a>
+                </p>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <script src="/js/custom-js/side-nav.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/js/bootstrap-js/popper.js"></script>
+  <script src="/js/bootstrap-js/jquery.js"></script>
+  <script src="/js/bootstrap-js/bootstrap.js"></script>
+</body>
+
 </html>
