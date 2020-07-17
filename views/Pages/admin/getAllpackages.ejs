@@ -14,13 +14,27 @@
   <%- include('../../Templates/admin-sidebar') %>
 
   <section class="admin__dashboard p-4">
-    <h2 class="dashboard__heading text-center">Manage Packages</h2>
+    <!-- Start of Flash Message -->
     <% if(error != '') { %>
-      <p><%= error%></p>
-    <% }
-    if(success != '') { %>
-      <p><%= success%></p>
+    <div class="alert alert-danger alert-dismissible fade show my-0 mx-auto mb-4" role="alert">
+      <p class="m-0"><%= error%></p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <% } %>
+    <% if(success != '') { %>
+    <div class="alert alert-success alert-dismissible fade show my-0 mx-auto mb-4" role="alert">
+      <p class="m-0"><%= success%></p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+    <!-- End of Flash Message -->
+
+    <h2 class="dashboard__heading text-center">Manage Packages</h2>
+
     <div class="container-fluid">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs mb-4 d-flex justify-content-center" id="myTab" role="tablist">
@@ -113,13 +127,7 @@
           <ul class="list-group list-group-flush features-list px-4 mx-auto">
             <% data.allFeatures.sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1).forEach(feat => { %>
             <li class="list-group-item"> <%- feat.description %>
-              <!-- <form action="/admin/features/remove" method="POST"
-                class="btn btn-sm m-0 p-0">
-                <input type="hidden" name="feature_id" value="<%= feat.feature_id %> ">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-                <button type="submit" class="btn btn-sm btn-danger">
-                  Remove
-                </button></form> -->
+              <a href="/admin/features/<%= feat.feature_id %>/delete" class="btn btn-sm btn-danger">Remove</a>
             </li>
             <% }) %>
           </ul>
@@ -130,11 +138,11 @@
           <% } %>
           <form class="my-4 mx-auto" action="/admin/features/create" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-            <div class="input-group d-sm-none d-md-flex">
+            <div class="input-group">
               <input required type="text" placeholder="Enter feature description" name="description"
                 class="form-control">
               <div class="input-group-append">
-                <button type="submit" class="btn btn-outline-success">Create Feature</button>
+                <button type="submit" class="btn btn-outline-success">Add</button>
               </div>
             </div>
           </form>
@@ -145,6 +153,10 @@
   <div id="body__click"></div>
 
   <style>
+    .alert {
+      max-width: 40rem;
+    }
+
     form {
       max-width: 30rem;
       width: 80%;
@@ -193,7 +205,8 @@
       border-radius: 5px;
     }
 
-    ul.features-list button {
+    ul.features-list button,
+    ul.features-list a.btn {
       padding: 2px 5px;
       opacity: 0;
       position: absolute;
@@ -214,7 +227,8 @@
       transform: scale(1.3);
     }
 
-    ul.features-list li:hover button {
+    ul.features-list li:hover button,
+    ul.features-list li:hover a.btn {
       opacity: 1;
     }
   </style>

@@ -6,6 +6,7 @@
         <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
         <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
         <link href="../styles/custom-css/admin-dash.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" rel="stylesheet"/>
 
         <script src="../js/custom-js/admin-dashboard.js"></script>
     </head>
@@ -15,9 +16,11 @@
 
           <%- include('../Templates/admin-sidebar') %>
 
-        <section class="admin__dashboard" style="margin-top: -100px;">
-            <h2 class="dashboard__heading">Dashboard</h2>
 
+
+        <section class="admin__dashboard" style="margin-top: -100px;">
+            
+            <h2 class="dashboard__heading">Dashboard</h2>
             <div class="container-fluid">
                 <div class="row top__section">
                     <div class="col-md-4 col-lg-4 card-container mb-4 mb-md-0">
@@ -162,25 +165,22 @@
                 </div>
             </div>
         </section>
-        <!-- Data here for employers and transactions -->
-        <% totalEmployer.forEach(function(employerArray) { %>
-            <script>console.log("<%= employerArray %>")</script>
-        <% }) %> 
-        <% transactDetails.forEach(function(transactArray) { %>
-            <script>console.log("<%= transactArray.createdAt %>")</script>
-        <% }) %> 
 
         <div id="body__click"></div>
         
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="../js/bootstrap-js/popper.js"></script>
         <script src="../js/bootstrap-js/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>      
         <script src="../js/bootstrap-js/bootstrap.js"></script>
         <script>
         $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
         })
         </script>
+        <%if (message) { %>
+            <script>toastr.success('<%= message %>');</script>
+        <% } %>
         <script src="../js/custom-js/side-nav.js"></script>
     </body>
 </html>
