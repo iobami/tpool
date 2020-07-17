@@ -64,6 +64,7 @@ exports.getAll = async (req, res) => {
       error: req.flash('error'),
       success: req.flash('success'),
       data,
+      currentUser: req.session.name,
     });
   } catch (error) {
     console.log(error)
