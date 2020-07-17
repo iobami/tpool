@@ -82,5 +82,7 @@ const handleSummary = (e) =>{
 const handleSubmit = ()=>{
     const priceTotal = document.getElementById("total").innerText;
     document.getElelementByID("total").value=priceTotal;
+    console.log(noOfMonths, cardNum, expMonth, expYear, cvv, priceTotal);
+
     getForm.submit();
 }

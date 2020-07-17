@@ -3,6 +3,8 @@ const Flutterwave = require('flutterwave-node-v3');
 
 
 const appRoute = express.Router();
+const Flutterwave = require('flutterwave-node-v3');
+
 const {
   create, getAll, packageGet,
 } = require('../../../Controllers/views/payment/employer-package');
@@ -10,8 +12,9 @@ const {
 // get package detail routes
 appRoute.get('/employer/packages/:package_id', packageGet);
 
-// get all packages route
 appRoute.get('/employer/packages', getAll);
+
+
 
 const {
   TALENT_POOL_FLUTTER_PUBLIC,
@@ -19,6 +22,7 @@ const {
   PRODUCTION_FLAG,
 } = process.env;
 
+//Payment Route
 appRoute.post('/employer/payment', async (req, res) => {
   try {
     const flw = new Flutterwave(
@@ -26,11 +30,10 @@ appRoute.post('/employer/payment', async (req, res) => {
       TALENT_POOL_FLUTTER_KEY,
       PRODUCTION_FLAG,
     );
-    
     let {cardNum} = req.body;
     cardNum = cardNum.replace(/-/g, "");
+    
     const payload = {
-     
       card_number: cardNum,
       cvv: req.body.cvvn,
       expiry_month: req.body.expMonth,
@@ -45,13 +48,27 @@ appRoute.post('/employer/payment', async (req, res) => {
       interval: 'monthly',
       duration: 1,
     };
-    console.log(payload);
-    const response = await flw.PaymentPlan.create(payload);
-    console.log(response);
-    res.status(200).json(response);
+    
+    const payment = await flw.PaymentPlan.create(payload);
+    console.log(payment);
+    if( payment.status == 'success'){
+      //Success Response
+    req.flash('success', payment.message)
+    req.payment = payment;
+    res.redirect('/employer/packages');
+    } else {
+      //error Response
+      req.flash('error', payment.message)
+      res.redirect('back')
+    }
+    
   } catch (error) {
     console.log(error);
+    res.redirect('back')
   }
 });
 
+
+
 module.exports = appRoute;
+
