@@ -129,21 +129,13 @@ module.exports = {
     },
 
     employeeMessagePage: async (req, res) => {
-        const {
-            employeeId
-        } = req.session;
+        let employeeId = req.session.employeeId;
+        console.log(employeeId)
         try {
-            //Get employee chat users
-            const employeeChatUsers = await model.Employee.findAll({
-                attributes: ['user_id', 'first_name', 'last_name', 'image'],
-                include: [{
-                    model: model.User,
-                    attributes: ['role_id'],
-                }, ],
-            });
 
             //Get employer chat users
             const employerChatUsers = await model.Employer.findAll({
+                raw: true,
                 attributes: ['user_id', 'employer_name', 'employer_photo'],
                 include: [{
                     model: model.User,
@@ -153,6 +145,7 @@ module.exports = {
 
             //Get admin chat users
             const adminChatUsers = await model.Admin.findAll({
+                raw: true,
                 attributes: ['user_id', 'first_name', 'last_name'],
                 include: [{
                     model: model.User,
@@ -162,16 +155,16 @@ module.exports = {
             // console.log('admin', adminChatUsers);
             // console.log('Employer', employerChatUsers);
             // console.log('Employee', employeeChatUsers);
-
+            const employeeUsers = [...employerChatUsers, ...adminChatUsers]
             res.status(200).render('Pages/employee-messages', {
                 pageName: 'Employer Messages',
                 pageTitle: 'TalentPool | Employee Message',
                 userId: req.session.userId,
-                allusers: allusers,
+                employeeUsers: employeeUsers,
                 path: '/employee/message',
-                dashboardPath: `${URL}employee/dashboard/${employeeId}`,
-                profilePath: `${URL}employee/profile/${employeeId}`,
-                portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+                dashboardPath: `/employee/dashboard/${employeeId}`,
+                profilePath: `/employee/profile/${employeeId}`,
+                portfolioPath: `/employee/portfolio/${employeeId}`,
                 error: req.flash('error'),
                 errors: req.flash('errors'),
                 success: req.flash('success'),
@@ -194,20 +187,30 @@ module.exports = {
             const usersChatMessages = await model.Chat.findAll({
                 raw: true,
                 where: {
-                    // eslint-disable-next-line max-len
-                    [Op.or]: [{
-                            user_id: senderID,
+
+                    [Op.or]: [
+                        // eslint-disable-next-line max-len
+                        {
+                            [Op.and]: [{
+                                    user_id: senderID,
+                                },
+                                {
+                                    receiver_id: receiverID,
+
+                                },
+                            ]
                         },
                         {
-                            user_id: receiverID,
+                            [Op.and]: [{
+                                    user_id: receiverID,
+                                },
+                                {
+                                    receiver_id: senderID,
+                                },
+                            ]
                         },
-                        {
-                            receiver_id: senderID,
-                        },
-                        {
-                            receiver_id: receiverID,
-                        },
-                    ],
+                    ]
+
                 },
             });
             console.log(usersChatMessages);
