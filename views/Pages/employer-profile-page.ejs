@@ -2,7 +2,7 @@
 <html>
   <head>
     <%- include('../Templates/dashboard-head') %>
-    <link href="/styles/custom-css/flags.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
 
     <link rel="stylesheet" href="/styles/custom-css/employer-top-nav.css">
     <link rel="stylesheet" href="/styles/custom-css/side-nav.css">
@@ -115,7 +115,12 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="">Country</label>
-                  <input type="text" class="form-control" name="" value="<%= EmployerInfo.employerInfo.employer_country %>" placeholder="Enter country" id="">
+                  <!-- <input type="text" class="form-control" name="" value="<%= EmployerInfo.employerInfo.employer_country %>" placeholder="Enter country" id=""> -->
+                  <select class="selectpicker" data-live-search="true">
+                    <option selected data-tokens="<%= EmployerInfo.employerInfo.employer_country %>">
+                      <%= EmployerInfo.employerInfo.employer_country %>
+                    </option>
+                  </select>
                 </div>
                 <!-- <div class="form-group col-md-6">
                     <label>Country</label>
@@ -224,30 +229,36 @@
                           <div class=" desc-card-header ">
                       
                               <h3 class="d-flex justify-content-between align-items-center"
-                               >Social accounts 
+                               >Social accounts
                                <!-- <img src="/../img/plus-blue.png" alt="" class="plus-social"> </h3> -->
                           </div>
                       
                            <div class="social-accounts mt-4">
                                       <div class=" account py-4 pl-1">
-                                               <i class="fab fa-twitter "></i>
-                                               <span class="ml-3">Twitter: <%= EmployerInfo.employerInfo.twitter %></span>
-                                               <img src="/../img/Pen.png" class="pen-modif float-right"
-                                               onclick="updateSocial('Twitter', '<%= EmployerInfo.employerInfo.twitter %>')"
-                                               >
+                                            <i class="fab fa-twitter "></i>
+                                            <a href="<%= EmployerInfo.employerInfo.twitter %>">
+                                                <span class="ml-3">Twitter</span>
+                                            </a>
+                                            <img src="/../img/Pen.png" class="pen-modif float-right"
+                                            onclick="updateSocial('Twitter', '<%= EmployerInfo.employerInfo.twitter %>')"
+                                            >
                                       </div>
 
                                       <div class=" account py-4 pl-1">
-                                                <i class="fab fa-facebook "></i>
-                                                <span class="ml-3">Facebook: <%= EmployerInfo.employerInfo.facebook %></span>
-                                                <img src="/../img/Pen.png" class="pen-modif float-right"
-                                                onclick="updateSocial('Facebook', '<%= EmployerInfo.employerInfo.facebook %>')">
+                                            <i class="fab fa-facebook "></i>
+                                            <a href="<%= EmployerInfo.employerInfo.facebook %>">
+                                                <span class="ml-3">Facebook</span>
+                                            </a>
+                                            <img src="/../img/Pen.png" class="pen-modif float-right"
+                                            onclick="updateSocial('Facebook', '<%= EmployerInfo.employerInfo.facebook %>')">
                                       </div>
                       
                                       <div class=" account py-4 pl-1">
                       
                                           <i class="fab fa-linkedin"></i>
-                                          <span class="ml-3">LinkedIn: <%= EmployerInfo.employerInfo.linkedin %></span>
+                                          <a href="<%= EmployerInfo.employerInfo.linkedin %>">
+                                              <span class="ml-3">LinkedIn</span>
+                                          </a>
                                           <img src="/../img/Pen.png" class="pen-modif float-right"
                                           onclick="updateSocial('LinkedIn', '<%= EmployerInfo.employerInfo.linkedin %>')">                              
                       
@@ -255,7 +266,9 @@
                                       <div class=" account py-4 pl-1">
                       
                                           <i class="fab fa-instagram"></i>
-                                          <span class="ml-3">Instagram: <%= EmployerInfo.employerInfo.instagram %></span>
+                                          <a href="<%= EmployerInfo.employerInfo.instagram %>">
+                                              <span class="ml-3">Instagram</span>
+                                          </a>
                                           <img src="/../img/Pen.png" class="pen-modif float-right"
                                           onclick="updateSocial('Instagram', '<%= EmployerInfo.employerInfo.instagram %>')">                              
                       
@@ -486,16 +499,23 @@
     <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
     <script src="/../js/custom-js/side-nav.js"></script>
    <script src="/js/custom-js/toast.js"></script>
+   <script src="/js/custom-js/countries.js"></script>    
     <script src="/../js/custom-js/employer-profile.js"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery-1.11.2.js"></script> -->
-   <script src="/js/bootstrap-js/jquery.flagstrap.js"></script>
-   <!-- <script>
-       $('#basic').flagStrap();
-       const [btn] = document.querySelectorAll('.flagstrap button');
-       btn.className = 'btn-default btn-md dropdown-toggle form-control';
-       const selected = btn.querySelectorAll('span');
-       console.log(selected);
-   </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+   
+   <script>
+        const option = (value) => {
+          return `
+          <option data-tokens="${value}">${value}</option>
+          `;
+        };
+  
+        const [select] = document.querySelectorAll('.selectpicker');
+        for (const [key, value] of Object.entries(countries)) {
+          select.innerHTML += option(value);
+        }
+  
+    </script> 
   </body>
 </html>

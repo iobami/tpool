@@ -83,6 +83,7 @@ const getAllEmployees = require('./Routes/employer/get-employees');
 
 // IMPORT EMPLOYER DASHBOARD
 const employerDashboard = require('./Routes/employer/employer-dashboard');
+const employerSettings = require('./routes/employer/employer-settings');
 
 // IMPORT THE VIEWS ROUTES
 const adminPackages = require('./Routes/views/payment/admin_package');
@@ -211,6 +212,7 @@ app.use('/v1/employer', employerUpgradeRoute);
 app.use('/v1/employer', employerReviews);
 app.use('/v1/employer', employerTransaction);
 app.use('/v1/employer', employerDashboard);
+app.use('/v1/employer', employerSettings);
 
 // Employers get all verified employees
 app.use('/v1/employer', getAllEmployees);
