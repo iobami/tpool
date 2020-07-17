@@ -67,12 +67,14 @@
                       <% } } %>
                     <div class="tab-pane fade show active" id="intern" role="tabpanel" aria-labelledby="intern-tab">
                         <form class="needs-validation" action="/employee/register" method="POST" novalidate>
-                            <div class="row">
+                            <div class="row first-last--name">
                                 <input type="hidden" name="_csrf" value="<%- csrfToken %>">
+                                <input type="hidden" name="regType" value="intern">
                                 <div class="col-md mb-3">
                                     <label for="fname">First Name</label>
                                     <div class="input-group">
-                                        <input type="text" name="firstname" class="form-control w-100" id="fname" placeholder="e.g. John" required>
+                                        <input type="text" name="firstname" class="form-control w-100" id="fname" placeholder="e.g. John"
+                                        value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].firstname %> <%} %>" required>
                                         <div id="invalid">
                                         </div>
                                     </div>
@@ -80,7 +82,8 @@
                                 <div class="col-md mb-3">
                                     <label for="lname">Last Name</label>
                                     <div class="input-group">
-                                        <input type="text" name="lastname" class="form-control w-100" id="lname" placeholder="e.g. Doe" required>
+                                        <input type="text" name="lastname" class="form-control w-100" id="lname" placeholder="e.g. Doe"
+                                        value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].lastname %> <%} %>" required>
                                         <div id="invalidL">
                                         </div>
                                     </div>
@@ -104,16 +107,18 @@
                                 </div>
                             </div>  -->
 
-                            <div class="row">
+                            <div class="row email-phone">
                                 <div class="col-md mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com" required>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com"
+                                    value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].email %> <%} %>" required>
                                     <div id="invalidE">
                                     </div>
                                 </div>
                                 <div class="col-md mb-3">
                                     <label for="phone">Phone number</label>
-                                    <input type="phone" name="phone" class="form-control" id="phone" maxlength="16" placeholder="e.g. 08023414785" required>
+                                    <input type="phone" name="phone" class="form-control" id="phone" maxlength="16" placeholder="e.g. 08023414785"
+                                    value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].phone %> <%} %>" required>
                                     <div id="invalidP">
                                     </div>
                                 </div>
@@ -126,7 +131,7 @@
                                 </div> -->
                             </div>
                             
-                            <div class="row">
+                            <div class="row password-area">
                                 <div class="col-md mb-3">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" id="password" minlength="8" placeholder="at least 8 characters" required>
@@ -141,7 +146,7 @@
                                 </div>
                             </div> 
         
-                            <div class="row">
+                            <div class="row checkboxes">
                                 <div class="col my-1">
                                     <div class="custom-control custom-checkbox mr-sm-2" >
                                         <input type="checkbox" name="terms" class="custom-control-input" id="terms-policy">
@@ -153,7 +158,7 @@
                             </div>
                             <div class="loader"></div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col form-button">
                                     <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4 text-white" id="signup-btn" type="submit" data-toggle="" data-target="#exampleModal">Sign Up</button>
                                 </div>
             
@@ -180,7 +185,7 @@
                             </div>
                         </form>
         
-                        <div class="row">
+                        <div class="row social-buttons">
                             <div class="col-md-5 d-none d-md-block">
                                 <hr>
                             </div>
@@ -192,7 +197,7 @@
                             </div>
                         </div>
         
-                        <div class="row mt-2">
+                        <div class="row mt-2 social-buttons">
                             <div class="col-md">
                                 <a class="social-sign-in" href="/auth/employee/github">
                                     <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i class="fab fa-github pr-2" aria-hidden="true"></i>sign up with Github</button>
@@ -210,12 +215,14 @@
 
                     <div class="tab-pane fade" id="new-user" role="tabpanel" aria-labelledby="new-user-tab">
                         <form action="/employee/register" method="POST" class="needs-validation" novalidate>
-                            <div class="row">
+                            <div class="row first-last--name">
                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <input type="hidden" name="regType" value="newUser">
                                 <div class="col-md mb-3">
                                     <label for="fname">First Name</label>
                                     <div class="input-group">
-                                        <input name="firstname" type="text" class="form-control w-100" id="fnameV2" placeholder="e.g. John" required>
+                                        <input name="firstname" type="text" class="form-control w-100" id="fnameV2" placeholder="e.g. John"
+                                        value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].firstname1 %> <%} %>" required>
                                         <div id="invalidV2">
                                         </div>
                                     </div>
@@ -223,7 +230,8 @@
                                 <div class="col-md mb-3">
                                     <label for="lname">Last Name</label>
                                     <div class="input-group">
-                                        <input type="text" name="lastname" class="form-control w-100" id="lnameV2" placeholder="e.g. Doe" required>
+                                        <input type="text" name="lastname" class="form-control w-100" id="lnameV2" placeholder="e.g. Doe"
+                                        value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].lastname1 %> <%} %>" required>
                                         <div id="invalidLV2">
                                         </div>
                                     </div>
@@ -247,16 +255,18 @@
                                 </div>
                             </div>  -->
 
-                            <div class="row">
+                            <div class="row email-phone">
                                 <div class="col-md mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="emailV2" placeholder="example@gmail.com" required>
+                                    <input type="email" name="email" class="form-control" id="emailV2" placeholder="example@gmail.com"
+                                    value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].email1 %> <%} %>" required>
                                     <div id="invalidEV2">
                                     </div>
                                 </div>
                                 <div class="col-md mb-3">
                                     <label for="phone">Phone number</label>
-                                    <input type="phone" name="phone" class="form-control" id="phoneV2" maxlength="11" placeholder="e.g. 08023414785" required>
+                                    <input type="phone" name="phone" class="form-control" id="phoneV2" maxlength="11" placeholder="e.g. 08023414785"
+                                    value="<% if(oldInput && oldInput.length > 0){ %> <%- oldInput[0].phone1 %> <%} %>" required>
                                     <div id="invalidPV2">
                                     </div>
                                 </div>
@@ -269,7 +279,7 @@
                                 </div> -->
                             </div>
                             
-                            <div class="row">
+                            <div class="row password-area">
                                 <div class="col-md mb-3">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" id="passwordV2" minlength="8" placeholder="at least 8 characters" required>
@@ -284,7 +294,7 @@
                                 </div>
                             </div> 
         
-                            <div class="row">
+                            <div class="row checkboxes">
                                 <div class="col my-1">
                                     <div class="custom-control custom-checkbox mr-sm-2" >
                                         <input type="checkbox" name="terms" class="custom-control-input" id="terms-policyV2">
@@ -296,7 +306,7 @@
                             </div>
                             <div class="loaderV2"></div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col form-button">
                                     <button class="btn btn-primary btn-block btn-color py-3 mt-3 mb-4" id="signup-btnV2" type="submit" data-toggle="" data-target="#exampleModalV2">Sign Up</button>
                                 </div>
             
@@ -323,7 +333,7 @@
                             </div>
                         </form>
 
-                        <div class="row">
+                        <div class="row social-buttons">
                             <div class="col-md-5 d-none d-md-block">
                                 <hr>
                             </div>
@@ -335,7 +345,7 @@
                             </div>
                         </div>
         
-                        <div class="row mt-2">
+                        <div class="row mt-2 social-buttons">
                             <div class="col-md">
                                 <a class="social-sign-in" href="/auth/employee/github">
                                     <button type="button" class="btn  btn-block  github-btn py-3 my-1"><i class="fab fa-github pr-2" aria-hidden="true"></i>sign up with Github</button>
@@ -363,6 +373,11 @@
 <%- include('../Templates/footer') %>
 <%- include('../Templates/script') %>
 <script>
+     $(document).ready(function(){
+        var hash = window.location.hash;
+        hash && $('div.nav a[href="' + hash + '"]').tab('show');
+        $(window).scrollTop();
+      });
     // Getting verify status to know if registration is successful or not
     const verifyStatus = `<%- success %>`;
     if (verifyStatus == 'Verification email sent!') {

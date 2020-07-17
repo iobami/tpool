@@ -1,65 +1,104 @@
-:root{
+:root {
   --dark-blue: #084482;
-  --light-blue: #00AEFF;
+  --light-blue: #00aeff;
 }
 
 body {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   font-family: Poppins;
 }
 
-.tp-card{
+.card {
+  border: none !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) !important;
+}
+
+.card1 {
+  color: #ffffff;
+  background: #084482;
+}
+
+.card2 {
+  color: #ffffff;
+  background: #5c95c5;
+}
+
+.card3 {
+  color: #ffffff;
+  background: #33beff;
+}
+
+.btn-primary {
+  background: #33beff !important;
+  border: #33beff !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+  box-shadow: none !important;
+}
+
+.btn-white {
+  background: #ffffff !important;
+  color: black;
+}
+
+.tp-card {
   border-radius: 10px;
   height: 200px;
   overflow-y: scroll;
 }
 .tp-card::-webkit-scrollbar {
-  width: .5rem;
-  margin-right: .5rem;
+  width: 0.5rem;
+  margin-right: 0.5rem;
   border-radius: 10px;
 }
- 
+
 .tp-card::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
- 
+
 .tp-card::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
 
-.bg-dark-blue{
+.bg-dark-blue {
   background-color: var(--dark-blue);
 }
-.bg-light-blue{
+.bg-light-blue {
   background-color: var(--light-blue);
 }
 
-.tp-btn-outline-primary{
-  border: 1px solid #fff ;
+.tp-btn-outline-primary {
+  border: 1px solid #fff;
   background-color: #fff;
   color: var(--dark-blue);
 }
 
-.tp-btn-outline-primary:hover{
-  border: 1px solid #fff ;
+.tp-btn-outline-primary:hover {
+  border: 1px solid #fff;
   background-color: #fff;
   color: var(--dark-blue);
 }
 
-.portfolio-link{
+.portfolio-link {
   color: #fff;
 }
-.portfolio-link:hover{
+.portfolio-link:hover {
   text-decoration: underline;
   color: var(--dark-blue);
 }
-.img-container{
+
+.portfolio-card {
+  max-height: 400px;
+}
+.img-container {
   max-width: 70%;
 }
 
-@media screen and (min-width: 992px){
-  main{
+@media screen and (min-width: 992px) {
+  main {
     width: calc(100% - 234px);
     margin-left: auto;
   }
