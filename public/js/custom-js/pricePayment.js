@@ -1,24 +1,4 @@
-// IDs of the three methods of payment buttons
-let formIDs = ['visa-card__form', 'master-card__form', 'paypal__form'];
 let priceTotal = parseFloat(document.getElementById("total").innerText);
-
-//  Toggle betyween forms
-function toggleForm(form){
-    let getForm = document.getElementById(form);
-    if(getForm){
-        getForm.classList.add('show-form');
-
-        let removeForms = formIDs.filter(x => x != form);
-        
-        //  Hide non selected forms
-        for(var i = 0; i<removeForms.length; i++){
-            let formToRemove = document.getElementById(removeForms[i]);
-            if(formToRemove.classList.contains('show-form')){
-                formToRemove.classList.remove('show-form');
-            }
-        }
-    }
-}
 
 
 // credit card validation
@@ -64,7 +44,7 @@ function luhnCheck(val) {
       }
   }
 
-var getForm = getTag('devugo-form');
+const getForm = getTag('devugo-form');
 
 getForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -100,12 +80,9 @@ const handleSummary = (e) =>{
 
 }
 const handleSubmit = ()=>{
-    // Summary of all the data to be returned for payment
-    const noOfMonths = document.getElementById("numMonths").value;
-    const cardNum = document.getElementById("card-number").value;
-    const expMonth = document.getElementById("expiration-date__month").value;
-    const expYear = document.getElementById("expiration-date__year").value;
-    const cvv = document.getElementById("cvv").value;
     const priceTotal = document.getElementById("total").innerText;
-    console.log(noOfMonths, cardNum, expMonth, expYear, cvv, priceTotal)
+    document.getElelementByID("total").value=priceTotal;
+    console.log(noOfMonths, cardNum, expMonth, expYear, cvv, priceTotal);
+
+    getForm.submit();
 }

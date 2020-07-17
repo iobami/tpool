@@ -31,10 +31,10 @@ appRoute.get(
   auth_main,
   auth_validuser,
   auth_valid_profile,
-  auth_pending,
+  // auth_pending,
   auth_uploaded,
   auth_disapproved,
-  //the main dashboard
+  // //the main dashboard
   employerCompanyDashboard,
 ); //set by kukere
 

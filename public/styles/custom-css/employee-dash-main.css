@@ -43,45 +43,6 @@ body {
   color: black;
 }
 
-.tp-card {
-  border-radius: 10px;
-  height: 200px;
-  overflow-y: scroll;
-}
-.tp-card::-webkit-scrollbar {
-  width: 0.5rem;
-  margin-right: 0.5rem;
-  border-radius: 10px;
-}
-
-.tp-card::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-.tp-card::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
-
-.bg-dark-blue {
-  background-color: var(--dark-blue);
-}
-.bg-light-blue {
-  background-color: var(--light-blue);
-}
-
-.tp-btn-outline-primary {
-  border: 1px solid #fff;
-  background-color: #fff;
-  color: var(--dark-blue);
-}
-
-.tp-btn-outline-primary:hover {
-  border: 1px solid #fff;
-  background-color: #fff;
-  color: var(--dark-blue);
-}
-
 .portfolio-link {
   color: #fff;
 }

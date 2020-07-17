@@ -23,6 +23,9 @@ appRoute.delete(
   employeeController.deletePortfolio,
 );
 
+// Create Skill
+appRoute.post('/employee/create/skill', employeeController.createSkill);
+
 // Profile Page
 appRoute.get('/employee/profile/:employee_id', employeeController.getProfile);
 // Get Employee Messages
@@ -34,6 +37,9 @@ appRoute.get(
   employeeViewController.getEmployeeProfileCreation,
 );
 appRoute.post('/employee/profile/create', employeeController.createProfile);
+
+// Update Profile
+appRoute.patch('/employee/update/profile', employeeController.updateProfile);
 // Get Profile By Username -- No Page, use AXIOS then render data
 appRoute.get('/:username', employeeController.getProfileByUsername);
 // Employee Support

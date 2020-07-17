@@ -7,6 +7,7 @@ const { Package, Feature } = require('../../../Models/index');
 
 exports.getAll = async (req, res) => {
   try {
+      
     const packages = await Package.findAll({
       include: { 
         model: Feature,
@@ -17,14 +18,16 @@ exports.getAll = async (req, res) => {
     //Success Response
     const data = await packages;
    
-    res.render('pages/employer/getAllpackages', {
+    res.render('Pages/employer/getAllpackages', {
       pageName: 'Packages',
       error: req.flash('error'),
       success: req.flash('success'),
-      data
+      data,
+      payment: (req.payment)? req.payment : ''
     })
 
   } catch (error) {
+    console.log(error)
     req.flash( 'Error', 'Something went wrong' )
     return res.redirect('back')
   }

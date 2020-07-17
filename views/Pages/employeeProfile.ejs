@@ -15,8 +15,6 @@
 
 <body>
 
-
-
     <%- include('../includes/employeeSideNav') %>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="global_modal">
@@ -44,9 +42,9 @@
         <section id="portfolio" class="mt-4">
             <div class="container-fluid">
                 <% if (errorMessage) { %>
-                    <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+                <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
                 <% }if (success && success.length > 0) { %>
-                    <div role="alert" class="alert alert-success user-message"><%= success %></div>
+                <div role="alert" class="alert alert-success user-message"><%= success %></div>
                 <% } %>
                 <div class="row">
                     <div class="col-md-10">
@@ -61,8 +59,10 @@
                                             <span>
                                                 <% if(data.verification_status === "Pending") { %>
                                                 <img src="" alt="">
-                                                <% } else { %>
+                                                <% } else if (data.verification_status === "Approved") { %>
                                                 <img src="/img/iprofile/ic_sharp-verified.svg" alt="">
+                                                <% } else if (data.verification_status === "Disapproved") { %>
+                                                <img src="" alt="">
                                                 <% } %>
                                             </span>
                                         </h3>
@@ -109,7 +109,8 @@
                                 <a href="#" type="button" class="btn btn-lg btn-primary call-modal" title="Edit profile"
                                     data-modal-size="lg"><span id="edit_text">Edit Profile</span>
                                     <div class="hidden-content">
-                                        <form action="" id="edit-profile">
+                                        <form action="/employee/update/profile?_method=PATCH" id="edit-profile" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                                             <p id="error-message"></p>
                                             <p id="success-message"></p>
 
@@ -122,7 +123,7 @@
                                                         Picture</label>
                                                     <input type="file" id="file"
                                                         class="profile-picture-file form-control inputfile" name="image"
-                                                        required />
+                                                        />
                                                 </div>
                                                 <small>Recommended dimensions: 200 x 200px. <br> Maximum file
                                                     size: 500kb.</small>
@@ -137,7 +138,7 @@
                                                         <div style="position: relative;">
                                                             <input type="text" value="<%= data.first_name %>"
                                                                 class="form-control" id="first-name"
-                                                                aria-describedby="nameHelp" name="firstName" required>
+                                                                aria-describedby="nameHelp" name="firstName">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -149,7 +150,7 @@
                                                             </label>
                                                             <input type="text" value="<%= data.last_name %>"
                                                                 class="form-control" id="last-name"
-                                                                aria-describedby="nameHelp" name="lastName" required>
+                                                                aria-describedby="nameHelp" name="lastName">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -161,7 +162,7 @@
                                                             </label>
                                                             <input type="text" value="<%= data.username %>"
                                                                 class="form-control" id="last-name"
-                                                                aria-describedby="nameHelp" name="userName" required>
+                                                                aria-describedby="nameHelp" name="userName">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -173,7 +174,7 @@
                                                             </label>
                                                             <input type="email" value="<%= data.email %>"
                                                                 class="form-control" id="email"
-                                                                aria-describedby="emailHelp" name="email" required>
+                                                                aria-describedby="emailHelp" name="email">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -185,7 +186,7 @@
                                                             </label>
                                                             <input type="date" value="<%= data.dob %>"
                                                                 class="form-control" id="dob" aria-describedby="dobHelp"
-                                                                name="dateOfBirth" required>
+                                                                name="dateOfBirth">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -197,7 +198,7 @@
                                                             </label>
                                                             <input type="number" value="<%= data.phone_no %>"
                                                                 class="form-control" id="phone-number"
-                                                                aria-describedby="phoneNoHelp" name="phoneNo" required>
+                                                                aria-describedby="phoneNoHelp" name="phoneNo">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -210,7 +211,7 @@
                                                             <input type="text" value="<%= data.location %>"
                                                                 class="form-control" id="location"
                                                                 aria-describedby="locationHelp" name="location"
-                                                                required>
+                                                                >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -218,15 +219,14 @@
                                                     <label class="super-label">Track</label>
                                                     <select class="form-control" name="track" required>
                                                         <option value="">Select Track</option>
-                                                        <option value="frontend">Frontend</option>
-                                                        <option value="backend">Backend</option>
-                                                        <option value="design">Design</option>
-                                                        <option value="devops">Devops</option>
+                                                        <option value="Frontend">Frontend</option>
+                                                        <option value="Backend">Backend</option>
+                                                        <option value="Design">Design</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Availability</label>
-                                                    <select class="form-control" name="availability" required>
+                                                    <select class="form-control" name="availability" >
                                                         <option value="not-available">Not Available</option>
                                                         <option value="on-site">On-Site</option>
                                                         <option value="remote">Remote</option>
@@ -240,7 +240,7 @@
                                                             </label>
                                                             <input type="url" class="form-control"
                                                                 placeholder="Link to your CV (URL)" name="employeeCv"
-                                                                required value="<%= data.employee_cv %>">
+                                                             value="<%= data.employee_cv %>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -265,7 +265,7 @@
     </main>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <%- include('../Templates/flashmessagesclear') %>  
+    <%- include('../Templates/flashmessagesclear') %>
     <script src="/js/custom-js/modal.js"></script>
     <script src="/js/custom-js/side-nav.js"></script>
 </body>
