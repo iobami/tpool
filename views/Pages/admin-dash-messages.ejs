@@ -66,23 +66,28 @@
                                     <img src="../img/admin-dash-messages/Ellipse 30.png" class="dp-img" alt="">
                                 </div>
 
+                                
+                                <% if(allusers[i].employer_name ){ %>
+                                    <div class="chat-info"
+                                    data-name=<%- allusers[i].employer_name %>
+                                    data-id=<%- allusers[i].user_id%>>
+                                    <div class="content-top d-flex flex-row justify-content-between">
+                                    <p class="contact-name mb-0 font-weight-bold"><%- allusers[i].employer_name %>
+                                    </p>
+                                <% } else {%>
                                 <div class="chat-info"
                                     data-name=<%- allusers[i].first_name + " " + allusers[i].last_name %>
                                     data-id=<%- allusers[i].user_id%>>
                                     <div class="content-top d-flex flex-row justify-content-between">
-                                        <% if(allusers[i].employer_name ){ %>
-                                        <p class="contact-name mb-0 font-weight-bold"><%- allusers[i].employer_name %>
-                                        </p>
-                                        <% } else {%>
                                         <p class="contact-name mb-0 font-weight-bold">
                                             <%- allusers[i].first_name + " " + allusers[i].last_name %>
-                                            <% }%>
+                                    <% }%>
                                             <p class="time-sent mb-0"></p>
                                     </div>
                                     <div class="content-bottom d-flex flex-row">
                                         <p class="mb-0 pr-2">
-                                            <img src="../img/admin-dash-messages/Read-tick.svg" alt=""
-                                                class="check-mark">
+                                            <!-- <img src="../img/admin-dash-messages/Read-tick.svg" alt=""
+                                                class="check-mark"> -->
                                         </p>
                                     </div>
                                 </div>
@@ -98,25 +103,23 @@
 
                     <!-- right section -->
                     <div class="col-lg-7 right-side p-0" id="right-side">
-                        <!--  <div class="top-tab d-flex align-items-center p-2">
-                            <p class="m-0 pl-4"><img src="../img/admin-dash-messages/dp-image.png" alt="profile-img"
-                                    id="dp">
-                                <span class="pl-3"><b>Adeleke Oluwakemi</b></span></p>
-                        </div> -->
-                        <div class="main-tab ">
+                        <div class="top-tab d-flex align-items-center msgp p-2">
+                            
+                        </div>
+                        <div class="main-tab " style="background-image: url('../img/admin-dash-messages/bg2.jpg');">
 
                             <div class="px-md-5 px-2 pt-4 chat-messages">
 
 
                                 <div class="realchat">
 
-                                    <div>Click on user to begin chatting</div>
+                                    <div class="text-center connect mt-10 align-middle">Click on user to connect</div>>
 
                                 </div>
 
                             </div>
                             <div class="px-md-5 chat-fixed-bottom">
-                                <div class="pt-2 py-4 pl-2 d-flex w-100">
+                                <div class="pt-2 py-4 pl-2 d-flex w-100 none comment">
                                     <div class="msg-input">
                                         <input type="text" placeholder="Type something..." id="type-msg">
                                     </div>
