@@ -39,6 +39,8 @@ exports.getEmployeeEmployers = (req, res) => {
 exports.getEmployeeProfileCreation = (req, res) => {
   const { isLoggedIn, employeeId, isProfileCreated, profileId } = req.session;
 
+  const user = req.session.employeeuserData;
+
   if (isLoggedIn && employeeId) {
     res.redirect(`/employee/dashboard/${req.session.employeeId}`);
   } else if (profileId && isProfileCreated) {
@@ -49,6 +51,7 @@ exports.getEmployeeProfileCreation = (req, res) => {
       errorMessage: req.query.error_message,
       pageTitle: 'TalentPool | Create Profile',
       path: '/employee/profile/create',
+      user,
     });
   }
 };

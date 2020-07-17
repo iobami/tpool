@@ -136,17 +136,26 @@
                     <table class="table mb-0" id="table">
                         <thead class="head-txt">
                             <tr>
+                                <th class="th-head">Status</th>
                                 <th class="th-head">User ID</th>
                                 <th class="th-head">Employee’s name</th>
                                 <th class="th-head">Phone</th>
                                 <th class="th-head">Availability</th>
-                                <th class="th-head">Date joined</th>
-                                <th class="th-head">Status</th>
+                                <th class="th-head">Date Joined</th>
+                                <th class="th-head">Verification Status</th>
+                                <th class="th-head">Other Information</th>
                             </tr>
                         </thead>
 
                         <% data.forEach(function(employee) { %>
-                            <tr id="table-row">
+                            <% if (employee.User.block != true) { %>
+                                <tr id="table-row">
+                                    <td scope="row"><i class="fa fa-unlock" aria-hidden="true" style="font-size: xx-large;"></i></td>
+                                <% } %>
+                                <% if (employee.User.block) { %>
+                                <tr id="table-row"></tr>
+                                    <td scope="row"><i class="fa fa-lock" aria-hidden="true" style="font-size: xx-large; color: red;"></i><p class="badge badge-danger">BLOCKED</p></td>   
+                                <% } %>
                                 <% if (employee.hng_id){%>
                                     <td class="align-middle user-id"><%= employee.hng_id %></td>
                                 <% } %>   
@@ -212,8 +221,8 @@
                                             </div>
                                             <div class= "row">
                                                 <div class="col-md form-group ">
-                                                    <label >Gender :</label>
-                                                    <input type="text" class="form-control" disabled value = "<%= employee.gender %>">
+                                                    <label >Email :</label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employee.User.email %>">
                                                 </div>
                                                 <div class="col-md form-group ">
                                                     <label >Date of birth :</label>
@@ -232,8 +241,8 @@
                                             </div>
                                             <div class="row ">
                                                 <div class="col-md form-group">
-                                                    <label>Number of views :</label>
-                                                    <input type="text" class="form-control" disabled value = "<%= employee.views%>">
+                                                    <label>Track :</label>
+                                                    <input type="text" class="form-control" disabled value = "<%= employee.track%>">
                                                 </div>
                                                 <div class="col-md form-group">
                                                     <label>Employee ID :</label>

@@ -38,12 +38,11 @@ exports.create = async (req, res) => {
       });
       //Success Response
       req.flash('success', 'Package created Successfully');
-      return res.redirect('./packages');
+      return res.redirect('/admin/packages');
     }
   } catch (error) {
-    console.log(error);
     req.flash('error', 'Something went wrong');
-    return res.redirect('/admin/packages/create');
+    return res.redirect('/admin/packages');
   }
 };
 
@@ -55,9 +54,10 @@ exports.getAll = async (req, res) => {
         as: 'features',
       },
     });
+    const allFeatures = await Feature.findAll();
 
     //Success Response
-    const data = await packages;
+    const data = { packages, allFeatures };
     res.render('Pages/admin/getAllpackages', {
       pageName: 'Packages',
       path: 'packages',
@@ -103,7 +103,6 @@ exports.packageGet = async (req, res) => {
       },
     });
   } catch (err) {
-    // console.log(err);
     req.flash('error', 'Something went wrong');
     return res.redirect('back');
   }
@@ -144,11 +143,11 @@ exports.packageUpdate = async (req, res) => {
 
       //Success Response
       req.flash('success', 'Update Successful');
-      return res.redirect('/admin/packages');
+      return res.redirect('back');
     }
   } catch (error) {
     req.flash('error', 'Something went wrong');
-    return res.redirect('/admin/packages/create');
+    return res.redirect('/admin/packages');
   }
 };
 
@@ -217,11 +216,12 @@ exports.restoreDeletedPackage = (req, res) => {
 
 exports.addAFeature = async (req, res) => {
   try {
+    const feature_id = req.body.feature_id.trim();
     const package = await Package.findOne({
-      where: { package_id: req.params.package_id },
+      where: { package_id: req.params.package_id.toString() },
     });
-    const feature = await Feature.findOne({
-      where: { feature_id: req.body.feature_id },
+    const feature = await Feature.findAll({
+      where: { feature_id: `${feature_id}` },
     });
 
     if (!package || !feature) {
@@ -236,18 +236,19 @@ exports.addAFeature = async (req, res) => {
     req.flash('success', 'Feature added successfully');
     return res.redirect('back');
   } catch (error) {
-    req.flash('error', 'Something went wrong');
+    req.flash('Error', 'Something went wrong');
     return res.redirect('back');
   }
 };
 
 exports.removeAFeature = async (req, res) => {
   try {
+    const feature_id = req.body.feature_id.trim();
     const package = await Package.findOne({
-      where: { package_id: req.params.package_id },
+      where: { package_id: req.params.package_id.toString() },
     });
-    const feature = await Feature.findOne({
-      where: { feature_id: req.body.feature_id },
+    const feature = await Feature.findAll({
+      where: { feature_id: `${feature_id}` },
     });
 
     if (!package || !feature) {
@@ -263,7 +264,6 @@ exports.removeAFeature = async (req, res) => {
     return res.redirect('back');
 
   } catch (error) {
-    console.log(error);
     req.flash('error', 'Something went wrong');
     return res.redirect('back');
   }
@@ -284,11 +284,11 @@ exports.createFeature = async (req, res) => {
     } else {
       await Feature.create({ description, feature_id });
 
+      //Success Response
       req.flash('success', 'Feature created successfully');
       res.redirect('/admin/packages');
     }
   } catch (error) {
-    console.log(error);
     req.flash('error', 'Something went wrong');
     return res.redirect('back');
   }
@@ -303,7 +303,7 @@ exports.deleteFeature = async (req, res) => {
     //Success Response
     req.flash('success', 'Feature deleted successfully.');
     res.redirect('back')
-    
+
   } catch (error) {
     req.flash('Error', 'Something went wrong');
     res.redirect('/admin/packages')
