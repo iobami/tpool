@@ -2,6 +2,7 @@
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
+const morgan = require('morgan');
 const dotenv = require('dotenv');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
@@ -21,7 +22,7 @@ const { key } = require('./gen-key');
 dotenv.config();
 // eslint-disable-next-line import/order
 process.env.TALENT_POOL_JWT_SECRET = key(64);
-const morgan = require('morgan');
+
 const db = require('./Models');
 const { seedSuperAdmin } = require('./seed');
 const googleAuth = require('./Routes/googleAuth'); // require google auth route to test endpoint
@@ -82,7 +83,7 @@ const getAllEmployees = require('./Routes/employer/get-employees');
 
 // IMPORT EMPLOYER DASHBOARD
 const employerDashboard = require('./Routes/employer/employer-dashboard');
-const employerSettings = require('./routes/employer/employer-settings');
+const employerSettings = require('./Routes/employer/employer-settings');
 
 // IMPORT THE VIEWS ROUTES
 const adminPackages = require('./Routes/views/payment/admin_package');
@@ -105,6 +106,7 @@ const verifyModal = require('./Routes/views/admin/verifyModal');
 const messageRoute = require('./Routes/views/message/message');
 const superAdmin = require('./Routes/super-admin/manage-admin');
 const teamRoute = require('./Routes/views/team/index');
+
 const csrfProtection = csrf();
 
 const app = express();
