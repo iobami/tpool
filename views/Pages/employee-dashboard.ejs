@@ -183,9 +183,13 @@
               <ul class="list-group list-group-flush">
                 <% data.skills.forEach(function(skill){ %>
                 <li class="list-group-item">
+                  <!-- <div class=""> -->
                   <i class="fa fa-code-fork pr-2" aria-hidden="true"></i>
-                  <span class="d-inline-block"><%=skill.skill_description %>
-                  </span>
+                  <span class="d-inline-block pr-5"><%=skill.skill_description %></span>
+                  <!-- </div> -->
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#editSkillModal"
+                    onclick="editSkill(`<%=skill.skill_description %>`)">Edit</button>
+                  <button class="btn btn-danger">Delete</button>
                 </li>
                 <% }); %>
               </ul>
@@ -198,7 +202,7 @@
               </div>
             </div>
 
-            <!-- Modal -->
+            <!-- Add Skill Modal -->
             <div class="modal fade" id="addSkillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered d-felx justify-content-center">
@@ -209,6 +213,27 @@
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                         <input class="form-control form-control-lg" type="text" name="skill_description"
                           placeholder="e.g Bootstrap 4">
+                        <div class="d-flex justify-content-center">
+                          <button type="submit" class="btn btn-primary my-4">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Edit Skill Modal -->
+            <div class="modal fade" id="editSkillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered d-felx justify-content-center">
+                <div class="card">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form id="edit-skill" action="/employee/create/skill" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                        <input value="" class="editSkill form-control form-control-lg" type="text"
+                          name="skill_description" placeholder="e.g Bootstrap 4">
                         <div class="d-flex justify-content-center">
                           <button type="submit" class="btn btn-primary my-4">Submit</button>
                         </div>
@@ -231,6 +256,7 @@
 
   <%- include('../Templates/flashmessagesclear') %>
   <script src="/js/custom-js/side-nav.js"></script>
+  <script src="/js/custom-js/employee-dashboard.js"></script>
 </body>
 
 </html>

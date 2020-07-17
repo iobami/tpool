@@ -39,10 +39,10 @@
           <div class="section-icon">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#portfolioPopup">
               Add Portfolio
-              <svg class="pl-1" width="16" height="16" viewBox="0 0 16 16" fill="none"
+              <!-- <svg class="pl-1" width="16" height="16" viewBox="0 0 16 16" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 7V0H7V7H0V9H7V16H9V9H16V7H9Z" fill="#084482" />
-              </svg>
+              </svg> -->
             </button>
 
             <div class="modal fade" id="portfolioPopup">
@@ -97,18 +97,24 @@
         <div class="row">
           <% for( let index = 0; index < data.length; index++ ) { %>
           <div class="col-12 my-2">
-            <div class="card mb-3 portfolio-card" data-id="<%= data[index].id %> ">
+            <div class="card mb-3 portfolio-card" data-id="<%= data[index].id %>">
               <div class="card-body">
                 <h5 class="card-title"><%= data[index].title %> </h5>
                 <p class="card-text"><%= data[index].description %> </p>
                 <p class="card-text"> <a href="<%= data[index].link %>"><%= data[index].link %></a>
                 </p>
                 <div class="d-flex justify-content-end">
-                  <img src="/img/iprofile/edit.svg" alt="" class="mr-2" id="edit-portfolio" data-toggle="modal"
+                  <!-- <img src="/img/iprofile/edit.svg" alt="" class="mr-2" id="edit-portfolio" data-toggle="modal"
                     data-target="#editPortfolio"
-                    onclick="editPortfolio(`<%= data[index].title %>`, `<%= data[index].description %>`, `<%= data[index].link %>`)" />
+                    onclick="editPortfolio(`<%= data[index].title %>`, `<%= data[index].description %>`, `<%= data[index].link %>`)" /> -->
+                  <button class="btn btn-primary mr-2" id="edit-portfolio" data-toggle="modal"
+                    data-target="#editPortfolio"
+                    onclick="editPortfolio(`<%= data[index].title %>`, `<%= data[index].description %>`, `<%= data[index].link %>`)">Edit</button>
 
-                  <img src="/img/iprofile/carbon_trash-can.svg" alt="" class="mr-2" id="del-portfolio" />
+
+                  <!-- <img src="/img/iprofile/carbon_trash-can.svg" alt="" class="mr-2" id="del-portfolio" /> -->
+
+                  <button class="btn btn-danger" onclick="deletePortfolio(`<%= data[index].id %>`)">Delete</button>
                 </div>
               </div>
             </div>
@@ -132,20 +138,18 @@
                     <div class="form-group">
                       <label for="title">Title</label>
                       <input type="text" class="p-title form-control px-4 mt-2 mb-4 shadow p-3 bg-white rounded"
-                        placeholder="Portfolio title" value="" name="title" required
-                        id="portfolio-title" />
+                        placeholder="Portfolio title" value="" name="title" required id="portfolio-title" />
                     </div>
                     <div class="form-group">
                       <label for="description">Description</label>
                       <input type="text" class="p-desc form-control px-4 mt-2 mb-4 shadow p-3 bg-white rounded"
-                        placeholder="Description" value="" required
-                        name="description" id="portfolio-description" />
+                        placeholder="Description" value="" required name="description" id="portfolio-description" />
                     </div>
                     <div class="form-group">
                       <label for="link">Portfolio link</label>
                       <input type="url" class="p-link form-control text-muted shadow p-3 bg-white rounded"
-                        id="portfolio-link" value=""
-                        placeholder="Put a valid portfolio link here" name="link" required />
+                        id="portfolio-link" value="" placeholder="Put a valid portfolio link here" name="link"
+                        required />
                     </div>
                     <div class="modal-footer border-0 mx-auto">
                       <button type="submit" class="btn btn-primary btn-lg mb-3">
