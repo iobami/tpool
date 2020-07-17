@@ -1,20 +1,17 @@
 /* eslint-disable consistent-return */
 const router = require('express').Router();
 const passport = require('passport');
-
 // <----------------------- GOOOGLE ROUTE AND CONTOLLERS ------------------------------>
 // get employer profile details from google
 router.get(
   '/auth/employer/google',
   passport.authenticate('google-employer', { scope: ['profile', 'email'] }),
 );
-
 // get employee profile details from google
 router.get(
   '/auth/employee/google',
   passport.authenticate('google-employee', { scope: ['profile', 'email'] }),
 );
-
 // receive process details from passport.setup
 router.get(
   '/auth/employer/google/callback',
@@ -26,22 +23,26 @@ router.get(
     try {
       // Successful authentication,
       const { user } = req;
-      if (!user.userTypeId || user.userTypeId == null) {
-        req.session.isLoggedIn = false;
-        req.session.userId = user.user_id;
-        req.flash('success', 'Authentication successful!');
-        return res.redirect('/employer-create-profile');
-      }
+      const data = {
+        email: user.email,
+        userRole: user.userRole,
+        userTypeId: user.userTypeId,
+        verificationStatus: user.verificationStatus,
+      };
+      req.session.data = data;
       req.session.isLoggedIn = true;
-      req.session.userId = user.user_id;
+      req.session.userId = user.userId;
+      if ((!user.userTypeId) || user.userTypeId == null) {
+        req.flash('success', 'Authentication successful!');
+        return res.redirect('/employer/profile/create');
+      }
       req.flash('success', 'Login successful!');
-      return res.redirect('/employer-dashboard');
+      return res.redirect(`/employer/dashboard/${user.userTypeId}`);
     } catch (error) {
-      res.redirect('/employer-sign-in');
+      res.redirect('/employer/login');
     }
   },
 );
-
 // receive process details from passport.setup
 router.get(
   '/auth/employee/google/callback',
@@ -53,14 +54,18 @@ router.get(
     try {
       // Successful authentication,
       const { user } = req;
+      const data = {
+        email: user.email,
+        userRole: user.userRole,
+        userTypeId: user.userTypeId,
+        verificationStatus: user.verificationStatus,
+      };
+      req.session.data = data;
       req.session.isLoggedIn = true;
-      req.session.data = user;
-      req.session.userId = user.user_id;
-      if (!user.userTypeId || user.userTypeId == null) {
+      req.session.userId = user.userId;
+      if ((!user.userTypeId) || user.userTypeId == null) {
         req.flash('success', 'Authentication successful!');
-        return res.redirect(
-          '/employee/create/profile?success_message=Authentication successful!',
-        );
+        return res.redirect('/employee/create/profile?success_message=Authentication successful!');
       }
       req.flash('success', 'Login successful!');
       return res.redirect(
@@ -72,11 +77,9 @@ router.get(
   },
 );
 // <===================== END GOOGLE ===================>
-
 // ------------------------- GITHUB ROUTES AND CONTROLLERS ---------------------->
 // get employer profile details from github
 router.get('/auth/employer/github', passport.authenticate('github-employer'));
-
 // receive process details from passport.setup
 router.get(
   '/auth/github/callback',
@@ -87,41 +90,38 @@ router.get(
   (req, res) => {
     try {
       const { user } = req;
-      if (user.userRole === 'ROL-EMPLOYER') {
-        if (!user.userTypeId || user.userTypeId == null) {
-          req.session.isLoggedIn = false;
-          req.session.userId = user.user_id;
-          req.flash('success', 'Authentication successful!');
-          return res.redirect('/employer-create-profile');
-        }
-        req.session.isLoggedIn = true;
-        req.session.userId = user.user_id;
-        req.flash('success', 'Login successful!');
-        return res.redirect('/employer-dashboard');
-      }
-      if (!user.userTypeId || user.userTypeId == null) {
-        req.session.isLoggedIn = false;
-        req.session.userId = user.user_id;
-        req.flash('success', 'Authentication successful!');
-        return res.redirect(
-          '/employee/create/profile?success_message=Authentication successful!',
-        );
-      }
+      const data = {
+        email: user.email,
+        userRole: user.userRole,
+        userTypeId: user.userTypeId,
+        verificationStatus: user.verificationStatus,
+      };
+      req.session.data = data;
       req.session.isLoggedIn = true;
-      req.session.userId = user.user_id;
+      req.session.userId = user.userId;
+      if (user.userRole === 'ROL-EMPLOYER') {
+        if ((!user.userTypeId) || user.userTypeId == null) {
+          req.flash('success', 'Authentication successful!');
+          return res.redirect('/employer/profile/create');
+        }
+        req.flash('success', 'Login successful!');
+        return res.redirect(`/employer/dashboard/${user.userTypeId}`);
+      }
+      if ((!user.userTypeId) || user.userTypeId == null) {
+        req.flash('success', 'Authentication successful!');
+        return res.redirect('/employee/create/profile?success_message=Authentication successful!');
+      }
       req.flash('success', 'Login successful!');
       return res.redirect(
         `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
       );
     } catch (error) {
-      res.redirect('/employer-sign-in');
+      res.redirect('/employer/login');
     }
   },
 );
-
 // get employee profile details from github
 router.get('/auth/employee/github', passport.authenticate('github-employee'));
-
 // receive process details from passport.setup
 router.get(
   '/auth/github/callback',
@@ -132,28 +132,27 @@ router.get(
   (req, res) => {
     try {
       const { user } = req;
-      if (user.userRole === 'ROL-EMPLOYER') {
-        if (!user.userTypeId || user.userTypeId == null) {
-          req.session.isLoggedIn = false;
-          req.session.userId = user.user_id;
-          req.flash('success', 'Authentication successful!');
-          return res.redirect('/employer-create-profile');
-        }
-        req.session.isLoggedIn = true;
-        req.session.userId = user.user_id;
-        req.flash('success', 'Login successful!');
-        return res.redirect('/employer-dashboard');
-      }
-      if (!user.userTypeId || user.userTypeId == null) {
-        req.session.isLoggedIn = false;
-        req.session.userId = user.user_id;
-        req.flash('success', 'Authentication successful!');
-        return res.redirect(
-          '/employee/create/profile?success_message=Authentication successful!',
-        );
-      }
+      const data = {
+        email: user.email,
+        userRole: user.userRole,
+        userTypeId: user.userTypeId,
+        verificationStatus: user.verificationStatus,
+      };
+      req.session.data = data;
       req.session.isLoggedIn = true;
-      req.session.userId = user.user_id;
+      req.session.userId = user.userId;
+      if (user.userRole === 'ROL-EMPLOYER') {
+        if ((!user.userTypeId) || user.userTypeId == null) {
+          req.flash('success', 'Authentication successful!');
+          return res.redirect('/employer/profile/create');
+        }
+        req.flash('success', 'Login successful!');
+        return res.redirect(`/employer/dashboard/${user.userTypeId}`);
+      }
+      if ((!user.userTypeId) || user.userTypeId == null) {
+        req.flash('success', 'Authentication successful!');
+        return res.redirect('/employee/create/profile?success_message=Authentication successful!');
+      }
       req.flash('success', 'Login successful!');
       return res.redirect(
         `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
@@ -163,6 +162,5 @@ router.get(
     }
   },
 );
-
 // <======================== END GITHUB =========================>
 module.exports = router;

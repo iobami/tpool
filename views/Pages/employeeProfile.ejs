@@ -19,7 +19,7 @@
 
     <%- include('../includes/employeeSideNav') %>
 
-    <div class="modal fade modal-static" tabindex="-1" role="dialog" id="global_modal">
+    <div class="modal fade" tabindex="-1" role="dialog" id="global_modal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="container">
@@ -43,6 +43,11 @@
 
         <section id="portfolio" class="mt-4">
             <div class="container-fluid">
+                <% if (errorMessage) { %>
+                    <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+                <% }if (success && success.length > 0) { %>
+                    <div role="alert" class="alert alert-success user-message"><%= success %></div>
+                <% } %>
                 <div class="row">
                     <div class="col-md-10">
                         <div class="card px-4 py-5 mb-3 bio">
@@ -260,14 +265,9 @@
     </main>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/bootstrap-js/jquery.js"></script>
-    <script src="/js/bootstrap-js/popper.js"></script>
+    <%- include('../Templates/flashmessagesclear') %>  
     <script src="/js/custom-js/modal.js"></script>
-    <script src="/js/bootstrap-js/bootstrap.js"></script>
     <script src="/js/custom-js/side-nav.js"></script>
-    <!-- <script src="/js/custom-js/employees-profile.js"></script> -->
-    <!-- <script src="/js/custom-js/eprofile.js"></script> -->
-    <!-- <script src="/js/custom-js/employee-portfolio.js"></script> -->
 </body>
 
 </html>
