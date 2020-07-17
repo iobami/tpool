@@ -15,7 +15,12 @@
 
   <section class="admin__dashboard p-4">
     <h2 class="dashboard__heading text-center">Manage Packages</h2>
-
+    <% if(error != '') { %>
+      <p><%= error%></p>
+    <% }
+    if(success != '') { %>
+      <p><%= success%></p>
+    <% } %>
     <div class="container-fluid">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs mb-4 d-flex justify-content-center" id="myTab" role="tablist">
@@ -132,14 +137,6 @@
                 <button type="submit" class="btn btn-outline-success">Create Feature</button>
               </div>
             </div>
-            <div class="input-group input-group-sm d-md-none">
-              <input required type="text" placeholder="Enter feature description" name="description"
-                class="form-control">
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-outline-success">Create Feature</button>
-              </div>
-            </div>
-
           </form>
         </div>
       </div>
