@@ -15,6 +15,12 @@
       <p>
         Premium packages to help you hire talents faster.
       </p>
+      <% if(error != '') { %>
+        <p><%= error%></p>
+      <% }
+      if(success != '') { %>
+        <p><%= success%></p>
+      <% } %>
     </div>
     <div class="container">
       <div class="row">
