@@ -11,6 +11,7 @@ const {
     Op
 } = Sequelize;
 
+
 module.exports = {
     adminMessagePage: async (req, res) => {
         try {
@@ -53,7 +54,7 @@ module.exports = {
             // console.log('admin', adminChatUsers);
             // console.log('Employer', employerChatUsers);
             // console.log('Employee', employeeChatUsers);
-            console.log(allusers);
+
             res.status(200).render('Pages/admin-dash-messages', {
                 pageName: 'Admin Messages',
                 pageTitle: 'TalentPool | Admin Message',
@@ -71,7 +72,10 @@ module.exports = {
     },
 
     employerMessagePage: async (req, res) => {
+
         try {
+
+            let employerId = req.session.employerId
             //Get employer chat users
             const employerChatUsers = await model.Employer.findAll({
                 attributes: ['user_id', 'employer_name', 'employer_photo'],
@@ -106,13 +110,14 @@ module.exports = {
             res.status(200).render('Pages/employer-messages', {
                 pageName: 'Employer Messages',
                 pageTitle: 'TalentPool | Employer Message',
+                EmployerInfo: req.session.details,
                 path: '/employer/message',
                 employerChatUsers,
                 adminChatUsers,
                 employeeChatUsers,
-                dashboardPath: `${URL}employee/dashboard/${employeeId}`,
-                profilePath: `${URL}employee/profile/${employeeId}`,
-                portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+                dashboardPath: `${URL}employee/dashboard/${employerId}`,
+                profilePath: `${URL}employee/profile/${employerId}`,
+                portfolioPath: `${URL}employee/portfolio/${employerId}`,
                 error: req.flash('error'),
                 errors: req.flash('errors'),
                 success: req.flash('success'),
