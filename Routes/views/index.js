@@ -11,6 +11,7 @@ const {
   signOutPopUp,
   comingSoon,
   verify,
+  returnToDashboard,
 } = require('../../Controllers/views');
 // const { logout } = require('../../Controllers/views/logout');
 const { directory } = require('../../Controllers/views/directory');
@@ -23,6 +24,7 @@ appRoute.get('/faq', faq);
 appRoute.get('/signOutPopUp', signOutPopUp);
 appRoute.get('/coming-soon', comingSoon);
 appRoute.get('/verify-email', verify);
+appRoute.get('/redirect', returnToDashboard);
 // appRoute.get('/logout', logout);
 
 appRoute.post('/loggedout', authController.postLogout);
