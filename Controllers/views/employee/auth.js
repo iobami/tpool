@@ -2,14 +2,7 @@
 module.exports = {
   employeeSignup: (req, res) => {
     const loggedIn = req.session.isLoggedIn;
-    let message = req.flash('error');
-    if (message.length > 0) {
-      [message] = message;
-    } else {
-      message = null;
-    }
 
-    // message end
     const { passport } = req.session;
 
     if (req.session && !passport) {
@@ -40,15 +33,11 @@ module.exports = {
       return res.render('Pages/employee-sign-up', {
         path: '/employee/register',
         pageName: 'Employee Signup',
+        isLoggedIn: loggedIn,
         error: req.flash('error'),
         errors: req.flash('errors'),
         success: req.flash('success'),
-        errorMessage: message,
-        oldInput: {
-          email: '',
-          password: '',
-        },
-        validationErrors: [],
+        oldInput: req.flash('oldInput'),
       });
     }
     // const { isLoggedIn } = req.session;
@@ -59,12 +48,7 @@ module.exports = {
       error: req.flash('error'),
       errors: req.flash('errors'),
       success: req.flash('success'),
-      errorMessage: message,
-      oldInput: {
-        email: '',
-        password: '',
-      },
-      validationErrors: [],
+      oldInput: req.flash('oldInput'),
     });
   },
 
@@ -120,7 +104,7 @@ module.exports = {
       });
     }
 
-//    const { isLoggedIn } = req.session;
+    // const { isLoggedIn } = req.session;
     return res.render('Pages/employee-sign-in', {
       path: '/employee/login',
       pageName: 'Employee Login',

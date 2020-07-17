@@ -15,8 +15,6 @@
 
 <body>
 
-
-
     <%- include('../includes/employeeSideNav') %>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="global_modal">
@@ -44,9 +42,9 @@
         <section id="portfolio" class="mt-4">
             <div class="container-fluid">
                 <% if (errorMessage) { %>
-                    <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
+                <div role="alert" class="alert alert-danger user-message user-message--error"><%= errorMessage %></div>
                 <% }if (success && success.length > 0) { %>
-                    <div role="alert" class="alert alert-success user-message"><%= success %></div>
+                <div role="alert" class="alert alert-success user-message"><%= success %></div>
                 <% } %>
                 <div class="row">
                     <div class="col-md-10">
@@ -61,8 +59,10 @@
                                             <span>
                                                 <% if(data.verification_status === "Pending") { %>
                                                 <img src="" alt="">
-                                                <% } else { %>
+                                                <% } else if (data.verification_status === "Approved") { %>
                                                 <img src="/img/iprofile/ic_sharp-verified.svg" alt="">
+                                                <% } else if (data.verification_status === "Disapproved") { %>
+                                                <img src="" alt="">
                                                 <% } %>
                                             </span>
                                         </h3>
@@ -217,7 +217,7 @@
                                                 </div>
                                                 <div class="col-md-6 tracks formCol">
                                                     <label class="super-label">Track</label>
-                                                    <select class="form-control" name="track" >
+                                                    <select class="form-control" name="track" required>
                                                         <option value="">Select Track</option>
                                                         <option value="Frontend">Frontend</option>
                                                         <option value="Backend">Backend</option>
@@ -265,7 +265,7 @@
     </main>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <%- include('../Templates/flashmessagesclear') %>  
+    <%- include('../Templates/flashmessagesclear') %>
     <script src="/js/custom-js/modal.js"></script>
     <script src="/js/custom-js/side-nav.js"></script>
 </body>

@@ -107,7 +107,6 @@ exports.registerEmployer = (req, res) => {
       if (!err.statusCode) {
         err.statusCode = 500;
       }
-      // return errorResMsg(res, 500, 'An error occurred');
       req.flash('oldInput', employerUserData);
       req.flash('error', 'An error Occoured');
       return res.redirect('/employer/register');
@@ -175,7 +174,7 @@ exports.registerEmployerOrg = (req, res) => {
 
           // return successResMsg(res, 201, data);
           req.flash('success', 'Verification email sent!');
-          return res.redirect('/employer/register#company');
+          return res.redirect('/employer/register');
         } catch (err) {
           req.flash('oldInput', employerUserData);
           req.flash('error', 'An Error occoured, try again.');
@@ -421,7 +420,7 @@ exports.postEmployerLogin = async (req, res, next) => {
               // req.flash('error', 'You need to create a profile before you proceed');
               res.redirect('/employer/profile/create');
             }
-            res.redirect(`/employer/dashboard/${user.employer_id}`);
+            res.redirect('/employer/dashboard');
           }
           return res.status(422).render('Pages/employer-signin', {
             path: '/employer/login',
@@ -766,7 +765,6 @@ exports.resetPassword = asyncHandler(async (req, res) => {
 
   if (user.role_id === 'ROL-EMPLOYER') return res.redirect('/employer/login');
   if (user.role_id === 'ROL-EMPLOYEE') return res.redirect('/employee/login');
-
 });
 
 exports.resendVerificationLink = async (req, res) => {

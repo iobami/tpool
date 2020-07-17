@@ -20,8 +20,6 @@
   <%- include('../includes/employeeHeader') %>
   <%- include('../includes/employeeSideNav') %>
 
-
-
   <main>
     <div class="container-fluid mt-3 pb-5">
 
@@ -85,11 +83,72 @@
                 </button>
               </div>
               <% } %>
+
+              <!-- Modal -->
+              <% if (data.team) { %>
+              <div id="teamModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title"><%= data.team.name %>
+                        (<%= data.team.status %> )
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="img-container">
+                        <img src=<%= data.team.employer.photo %> alt="employer photo" class="img-fluid rounded mx-auto">
+                      </div>
+                      <div class="mt-4">
+                        <div class="mb-3 d-flex align-items-center">
+                          <h6 class="mb-0 mr-2">Employer: </h6>
+                          <p class="mb-0">
+                            <%= data.team.employer.employer_name %> </p>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                          <h6 class="mb-0 mr-2">Contact: </h6>
+                          <p class="mb-0"><a href=<%= 'tel:'+data.team.employer.phone %>><%= data.team.employer.phone %>
+                            </a>,
+                            <a href=<%= 'mailto:'+data.team.employer.email %>><%= data.team.employer.email %></a>
+                          </p>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                          <h6 class="mb-0 mr-2">Socials: </h6>
+                          <div class="d-flex justify-content-between">
+                            <% if (data.team.employer.social.twitter) { %>
+                            <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.twitter %>>Twitter</a>
+                            </p>
+                            <% } %>
+                            <% if (data.team.employer.social.facebook) { %>
+                            <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.facebook %>>Facebook</a>
+                            </p>
+                            <% } %>
+                            <% if (data.team.employer.social.instagram) { %>
+                            <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.instagram %>>Instagram</a>
+                            </p>
+                            <% } %>
+                            <% if (data.team.employer.social.linkedin) { %>
+                            <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.linkedin %>>LinkedIn</a>
+                            </p>
+                            <% } %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% } %>
             </div>
           </div>
         </div>
 
-        <div class="col-12 col-md-6 mb-5">
+        <div class="col-12 col-md-5 mb-5">
           <div class="card p-3">
             <h4 class="py-3 mb-0 font-weight-bold">Portfolio</h4>
             <div class="">
@@ -98,7 +157,7 @@
                 <ul class="list-group list-group-flush">
                   <% data.portfolios.forEach(function(item) { %>
                   <li class="list-group-item">
-                    <a href="<%= item.link %>" style="color: darkblue;"  class="portfolio-link">
+                    <a href="<%= item.link %>" style="color: darkblue;" class="portfolio-link">
                       <%= item.title %>
                     </a>
                   </li>
@@ -116,32 +175,36 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-6 mb-5">
+        <div class="col-12 col-md-7 mb-5">
           <div class="card p-3">
             <h4 class="py-3 mb-0 font-weight-bold">Skills </h4>
             <div class="">
-              <div>
-                <% if (data.skills.length) { %>
-                <ul class="list-group list-group-flush">
-                  <% data.skills.forEach(function(skill){ %>
-                  <li class="list-group-item">
-                    <i class="fa fa-code-fork" aria-hidden="true"></i>
-                    <span class="d-inline-block"><%=skill.skill_description %>
-                    </span>
-                  </li>
-                  <% }); %>
-                </ul>
-                <%} else { %>
-                <p>No skill has been added yet</p>
-                <% } %>
-              </div>
+              <% if (data.skills.length) { %>
+              <ul class="list-group list-group-flush">
+                <% data.skills.forEach(function(skill, index){ %>
+                <li class="list-group-item d-flex justify-content-between">
+                  <div class="">
+                    <i class="fa fa-code-fork pr-2" aria-hidden="true"></i>
+                    <span class="d-inline-block pr-5"><%=skill.skill_description %></span>
+                  </div>
+                  <div class="">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#editSkillModal"
+                      onclick="editSkill(`<%=skill.skill_description %>`)">Edit</button>
+                    <button class="btn btn-danger"  onclick="deleteSkill(`<%= skill.id %>`)">Delete</button>
+                  </div>
+                </li>
+                <% }); %>
+              </ul>
+              <%} else { %>
+              <p>No skill has been added yet</p>
+              <% } %>
               <div class="text-right mt-3">
                 <a href="" data-toggle="modal" data-target="#addSkillModal" class="btn btn-primary">Add
                   skills</a>
               </div>
             </div>
 
-            <!-- Modal -->
+            <!-- Add Skill Modal -->
             <div class="modal fade" id="addSkillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered d-felx justify-content-center">
@@ -162,6 +225,27 @@
               </div>
             </div>
 
+            <!-- Edit Skill Modal -->
+            <div class="modal fade" id="editSkillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered d-felx justify-content-center">
+                <div class="card">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form id="edit-skill" action="/employee/create/skill" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                        <input value="" class="editSkill form-control form-control-lg" type="text"
+                          name="skill_description" placeholder="e.g Bootstrap 4">
+                        <div class="d-flex justify-content-center">
+                          <button type="submit" class="btn btn-primary my-4">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -172,70 +256,9 @@
     </pre> -->
   </main>
 
-
-  <!-- Modal -->
-  <% if (data.team) { %>
-  <div id="teamModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><%= data.team.name %>
-            (<%= data.team.status %> )
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="img-container">
-            <img src=<%= data.team.employer.photo %> alt="employer photo" class="img-fluid rounded mx-auto">
-          </div>
-          <div class="mt-4">
-            <div class="mb-3 d-flex align-items-center">
-              <h6 class="mb-0 mr-2">Employer: </h6>
-              <p class="mb-0">
-                <%= data.team.employer.employer_name %> </p>
-            </div>
-            <div class="mb-3 d-flex align-items-center">
-              <h6 class="mb-0 mr-2">Contact: </h6>
-              <p class="mb-0"><a href=<%= 'tel:'+data.team.employer.phone %>><%= data.team.employer.phone %>
-                </a>,
-                <a href=<%= 'mailto:'+data.team.employer.email %>><%= data.team.employer.email %></a>
-              </p>
-            </div>
-            <div class="mb-3 d-flex align-items-center">
-              <h6 class="mb-0 mr-2">Socials: </h6>
-              <div class="d-flex justify-content-between">
-                <% if (data.team.employer.social.twitter) { %>
-                <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.twitter %>>Twitter</a>
-                </p>
-                <% } %>
-                <% if (data.team.employer.social.facebook) { %>
-                <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.facebook %>>Facebook</a>
-                </p>
-                <% } %>
-                <% if (data.team.employer.social.instagram) { %>
-                <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.instagram %>>Instagram</a>
-                </p>
-                <% } %>
-                <% if (data.team.employer.social.linkedin) { %>
-                <p class="mb-0 mr-2"><a href=<%= data.team.employer.social.linkedin %>>LinkedIn</a>
-                </p>
-                <% } %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% } %>
-
-
   <%- include('../Templates/flashmessagesclear') %>
+  <script src="/js/custom-js/side-nav.js"></script>
+  <script src="/js/custom-js/employee-dashboard.js"></script>
 </body>
 
 </html>
