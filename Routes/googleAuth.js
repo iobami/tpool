@@ -1,6 +1,35 @@
 /* eslint-disable consistent-return */
 const router = require('express').Router();
 const passport = require('passport');
+
+const renderPage = async (req, res, user) => {
+  const data = {
+    email: user.email,
+    userRole: user.userRole,
+    userTypeId: user.userTypeId,
+    verificationStatus: user.verificationStatus,
+  };
+
+  req.session.data = data;
+  req.session.isLoggedIn = true;
+  req.session.userId = user.user_id;
+  if (user.userRole === 'ROL-EMPLOYER') {
+    if ((!user.userTypeId) || user.userTypeId == null) {
+      req.flash('success', 'Authentication successful!');
+      return res.redirect('/employer/profile/create');
+    }
+    req.flash('success', 'Login successful!');
+    return res.redirect(`/employer/dashboard/${user.userTypeId}`);
+  }
+  if ((!user.userTypeId) || user.userTypeId == null) {
+    req.flash('success', 'Authentication successful!');
+    return res.redirect('/employee/create/profile?success_message=Authentication successful!');
+  }
+  req.flash('success', 'Login successful!');
+  return res.redirect(
+    `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
+  );
+};
 // <----------------------- GOOOGLE ROUTE AND CONTOLLERS ------------------------------>
 // get employer profile details from google
 router.get(
@@ -23,21 +52,7 @@ router.get(
     try {
       // Successful authentication,
       const { user } = req;
-      const data = {
-        email: user.email,
-        userRole: user.userRole,
-        userTypeId: user.userTypeId,
-        verificationStatus: user.verificationStatus,
-      };
-      req.session.data = data;
-      req.session.isLoggedIn = true;
-      req.session.userId = user.userId;
-      if ((!user.userTypeId) || user.userTypeId == null) {
-        req.flash('success', 'Authentication successful!');
-        return res.redirect('/employer/profile/create');
-      }
-      req.flash('success', 'Login successful!');
-      return res.redirect(`/employer/dashboard/${user.userTypeId}`);
+      renderPage(req, res, user);
     } catch (error) {
       res.redirect('/employer/login');
     }
@@ -54,23 +69,7 @@ router.get(
     try {
       // Successful authentication,
       const { user } = req;
-      const data = {
-        email: user.email,
-        userRole: user.userRole,
-        userTypeId: user.userTypeId,
-        verificationStatus: user.verificationStatus,
-      };
-      req.session.data = data;
-      req.session.isLoggedIn = true;
-      req.session.userId = user.userId;
-      if ((!user.userTypeId) || user.userTypeId == null) {
-        req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/create/profile?success_message=Authentication successful!');
-      }
-      req.flash('success', 'Login successful!');
-      return res.redirect(
-        `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
-      );
+      renderPage(req, res, user);
     } catch (error) {
       res.redirect('/employee/login');
     }
@@ -90,31 +89,7 @@ router.get(
   (req, res) => {
     try {
       const { user } = req;
-      const data = {
-        email: user.email,
-        userRole: user.userRole,
-        userTypeId: user.userTypeId,
-        verificationStatus: user.verificationStatus,
-      };
-      req.session.data = data;
-      req.session.isLoggedIn = true;
-      req.session.userId = user.userId;
-      if (user.userRole === 'ROL-EMPLOYER') {
-        if ((!user.userTypeId) || user.userTypeId == null) {
-          req.flash('success', 'Authentication successful!');
-          return res.redirect('/employer/profile/create');
-        }
-        req.flash('success', 'Login successful!');
-        return res.redirect(`/employer/dashboard/${user.userTypeId}`);
-      }
-      if ((!user.userTypeId) || user.userTypeId == null) {
-        req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/create/profile?success_message=Authentication successful!');
-      }
-      req.flash('success', 'Login successful!');
-      return res.redirect(
-        `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
-      );
+      renderPage(req, res, user);
     } catch (error) {
       res.redirect('/employer/login');
     }
@@ -132,31 +107,7 @@ router.get(
   (req, res) => {
     try {
       const { user } = req;
-      const data = {
-        email: user.email,
-        userRole: user.userRole,
-        userTypeId: user.userTypeId,
-        verificationStatus: user.verificationStatus,
-      };
-      req.session.data = data;
-      req.session.isLoggedIn = true;
-      req.session.userId = user.userId;
-      if (user.userRole === 'ROL-EMPLOYER') {
-        if ((!user.userTypeId) || user.userTypeId == null) {
-          req.flash('success', 'Authentication successful!');
-          return res.redirect('/employer/profile/create');
-        }
-        req.flash('success', 'Login successful!');
-        return res.redirect(`/employer/dashboard/${user.userTypeId}`);
-      }
-      if ((!user.userTypeId) || user.userTypeId == null) {
-        req.flash('success', 'Authentication successful!');
-        return res.redirect('/employee/create/profile?success_message=Authentication successful!');
-      }
-      req.flash('success', 'Login successful!');
-      return res.redirect(
-        `/employee/dashboard/${user.userTypeId}?success_message=Login Successful`,
-      );
+      renderPage(req, res, user);
     } catch (error) {
       res.redirect('/employee/login');
     }
