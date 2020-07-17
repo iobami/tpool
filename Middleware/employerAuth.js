@@ -63,6 +63,22 @@ module.exports = {
         },
         include: [mainuser, company_type],
       });
+
+      const allEmployees = await db.Employee.count();
+
+      const employeeContacted = await db.Team.count({
+        where: {
+          employer_id: req.session.userId,
+        },
+      });
+
+      const employeeEmployed = await db.Team.count({
+        where: {
+          employer_id: req.session.userId,
+          status: 'Accepted',
+        },
+      });
+
       //go back to file creation page
       if (!getemployer) return res.redirect('/employer/profile/create');
       req.session.employerId = getemployer.dataValues.employer_id;
@@ -97,10 +113,13 @@ module.exports = {
         ...userIndustry
       } = getemployer.dataValues.Company_category.dataValues;
 
+      var dashboard = { allEmployees, employeeContacted, employeeEmployed }
+
       const employerbasicInfo = {
         ...userIdentity,
         employerInfo,
         userIndustry,
+        dashboard,
       };
 
       req.session.details = employerbasicInfo;
