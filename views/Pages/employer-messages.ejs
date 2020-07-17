@@ -5,7 +5,12 @@
     <%- include('../Templates/dashboard-head') %>
     <link href="/styles/custom-css/side-nav.css" rel="stylesheet" />
     <link href="/styles/custom-css/top-nav-admin.css" rel="stylesheet" />
-    <link rel="stylesheet" type="css" href="../styles/custom-css/admin-dash-messages.css">
+    <link rel="stylesheet" href="../styles/custom-css/admin-dash-messages.css">
+    <link href="/styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
+
+    <link href="/styles/custom-css/side-nav.css" rel="stylesheet" />
+    <link href="/styles/custom-css/admin-dash.css" rel="stylesheet" />
+    <link href="/styles/custom-css/top-nav-admin.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
@@ -28,7 +33,7 @@
                 <div id="body__click"></div>
             </div>
 
-            <div id="" class="col pt-lg-2 pb-lg-5">
+            <div id="main-content" class="pt-lg-2 pb-lg-5">
                 <div class="container-fluid main-chat-container">
                     <div class="container chat-top p-0">
                         <div class="row mt-lg-3 m-0 p-md-0 p-1 main-section">
@@ -39,9 +44,9 @@
                             </div>
                             <div class="col-lg-4 col-6 d-flex justify-content-end">
                                 <div id="talent-offers">
-                                    <img src="../img/admin-dash-messages/Vector.svg" alt="" id="talent-offers-img-size">
+                                    <img src="../img/admin-dash-messages/Vector.svg" alt="">
                                     <!-- <img src="../img/admin-dash-messages/Vector (2).svg" alt="" class="d-lg-none d-block"> -->
-                                    <span id="talent-offers-size">Talent Offers</span>
+                                    <span>Talent Offers</span>
                                 </div>
                             </div>
                         </div>
@@ -77,23 +82,22 @@
 
                             <!-- right section -->
                             <div class="col-lg-7 right-side p-0" id="right-side">
-                                <div class="top-tab d-flex align-items-center p-2">
-                                    <p class="m-0 pl-4"><img src="../img/admin-dash-messages/dp-image.png"
-                                            alt="profile-img" id="dp">
+                                <!--  <div class="top-tab d-flex align-items-center p-2">
+                                    <p class="m-0 pl-4"><img src="../img/admin-dash-messages/dp-image.png" alt="profile-img"
+                                            id="dp">
                                         <span class="pl-3"><b>Adeleke Oluwakemi</b></span></p>
-                                </div>
+                                </div> -->
                                 <div class="main-tab ">
 
                                     <div class="px-md-5 px-2 pt-4 chat-messages">
-                                        <div class="day d-flex justify-content-center p-2">
-                                            Yesterday
-                                        </div>
+
 
                                         <div class="realchat">
 
-
+                                            <div>Click on user to begin chatting</div>
 
                                         </div>
+
                                     </div>
                                     <div class="px-md-5 chat-fixed-bottom">
                                         <div class="pt-2 py-4 pl-2 d-flex w-100">
@@ -120,9 +124,6 @@
 
 
                 </div>
-
-
-
             </div>
 
 

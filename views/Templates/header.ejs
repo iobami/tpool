@@ -84,8 +84,16 @@
                       <a class="dropdown-item" href="/employee/register">Talent</a>
                     </div>
                   </li>
-              <% } %>
-           
+                  <% }if (isLoggedIn) { %>
+                    <a href="/redirect"   style="
+                    padding: 0.5em 1em;
+                    margin-top: 0.5em;
+                    background: #33beff;
+                    text-decoration:none;
+                    color: #fff;
+                    border-radius: 5px;
+                    ">Dashboard</a>
+                <% } %>
           </ul>
         </div>
       </nav>

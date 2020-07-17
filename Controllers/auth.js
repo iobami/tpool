@@ -11,6 +11,7 @@ const bcrypt = require('bcryptjs');
 const { uuid } = require('uuidv4');
 const { validationResult } = require('express-validator');
 const model = require('../Models/index');
+
 const jsonWT = require('../Utils/auth-token');
 const asyncHandler = require('../Middleware/async');
 const sendEmail = require('../Utils/sendEmail');
@@ -31,23 +32,23 @@ const URL =
 
 exports.registerEmployer = (req, res) => {
   (async () => {
+    const employerUserData = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      phone: req.body.phone
+    };
     try {
       // eslint-disable-next-line camelcase
       // Validate input
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
+        req.flash('oldInput', employerUserData);
         req.flash('errors', errResponse);
         return res.redirect('/employer/register');
       }
-
-      // Saving other user details in employer session
-      const employerUserData = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        phone: req.body.phone,
-      };
+      // Saving user details in session
       req.session.employeruserData = employerUserData;
 
       // encrypt password
@@ -92,16 +93,13 @@ exports.registerEmployer = (req, res) => {
           req.flash('success', 'Verification email sent!');
           return res.redirect('/employer/register');
         } catch (err) {
+          req.flash('oldInput', employerUserData);
           req.flash('error', 'An error Occoured');
           return res.redirect('/employer/register');
           // return errorResMsg(res, 500, err);
         }
       } else {
-        // return errorResMsg(
-        //   res,
-        //   403,
-        //   'Someone has already registered this email',
-        // );
+        req.flash('oldInput', employerUserData);
         req.flash('error', 'Someone has already registered this email');
         return res.redirect('/employer/register');
       }
@@ -110,6 +108,7 @@ exports.registerEmployer = (req, res) => {
         err.statusCode = 500;
       }
       // return errorResMsg(res, 500, 'An error occurred');
+      req.flash('oldInput', employerUserData);
       req.flash('error', 'An error Occoured');
       return res.redirect('/employer/register');
     }
@@ -118,21 +117,22 @@ exports.registerEmployer = (req, res) => {
 
 exports.registerEmployerOrg = (req, res) => {
   (async () => {
+    const employerUserData = {
+      organizationName: req.body.orgName,
+      email: req.body.email,
+    };
     try {
       // eslint-disable-next-line camelcase
       // Validate input
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
+        req.flash('oldInput', employerUserData);
         req.flash('errors', errResponse);
-        return res.redirect('/employer/register');
+        return res.redirect('/employer/register#company');
       }
 
       // Saving other user details in employer session
-      const employerUserData = {
-        organizationName: req.body.firstname,
-        email: req.body.email,
-      };
       req.session.employeruserData = employerUserData;
 
       // encrypt password
@@ -175,28 +175,26 @@ exports.registerEmployerOrg = (req, res) => {
 
           // return successResMsg(res, 201, data);
           req.flash('success', 'Verification email sent!');
-          return res.redirect('/employer/register');
+          return res.redirect('/employer/register#company');
         } catch (err) {
-          req.flash('error', 'An error Occoured');
-          return res.redirect('/employer/register');
+          req.flash('oldInput', employerUserData);
+          req.flash('error', 'An Error occoured, try again.');
+          return res.redirect('/employer/register#company');
           // return errorResMsg(res, 500, err);
         }
       } else {
-        // return errorResMsg(
-        //   res,
-        //   403,
-        //   'Someone has already registered this email',
-        // );
+        req.flash('oldInput', employerUserData);
         req.flash('error', 'Someone has already registered this email');
-        return res.redirect('/employer/register');
+        return res.redirect('/employer/register#company');
       }
     } catch (err) {
       if (!err.statusCode) {
         err.statusCode = 500;
       }
       // return errorResMsg(res, 500, 'An error occurred');
-      req.flash('error', 'An error Occoured');
-      return res.redirect('/employer/register');
+      req.flash('oldInput', employerUserData);
+      req.flash('error', 'An Error occoured, try again.');
+      return res.redirect('/employer/register#company');
     }
   })();
 };
@@ -212,7 +210,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
       pageName: 'Employee Login',
       errorMessage: errors.array()[0].msg,
       success,
-      isLoggedIn:req.session.isLoggedIn,
+      isLoggedIn: req.session.isLoggedIn,
       oldInput: {
         email,
         password,
@@ -229,7 +227,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'Incorrect login details',
           success: req.flash('success'),
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -253,7 +251,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'User is not verified',
           success: req.flash('success'),
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -268,7 +266,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
           pageName: 'Employee Login',
           errorMessage: 'User is blocked.',
           success: req.flash('success'),
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -287,6 +285,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
               userTypeId,
             };
             req.session.data = data;
+            req.session.email = user.email;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.employeeId = data.userTypeId;
@@ -308,7 +307,7 @@ exports.postEmployeeLogin = async (req, res, next) => {
             pageName: 'Employee Login',
             errorMessage: 'Invalid email or password.',
             success: req.flash('success'),
-            isLoggedIn:req.session.isLoggedIn,
+            isLoggedIn: req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -335,7 +334,7 @@ exports.postEmployerLogin = async (req, res, next) => {
       path: '/employer/login',
       pageName: 'Employer Login',
       errorMessage: errors.array()[0].msg,
-      isLoggedIn:req.session.isLoggedIn,
+      isLoggedIn: req.session.isLoggedIn,
       success: req.flash('success'),
       oldInput: {
         email,
@@ -352,7 +351,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'Invalid email or password.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -378,7 +377,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Sign In',
           errorMessage: 'User is not verified',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -393,7 +392,7 @@ exports.postEmployerLogin = async (req, res, next) => {
           path: '/employer/login',
           pageName: 'Employer Login',
           errorMessage: 'User is blocked.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           success: req.flash('success'),
           oldInput: {
             email,
@@ -429,7 +428,7 @@ exports.postEmployerLogin = async (req, res, next) => {
             pageName: 'Employer Login',
             errorMessage: 'Invalid email or password.',
             success,
-            isLoggedIn:req.session.isLoggedIn,
+            isLoggedIn: req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -537,7 +536,7 @@ exports.adminLogin = async (req, res, next) => {
       path: '/admin/login',
       pageName: 'Admin login',
       errorMessage: errors.array()[0].msg,
-      isLoggedIn:req.session.isLoggedIn,
+      isLoggedIn: req.session.isLoggedIn,
       oldInput: {
         email,
         password,
@@ -552,7 +551,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'Incorrect login details,user does not exist.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -565,7 +564,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not an admin.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -587,7 +586,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is not verified.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -600,7 +599,7 @@ exports.adminLogin = async (req, res, next) => {
           path: '/admin/login',
           pageName: 'Admin Login',
           errorMessage: 'User is blocked.',
-          isLoggedIn:req.session.isLoggedIn,
+          isLoggedIn: req.session.isLoggedIn,
           oldInput: {
             email,
             password,
@@ -612,6 +611,12 @@ exports.adminLogin = async (req, res, next) => {
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
+            const data = {
+              email: user.email,
+              userRole: user.role_id,
+              userTypeId,
+            };
+            req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.adminId = userTypeId;
@@ -621,7 +626,7 @@ exports.adminLogin = async (req, res, next) => {
             path: '/admin/login',
             pageName: 'Admin Login',
             errorMessage: 'Incorrect login details.',
-            isLoggedIn:req.session.isLoggedIn,
+            isLoggedIn: req.session.isLoggedIn,
             oldInput: {
               email,
               password,
@@ -656,7 +661,7 @@ const getResetPasswordToken = () => {
     .digest('hex');
 
   // Set expire
-  const resetPasswordExpire = Date.now() + + 3600000;
+  const resetPasswordExpire = Date.now() + 3600000;
 
   return { resetToken, resetPasswordToken, resetPasswordExpire };
 };
@@ -756,8 +761,10 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   await user.save();
 
   req.flash('success', 'Password changed successfully');
-  if (user.role_id == 'ROL-EMPLOYER') return res.redirect('/employer/login');
-  if (user.role_id == 'ROL-EMPLOYEE') return res.redirect('/employee/login');
+
+  if (user.role_id === 'ROL-EMPLOYER') return res.redirect('/employer/login');
+  if (user.role_id === 'ROL-EMPLOYEE') return res.redirect('/employee/login');
+
 });
 
 exports.resendVerificationLink = async (req, res) => {
