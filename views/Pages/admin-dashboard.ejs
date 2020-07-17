@@ -8,7 +8,7 @@
         <link href="../styles/custom-css/admin-dash.css" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" rel="stylesheet"/>
 
-        <script src="../js/custom-js/admin-dashboard.js"></script>
+        <!-- <script src="../js/custom-js/admin-dashboard.js"></script> -->
     </head>
     <body>
 
@@ -82,8 +82,20 @@
                     <div class="col-lg-6 statistics__wrapper">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <h3>Statistics</h3>
-                            <select class="statistics__date">
-                                <option>This month</option>
+                            <select oninput="fetchData()" class="statistics__date" id="month">
+                                <option>This year</option>
+                                <option value="jan">January</option> 
+                                <option value="feb">Feburary</option>
+                                <option value="mar">March</option>
+                                <option value="apr">April</option>
+                                <option value="may">May</option>
+                                <option value="june">June</option>
+                                <option value="july">July</option>
+                                <option value="aug">August</option>
+                                <option value="sept">September</option>
+                                <option value="oct">October</option>
+                                <option value="nov">November</option>
+                                <option value="dec">December</option>
                             </select>
                         </div>
 
@@ -91,25 +103,16 @@
                             <div class="card mb-sm-4 mb-lg-0">
 
                                 <div id="chartContainer" style="height: 300px; width: 100%; padding-top: 10px;margin-bottom: 50px;"></div>
-                                <div  style="" class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
-                                    <p class="m-0">New Employee's</p>
-                                    <h4 class="m-0">2300</h4>
+                                <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
+                                    <p class="m-0">Employee's</p>
+                                    <h4 class="m-0" id="numberOfEmployee"><%- totalEmployee.length %></h4>
                                 </div>
 
                                 <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
-                                    <p class="m-0">New Employer's</p>
-                                    <h4 class="m-0">72</h4>
+                                    <p class="m-0">Employer's</p>
+                                    <h4 class="m-0" id="numberOfEmployer"><%- totalEmployer.length %></h4>
                                 </div>
 
-                                <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
-                                    <p class="m-0">Hired Employee's</p>
-                                    <h4 class="m-0">308</h4>
-                                </div>
-
-                                <div class="d-flex justify-content-between align-items-center py-4 px-4 statistics__info">
-                                    <p class="m-0">Total amount subscribed</p>
-                                    <h4 class="m-0">N1,234,000</h4>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -181,6 +184,253 @@
         <%if (message) { %>
             <script>toastr.success('<%= message %>');</script>
         <% } %>
+        <script>
+            // Creating a dynamic chart for employee and employer data
+            let jan = [];
+            let feb = [];
+            let mar = [];
+            let apr = [];
+            let may = [];
+            let june = [];
+            let july = [];
+            let aug = [];
+            let sept = [];
+            let oct = [];
+            let nov = [];
+            let dec = [];
+
+            <% totalEmployer.forEach(function(employerArray) { %>
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'January'){
+                    jan.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'Feburary'){
+                    feb.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'March'){
+                    mar.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'April'){
+                    apr.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'May'){
+                    may.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'June'){
+                    june.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'July'){
+                    july.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'August'){
+                    aug.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'September'){
+                    sept.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'October'){
+                    oct.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'November'){
+                    nov.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employerArray.createdAt).format('MMMM') %>" === 'December'){
+                    dec.push("<%= moment(employerArray.createdAt).format('MMMM') %>");
+                }
+            <% }) %>
+ 
+            let ejan = [];
+            let efeb = [];
+            let emar = [];
+            let eapr = [];
+            let emay = [];
+            let ejune = [];
+            let ejuly = [];
+            let eaug = [];
+            let esept = [];
+            let eoct = [];
+            let enov = [];
+            let edec = [];
+
+            <% totalEmployee.forEach(function(employeeArray) { %>
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'January'){
+                    ejan.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'Feburary'){
+                    efeb.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'March'){
+                    emar.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'April'){
+                    eapr.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'May'){
+                    emay.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'June'){
+                    ejune.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'July'){
+                    ejuly.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'August'){
+                    eaug.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'September'){
+                    esept.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'October'){
+                    eoct.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'November'){
+                    enov.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+                if ("<%= moment(employeeArray.createdAt).format('MMMM') %>" === 'December'){
+                    edec.push("<%= moment(employeeArray.createdAt).format('MMMM') %>");
+                }
+            <% }) %> 
+
+            // console.log(july.length);
+
+            <% transactDetails.forEach(function(transactArray) { %>
+                console.log("<%= transactArray.createdAt %>")
+            <% }) %> 
+
+            window.onload = function () {
+            const chart = new CanvasJS.Chart('chartContainer', {
+            animationEnabled: true,
+            title: {
+                text: 'Users Graphical Information',
+            },
+            axisY: {
+                title: 'No. of Employers',
+                titleFontColor: '#4F81BC',
+                lineColor: '#4F81BC',
+                labelFontColor: '#4F81BC',
+                tickColor: '#4F81BC',
+            },
+            axisY2: {
+                title: 'Number of Employees',
+                titleFontColor: '#C0504E',
+                lineColor: '#C0504E',
+                labelFontColor: '#C0504E',
+                tickColor: '#C0504E',
+            },
+            toolTip: {
+                shared: true,
+            },
+            legend: {
+                cursor: 'pointer',
+                itemclick: toggleDataSeries,
+            },
+            data: [{
+                type: 'column',
+                name: 'Employees',
+                legendText: 'No. of Employees',
+                showInLegend: true,
+                dataPoints: [
+                { label: 'January', y: ejan.length },
+                { label: 'Feburary', y: efeb.length },
+                { label: 'March', y: emar.length},
+                { label: 'April', y: eapr.length },
+                { label: 'May', y: emay.length },
+                { label: 'June', y: ejune.length },
+                { label: 'July', y: ejuly.length },
+                { label: 'August', y: eaug.length },
+                { label: 'September', y: esept.length },
+                { label: 'October', y: eoct.length },
+                { label: 'November', y: enov.length },
+                { label: 'December', y: edec.length },
+                ],
+            },
+            {
+                type: 'column',
+                name: 'Employers',
+                legendText: 'No. of Employers',
+                axisYType: 'secondary',
+                showInLegend: true,
+                dataPoints: [
+                { label: 'January', y: jan.length },
+                { label: 'Feburary', y: feb.length },
+                { label: 'March', y: mar.length },
+                { label: 'April', y: apr.length },
+                { label: 'May', y: may.length },
+                { label: 'June', y: june.length },
+                { label: 'July', y: july.length },
+                { label: 'August', y: aug.length},
+                { label: 'September', y: sept.length },
+                { label: 'October', y: oct.length },
+                { label: 'November', y: nov.length },
+                { label: 'December', y: dec.length },
+                ],
+            }],
+            });
+            chart.render();
+
+            function toggleDataSeries(e) {
+            if (typeof (e.dataSeries.visible) === 'undefined' || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+            chart.render();
+            }
+            };
+
+            // fetch monthly data by id
+            function fetchData(){
+                if(document.getElementById('month').value == 'jan'){
+                    document.getElementById('numberOfEmployee').innerHTML = ejan.length
+                    document.getElementById('numberOfEmployer').innerHTML = jan.length
+                }
+                if(document.getElementById('month').value == 'feb'){
+                    document.getElementById('numberOfEmployee').innerHTML = efeb.length
+                    document.getElementById('numberOfEmployer').innerHTML = feb.length
+                }
+                if(document.getElementById('month').value == 'mar'){
+                    document.getElementById('numberOfEmployee').innerHTML = emar.length
+                    document.getElementById('numberOfEmployer').innerHTML = mar.length
+                }
+                if(document.getElementById('month').value == 'apr'){
+                    document.getElementById('numberOfEmployee').innerHTML = eapr.length
+                    document.getElementById('numberOfEmployer').innerHTML = apr.length
+                }
+                if(document.getElementById('month').value == 'may'){
+                    document.getElementById('numberOfEmployee').innerHTML = emay.length
+                    document.getElementById('numberOfEmployer').innerHTML = may.length
+                }
+                if(document.getElementById('month').value == 'june'){
+                    document.getElementById('numberOfEmployee').innerHTML = ejune.length
+                    document.getElementById('numberOfEmployer').innerHTML = june.length
+                }
+                if(document.getElementById('month').value == 'july'){
+                    document.getElementById('numberOfEmployee').innerHTML = ejuly.length
+                    document.getElementById('numberOfEmployer').innerHTML = july.length
+                }
+                if(document.getElementById('month').value == 'aug'){
+                    document.getElementById('numberOfEmployee').innerHTML = eaug.length
+                    document.getElementById('numberOfEmployer').innerHTML = aug.length
+                }
+                if(document.getElementById('month').value == 'sept'){
+                    document.getElementById('numberOfEmployee').innerHTML = esept.length
+                    document.getElementById('numberOfEmployer').innerHTML = sept.length
+                }
+                if(document.getElementById('month').value == 'oct'){
+                    document.getElementById('numberOfEmployee').innerHTML = eoct.length
+                    document.getElementById('numberOfEmployer').innerHTML = oct.length
+                }
+                if(document.getElementById('month').value == 'nov'){
+                    document.getElementById('numberOfEmployee').innerHTML = enov.length
+                    document.getElementById('numberOfEmployer').innerHTML = nov.length
+                }
+                if(document.getElementById('month').value == 'dec'){
+                    document.getElementById('numberOfEmployee').innerHTML = edec.length
+                    document.getElementById('numberOfEmployer').innerHTML = dec.length
+                }
+            }
+
+
+        </script>
         <script src="../js/custom-js/side-nav.js"></script>
     </body>
 </html>

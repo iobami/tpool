@@ -200,7 +200,6 @@ module.exports = {
     });
     const transactDetails = allTransactions.rows;
     const latestTransactions = allTransactions.rows.slice(0, 5);
-    console.log(req.session.name);
 
     res.render('Pages/admin-dashboard', {
       pageName: 'Admin dashboard',
