@@ -14,10 +14,12 @@ const csrf = require('csurf');
 // const rateLimit = require('express-rate-limit');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
+const { key } = require('./gen-key');
 // eslint-disable-next-line no-unused-vars
 
 dotenv.config();
 // eslint-disable-next-line import/order
+process.env.TALENT_POOL_JWT_SECRET = key(64);
 const morgan = require('morgan');
 const db = require('./Models');
 const { seedSuperAdmin } = require('./seed');
@@ -100,7 +102,7 @@ const employerRecommendation = require('./Routes/views/employer/recommendation')
 const verifyModal = require('./Routes/views/admin/verifyModal');
 const messageRoute = require('./Routes/views/message/message');
 const superAdmin = require('./Routes/super-admin/manage-admin');
-
+const teamRoute = require('./Routes/views/team/index');
 const csrfProtection = csrf();
 
 const app = express();
@@ -262,6 +264,7 @@ app.use(verifyModal);
 app.use(adminPackages);
 app.use(employerPackages);
 app.use(googleAuth);
+app.use(teamRoute);
 app.use(messageRoute);
 
 module.exports = app;
