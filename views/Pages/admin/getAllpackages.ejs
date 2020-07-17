@@ -13,26 +13,26 @@
   <%- include('../../Templates/admin-header') %>
   <%- include('../../Templates/admin-sidebar') %>
 
-  <!-- Start of Flash Message -->
-  <% if(error != '') { %>
-  <div class="alert alert-danger alert-dismissible fade show m-0" role="alert">
-    <p class="m-0"><%= error%></p>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <% } %>
-  <% if(success != '') { %>
-  <div class="alert alert-success alert-dismissible fade show m-0" role="alert">
-    <p class="m-0"><%= success%></p>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <% } %>
-  <!-- End of Flash Message -->
-
   <section class="admin__dashboard p-4">
+    <!-- Start of Flash Message -->
+    <% if(error != '') { %>
+    <div class="alert alert-danger alert-dismissible fade show my-0 mx-auto mb-4" role="alert">
+      <p class="m-0"><%= error%></p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+    <% if(success != '') { %>
+    <div class="alert alert-success alert-dismissible fade show my-0 mx-auto mb-4" role="alert">
+      <p class="m-0"><%= success%></p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+    <!-- End of Flash Message -->
+
     <h2 class="dashboard__heading text-center">Manage Packages</h2>
 
     <div class="container-fluid">
@@ -153,6 +153,10 @@
   <div id="body__click"></div>
 
   <style>
+    .alert {
+      max-width: 40rem;
+    }
+
     form {
       max-width: 30rem;
       width: 80%;
