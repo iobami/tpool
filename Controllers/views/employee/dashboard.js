@@ -3,43 +3,59 @@
 // const employeeController = require('../../employee/employee-profile');
 exports.getEmployeeMessages = (req, res) => {
   const { employeeId } = req.session;
+  let userId;
+  const {
+    passport,
+  } = req.session;
+    // console.log({ passport });
+
+  if (passport) {
+    const { passport: { user } } = req.session;
+    userId = user.userId || user.user_id;
+    // console.log(userId);
+  } else {
+    userId = req.session.userId;
+  }
+
   res.render('Pages/employee-messages', {
     pageTitle: 'Talent Pool | Messages',
-    dashboardPath: `${URL}employee/dashboard/${employeeId}`,
-    profilePath: `${URL}employee/profile/${employeeId}`,
-    portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+    userId,
+    profileImage: req.session.profileImage,
+    dashboardPath: `${URL}/employee/dashboard/${employeeId}`,
+    profilePath: `${URL}/employee/profile/${employeeId}`,
+    portfolioPath: `${URL}/employee/portfolio/${employeeId}`,
     path: '/employee/message',
   });
 };
-exports.getEmployeePortfolio = (req, res) => {
-  const { employeeId } = req.session;
-  res.render('Pages/employee-portfolio', {
-    pageTitle: 'Talent Pool | Portfolio',
-    dashboardPath: `${URL}employee/dashboard/${employeeId}`,
-    profilePath: `${URL}employee/profile/${employeeId}`,
-    portfolioPath: `${URL}employee/portfolio/${employeeId}`,
-    path: '',
-  });
-};
+// exports.getEmployeePortfolio = (req, res) => {
+//   const { employeeId } = req.session;
+//   res.render('Pages/employee-portfolio', {
+//     pageTitle: 'Talent Pool | Portfolio',
+//     dashboardPath: `${URL}/employee/dashboard/${employeeId}`,
+//     profilePath: `${URL}/employee/profile/${employeeId}`,
+//     portfolioPath: `${URL}/employee/portfolio/${employeeId}`,
+//     path: '/employee/message',
+//   });
+// };
 
-exports.getEmployeeSupport = (req, res) => {
-  res.render('Pages/employee-support', {
-    pageTitle: 'Talent Pool | Support',
-    path: '/employee/support',
-  });
-};
-exports.getEmployeeSettings = (req, res) => {
-  res.render('Pages/employee-settings', {
-    pageTitle: 'Talent Pool | Settings',
-    path: '/employee/settings',
-  });
-};
-exports.getEmployeeEmployers = (req, res) => {
-  res.render('Pages/employee-employer', {
-    pageTitle: 'Talent Pool | Employers',
-    path: '/employee/employers',
-  });
-};
+// exports.getEmployeeSupport = (req, res) => {
+//   res.render('Pages/employee-support', {
+//     pageTitle: 'Talent Pool | Support',
+//     path: '/employee/support',
+//   });
+// };
+// exports.getEmployeeSettings = (req, res) => {
+//   res.render('Pages/employee-settings', {
+//     pageTitle: 'Talent Pool | Settings',
+//     path: '/employee/settings',
+//   });
+// };
+// exports.getEmployeeEmployers = (req, res) => {
+//   res.render('Pages/employee-employer', {
+//     pageTitle: 'Talent Pool | Employers',
+//     path: '/employee/employers',
+//   });
+// };
 exports.getEmployeeProfileCreation = (req, res) => {
   const { isLoggedIn, employeeId, isProfileCreated, profileId } = req.session;
 

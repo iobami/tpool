@@ -25,9 +25,11 @@
         </div>
 
         <div class="d-flex align-items-center top__nav__user">
-          <div class="img-fluid mr-2"><img class="employeeProfilePhoto"
+          <% if (profileImage) { %>
+            <div class="img-fluid mr-2"><img class="employeeProfilePhoto"
               style="width: 75px;" src=<%= profileImage %> >
           </div>
+          <% } %>
           <div class="top__nav__user__name">
             <h6 class="employeename text-primary m-0">
             </h6>

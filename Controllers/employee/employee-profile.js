@@ -164,7 +164,7 @@ exports.getDashboard = async (req, res) => {
   try {
     const { success_message } = req.query;
     let employeeId;
-
+    let profileImage;
     const { isLoggedIn, userTypeId } = req.session;
 
     if (req.params.employee_id) {
@@ -200,8 +200,6 @@ exports.getDashboard = async (req, res) => {
 
     // Set employee data to session
     req.session.firstName = employee.username;
-
-    const { profileImage } = req.session;
 
     if (team) {
       const { employer_id, Team_name, status } = team;
@@ -248,13 +246,15 @@ exports.getDashboard = async (req, res) => {
       // if (!employee) {
       //   req.flash('error', 'Profile not found');
       // }
+      profileImage = req.session.profileImage || employee.image;
+      req.seesion.profileImage = employee.image;
       return res.status(200).render('Pages/employee-dashboard', {
         pageTitle: 'Talent Pool | Dashboard',
         success: success_message,
-        dashboardPath: `${URL}employee/dashboard/${employeeId}`,
-        profilePath: `${URL}employee/profile/${employeeId}`,
-        portfolioPath: `${URL}employee/portfolio/${employeeId}`,
-        messagePath: `${URL}employee/message/${employeeId}`,
+        dashboardPath: `${URL}/employee/dashboard/${employeeId}`,
+        profilePath: `${URL}/employee/profile/${employeeId}`,
+        portfolioPath: `${URL}/employee/portfolio/${employeeId}`,
+        messagePath: `${URL}/employee/message/${employeeId}`,
         path: '/employee/message',
         errorMessage,
         data,
@@ -271,13 +271,15 @@ exports.getDashboard = async (req, res) => {
 
     req.session.flash.error = null;
     req.session.flash.success = null;
+    profileImage = req.session.profileImage || employee.image;
+    req.session.profileImage = employee.image;
 
     return res.status(200).render('Pages/employee-dashboard', {
       pageTitle: 'Talent Pool | Dashboard',
       success: success_message,
-      dashboardPath: `${URL}employee/dashboard/${employeeId}`,
-      profilePath: `${URL}employee/profile/${employeeId}`,
-      portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+      dashboardPath: `${URL}/employee/dashboard/${employeeId}`,
+      profilePath: `${URL}/employee/profile/${employeeId}`,
+      portfolioPath: `${URL}/employee/portfolio/${employeeId}`,
       path: '',
       errorMessage,
       data,
@@ -298,7 +300,6 @@ exports.getProfile = async (req, res) => {
     } = req.session;
 
     let employeeId;
-
 
     if (passport) {
       const { passport: { user } } = req.session;
@@ -327,10 +328,10 @@ exports.getProfile = async (req, res) => {
 
     return res.status(200).render('Pages/employeeProfile', {
       pageTitle: 'Talent Pool | Profile',
-      dashboardPath: `${URL}employee/dashboard/${employeeId}`,
-      profilePath: `${URL}employee/profile/${employeeId}`,
-      portfolioPath: `${URL}employee/portfolio/${employeeId}`,
-      messagePath: `${URL}employee/message/${employeeId}`,
+      dashboardPath: `${URL}/employee/dashboard/${employeeId}`,
+      profilePath: `${URL}/employee/profile/${employeeId}`,
+      portfolioPath: `${URL}/employee/portfolio/${employeeId}`,
+      messagePath: `${URL}/employee/message/${employeeId}`,
       path: '/employee/message',
       errorMessage,
       success,
@@ -377,10 +378,10 @@ exports.getPortfolio = async (req, res) => {
       pageTitle: `Talent Pool | ${
         req.session.firstName ? req.session.firstName : ''
       }'s Portfolio`,
-      dashboardPath: `${URL}employee/dashboard/${employeeId}`,
-      profilePath: `${URL}employee/profile/${employeeId}`,
-      portfolioPath: `${URL}employee/portfolio/${employeeId}`,
-      messagePath: `${URL}employee/message/${employeeId}`,
+      dashboardPath: `${URL}/employee/dashboard/${employeeId}`,
+      profilePath: `${URL}/employee/profile/${employeeId}`,
+      portfolioPath: `${URL}/employee/portfolio/${employeeId}`,
+      messagePath: `${URL}/employee/message/${employeeId}`,
       path: '/employee/message',
       errorMessage,
       success,
@@ -420,6 +421,7 @@ exports.createPortfolio = async (req, res) => {
       `/employee/portfolio/${employeeId}?success_message=Portfolio created successfully`,
     );
   } catch (err) {
+    console.log('herer', err);
     req.flash('error', 'Something went wrong. Try again');
   }
 };

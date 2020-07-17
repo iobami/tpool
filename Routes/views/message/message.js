@@ -2,22 +2,20 @@ const express = require('express');
 
 const appRoute = express.Router();
 
-
 const {
-    adminMessagePage
+  adminMessagePage,
 } = require('../../../Controllers/views/message/message');
 const {
-    employerMessagePage
+  employerMessagePage,
 } = require('../../../Controllers/views/message/message');
 const {
-    employeeMessagePage
+  employeeMessagePage,
 } = require('../../../Controllers/views/message/message');
 const {
-    adminChatMessages,
-    employerChatMessages,
-    employeeChatMessages
+  adminChatMessages,
+  employerChatMessages,
+  employeeChatMessages,
 } = require('../../../Controllers/views/message/message');
-
 
 appRoute.get('/admin/message', adminMessagePage);
 appRoute.get('/employer/message', employerMessagePage);
