@@ -3,7 +3,6 @@ const Flutterwave = require('flutterwave-node-v3');
 
 
 const appRoute = express.Router();
-const Flutterwave = require('flutterwave-node-v3');
 
 const {
   create, getAll, packageGet,
