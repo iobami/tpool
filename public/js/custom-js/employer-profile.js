@@ -24,7 +24,8 @@ const saveProfile = async () => {
 
     const getEditProfileModalData = document.querySelectorAll('#updateProfile input');
     const getIndustryType = document.querySelectorAll('#updateProfile select');
-    let [companyName, companyPhone, companyCountry, companyLocation] = getEditProfileModalData;
+    let [companyName, companyPhone, , companyLocation] = getEditProfileModalData;
+    const [companyCountry] = document.querySelectorAll('.selectpicker');
     const updateProfileBtn = document.getElementById('updateProfileButton');
     const profileLoaderBtn = document.getElementById('profileLoader');
 
