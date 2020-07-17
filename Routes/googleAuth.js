@@ -67,6 +67,7 @@ router.get(
       req.session.data = data;
       req.session.isLoggedIn = true;
       req.session.userId = user.userId;
+      req.session.employeeId = data.userTypeId;
       if ((!user.userTypeId) || user.userTypeId == null) {
         req.flash('success', 'Authentication successful!');
         return res.redirect('/employee/create/profile?success_message=Authentication successful!');
@@ -149,6 +150,7 @@ router.get(
       req.session.data = data;
       req.session.isLoggedIn = true;
       req.session.userId = user.userId;
+      req.session.employeeId = data.userTypeId;
       if (user.userRole === 'ROL-EMPLOYER') {
         if ((!user.userTypeId) || user.userTypeId == null) {
           req.flash('success', 'Authentication successful!');

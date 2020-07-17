@@ -67,12 +67,13 @@ const uploadImageFunction = async (req, res) => {
   }
 };
 
-// CREATE A PROFILE -- Consumed directly.
+// CREATE A PROFILE -- renders.
 exports.createProfile = async (req, res) => {
   try {
     const employeeId = uuid();
     const imageUrl = await uploadImageFunction(req, res);
     const { userId } = req.session;
+    req.session.profileImage = imageUrl;
     const {
       firstName,
       lastName,
@@ -146,6 +147,7 @@ exports.getDashboard = async (req, res) => {
   try {
     const { success_message } = req.query;
     let employeeId;
+
     const { isLoggedIn, userTypeId } = req.session;
 
     if (req.params.employee_id) {
@@ -181,6 +183,8 @@ exports.getDashboard = async (req, res) => {
 
     // Set employee data to session
     req.session.firstName = employee.username;
+
+    const { profileImage } = req.session;
 
     if (team) {
       const { employer_id, Team_name, status } = team;
@@ -224,7 +228,6 @@ exports.getDashboard = async (req, res) => {
           },
         },
       };
-
       // if (!employee) {
       //   req.flash('error', 'Profile not found');
       // }
@@ -237,6 +240,7 @@ exports.getDashboard = async (req, res) => {
         path: '',
         errorMessage,
         data,
+        profileImage,
       });
     }
 
@@ -259,6 +263,7 @@ exports.getDashboard = async (req, res) => {
       path: '',
       errorMessage,
       data,
+      profileImage,
     });
   } catch (err) {
     return errorResMsg(res, 500, err.message);
@@ -282,7 +287,8 @@ exports.getProfile = async (req, res) => {
       employeeId = userTypeId;
     }
 
-    employeeId = req.session.userTypeId;
+    employeeId = req.session.employeeId;
+    const { profileImage } = req.session;
 
     if (req.params.employee_id) {
       employeeId = req.params.employee_id;
@@ -308,6 +314,7 @@ exports.getProfile = async (req, res) => {
       errorMessage,
       success,
       data,
+      profileImage,
     });
   } catch (err) {
     req.flash('error', 'Something went wrong. Try again');
@@ -333,6 +340,8 @@ exports.getPortfolio = async (req, res) => {
 
     employeeId = req.session.employeeId;
 
+    const { profileImage } = req.session;
+
     if (req.params.employee_id) {
       employeeId = req.params.employee_id;
     }
@@ -354,9 +363,9 @@ exports.getPortfolio = async (req, res) => {
       errorMessage,
       success,
       data,
+      profileImage,
     });
   } catch (err) {
-    console.log("i cant pass here because", err);
     req.flash('error', 'Something went wrong. Try again');
   }
 };
@@ -389,8 +398,6 @@ exports.createPortfolio = async (req, res) => {
       `/employee/portfolio/${employeeId}?success_message=Portfolio created successfully`,
     );
   } catch (err) {
-    console.log("omor i don tire", err);
-    
     req.flash('error', 'Something went wrong. Try again');
   }
 };
@@ -423,6 +430,86 @@ exports.deletePortfolio = async (req, res) => {
       `/employee/portfolio/${employeeId}?success_message=Portfolio deleted successfully`,
     );
   } catch (err) {
+    req.flash('error', 'Something went wrong. Try again');
+  }
+};
+
+// // GET EMPLOAYEE PORTFOLIOS -- Renders a page
+// exports.getPortfolio = async (req, res) => {
+//   try {
+//     const errorMessage = req.query.error_status;
+//     const success = req.query.success_message;
+//     const {
+//       passport
+//     } = req.session;
+
+//     let employeeId;
+
+//     if (passport) {
+//       const { passport: { user } } = req.session;
+//       const { userTypeId } = user;
+//       employeeId = userTypeId;
+//     }
+
+//     employeeId = req.session.employeeId;
+
+//     if (req.params.employee_id) {
+//       employeeId = req.params.employee_id;
+//     }
+
+//     const query = await models.Portfolio.findAll({
+//       where: { employee_id: employeeId },
+//     });
+
+//     const data = await query;
+
+//     return res.status(200).render('Pages/employee-portfolio', {
+//       pageTitle: `Talent Pool | ${
+//         req.session.firstName ? req.session.firstName : ''
+//       }'s Portfolio`,
+//       dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+//       profilePath: `${URL}employee/profile/${employeeId}`,
+//       portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+//       path: '',
+//       errorMessage,
+//       success,
+//       data,
+//     });
+//   } catch (err) {
+//     console.log('i cant pass here because', err);
+//     req.flash('error', 'Something went wrong. Try again');
+//   }
+// };
+
+// CREATE EMPLOYEE SKILLS
+exports.createSkill = async (req, res) => {
+  try {
+    const {
+      passport
+    } = req.session;
+
+    let employeeId;
+
+    if (passport) {
+      const { passport: { user } } = req.session;
+      const { userTypeId } = user;
+      employeeId = userTypeId;
+    }
+
+    employeeId = req.session.employeeId;
+
+    // CREATE A NEW SKILLS
+    await models.Skill.create({
+      skill_description: req.body.skill_description,
+      employee_id: employeeId,
+    });
+
+    return res.redirect(
+      `/employee/dashboard/${employeeId}?success_message=Skill added successfully`,
+    );
+  } catch (err) {
+    console.log('disappoint hybe abeg', err);
+
     req.flash('error', 'Something went wrong. Try again');
   }
 };
@@ -475,42 +562,51 @@ exports.getProfileByUsername = async (req, res) => {
 // eslint-disable-next-line consistent-return
 exports.updateProfile = async (req, res) => {
   try {
-    if (!(req.body.employee_id || req.body.user_id)) {
-      const { employee_id: employeeId } = req.params;
-      // Update Profile
-      let reqBody = req.body;
-      if (req.files) {
-        const imageUrl = await uploadImageFunction(req, res);
-        reqBody = { image: imageUrl, ...req.body };
-      }
+    const {
+      passport
+    } = req.session;
 
-      await models.Employee.update(reqBody, {
-        where: { employee_id: employeeId },
-        plain: true,
-      });
+    let employeeId;
 
-      // Get updated profile for return
-      const updatedProfile = await models.Employee.findOne({
-        where: { employee_id: employeeId },
-        attributes,
-      });
-
-      const data = await updatedProfile;
-
-      // Profile not found??
-      if (!data) {
-        return errorResMsg(res, 404, 'Profile not found');
-      }
-      // return updated data
-      return successResMsg(res, 200, data);
+    if (passport) {
+      const { passport: { user } } = req.session;
+      const { userTypeId } = user;
+      employeeId = userTypeId;
     }
-    return errorResMsg(
-      res,
-      400,
-      'Bad Request! Please, try again with accepted entries!!!',
+
+    employeeId = req.session.employeeId;
+
+    // Update Profile
+
+    const names = {
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
+      username: req.body.userName,
+    };
+
+    let bodyToUpdate;
+    bodyToUpdate = { ...req.body, ...names, employee_id: employeeId };
+
+    if (req.files) {
+      const imageUrl = await uploadImageFunction(req, res);
+      bodyToUpdate = { image: imageUrl, ...req.body, ...names };
+      req.session.profileImage = imageUrl;
+    }
+
+    console.log(bodyToUpdate);
+    await models.Employee.update(bodyToUpdate, {
+      where: { employee_id: employeeId },
+      plain: true,
+    });
+
+    await models.Employee.findOne({ where: { employee_id: employeeId } });
+
+    // return updated data
+    return res.redirect(
+      `/employee/dashboard/${employeeId}?success_message=Profile updated successfully`,
     );
   } catch (err) {
-    return errorResMsg(res, 500, err.message);
+    req.flash('error', 'Something went wrong. Try again');
   }
 };
 // DELETE AN EMPLOYEE PROFILE -- To be consumed with axios
