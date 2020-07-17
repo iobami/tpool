@@ -42,3 +42,7 @@ function editPortfolio(title, desc, link) {
   formDesc.setAttribute('value', desc);
   formLink.setAttribute('value', link);
 }
+
+function deletePortfolio(id) {
+  console.log(id);
+}
