@@ -9,9 +9,10 @@ const renderPage = async (req, res, user) => {
     userTypeId: user.userTypeId,
     verificationStatus: user.verificationStatus,
   };
+
   req.session.data = data;
   req.session.isLoggedIn = true;
-  req.session.userId = user.userId;
+  req.session.userId = user.user_id;
   if (user.userRole === 'ROL-EMPLOYER') {
     if ((!user.userTypeId) || user.userTypeId == null) {
       req.flash('success', 'Authentication successful!');

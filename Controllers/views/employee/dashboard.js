@@ -2,9 +2,13 @@
 /* eslint-disable consistent-return */
 // const employeeController = require('../../employee/employee-profile');
 exports.getEmployeeMessages = (req, res) => {
+  const { employeeId } = req.session;
   res.render('Pages/employee-messages', {
     pageTitle: 'Talent Pool | Messages',
-    path: '/employee/messages',
+    dashboardPath: `${URL}employee/dashboard/${employeeId}`,
+    profilePath: `${URL}employee/profile/${employeeId}`,
+    portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+    path: '/employee/message',
   });
 };
 exports.getEmployeePortfolio = (req, res) => {

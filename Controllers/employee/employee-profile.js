@@ -70,10 +70,25 @@ const uploadImageFunction = async (req, res) => {
 // CREATE A PROFILE -- renders.
 exports.createProfile = async (req, res) => {
   try {
+    let userId;
+    const {
+      passport
+    } = req.session;
+    // console.log({ passport });
+
+    if (passport) {
+      const { passport: { user } } = req.session;
+      userId = user.userId || user.user_id;
+      // console.log(userId);
+    } else {
+      userId = req.session.userId;
+    }
+
     const employeeId = uuid();
     const imageUrl = await uploadImageFunction(req, res);
-    const { userId } = req.session;
+
     req.session.profileImage = imageUrl;
+
     const {
       firstName,
       lastName,
@@ -111,6 +126,8 @@ exports.createProfile = async (req, res) => {
     if (!userQuery) {
       // return errorResMsg(res, 400, 'Invalid user id');
       req.flash('error', 'Invalid user id');
+      // eslint-disable-next-line no-undef
+
       return res.redirect('/employee/create/profile');
     }
 
@@ -237,7 +254,8 @@ exports.getDashboard = async (req, res) => {
         dashboardPath: `${URL}employee/dashboard/${employeeId}`,
         profilePath: `${URL}employee/profile/${employeeId}`,
         portfolioPath: `${URL}employee/portfolio/${employeeId}`,
-        path: '',
+        messagePath: `${URL}employee/message/${employeeId}`,
+        path: '/employee/message',
         errorMessage,
         data,
         profileImage,
@@ -281,13 +299,15 @@ exports.getProfile = async (req, res) => {
 
     let employeeId;
 
+
     if (passport) {
       const { passport: { user } } = req.session;
       const { userTypeId } = user;
       employeeId = userTypeId;
+    } else {
+      employeeId = req.session.employeeId || req.session.profileId;
     }
 
-    employeeId = req.session.employeeId;
     const { profileImage } = req.session;
 
     if (req.params.employee_id) {
@@ -310,7 +330,8 @@ exports.getProfile = async (req, res) => {
       dashboardPath: `${URL}employee/dashboard/${employeeId}`,
       profilePath: `${URL}employee/profile/${employeeId}`,
       portfolioPath: `${URL}employee/portfolio/${employeeId}`,
-      path: '',
+      messagePath: `${URL}employee/message/${employeeId}`,
+      path: '/employee/message',
       errorMessage,
       success,
       data,
@@ -336,9 +357,9 @@ exports.getPortfolio = async (req, res) => {
       const { passport: { user } } = req.session;
       const { userTypeId } = user;
       employeeId = userTypeId;
+    } else {
+      employeeId = req.session.employeeId || req.session.profileId;
     }
-
-    employeeId = req.session.employeeId;
 
     const { profileImage } = req.session;
 
@@ -359,7 +380,8 @@ exports.getPortfolio = async (req, res) => {
       dashboardPath: `${URL}employee/dashboard/${employeeId}`,
       profilePath: `${URL}employee/profile/${employeeId}`,
       portfolioPath: `${URL}employee/portfolio/${employeeId}`,
-      path: '',
+      messagePath: `${URL}employee/message/${employeeId}`,
+      path: '/employee/message',
       errorMessage,
       success,
       data,
@@ -382,9 +404,9 @@ exports.createPortfolio = async (req, res) => {
       const { passport: { user } } = req.session;
       const { userTypeId } = user;
       employeeId = userTypeId;
+    } else {
+      employeeId = req.session.employeeId || req.session.profileId;
     }
-
-    employeeId = req.session.employeeId;
 
     // CREATE A NEW PORTFOLIO
     await models.Portfolio.create({
@@ -494,9 +516,9 @@ exports.createSkill = async (req, res) => {
       const { passport: { user } } = req.session;
       const { userTypeId } = user;
       employeeId = userTypeId;
+    } else {
+      employeeId = req.session.employeeId || req.session.profileId;
     }
-
-    employeeId = req.session.employeeId;
 
     // CREATE A NEW SKILLS
     await models.Skill.create({
@@ -508,8 +530,6 @@ exports.createSkill = async (req, res) => {
       `/employee/dashboard/${employeeId}?success_message=Skill added successfully`,
     );
   } catch (err) {
-    console.log('disappoint hybe abeg', err);
-
     req.flash('error', 'Something went wrong. Try again');
   }
 };
@@ -572,9 +592,9 @@ exports.updateProfile = async (req, res) => {
       const { passport: { user } } = req.session;
       const { userTypeId } = user;
       employeeId = userTypeId;
+    } else {
+      employeeId = req.session.employeeId || req.session.profileId;
     }
-
-    employeeId = req.session.employeeId;
 
     // Update Profile
 
@@ -593,7 +613,6 @@ exports.updateProfile = async (req, res) => {
       req.session.profileImage = imageUrl;
     }
 
-    console.log(bodyToUpdate);
     await models.Employee.update(bodyToUpdate, {
       where: { employee_id: employeeId },
       plain: true,

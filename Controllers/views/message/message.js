@@ -11,7 +11,6 @@ const {
     Op
 } = Sequelize;
 
-
 module.exports = {
     adminMessagePage: async (req, res) => {
         try {
@@ -54,7 +53,7 @@ module.exports = {
             // console.log('admin', adminChatUsers);
             // console.log('Employer', employerChatUsers);
             // console.log('Employee', employeeChatUsers);
-
+            console.log(allusers);
             res.status(200).render('Pages/admin-dash-messages', {
                 pageName: 'Admin Messages',
                 pageTitle: 'TalentPool | Admin Message',
@@ -73,10 +72,8 @@ module.exports = {
     },
 
     employerMessagePage: async (req, res) => {
-
         try {
-
-            let employerId = req.session.employerId
+            let employerId = req.session.employerId;
 
             //Get admin chat users
             const adminChatUsers = await model.Admin.findAll({
@@ -102,7 +99,7 @@ module.exports = {
             // console.log('Employer', employerChatUsers);
             // console.log('Employee', employeeChatUsers);
             const employerUsers = [...adminChatUsers, ...employeeChatUsers];
-            console.log(employerUsers)
+            console.log(req.session.details)
             res.status(200).render('Pages/employer-messages', {
                 pageName: 'Employer Messages',
                 pageTitle: 'TalentPool | Employer Message',
@@ -125,9 +122,8 @@ module.exports = {
 
     employeeMessagePage: async (req, res) => {
         let employeeId = req.session.employeeId;
-        console.log(employeeId)
+        console.log(employeeId);
         try {
-
             //Get employer chat users
             const employerChatUsers = await model.Employer.findAll({
                 raw: true,
@@ -150,12 +146,19 @@ module.exports = {
             // console.log('admin', adminChatUsers);
             // console.log('Employer', employerChatUsers);
             // console.log('Employee', employeeChatUsers);
-            const employeeUsers = [...employerChatUsers, ...adminChatUsers]
+            const employeeUsers = [...employerChatUsers, ...adminChatUsers];
+            data = {
+                employee: {
+                    image: req.session.profileImage,
+                    username: req.session.firstName
+                }
+            }
             res.status(200).render('Pages/employee-messages', {
                 pageName: 'Employer Messages',
                 pageTitle: 'TalentPool | Employee Message',
                 userId: req.session.userId,
                 employeeUsers: employeeUsers,
+                data: data,
                 path: '/employee/message',
                 dashboardPath: `/employee/dashboard/${employeeId}`,
                 profilePath: `/employee/profile/${employeeId}`,
@@ -181,8 +184,10 @@ module.exports = {
 
             const usersChatMessages = await model.Chat.findAll({
                 raw: true,
+                order: [
+                    ['createdAt'],
+                ],
                 where: {
-
                     [Op.or]: [
                         // eslint-disable-next-line max-len
                         {
@@ -191,9 +196,8 @@ module.exports = {
                                 },
                                 {
                                     receiver_id: receiverID,
-
                                 },
-                            ]
+                            ],
                         },
                         {
                             [Op.and]: [{
@@ -202,16 +206,15 @@ module.exports = {
                                 {
                                     receiver_id: senderID,
                                 },
-                            ]
+                            ],
                         },
-                    ]
-
+                    ],
                 },
             });
             console.log(usersChatMessages);
 
             res.status(200).send({
-                data: usersChatMessages
+                data: usersChatMessages,
             });
         } catch (err) {
             console.log(err);
@@ -228,7 +231,6 @@ module.exports = {
 
             const usersChatMessages = await model.Chat.findAll({
                 where: {
-
                     [Op.or]: [
                         // eslint-disable-next-line max-len
                         {
@@ -237,9 +239,8 @@ module.exports = {
                                 },
                                 {
                                     receiver_id: receiverID,
-
                                 },
-                            ]
+                            ],
                         },
                         {
                             [Op.and]: [{
@@ -248,10 +249,9 @@ module.exports = {
                                 {
                                     receiver_id: senderID,
                                 },
-                            ]
+                            ],
                         },
-                    ]
-
+                    ],
                 },
             });
             console.log(usersChatMessages);
@@ -279,7 +279,6 @@ module.exports = {
 
             const usersChatMessages = await model.Chat.findAll({
                 where: {
-
                     [Op.or]: [
                         // eslint-disable-next-line max-len
                         {
@@ -288,9 +287,8 @@ module.exports = {
                                 },
                                 {
                                     receiver_id: receiverID,
-
                                 },
-                            ]
+                            ],
                         },
                         {
                             [Op.and]: [{
@@ -299,10 +297,9 @@ module.exports = {
                                 {
                                     receiver_id: senderID,
                                 },
-                            ]
+                            ],
                         },
-                    ]
-
+                    ],
                 },
             });
             console.log(usersChatMessages);
