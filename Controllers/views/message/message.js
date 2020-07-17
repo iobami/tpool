@@ -130,7 +130,7 @@ module.exports = {
 
     employeeMessagePage: async (req, res) => {
         const {
-            employeeId
+            employerId
         } = req.session;
         try {
             //Get employee chat users
@@ -169,9 +169,9 @@ module.exports = {
                 userId: req.session.userId,
                 allusers: allusers,
                 path: '/employee/message',
-                dashboardPath: `${URL}employee/dashboard/${employeeId}`,
-                profilePath: `${URL}employee/profile/${employeeId}`,
-                portfolioPath: `${URL}employee/portfolio/${employeeId}`,
+                dashboardPath: `${URL}employee/dashboard/${employerId}`,
+                profilePath: `${URL}employee/profile/${employerId}`,
+                portfolioPath: `${URL}employee/portfolio/${employerId}`,
                 error: req.flash('error'),
                 errors: req.flash('errors'),
                 success: req.flash('success'),
