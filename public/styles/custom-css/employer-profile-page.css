@@ -666,3 +666,43 @@ background: #C4C4C4;
     border-radius: 10px;
     box-shadow: 1px 2px 4px 0 #B5B5B5;
 }
+
+
+/* BOOTSTRAP SELECT LIVE SEARCH*/
+.bootstrap-select .btn-light {
+    color: #A0A0A0;
+    background-color: white;
+    border: 1px solid #ccc;
+    height: 45px;
+    border-radius: 5px;
+}
+.bootstrap-select .dropdown-toggle .filter-option {
+    padding-top: 10px;
+    font-size: 1rem;
+    color: #495057;
+    font-weight: 400;
+}
+.bootstrap-select .btn-light:hover {
+    color: #A0A0A0;
+    background-color: white;
+}
+.bootstrap-select .dropdown-menu {
+    min-width: 213px;
+    max-width: 269px;
+}
+.bootstrap-select .dropdown-toggle::after {
+    content: none;
+}
+.bootstrap-select .dropdown-toggle {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* SVG background image */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23337AB7' viewBox='0 0 24 24'%3E%3Cpath d='M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z'/%3E%3C/svg%3E");
+    background-size: .6em;
+    background-position: calc(100% - .8em) center;
+    background-repeat: no-repeat;
+}
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: inherit;
+}
+/* BOOTSTRAP SELECT LIVE SEARCH END*/
