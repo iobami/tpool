@@ -134,19 +134,28 @@
                     <table class="table mb-0" id="table">
                         <thead class="head-txt">
                             <tr>
+                                <th class="th-head" style="padding-right: 45px;">Status</th>
                                 <th class="th-head">Employer’s name</th>
                                 <th class="th-head">Employer’s Phone</th>
                                 <th class="th-head">Employer’s Email</th>
                                 <th class="th-head">Employer Type</th>
                                 <th class="th-head">Date Joined</th>
-                                <th class="th-head">Status</th>
+                                <th class="th-head" style="padding-right: 45px;">Verification Status</th>
+                                <th class="th-head" style="padding-right: 30px;">Other Information</th>
                             </tr>
                         </thead>
 
                         <!-- Tabe body -->
                         <!-- <tbody class="body-table" id="table-body-data"> -->
                         <% data.data.forEach(function(employer) { %>
+                            <% if (employer.User.block != true) { %>
                             <tr id="table-row">
+                                <td scope="row"><i class="fa fa-unlock" aria-hidden="true" style="font-size: xx-large;"></i></td>
+                            <% } %>
+                            <% if (employer.User.block) { %>
+                            <tr id="table-row"></tr>
+                                <td scope="row"><i class="fa fa-lock" aria-hidden="true" style="font-size: xx-large; color: red;"></i><p class="badge badge-danger">BLOCKED</p></td>   
+                            <% } %>
                                 <td class="align-middle user-name">
                                     <% if (employer.employer_type === 'Individual'){%>
                                         <i class="fa fa-user" style =" font-size: xx-large; padding-right: 1.5rem" aria-hidden="true"></i> <%= employer.employer_name %>
@@ -180,7 +189,7 @@
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li><a onclick= 'toApprove("<%= employer.employer_id %>", "<%= employer.employer_name %>", "<%=csrf%>","<%=session%>")' href="#"><i class="fa fa-check" style= "color: green; padding: 10px;" aria-hidden="true"></i>Approve</a></li>
-                                            <li><a onclick = 'toDisapprove("<%= employer.employer_id %>", "<%= employer.employer_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-times" style= "color: red ; padding: 10px;" aria-hidden="true"></i> Disapprove</a></li>
+                                            <li><a onclick = 'toDisapprove("<%= employer.employer_id %>", "<%= employer.employer_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-times" style= "color:lightcoral; padding: 10px;" aria-hidden="true"></i> Disapprove</a></li>
                                             <li><a onclick = 'toBlock("<%= employer.user_id %>", "<%= employer.employer_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-lock" style= "color: black ; padding: 10px;"></i> Block </a></li>
                                             <li><a onclick = 'toUnblock("<%= employer.user_id %>", "<%= employer.employer_name %>", "<%=csrf%>", "<%=session%>")' href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i> Unblock</a></li>
                                           <li class="divider"></li>

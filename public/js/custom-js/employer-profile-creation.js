@@ -208,12 +208,6 @@ const createProfile = async (userData) => {
   }
 };
 
-const getCountryName = (countryObject, countryCode) => {
-  for (const [key, value] of Object.entries(countryObject)) {
-    if (countryCode === key) return value;
-  }
-};
-
 const getUserDetails = (empType, gender, industryType, formData) => {
   const inputTags = formData.querySelectorAll('#employerProfileForm input');
   const [description] = formData.querySelectorAll('textarea');
@@ -225,14 +219,13 @@ const getUserDetails = (empType, gender, industryType, formData) => {
     ,
     ,
     orgEmail,
+    ,
     orgPhone,
     orgWebsite,
     orgAddress,
   ] = inputTags;
-  const [btn] = document.querySelectorAll('.flagstrap button');
-  const [selectedLeft] = btn.querySelectorAll('span');
-  const country = getCountryName(countries, selectedLeft.innerText.trim());
-  console.log(country);
+  let [country] = document.querySelectorAll('.selectpicker');
+  country = country.value;
 
   if (empType.toLowerCase() === 'company') {
     return getFormData({
@@ -257,6 +250,7 @@ const getUserDetails = (empType, gender, industryType, formData) => {
       firstName,
       lastName,
       orgEmail,
+      ,
       orgPhone,
       orgWebsite,
       orgAddress,

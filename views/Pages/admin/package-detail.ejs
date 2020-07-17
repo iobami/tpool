@@ -1,312 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../../Templates/head') %>
-    <link href="../../styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
-    <link
-      href="../../styles/custom-css/employer-top-nav.css"
-      rel="stylesheet"
-    />
-    <link href="../../styles/custom-css/side-nav.css" rel="stylesheet" />
-    <link href="../../styles/custom-css/admin-dash.css" rel="stylesheet" />
-  </head>
 
-  <body class="d-flex flex-column">
-    <div class="container-fluid w-100 top__nav__wrapper sticky-top">
-      <div class="top__nav__contents py-4">
-        <div
-          class="d-flex justify-content-between justify-content-lg-end align-items-center text-center top__nav"
-        >
-          <h4 class="mx-auto">Package Details</h4>
+<head>
+  <%- include('../../Templates/head') %>
+  <link href="../../styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
+  <link href="../../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
+  <link href="../../styles/custom-css/side-nav.css" rel="stylesheet" />
+  <link href="../../styles/custom-css/admin-dash.css" rel="stylesheet" />
+</head>
 
-          <div class="d-flex align-items-center top__nav__links">
-            <div class="d-flex align-items-center top__nav__user">
-              <div class="dropdown">
-                <div
-                  class="dropdown-toggle"
-                  href="#"
-                  role="button"
-                  id="navMenuLink"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <svg
-                    width="10"
-                    height="6"
-                    viewBox="0 0 10 6"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1 1L5 5L9 1"
-                      stroke="#084482"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
+<body class="d-flex flex-column">
+  <!-- Top Nav -->
+  <div class="container-fluid w-100 top__nav__wrapper sticky-top">
+    <div class="top__nav__contents py-4">
+      <div class="d-flex justify-content-between justify-content-lg-end align-items-center text-center top__nav">
+        <a href="../packages" class="btn btn-sm btn-outline-primary d-none d-md-block">
+          Back to All Packages</a>
+        <a href="../packages" class="btn btn-sm btn-outline-primary d-md-none d-sm-block">
+          Back</a>
+        <h4 class="mx-auto">Package Details</h4>
 
-                <div
-                  class="dropdown-menu dropdown-menu-right"
-                  aria-labelledby="navMenuLink"
-                >
-                  <form action="/loggedout" method="POST">
-                    <input
-                      type="hidden"
-                      name="_csrf"
-                      value="<%= csrfToken %>"
-                    />
-                    <button type="submit">Logout</button>
-                  </form>
-                  <!-- <a class="dropdown-item" href="/loggedout">Sign Out</a> -->
-                  <!-- <a class="dropdown-item" actio onclick="logoutFunction()">Sign Out</a> -->
-                </div>
+        <div class="d-flex align-items-center top__nav__links">
+          <div class="d-flex align-items-center top__nav__user">
+            <div class="dropdown">
+              <div class="dropdown-toggle" href="#" role="button" id="navMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L9 1" stroke="#084482" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navMenuLink">
+                <form action="/loggedout" method="POST">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                  <button type="submit">Logout</button>
+                </form>
+                <!-- <a class="dropdown-item" href="/loggedout">Sign Out</a> -->
+                <!-- <a class="dropdown-item" actio onclick="logoutFunction()">Sign Out</a> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div
-      class="main h-100 d-flex flex-column align-items-center justify-content-start"
-    >
-      <div
-        class="top-bar d-flex align-items-center justify-content-between my-3 w-100"
-      >
-        <a href="../packages" class="btn btn-outline-primary">
-          Back to All Packages</a
-        >
+  </div>
 
-        <div class="package-buttons">
-          <!-- Update Package Button -->
-          <button
-            type="button"
-            class="btn btn-primary mx-2"
-            data-toggle="modal"
-            data-target="#updatePackageModal"
-          >
-            Update Package
+  <!-- Content -->
+  <div class="main h-100 d-flex flex-column align-items-center justify-content-center">
+    <!-- Start of Flash Message -->
+    <% if(error != '') { %>
+    <div class="alert alert-danger alert-dismissible fade show text-center mx-auto mt-4 my-2" role="alert">
+      <p class="m-0 mx-auto text-center"><%= error%></p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+    <% if(success != '') { %>
+    <div class="alert alert-success alert-dismissible fade show text-center mx-auto mt-4 my-2" role="alert">
+      <p class="m-0 mx-auto text-center"><%= success%></p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+    <!-- End of Flash Message -->
+    <!-- buttons div -->
+    <div class="container d-flex align-items-center justify-content-center my-3 w-100">
+      <!-- Update Package Button -->
+      <button type="button" class="btn btn-sm btn-outline-primary m-2 mx-4" data-toggle="modal"
+        data-target="#updatePackageModal">
+        Update Package
+      </button>
+
+      <!-- Delete Package Button -->
+      <button type="button" class="btn btn-sm btn-outline-danger m-2 mx-4" data-toggle="modal"
+        data-target="#deletePackageModal">
+        Delete Package
+      </button>
+    </div>
+    <!-- package body -->
+    <div class="my-4">
+      <h5 class="text-center font-weight-bold text-capitalize">
+        <%- data.package.package_name %>
+      </h5>
+    </div>
+
+    <div class="container-fluid">
+      <!-- Packages & features row -->
+      <div class="row">
+        <!-- Package Details -->
+        <div class="col-md-4 my-3 py-3 shadow-sm rounded">
+          <h6 class="text-center text-primary font-weight-bold">Package</h6>
+          <p class="details my-3 text-capitalize text-center">
+            <strong>Package Name:</strong> <br /><%- data.package.package_name %>
+          </p>
+          <p class="details my-3 text-center">
+            <strong>Price: </strong> <br />&#36;<%- data.package.price %>
+          </p>
+          <p class="details my-3 px-4 text-center">
+            <strong>Description:</strong><br /> <%- data.package.description %>
+          </p>
+        </div>
+
+        <!-- Package Features -->
+        <div class="col-md-4 my-3 py-3 shadow-sm rounded d-flex flex-column align-items-center">
+          <h6 class="text-center text-primary font-weight-bold">Features</h6>
+          <!-- todo edit this line below -->
+          <% if (data.package.features && data.package.features.length > 0) {%>
+          <ul class="list-group list-group-flush features-list px-4 my-2 w-100">
+            <% data.package.features.sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1).forEach(feat => { %>
+            <li class="list-group-item"> <span class="mx-auto text-center"><%- feat.description %></span>
+              <form action="/admin/packages/<%= data.package.package_id %>/remove" method="POST" class="m-0 p-0">
+                <input type="hidden" name="feature_id" value="<%= feat.feature_id %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                <button type="submit" class="btn btn-sm btn-outline-danger">
+                  Remove
+                </button></form>
+            </li>
+            <% }) %>
+          </ul>
+          <% } else { %>
+          <h6 class="my-5 mx-auto text-muted text-center">
+            No features found.
+          </h6>
+          <% } %>
+          <button type="button" class="btn btn-sm btn-outline-primary m-2" data-toggle="modal"
+            data-target="#addFeatureModal">Add
+            Feature</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="body__click"></div>
+
+  <!-- Add Feature Modal -->
+  <div class="modal fade" id="addFeatureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h5 class="modal-title mx-auto">
+            Add Features to "<%- data.package.package_name %>"
+          </h5>
+          <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
           </button>
+        </div>
+        <div class="modal-body">
+          <% if (data.features && data.features.length > 0) {%>
+          <ul class="list-group list-group-flush features-list w-100">
+            <!-- filter the features not on the package -->
+            <% const filteredFeatures = []; 
+                data.features.forEach(element => {
+                  data.package.features.some(obj => obj.description === element.description)? false: filteredFeatures.push(element)
+                }); %>
 
-          <!-- Delete Package Button -->
-          <button
-            type="button"
-            class="btn btn-danger"
-            data-toggle="modal"
-            data-target="#deletePackageModal"
-          >
-            Delete Package
+            <!-- sort the array then populate modal -->
+            <% const sorted = filteredFeatures.sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1); %>
+
+            <% sorted.forEach(feat => { %>
+            <li class="list-group-item"> <%= feat.description %>
+              <form action="/admin/packages/<%-data.package.package_id%>/add" method="post" class="p-0 m-0 mx-auto">
+                <input type="hidden" name="feature_id" value="<%= feat.feature_id %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                <button type="submit" class="btn btn-sm btn-primary">
+                  Add
+                </button>
+              </form>
+            </li>
+            <% }) %>
+          </ul>
+          <% } else { %>
+          <h6 class="my-5 mx-auto text-muted text-center">
+            No features found.
+          </h6>
+          <% } %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Add Feature Modal -->
+
+
+  <!-- Update Package Modal -->
+  <div class="modal fade" id="updatePackageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h5 class="modal-title mx-auto">
+            Update "<%- data.package.package_name %>"
+          </h5>
+          <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      </div>
-      <div class="package-details my-4">
-        <h5 class="text-center font-weight-bold text-">
-          <%- data.package.package_name %>
-        </h5>
-      </div>
-
-        <div class="container-fluid">
-          <p class="details my-3">
-            <strong>Package Name:</strong> <%- data.package.package_name %>
-          </p>
-          <p class="details my-3">
-            <strong>Price: &#36;</strong> <%- data.package.price %>
-          </p>
-          <p class="details my-3">
-            <strong>Description:</strong> <%- data.package.description %>
-          </p>
+        <div class="modal-body">
+          <form action="/admin/packages/<%- data.package.package_id %>/update" method="post"
+            class="p-3 mb-3 mx-auto mw-75">
+            <div class="form-group mb-3 mx-auto">
+              <label for="package_name">Package Name</label>
+              <input required class="form-control-lg" type="text" name="package_name" id="package_name"
+                value="<%- data.package.package_name %>" placeholder="Write a Package Name." />
+            </div>
+            <div class="form-group mb-3 mx-auto">
+              <label for="price">Monthly Price</label>
+              <input required class="form-control-lg" type="number" min="0" step="0.01" id="price" name="price"
+                value="<%- data.package.price %>" placeholder="Enter Price" />
+            </div>
+            <div class="form-group mb-3 mx-auto">
+              <label for="description">Package Description</label>
+              <textarea required class="form-control" name="description" id="description"
+                placeholder="Write a Package Description.">
+<%- data.package.description %></textarea>
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <button type="submit" class="btn btn-block btn-primary mt-3">
+              Update Package
+            </button>
+          </form>
         </div>
       </div>
     </div>
-    <div id="body__click"></div>
+  </div>
+  <!-- End of Update Package Modal -->
 
-    <!-- Update Package Modal -->
-    <div
-      class="modal fade"
-      id="updatePackageModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h5 class="modal-title mx-auto">
-              Update "<%- data.package.package_name %>"
-            </h5>
-            <button
-              type="button"
-              class="close ml-0"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form
-              action="/admin/packages/<%- data.package.package_id %>/update"
-              method="post"
-              class="p-3 mb-3 mx-auto mw-75"
-            >
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_name">Package Name</label>
-                <input
-                  class="form-control-lg"
-                  type="text"
-                  name="package_name"
-                  id="package_name"
-                  value="<%- data.package.package_name %>"
-                  placeholder="Write a Package Name."
-                />
-              </div>
-              <div class="form-group mb-3 mx-auto">
-                <label for="price">Monthly Price</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  id="price"
-                  name="price"
-                  value="<%- data.package.price %>"
-                  placeholder="Enter Price"
-                />
-              </div>
-              <div class="form-group mb-3 mx-auto">
-                <label for="description">Package Description</label>
-                <textarea
-                  class="form-control-lg"
-                  name="description"
-                  id="description"
-                  placeholder="Write a Package Description."
-                >
-<%- data.package.description %></textarea
-                >
-              </div>
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-              <button type="submit" class="btn btn-block btn-primary mt-3">
-                Update Package
-              </button>
-            </form>
-          </div>
+  <!-- Delete Package Confirmation Modal -->
+  <div class="modal fade" id="deletePackageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h5 class="modal-title text-danger mx-auto" id="deleteModalLabel">
+            Delete "<%- data.package.package_name %>"?
+          </h5>
+          <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body my-2">
+          <h6 class="text-center">This cannot be undone.</h6>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">
+            Cancel
+          </button>
+          <a href="/admin/packages/<%- data.package.package_id %>/delete" class="btn btn-danger mx-2">Delete Package</a>
         </div>
       </div>
     </div>
-    <!-- End of Update Package Modal -->
+  </div>
+  <!-- End of Delete Package Confirmation Modal -->
 
-    <!-- Delete Package Confirmation Modal -->
-    <div
-      class="modal fade"
-      id="deletePackageModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h5 class="modal-title text-danger mx-auto" id="deleteModalLabel">
-              Delete "<%- data.package.package_name %>"?
-            </h5>
-            <button
-              type="button"
-              class="close ml-0"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body my-2">
-            <h6 class="text-center">This cannot be undone.</h6>
-          </div>
-          <div class="modal-footer d-flex justify-content-between">
-            <button
-              type="button"
-              class="btn btn-outline-primary"
-              data-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <a
-              href="/admin/packages/<%- data.package.package_id %>/delete"
-              class="btn btn-danger mx-2"
-              >Delete Package</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <style>
-      body {
-        background-color: #ededed;
-        min-height: 100vh !important;
-        /* max-height: 100% !important; */
-      }
 
-      div.main {
-        width: 100%;
-        padding: 0 1rem;
-        background-color: #fff;
-        position: relative;
-        padding-bottom: 3rem;
-        /* max-width: 500px; */
-      }
+  <style>
+    :root {
+      /* --primary-color: #084482; */
+      --primary-color: #00aeff;
+    }
 
-      .modal-content {
-        padding: 0.5rem;
-        border-radius: 10px;
-        position: relative;
-        width: 80%;
-        max-width: 25rem;
-        margin:auto;
-      }
+    body {
+      background-color: #ededed;
+      min-height: 100vh !important;
+      /* max-height: 100% !important; */
+    }
 
-      .modal-content button.close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        height: max-content;
-        width: max-content;
-      }
+    div.main {
+      width: 100%;
+      padding: 0 1rem;
+      background-color: #fff;
+      position: relative;
+      padding-bottom: 3rem;
+      /* max-width: 500px; */
+    }
 
-      form {
-        max-width: 100%;
-        width: max-content;
-      }
+    .modal-content {
+      padding: 0.5rem;
+      border-radius: 10px;
+      position: relative;
+      width: 80%;
+      max-width: 25rem;
+      margin: auto;
+    }
 
-      input[type='number']::-webkit-inner-spin-button,
-      input[type='number']::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
+    .modal-content button.close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      height: max-content;
+      width: max-content;
+    }
 
-      form .form-group,
-      .form-control-lg {
-        width: 100% !important;
-      }
+    .alert {
+      max-width: 40rem;
+    }
 
-      textarea {
-        height: 7rem !important;
-      }
 
-      button.hire-btn {
-        background-color: #00aeff;
-      }
-    </style>
-    <script src="../../js/bootstrap-js/popper.js"></script>
-    <script src="../../js/bootstrap-js/jquery.js"></script>
-    <script src="../../js/bootstrap-js/bootstrap.js"></script>
-    <script>
-      $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus');
-      });
-    </script>
-    <script src="../../js/custom-js/side-nav.js"></script>
-  </body>
+    form {
+      max-width: 100%;
+      width: max-content;
+    }
+
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    form .form-group,
+    .form-control-lg {
+      width: 100% !important;
+    }
+
+    textarea {
+      height: 7rem !important;
+    }
+
+    button.hire-btn {
+      background-color: #00aeff;
+    }
+
+    ul.features-list li {
+      background-color: #fff;
+      /* box-shadow: var(--box-shadow); */
+      /* color: #333; */
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+
+    ul.features-list li .delete-btn {
+      cursor: pointer;
+      background-color: #e74c3c;
+      border: 0;
+      color: #fff;
+      /* font-size: 20px; */
+      /* line-height: 20px; */
+    }
+
+    ul.features-list button {
+      padding: 2px 5px;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      width: max-content;
+      right: 0.5rem;
+      transform: translate(0, -50%);
+      transition: opacity 0.3s ease;
+    }
+
+    ul.features-list li:hover button {
+      opacity: 1;
+    }
+
+    .btn-primary {
+      color: white;
+      background-color: var(--primary-color);
+    }
+
+    .btn-outline-primary {
+      border-width: 1px !important;
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .btn-outline-primary:hover {
+      color: #fff;
+      background-color: var(--primary-color);
+    }
+
+    button.close,
+    button.close:active {
+      border: 0;
+      outline: 0;
+    }
+
+    button.close:hover {
+      transform: scale(1.3);
+    }
+
+    h6.text-primary {
+      color: #00aeff !important;
+    }
+  </style>
+  <script src="../../js/bootstrap-js/popper.js"></script>
+  <script src="../../js/bootstrap-js/jquery.js"></script>
+  <script src="../../js/bootstrap-js/bootstrap.js"></script>
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus');
+    });
+  </script>
+  <script src="../../js/custom-js/side-nav.js"></script>
+</body>
+
 </html>

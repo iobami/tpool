@@ -3,6 +3,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
+// eslint-disable-next-line linebreak-style
 /* eslint-disable prefer-destructuring */
 /* eslint-disable operator-linebreak */
 const crypto = require('crypto');
@@ -10,6 +11,7 @@ const bcrypt = require('bcryptjs');
 const { uuid } = require('uuidv4');
 const { validationResult } = require('express-validator');
 const model = require('../Models/index');
+
 const jsonWT = require('../Utils/auth-token');
 const asyncHandler = require('../Middleware/async');
 const sendEmail = require('../Utils/sendEmail');
@@ -30,23 +32,23 @@ const URL =
 
 exports.registerEmployer = (req, res) => {
   (async () => {
+    const employerUserData = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      phone: req.body.phone
+    };
     try {
       // eslint-disable-next-line camelcase
       // Validate input
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
+        req.flash('oldInput', employerUserData);
         req.flash('errors', errResponse);
         return res.redirect('/employer/register');
       }
-
-      // Saving other user details in employer session
-      const employerUserData = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        phone: req.body.phone,
-      };
+      // Saving user details in session
       req.session.employeruserData = employerUserData;
 
       // encrypt password
@@ -91,16 +93,13 @@ exports.registerEmployer = (req, res) => {
           req.flash('success', 'Verification email sent!');
           return res.redirect('/employer/register');
         } catch (err) {
+          req.flash('oldInput', employerUserData);
           req.flash('error', 'An error Occoured');
           return res.redirect('/employer/register');
           // return errorResMsg(res, 500, err);
         }
       } else {
-        // return errorResMsg(
-        //   res,
-        //   403,
-        //   'Someone has already registered this email',
-        // );
+        req.flash('oldInput', employerUserData);
         req.flash('error', 'Someone has already registered this email');
         return res.redirect('/employer/register');
       }
@@ -109,6 +108,7 @@ exports.registerEmployer = (req, res) => {
         err.statusCode = 500;
       }
       // return errorResMsg(res, 500, 'An error occurred');
+      req.flash('oldInput', employerUserData);
       req.flash('error', 'An error Occoured');
       return res.redirect('/employer/register');
     }
@@ -117,21 +117,22 @@ exports.registerEmployer = (req, res) => {
 
 exports.registerEmployerOrg = (req, res) => {
   (async () => {
+    const employerUserData = {
+      organizationName: req.body.orgName,
+      email: req.body.email,
+    };
     try {
       // eslint-disable-next-line camelcase
       // Validate input
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errResponse = errors.array({ onlyFirstError: true });
+        req.flash('oldInput', employerUserData);
         req.flash('errors', errResponse);
-        return res.redirect('/employer/register');
+        return res.redirect('/employer/register#company');
       }
 
       // Saving other user details in employer session
-      const employerUserData = {
-        organizationName: req.body.firstname,
-        email: req.body.email,
-      };
       req.session.employeruserData = employerUserData;
 
       // encrypt password
@@ -174,28 +175,26 @@ exports.registerEmployerOrg = (req, res) => {
 
           // return successResMsg(res, 201, data);
           req.flash('success', 'Verification email sent!');
-          return res.redirect('/employer/register');
+          return res.redirect('/employer/register#company');
         } catch (err) {
-          req.flash('error', 'An error Occoured');
-          return res.redirect('/employer/register');
+          req.flash('oldInput', employerUserData);
+          req.flash('error', 'An Error occoured, try again.');
+          return res.redirect('/employer/register#company');
           // return errorResMsg(res, 500, err);
         }
       } else {
-        // return errorResMsg(
-        //   res,
-        //   403,
-        //   'Someone has already registered this email',
-        // );
+        req.flash('oldInput', employerUserData);
         req.flash('error', 'Someone has already registered this email');
-        return res.redirect('/employer/register');
+        return res.redirect('/employer/register#company');
       }
     } catch (err) {
       if (!err.statusCode) {
         err.statusCode = 500;
       }
       // return errorResMsg(res, 500, 'An error occurred');
-      req.flash('error', 'An error Occoured');
-      return res.redirect('/employer/register');
+      req.flash('oldInput', employerUserData);
+      req.flash('error', 'An Error occoured, try again.');
+      return res.redirect('/employer/register#company');
     }
   })();
 };
@@ -578,8 +577,10 @@ exports.adminLogin = async (req, res, next) => {
       const admin = await model.Admin.findOne({
         where: { user_id: user.user_id },
       });
+
       if (admin) {
         userTypeId = admin.admin_id;
+        req.session.name = `${admin.firstName} ${admin.lastName}`;
       }
 
       if (user.status === '0') {
@@ -612,10 +613,16 @@ exports.adminLogin = async (req, res, next) => {
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
+            const data = {
+              email: user.email,
+              userRole: user.role_id,
+              userTypeId,
+            };
+            req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.adminId = userTypeId;
-            res.redirect('/admin/dashboard');
+            res.redirect('/admin/dashboard?message=Welcome, login successful!');
           }
           return res.status(422).render('Pages/admin-login', {
             path: '/admin/login',
@@ -656,7 +663,7 @@ const getResetPasswordToken = () => {
     .digest('hex');
 
   // Set expire
-  const resetPasswordExpire = Date.now() + +3600000;
+  const resetPasswordExpire = Date.now() + 3600000;
 
   return { resetToken, resetPasswordToken, resetPasswordExpire };
 };
@@ -756,8 +763,10 @@ exports.resetPassword = asyncHandler(async (req, res) => {
   await user.save();
 
   req.flash('success', 'Password changed successfully');
+
   if (user.role_id === 'ROL-EMPLOYER') return res.redirect('/employer/login');
   if (user.role_id === 'ROL-EMPLOYEE') return res.redirect('/employee/login');
+
 });
 
 exports.resendVerificationLink = async (req, res) => {

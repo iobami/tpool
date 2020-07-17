@@ -16,13 +16,16 @@ exports.getAll = async (req, res) => {
 
     //Success Response
     const data = await packages;
+   
     res.render('pages/employer/getAllpackages', {
       pageName: 'Packages',
+      error: req.flash('error'),
+      success: req.flash('success'),
       data
     })
 
   } catch (error) {
-    req.flash( 'error', 'Something went wrong' )
+    req.flash( 'Error', 'Something went wrong' )
     return res.redirect('back')
   }
 };
@@ -47,11 +50,11 @@ exports.packageGet = async (req, res) => {
 
     //Success Response
     const data = await query;
-    console.log(data.dataValues);
-    res.render('pages/employer/package-detail', {
-      pageName: `Package`,
+    res.render('Pages/employer/package-detail', {
+      pageName: `${data.package_name} Package`,
+      error: req.flash('error'),
+      success: req.flash('success'),
       data
-     
     })
   } catch (err) {
       req.flash( 'Error', 'Something went wrong' )

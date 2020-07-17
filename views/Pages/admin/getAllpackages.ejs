@@ -1,306 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../../Templates/head') %>
-    <link href="../styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
-    <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
-    <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
-    <link href="../styles/custom-css/admin-dash.css" rel="stylesheet" />
-  </head>
 
-  <body>
-    <%- include('../../Templates/admin-header') %> <%-
-    include('../../Templates/admin-sidebar') %>
+<head>
+  <%- include('../../Templates/head') %>
+  <link href="../styles/bootstrap-css/bootstrap.css" rel="stylesheet" />
+  <link href="../styles/custom-css/employer-top-nav.css" rel="stylesheet" />
+  <link href="../styles/custom-css/side-nav.css" rel="stylesheet" />
+  <link href="../styles/custom-css/admin-dash.css" rel="stylesheet" />
+</head>
 
-    <section class="admin__dashboard p-4">
-      <h2 class="dashboard__heading text-center">Manage Packages</h2>
+<body>
+  <%- include('../../Templates/admin-header') %>
+  <%- include('../../Templates/admin-sidebar') %>
 
-      <div class="container-fluid">
-        <!-- Nav tabs -->
-        <ul
-          class="nav nav-tabs mb-4 d-flex justify-content-center"
-          id="myTab"
-          role="tablist"
-        >
-          <li class="nav-item m-2 mx-4">
-            <a
-              class="nav-link active"
-              id="view-packages-tab"
-              data-toggle="tab"
-              href="#viewPackages"
-              role="tab"
-              aria-controls="home"
-              aria-selected="true"
-              >View Packages</a
-            >
-          </li>
-          <li class="nav-item m-2 mx-4">
-            <a
-              class="nav-link"
-              id="create-package-tab"
-              data-toggle="tab"
-              href="#createPackage"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
-              >Create Package</a
-            >
-          </li>
-          <!-- <li class="nav-item m-2">
-            <a
-              class="nav-link"
-              id="update-package-tab"
-              data-toggle="tab"
-              href="#updatePackage"
-              role="tab"
-              aria-controls="messages"
-              aria-selected="false"
-              >Update Package</a
-            >
-          </li> -->
-          <!-- <li class="nav-item m-2">
-            <a
-              class="nav-link text-danger"
-              id="delete-package-tab"
-              data-toggle="tab"
-              href="#deletePackage"
-              role="tab"
-              aria-controls="settings"
-              aria-selected="false"
-              >Delete Package</a
-            >
-          </li> -->
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <!-- view packages -->
-          <div
-            class="tab-pane fade show active"
-            id="viewPackages"
-            role="tabpanel"
-            aria-labelledby="view-packages-tab"
-          >
-            <div class="container">
-              <div class="row">
-                <% if (data && data.length >= 1) { %> <%
-                data.forEach(function(package) { %>
-                <div class="col-sm-6 col-md-4">
-                  <div class="card-deck mb-3 text-center">
-                    <div class="card mb-4 box-shadow">
-                      <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">
-                          <%- package.package_name.split(' ') .map(w =>
-                          w[0].toUpperCase() + w.substr(1).toLowerCase())
-                          .join(' ') %>
-                        </h4>
-                      </div>
-                      <div class="card-body">
-                        <h1 class="card-title packages-card-title">
-                          &#36;<%= package.price %> <br />
-                          <small class="text-muted">/ mo</small>
-                        </h1>
-                        <a
-                          href="/admin/packages/<%= package.package_id %>"
-                          class="text-white"
-                        >
-                          <button
-                            type="button"
-                            class="btn hire-btn btn-lg btn-block text-white"
-                          >
-                            View Package
-                          </button>
-                        </a>
-                      </div>
+  <section class="admin__dashboard p-4">
+    <!-- Start of Flash Message -->
+    <% if(error != '') { %>
+    <div class="alert alert-danger alert-dismissible fade show my-0 mx-auto mb-4" role="alert">
+      <p class="m-0"><%= error%></p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+    <% if(success != '') { %>
+    <div class="alert alert-success alert-dismissible fade show my-0 mx-auto mb-4" role="alert">
+      <p class="m-0"><%= success%></p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+    <!-- End of Flash Message -->
+
+    <h2 class="dashboard__heading text-center">Manage Packages</h2>
+
+    <div class="container-fluid">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs mb-4 d-flex justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item m-2 mx-4">
+          <a class="nav-link active" id="view-packages-tab" data-toggle="tab" href="#viewPackages" role="tab"
+            aria-controls="home" aria-selected="true">View Packages</a>
+        </li>
+        <li class="nav-item m-2 mx-4">
+          <a class="nav-link" id="create-package-tab" data-toggle="tab" href="#createPackage" role="tab"
+            aria-controls="profile" aria-selected="false">Create Package</a>
+        </li>
+        <li class="nav-item m-2">
+          <a class="nav-link" id="update-package-tab" data-toggle="tab" href="#viewFeatures" role="tab"
+            aria-controls="messages" aria-selected="false">View Features</a>
+        </li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <!-- view packages -->
+        <div class="tab-pane fade show active" id="viewPackages" role="tabpanel" aria-labelledby="view-packages-tab">
+          <div class="container">
+            <div class="row">
+              <% if (data.packages && data.packages.length >= 1) { %>
+              <% data.packages.forEach(function(package) { %>
+              <div class="col-sm-6 col-md-4">
+                <div class="card-deck mb-3 text-center">
+                  <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                      <h4 class="my-0 font-weight-normal">
+                        <%- package.package_name.split(' ') .map(w =>
+                                w[0].toUpperCase() + w.substr(1).toLowerCase())
+                                .join(' ') %>
+                      </h4>
+                    </div>
+                    <div class="card-body">
+                      <h1 class="card-title packages-card-title">
+                        &#36;<%= package.price %> <br />
+                        <small class="text-muted">/ mo</small>
+                      </h1>
+                      <a href="/admin/packages/<%= package.package_id %>" class="text-white">
+                        <button type="button" class="btn btn-sm hire-btn btn-lg btn-block text-white">
+                          View Package
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>
-                <% }); %> <% } else { %>
-                <h4 class="my-4 text-muted text-center">
-                  No packages found, <br /><br />Create a Package.
-                </h4>
-                <% } %>
               </div>
+              <% }) } else { %>
+              <h4 class="my-4 text-muted text-center">
+                No packages found, <br /><br />Create a Package.
+              </h4>
+              <% } %>
             </div>
           </div>
-          <!-- // create packages -->
-          <div
-            class="tab-pane fade"
-            id="createPackage"
-            role="tabpanel"
-            aria-labelledby="create-package-tab"
-          >
-            <form
-              action="/admin/packages/create"
-              method="post"
-              class="p-3 m-3 mx-auto mw-75"
-            >
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_name">Package Name</label>
-                <input
-                  class="form-control-lg"
-                  type="text"
-                  name="package_name"
-                  id="package_name"
-                  placeholder="Write a Package Name."
-                />
-              </div>
+        </div>
 
-              <div class="form-group mb-3 mx-auto">
-                <label for="price">Monthly Price</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  id="price"
-                  name="price"
-                  placeholder="Enter Price"
-                />
-              </div>
+        <!-- create packages -->
+        <div class="tab-pane fade" id="createPackage" role="tabpanel" aria-labelledby="create-package-tab">
+          <form action="/admin/packages/create" method="post"
+            class="p-3 m-3 mx-auto mw-75 d-flex flex-column justify-content-center">
+            <div class="form-group mb-3 mx-auto">
+              <label for="package_name">Package Name</label>
+              <input required class="form-control-lg" type="text" name="package_name" id="package_name"
+                placeholder="Write a Package Name." />
+            </div>
 
-              <div class="form-group mb-3 mx-auto">
-                <label for="description">Package Description</label>
-                <textarea
-                  class="form-control-lg"
-                  name="description"
-                  id="description"
-                  placeholder="Write a Package Description."
-                ></textarea>
-              </div>
+            <div class="form-group mb-3 mx-auto">
+              <label for="price">Monthly Price</label>
+              <input required class="form-control-lg" type="number" min="0" step="0.01" id="price" name="price"
+                placeholder="Enter Price" />
+            </div>
 
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-              <button type="submit" class="btn btn-block btn-primary mt-3">
-                Create Package
-              </button>
-            </form>
-          </div>
-          <!-- <div
-            class="tab-pane fade"
-            id="updatePackage"
-            role="tabpanel"
-            aria-labelledby="update-package-tab"
-          >
-            <h6 class="text-center">Update Package</h6>
-            <form action="" method="post" class="p-3 m-3 mx-auto mw-75">
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_id">Package ID</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  id="package_id"
-                  name="package_id"
-                  placeholder="Enter Package ID"
-                />
+            <div class="form-group mb-3 mx-auto">
+              <label for="description">Package Description</label>
+              <textarea required class="form-control" name="description" id="description"
+                placeholder="Write a Package Description."></textarea>
+            </div>
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <button type="submit" class="btn btn-sm btn-primary mt-3 mx-auto">
+              Create Package
+            </button>
+          </form>
+        </div>
+
+        <!-- View All Features -->
+        <div class="tab-pane fade" id="viewFeatures" role="tabpanel" aria-labelledby="view-features-tab">
+          <% if (data.allFeatures && data.allFeatures.length > 0) {%>
+          <ul class="list-group list-group-flush features-list px-4 mx-auto">
+            <% data.allFeatures.sort((a,b) => a.description.trim() < b.description.trim()? -1 : 1).forEach(feat => { %>
+            <li class="list-group-item"> <%- feat.description %>
+              <a href="/admin/features/<%= feat.feature_id %>/delete" class="btn btn-sm btn-danger">Remove</a>
+            </li>
+            <% }) %>
+          </ul>
+          <% } else { %>
+          <h6 class="my-5 mx-auto text-muted text-center">
+            No features found.
+          </h6>
+          <% } %>
+          <form class="my-4 mx-auto" action="/admin/features/create" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <div class="input-group">
+              <input required type="text" placeholder="Enter feature description" name="description"
+                class="form-control">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-success">Add</button>
               </div>
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_name">Package Name</label>
-                <input
-                  class="form-control-lg"
-                  type="text"
-                  name="package_name"
-                  id="package_name"
-                  placeholder="Write a Package Name."
-                />
-              </div>
-              <div class="form-group mb-3 mx-auto">
-                <label for="price">Monthly Price</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  step="0.01"
-                  id="price"
-                  name="price"
-                  placeholder="Enter Price"
-                />
-              </div>
-              <div class="form-group mb-3 mx-auto">
-                <label for="description">Package Description</label>
-                <textarea
-                  class="form-control-lg"
-                  name="description"
-                  id="description"
-                  placeholder="Write a Package Description."
-                ></textarea>
-              </div>
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-              <button type="submit" class="btn btn-block btn-primary mt-3">
-                Update Package
-              </button>
-            </form>
-          </div> -->
-          <!-- <div
-            class="tab-pane fade"
-            id="deletePackage"
-            role="tabpanel"
-            aria-labelledby="delete-package-tab"
-          >
-            <h6 class="text-center">Delete Package</h6>
-            <form action="" method="post" class="p-3 m-3 mx-auto mw-75">
-              <div class="form-group mb-3 mx-auto">
-                <label for="package_id">Package ID</label>
-                <input
-                  class="form-control-lg"
-                  type="number"
-                  min="0"
-                  id="package_id"
-                  name="package_id"
-                  placeholder="Enter Package ID"
-                />
-              </div>
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-              <button type="submit" class="btn btn-block btn-danger mt-3">
-                Delete Package
-              </button>
-            </form>
-          </div> -->
+            </div>
+          </form>
         </div>
       </div>
-    </section>
-    <div id="body__click"></div>
-    <style>
-      form {
-        max-width: 100%;
-        width: max-content;
-      }
+    </div>
+  </section>
+  <div id="body__click"></div>
 
-      input[type='number']::-webkit-inner-spin-button,
-      input[type='number']::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
+  <style>
+    .alert {
+      max-width: 40rem;
+    }
 
-      form .form-group,
-      .form-control-lg {
-        width: 100% !important;
-      }
+    form {
+      max-width: 30rem;
+      width: 80%;
+      /* width: max-content; */
+    }
 
-      textarea {
-        height: 10rem !important;
-      }
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-      .card-body {
-        min-height: 3rem !important;
-        max-height: max-content;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-      }
+    form .form-group,
+    .form-control-lg {
+      width: 100% !important;
+    }
 
-      button.hire-btn {
-        background-color: #00aeff;
-      }
-    </style>
-    <script src="../js/bootstrap-js/popper.js"></script>
-    <script src="../js/bootstrap-js/jquery.js"></script>
-    <script src="../js/bootstrap-js/bootstrap.js"></script>
-    <script>
-      $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus');
-      });
-    </script>
-    <script src="../js/custom-js/side-nav.js"></script>
-  </body>
+    textarea {
+      height: 10rem !important;
+    }
+
+    .card-body {
+      min-height: 3rem !important;
+      max-height: max-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    button.hire-btn {
+      background-color: #00aeff;
+    }
+
+    ul.features-list {
+      max-width: 400px;
+    }
+
+    ul.features-list li {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+
+    ul.features-list button,
+    ul.features-list a.btn {
+      padding: 2px 5px;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      width: max-content;
+      right: 0.5rem;
+      transform: translate(0, -50%);
+      transition: opacity 0.3s ease;
+    }
+
+    button.close,
+    button.close:active {
+      border: 0;
+      outline: 0;
+    }
+
+    button.close:hover {
+      transform: scale(1.3);
+    }
+
+    ul.features-list li:hover button,
+    ul.features-list li:hover a.btn {
+      opacity: 1;
+    }
+  </style>
+  <script src="../js/bootstrap-js/popper.js"></script>
+  <script src="../js/bootstrap-js/jquery.js"></script>
+  <script src="../js/bootstrap-js/bootstrap.js"></script>
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus');
+    });
+  </script>
+  <script src="../js/custom-js/side-nav.js"></script>
+</body>
+
 </html>

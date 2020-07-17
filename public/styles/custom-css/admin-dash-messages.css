@@ -2,6 +2,21 @@ body {
   background-color: #f8f8f8;
 }
 
+.connect {
+  margin-top: 40%;
+  padding: 10px;
+  color: white;
+  background-color: #00aeff;
+  width: 50%;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.none {
+   visibility: hidden;
+}
+
 button:focus {
   outline: none;
 }
@@ -12,6 +27,10 @@ button:focus {
 
 .main-heading {
   font-size: 1.5rem;
+}
+
+.dropdown-toggle::after {
+  display: none;
 }
 
 .chat-top,

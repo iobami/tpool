@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 module.exports = {
   employeeSignup: (req, res) => {
+    const loggedIn = req.session.isLoggedIn;
     let message = req.flash('error');
     if (message.length > 0) {
       [message] = message;
@@ -24,7 +25,10 @@ module.exports = {
     }
 
     if (passport) {
-      const { isLoggedIn, passport: { user } } = req.session;
+      const {
+        isLoggedIn,
+        passport: { user },
+      } = req.session;
       const { userTypeId } = user;
       if (isLoggedIn && userTypeId) {
         res.redirect(`/employee/dashboard/${userTypeId}`);
@@ -47,11 +51,11 @@ module.exports = {
         validationErrors: [],
       });
     }
-
+    // const { isLoggedIn } = req.session;
     return res.render('Pages/employee-sign-up', {
       path: '/employee/register',
       pageName: 'Employee Signup',
-      isLoggedIn: '',
+      isLoggedIn: loggedIn,
       error: req.flash('error'),
       errors: req.flash('errors'),
       success: req.flash('success'),
@@ -65,6 +69,7 @@ module.exports = {
   },
 
   employeeSignIn: (req, res) => {
+    const loggedIn = req.session.isLoggedIn;
     // display messages
     const success = req.flash('success');
     let message = req.flash('error');
@@ -90,7 +95,10 @@ module.exports = {
     }
 
     if (passport) {
-      const { isLoggedIn, passport: { user } } = req.session;
+      const {
+        isLoggedIn,
+        passport: { user },
+      } = req.session;
       const { userTypeId } = user;
       if (isLoggedIn && userTypeId) {
         res.redirect(`/employee/dashboard/${userTypeId}`);
@@ -112,11 +120,12 @@ module.exports = {
       });
     }
 
+//    const { isLoggedIn } = req.session;
     return res.render('Pages/employee-sign-in', {
       path: '/employee/login',
       pageName: 'Employee Login',
       success,
-      isLoggedIn: '',
+      isLoggedIn: loggedIn,
       errorMessage: message,
       oldInput: {
         email: '',
