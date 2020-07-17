@@ -2,6 +2,7 @@
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
+const morgan = require('morgan');
 const dotenv = require('dotenv');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
@@ -9,20 +10,19 @@ const cookieParser = require('cookie-parser');
 
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const csrf = require('csurf');
 // Requiring express rate limit
 // const rateLimit = require('express-rate-limit');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
 const { key } = require('./gen-key');
-
 // eslint-disable-next-line no-unused-vars
 
 dotenv.config();
+// eslint-disable-next-line import/order
 process.env.TALENT_POOL_JWT_SECRET = key(64);
 
-// eslint-disable-next-line import/order
-const morgan = require('morgan');
 const db = require('./Models');
 const { seedSuperAdmin } = require('./seed');
 const googleAuth = require('./Routes/googleAuth'); // require google auth route to test endpoint
@@ -83,7 +83,7 @@ const getAllEmployees = require('./Routes/employer/get-employees');
 
 // IMPORT EMPLOYER DASHBOARD
 const employerDashboard = require('./Routes/employer/employer-dashboard');
-const employerSettings = require('./routes/employer/employer-settings');
+const employerSettings = require('./Routes/employer/employer-settings');
 
 // IMPORT THE VIEWS ROUTES
 const adminPackages = require('./Routes/views/payment/admin_package');
@@ -103,9 +103,9 @@ const adminAuthRoute = require('./Routes/views/admin/auth');
 const employerMetrics = require('./Routes/views/employer/metrics');
 const employerRecommendation = require('./Routes/views/employer/recommendation');
 const verifyModal = require('./Routes/views/admin/verifyModal');
-const teamRoute = require('./Routes/views/team/index');
 const messageRoute = require('./Routes/views/message/message');
 const superAdmin = require('./Routes/super-admin/manage-admin');
+const teamRoute = require('./Routes/views/team/index');
 
 const csrfProtection = csrf();
 
@@ -123,6 +123,7 @@ app.use(
     extended: false,
   }),
 );
+app.use(methodOverride('_method'));
 
 // View Engine
 app.set('view engine', 'ejs');
@@ -266,10 +267,10 @@ app.use(adminAuthRoute);
 app.use(employerMetrics);
 app.use(employerRecommendation);
 app.use(verifyModal);
-app.use(teamRoute);
 app.use(adminPackages);
 app.use(employerPackages);
 app.use(googleAuth);
+app.use(teamRoute);
 app.use(messageRoute);
 
 module.exports = app;
