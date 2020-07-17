@@ -91,6 +91,7 @@ exports.getAll = async (req, res) => {
       pageName: 'Packages',
       path: 'packages',
       data,
+      currentUser: req.session.name,
     });
   } catch (error) {
     req.flash('error', 'Something went wrong');

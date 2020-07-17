@@ -575,8 +575,10 @@ exports.adminLogin = async (req, res, next) => {
       const admin = await model.Admin.findOne({
         where: { user_id: user.user_id },
       });
+
       if (admin) {
         userTypeId = admin.admin_id;
+        req.session.name = `${admin.firstName} ${admin.lastName}`;
       }
 
       if (user.status === '0') {
@@ -612,7 +614,7 @@ exports.adminLogin = async (req, res, next) => {
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.adminId = userTypeId;
-            res.redirect('/admin/dashboard');
+            res.redirect('/admin/dashboard?message=Welcome, login successful!');
           }
           return res.status(422).render('Pages/admin-login', {
             path: '/admin/login',

@@ -63,6 +63,7 @@ module.exports = {
                 error: req.flash('error'),
                 errors: req.flash('errors'),
                 success: req.flash('success'),
+                currentUser: req.session.name,
             });
         } catch (err) {
             console.log(err);
