@@ -7,6 +7,7 @@ const { Package, Feature } = require('../../../Models/index');
 
 exports.getAll = async (req, res) => {
   try {
+      
     const packages = await Package.findAll({
       include: { 
         model: Feature,
@@ -16,145 +17,18 @@ exports.getAll = async (req, res) => {
 
     //Success Response
     const data = await packages;
-   //  console.log("Here")
-   //  console.log(data);
-    res.render('pages/employer/getAllpackages', {
+   
+    res.render('Pages/employer/getAllpackages', {
       pageName: 'Packages',
-      data
-      // packages: [
-      //  {
-      //     id: 1,
-      //     package_name: "Gold",
-      //     description: "Yes, this is it, this is the one. Don't overthink it, just click subscribe",
-      //     price: "50000",
-      //     package_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //     created_at: null,
-      //     updated_at: null,
-      //     features: [
-      //       {
-      //          id: 1,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       },
-      //       {
-      //          id: 2,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       },
-      //       {
-      //          id: 3,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       }
-      //    ]
-      //  },
-      //  {
-      //     id: 1,
-      //     package_name: "Gold",
-      //     description: "Yes, this is it, this is the one. Don't overthink it, just click subscribe",
-      //     price: "50000",
-      //     package_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //     created_at: null,
-      //     updated_at: null,
-      //     features: [
-      //       {
-      //          id: 1,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       },
-      //       {
-      //          id: 2,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       },
-      //       {
-      //          id: 3,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       }
-      //    ]
-      //  },
-      //  {
-      //     id: 1,
-      //     package_name: "Gold",
-      //     description: "Yes, this is it, this is the one. Don't overthink it, just click subscribe",
-      //     price: "50000",
-      //     package_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //     created_at: null,
-      //     updated_at: null,
-      //     features: [
-      //       {
-      //          id: 1,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       },
-      //       {
-      //          id: 2,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       },
-      //       {
-      //          id: 3,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       }
-      //    ]
-      //  },
-      //  {
-      //     id: 1,
-      //     package_name: "Gold",
-      //     description: "Yes, this is it, this is the one. Don't overthink it, just click subscribe",
-      //     price: "50000",
-      //     package_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //     created_at: null,
-      //     updated_at: null,
-      //     features: [
-      //       {
-      //          id: 1,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       },
-      //       {
-      //          id: 2,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       },
-      //       {
-      //          id: 3,
-      //          description: "Search from System verified Talents",
-      //          feature_id: "f3d1afa6-7800-4dac-b32a-00bc0a8d32cd",
-      //          created_at: null,
-      //          updated_at: null,
-      //       }
-      //    ]
-      //  },
-      // ]
+      error: req.flash('error'),
+      success: req.flash('success'),
+      data,
+      payment: (req.payment)? req.payment : ''
     })
 
   } catch (error) {
-    req.flash( 'error', 'Something went wrong' )
+    console.log(error)
+    req.flash( 'Error', 'Something went wrong' )
     return res.redirect('back')
   }
 };
@@ -179,11 +53,11 @@ exports.packageGet = async (req, res) => {
 
     //Success Response
     const data = await query;
-    console.log(data.dataValues);
-    res.render('pages/employer/package-detail', {
-      pageName: `Package`,
+    res.render('Pages/employer/package-detail', {
+      pageName: `${data.package_name} Package`,
+      error: req.flash('error'),
+      success: req.flash('success'),
       data
-     
     })
   } catch (err) {
       req.flash( 'Error', 'Something went wrong' )

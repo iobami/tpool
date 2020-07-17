@@ -1,9 +1,10 @@
 const socket = io('/');
 const message = document.getElementById('type-msg');
-let sender_name, receiver, chatmessages, check, par, shouldScroll;
+let sender_name, receiver, chatmessages, check, par, shouldScroll, trackuser;
 let realchat = document.querySelector('.realchat');
 let chatname = document.querySelector('.chat-scroll-view');
 let sender = document.querySelector('.chat').dataset.user;
+let msgp = document.querySelector('.msgp');
 
 function toggleBack() {
     var x = document.getElementsByClassName('main-section');
@@ -34,16 +35,41 @@ function getAllMessages() {
     chatlist.map((item) => {
         item.addEventListener('click', () => {
             check = true;
+            document.querySelector('.comment').classList.remove('none');
+            document.querySelector('.main-tab').style.backgroundImage = '';
             receiver = item.dataset.id;
             receiver_name = item.dataset.name;
             realchat.innerHTML = '';
             console.log(sender, receiver);
 
+            msgp.innerHTML = '';
+            console.log('name', item.dataset.name);
+            let pr = document.createElement('p');
+            pr.classList.add('m-0', 'pl-4');
+            let img3 = document.createElement('img');
+            img3.src = '../img/admin-dash-messages/dp-image.png';
+            img3.alt = 'profile-img';
+            img3.classList.add('dp');
+            let text = document.createElement('span');
+            text.classList.add('pl-3');
+            text.textContent = item.dataset.name;
+            pr.appendChild(img3);
+            pr.appendChild(text);
+            msgp.appendChild(pr);
+
             axios
                 .get(`/admin/message/${sender}/${receiver}`)
                 .then((res) => {
+
+                    if (res.data.data.length > 1) {
+                        document.getElementById("type-msg").disabled = false;
+                    } else {
+                        document.getElementById("type-msg").disabled = true;
+                    }
+
                     res.data.data.forEach((item) => {
-                        console.log(item)
+                        console.log(item);
+
 
                         if (item.user_id === sender) {
                             chatmessages = document.querySelector('.chat-messages');
@@ -59,7 +85,7 @@ function getAllMessages() {
                             let img = document.createElement('img');
 
                             time.classList.add('time');
-                            span.textContent = '';
+                            span.textContent = "";
                             time.appendChild(span);
                             img.src = '../img/admin-dash-messages/sent.svg';
                             img.alt = 'delivered';
@@ -103,11 +129,16 @@ function getAllMessages() {
                             sender1.appendChild(time);
 
                             realchat.appendChild(sender1);
-
                         }
 
-
-
+                        shouldScroll =
+                            chatmessages.scrollTop + chatmessages.clientHeight ===
+                            chatmessages.scrollHeight;
+                        console.log(chatmessages.scrollTop, shouldScroll);
+                        message.value = '';
+                        if (!shouldScroll) {
+                            chatmessages.scrollTop = chatmessages.scrollHeight;
+                        }
                     });
                 })
                 .catch((err) => console.log(err));
@@ -145,9 +176,8 @@ const sendMessage = () => {
         let sent = document.createElement('span');
         let img = document.createElement('img');
 
-
-        time.classList.add("time");
-        span.textContent = new Date().getHours() + ":" + new Date().getMinutes();
+        time.classList.add('time');
+        span.textContent = new Date().getHours() + ':' + new Date().getMinutes();
         //time.appendChild(span);
         img.src = 'img/admin-dash-messages/sent.svg';
         img.alt = 'delivered';
@@ -195,19 +225,19 @@ socket.on('new_message', function (data) {
         return;
     }
 
-    let sender1 = document.createElement("div");
-    let chatcontainer = document.createElement("div");
-    let chatsender = document.createElement("div");
-    let chatmsg = document.createElement("div");
-    let time = document.createElement("div");
-    let span = document.createElement("span");
-    realchat = document.querySelector(".realchat");
-    chatmessages = document.querySelector(".chat-messages");
+    let sender1 = document.createElement('div');
+    let chatcontainer = document.createElement('div');
+    let chatsender = document.createElement('div');
+    let chatmsg = document.createElement('div');
+    let time = document.createElement('div');
+    let span = document.createElement('span');
+    realchat = document.querySelector('.realchat');
+    chatmessages = document.querySelector('.chat-messages');
 
-    span.textContent = new Date().getHours() + ":" + new Date().getMinutes();
-    time.classList.add("time");
+    span.textContent = new Date().getHours() + ':' + new Date().getMinutes();
+    time.classList.add('time');
 
-    time.appendChild(span);
+    //time.appendChild(span);
     chatmsg.classList.add('chatmsg');
     chatmsg.textContent = data.message;
     chatsender.classList.add('chat-sender', 'msg');
@@ -217,12 +247,12 @@ socket.on('new_message', function (data) {
     sender1.classList.add('sender');
     sender1.appendChild(chatcontainer);
     sender1.appendChild(time);
-    console.log(sender)
-    console.log(data.receiver)
-    if (!check) {
-        return;
+    console.log(sender);
+    console.log(data.receiver !== sender);
+    if (check && receiver === data.sender) {
+        realchat.appendChild(sender1);
     }
-    realchat.appendChild(sender1);
+
     shouldScroll =
         chatmessages.scrollTop + chatmessages.clientHeight ===
         chatmessages.scrollHeight;
