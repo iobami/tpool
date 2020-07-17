@@ -2,7 +2,7 @@
 <html>
   <head>
     <%- include('../Templates/head') %>
-    <!-- <link href="/styles/custom-css/flags.css" rel="stylesheet"> -->
+     <link href="/styles/custom-css/flags.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
 
     <link rel="stylesheet" href="/styles/custom-css/employer-profile-page-creation1.css">
@@ -42,8 +42,8 @@
                                 </div>
                             </div>
                         </div>
-  
-  
+
+
                     </div>
                 </div>
             </div>
@@ -102,11 +102,11 @@
 
                 <!-- <div class="col-xs-12 col-md-6">
                     <h3>Result</h3>
-        
+
                     <form>
                         <div class="form-group">
                             <label>Select Country</label><br>
-        
+
                             <div id="basic" data-input-name="country"></div>
                         </div>
                     </form>
@@ -230,27 +230,27 @@
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
    <script src="/js/custom-js/toast.js"></script>
 
-   <script src="/js/custom-js/countries.js"></script>    
+   <script src="/js/custom-js/countries.js"></script>
 
-   <script src="/js/custom-js/employer-profile-creation.js"></script>    
+   <script src="/js/custom-js/employer-profile-creation.js"></script>
   <%- include('../Templates/footer') %>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-   
+
    <script>
-        const option = (value) => {
+        const option = (value, flag) => {
           return `
-          <option data-tokens="${value}">${value}</option>
+          <option data-icon="flagstrap-icon flagstrap-${flag}" data-tokens="${value}">${value}</option>
           `;
         };
-  
+
         const [select] = document.querySelectorAll('.selectpicker');
         for (const [key, value] of Object.entries(countries)) {
-          select.innerHTML += option(value);
+          select.innerHTML += option(value, key.toLowerCase());
         }
-  
-    </script>  
+
+    </script>
    </script>
-    </script>  
+    </script>
   </body>
 </html>

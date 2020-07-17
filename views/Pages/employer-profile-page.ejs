@@ -2,7 +2,8 @@
 <html>
   <head>
     <%- include('../Templates/dashboard-head') %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+      <link href="/styles/custom-css/flags.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
 
     <link rel="stylesheet" href="/styles/custom-css/employer-top-nav.css">
     <link rel="stylesheet" href="/styles/custom-css/side-nav.css">
@@ -48,7 +49,7 @@
                  <div class="col-md-5 mb-4">
                    <div class="card profile-card box-shadow">
                         <!-- <div class="logo-container  mx-auto d-flex align-items-center">
-                            
+
                         </div> -->
                         <div class="employer__image mx-auto d-flex align-items-center">
                             <img src="<%= EmployerInfo.employerInfo.employer_photo %>" alt="" class="img-fluid">
@@ -74,10 +75,10 @@
                          <button type='button' class="btn mx-auto mt-4 mb-5" data-toggle="modal" data-target="#profilepopup">Edit profile</button>
                    </div>
                  </div>
-  
-                
-  
-  
+
+
+
+
   <!-- Modal -->
   <div class="modal fade" id="profilepopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" >
@@ -88,8 +89,8 @@
             <span class="close-btn1" aria-hidden="true">&times;</span>
             <svg class= "close-btn" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M23.6673 2.68301L21.3173 0.333008L12.0007 9.64968L2.68398 0.333008L0.333984 2.68301L9.65065 11.9997L0.333984 21.3163L2.68398 23.6663L12.0007 14.3497L21.3173 23.6663L23.6673 21.3163L14.3507 11.9997L23.6673 2.68301Z" fill="#00AEFF"/>
-              </svg> 
-              
+              </svg>
+
           </button>
         </div> -->
         <div class="modal-header">
@@ -147,7 +148,7 @@
                   </select>
                 </div>
               </div>
-  
+
               <div class="d-flex justify-content-around mobileContainer">
                 <!-- <div>
                   <label for="" class="industryTypeLabel">Industry Type</label>
@@ -162,7 +163,7 @@
                     </div>
                   </div>
                 </div> -->
-  
+
                 <!-- <div class="browseCheck">
                   <label for="" class="companyLogoLabel">Company Logo</label>
                   <div class="input-group">
@@ -170,23 +171,23 @@
                       <input type="file" class="custom-file-input"  id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
                       <label class="custom-file-label" for="inputGroupFile04">Logo.png</label>
                     </div>
-                  
+
                   </div>
                   <br>
                   <p>Recommended dimension: 200 <span>&#xd7;</span> 200px <br>
                   Maximum file size: 500Kb <br>
                   Please add only professional looking logo </p>
-  
+
                 </div> -->
-                
+
            </div>
 
           </div>
-  
-  
-  
-  
-  
+
+
+
+
+
         </div>
         <div class="modal-footer  row justify-content-center update-profile">
           <button  type="button" id="updateProfileButton" class="btn mx-auto " onclick="saveProfile()">Save Profile</button>
@@ -204,21 +205,21 @@
       </div>
     </div>
   </div>
-  
+
   <!--mobile view of popop window-->
-  
+
                  <!-- Row for description / Social media link / company info -->
                  <div class="col-md-7 pl-lg-0" >
                      <!-- description card start here -->
                       <div  class="card desc-card px-4 py-5 box-shadow">
                           <div class=" desc-card-header ">
-  
+
                               <h3>Description
                                  <img onclick="showDescModal('<%= EmployerInfo.employerInfo.description %>')"
                                   src="/img/Pen.png"  class=' pen-modif float-right'alt="">
                                 </h3>
-                              
-  
+
+
                           </div>
                           <p class=" desc-text mt-3">
                               <%= EmployerInfo.employerInfo.description %>
@@ -227,12 +228,12 @@
                       <!-- Social accounts card -->
                       <div  class="card social-card px-4 pt-5 pb-3 mt-5 box-shadow">
                           <div class=" desc-card-header ">
-                      
+
                               <h3 class="d-flex justify-content-between align-items-center"
                                >Social accounts
                                <!-- <img src="/../img/plus-blue.png" alt="" class="plus-social"> </h3> -->
                           </div>
-                      
+
                            <div class="social-accounts mt-4">
                                       <div class=" account py-4 pl-1">
                                             <i class="fab fa-twitter "></i>
@@ -252,94 +253,94 @@
                                             <img src="/../img/Pen.png" class="pen-modif float-right"
                                             onclick="updateSocial('Facebook', '<%= EmployerInfo.employerInfo.facebook %>')">
                                       </div>
-                      
+
                                       <div class=" account py-4 pl-1">
-                      
+
                                           <i class="fab fa-linkedin"></i>
                                           <a href="<%= EmployerInfo.employerInfo.linkedin %>">
                                               <span class="ml-3">LinkedIn</span>
                                           </a>
                                           <img src="/../img/Pen.png" class="pen-modif float-right"
-                                          onclick="updateSocial('LinkedIn', '<%= EmployerInfo.employerInfo.linkedin %>')">                              
-                      
+                                          onclick="updateSocial('LinkedIn', '<%= EmployerInfo.employerInfo.linkedin %>')">
+
                                       </div>
                                       <div class=" account py-4 pl-1">
-                      
+
                                           <i class="fab fa-instagram"></i>
                                           <a href="<%= EmployerInfo.employerInfo.instagram %>">
                                               <span class="ml-3">Instagram</span>
                                           </a>
                                           <img src="/../img/Pen.png" class="pen-modif float-right"
-                                          onclick="updateSocial('Instagram', '<%= EmployerInfo.employerInfo.instagram %>')">                              
-                      
+                                          onclick="updateSocial('Instagram', '<%= EmployerInfo.employerInfo.instagram %>')">
+
                                       </div>
                                       <!-- <div class=" account py-4 pl-1">
-                      
+
                                           <i class="fab fa-dribbble"></i>
                                           <span class="ml-3">Dribbble</span>
-                                          <img src="/../img/Pen.png" class="pen-modif float-right">                             
+                                          <img src="/../img/Pen.png" class="pen-modif float-right">
                                       </div> -->
                                       <!-- <div class=" account py-4 pl-1">
-  
+
                                           <i class="fab fa-behance"></i>
                                           <span class="ml-3">Behance</span>
-                                          <img src="/../img/Pen.png" class="pen-modif float-right">                            
+                                          <img src="/../img/Pen.png" class="pen-modif float-right">
                                        </div>
-                                       
-                                      
+
+
                                        <div class=" account py-4 pl-1">
                                           <i class="fab fa-github"></i>
                                           <span class="ml-3">GitHub</span>
-                                          <img src="/../img/Pen.png" class="pen-modif float-right">                            
+                                          <img src="/../img/Pen.png" class="pen-modif float-right">
                                        </div> -->
-                                       
+
                           </div>
-                                      
+
                       </div>
-                  
-                     
+
+
                       <!-- company info card -->
                       <div  class="card company-card px-4 py-5 my-5 box-shadow">
                           <div class=" desc-card-header company-title pb-4 ">
-  
+
                               <h3 class="" >
-                                  Company Info 
+                                  Company Info
                                <!-- <img onclick="showCompanyInfoModal()" src="/../img/Pen.png" class="pen-modif float-right">                              </div> -->
                               </h3>
                                <div class="company mt-2">
                                       <div class=" company-info py-4 pl-1">
                                           <img src="/../img/verified.png" alt="">
                                           <span class="ml-3">
-                                              <%= EmployerInfo.userIndustry.category_name %>                                            
+                                              <%= EmployerInfo.userIndustry.category_name %>
                                           </span>
-  
+
                                       </div>
                                       <div class=" company-info py-4 pl-1">
                                           <img src="/../img/verified.png" alt="">
                                           <span class="ml-3">
                                               <% if(EmployerInfo.employerInfo.website){ %>
                                               <%= EmployerInfo.employerInfo.website %>
-                                              <% } else{ %>  
+                                              <% } else{ %>
                                                 No website link
                                              <% } %>
                                           </span>
-  
+
                                  </div>
                                  <div class=" company-info py-4 pl-1">
-  
+
                                   <img src="/../img/verified.png" alt="">
                                   <span class="ml-3"><%= EmployerInfo.employerInfo.employer_phone %></span>
-  
+
                                  </div>
                                </div>
-                              
+
                        </div>
-                  
+
                   </div>
-            </div> 
-            
+            </div>
+
             <!-- Button trigger modal -->
-              
+
               <!-- Modal -->
               <div class="modal fade bd-example-modal-sm" id="socialAccount" tabindex="-1"
                role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -400,13 +401,13 @@
                                     id="profileUpdateImage" aria-describedby="inputGroupFileAddon04">
                                   <label class="custom-file-label" for="profileUpdateImage">Logo.png</label>
                                 </div>
-                
+
                                 <p class="image__spec">Recommended dimension: 200 <span>&#xd7;</span> 200px <br>
                                   Maximum file size: 500Kb <br>
-                                  Please add only professional looking logo 
+                                  Please add only professional looking logo
                                 </p>
                             </div>
-            
+
                           </div>
                       </div>
                       <div class="modal-footer">
@@ -446,7 +447,7 @@
                       </div>
                     </div>
                   </div>
-                  
+
 
                   <div class="modal fade bd-example-modal-sm" tabindex="-1" id="descModal"
                     role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -483,14 +484,14 @@
                                 </button>
 
                             </div>
-                            
+
                         </div>
                       </div>
                     </div>
 
         </section>
       </div>
-     
+
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/./js/bootstrap-js/popper.js"></script>
@@ -499,23 +500,23 @@
     <script src="https://kit.fontawesome.com/5f006efe51.js" crossorigin="anonymous"></script>
     <script src="/../js/custom-js/side-nav.js"></script>
    <script src="/js/custom-js/toast.js"></script>
-   <script src="/js/custom-js/countries.js"></script>    
+   <script src="/js/custom-js/countries.js"></script>
     <script src="/../js/custom-js/employer-profile.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-   
+
    <script>
-        const option = (value) => {
+        const option = (value, flag) => {
           return `
-          <option data-tokens="${value}">${value}</option>
+          <option data-icon="flagstrap-icon flagstrap-${flag}" data-tokens="${value}">${value}</option>
           `;
         };
-  
+
         const [select] = document.querySelectorAll('.selectpicker');
         for (const [key, value] of Object.entries(countries)) {
-          select.innerHTML += option(value);
+          select.innerHTML += option(value, key.toLowerCase());
         }
-  
-    </script> 
+
+    </script>
   </body>
 </html>
