@@ -3,6 +3,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
+// eslint-disable-next-line linebreak-style
 /* eslint-disable prefer-destructuring */
 /* eslint-disable operator-linebreak */
 const crypto = require('crypto');
@@ -10,6 +11,7 @@ const bcrypt = require('bcryptjs');
 const { uuid } = require('uuidv4');
 const { validationResult } = require('express-validator');
 const model = require('../Models/index');
+
 const jsonWT = require('../Utils/auth-token');
 const asyncHandler = require('../Middleware/async');
 const sendEmail = require('../Utils/sendEmail');
@@ -609,6 +611,12 @@ exports.adminLogin = async (req, res, next) => {
         .compare(password, user.password)
         .then((valid) => {
           if (valid) {
+            const data = {
+              email: user.email,
+              userRole: user.role_id,
+              userTypeId,
+            };
+            req.session.data = data;
             req.session.isLoggedIn = true;
             req.session.userId = user.user_id;
             req.session.adminId = userTypeId;

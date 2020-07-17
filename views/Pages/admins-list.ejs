@@ -38,7 +38,7 @@
                         <table class="table table-striped" id="table">
                             <thead class="">
                               <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
                                 <th scope="col">Phone Number</th>
@@ -51,19 +51,26 @@
                             <% allAdmins.forEach(function(admin) { %>
                         
                               <% if (admin.id != 1) {%>
-                                <tr id="table-row">
-                                  <th scope="row"><%= admin.id %></th>
-                                  <td><%= admin.firstName %></td>
-                                  <td><%= admin.lastName %></td>
-                                  <td><%= admin.phoneNumber %></td>
-                                  <td>Admin</td>
-                                  <td><%= moment(admin.createdAt).format('MMMM Do YYYY') %></td>
-                                  <td class="px-0"> 
-                                      <a onclick= 'toBlock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>",  "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-ban" style= "color:orange;"></i></a>
-                                      <a onclick= 'toUnblock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>" )'href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i></a>
-                                      <a onclick= 'toDelete("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-trash-alt" style= "color: red ; padding: 10px;"></i></a>
-                                  </td>
-                                </tr>
+                                <% if (admin.User.block != true) { %>
+                                  <tr id="table-row">
+                                    <th scope="row"><i class="fa fa-unlock" aria-hidden="true"></i></th>
+                                <% } %>
+                                <% if (admin.User.block) { %>
+                                  <tr id="table-row" style="background-color: lightcoral;">
+                                    <th scope="row"><i class="fa fa-lock" aria-hidden="true"></i><span class="badge badge-danger">BLOCKED</span></th>
+                                <% } %>
+                                    <td><%= admin.firstName %></td>
+                                    <td><%= admin.lastName %></td>
+                                    <td><%= admin.phoneNumber %></td>
+                                    <td>Admin</td>
+                                    <td><%= moment(admin.createdAt).format('MMMM Do YYYY') %></td>
+                                    <td class="px-0"> 
+                                        <a onclick= 'toBlock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>",  "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-ban" style= "color:orange;"></i></a>
+                                        <a onclick= 'toUnblock("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>" )'href="#"><i class="fa fa-unlock" style= "color: green ; padding: 10px;" aria-hidden="true"></i></a>
+                                        <a onclick= 'toDelete("<%= admin.user_id %>", "<%= admin.firstName %> <%= admin.lastName %>", "<%= csrfToken %>")'href="#"><i class="admin-action fas fa-trash-alt" style= "color: red ; padding: 10px;"></i></a>
+                                    </td>
+                                  </tr>
+      
                               <% } %>
                             <% }) %>
                         

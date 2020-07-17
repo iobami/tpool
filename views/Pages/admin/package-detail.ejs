@@ -61,6 +61,12 @@
         Delete Package
       </button>
     </div>
+    <% if(error != '') { %>
+      <p><%= error%></p>
+    <% }
+    if(success != '') { %>
+      <p><%= success%></p>
+    <% } %>
     <!-- package body -->
     <div class="my-4">
       <h5 class="text-center font-weight-bold text-capitalize">
