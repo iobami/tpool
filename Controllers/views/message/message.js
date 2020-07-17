@@ -121,6 +121,7 @@ module.exports = {
     },
 
     employeeMessagePage: async (req, res) => {
+
         let employeeId = req.session.employeeId;
         console.log(employeeId);
         try {
@@ -160,6 +161,7 @@ module.exports = {
                 employeeUsers: employeeUsers,
                 data: data,
                 path: '/employee/message',
+
                 dashboardPath: `/employee/dashboard/${employeeId}`,
                 profilePath: `/employee/profile/${employeeId}`,
                 portfolioPath: `/employee/portfolio/${employeeId}`,
