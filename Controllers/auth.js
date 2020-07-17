@@ -420,7 +420,7 @@ exports.postEmployerLogin = async (req, res, next) => {
               // req.flash('error', 'You need to create a profile before you proceed');
               res.redirect('/employer/profile/create');
             }
-            res.redirect(`/employer/dashboard/${user.employer_id}`);
+            res.redirect('/employer/dashboard');
           }
           return res.status(422).render('Pages/employer-signin', {
             path: '/employer/login',

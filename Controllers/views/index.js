@@ -35,7 +35,7 @@ module.exports = {
 
       });
       if (isLoggedIn && employer) {
-        return res.redirect(`/employer/dashboard/${employer.employer_id}`);
+        return res.redirect('/employer/dashboard');
       }
       if (isLoggedIn && !employer) {
         return res.redirect('/employer/profile/create');
