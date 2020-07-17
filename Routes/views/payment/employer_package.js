@@ -1,21 +1,20 @@
 const express = require('express');
+const Flutterwave = require('flutterwave-node-v3');
+
+
 const appRoute = express.Router();
 const Flutterwave = require('flutterwave-node-v3');
 
 const {
-     create, getAll, packageGet,  
+  create, getAll, packageGet,
 } = require('../../../Controllers/views/payment/employer-package');
 
+// get package detail routes
+appRoute.get('/employer/packages/:package_id', packageGet);
 
-
-//get package detail routes
-appRoute.get('/employer/packages/:package_id', packageGet); 
-
-//get all packages route
 appRoute.get('/employer/packages', getAll);
 
 
-module.exports = appRoute;
 
 const {
   TALENT_POOL_FLUTTER_PUBLIC,
@@ -40,11 +39,11 @@ appRoute.post('/employer/payment', async (req, res) => {
       expiry_month: req.body.expMonth,
       expiry_year: req.body.expYear,
       currency: 'USD',
-      amount: 500,
+      amount: req.body.total,
       redirect_url: 'https://www.google.com',
-      name: 'Olufemi Obafunmiso',
-      email: 'olufemi@flw.com',
-      phone_number: '0902620185',
+      name: req.body.fullName,
+      email: req.body.email,
+      phone_number: req.body.phoneNum,
       payment_plan: 6327,
       interval: 'monthly',
       duration: 1,
@@ -72,3 +71,4 @@ appRoute.post('/employer/payment', async (req, res) => {
 
 
 module.exports = appRoute;
+
