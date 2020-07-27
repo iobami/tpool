@@ -1,7 +1,11 @@
 const model = require('../../Models/index');
-
 module.exports = {
-  home: (req, res) => res.render('index', { pageName: 'Home', isLoggedIn: req.session.isLoggedIn }),
+  home: (req, res) => res.render('Pages/employer-certificate',
+   {
+    pageName: 'Home',
+    isLoggedIn: req.session.isLoggedIn,
+    EmployerInfo: { employerInfo: { employer_photo: 'https://picsum.photos/200' }}
+   }),
   about: (req, res) => {
     res.render('Pages/aboutUs', { pageName: 'About', isLoggedIn: req.session.isLoggedIn });
   },
